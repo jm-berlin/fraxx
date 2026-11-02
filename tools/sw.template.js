@@ -1,6 +1,6 @@
 /* Multilingo – Service Worker: Offline-Betrieb und Updates */
 const VERSION = "__VERSION__";
-const SHELL = ["./", "index.html", "runtime.js", "ui.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png", "data/packs.json"];
+const SHELL = ["./", "index.html", "runtime.js", "ui.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png", "img/paris.jpg", "img/andalucia.jpg", "img/toscana.jpg", "img/band.jpg", "data/packs.json"];
 const SHELL_CACHE = "ml-shell-" + VERSION, RUNTIME = "ml-runtime";
 
 self.addEventListener("install", e => {

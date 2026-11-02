@@ -707,6 +707,28 @@ html[data-tf] .hf .hi{background:var(--blue);color:var(--blue-ink)}
 html:root header h1{font-family:"Archivo", "Inter", system-ui, sans-serif;font-size:clamp(2.6rem,7.2vw,5rem);font-weight:900;letter-spacing:-.055em;line-height:.9;padding-bottom:.06em}
 html:root header{align-items:center}
 
+/* Startseite: Fotos statt Zeichnungen */
+.hart{min-height:0;aspect-ratio:1 / .97}
+.pc img{display:block;width:100%;height:auto;border-radius:3px}
+.pc::after{content:"";position:absolute;inset:8px 8px 28px;border-radius:3px;background:var(--m-sun);mix-blend-mode:soft-light;opacity:.22;pointer-events:none}
+.pc2{left:0;top:0;right:auto;bottom:auto;width:62%;transform:rotate(-3deg);z-index:1}
+.pc1{right:0;left:auto;top:5%;bottom:auto;width:37%;transform:rotate(4deg);z-index:2}
+.pc3{left:13%;top:46%;bottom:auto;width:33%;transform:rotate(-2deg);z-index:3}
+.hart:hover .pc1{transform:rotate(6deg) translate(4px,-4px)} .hart:hover .pc2{transform:rotate(-4deg) translate(-4px,-4px)}
+.wcard{right:0;bottom:2%}
+.hband{background:var(--surface)}
+.hbandimg{display:block;width:100%;height:340px;object-fit:cover;object-position:70% 40%}
+.hband::before{content:"";position:absolute;inset:0;background:var(--m-sun);mix-blend-mode:soft-light;opacity:.2;pointer-events:none}
+.hband::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, color-mix(in srgb, var(--surface) 92%, transparent) 0%, color-mix(in srgb, var(--surface) 70%, transparent) 38%, transparent 66%);pointer-events:none}
+.hbandtx{z-index:1}
+html[data-design="graphit"] .pc img, html[data-design="graphit"] .hbandimg{filter:brightness(.9)}
+@media (max-width:760px){
+  .hart{height:auto;aspect-ratio:1 / 1.02}
+  .pc{padding:5px 5px 20px} .pc::after{inset:5px 5px 20px} .pc > span{font-size:10px;bottom:4px;left:8px}
+  .hbandimg{height:460px;object-position:65% 50%}
+  .hband::after{background:linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent) 0%, color-mix(in srgb, var(--surface) 75%, transparent) 45%, transparent 70%)}
+}
+
 /* Meine Liste */
 .favstar{font-size:17px;color:var(--muted)}
 .favstar.on,.favrm{color:var(--hl);-webkit-text-stroke:.6px var(--hl-ink)}
@@ -970,178 +992,11 @@ html:root header{align-items:center}
         <div class="hcta"><button type="button" class="primary" data-go="app">Loslegen →</button><button type="button" class="ghost" data-go="dishbtn">Speisekarte ansehen</button></div>
       </div>
       <div class="hart" aria-hidden="true">
-        <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<pattern id="pdots" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" class="pdbg"/><circle cx="2.5" cy="2.5" r="1" fill="#fff"/></pattern>
-<pattern id="psund" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" class="psbg"/><circle cx="3" cy="3" r="1.1" fill="#fff"/></pattern>
-<pattern id="htone" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".75" fill="#fff" opacity=".45"/></pattern>
-<pattern id="ging" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#fff"/><rect width="4" height="8" class="pgg"/><rect width="8" height="4" class="pgg"/><rect width="4" height="4" class="pgg2"/></pattern>
-</defs></svg>
+        
         <div class="hbig" data-notr>Bonjour.</div>
-        <figure class="pc pc1"><svg viewBox="0 0 240 160" aria-hidden="true"><rect width="240" height="160" class="m-sky"/><rect width="240" height="110" fill="url(#htone)"/>
-<circle cx="200" cy="58" r="20" class="m-sun"/>
-<path class="m-far" d="M0 118V96h18V84h12v8h16V78h14v20h24V88h16v12h50V86h20V76h18v14h20v-8h32v40z"/>
-<path class="m-near" d="M196 30h2l2 22 4 26 9 32 6 18h-11q-10-24-21 0h-11l6-18 9-32 4-26z"/><rect x="186" y="76" width="22" height="3.5" class="m-near"/>
-<rect y="126" width="240" height="34" class="m-mid"/>
-<g><rect x="0" y="0" width="12" height="20" class="pawn1"/><rect x="12" y="0" width="12" height="20" class="pawn2"/><rect x="24" y="0" width="12" height="20" class="pawn1"/><rect x="36" y="0" width="12" height="20" class="pawn2"/><rect x="48" y="0" width="12" height="20" class="pawn1"/><rect x="60" y="0" width="12" height="20" class="pawn2"/><rect x="72" y="0" width="12" height="20" class="pawn1"/><rect x="84" y="0" width="12" height="20" class="pawn2"/><rect x="96" y="0" width="12" height="20" class="pawn1"/><rect x="108" y="0" width="12" height="20" class="pawn2"/><rect x="120" y="0" width="12" height="20" class="pawn1"/><rect x="132" y="0" width="12" height="20" class="pawn2"/><rect x="144" y="0" width="12" height="20" class="pawn1"/><rect x="156" y="0" width="12" height="20" class="pawn2"/><rect x="168" y="0" width="12" height="20" class="pawn1"/><rect x="180" y="0" width="12" height="20" class="pawn2"/><rect x="192" y="0" width="12" height="20" class="pawn1"/><rect x="204" y="0" width="12" height="20" class="pawn2"/><rect x="216" y="0" width="12" height="20" class="pawn1"/><rect x="228" y="0" width="12" height="20" class="pawn2"/>
-<path d="M0 20q6 8 12 0z" class="pawn1 o"/><path d="M12 20q6 8 12 0z" class="pawn2 o"/><path d="M24 20q6 8 12 0z" class="pawn1 o"/><path d="M36 20q6 8 12 0z" class="pawn2 o"/><path d="M48 20q6 8 12 0z" class="pawn1 o"/><path d="M60 20q6 8 12 0z" class="pawn2 o"/><path d="M72 20q6 8 12 0z" class="pawn1 o"/><path d="M84 20q6 8 12 0z" class="pawn2 o"/><path d="M96 20q6 8 12 0z" class="pawn1 o"/><path d="M108 20q6 8 12 0z" class="pawn2 o"/><path d="M120 20q6 8 12 0z" class="pawn1 o"/><path d="M132 20q6 8 12 0z" class="pawn2 o"/><path d="M144 20q6 8 12 0z" class="pawn1 o"/><path d="M156 20q6 8 12 0z" class="pawn2 o"/><path d="M168 20q6 8 12 0z" class="pawn1 o"/><path d="M180 20q6 8 12 0z" class="pawn2 o"/><path d="M192 20q6 8 12 0z" class="pawn1 o"/><path d="M204 20q6 8 12 0z" class="pawn2 o"/><path d="M216 20q6 8 12 0z" class="pawn1 o"/><path d="M228 20q6 8 12 0z" class="pawn2 o"/><path d="M0 20H240" class="ln"/></g>
-<path class="ln2" d="M60 100l-6 52M70 100l4 52M150 100l-4 52M160 100l6 52"/>
-<g transform="translate(116 160) scale(1.25) translate(-116 -158)"><g transform="translate(86 92) scale(1.18)">
-<path class="pk o" d="M-15 1.5Q0 -2.5 15 1.5L14.5 12L-14.5 12Z"/>
-<path class="pgown o" d="M-13.5 7C-20 10 -20.5 18 -14.5 23C-12.5 24 -10.5 25 -9.5 26L-9 34L9 34L9.5 26C10.5 25 12.5 24 14.5 23C20.5 18 20 10 13.5 7C9 6 5 8 3 11.5C1.5 14 -1.5 14 -3 11.5C-5 8 -9 6 -13.5 7Z"/>
-<path class="ln" d="M-16.5 20Q-9 26.5 -1.2 17.5M1.2 17.5Q9 26.5 16.5 20"/><path class="pshine" d="M-14 12q-3 5 -1 9M11 11q3 3 3 8"/>
-<path class="pbelt o" d="M-9.4 27h18.8v3.4h-18.8z" style="fill:var(--p-gownd)"/>
-<g class="pp o"><circle cx="-6.50" cy="5.22" r=".95"/><circle cx="-4.88" cy="3.90" r=".95"/><circle cx="-3.25" cy="2.95" r=".95"/><circle cx="-1.62" cy="2.39" r=".95"/><circle cx="0.00" cy="2.20" r=".95"/><circle cx="1.62" cy="2.39" r=".95"/><circle cx="3.25" cy="2.95" r=".95"/><circle cx="4.88" cy="3.90" r=".95"/><circle cx="6.50" cy="5.22" r=".95"/></g>
-</g><g transform="translate(86 74) rotate(-6) scale(1.18)">
-<path class="ph o" d="M-14 -4C-17 -18 -6 -25 2 -24C13 -24 18 -14 15.5 -2C17 6 19 12 15 18C11.5 21 8 18.5 9 13L-9 13C-8 18.5 -12 21 -15.5 17.5C-19 11 -15.5 5 -14 -4Z"/>
-<rect class="pk o" x="-3.6" y="8" width="7.2" height="11"/>
-<ellipse class="pk o" cx="0" cy="0" rx="9" ry="11.5"/>
-<path class="ph o" d="M-10.5 -4C-12 -16 -4 -20 1 -20C9 -20 13 -15 10.5 -4C9 -8.5 7.5 -7.5 5.5 -9.5C3.5 -6.5 1.5 -7.5 -.5 -9.5C-2.5 -6.5 -4.5 -7.5 -6.5 -9C-8 -6 -9 -6 -10.5 -4Z"/>
-<path class="phl" d="M-6 -16Q-1 -19 5 -17"/>
-<path class="ln" d="M-7.2 -5Q-4.3 -7.4 -1.6 -5.6M7.2 -5Q4.3 -7.4 1.6 -5.6"/>
-<path class="lw" d="M-7.4 -1.2Q-4.3 -4.2 -1.4 -1.6M7.4 -1.2Q4.3 -4.2 1.4 -1.6"/>
-<path class="ln" d="M-7.4 -1.2l-1.4 -1M-6.4 -2.4l-1 -1.3M7.4 -1.2l1.4 -1M6.4 -2.4l1 -1.3"/>
-<circle class="pi" cx="-4.3" cy="-1" r="1.35"/><circle class="pi" cx="4.3" cy="-1" r="1.35"/>
-<path class="ln" d="M.3 1.2Q1.3 3.6 -.4 4.1"/>
-<path class="pl" d="M-3.2 6.4Q-1.6 4.7 0 5.6Q1.6 4.7 3.2 6.4Q0 9.6 -3.2 6.4Z"/>
-<circle class="pb" cx="-5.6" cy="3.6" r="2.1"/><circle class="pb" cx="5.6" cy="3.6" r="2.1"/>
-<circle class="pp o" cx="-9" cy="4.5" r="1.4"/><circle class="pp o" cx="9" cy="4.5" r="1.4"/>
-</g>
-<g transform="translate(146 92) scale(1.18)">
-<path class="psuit o" d="M-17 6C-17 0 -11 -1.5 -5.5 -1.5L5.5 -1.5C11 -1.5 17 0 17 6L15 36L-15 36Z"/>
-<path class="pw o" d="M-5.5 -1.5L0 14L5.5 -1.5Z"/>
-<path class="pbow o" d="M-4.5 .2L0 2.2L4.5 .2L4.5 4.8L0 2.8L-4.5 4.8Z"/>
-<path class="lnw" d="M-5.5 -1.5L-2.5 18M5.5 -1.5L2.5 18"/><path class="pw o" d="M-12 13l2 -2 2 2 1 2h-5z"/>
-</g><g transform="translate(146 72) rotate(5) scale(1.18)">
-<rect class="pk o" x="-4" y="8" width="8" height="11"/>
-<ellipse class="pk o" cx="-9.6" cy="0" rx="2" ry="3.2"/><ellipse class="pk o" cx="9.6" cy="0" rx="2" ry="3.2"/>
-<path class="pk o" d="M-9 -6C-9 -13 9 -13 9 -6L9 4C9 10.5 4.5 13.5 0 13.5C-4.5 13.5 -9 10.5 -9 4Z"/>
-<path class="pm o" d="M-10 -2C-12.5 -14 -4 -21 3 -20C11 -20 14 -12 10 -2C9.5 -7.5 6 -10.5 0 -10.5C-4.5 -10.5 -8.5 -8.5 -10 -2Z"/>
-<path class="phl" d="M-4 -16Q2 -19 8 -15"/>
-<path class="ln2" d="M-7.2 -4.6h5M2.2 -4.6h5"/>
-<ellipse class="pi" cx="-4.6" cy="-1.6" rx="1.1" ry="1.3"/><ellipse class="pi" cx="4.6" cy="-1.6" rx="1.1" ry="1.3"/>
-<path class="ln" d="M.6 -1L1.6 4L-.4 4.6"/>
-<path class="ln" d="M-4.2 7.4Q0 10.8 4.2 7.4"/><path class="ln" d="M-2 12q2 1 4 0"/>
-</g>
-<path d="M101 99Q108 112 112 114" class="lo" style="stroke-width:6.8"/><path d="M101 99Q108 112 112 114" class="pk" style="stroke-width:5"/><path d="M131 99Q124 112 120 113" class="lo" style="stroke-width:7.3999999999999995"/><path d="M131 99Q124 112 120 113" class="psl" style="stroke-width:5.6"/><circle class="pk o" cx="119.5" cy="113" r="2.6"/>
-<path d="M70 99Q66 112 76 110Q84 104 87 98" class="lo" style="stroke-width:6.8"/><path d="M70 99Q66 112 76 110Q84 104 87 98" class="pk" style="stroke-width:5"/>
-<rect x="80" y="91" width="8" height="8" rx="1.5" class="pw o"/><path class="ln" d="M88 93q3 .5 2.5 3h-2.5"/>
-<ellipse cx="116" cy="117" rx="54" ry="7" class="pw o"/><path class="pw o" d="M62 117v4q54 10 108 0v-4" />
-<rect x="113" y="123" width="6" height="30" class="m-near"/><ellipse cx="116" cy="154" rx="16" ry="3" class="m-near"/>
-<path class="pw o" d="M126 108h10l-1 7h-8z"/><ellipse cx="131" cy="115.5" rx="8" ry="1.8" class="pw o"/>
-<path class="pcro o" d="M96 114q8 -9 16 0q-3 -3 -8 -3t-8 3z"/></g>
-</svg><span data-notr>Paris</span></figure>
-        <figure class="pc pc2"><svg viewBox="0 0 240 160" aria-hidden="true"><rect width="240" height="160" class="m-sky"/><rect width="240" height="96" fill="url(#htone)"/><circle cx="200" cy="36" r="20" class="m-sun"/>
-<path class="m-far" d="M0 84Q60 46 130 62T240 52V160H0z"/>
-<g class="m-wall"><rect x="104" y="64" width="26" height="22"/><rect x="128" y="56" width="22" height="30"/><rect x="148" y="70" width="28" height="16"/><rect x="174" y="50" width="11" height="36"/><circle cx="179.5" cy="50" r="6"/><rect x="184" y="66" width="26" height="20"/><rect x="208" y="72" width="24" height="14"/></g>
-<g class="m-win"><rect x="110" y="70" width="4" height="6"/><rect x="134" y="62" width="4" height="6"/><rect x="141" y="74" width="5" height="12"/><rect x="156" y="75" width="4" height="6"/><rect x="177" y="58" width="4" height="7"/><rect x="192" y="72" width="4" height="6"/><rect x="214" y="76" width="4" height="6"/></g>
-<rect y="86" width="240" height="30" class="m-sea"/><path d="M130 96h30M186 106h34M40 94h20" class="m-wave"/>
-<path d="M212 92v-18l11 16z" class="m-wall"/><path d="M203 93h26l-4 5h-18z" class="m-near"/>
-<path class="m-h2" d="M0 114Q120 104 240 112V160H0z"/><path d="M0 114Q120 104 240 112" class="ln"/>
-<g transform="translate(92 64) scale(1.24)">
-<path d="M-24 44L-28 66" class="lo" style="stroke-width:8.200000000000001"/><path d="M-24 44L-28 66" class="pk" style="stroke-width:6.4"/><path d="M-12 44L-7 66" class="lo" style="stroke-width:8.200000000000001"/><path d="M-12 44L-7 66" class="pk" style="stroke-width:6.4"/>
-<path class="pk o" d="M-33 64.5h8l1.5 3h-10zM-11 64.5h8l1.5 3h-10z"/>
-<path class="pshort o" d="M-32 30h28l2.5 18h-12l-2.5 -8 -2.5 8h-12z"/><path class="lnw" d="M-28 30v17M-8 30v17"/>
-<g transform="translate(-18 0) scale(1)">
-<path class="pk o" d="M-17 6C-17 0 -11 -1.5 -5.5 -1.5L5.5 -1.5C11 -1.5 17 0 17 6L13 33L-13 33Z"/>
-<path class="ln" d="M-12 13Q-6 17 -1 13M1 13Q6 17 12 13M0 15v14M-5 22h3M2 22h3M-5 27h3M2 27h3"/>
-</g><g transform="translate(-18 -16) rotate(-4) scale(1)">
-<rect class="pk o" x="-4" y="8" width="8" height="11"/>
-<ellipse class="pk o" cx="-9.6" cy="0" rx="2" ry="3.2"/><ellipse class="pk o" cx="9.6" cy="0" rx="2" ry="3.2"/>
-<path class="pk o" d="M-9 -6C-9 -13 9 -13 9 -6L9 4C9 10.5 4.5 13.5 0 13.5C-4.5 13.5 -9 10.5 -9 4Z"/>
-<path class="pm o" d="M-10 -2C-12.5 -14 -4 -21 3 -20C11 -20 14 -12 10 -2C9.5 -7.5 6 -10.5 0 -10.5C-4.5 -10.5 -8.5 -8.5 -10 -2Z"/>
-<path class="phl" d="M-4 -16Q2 -19 8 -15"/>
-<path class="ln2" d="M-7.2 -4.6h5M2.2 -4.6h5"/>
-<ellipse class="pi" cx="-4.6" cy="-1.6" rx="1.1" ry="1.3"/><ellipse class="pi" cx="4.6" cy="-1.6" rx="1.1" ry="1.3"/>
-<path class="ln" d="M.6 -1L1.6 4L-.4 4.6"/>
-<path class="ln" d="M-4.2 7.4Q0 10.8 4.2 7.4"/><path class="ln" d="M-2 12q2 1 4 0"/>
-</g>
-<path d="M-34 6Q-38 22 -36 34" class="lo" style="stroke-width:6.8"/><path d="M-34 6Q-38 22 -36 34" class="pk" style="stroke-width:5"/>
-<path d="M17 44L13 76" class="lo" style="stroke-width:7.3999999999999995"/><path d="M17 44L13 76" class="pk" style="stroke-width:5.6"/><path d="M28 44L34 75" class="lo" style="stroke-width:7.3999999999999995"/><path d="M28 44L34 75" class="pk" style="stroke-width:5.6"/>
-<path class="pheel o" d="M9 74h6l1 3h-7zM32 73h6l1.5 3h-7z"/>
-<path class="pk o" d="M13 30H31C35 34 37 38 36 42L8 42C7 38 9 34 13 30Z"/>
-<path class="pdress o" d="M11.5 32H32.5C35.5 36 36.5 40 35.5 45L26 47.5L22 43.5L18 47.5L8.5 45C7.5 40 8.5 36 11.5 32Z"/>
-<g transform="translate(22 -2) scale(1)">
-<path class="pk o" d="M-13.5 4C-19.5 8 -20.5 18 -14.5 23C-12.5 24 -10.5 25 -9.5 26L-9 34L9 34L9.5 26C10.5 25 12.5 24 14.5 23C20.5 18 19.5 8 13.5 4C9.5 2.5 6 0 0 0C-6 0 -9.5 2.5 -13.5 4Z"/>
-<path class="pdress o" d="M-16 8.5C-21 13 -20 21.5 -12.5 23C-6 24 -1.8 20 -1 16C-3 11.5 -9 7.5 -16 8.5Z"/>
-<path class="pdress o" d="M16 8.5C21 13 20 21.5 12.5 23C6 24 1.8 20 1 16C3 11.5 9 7.5 16 8.5Z"/>
-<path class="pstrap" d="M-12 9L-3.2 .4M12 9L3.2 .4"/><circle class="pi" cx="0" cy="30" r=".7"/>
-<path class="ln" d="M-8 26q-1 3 0 6M8 26q1 3 0 6"/>
-</g><g transform="translate(22 -16) rotate(6) scale(1)">
-<path class="ph o" d="M-14 -4C-17 -18 -6 -25 2 -24C13 -24 18 -14 15.5 -2C17 6 19 12 15 18C11.5 21 8 18.5 9 13L-9 13C-8 18.5 -12 21 -15.5 17.5C-19 11 -15.5 5 -14 -4Z"/>
-<rect class="pk o" x="-3.6" y="8" width="7.2" height="11"/>
-<ellipse class="pk o" cx="0" cy="0" rx="9" ry="11.5"/>
-<path class="ph o" d="M-10.5 -4C-12 -16 -4 -20 1 -20C9 -20 13 -15 10.5 -4C9 -8.5 7.5 -7.5 5.5 -9.5C3.5 -6.5 1.5 -7.5 -.5 -9.5C-2.5 -6.5 -4.5 -7.5 -6.5 -9C-8 -6 -9 -6 -10.5 -4Z"/>
-<path class="phl" d="M-6 -16Q-1 -19 5 -17"/>
-<path class="ln" d="M-7.2 -5Q-4.3 -7.4 -1.6 -5.6M7.2 -5Q4.3 -7.4 1.6 -5.6"/>
-<path class="lw" d="M-7.4 -1.2Q-4.3 -4.2 -1.4 -1.6M7.4 -1.2Q4.3 -4.2 1.4 -1.6"/>
-<path class="ln" d="M-7.4 -1.2l-1.4 -1M-6.4 -2.4l-1 -1.3M7.4 -1.2l1.4 -1M6.4 -2.4l1 -1.3"/>
-<circle class="pi" cx="-4.3" cy="-1" r="1.35"/><circle class="pi" cx="4.3" cy="-1" r="1.35"/>
-<path class="ln" d="M.3 1.2Q1.3 3.6 -.4 4.1"/>
-<path class="pl" d="M-3.2 6.4Q-1.6 4.7 0 5.6Q1.6 4.7 3.2 6.4Q0 9.6 -3.2 6.4Z"/>
-<circle class="pb" cx="-5.6" cy="3.6" r="2.1"/><circle class="pb" cx="5.6" cy="3.6" r="2.1"/>
-<circle class="pp o" cx="-9" cy="4.5" r="1.4"/><circle class="pp o" cx="9" cy="4.5" r="1.4"/>
-</g>
-<path d="M-2 6Q-6 20 2 34" class="lo" style="stroke-width:6.8"/><path d="M-2 6Q-6 20 2 34" class="pk" style="stroke-width:5"/><path d="M8 4Q2 18 4 32" class="lo" style="stroke-width:6.3999999999999995"/><path d="M8 4Q2 18 4 32" class="pk" style="stroke-width:4.6"/>
-<path d="M37 4Q45 12 46 2" class="lo" style="stroke-width:6.2"/><path d="M37 4Q45 12 46 2" class="pk" style="stroke-width:4.4"/>
-</g>
-</svg><span data-notr>Andalucía</span></figure>
-        <figure class="pc pc3"><svg viewBox="0 0 240 160" aria-hidden="true"><rect width="240" height="160" class="m-sky"/><rect width="240" height="90" fill="url(#htone)"/><circle cx="46" cy="38" r="18" class="m-sun"/>
-<path class="m-far" d="M0 80Q50 54 110 72T240 62V160H0z"/>
-<rect x="168" y="54" width="32" height="18" class="m-wall"/><path d="M163 56l21 -12 21 12z" class="m-acc"/><rect x="176" y="59" width="4" height="6" class="m-win"/><rect x="189" y="59" width="4" height="6" class="m-win"/>
-<g class="m-tree"><ellipse cx="146" cy="66" rx="4" ry="14"/><ellipse cx="157" cy="68" rx="4" ry="13"/><ellipse cx="218" cy="62" rx="4" ry="14"/></g>
-<path class="m-mid" d="M0 106Q80 80 160 96T240 92V160H0z"/>
-<g transform="translate(112 82) scale(1.3)">
-<path d="M-62 60L-40 40H74L92 60Z" fill="url(#ging)" class="o"/>
-<path d="M-30 36L-10 18L2 38" class="lo" style="stroke-width:9.0"/><path d="M-30 36L-10 18L2 38" class="pchino" style="stroke-width:7.2"/><path d="M-36 38L-10 42" class="lo" style="stroke-width:9.0"/><path d="M-36 38L-10 42" class="pchino" style="stroke-width:7.2"/>
-<path class="psh o" d="M-4 36h9l1 4h-11zM-12 39h4v7h-4z"/>
-<g transform="translate(-30 0) scale(1)">
-<path class="plinen o" d="M-17 6C-17 0 -11 -1.5 -5.5 -1.5L5.5 -1.5C11 -1.5 17 0 17 6L15 36L-15 36Z"/>
-<path class="pk o" d="M-4.5 -1.5L0 8L4.5 -1.5Z"/>
-<path class="plinen o" d="M-5.5 -1.5L-1 6L-6 6ZM5.5 -1.5L1 6L6 6Z"/>
-<path class="ln" d="M0 8v26M-10 16h5"/><circle class="pi" cx="0" cy="14" r=".5"/><circle class="pi" cx="0" cy="22" r=".5"/><circle class="pi" cx="0" cy="30" r=".5"/>
-<path class="plinen o" d="M-17 4l-4 11 7 2 3-9zM17 4l4 11-7 2-3-9z"/>
-</g><g transform="translate(-30 -16) rotate(8) scale(1)">
-<rect class="pk o" x="-4" y="8" width="8" height="11"/>
-<ellipse class="pk o" cx="-9.6" cy="0" rx="2" ry="3.2"/><ellipse class="pk o" cx="9.6" cy="0" rx="2" ry="3.2"/>
-<path class="pk o" d="M-9 -6C-9 -13 9 -13 9 -6L9 4C9 10.5 4.5 13.5 0 13.5C-4.5 13.5 -9 10.5 -9 4Z"/>
-<path class="pm o" d="M-10 -2C-12.5 -14 -4 -21 3 -20C11 -20 14 -12 10 -2C9.5 -7.5 6 -10.5 0 -10.5C-4.5 -10.5 -8.5 -8.5 -10 -2Z"/>
-<path class="phl" d="M-4 -16Q2 -19 8 -15"/>
-<path class="ln2" d="M-7.2 -4.6h5M2.2 -4.6h5"/>
-<ellipse class="pi" cx="-4.6" cy="-1.6" rx="1.1" ry="1.3"/><ellipse class="pi" cx="4.6" cy="-1.6" rx="1.1" ry="1.3"/>
-<path class="ln" d="M.6 -1L1.6 4L-.4 4.6"/>
-<path class="ln" d="M-4.2 7.4Q0 10.8 4.2 7.4"/><path class="ln" d="M-2 12q2 1 4 0"/>
-</g>
-<path d="M-14 6Q-6 14 -12 20" class="lo" style="stroke-width:6.8"/><path d="M-14 6Q-6 14 -12 20" class="pk" style="stroke-width:5"/>
-<path d="M-46 6Q-50 22 -42 36" class="lo" style="stroke-width:6.8"/><path d="M-46 6Q-50 22 -42 36" class="pk" style="stroke-width:5"/>
-<path class="psun o" d="M18 30C4 34 -4 44 -4 51Q24 58 50 48C48 40 38 33 28 30Z"/><path class="ln" d="M10 38q-3 6 -4 12M30 38q6 5 8 11M20 36v18"/>
-<path d="M40 46Q54 46 62 50" class="lo" style="stroke-width:5.6"/><path d="M40 46Q54 46 62 50" class="pk" style="stroke-width:3.8"/><path d="M40 50Q52 52 58 56" class="lo" style="stroke-width:5.6"/><path d="M40 50Q52 52 58 56" class="pk" style="stroke-width:3.8"/>
-<path class="pheel o" d="M60 47l6 1 -1 4 -6 -1zM56 53l6 1 -1 4 -6 -1z"/>
-<g transform="translate(22 -2) scale(1)">
-<path class="pk o" d="M-13 2Q0 -2.5 13 2L12.5 11L-12.5 11Z"/>
-<path class="psun o" d="M-13.5 4C-19.5 8 -20.5 18 -14.5 23C-12.5 24 -10.5 25 -9.5 26L-9 34L9 34L9.5 26C10.5 25 12.5 24 14.5 23C20.5 18 19.5 8 13.5 4C9.5 2.5 6 5 4 9.5C2 13.5 -2 13.5 -4 9.5C-6 5 -9.5 2.5 -13.5 4Z"/>
-<path class="ln" d="M-16.5 20Q-9 26.5 -1.2 17.5M1.2 17.5Q9 26.5 16.5 20"/>
-<rect class="pbelt o" x="-9.4" y="27" width="18.8" height="3.4"/>
-<ellipse class="psun o" cx="-14.5" cy="5.5" rx="4.4" ry="4.2"/><ellipse class="psun o" cx="14.5" cy="5.5" rx="4.4" ry="4.2"/>
-</g><g transform="translate(22 -16) rotate(-8) scale(1)">
-<path class="ph o" d="M-14 -4C-17 -18 -6 -25 2 -24C13 -24 18 -14 15.5 -2C17 6 19 12 15 18C11.5 21 8 18.5 9 13L-9 13C-8 18.5 -12 21 -15.5 17.5C-19 11 -15.5 5 -14 -4Z"/>
-<rect class="pk o" x="-3.6" y="8" width="7.2" height="11"/>
-<ellipse class="pk o" cx="0" cy="0" rx="9" ry="11.5"/>
-<path class="ph o" d="M-10.5 -4C-12 -16 -4 -20 1 -20C9 -20 13 -15 10.5 -4C9 -8.5 7.5 -7.5 5.5 -9.5C3.5 -6.5 1.5 -7.5 -.5 -9.5C-2.5 -6.5 -4.5 -7.5 -6.5 -9C-8 -6 -9 -6 -10.5 -4Z"/>
-<path class="phl" d="M-6 -16Q-1 -19 5 -17"/>
-<path class="ln" d="M-7.2 -5Q-4.3 -7.4 -1.6 -5.6M7.2 -5Q4.3 -7.4 1.6 -5.6"/>
-<path class="lw" d="M-7.4 -1.2Q-4.3 -4.2 -1.4 -1.6M7.4 -1.2Q4.3 -4.2 1.4 -1.6"/>
-<path class="ln" d="M-7.4 -1.2l-1.4 -1M-6.4 -2.4l-1 -1.3M7.4 -1.2l1.4 -1M6.4 -2.4l1 -1.3"/>
-<circle class="pi" cx="-4.3" cy="-1" r="1.35"/><circle class="pi" cx="4.3" cy="-1" r="1.35"/>
-<path class="ln" d="M.3 1.2Q1.3 3.6 -.4 4.1"/>
-<path class="pl" d="M-3.2 6.4Q-1.6 4.7 0 5.6Q1.6 4.7 3.2 6.4Q0 9.6 -3.2 6.4Z"/>
-<circle class="pb" cx="-5.6" cy="3.6" r="2.1"/><circle class="pb" cx="5.6" cy="3.6" r="2.1"/>
-<circle class="pp o" cx="-9" cy="4.5" r="1.4"/><circle class="pp o" cx="9" cy="4.5" r="1.4"/>
-</g>
-<path d="M8 4Q2 18 -2 22" class="lo" style="stroke-width:6.3999999999999995"/><path d="M8 4Q2 18 -2 22" class="pk" style="stroke-width:4.6"/><path class="pw o" d="M-6 14h6l-1 9h-4z"/><path class="pwine" d="M-5.5 16h5l-.4 3h-4.2z"/><path class="ln" d="M-3 23v5M-6 28h6"/>
-<path d="M36 4Q40 20 36 32" class="lo" style="stroke-width:6.3999999999999995"/><path d="M36 4Q40 20 36 32" class="pk" style="stroke-width:4.6"/>
-<path class="pbask o" d="M54 26h24l-3 14h-18z"/><path class="ln" d="M57 26q9 -16 18 0" style="stroke-width:1.6"/><path class="pwine o" d="M62 12h4v14h-4z"/><path class="pbread o" d="M66 24q6 -8 12 -4l-2 6z"/>
-</g>
-</svg><span data-notr>Toscana</span></figure>
+        <figure class="pc pc1"><img data-img="paris" src="img/paris.jpg" alt="Paar im Café vor dem Eiffelturm" decoding="async"><span data-notr>Paris</span></figure>
+        <figure class="pc pc2"><img data-img="andalucia" src="img/andalucia.jpg" alt="Paar im Pool" decoding="async"><span data-notr>Andalucía</span></figure>
+        <figure class="pc pc3"><img data-img="toscana" src="img/toscana.jpg" alt="Paar beim Picknick in der Toskana" decoding="async"><span data-notr>Toscana</span></figure>
         <div class="wcard" data-notr><div class="wl"><i style="color:var(--muted)">DE</i><b><span class="dart">der</span> Kaffee</b></div><div class="wl"><i style="color:var(--fr)">FR</i><span><span class="dart">le</span> café</span></div><div class="wl"><i style="color:var(--es)">ES</i><span><span class="dart">el</span> café</span></div><div class="wl"><i style="color:var(--it)">IT</i><span><span class="dart">il</span> caffè</span></div><div class="wsay">„<b>Un</b> café, s’il vous plaît.“</div></div>
         <div class="hburst"><svg viewBox="0 0 120 120" aria-hidden="true"><polygon points="114.0,60.0 103.2,68.6 109.9,80.7 96.6,84.4 98.2,98.2 84.4,96.6 80.7,109.9 68.6,103.2 60.0,114.0 51.4,103.2 39.3,109.9 35.6,96.6 21.8,98.2 23.4,84.4 10.1,80.7 16.8,68.6 6.0,60.0 16.8,51.4 10.1,39.3 23.4,35.6 21.8,21.8 35.6,23.4 39.3,10.1 51.4,16.8 60.0,6.0 68.6,16.8 80.7,10.1 84.4,23.4 98.2,21.8 96.6,35.6 109.9,39.3 103.2,51.4"/></svg><span>Neu:<br>Speise&shy;karte</span></div>
         <div class="hstamp"><svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="stc" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs><text><textPath href="#stc">MULTILINGO · REISEBEGLEITER · SEIT HEUTE ·</textPath></text><text x="60" y="72" text-anchor="middle" class="stm">M</text></svg></div>
@@ -1156,78 +1011,7 @@ html:root header{align-items:center}
     <div class="hsech"><h3>Was Multilingo für dich tut</h3><p>Tippe auf eine Karte, um direkt loszulegen.</p></div>
     <div class="hfeat"><button type="button" class="hf" data-go="app"><span class="hn">01</span><span class="hi" aria-hidden="true">✎</span><b>Übersetzen & Hören</b><p>Wort oder Redewendung auf Deutsch eintippen. Multilingo übersetzt sinngemäß in all deine Sprachen und liest es mit richtiger Aussprache vor.</p><span class="hgo">Öffnen →</span></button><button type="button" class="hf" data-go="tocbtn"><span class="hn">02</span><span class="hi" aria-hidden="true">☰</span><b>Nach Themen geordnet</b><p>Wortschatz und Redewendungen nach Themen sortiert, dazu Verben, Adjektive und Substantive mit Artikel.</p><span class="hgo">Öffnen →</span></button><button type="button" class="hf" data-go="app"><span class="hn">03</span><span class="hi" aria-hidden="true">↻</span><b>Verben konjugiert</b><p>Präsens, Perfekt, Präteritum und Futur entstehen automatisch, für jedes Verb in jeder Sprache.</p><span class="hgo">Öffnen →</span></button><button type="button" class="hf" data-go="dishbtn"><span class="hn">04</span><span class="hi" aria-hidden="true">🍽</span><b>Speisekarte</b><p>Rund 100 beliebte Gerichte und Getränke je Land, erklärt in deiner Sprache, mit dem passenden Satz zum Bestellen.</p><span class="hgo">Öffnen →</span></button><button type="button" class="hf" data-go="grambtn"><span class="hn">05</span><span class="hi" aria-hidden="true">§</span><b>Grammatik</b><p>Die wichtigsten Regeln jeder Sprache auf einen Blick, mit Beispielen zum Anhören.</p><span class="hgo">Öffnen →</span></button><button type="button" class="hf" data-go="favbtn"><span class="hn">06</span><span class="hi" aria-hidden="true">★</span><b>Meine Liste</b><p>Dein persönlicher Spickzettel: Sterne setzen, mitnehmen oder ausdrucken.</p><span class="hgo">Öffnen →</span></button><button type="button" class="hf" data-go="quizbtn"><span class="hn">07</span><span class="hi" aria-hidden="true">?</span><b>Quiz</b><p>Übe deine Vokabeln spielerisch und sieh sofort, was schon sitzt.</p><span class="hgo">Öffnen →</span></button><button type="button" class="hf" data-go="app"><span class="hn">08</span><span class="hi" aria-hidden="true">＋</span><b>Jede Sprache</b><p>Französisch, Spanisch, Italienisch und jede weitere Sprache, die du hinzufügst, auch mit anderer Schrift.</p><span class="hgo">Öffnen →</span></button></div>
     <div class="hband">
-      <svg viewBox="0 0 1200 300" preserveAspectRatio="xMaxYMax slice" aria-hidden="true"><rect width="1200" height="300" class="m-sky"/><circle cx="1010" cy="96" r="54" class="m-sun"/>
-<path class="m-far" d="M380 230Q520 150 700 176T1000 150T1200 160V230z"/>
-<rect x="520" y="152" width="60" height="78" class="m-wall"/>
-<rect x="580" y="170" width="68" height="60" class="m-h2"/>
-<rect x="648" y="100" width="44" height="130" class="m-wall"/>
-<rect x="692" y="134" width="44" height="96" class="m-h3"/>
-<rect x="736" y="100" width="44" height="130" class="m-wall"/>
-<rect x="780" y="170" width="52" height="60" class="m-h2"/>
-<rect x="832" y="118" width="44" height="112" class="m-wall"/>
-<rect x="876" y="170" width="68" height="60" class="m-h2"/>
-<rect x="944" y="170" width="52" height="60" class="m-wall"/>
-<rect x="996" y="170" width="68" height="60" class="m-h3"/>
-<rect x="1064" y="152" width="44" height="78" class="m-wall"/>
-<rect x="1108" y="100" width="44" height="130" class="m-h2"/>
-<rect x="1152" y="170" width="68" height="60" class="m-wall"/>
-<path d="M576 170l38.0 -22l38.0 22z" class="m-mid"/>
-<path d="M732 100l26.0 -22l26.0 22z" class="m-mid"/>
-<path d="M872 170l38.0 -22l38.0 22z" class="m-mid"/>
-<path d="M1060 152l26.0 -22l26.0 22z" class="m-mid"/>
-<g class="m-win"><rect x="530" y="166" width="8" height="12"/><rect x="548" y="166" width="8" height="12"/><rect x="566" y="166" width="8" height="12"/><rect x="530" y="190" width="8" height="12"/><rect x="548" y="190" width="8" height="12"/><rect x="566" y="190" width="8" height="12"/><rect x="590" y="184" width="8" height="12"/><rect x="608" y="184" width="8" height="12"/><rect x="626" y="184" width="8" height="12"/><rect x="658" y="114" width="8" height="12"/><rect x="676" y="114" width="8" height="12"/><rect x="658" y="138" width="8" height="12"/><rect x="676" y="138" width="8" height="12"/><rect x="658" y="162" width="8" height="12"/><rect x="676" y="162" width="8" height="12"/><rect x="658" y="186" width="8" height="12"/><rect x="676" y="186" width="8" height="12"/><rect x="702" y="148" width="8" height="12"/><rect x="720" y="148" width="8" height="12"/><rect x="702" y="172" width="8" height="12"/><rect x="720" y="172" width="8" height="12"/><rect x="702" y="196" width="8" height="12"/><rect x="720" y="196" width="8" height="12"/><rect x="746" y="114" width="8" height="12"/><rect x="764" y="114" width="8" height="12"/><rect x="746" y="138" width="8" height="12"/><rect x="764" y="138" width="8" height="12"/><rect x="746" y="162" width="8" height="12"/><rect x="764" y="162" width="8" height="12"/><rect x="746" y="186" width="8" height="12"/><rect x="764" y="186" width="8" height="12"/><rect x="790" y="184" width="8" height="12"/><rect x="808" y="184" width="8" height="12"/><rect x="842" y="132" width="8" height="12"/><rect x="860" y="132" width="8" height="12"/><rect x="842" y="156" width="8" height="12"/><rect x="860" y="156" width="8" height="12"/><rect x="842" y="180" width="8" height="12"/><rect x="860" y="180" width="8" height="12"/><rect x="842" y="204" width="8" height="12"/><rect x="860" y="204" width="8" height="12"/><rect x="886" y="184" width="8" height="12"/><rect x="904" y="184" width="8" height="12"/><rect x="922" y="184" width="8" height="12"/><rect x="954" y="184" width="8" height="12"/><rect x="972" y="184" width="8" height="12"/><rect x="1006" y="184" width="8" height="12"/><rect x="1024" y="184" width="8" height="12"/><rect x="1042" y="184" width="8" height="12"/><rect x="1074" y="166" width="8" height="12"/><rect x="1092" y="166" width="8" height="12"/><rect x="1074" y="190" width="8" height="12"/><rect x="1092" y="190" width="8" height="12"/><rect x="1118" y="114" width="8" height="12"/><rect x="1136" y="114" width="8" height="12"/><rect x="1118" y="138" width="8" height="12"/><rect x="1136" y="138" width="8" height="12"/><rect x="1118" y="162" width="8" height="12"/><rect x="1136" y="162" width="8" height="12"/><rect x="1118" y="186" width="8" height="12"/><rect x="1136" y="186" width="8" height="12"/><rect x="1162" y="184" width="8" height="12"/><rect x="1180" y="184" width="8" height="12"/><rect x="1198" y="184" width="8" height="12"/></g>
-<rect y="228" width="1200" height="10" class="m-near"/><rect y="238" width="1200" height="62" class="m-sea"/>
-<path d="M60 262h70M240 280h90M420 258h60M640 276h80M880 262h70M1060 282h80" class="m-wave"/>
-<g transform="translate(250 250) scale(1)"><path d="M18 -4v-46l30 42z" class="m-wall"/><path d="M14 -4v-34l-16 32z" class="m-acc"/><path d="M-6 0h64l-10 12h-44z" class="m-near"/></g>
-<g transform="translate(400 250) scale(0.8)"><path d="M18 -4v-46l30 42z" class="m-wall"/><path d="M14 -4v-34l-16 32z" class="m-acc"/><path d="M-6 0h64l-10 12h-44z" class="m-near"/></g>
-<g transform="translate(720 250) scale(1.1)"><path d="M18 -4v-46l30 42z" class="m-wall"/><path d="M14 -4v-34l-16 32z" class="m-acc"/><path d="M-6 0h64l-10 12h-44z" class="m-near"/></g>
-<g transform="translate(615 132) scale(1.25)">
-<path d="M-24 44L-28 66" class="lo" style="stroke-width:8.200000000000001"/><path d="M-24 44L-28 66" class="pk" style="stroke-width:6.4"/><path d="M-12 44L-7 66" class="lo" style="stroke-width:8.200000000000001"/><path d="M-12 44L-7 66" class="pk" style="stroke-width:6.4"/>
-<path class="pk o" d="M-33 64.5h8l1.5 3h-10zM-11 64.5h8l1.5 3h-10z"/>
-<path class="pshort o" d="M-32 30h28l2.5 18h-12l-2.5 -8 -2.5 8h-12z"/><path class="lnw" d="M-28 30v17M-8 30v17"/>
-<g transform="translate(-18 0) scale(1)">
-<path class="pk o" d="M-17 6C-17 0 -11 -1.5 -5.5 -1.5L5.5 -1.5C11 -1.5 17 0 17 6L13 33L-13 33Z"/>
-<path class="ln" d="M-12 13Q-6 17 -1 13M1 13Q6 17 12 13M0 15v14M-5 22h3M2 22h3M-5 27h3M2 27h3"/>
-</g><g transform="translate(-18 -16) rotate(-4) scale(1)">
-<rect class="pk o" x="-4" y="8" width="8" height="11"/>
-<ellipse class="pk o" cx="-9.6" cy="0" rx="2" ry="3.2"/><ellipse class="pk o" cx="9.6" cy="0" rx="2" ry="3.2"/>
-<path class="pk o" d="M-9 -6C-9 -13 9 -13 9 -6L9 4C9 10.5 4.5 13.5 0 13.5C-4.5 13.5 -9 10.5 -9 4Z"/>
-<path class="pm o" d="M-10 -2C-12.5 -14 -4 -21 3 -20C11 -20 14 -12 10 -2C9.5 -7.5 6 -10.5 0 -10.5C-4.5 -10.5 -8.5 -8.5 -10 -2Z"/>
-<path class="phl" d="M-4 -16Q2 -19 8 -15"/>
-<path class="ln2" d="M-7.2 -4.6h5M2.2 -4.6h5"/>
-<ellipse class="pi" cx="-4.6" cy="-1.6" rx="1.1" ry="1.3"/><ellipse class="pi" cx="4.6" cy="-1.6" rx="1.1" ry="1.3"/>
-<path class="ln" d="M.6 -1L1.6 4L-.4 4.6"/>
-<path class="ln" d="M-4.2 7.4Q0 10.8 4.2 7.4"/><path class="ln" d="M-2 12q2 1 4 0"/>
-</g>
-<path d="M-34 6Q-38 22 -36 34" class="lo" style="stroke-width:6.8"/><path d="M-34 6Q-38 22 -36 34" class="pk" style="stroke-width:5"/>
-<path d="M17 44L13 76" class="lo" style="stroke-width:7.3999999999999995"/><path d="M17 44L13 76" class="pk" style="stroke-width:5.6"/><path d="M28 44L34 75" class="lo" style="stroke-width:7.3999999999999995"/><path d="M28 44L34 75" class="pk" style="stroke-width:5.6"/>
-<path class="pheel o" d="M9 74h6l1 3h-7zM32 73h6l1.5 3h-7z"/>
-<path class="pk o" d="M13 30H31C35 34 37 38 36 42L8 42C7 38 9 34 13 30Z"/>
-<path class="pdress o" d="M11.5 32H32.5C35.5 36 36.5 40 35.5 45L26 47.5L22 43.5L18 47.5L8.5 45C7.5 40 8.5 36 11.5 32Z"/>
-<g transform="translate(22 -2) scale(1)">
-<path class="pk o" d="M-13.5 4C-19.5 8 -20.5 18 -14.5 23C-12.5 24 -10.5 25 -9.5 26L-9 34L9 34L9.5 26C10.5 25 12.5 24 14.5 23C20.5 18 19.5 8 13.5 4C9.5 2.5 6 0 0 0C-6 0 -9.5 2.5 -13.5 4Z"/>
-<path class="pdress o" d="M-16 8.5C-21 13 -20 21.5 -12.5 23C-6 24 -1.8 20 -1 16C-3 11.5 -9 7.5 -16 8.5Z"/>
-<path class="pdress o" d="M16 8.5C21 13 20 21.5 12.5 23C6 24 1.8 20 1 16C3 11.5 9 7.5 16 8.5Z"/>
-<path class="pstrap" d="M-12 9L-3.2 .4M12 9L3.2 .4"/><circle class="pi" cx="0" cy="30" r=".7"/>
-<path class="ln" d="M-8 26q-1 3 0 6M8 26q1 3 0 6"/>
-</g><g transform="translate(22 -16) rotate(6) scale(1)">
-<path class="ph o" d="M-14 -4C-17 -18 -6 -25 2 -24C13 -24 18 -14 15.5 -2C17 6 19 12 15 18C11.5 21 8 18.5 9 13L-9 13C-8 18.5 -12 21 -15.5 17.5C-19 11 -15.5 5 -14 -4Z"/>
-<rect class="pk o" x="-3.6" y="8" width="7.2" height="11"/>
-<ellipse class="pk o" cx="0" cy="0" rx="9" ry="11.5"/>
-<path class="ph o" d="M-10.5 -4C-12 -16 -4 -20 1 -20C9 -20 13 -15 10.5 -4C9 -8.5 7.5 -7.5 5.5 -9.5C3.5 -6.5 1.5 -7.5 -.5 -9.5C-2.5 -6.5 -4.5 -7.5 -6.5 -9C-8 -6 -9 -6 -10.5 -4Z"/>
-<path class="phl" d="M-6 -16Q-1 -19 5 -17"/>
-<path class="ln" d="M-7.2 -5Q-4.3 -7.4 -1.6 -5.6M7.2 -5Q4.3 -7.4 1.6 -5.6"/>
-<path class="lw" d="M-7.4 -1.2Q-4.3 -4.2 -1.4 -1.6M7.4 -1.2Q4.3 -4.2 1.4 -1.6"/>
-<path class="ln" d="M-7.4 -1.2l-1.4 -1M-6.4 -2.4l-1 -1.3M7.4 -1.2l1.4 -1M6.4 -2.4l1 -1.3"/>
-<circle class="pi" cx="-4.3" cy="-1" r="1.35"/><circle class="pi" cx="4.3" cy="-1" r="1.35"/>
-<path class="ln" d="M.3 1.2Q1.3 3.6 -.4 4.1"/>
-<path class="pl" d="M-3.2 6.4Q-1.6 4.7 0 5.6Q1.6 4.7 3.2 6.4Q0 9.6 -3.2 6.4Z"/>
-<circle class="pb" cx="-5.6" cy="3.6" r="2.1"/><circle class="pb" cx="5.6" cy="3.6" r="2.1"/>
-<circle class="pp o" cx="-9" cy="4.5" r="1.4"/><circle class="pp o" cx="9" cy="4.5" r="1.4"/>
-</g>
-<path d="M-2 6Q-6 20 2 34" class="lo" style="stroke-width:6.8"/><path d="M-2 6Q-6 20 2 34" class="pk" style="stroke-width:5"/><path d="M8 4Q2 18 4 32" class="lo" style="stroke-width:6.3999999999999995"/><path d="M8 4Q2 18 4 32" class="pk" style="stroke-width:4.6"/>
-<path d="M37 4Q45 12 46 2" class="lo" style="stroke-width:6.2"/><path d="M37 4Q45 12 46 2" class="pk" style="stroke-width:4.4"/>
-</g></svg>
+      <img class="hbandimg" data-img="band" src="img/band.jpg" alt="" aria-hidden="true" decoding="async">
       <div class="hbandtx"><h3>Einmal nachgeschlagen, für immer dabei.</h3><p>Multilingo merkt sich jedes Wort, das du einmal gesucht hast, und hat es auf der nächsten Reise sofort parat.</p><button type="button" class="primary" data-go="app">Zu meinem Vokabelheft →</button></div>
     </div>
   </section>

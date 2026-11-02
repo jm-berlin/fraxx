@@ -30,6 +30,7 @@ rep('if(!sample) showNotice("Übersetzen ist in dieser Ansicht nicht verfügbar.
     'if(!sample){ try{ if(!localStorage.getItem("ml-offnote")){ localStorage.setItem("ml-offnote","1"); showNotice("Multilingo läuft offline mit deinen Sprachpaketen. Neue Wörter übersetzt es, sobald du unter ⚙ → App, Sprachpakete & Sicherung einen Claude-API-Schlüssel einträgst."); } }catch(e){} }')
 rep('statusEl.textContent = "Gespeichert in deinem Konto";', 'statusEl.textContent = "Gespeichert auf diesem Gerät";')
 rep('Für die beste Aussprache Multilingo in Chrome unter claude.ai öffnen.', 'Für die beste Aussprache Multilingo in Chrome öffnen.')
+s = re.sub(r'(data-img="(\w+)" src=")data:image/jpeg;base64,[^"]+', lambda m: m.group(1) + 'img/' + m.group(2) + '.jpg', s)
 s = s.rstrip() + '\n<script src="ui.js"></script>\n</html>\n'
 os.makedirs(out, exist_ok=True)
 open(os.path.join(out, "index.html"), "w").write(s)
