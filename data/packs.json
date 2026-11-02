@@ -1,0 +1,54 @@
+{
+ "version": 1,
+ "core": {
+  "file": "core.json",
+  "bytes": 2116754
+ },
+ "packs": [
+  {
+   "lang": "en",
+   "name": "Englisch",
+   "file": "lang-en.json",
+   "version": 1,
+   "bytes": 1851434,
+   "entries": 3003,
+   "docs": 12
+  },
+  {
+   "lang": "fr",
+   "name": "Französisch",
+   "file": "lang-fr.json",
+   "version": 1,
+   "bytes": 1960460,
+   "entries": 3003,
+   "docs": 13
+  },
+  {
+   "lang": "es",
+   "name": "Spanisch",
+   "file": "lang-es.json",
+   "version": 1,
+   "bytes": 1875335,
+   "entries": 3003,
+   "docs": 12
+  },
+  {
+   "lang": "it",
+   "name": "Italienisch",
+   "file": "lang-it.json",
+   "version": 1,
+   "bytes": 1835220,
+   "entries": 3003,
+   "docs": 15
+  },
+  {
+   "lang": "pl",
+   "name": "Polnisch",
+   "file": "lang-pl.json",
+   "version": 1,
+   "bytes": 1920991,
+   "entries": 3003,
+   "docs": 13
+  }
+ ]
+}
