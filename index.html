@@ -1131,6 +1131,9 @@ form.add.hflash{animation:hflash 1.2s ease-out}
         <button type="button" data-pos="verb" aria-pressed="false">Verben</button>
         <button type="button" data-pos="adj" aria-pressed="false">Adjektive</button>
         <button type="button" data-pos="noun" aria-pressed="false">Substantive</button>
+        <button type="button" data-pos="pron" aria-pressed="false">Pronomen</button>
+        <button type="button" data-pos="prep" aria-pressed="false">Präpositionen</button>
+        <button type="button" data-pos="konj" aria-pressed="false">Konjunktionen</button>
       </div>
       <span class="count" id="count"></span>
     </div>
@@ -1348,6 +1351,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     else { memoDocs = null; const i = docs.findIndex(x=>x.id===e.id); if(i<0) docs.unshift(e); else docs[i]=e; saveLocal(); renderData(); }
   }
   async function patchDoc(id, patch){
+    if(patch && "pos" in patch && !GRAM_POS.includes(patch.pos)){ const cur = docs.find(x=>x.id===id); if(cur && GRAM_POS.includes(cur.pos)){ patch = {...patch}; delete patch.pos; } }
     if(store){ await withRetry(()=>store.doc(id).update(patch)); }
     else { memoDocs = null; const e = docs.find(x=>x.id===id); if(e){ Object.assign(e, patch); saveLocal(); renderData(); } }
   }
@@ -1545,10 +1549,12 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     entries().forEach(e=>{ const t = normDe(origText(e)); if(!t) return; const k = origOf(e)+"|"+t; (m.get(k) || m.set(k, []).get(k)).push(e); });
     return [...m.values()].filter(g=>g.length>1);
   }
+  // Grammatikwörter mit eigenem Reiter: Pronomen, Präpositionen, Konjunktionen
+  const GRAM_POS = ["pron","prep","konj"];
   // Einträge in „Adjektive“ und „Substantive“ (und mit Artikel) sind nie Verben
   function noVerbHere(e){
     if(/^(der|die|das|ein|eine)\s/i.test((e.de||"").trim())) return true;
-    if(e.pos==="adj" || e.pos==="noun") return true;
+    if(e.pos==="adj" || e.pos==="noun" || GRAM_POS.includes(e.pos)) return true;
     // im Bereich „Adjektive“ (auch gespiegelt), „Farben“ oder mit Heimat „Substantive“
     const ids = [e.section, ...(Array.isArray(e.also) ? e.also : [])];
     return ids.some((id,i)=>{
@@ -1563,7 +1569,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   const isSingleWord = e => { const t = (e.de||"").trim(); return t && !/[.,!?;:¿¡]/.test(t) && t.split(/\s+/).length <= 3; };
   function wordKind(e){
     if(e.status!=="done" || !isSingleWord(e)) return "";
-    if(e.pos==="phrase" || e.pos==="other") return "";
+    if(e.pos==="phrase" || e.pos==="other" || GRAM_POS.includes(e.pos)) return "";
     if(e.verb===true && !noVerbHere(e)) return "verb";
     if(e.pos==="adj") return "adj";
     if(e.pos==="noun" || /^(der|die|das)\s/i.test((e.de||"").trim())) return "noun";
@@ -1637,11 +1643,12 @@ Antworte ausschließlich mit JSON: {"pos":["…"]} mit genau ${part.length} Wert
 
   // ---------- Wortschatz nach Themen ----------
   const WZ = "Wortschatz nach Themen";
-  const HIDE_TOPS = ["verben","adjektive"];
+  const HIDE_TOPS = ["verben","adjektive","pronomen","präpositionen","konjunktionen"];
   const isHiddenTop = s => !!s && !parentOf(s) && HIDE_TOPS.includes((s.title||"").trim().toLowerCase());
   const NEW_THEMES = ["Bewegung & Verkehr","Aussehen & Formen","Maße & Mengen","Denken & Sprechen","Farben"];
   function wzTop(){ return topSecs().find(x=>{ const t = (x.title||"").trim().toLowerCase(); return t===WZ.toLowerCase(); }) || null; }
   let wzDone = false;
+  let wzTries = 0;
   async function setupWortschatz(){
     if(wzDone || !loaded || importing) return; wzDone = true;
     // „Substantive“ heißt jetzt „Wortschatz nach Themen“; doppelte Bereiche werden zu einem zusammengeführt
@@ -1666,9 +1673,12 @@ Antworte ausschließlich mit JSON: {"pos":["…"]} mit genau ${part.length} Wert
       }
       try{ await removeDoc(other.id); }catch(_){}
     }
-    if(!wz){ wz = {id:newId(), kind:"section", title:WZ, order: topSecs().reduce((m,x)=>Math.max(m, x.order||0), -1) + 1, collapsed:true, createdAt:Date.now()}; try{ await putDoc(wz); }catch(_){ return; } }
+    if(!wz){
+      // Beim Start kommen die Daten manchmal in Etappen: erst nachsehen, bevor ein neuer Bereich entsteht
+      wzTries++; if(wzTries < 5){ wzDone = false; setTimeout(setupWortschatz, 2500); return; }
+      wz = {id:newId(), kind:"section", title:WZ, order: topSecs().reduce((m,x)=>Math.max(m, x.order||0), -1) + 1, collapsed:true, createdAt:Date.now()}; try{ await putDoc(wz); }catch(_){ return; } }
     // Unterbereiche von Verben/Adjektive (z. B. Farben) werden Themen im Wortschatz
-    for(const top of topSecs().filter(isHiddenTop)){
+    for(const top of topSecs().filter(isHiddenTop).filter(t=>["verben","adjektive"].includes((t.title||"").trim().toLowerCase()))){
       const kindOfTop = (top.title||"").trim().toLowerCase()==="verben" ? "verb" : "adj";
       for(const sub of subSecs(top.id)){
         // Wortart merken, bevor der Unterbereich umzieht
@@ -1901,6 +1911,7 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
       const t = el("button","detx"); t.append(artFrag(srcText(e), SRC, e.verb)); t.type="button"; t.title="Klicken zum Ändern"; t.setAttribute("aria-label","Ändern: "+srcText(e));
       t.addEventListener("click",()=>{ editId=e.id; editCtx=ctx||""; editDraft=srcText(e); confirmId=null; render(); });
       d.append(t, ...conjControls(e));
+      if(SRC==="de" && e.denote) d.append(el("span","note denote", e.denote));
       if(mirror){
         const m = el("button","xref", "↪ aus „"+secTitle(secOf(e))+"“"); m.type="button"; m.title="Zum Heimatbereich springen";
         m.addEventListener("click",()=>revealEntry(e)); d.append(m);
@@ -2219,7 +2230,7 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
   function setViewQuiet(v){ posFilter = v; try{ localStorage.setItem("rw-posf", v); }catch(e){} document.querySelectorAll("#posf button").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.pos===v))); }
   function posOf(e){
     if(e.verb===true && !noVerbHere(e)) return "verb";
-    if(["noun","verb","adj","phrase","other"].includes(e.pos)) return e.pos==="verb" ? (e.verb ? "verb" : "other") : e.pos;
+    if(["noun","verb","adj","phrase","other",...GRAM_POS].includes(e.pos)) return e.pos==="verb" ? (e.verb ? "verb" : "other") : e.pos;
     const t = (e.de||"").trim();
     if(/[.,!?;:¿¡]/.test(t) || t.split(/\s+/).length > 3) return "phrase";
     if(/^(der|die|das)\s/i.test(t)) return "noun";
@@ -2235,7 +2246,7 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
   }
   document.querySelectorAll("#posf button").forEach(b=>{ b.setAttribute("aria-pressed", String(b.dataset.pos===posFilter)); b.addEventListener("click",()=>setPosFilter(b.dataset.pos)); });
   function posView(list, total){
-    const NAMES = {verb:"Alle Verben", adj:"Alle Adjektive", noun:"Alle Substantive"};
+    const NAMES = {verb:"Alle Verben", adj:"Alle Adjektive", noun:"Alle Substantive", pron:"Alle Pronomen", prep:"Alle Präpositionen", konj:"Alle Konjunktionen"};
     const block = el("div","sec posview"); block.id = "sec-pos";
     const h = el("div","sechead"); h.append(el("span","postitle", NAMES[posFilter]), el("span","seccount", String(list.length)));
     block.append(h);
@@ -2250,7 +2261,7 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
       const r = entryRow(e, null);
       const de = r.querySelector(".cell.de");
       // Bereiche als Sprungziele; der Bereich, der der Wortart selbst entspricht (z. B. „Verben“), entfällt
-      const self = {verb:"verben", adj:"adjektive", noun:"substantive"}[posFilter];
+      const self = {verb:"verben", adj:"adjektive", noun:"substantive", pron:"pronomen", prep:"präpositionen", konj:"konjunktionen"}[posFilter];
       const secs = [e.section, ...alsoOf(e)].map(id=>secById(id)).filter(s=>s && !(!parentOf(s) && (s.title||"").trim().toLowerCase()===self));
       if(de && secs.length){
         const t = el("span","rowtheme");
