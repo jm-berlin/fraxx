@@ -759,6 +759,7 @@ html[data-design="taupe"]{--p-dress:#cc5530; --p-shirt:#f3f1ef; --p-pants:#14121
 .djoptsub{flex:1 1 100%;order:3;font-size:12.5px;color:var(--muted)}
 .djopthead .djbtn{grid-column:auto;margin:0}
 .djrow.opt .djdot{background:transparent;box-shadow:inset 0 0 0 2px var(--line)}
+.djrate{font-size:13px;font-weight:600;padding:8px 12px;border-radius:10px;background:color-mix(in srgb, var(--hl) 16%, var(--surface));box-shadow:inset 3px 0 0 var(--hl)}
 .djmore{font-size:12.5px;color:var(--muted);align-self:center;padding:0 4px}
 .djbtn{grid-column:2 / -1;justify-self:start;border:0;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:4px 12px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;margin:2px 0}
 .djrow{display:grid;grid-template-columns:12px minmax(0,1fr) auto minmax(150px,auto);gap:4px 10px;align-items:center;padding:5px 2px;border-top:1px solid var(--line)}
@@ -5335,6 +5336,7 @@ ${JSON.stringify(items)}`;
     hd.append(el("strong",null,"Hintergrundaufträge"), el("span","djtag","nur Entwicklung"));
     hd.append(el("span","djsum " + (req.length ? (busy ? "run" : "wait") : "ok"), req.length ? `${busy} läuft · ${req.length-busy} in der Warteschlange · ${req.reduce((a,j)=>a+j.left,0).toLocaleString("de-DE")} offen` : "Alles Nötige erledigt ✓"));
     box.append(hd);
+    if(rateUntil > Date.now()){ const sec = Math.ceil((rateUntil - Date.now())/1000); box.append(el("div","djrate", `Claude meldet gerade zu viele Anfragen. Pause, weiter in etwa ${sec} s, dann geht es automatisch weiter.`)); }
     const row = j => {
       const st = j.running ? ["run","läuft"] : j.queued ? ["wait","eingeplant"] : j.paused ? ["pause","angehalten"] : (j.needsSample && !sample) ? ["pause","wartet: Übersetzen nicht verfügbar"] : j.isErr ? ["err","Fehler"] : j.optional ? ["opt","optional"] : ["wait","wartet"];
       const r = el("div","djrow " + st[0]);
@@ -5368,6 +5370,30 @@ ${JSON.stringify(items)}`;
   }
   if(DEV_JOBS){ setInterval(renderDevJobs, 2000); setTimeout(renderDevJobs, 1500); }
 
+  // ---------- Anfragen an Claude drosseln ----------
+  // Höchstens 2 Anfragen gleichzeitig; bei „zu viele Anfragen“ automatisch warten (15 s, 30 s, 60 s, 120 s) und erneut versuchen
+  let rateUntil = 0, rateWaiting = 0;
+  function throttleSample(raw){
+    const MAXP = 2, WAITS = [15000, 30000, 60000, 120000];
+    let active = 0; const q = [];
+    const pump = () => {
+      while(active < MAXP && q.length){
+        const t = q.shift(); active++;
+        (async ()=>{
+          for(let a=0;;a++){
+            const wait = rateUntil - Date.now(); if(wait > 0){ rateWaiting++; await new Promise(r=>setTimeout(r, wait)); rateWaiting--; }
+            try{ const out = await raw.json(t.prompt, t.opts); t.res(out); return; }
+            catch(err){
+              if(err && err.code==="rate_limited" && a < WAITS.length){ rateUntil = Math.max(rateUntil, Date.now() + WAITS[a]); continue; }
+              t.rej(err); return;
+            }
+          }
+        })().finally(()=>{ active--; pump(); });
+      }
+    };
+    return {...raw, json: (prompt, opts) => new Promise((res, rej)=>{ q.push({prompt, opts, res, rej}); pump(); })};
+  }
+
   // ---------- Start ----------
   applyLangs();
   fillSrcSelect();
@@ -5376,7 +5402,7 @@ ${JSON.stringify(items)}`;
   (async ()=>{
     const c = window.claude;
     const [db, user, s] = c ? await Promise.all([c.use("db"), c.use("user"), c.use("sample")]) : [null,null,null];
-    sample = s;
+    sample = s ? throttleSample(s) : s;
     if(sample && SRC!=="de") I18N.retry();
     const uid = user ? await user.id() : null;
     if(db && uid){
