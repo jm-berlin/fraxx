@@ -754,6 +754,11 @@ html[data-design="taupe"]{--p-dress:#cc5530; --p-shirt:#f3f1ef; --p-pants:#14121
 .djitem{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:2px 10px;font:inherit;font-size:12.5px;cursor:pointer}
 .djitem:hover{border-color:var(--accent)}
 .djitem.static{cursor:default;color:var(--muted)}
+.djopthead{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin-top:6px;padding-top:10px;border-top:1px dashed var(--line)}
+.djopthead strong{font-size:14px}
+.djoptsub{flex:1 1 100%;order:3;font-size:12.5px;color:var(--muted)}
+.djopthead .djbtn{grid-column:auto;margin:0}
+.djrow.opt .djdot{background:transparent;box-shadow:inset 0 0 0 2px var(--line)}
 .djmore{font-size:12.5px;color:var(--muted);align-self:center;padding:0 4px}
 .djbtn{grid-column:2 / -1;justify-self:start;border:0;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:4px 12px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;margin:2px 0}
 .djrow{display:grid;grid-template-columns:12px minmax(0,1fr) auto minmax(150px,auto);gap:4px 10px;align-items:center;padding:5px 2px;border-top:1px solid var(--line)}
@@ -3625,8 +3630,9 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
     invalid_json:"Die Antwort war unvollständig. Mit ↻ erneut versuchen."
   };
 
-  function buildPrompt(words, langs, from){
+  function buildPrompt(words, langs, from, noteLang){
     from = from || "de";
+    const noteName = noteLang ? langName(noteLang) : srcName();
     langs = (langs || ALLCODES().map(langInfo)).filter(l=>l[0]!==from);
     const names = langs.map(([c,n])=>`${n} (${c})`).join(", ");
     const ex = langs.map(([c])=>`"${c}":{"text":"…","note":"…"}`).join(",");
@@ -3636,7 +3642,7 @@ Regeln:
 - Bei Redewendungen und Sprichwörtern: gib die gebräuchliche, sinngleiche Redewendung der Zielsprache an, nicht die wörtliche Übersetzung. Gibt es keine, eine natürliche Umschreibung.
 - Bei einzelnen Wörtern: die geläufigste Übersetzung; bei Substantiven mit Artikel (z. B. "la maison").
 - Bei einzelnen Adjektiven: männliche und weibliche Form mit " / " getrennt, wenn sie sich unterscheiden (z. B. "petit / petite", "rojo / roja"); sonst nur eine Form. In "note" bei unregelmäßiger Steigerung kurz die Steigerung (z. B. "besser, am besten" sinngemäß in der Zielsprache).
-- "note": optional, höchstens 10 Wörter, geschrieben auf ${srcName()}, nur wenn hilfreich (z. B. wörtliche Bedeutung der Redewendung, Register wie "umgangssprachlich", oder eine zweite gängige Variante). Sonst leerer String.
+- "note": optional, höchstens 10 Wörter, geschrieben auf ${noteName}, nur wenn hilfreich (z. B. wörtliche Bedeutung der Redewendung, Register wie "umgangssprachlich", oder eine zweite gängige Variante). Sonst leerer String.
 - "verb": true, wenn der Eintrag ein einzelnes Verb im Infinitiv ist (z. B. "gehen", "sein", "sich freuen", "to swim", "nager"), sonst false. Auch großgeschriebene deutsche Infinitive ohne Artikel (z. B. "Schwimmen") zählen als Verb. Adjektive und Partizipien, die nur wie Verben aussehen (z. B. "zufrieden", "verboten", "geschlossen", "verschieden", "eben", "offen"), sind KEINE Verben: false.
 - Zahlen im Format "21 – einundzwanzig": Ziffer und Strich beibehalten, nur das Zahlwort übersetzen (z. B. "21 – vingt et un"); Tausendertrennzeichen und Zusätze wie "(Jahreszahl)" in der Schreibweise der Zielsprache. In "note" kurz erklären, wie sich die Zahl in dieser Sprache bildet, wenn das von der Ausgangssprache abweicht oder eine Besonderheit hat (z. B. Französisch 70 = 60 + 10). Ordnungszahlen wie "1. – erste" ebenso. Bei true ist "text" jeweils der Infinitiv in der Zielsprache.
 - Bei Sprachen mit nicht-lateinischer Schrift (z. B. Russisch, Griechisch, Japanisch, Chinesisch, Arabisch): "text" in Originalschrift, "note" beginnt mit der Umschrift in lateinischen Buchstaben.
@@ -5248,6 +5254,10 @@ ${JSON.stringify(items)}`;
     LANGS.forEach(([c,n])=>{ const m = missingIn(c); jobs.push({id:"miss:"+c, name:`Fehlende Übersetzungen: ${n}`, left:m.length, items:m, running: fillRunning && m.length>0, paused: fillPaused, needsSample:true, unit:"Einträge", push: fillPush}); });
     let cc = []; try{ cc = conjCandidates(); }catch(_){}
     jobs.push({id:"conj", name:"Konjugationen erstellen", left: cc.length + conjInFlight.size, items: cc, running: conjRunning, paused: conjPaused, needsSample:true, unit:"Verben", push: ()=>{ conjPaused = false; scheduleConjQueue(0); }});
+    ["de", ...MYLANGS.map(l=>l[0])].filter(c=>c!==SRC).forEach(c=>{
+      const m = prepMissing(c);
+      jobs.push({id:"prep:"+c, optional:true, name:`Fassung für Ausgangssprache ${langName(c)}`, left:m.length, items:m, running: prepBusy && prepCur===c, queued: prepQueue.includes(c) && prepCur!==c, needsSample:true, unit:"Einträge", push: ()=>queuePrep([c]), pushLabel:"Vorbereiten"});
+    });
     const nolvl = all.filter(e=>e.status==="done" && !e.lvl && (e.de||"").trim());
     jobs.push({id:"lvl", name:"Sprachniveau einstufen", left: nolvl.length, items: nolvl, running: lvlBusy, needsSample:true, unit:"Einträge", push: ()=>levelWords()});
     return jobs;
@@ -5257,6 +5267,49 @@ ${JSON.stringify(items)}`;
     document.documentElement.removeAttribute("data-home");
     revealEntry(e).catch?.(()=>{});
   }
+  // Fassungen für andere Ausgangssprachen vorab erstellen, damit ein späterer Wechsel sofort geht
+  const prepReady = (e, code) => (e.noteLang||"de")===code || !!(e.nb && e.nb[code] && sameSnap(e.nbCur || JSON.stringify(snapOf(e)), snapOf(e)));
+  let prepCache = {docs:null, src:"", map:new Map()};
+  const prepMissing = code => {
+    if(prepCache.docs!==docs || prepCache.src!==SRC) prepCache = {docs, src:SRC, map:new Map()};
+    if(!prepCache.map.has(code)) prepCache.map.set(code, entries().filter(e=>e.status==="done" && !transInFlight.has(e.id) && !prepReady(e, code) && !fillSkip.has(e.id+":prep:"+code)));
+    return prepCache.map.get(code);
+  };
+  let prepQueue = [], prepBusy = false, prepCur = "";
+  function queuePrep(codes){ codes.forEach(c=>{ if(c!==SRC && !prepQueue.includes(c) && prepCur!==c) prepQueue.push(c); }); runPrep(); }
+  async function runPrep(){
+    if(prepBusy || !sample || !loaded) return;
+    prepBusy = true;
+    try{
+      while(prepQueue.length && sample){
+        const code = prepQueue[0]; prepCur = code;
+        if(code===SRC){ prepQueue.shift(); continue; }
+        while(sample && prepQueue[0]===code){
+          if(fillRunning || resuming || seedBusy){ await new Promise(r=>setTimeout(r, 3000)); continue; }
+          prepCache.docs = null; const miss = prepMissing(code); if(!miss.length) break;
+          const o = origOf(miss[0]); const batch = miss.filter(e=>origOf(e)===o).slice(0, 20);
+          const targets = ALLCODES().filter(c=>c!==o).map(langInfo);
+          try{
+            const out = await sample.json(buildPrompt(batch.map(origText), targets, o, code), { modelTier:"default", effort:"low" });
+            const arr = Array.isArray(out) ? out : [];
+            for(let j=0;j<batch.length;j++){
+              const e = docs.find(d=>d.id===batch[j].id) || batch[j]; const r = arr[j] || {};
+              const snap = snapOf(e); let ok = false;
+              targets.forEach(([c])=>{ const v = pickV(r[c]); if(v.text){ ok = true; snap[c] = {text:v.text, note:v.note||""}; } });
+              if(!ok){ fillSkip.add(e.id+":prep:"+code); continue; }
+              try{ await patchDoc(e.id, {nb: {...(e.nb||{}), [code]: snap}, nbCur: JSON.stringify(snapOf(e))}); }catch(_){}
+            }
+          }catch(err){
+            const c = err && err.code;
+            if(["rate_limited","not_granted","sampling_disabled","session_expired"].includes(c)){ prepQueue = []; break; }
+            batch.forEach(e=>fillSkip.add(e.id+":prep:"+code));
+          }
+        }
+        prepQueue.shift();
+      }
+    }finally{ prepBusy = false; prepCur = ""; }
+  }
+
   // Fehlgeschlagene Übersetzungen erneut anstoßen, in kleinen Gruppen (große Gruppen liefern eher unvollständige Antworten)
   let retryBusy = false;
   async function retryErrors(){
@@ -5272,21 +5325,23 @@ ${JSON.stringify(items)}`;
     const box = document.getElementById("devjobs"); if(!box) return;
     if(!DEV_JOBS || !loaded || !document.documentElement.hasAttribute("data-home")){ box.hidden = true; return; }
     let jobs; try{ jobs = devJobList(); }catch(_){ return; }
-    const open = jobs.filter(j=>j.left>0), busy = open.filter(j=>j.running).length;
-    if(!open.length){ box.hidden = true; box.replaceChildren(); return; }
+    const req = jobs.filter(j=>!j.optional && j.left>0), opt = jobs.filter(j=>j.optional && j.left>0);
+    const optActive = opt.some(j=>j.running || j.queued);
+    let optHidden = false; try{ optHidden = localStorage.getItem("rw-prep-hide")==="1"; }catch(_){}
+    if(!req.length && !optActive && (!opt.length || optHidden)){ box.hidden = true; box.replaceChildren(); return; }
+    const busy = req.filter(j=>j.running).length;
     box.hidden = false; box.replaceChildren();
     const hd = el("div","djhead");
     hd.append(el("strong",null,"Hintergrundaufträge"), el("span","djtag","nur Entwicklung"));
-    hd.append(el("span","djsum " + (open.length ? (busy ? "run" : "wait") : "ok"), open.length ? `${busy} läuft · ${open.length-busy} in der Warteschlange · ${open.reduce((a,j)=>a+j.left,0).toLocaleString("de-DE")} offen` : "Alles erledigt ✓"));
+    hd.append(el("span","djsum " + (req.length ? (busy ? "run" : "wait") : "ok"), req.length ? `${busy} läuft · ${req.length-busy} in der Warteschlange · ${req.reduce((a,j)=>a+j.left,0).toLocaleString("de-DE")} offen` : "Alles Nötige erledigt ✓"));
     box.append(hd);
-    const ul = el("div","djlist");
-    jobs.filter(j=>j.left>0).forEach(j=>{
-      const st = j.running ? ["run","läuft"] : j.paused ? ["pause","angehalten"] : (j.needsSample && !sample) ? ["pause","wartet: Übersetzen nicht verfügbar"] : j.isErr ? ["err","Fehler"] : ["wait","wartet"];
+    const row = j => {
+      const st = j.running ? ["run","läuft"] : j.queued ? ["wait","eingeplant"] : j.paused ? ["pause","angehalten"] : (j.needsSample && !sample) ? ["pause","wartet: Übersetzen nicht verfügbar"] : j.isErr ? ["err","Fehler"] : j.optional ? ["opt","optional"] : ["wait","wartet"];
       const r = el("div","djrow " + st[0]);
-      r.append(el("span","djdot"), el("span","djname", j.name), el("span","djn", `noch ${j.left.toLocaleString("de-DE")}${j.total ? " von "+j.total.toLocaleString("de-DE") : ""} ${j.unit}`), el("span","djst", st[1]));
+      r.append(el("span","djdot"), el("span","djname", j.name), el("span","djn", `noch ${j.left.toLocaleString("de-DE")}${j.total ? " von "+j.total.toLocaleString("de-DE") : ""} ${j.left===1 && !j.total ? ({"Einträge":"Eintrag","Verben":"Verb"}[j.unit]||j.unit) : j.unit}`), el("span","djst", st[1]));
       if(j.total){ const pr = el("div","progress"); const f = el("span"); f.style.width = Math.round(100*(j.total-j.left)/j.total)+"%"; pr.append(f); r.append(pr); }
       const acts = el("div","djacts");
-      if(j.push && !j.running && (!j.needsSample || sample)){ const b = el("button","djbtn", j.pushLabel || "Anstoßen"); b.type="button"; b.title = "Diesen Auftrag jetzt starten"; b.addEventListener("click",()=>{ j.push(); setTimeout(renderDevJobs, 400); }); acts.append(b); }
+      if(j.push && !j.running && !j.queued && (!j.needsSample || sample)){ const b = el("button","djbtn", j.pushLabel || "Anstoßen"); b.type="button"; b.title = "Diesen Auftrag jetzt starten"; b.addEventListener("click",()=>{ j.push(); setTimeout(renderDevJobs, 400); }); acts.append(b); }
       const n = (j.items && j.items.length) || (j.words && j.words.length) || 0;
       if(n){ const open = djOpen.has(j.id); const t = el("button","djbtn ghosty", open ? "Ausblenden" : `Zeigen (${n.toLocaleString("de-DE")})`); t.type="button"; t.setAttribute("aria-expanded", String(open)); t.addEventListener("click",()=>{ open ? djOpen.delete(j.id) : djOpen.add(j.id); renderDevJobs(); }); acts.append(t); }
       if(acts.childNodes.length) r.append(acts);
@@ -5297,9 +5352,19 @@ ${JSON.stringify(items)}`;
         if(n > MAXI) lst.append(el("span","djmore", `… und ${(n-MAXI).toLocaleString("de-DE")} weitere`));
         r.append(lst);
       }
-      ul.append(r);
-    });
-    if(ul.childNodes.length) box.append(ul);
+      return r;
+    };
+    if(req.length){ const ul = el("div","djlist"); req.forEach(j=>ul.append(row(j))); box.append(ul); }
+    if(opt.length){
+      const oh = el("div","djopthead");
+      oh.append(el("strong",null,"Optional: Fassungen für andere Ausgangssprachen"), el("span","djoptsub", "Damit der Wechsel der Ausgangssprache später sofort geht. Kostet je Sprache etwa so viele Übersetzungen, wie Einträge offen sind."));
+      const tg = el("button","djbtn ghosty", optHidden && !optActive ? "Einblenden" : "Ausblenden"); tg.type="button";
+      tg.addEventListener("click",()=>{ try{ localStorage.setItem("rw-prep-hide", optHidden && !optActive ? "0" : "1"); }catch(_){} renderDevJobs(); });
+      oh.append(tg);
+      if(sample && opt.some(j=>!j.running && !j.queued)){ const all = el("button","djbtn","Alle vorbereiten"); all.type="button"; all.addEventListener("click",()=>{ queuePrep(opt.map(j=>j.id.slice(5))); setTimeout(renderDevJobs, 400); }); oh.append(all); }
+      box.append(oh);
+      if(!optHidden || optActive){ const ul2 = el("div","djlist"); opt.forEach(j=>ul2.append(row(j))); box.append(ul2); }
+    }
   }
   if(DEV_JOBS){ setInterval(renderDevJobs, 2000); setTimeout(renderDevJobs, 1500); }
 
