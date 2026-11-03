@@ -733,8 +733,16 @@ html[data-design="taupe"]{--p-dress:#cc5530; --p-shirt:#f3f1ef; --p-pants:#14121
 .djsum.ok{background:var(--ok-soft);color:var(--ok)}
 .djsum.run,.djsum.wait{background:color-mix(in srgb, var(--hl) 18%, var(--surface));color:var(--ink)}
 .djlist{display:grid;grid-template-columns:1fr;gap:2px}
+.djacts{grid-column:2 / -1;display:flex;flex-wrap:wrap;gap:6px;margin:2px 0}
+.djacts .djbtn{grid-column:auto;margin:0}
+.djbtn.ghosty{background:var(--surface-2);color:var(--ink)}
+.djitems{grid-column:2 / -1;display:flex;flex-wrap:wrap;gap:4px;padding:4px 0 6px}
+.djitem{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:2px 10px;font:inherit;font-size:12.5px;cursor:pointer}
+.djitem:hover{border-color:var(--accent)}
+.djitem.static{cursor:default;color:var(--muted)}
+.djmore{font-size:12.5px;color:var(--muted);align-self:center;padding:0 4px}
 .djbtn{grid-column:2 / -1;justify-self:start;border:0;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:4px 12px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;margin:2px 0}
-.djrow{display:grid;grid-template-columns:12px minmax(0,1fr) auto 150px;gap:4px 10px;align-items:center;padding:5px 2px;border-top:1px solid var(--line)}
+.djrow{display:grid;grid-template-columns:12px minmax(0,1fr) auto minmax(150px,auto);gap:4px 10px;align-items:center;padding:5px 2px;border-top:1px solid var(--line)}
 .djrow .progress{grid-column:2 / -1;height:4px}
 .djrow .progress span{background:var(--hl)}
 .djdot{width:9px;height:9px;border-radius:999px;background:var(--line)}
@@ -5209,20 +5217,31 @@ ${JSON.stringify(items)}`;
     const all = entries();
     const keys = new Set(all.map(e=>dupKey(e.de||"")).filter(Boolean));
     const jobs = [];
+    const canRun = () => !!sample;
     docs.filter(d=>d.kind==="seed" && Array.isArray(d.items)).forEach(sd=>{
-      const left = sd.done ? 0 : sd.items.filter(it=>{ const k = dupKey(it.de||""); return k && !keys.has(k); }).length;
+      const missing = sd.done ? [] : sd.items.filter(it=>{ const k = dupKey(it.de||""); return k && !keys.has(k); });
       const running = !sd.done && seedBusy && sd.claimedAt && Date.now() - sd.claimedAt < 120000;
-      jobs.push({name:`Wortpaket „${sd.label || sd.name || sd.id}“ anlegen`, left, total: sd.items.length, running, unit:"Einträge"});
+      jobs.push({id:"seed:"+sd.id, name:`Wortpaket „${sd.label || sd.name || sd.id}“ anlegen`, left: missing.length, total: sd.items.length, running, unit:"Einträge",
+        words: missing.map(it=>it.de), push: ()=>{ if(sd.claimedAt) patchDoc(sd.id, {claimedAt: 0}).catch(()=>{}).then(()=>setTimeout(applySeeds, 300)); else applySeeds(); }, needsSample:false});
     });
-    jobs.push({name:"Neue Einträge übersetzen", left: all.filter(e=>e.status==="pending").length, running: resuming || transInFlight.size>0, needsSample:true, unit:"Einträge"});
-    jobs.push({name:"Fehlgeschlagene Übersetzungen", left: all.filter(e=>e.status==="error").length, running: retryBusy, isErr:true, unit:"Einträge", action: retryBusy ? null : {label:"Erneut versuchen", fn: retryErrors}});
-    const reloc = needsRelocal().filter(e=>!restorable(e)).length;
-    jobs.push({name:`Hinweise in ${srcName()} (Ausgangssprache) erstellen`, left: reloc, running: fillRunning && reloc>0, paused: fillPaused, needsSample:true, unit:"Einträge"});
-    LANGS.forEach(([c,n])=>{ const m = missingIn(c).length; jobs.push({name:`Fehlende Übersetzungen: ${n}`, left:m, running: fillRunning && m>0, paused: fillPaused, needsSample:true, unit:"Einträge"}); });
-    let conjLeft = 0; try{ conjLeft = conjCandidates().length + conjInFlight.size; }catch(_){}
-    jobs.push({name:"Konjugationen erstellen", left: conjLeft, running: conjRunning, paused: conjPaused, needsSample:true, unit:"Verben"});
-    jobs.push({name:"Sprachniveau einstufen", left: all.filter(e=>e.status==="done" && !e.lvl && (e.de||"").trim()).length, running: lvlBusy, needsSample:true, unit:"Einträge"});
+    const pend = all.filter(e=>e.status==="pending");
+    jobs.push({id:"pend", name:"Neue Einträge übersetzen", left: pend.length, items: pend, running: resuming || transInFlight.size>0, needsSample:true, unit:"Einträge", push: ()=>scheduleResume(0)});
+    const errs = all.filter(e=>e.status==="error");
+    jobs.push({id:"err", name:"Fehlgeschlagene Übersetzungen", left: errs.length, items: errs, running: retryBusy, isErr:true, needsSample:true, unit:"Einträge", push: retryErrors, pushLabel:"Erneut versuchen"});
+    const reloc = needsRelocal().filter(e=>!restorable(e));
+    const fillPush = ()=>{ fillPaused = false; scheduleFill(0); };
+    jobs.push({id:"reloc", name:`Hinweise in ${srcName()} (Ausgangssprache) erstellen`, left: reloc.length, items: reloc, running: fillRunning && reloc.length>0, paused: fillPaused, needsSample:true, unit:"Einträge", push: fillPush});
+    LANGS.forEach(([c,n])=>{ const m = missingIn(c); jobs.push({id:"miss:"+c, name:`Fehlende Übersetzungen: ${n}`, left:m.length, items:m, running: fillRunning && m.length>0, paused: fillPaused, needsSample:true, unit:"Einträge", push: fillPush}); });
+    let cc = []; try{ cc = conjCandidates(); }catch(_){}
+    jobs.push({id:"conj", name:"Konjugationen erstellen", left: cc.length + conjInFlight.size, items: cc, running: conjRunning, paused: conjPaused, needsSample:true, unit:"Verben", push: ()=>{ conjPaused = false; scheduleConjQueue(0); }});
+    const nolvl = all.filter(e=>e.status==="done" && !e.lvl && (e.de||"").trim());
+    jobs.push({id:"lvl", name:"Sprachniveau einstufen", left: nolvl.length, items: nolvl, running: lvlBusy, needsSample:true, unit:"Einträge", push: ()=>levelWords()});
     return jobs;
+  }
+  const djOpen = new Set();
+  function devShowEntry(e){
+    document.documentElement.removeAttribute("data-home");
+    revealEntry(e).catch?.(()=>{});
   }
   // Fehlgeschlagene Übersetzungen erneut anstoßen, in kleinen Gruppen (große Gruppen liefern eher unvollständige Antworten)
   let retryBusy = false;
@@ -5248,11 +5267,22 @@ ${JSON.stringify(items)}`;
     box.append(hd);
     const ul = el("div","djlist");
     jobs.filter(j=>j.left>0).forEach(j=>{
-      const st = !j.left ? ["ok","erledigt"] : j.running ? ["run","läuft"] : j.paused ? ["pause","angehalten"] : (j.needsSample && !sample) ? ["pause","wartet: Übersetzen nicht verfügbar"] : j.isErr ? ["err","Fehler"] : ["wait","wartet"];
+      const st = j.running ? ["run","läuft"] : j.paused ? ["pause","angehalten"] : (j.needsSample && !sample) ? ["pause","wartet: Übersetzen nicht verfügbar"] : j.isErr ? ["err","Fehler"] : ["wait","wartet"];
       const r = el("div","djrow " + st[0]);
-      r.append(el("span","djdot"), el("span","djname", j.name), el("span","djn", j.left ? `noch ${j.left.toLocaleString("de-DE")}${j.total ? " von "+j.total.toLocaleString("de-DE") : ""} ${j.unit}` : "–"), el("span","djst", st[1]));
-      if(j.action && j.left && sample){ const b = el("button","djbtn", j.action.label); b.type="button"; b.addEventListener("click",()=>{ j.action.fn(); setTimeout(renderDevJobs, 300); }); r.append(b); }
-      if(j.total && j.left){ const pr = el("div","progress"); const f = el("span"); f.style.width = Math.round(100*(j.total-j.left)/j.total)+"%"; pr.append(f); r.append(pr); }
+      r.append(el("span","djdot"), el("span","djname", j.name), el("span","djn", `noch ${j.left.toLocaleString("de-DE")}${j.total ? " von "+j.total.toLocaleString("de-DE") : ""} ${j.unit}`), el("span","djst", st[1]));
+      if(j.total){ const pr = el("div","progress"); const f = el("span"); f.style.width = Math.round(100*(j.total-j.left)/j.total)+"%"; pr.append(f); r.append(pr); }
+      const acts = el("div","djacts");
+      if(j.push && !j.running && (!j.needsSample || sample)){ const b = el("button","djbtn", j.pushLabel || "Anstoßen"); b.type="button"; b.title = "Diesen Auftrag jetzt starten"; b.addEventListener("click",()=>{ j.push(); setTimeout(renderDevJobs, 400); }); acts.append(b); }
+      const n = (j.items && j.items.length) || (j.words && j.words.length) || 0;
+      if(n){ const open = djOpen.has(j.id); const t = el("button","djbtn ghosty", open ? "Ausblenden" : `Zeigen (${n.toLocaleString("de-DE")})`); t.type="button"; t.setAttribute("aria-expanded", String(open)); t.addEventListener("click",()=>{ open ? djOpen.delete(j.id) : djOpen.add(j.id); renderDevJobs(); }); acts.append(t); }
+      if(acts.childNodes.length) r.append(acts);
+      if(n && djOpen.has(j.id)){
+        const lst = el("div","djitems"); const MAXI = 60;
+        if(j.items) j.items.slice(0, MAXI).forEach(e=>{ const b = el("button","djitem", srcText(e) || e.de || "(leer)"); b.type="button"; b.title = "In der Tabelle zeigen" + (e.error ? " · " + e.error : ""); b.addEventListener("click",()=>devShowEntry(e)); lst.append(b); });
+        else j.words.slice(0, MAXI).forEach(w=>lst.append(el("span","djitem static", w)));
+        if(n > MAXI) lst.append(el("span","djmore", `… und ${(n-MAXI).toLocaleString("de-DE")} weitere`));
+        r.append(lst);
+      }
       ul.append(r);
     });
     if(ul.childNodes.length) box.append(ul);
