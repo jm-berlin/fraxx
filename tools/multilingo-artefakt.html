@@ -1176,7 +1176,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
         <li>Der Stern <span class="k">☆</span> setzt einen Eintrag auf deinen Spickzettel <span class="k">★ Meine Liste</span>. Dort siehst du alles Wichtige kompakt in einer Sprache und kannst es ausdrucken.</li>
       </ul></div>
       <div class="gcard"><h3><span class="gnum">6</span>Sprachniveau</h3><ul>
-        <li>Jeder Eintrag ist einem Niveau von A1 bis C2 zugeordnet, das kleine Kürzel steht neben dem deutschen Wort. Neue Einträge werden im Hintergrund automatisch eingestuft.</li>
+        <li>Jeder Eintrag ist einem Niveau von A1 bis C2 zugeordnet. Neue Einträge werden im Hintergrund automatisch eingestuft.</li>
         <li>Unter <span class="k">⚙</span> → <span class="k">Sprachniveau</span> zeigst du nur ein Niveau an, zum Beispiel B1. Über der Tabelle erscheint dann <span class="k">Nur Niveau B1 · Alle zeigen ✕</span>, damit klar ist, dass ein Filter aktiv ist und nichts verloren ging.</li>
         <li>Das Quiz übernimmt das Niveau aus der Tabelle. Umgekehrt ändert eine Auswahl im Quiz die Tabelle nicht.</li>
       </ul></div>
@@ -2293,7 +2293,6 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
       const t = el("button","detx"); t.append(artFrag(srcText(e), SRC, e.verb)); t.type="button"; t.title="Klicken zum Ändern"; t.setAttribute("aria-label","Ändern: "+srcText(e));
       t.addEventListener("click",()=>{ editId=e.id; editCtx=ctx||""; editDraft=srcText(e); confirmId=null; render(); });
       d.append(t, ...conjControls(e));
-      if(e.lvl){ const lb = el("span","lvlb", e.lvl); lb.title = "Sprachniveau " + e.lvl; t.append(lb); }
       if(SRC==="de" && e.denote) d.append(el("span","note denote", e.denote));
       if(mirror){
         const m = el("button","xref", "↪ aus „"+secTitle(secOf(e))+"“"); m.type="button"; m.title="Zum Heimatbereich springen";
