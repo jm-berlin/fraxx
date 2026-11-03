@@ -2112,15 +2112,18 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
 
   // Wortpakete (z. B. B1–C1-Ergänzung): einmalig als neue Einträge anlegen, Übersetzung läuft danach im Hintergrund
   let seedBusy = false;
+  setInterval(()=>{ if(!seedBusy) applySeeds(); }, 150000);
   async function applySeeds(){
     if(seedBusy || !loaded || importing) return;
-    const seeds = docs.filter(d=>d.kind==="seed" && !d.done && Array.isArray(d.items));
+    // Ein Paket gilt erst als erledigt, wenn alle Einträge angelegt sind; wird das Einfügen unterbrochen (Seite geschlossen), geht es beim nächsten Öffnen weiter
+    const seeds = docs.filter(d=>d.kind==="seed" && !d.done && Array.isArray(d.items) && (!d.claimedAt || Date.now() - d.claimedAt > 120000));
     if(!seeds.length) return;
     seedBusy = true;
     try{
       const wz = topSecs().find(x=>(x.title||"").trim().toLowerCase()===WZ.toLowerCase());
       for(const s of seeds){
-        try{ await patchDoc(s.id, {done:true, doneAt:Date.now()}); }catch(_){ continue; }
+        try{ await patchDoc(s.id, {claimedAt:Date.now()}); }catch(_){ continue; }
+        let lastClaim = Date.now();
         const have = new Set(entries().map(e=>dupKey(e.de||"")).filter(Boolean));
         const made = new Map(); let stamp = Date.now(), n = 0;
         const ensureSec = async (title, parent) => {
@@ -2163,8 +2166,10 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
           const e = {id:newId(), de:it.de, section:sec, status:"pending", error:"", createdAt: stamp--, pos: it.pos||"noun", lvl: it.lvl||"", verb: !!it.verb};
           if(it.full && typeof it.full==="object"){ Object.assign(e, it.full, {status:"done", noteLang:"de", conj:null, conjFor:"", conjStatus:""}); }
           try{ await putDoc(e); n++; }catch(_){}
+          if(Date.now() - lastClaim > 30000){ lastClaim = Date.now(); patchDoc(s.id, {claimedAt:lastClaim}).catch(()=>{}); }
           if(n % 10 === 0) showProgress(`Neue Wörter werden eingefügt … ${n} von ${s.items.length}`, n, s.items.length);
         }
+        try{ await patchDoc(s.id, {done:true, doneAt:Date.now()}); }catch(_){}
         endProgress(`${s.label || "Wortpaket"}: ${n} neue Einträge${mirrored ? `, ${mirrored} vorhandene zusätzlich einsortiert` : ""}. Sie werden jetzt nach und nach übersetzt.`);
       }
     }finally{ seedBusy = false; scheduleResume(2000); }
