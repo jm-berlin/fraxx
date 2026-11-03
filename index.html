@@ -956,7 +956,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
 #ziel{min-width:0;text-overflow:ellipsis}
 .quizbtn{border:0;background:var(--hl);color:var(--hl-ink);border-radius:999px;height:37px;padding:0 16px;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;white-space:nowrap}
 .quizbtn:hover{background:var(--hl-hover)}
-.quizpanel{width:min(1180px,100%)}
+.quizpanel{width:min(1180px,100%);position:relative}
 .quizbody{padding:20px 22px 24px;display:flex;flex-direction:column;gap:18px}
 .qgroup{display:flex;flex-direction:column;gap:8px}
 .qgroup > .qlabel{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
@@ -965,6 +965,32 @@ form.add.hflash{animation:hflash 1.2s ease-out}
 .qchip:hover{border-color:var(--blue)}
 .qchip[aria-pressed="true"]{background:var(--blue);color:var(--blue-ink);border-color:var(--blue)}
 .qstats{display:flex;flex-wrap:wrap;gap:8px}
+.qstats2{display:flex;flex-direction:column;gap:6px;background:var(--surface-2);border-radius:14px;padding:12px}
+.qshead{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding:0 4px 2px}
+.qsrow,.qovrow{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto auto 52px;gap:4px 14px;align-items:center;padding:9px 12px;border-radius:10px;background:var(--surface)}
+.qsrow:hover,.qovrow:hover{box-shadow:0 0 0 1px var(--line)}
+.qsrow.cur{box-shadow:inset 0 0 0 2px var(--accent)}
+.qsrow:focus-visible,.qovrow:focus-visible{outline:3px solid var(--accent-soft)}
+.qsdir{font-weight:700}
+.qsn{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.qsn.open{color:var(--ink);font-weight:600}
+.qspc{font-weight:800;text-align:right;font-variant-numeric:tabular-nums}
+.qsbar{grid-column:1 / -1;height:5px;border-radius:999px;background:var(--surface-2);overflow:hidden}
+.qsbar span{display:block;height:100%;background:var(--hl);border-radius:999px}
+.qovbtn{align-self:flex-start;margin-top:2px}
+.qov{position:absolute;inset:0;z-index:5;background:rgb(10 14 20 / .35);display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;overflow:auto}
+.qovbox{max-height:100%;width:min(760px,100%);background:var(--surface);border-radius:var(--radius);box-shadow:0 20px 50px rgb(10 14 20 / .35);padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.qovhead{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px}
+.qovhead strong{font-size:17px}
+.qovsub{color:var(--muted);font-size:13.5px;flex:1 1 auto}
+.qovlist{display:flex;flex-direction:column;gap:4px;overflow:auto;min-height:0;padding-right:2px}
+.qov{overflow:hidden}
+.qovrow{background:var(--surface-2)}
+.qovrow.sub{margin-left:22px;background:transparent;box-shadow:inset 0 0 0 1px var(--line)}
+.qovrow.sub .qovt{font-weight:500}
+.qovt{font-weight:700;min-width:0;overflow-wrap:anywhere}
+.qovrow.done .qsn.open{color:var(--ok)}
+@media (max-width:600px){ .qsrow,.qovrow{grid-template-columns:minmax(0,1fr) auto} .qsrow .qsn:not(.open),.qovrow .qsn:not(.open){display:none} .qovrow.sub{margin-left:10px} }
 .qstat{background:var(--accent-soft);border-radius:12px;padding:10px 14px;display:flex;flex-direction:column;min-width:110px}
 .qstat b{font-size:1.4rem;font-weight:700;font-variant-numeric:tabular-nums}
 .qstat span{font-size:12.5px;color:var(--muted)}
@@ -1269,7 +1295,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       <div class="gcard"><h3><span class="gnum">11</span>Quiz</h3><ul>
         <li><span class="k">Quiz</span> oben rechts öffnet das Lernquiz. Wähle Sprache, Richtung, Niveau und auf Wunsch einen Bereich.</li>
         <li>Zu jeder Frage gibt es vier Antworten. Tasten <span class="k">1</span> – <span class="k">4</span> wählen, <span class="k">Enter</span> geht weiter.</li>
-        <li>Nach drei richtigen Antworten gilt ein Eintrag als gelernt und kommt nicht mehr dran. Der Fortschritt lässt sich zurücksetzen.</li>
+        <li>Nach drei richtigen Antworten gilt ein Eintrag als gelernt und kommt nicht mehr dran. Der Lernstand wird je Sprachpaar und Richtung getrennt gezählt und lässt sich zurücksetzen.</li>
+        <li>Unter „Lernstand“ siehst du für beide Richtungen, wie viel gelernt und wie viel noch offen ist, immer für das gewählte Niveau und den gewählten Bereich. <span class="k">Lernstand je Bereich …</span> zeigt das für jeden Bereich mit Prozent. Ein Tipp auf einen Bereich übt genau diesen.</li>
       </ul></div>
       <div class="gcard"><h3><span class="gnum">12</span>Hinweise, Design und Geräte</h3><ul>
         <li>Hinweise erscheinen kurz als farbiges Fenster direkt an der Stelle, an der du gerade arbeitest, und blenden sich von selbst aus. Mit der Maus darüber bleiben sie stehen, <span class="k">✕</span> schließt sie sofort. Läuft etwas im Hintergrund, etwa das Übersetzen neuer Wörter, steht unter dem Eingabefeld ein Fortschrittsbalken.</li>
@@ -4644,7 +4671,17 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
   try{ const st = JSON.parse(localStorage.getItem("rw-quiz") || "{}"); Object.assign(qs, {lang: st.lang||"", dir: st.dir||"de2x", scope: st.scope||"", lvl: st.lvl||""}); }catch(e){}
   const saveQuizPrefs = () => { try{ localStorage.setItem("rw-quiz", JSON.stringify({lang:qs.lang, dir:qs.dir, scope:qs.scope, lvl:qs.lvl||""})); }catch(e){} };
   const shuffle = a => { a = a.slice(); for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; } return a; };
-  const qCount = (e, lang) => (e.quiz && e.quiz[lang]) || 0;
+  // Lernstand je Richtung: Schlüssel „von>nach“ (gefragte Sprache > Antwortsprache), z. B. „de>fr“ oder „fr>de“
+  const qKeyFor = (dir, lang) => dir==="de2x" ? `${SRC}>${lang}` : `${lang}>${SRC}`;
+  const qKey = () => qKeyFor(qs.dir, qs.lang);
+  const qCount = (e, lang, key) => {
+    key = key || qKey();
+    const q = e.quiz || {};
+    if(key in q) return q[key] || 0;
+    // alter Lernstand (vor der Trennung nach Richtung) zählt für Deutsch → Sprache
+    const [a, b] = key.split(">");
+    return a==="de" && b in q ? (q[b] || 0) : 0;
+  };
   const txt = (e, lang) => ((valOf(e, lang)||{}).text) || "";
   function quizScope(){
     const all = entries().filter(e=>e.status==="done" && (!qs.lvl || e.lvl===qs.lvl));
@@ -4657,7 +4694,7 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
     document.documentElement.style.overflow = open ? "hidden" : "";
     if(open){
       if(!LANGS.some(l=>l[0]===qs.lang)) qs.lang = (LANGS.find(l=>!hiddenLangs.has(l[0])) || LANGS[0] || [""])[0];
-      qs.phase = "setup"; qs.confirmReset = false; renderQuiz();
+      qs.phase = "setup"; qs.confirmReset = false; qs.overview = false; renderQuiz();
     }
   }
   function renderQuiz(){
@@ -4703,8 +4740,21 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
     const pool = quizScope().filter(e=>txt(e, qs.lang));
     const learned = pool.filter(e=>qCount(e, qs.lang)>=MASTER).length;
     const open = pool.length - learned;
-    const stats = el("div","qstats");
-    [[pool.length,"Einträge"],[learned,"gelernt"],[open,"noch offen"]].forEach(([n,l])=>{ const d = el("div","qstat"); d.append(el("b",null,String(n)), el("span",null,l)); stats.append(d); });
+    const stats = el("div","qstats2");
+    const scopeTxt = [qs.lvl ? `Niveau ${qs.lvl}` : "alle Niveaus", qs.scope && secById(qs.scope) ? `„${secTitle(qs.scope)}“` : "alle Bereiche"].join(" · ");
+    stats.append(el("div","qshead", `Lernstand · ${scopeTxt}`));
+    [["de2x", `${srcName()} → ${lname}`], ["x2de", `${lname} → ${srcName()}`]].forEach(([d, label])=>{
+      const k = qKeyFor(d, qs.lang), ln = pool.filter(e=>qCount(e, qs.lang, k)>=MASTER).length, op = pool.length - ln, pc = pool.length ? Math.round(100*ln/pool.length) : 0;
+      const st = pool.filter(e=>{ const c = qCount(e, qs.lang, k); return c>0 && c<MASTER; }).length;
+      const row = el("button","qsrow" + (d===qs.dir ? " cur" : "")); row.type="button"; row.title = "Diese Richtung üben";
+      row.addEventListener("click",()=>{ qs.dir = d; saveQuizPrefs(); renderQuiz(); });
+      const bar = el("span","qsbar"); const f = el("span"); f.style.width = pc+"%"; bar.append(f);
+      row.append(el("span","qsdir", label), el("span","qsn", `${ln.toLocaleString("de-DE")} gelernt${st ? ` · ${st.toLocaleString("de-DE")} angefangen` : ""}`), el("span","qsn open", `${op.toLocaleString("de-DE")} offen`), el("span","qspc", pc+" %"), bar);
+      stats.append(row);
+    });
+    const ov = el("button","ghost qovbtn","Lernstand je Bereich …"); ov.type="button";
+    ov.addEventListener("click",()=>{ qs.overview = true; renderQuiz(); });
+    stats.append(ov);
     // Aktionen
     const acts = el("div","qactions");
     const start = el("button","primary", open ? `Quiz starten (${Math.min(ROUND, open)} Fragen)` : "Quiz starten"); start.type="button";
@@ -4717,11 +4767,12 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
       acts.append(rs);
     }
     quizBody.append(g1, g2, g3, g4, stats, acts);
+    if(qs.overview) quizBody.append(renderQuizOverview(lname));
     if(qs.confirmReset){
       const cf = el("div","qconfirm");
       cf.append(el("span",null,`Lernstand für ${lname}${qs.scope && secById(qs.scope) ? ` im Bereich „${secTitle(qs.scope)}“` : ""} zurücksetzen? ${learned} gelernte Einträge werden wieder abgefragt.`));
       const y = el("button","ghost danger","Zurücksetzen"); y.type="button";
-      y.addEventListener("click", async ()=>{ qs.confirmReset=false; for(const e of pool){ if(qCount(e, qs.lang)){ try{ await patchDoc(e.id, {quiz: {...(e.quiz||{}), [qs.lang]: 0}}); }catch(_){} } } renderQuiz(); });
+      y.addEventListener("click", async ()=>{ qs.confirmReset=false; const k = qKey(); for(const e of pool){ if(qCount(e, qs.lang)){ try{ await patchDoc(e.id, {quiz: {...(e.quiz||{}), [k]: 0}}); }catch(_){} } } renderQuiz(); });
       const n = el("button","ghost","Abbrechen"); n.type="button"; n.addEventListener("click",()=>{ qs.confirmReset=false; renderQuiz(); });
       cf.append(y, n); quizBody.append(cf);
     }
@@ -4729,6 +4780,39 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
     if(!pool.length) hint = `Im gewählten Bereich gibt es noch keine Einträge mit ${lname}-Übersetzung.`;
     else if(!open) hint = `Alles gelernt! Wähle einen anderen Bereich oder setze den Fortschritt zurück, um weiter zu üben.`;
     quizBody.append(el("p","qnote", hint));
+  }
+  // Lernstand je Bereich (wie die Tabelle gegliedert), für Sprache, Richtung und Niveau der aktuellen Auswahl
+  function renderQuizOverview(lname){
+    const wrap = el("div","qov"); wrap.addEventListener("click",ev=>{ if(ev.target===wrap){ qs.overview = false; renderQuiz(); } });
+    const box = el("div","qovbox"); box.setAttribute("role","dialog"); box.setAttribute("aria-label","Lernstand je Bereich");
+    const hd = el("div","qovhead");
+    hd.append(el("strong",null,"Lernstand je Bereich"), el("span","qovsub", `${qs.dir==="de2x" ? `${srcName()} → ${lname}` : `${lname} → ${srcName()}`} · ${qs.lvl ? "Niveau "+qs.lvl : "alle Niveaus"}`));
+    const x = el("button","icon","✕"); x.type="button"; x.setAttribute("aria-label","Schließen"); x.addEventListener("click",()=>{ qs.overview = false; renderQuiz(); });
+    hd.append(x); box.append(hd);
+    const base = entries().filter(e=>e.status==="done" && (!qs.lvl || e.lvl===qs.lvl) && txt(e, qs.lang));
+    const stat = ids => { const l = base.filter(e=>ids.some(id=>shownIn(e, id))); const ln = l.filter(e=>qCount(e, qs.lang)>=MASTER).length; return {n:l.length, ln, op:l.length-ln, pc: l.length ? Math.round(100*ln/l.length) : 0}; };
+    const tk = t => (typeof I18N==="object" ? I18N.t(t||"") : (t||""));
+    const byName = (a,b) => tk(a.title).localeCompare(tk(b.title), SRC, {sensitivity:"base"});
+    const list = el("div","qovlist");
+    const row = (sec, st, sub) => {
+      const r = el("button","qovrow" + (sub ? " sub" : "") + (st.op===0 && st.n ? " done" : "")); r.type="button";
+      r.title = `„${sec.title}“ üben`;
+      r.addEventListener("click",()=>{ qs.scope = sec.id; qs.overview = false; saveQuizPrefs(); renderQuiz(); });
+      const bar = el("span","qsbar"); const f = el("span"); f.style.width = st.pc+"%"; bar.append(f);
+      r.append(el("span","qovt", sec.title || "Ohne Titel"), el("span","qsn open", st.op ? `${st.op.toLocaleString("de-DE")} offen` : "fertig ✓"), el("span","qsn", `${st.ln.toLocaleString("de-DE")} / ${st.n.toLocaleString("de-DE")}`), el("span","qspc", st.pc+" %"), bar);
+      return r;
+    };
+    let any = false;
+    topSecs().slice().sort(byName).forEach(t=>{
+      const subs = subSecs(t.id).slice().sort(byName);
+      const st = stat([t.id, ...subs.map(x=>x.id)]); if(!st.n) return;
+      any = true; list.append(row(t, st, false));
+      subs.forEach(c=>{ const sc = stat([c.id]); if(sc.n) list.append(row(c, sc, true)); });
+    });
+    if(!any) list.append(el("p","qnote", "Für diese Auswahl gibt es noch keine Einträge."));
+    box.append(list, el("p","qnote", "Tipp auf einen Bereich, um genau diesen zu üben."));
+    wrap.append(box);
+    return wrap;
   }
   function startRound(){
     const pool = quizScope().filter(e=>txt(e, qs.lang));
@@ -4799,7 +4883,7 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
       qs.right++;
       const n = qCount(e, qs.lang) + 1;
       if(n===MASTER) qs.learned++;
-      e.quiz = {...(e.quiz||{}), [qs.lang]: n};
+      e.quiz = {...(e.quiz||{}), [qKey()]: n};
       renderQuiz();
       try{ await patchDoc(e.id, {quiz: e.quiz}); }catch(_){}
     } else renderQuiz();
@@ -4829,7 +4913,7 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
   quizEl.addEventListener("click",ev=>{ if(ev.target===quizEl){ setQuiz(false); quizBtn.focus(); } });
   document.addEventListener("keydown",ev=>{
     if(quizEl.hidden) return;
-    if(ev.key==="Escape"){ setQuiz(false); quizBtn.focus(); return; }
+    if(ev.key==="Escape"){ if(qs.overview){ qs.overview = false; renderQuiz(); return; } setQuiz(false); quizBtn.focus(); return; }
     if(qs.phase==="question"){
       if(qs.answered==null && /^[1-4]$/.test(ev.key)){ const k = Number(ev.key)-1; if(qs.round[qs.i] && k < qs.round[qs.i].opts.length){ ev.preventDefault(); answerQuiz(k); } }
     }
