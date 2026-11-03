@@ -5240,6 +5240,7 @@ ${JSON.stringify(items)}`;
     if(!DEV_JOBS || !loaded || !document.documentElement.hasAttribute("data-home")){ box.hidden = true; return; }
     let jobs; try{ jobs = devJobList(); }catch(_){ return; }
     const open = jobs.filter(j=>j.left>0), busy = open.filter(j=>j.running).length;
+    if(!open.length){ box.hidden = true; box.replaceChildren(); return; }
     box.hidden = false; box.replaceChildren();
     const hd = el("div","djhead");
     hd.append(el("strong",null,"Hintergrundaufträge"), el("span","djtag","nur Entwicklung"));
