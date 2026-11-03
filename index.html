@@ -1722,6 +1722,7 @@ Antworte ausschließlich mit JSON: {"pos":["…"]} mit genau ${part.length} Wert
     for(const x of allSecs().filter(x=>(x.title||"").trim().toLowerCase()==="allgemeines")){ try{ await patchDoc(x.id, {title:"Noch nicht zugeordnet"}); }catch(_){} }
     themeWords();
     setTimeout(levelWords, 8000);
+    setTimeout(applySeeds, 3000);
   }
   // Verben und Adjektive einmalig passenden Themen zuordnen (als Spiegel)
   let themeBusy = false;
@@ -1796,6 +1797,42 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     }finally{ lvlBusy = false; }
   }
   setInterval(()=>{ if(!lvlBusy) levelWords(); }, 60000);
+
+  // Wortpakete (z. B. B1–C1-Ergänzung): einmalig als neue Einträge anlegen, Übersetzung läuft danach im Hintergrund
+  let seedBusy = false;
+  async function applySeeds(){
+    if(seedBusy || !loaded || importing) return;
+    const seeds = docs.filter(d=>d.kind==="seed" && !d.done && Array.isArray(d.items));
+    if(!seeds.length) return;
+    seedBusy = true;
+    try{
+      const wz = topSecs().find(x=>(x.title||"").trim().toLowerCase()===WZ.toLowerCase());
+      for(const s of seeds){
+        try{ await patchDoc(s.id, {done:true, doneAt:Date.now()}); }catch(_){ continue; }
+        const have = new Set(entries().map(e=>dupKey(e.de||"")).filter(Boolean));
+        const made = new Map(); let stamp = Date.now(), n = 0;
+        for(const it of s.items){
+          const k = dupKey(it.de||""); if(!k || have.has(k)) continue;
+          let sec = String(it.sec||"");
+          if(sec.startsWith("new:")){
+            const t = sec.slice(4); if(!wz) continue;
+            if(!made.has(t)){
+              let sub = subSecs(wz.id).find(x=>(x.title||"").trim().toLowerCase()===t.toLowerCase());
+              if(!sub){ sub = {id:newId(), kind:"section", title:t, parent:wz.id, order: subSecs(wz.id).reduce((m,x)=>Math.max(m, x.order||0), -1) + 1, collapsed:true, sort:"alpha", createdAt:Date.now()}; try{ await putDoc(sub); }catch(_){ continue; } }
+              made.set(t, sub.id);
+            }
+            sec = made.get(t);
+          }
+          if(!allSecs().some(x=>x.id===sec) && ![...made.values()].includes(sec)) continue;
+          have.add(k);
+          const e = {id:newId(), de:it.de, section:sec, status:"pending", error:"", createdAt: stamp--, pos: it.pos||"noun", lvl: it.lvl||"", verb: !!it.verb};
+          try{ await putDoc(e); n++; }catch(_){}
+          if(n % 100 === 0) showNotice(`Neue Wörter werden angelegt … ${n}`);
+        }
+        showNotice(`${n} neue Wörter (B1–C1) sind dazugekommen. Sie werden jetzt nach und nach übersetzt.`);
+      }
+    }finally{ seedBusy = false; scheduleResume(2000); }
+  }
 
   let verbsFixed = false;
   async function fixFalseVerbs(){
