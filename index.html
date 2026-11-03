@@ -623,6 +623,10 @@ html:root[data-design="graphit"]{
 #fillbar{box-shadow:inset 4px 0 0 var(--hl), var(--shadow)}
 /* Sprachleiste der Tabelle: nur gewählte Sprachen, daneben „Sprachen ändern“ */
 .langs .lt{cursor:default;background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.langs .lt.lmov{gap:5px;padding:3px 2px}
+.langs .lt.lmov .mv{border:0;background:transparent;color:var(--muted);width:18px;height:24px;border-radius:999px;font-size:15px;line-height:1;cursor:pointer;display:grid;place-items:center}
+.langs .lt.lmov .mv:hover:not(:disabled){background:var(--surface-2);color:var(--ink)}
+.langs .lt.lmov .mv:disabled{opacity:.2;cursor:default}
 .langs .lt.lsrc{box-shadow:0 0 0 2px var(--hl), var(--shadow)}
 .langs .srctag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--hl-ink,#131923);background:var(--hl);border-radius:999px;padding:1px 7px;margin-left:2px}
 .lchg{border:0;background:transparent;color:var(--accent);font-weight:600;font-size:14px;border-radius:999px;padding:5px 12px;display:inline-flex;gap:8px;align-items:center;margin-left:4px}
@@ -1218,7 +1222,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
         <li>Das Quiz übernimmt das Niveau aus der Tabelle. Umgekehrt ändert eine Auswahl im Quiz die Tabelle nicht.</li>
       </ul></div>
       <div class="gcard"><h3><span class="gnum">7</span>Sprachen</h3><ul>
-        <li>In der Leiste unter <span class="k">Tabelle anpassen</span> siehst du die Sprachen der Tabelle, die Ausgangssprache ist markiert. <span class="k">Sprachen ändern</span> öffnet die Auswahl: höchstens 5 Sprachen passen in die Tabelle, deine Ausgangssprache und bis zu 4 weitere. Dort wechselst du auch die Ausgangssprache und änderst mit <span class="k">‹ ›</span> die Reihenfolge der Spalten.</li>
+        <li>In der Leiste unter <span class="k">Tabelle anpassen</span> siehst du die Sprachen der Tabelle, die Ausgangssprache ist markiert. <span class="k">Sprachen ändern</span> öffnet die Auswahl: höchstens 5 Sprachen passen in die Tabelle, deine Ausgangssprache und bis zu 4 weitere. Dort wechselst du auch die Ausgangssprache und änderst mit <span class="k">‹ ›</span> die Reihenfolge der Spalten. Die Pfeile ‹ › stehen auch direkt an den Sprachen in der Leiste.</li>
         <li>Unter <span class="k">⚙</span> stehen ganz oben Ausgangssprache und Sprachniveau, darunter verwaltest du deine Sprachen: installierte Sprachen ordnest du mit <span class="k">‹ ›</span> oder entfernst sie mit <span class="k">✕</span>, ausgegraute Sprachen fügst du per Tipp hinzu. Vorhandene Einträge werden dann automatisch nachübersetzt.</li>
         <li>Bei Sprachen mit anderer Schrift steht die Umschrift unter der Übersetzung.</li>
       </ul></div>
@@ -1456,7 +1460,14 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     const g = document.getElementById("langs");
     g.querySelectorAll(".lt,.lchg").forEach(n=>n.remove());
     { const s0 = el("span","lt lsrc"); s0.dataset.lang = SRC; s0.title = srcName()+" ist die Ausgangssprache"; s0.append(flagEl(SRC), document.createTextNode(srcName()), el("span","srctag","Ausgangssprache")); g.append(s0); }
-    vis.forEach(([c,n])=>{ const s1 = el("span","lt"); s1.dataset.lang = c; s1.append(flagEl(c), document.createTextNode(n)); g.append(s1); });
+    vis.forEach(([c,n], vi)=>{
+      const s1 = el("span","lt lmov"); s1.dataset.lang = c;
+      const lf = el("button","mv","‹"); lf.type="button"; lf.disabled = vi===0; lf.title = "Nach links"; lf.setAttribute("aria-label", n+" eine Spalte nach links");
+      const rt = el("button","mv","›"); rt.type="button"; rt.disabled = vi===vis.length-1; rt.title = "Nach rechts"; rt.setAttribute("aria-label", n+" eine Spalte nach rechts");
+      lf.addEventListener("click",()=>moveCol(c, vis[vi-1] && vis[vi-1][0], "l", "#langs"));
+      rt.addEventListener("click",()=>moveCol(c, vis[vi+1] && vis[vi+1][0], "r", "#langs"));
+      s1.append(lf, flagEl(c), el("span","ln",n), rt); g.append(s1);
+    });
     { const open = !document.getElementById("langpick").hidden;
       const b = el("button","lchg"); b.type="button"; b.setAttribute("aria-expanded", String(open)); b.setAttribute("aria-controls","langpick");
       b.append(el("span",null,"Sprachen ändern"), el("span","lcnt",`${vis.length+1}/${MAX_VIS+1}`));
@@ -1468,7 +1479,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   }
   function saveHidden(){ try{ localStorage.setItem("rw-hidden", JSON.stringify([...hiddenLangs])); }catch(e){} }
   // Spalten der Tabelle umsortieren (Deutsch steht bei anderer Ausgangssprache an deren Platz)
-  async function moveCol(c, other, dir){
+  async function moveCol(c, other, dir, scope){
     if(!other) return;
     const code = x => x==="de" ? SRC : x;
     const i = activeCodes.indexOf(code(c)), j = activeCodes.indexOf(code(other));
@@ -1477,7 +1488,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     activeCodes = next;
     try{ await saveLangs(); }catch(_){ fail(); }
     applyLangs(); renderLangPanel(); render();
-    const f = document.querySelector(`#langpick .lpchip[data-lang="${c}"] .mv:${dir==="l" ? "first-child" : "last-child"}`); if(f && !f.disabled) f.focus();
+    const f = scope ? document.querySelector(`${scope} [data-lang="${c}"] .mv:${dir==="l" ? "first-child" : "last-child"}`) : document.querySelector(`#langpick .lpchip[data-lang="${c}"] .mv:${dir==="l" ? "first-child" : "last-child"}`); if(f && !f.disabled) f.focus();
   }
   function renderLangPick(){
     const pk = document.getElementById("langpick"); if(!pk || pk.hidden) return;
