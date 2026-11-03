@@ -1,5 +1,5 @@
 /* Multilingo – Service Worker: Offline-Betrieb und Updates */
-const VERSION = "fa11a1dfc6";
+const VERSION = "9255b20f38";
 const SHELL = ["./", "index.html", "runtime.js", "ui.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png", "img/paris.jpg", "img/andalucia.jpg", "img/toscana.jpg", "img/band.jpg", "data/packs.json"];
 const SHELL_CACHE = "ml-shell-" + VERSION, RUNTIME = "ml-runtime";
 

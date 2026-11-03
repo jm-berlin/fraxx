@@ -224,6 +224,13 @@ html[data-home] .totop{display:none}
   .row:hover .actions .icon:disabled,.sechead:hover .secacts .icon:disabled{opacity:.3}
 }
 
+/* Zeilen-Aktionen am PC: kleine Leiste oben rechts, erscheint beim Darüberfahren, nimmt keine Höhe weg */
+@media (hover:hover) and (min-width:761px){
+  .row:not(.head){position:relative}
+  .row:not(.head) > .actions{position:absolute;top:8px;right:8px;z-index:2;flex-direction:row;gap:0;padding:2px;border-radius:10px;align-items:center}
+  .row:not(.head):hover > .actions,.row:not(.head):focus-within > .actions{background:var(--surface);box-shadow:0 0 0 1px var(--line), 0 4px 14px rgb(10 14 20 / .12)}
+  .row:not(.head) > .actions .favstar.on{opacity:1}
+}
 /* Aussprache & Sprachen */
 .txline{display:flex;align-items:flex-start;gap:2px;max-width:100%}
 .txline .tx{flex:0 1 auto;min-width:0}
