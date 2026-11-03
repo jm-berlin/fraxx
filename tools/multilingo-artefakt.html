@@ -5246,7 +5246,7 @@ ${JSON.stringify(items)}`;
     hd.append(el("span","djsum " + (open.length ? (busy ? "run" : "wait") : "ok"), open.length ? `${busy} läuft · ${open.length-busy} in der Warteschlange · ${open.reduce((a,j)=>a+j.left,0).toLocaleString("de-DE")} offen` : "Alles erledigt ✓"));
     box.append(hd);
     const ul = el("div","djlist");
-    jobs.forEach(j=>{
+    jobs.filter(j=>j.left>0).forEach(j=>{
       const st = !j.left ? ["ok","erledigt"] : j.running ? ["run","läuft"] : j.paused ? ["pause","angehalten"] : (j.needsSample && !sample) ? ["pause","wartet: Übersetzen nicht verfügbar"] : j.isErr ? ["err","Fehler"] : ["wait","wartet"];
       const r = el("div","djrow " + st[0]);
       r.append(el("span","djdot"), el("span","djname", j.name), el("span","djn", j.left ? `noch ${j.left.toLocaleString("de-DE")}${j.total ? " von "+j.total.toLocaleString("de-DE") : ""} ${j.unit}` : "–"), el("span","djst", st[1]));
@@ -5254,7 +5254,7 @@ ${JSON.stringify(items)}`;
       if(j.total && j.left){ const pr = el("div","progress"); const f = el("span"); f.style.width = Math.round(100*(j.total-j.left)/j.total)+"%"; pr.append(f); r.append(pr); }
       ul.append(r);
     });
-    box.append(ul);
+    if(ul.childNodes.length) box.append(ul);
   }
   if(DEV_JOBS){ setInterval(renderDevJobs, 2000); setTimeout(renderDevJobs, 1500); }
 
