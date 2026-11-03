@@ -167,7 +167,13 @@ form.add{background:var(--surface);border:0;border-radius:var(--radius);box-shad
 /* Tabelle */
 .table{background:var(--surface);border:0;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;overflow:clip}
 .row{scroll-margin-top:46px}
-.alpha{position:sticky;top:env(safe-area-inset-top, 0px);z-index:3;display:flex;flex-wrap:wrap;gap:2px;padding:6px 10px;background:var(--surface);border-bottom:1px solid var(--line)}
+.table .row.head{position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;background:var(--surface);box-shadow:0 1px 0 var(--line), 0 6px 14px -10px rgb(10 14 20 / .25)}
+.sec{scroll-margin-top:calc(var(--headh, 0px) + 8px)}
+.totop{position:fixed;right:max(18px, env(safe-area-inset-right, 0px));bottom:max(18px, env(safe-area-inset-bottom, 0px));z-index:40;width:46px;height:46px;border:0;border-radius:999px;background:var(--blue);color:var(--blue-ink);font-size:20px;font-weight:700;box-shadow:0 8px 24px rgb(10 14 20 / .28);display:grid;place-items:center;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .2s, transform .2s}
+.totop.on{opacity:1;transform:none;pointer-events:auto}
+.totop:hover{filter:brightness(1.12)}
+html[data-home] .totop{display:none}
+.alpha{position:sticky;top:calc(env(safe-area-inset-top, 0px) + var(--headh, 0px));z-index:3;display:flex;flex-wrap:wrap;gap:2px;padding:6px 10px;background:var(--surface);border-bottom:1px solid var(--line)}
 .alpha button{border:0;background:transparent;color:var(--accent);font-weight:600;font-size:13px;min-width:28px;height:28px;border-radius:6px;padding:0 4px}
 .alpha button:hover{background:var(--accent-soft)}
 .alpha button:disabled{color:var(--muted);opacity:.35;cursor:default;background:transparent}
@@ -981,7 +987,10 @@ form.add.hflash{animation:hflash 1.2s ease-out}
 
 @media (max-width:760px){
   body{padding-block:20px 48px}
-  .head{display:none}
+  .table .row.head{display:flex;flex-wrap:wrap;gap:4px 14px;padding:8px 12px}
+  .table .row.head .cell{padding:0;font-size:11px;letter-spacing:.05em;gap:6px}
+  .table .row.head .cell:first-child, .table .row.head .cell:last-child{display:none}
+  .table .row.head .flagimg{width:18px;height:12px}
   .row{grid-template-columns:36px minmax(0,1fr) 40px;padding:8px 0}
   .cell{padding:7px 12px}
   .row .pick{grid-column:1;grid-row:1 / span 4;padding:12px 0}
@@ -1147,7 +1156,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       </ul></div>
       <div class="gcard"><h3><span class="gnum">4</span>Reiter und Bereiche</h3><ul>
         <li>Die Reiter über der Tabelle teilen deine Liste auf: <span class="k">Redewendungen nach Themen</span>, <span class="k">Wortschatz nach Themen</span>, dazu alphabetische Listen für <span class="k">Substantive</span>, <span class="k">Verben</span>, <span class="k">Adjektive</span>, <span class="k">Pronomen</span>, <span class="k">Präpositionen</span> und <span class="k">Konjunktionen</span>.</li>
-        <li>Auf den Bereichsnamen tippen klappt ihn auf und zu. Es ist immer nur ein Bereich offen, so bleibt die Tabelle übersichtlich.</li>
+        <li>Auf den Bereichsnamen tippen klappt ihn auf und zu. Es ist immer nur ein Bereich offen, so bleibt die Tabelle übersichtlich. Der geöffnete Bereich rückt automatisch nach oben.</li>
+        <li>Die Zeile mit den Sprachen bleibt beim Scrollen oben stehen. Der runde Knopf <span class="k">↑</span> unten rechts führt zurück zum Anfang der Tabelle.</li>
         <li>Die kleine Registerkarte <span class="k">Tabelle anpassen</span> links über der Tabelle öffnet eine Leiste mit <span class="k">+ Bereich</span>, <span class="k">Alle zuklappen</span> und den Sprachen der Tabelle. <span class="k">＋</span> in einer Überschrift legt einen Unterbereich an, <span class="k">✎</span> benennt um.</li>
         <li>Bereiche ordnest du am PC per Ziehen am Griff <span class="k">⋮⋮</span> neu, auf dem Handy mit <span class="k">↑</span> <span class="k">↓</span>. Zeilen verschieben: links anhaken und „Verschieben nach …“ wählen.</li>
         <li><span class="k">⇄</span> legt einen Bereich mit einem anderen zusammen. Beim Löschen eines Bereichs bleiben die Einträge erhalten. „Zusätzlich dort zeigen“ spiegelt einen Eintrag in weitere Bereiche, ohne ihn zu kopieren.</li>
@@ -1708,7 +1718,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     }catch(_){}
     renderNow();
     const n = document.getElementById("sec-" + (id || "none"));
-    if(n) n.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+    if(n){ pinSecTop(n); if(id) scrollAnchor = {id, until: Date.now() + 1500}; }
   }
   tocBtn.addEventListener("click",()=>setToc(true));
   document.getElementById("tocclose").addEventListener("click",()=>{ setToc(false); tocBtn.focus(); });
@@ -2386,7 +2396,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
 
     const toggleSec = () => {
       if(!sec) return;
-      if(sec.collapsed){ const hd = document.getElementById("sec-" + sec.id); scrollAnchor = {id: sec.id, top: hd ? hd.getBoundingClientRect().top : null}; openOnly(sec).catch(fail); }
+      if(sec.collapsed){ scrollAnchor = {id: sec.id, until: Date.now() + 2500}; openOnly(sec).then(()=>{ if(scrollAnchor && scrollAnchor.id===sec.id) scrollAnchor.until = Date.now() + 600; render(); }).catch(fail); }
       else patchDoc(sec.id,{collapsed:true}).catch(fail);
     };
     if(sec){
@@ -2590,6 +2600,24 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
       else if(!x.collapsed && !isInside(x)) await patchDoc(x.id,{collapsed:true});
     }
   }
+  // Bereich direkt unter die feste Sprachzeile der Tabelle setzen
+  function headH(){ const h = document.querySelector(".table .row.head"); return h && h.offsetParent ? h.getBoundingClientRect().height : 0; }
+  function pinSecTop(hd){
+    const off = headH() + 8 + (parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--sat"))||0);
+    const d = hd.getBoundingClientRect().top - off;
+    if(Math.abs(d) > 2) window.scrollBy(0, d);
+  }
+  { const setHH = ()=>document.documentElement.style.setProperty("--headh", headH() + "px");
+    try{ new ResizeObserver(setHH).observe(document.querySelector(".table .row.head")); }catch(_){}
+    addEventListener("resize", setHH); setTimeout(setHH, 300); }
+  // Knopf „nach oben“: erscheint, sobald man in der Tabelle nach unten scrollt
+  { const tb = el("button","totop","↑"); tb.type="button"; tb.title = "Zum Anfang der Tabelle"; tb.setAttribute("aria-label","Zum Anfang der Tabelle");
+    document.body.append(tb);
+    const target = ()=>document.querySelector(".tabbed");
+    const upd = ()=>{ const t = target(); const show = !!t && t.getBoundingClientRect().top < -200 && !document.documentElement.hasAttribute("data-home"); tb.classList.toggle("on", show); };
+    addEventListener("scroll", upd, {passive:true}); addEventListener("resize", upd);
+    tb.addEventListener("click", ()=>{ const t = target(); if(!t) return; const y = t.getBoundingClientRect().top + scrollY - 12; scrollTo({top: Math.max(0,y), behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"}); });
+  }
   function renderNow(){
     if(dragIds || secDrag){ pendingRender = true; return; }
     if(dataTimer){ clearTimeout(dataTimer); dataTimer = null; }
@@ -2598,14 +2626,8 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     // den gerade geöffneten Bereich an seiner Position halten, auch wenn darüber einer zugeklappt wurde
     if(scrollAnchor){
       const s0 = secById(scrollAnchor.id), hd = document.getElementById("sec-" + scrollAnchor.id);
-      if(!s0 || !hd) scrollAnchor = null;
-      else if(!s0.collapsed){
-        const now = hd.getBoundingClientRect().top;
-        if(scrollAnchor.top!=null) window.scrollBy(0, now - scrollAnchor.top);
-        const t2 = hd.getBoundingClientRect().top;
-        if(t2 < 0 || t2 > innerHeight - 80) hd.scrollIntoView({block:"start"});
-        scrollAnchor = null;
-      }
+      if(!s0 || !hd || Date.now() > (scrollAnchor.until||0)) scrollAnchor = null;
+      else if(!s0.collapsed) pinSecTop(hd);
     }
   }
   // Wortart als Eigenschaft: automatische Übersichten „Verben“, „Adjektive“, „Substantive“
