@@ -515,6 +515,19 @@ header{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto a
 .tocpanel .tocgrid:has(.toccard.open){padding-bottom:340px}
 html[data-design] .tocgrid .tocmain .lbl{font-family:var(--font-head)}
 html[data-tf] .tocgrid .tocmain .hi{background:var(--blue);color:var(--blue-ink)}
+/* Inhalt: einheitliche Schwarz-Weiß-Symbole, Titel rechts daneben (bis zu zwei Zeilen) */
+.tocgrid .tocmain .ttop{display:flex;align-items:center;gap:12px;width:100%;min-height:44px}
+.tocgrid .tocmain .hi{flex:none;background:var(--ink) !important;color:var(--surface) !important}
+.tocgrid .tocmain .hie{filter:grayscale(1) brightness(0) invert(1);font-size:20px;line-height:1}
+.tocgrid .tocmain .hie.txt{filter:none;font-size:14px;font-weight:800;letter-spacing:-.02em;color:var(--surface)}
+html[data-design="graphit"] .tocgrid .tocmain .hie:not(.txt){filter:grayscale(1) brightness(0)}
+.tocgrid .tocmain .ttop .lbl{margin-top:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.25}
+/* Reiter oben im Inhalt */
+.tocposf{display:flex;flex-wrap:wrap;gap:4px;padding:12px 22px 0;background:var(--bg)}
+.tocposf .tpt{border:0;background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 13px;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:var(--shadow)}
+.tocposf .tpt:hover{background:var(--hover)}
+.tocposf .tpt[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+@media (max-width:760px){ .tocposf{padding:10px 14px 0} .tocposf .tpt{font-size:12.5px;padding:5px 10px} }
 .mednote{display:flex;gap:12px;align-items:flex-start;margin:0 0 2px;padding:12px 16px;background:color-mix(in srgb, var(--hl) 14%, var(--surface));box-shadow:inset 4px 0 0 var(--hl);font-size:13.5px;line-height:1.5;color:var(--ink)}
 .mednote p{margin:0;max-width:900px}
 .mednote .medico{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:999px;background:var(--hl);color:var(--hl-ink,#131923);font-weight:800;font-size:13px;margin-top:1px}
@@ -1179,6 +1192,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       <input id="tocfilter" type="search" placeholder="Bereich suchen …" aria-label="Bereich suchen">
       <button class="icon" id="tocclose" type="button" aria-label="Inhalt schließen">✕</button>
     </div>
+    <div class="tocposf" id="tocposf" role="group" aria-label="Direkt zu einem Reiter der Tabelle"></div>
     <nav id="tocnav" class="tocgrid" aria-label="Bereiche"></nav>
   </div>
 </div>
@@ -1763,14 +1777,14 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   // Kurzbeschreibung und Symbol je Bereich für das Inhaltsverzeichnis
   const TOC_INFO = {
     "noch nicht zugeordnet": ["📥", "Einträge, die noch auf ihr Thema warten. Von hier aus sortierst du sie mit wenigen Klicks ein."],
-    "wortschatz nach themen": ["📚", "Der große Grundwortschatz nach Lebensbereichen sortiert, jedes Wort mit Sprachniveau von A1 bis C1."],
+    "wortschatz nach themen": ["Aa", "Der große Grundwortschatz nach Lebensbereichen sortiert, jedes Wort mit Sprachniveau von A1 bis C1."],
     "begrüßung & höflichkeit": ["👋", "Hallo, bitte, danke, Entschuldigung: die kleinen Sätze, mit denen jedes Gespräch freundlich beginnt."],
-    "leute kennenlernen": ["🤝", "Sich vorstellen, nach Herkunft und Hobbys fragen und mit Fremden ganz natürlich ins Plaudern kommen."],
+    "leute kennenlernen": ["👥", "Sich vorstellen, nach Herkunft und Hobbys fragen und mit Fremden ganz natürlich ins Plaudern kommen."],
     "hotel": ["🛏", "Vom Einchecken bis zur tropfenden Dusche: was du an der Rezeption und im Zimmer brauchst."],
     "restaurant": ["🍽", "Einen Tisch reservieren, nach Zutaten fragen, bestellen und am Ende um die Rechnung bitten."],
     "bar": ["🍷", "Ein Bier, ein Glas Wein, noch eine Runde: Getränke bestellen und gemeinsam anstoßen."],
     "supermarkt": ["🛒", "Regale durchsuchen, Mengen erfragen und an der Kasse oder der Frischetheke zurechtkommen."],
-    "bezahlen": ["💳", "Preise verstehen, bar oder mit Karte zahlen, Wechselgeld prüfen und über Trinkgeld reden."],
+    "bezahlen": ["€", "Preise verstehen, bar oder mit Karte zahlen, Wechselgeld prüfen und über Trinkgeld reden."],
     "flughafen": ["✈", "Check-in, Gepäck, Sicherheitskontrolle und Gate: entspannt durch Abflug, Umstieg und Ankunft."],
     "fähre/hafen": ["⛴", "Überfahrt buchen, das Auto an Bord bringen und dich zwischen Kai und Deck orientieren."],
     "tankstelle": ["⛽", "Volltanken, Luftdruck prüfen, Öl nachfüllen und nach der Waschanlage fragen."],
@@ -1778,18 +1792,18 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     "motorradwerkstatt": ["🏍", "Pannenhilfe auf zwei Rädern, von der lockeren Kette bis zum platten Reifen."],
     "fahrzeugteile": ["⚙", "Motor, Bremsen, Elektrik und Karosserie beim richtigen Namen nennen, damit die Werkstatt dich versteht."],
     "werkzeuge": ["🔨", "Hammer, Bohrer, Schrauben und Dübel: Fachwörter für Baumarkt, Heimwerken und schnelle Reparaturen."],
-    "nach dem weg fragen": ["🧭", "Links, rechts, geradeaus: Wegbeschreibungen verstehen und selbst nach der Richtung fragen."],
-    "verkehr": ["🚦", "Schilder, Regeln und Sätze für Stau, Unfall oder Polizeikontrolle unterwegs auf der Straße."],
-    "öffentlicher verkehr": ["🚆", "Fahrkarten lösen, umsteigen und Durchsagen in Zug, Bus, Metro und Taxi verstehen."],
+    "nach dem weg fragen": ["↱", "Links, rechts, geradeaus: Wegbeschreibungen verstehen und selbst nach der Richtung fragen."],
+    "verkehr": ["🚗", "Schilder, Regeln und Sätze für Stau, Unfall oder Polizeikontrolle unterwegs auf der Straße."],
+    "öffentlicher verkehr": ["⇄", "Fahrkarten lösen, umsteigen und Durchsagen in Zug, Bus, Metro und Taxi verstehen."],
     "gesundheit/arzt": ["🩺", "Beschwerden schildern, beim Arzt einen Termin bekommen und in der Apotheke das Richtige finden."],
-    "notfall": ["🚑", "Hilfe rufen, einen Unfall melden, Polizei oder Feuerwehr verständigen, wenn jede Sekunde zählt."],
+    "notfall": ["SOS", "Hilfe rufen, einen Unfall melden, Polizei oder Feuerwehr verständigen, wenn jede Sekunde zählt."],
     "strand": ["🏖", "Liegen mieten, Strömung und Flaggen deuten und einen sorglosen Tag am Meer verbringen."],
     "wetter": ["☀", "Vorhersagen lesen und mitreden, ob Sonne, Gewitter, Hitzewelle oder Glatteis kommt."],
-    "zeiten": ["🕒", "Uhrzeit, Wochentage, Monate und Jahreszeiten, damit jede Verabredung sicher klappt."],
-    "zahlen": ["🔢", "Von null bis zur Million, dazu Ordnungszahlen für Datum, Stockwerk und Reihenfolge."],
+    "zeiten": ["⏳", "Uhrzeit, Wochentage, Monate und Jahreszeiten, damit jede Verabredung sicher klappt."],
+    "zahlen": ["123", "Von null bis zur Million, dazu Ordnungszahlen für Datum, Stockwerk und Reihenfolge."],
     "tiere": ["🐾", "Vom Hofhund bis zum Wal: Haustiere, Wildtiere, Vögel und Meeresbewohner."],
     "arzneimittel": ["💊", "Bekannte Medikamente und ihre Wirkstoffe finden, nach Dosierung fragen und den Beipackzettel verstehen."],
-    "gesundheitliche beschwerden": ["🤒", "Erklären, was dir fehlt, seit wann und wie stark, damit Apotheke oder Arzt dir gezielt helfen können."],
+    "gesundheitliche beschwerden": ["🌡", "Erklären, was dir fehlt, seit wann und wie stark, damit Apotheke oder Arzt dir gezielt helfen können."],
     "beruf": ["💼", "Über Job, Kollegen und Arbeitsalltag sprechen, beim Smalltalk wie im Vorstellungsgespräch."],
   };
   const TOC_ICONS = ["📁","🗂","📌","🧩","🔖","✳"];
@@ -1804,8 +1818,17 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     ];
     return {icon: TOC_ICONS[h % TOC_ICONS.length], desc: own[h % own.length]};
   }
+  function renderTocTabs(){
+    const box = document.getElementById("tocposf"); if(!box) return; box.replaceChildren();
+    document.querySelectorAll("#posf button[data-pos]").forEach(src=>{
+      const b = el("button","tpt"); b.type="button"; b.textContent = src.textContent; b.setAttribute("aria-pressed", src.getAttribute("aria-pressed"));
+      b.addEventListener("click",()=>{ setToc(false); src.click(); requestAnimationFrame(()=>{ const t = document.querySelector(".tabbed"); if(t){ const y = t.getBoundingClientRect().top + scrollY - 12; scrollTo({top: Math.max(0,y)}); } }); });
+      box.append(b);
+    });
+  }
   function renderToc(){
     if(tocEl.hidden) return;
+    renderTocTabs();
     const nav = document.getElementById("tocnav"); nav.replaceChildren();
     const all = entries();
     const q = tocFilter.value.trim().toLowerCase();
@@ -1819,7 +1842,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       const b = el("button","tocmain"); b.type="button";
       const info = tocInfo(label, n);
       const lb = el("b","lbl",label); if(id==="") lb.dataset.tr = "1";
-      b.append(el("span","hi",info.icon), lb, el("p","tdesc",info.desc));
+      const top = el("span","ttop"); const ic = el("span","hi"); ic.append(el("span","hie" + (/^[0-9A-Za-z↱€⇄]+$/.test(info.icon) ? " txt" : ""), info.icon)); top.append(ic, lb);
+      b.append(top, el("p","tdesc",info.desc));
       if(MED_SECS.includes((label||"").trim().toLowerCase())) b.append(el("span","tmed","Ohne Gewähr · ersetzt keine Beratung durch Arzt oder Apotheke"));
       const meta = el("span","tmeta"); meta.append(el("span","n",fmtN(n)));
       if(nSubs) meta.append(el("span","nsub", nSubs===1 ? "1 Unterthema" : `${nSubs} Unterthemen`));
