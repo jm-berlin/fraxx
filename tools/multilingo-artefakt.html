@@ -3402,8 +3402,16 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
   function restorable(e){
     const old = e.nb && e.nb[SRC]; if(!old) return null;
     // nur, wenn seit dem letzten Wechsel nichts geändert wurde und keine neue Sprache dazukam
-    if(e.nbCur !== JSON.stringify(snapOf(e))) return null;
+    if(!sameSnap(e.nbCur, snapOf(e))) return null;
     return old;
+  }
+  // Vergleich unabhängig von der Reihenfolge der Sprachen (die lässt sich jederzeit umsortieren)
+  function sameSnap(stored, cur){
+    let a; try{ a = typeof stored==="string" ? JSON.parse(stored) : stored; }catch(_){ return false; }
+    if(!a || typeof a!=="object") return false;
+    const keys = new Set([...Object.keys(a), ...Object.keys(cur)]);
+    for(const k of keys){ const x = a[k]||{}, y = cur[k]||{}; if((x.text||"")!==(y.text||"") || (x.note||"")!==(y.note||"")) return false; }
+    return true;
   }
   function nbAfter(e, src){ src = src || SRC; const nb = {...(e.nb||{})}; delete nb[src]; nb[e.noteLang||"de"] = snapOf(e); return nb; }
   let restoring = false;
