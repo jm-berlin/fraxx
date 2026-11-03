@@ -1206,7 +1206,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
         <li>Die Reiter über der Tabelle teilen deine Liste auf: <span class="k">Redewendungen nach Themen</span>, <span class="k">Wortschatz nach Themen</span>, dazu alphabetische Listen für <span class="k">Substantive</span>, <span class="k">Verben</span>, <span class="k">Adjektive</span>, <span class="k">Pronomen</span>, <span class="k">Präpositionen</span> und <span class="k">Konjunktionen</span>.</li>
         <li>Auf den Bereichsnamen tippen klappt ihn auf und zu. Es ist immer nur ein Bereich offen, so bleibt die Tabelle übersichtlich. Der geöffnete Bereich rückt automatisch nach oben.</li>
         <li>Die Zeile mit den Sprachen bleibt beim Scrollen oben stehen. Der runde Knopf <span class="k">↑</span> unten rechts führt zurück zum Anfang der Tabelle.</li>
-        <li>Die kleine Registerkarte <span class="k">Tabelle anpassen</span> links über der Tabelle öffnet eine Leiste mit <span class="k">+ Bereich</span>, <span class="k">Alle zuklappen</span> und den Sprachen der Tabelle. <span class="k">＋</span> in einer Überschrift legt einen Unterbereich an, <span class="k">✎</span> benennt um.</li>
+        <li>Die kleine Registerkarte <span class="k">Tabelle anpassen</span> links über der Tabelle öffnet eine Leiste mit <span class="k">+ Bereich</span> und den Sprachen der Tabelle. <span class="k">＋</span> in einer Überschrift legt einen Unterbereich an, <span class="k">✎</span> benennt um.</li>
         <li>Bereiche ordnest du am PC per Ziehen am Griff <span class="k">⋮⋮</span> neu, auf dem Handy mit <span class="k">↑</span> <span class="k">↓</span>. Zeilen verschieben: links anhaken und „Verschieben nach …“ wählen.</li>
         <li><span class="k">⇄</span> legt einen Bereich mit einem anderen zusammen. Beim Löschen eines Bereichs bleiben die Einträge erhalten. „Zusätzlich dort zeigen“ spiegelt einen Eintrag in weitere Bereiche, ohne ihn zu kopieren.</li>
       </ul></div>
@@ -1304,7 +1304,6 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     </div>
     <div class="tools" id="tools" hidden>
       <button class="ghost" id="addsec" type="button">+ Bereich</button>
-      <button class="ghost" id="foldall" type="button">Alle zuklappen</button>
       <form class="newsec" id="newsec" hidden>
         <label class="sr" for="secname">Name des neuen Bereichs</label>
         <input id="secname" placeholder="z. B. Essen &amp; Trinken">
@@ -2797,7 +2796,6 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
   }
   function renderInner(){
     renderToc(); renderGramSoon(); if(typeof renderDishSoon==="function") renderDishSoon(); if(typeof renderFavSoon==="function") renderFavSoon(); if(typeof I18N==="object") I18N.sync();
-    { const fb = document.getElementById("foldall"); const secsAll = allSecs(); fb.hidden = secsAll.length < 2; fb.textContent = secsAll.some(x=>!x.collapsed) ? "Alle zuklappen" : "Alle aufklappen"; }
     const q = search.value.trim().toLowerCase();
     const searching = !!q;
     const match = e => (!lvlFilter || e.lvl===lvlFilter) && (!q || [e.de, e.denote, srcText(e), ...MYLANGS.flatMap(([c])=>e[c] ? [e[c].text, e[c].note] : [])].some(t=>t && t.toLowerCase().includes(q)));
@@ -3776,12 +3774,6 @@ ${words.map((w,i)=>`${i+1}. ${w}`).join("\n")}`;
 
   $("#mirrorbtn").addEventListener("click",()=>{ const v = $("#moveto").value; if(v==="__" || v===""){ $("#moveto").focus(); showNotice("Wähle oben einen Bereich, in dem die Einträge zusätzlich erscheinen sollen."); return; } mirrorTo([...selected], v); });
   $("#movebtn").addEventListener("click",()=>{ const v = $("#moveto").value; if(v==="__") { $("#moveto").focus(); return; } moveTo([...selected], v); });
-  $("#foldall").addEventListener("click", async ()=>{
-    const secs = allSecs();
-    const collapse = secs.some(x=>!x.collapsed);
-    for(const x of secs){ if(!!x.collapsed !== collapse){ try{ await patchDoc(x.id,{collapsed:collapse}); }catch(_){} } }
-    if(!collapse) render();
-  });
   $("#clearsel").addEventListener("click",()=>{ selected.clear(); render(); });
 
 
