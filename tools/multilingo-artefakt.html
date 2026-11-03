@@ -739,6 +739,10 @@ form.add.hflash{animation:hflash 1.2s ease-out}
 .lvlpick{flex:0 1 220px;min-width:180px}
 .lvlb{display:inline-block;margin-left:7px;padding:0 6px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.03em;line-height:17px;vertical-align:2px;background:var(--surface-2);color:var(--muted)}
 
+.lvlchip{margin-left:auto;align-self:center;display:inline-flex;align-items:center;gap:7px;border:0;cursor:pointer;background:var(--hl);color:var(--hl-ink);border-radius:999px;padding:4px 6px 4px 11px;font:inherit;font-size:12.5px;font-weight:700;margin-bottom:5px}
+.lvlchip .lvx{background:rgb(0 0 0 / .12);border-radius:999px;padding:1px 8px;font-weight:600}
+.lvlchip:hover .lvx{background:rgb(0 0 0 / .22)}
+.lvlchip:not([hidden]) + .count{margin-left:10px}
 /* Meine Liste */
 .favstar{font-size:17px;color:var(--muted)}
 .favstar.on,.favrm{color:var(--hl);-webkit-text-stroke:.6px var(--hl-ink)}
@@ -1143,6 +1147,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
         <button type="button" data-pos="prep" aria-pressed="false">Präpositionen</button>
         <button type="button" data-pos="konj" aria-pressed="false">Konjunktionen</button>
       </div>
+      <button type="button" class="lvlchip" id="lvlchip" hidden title="Sprachniveau-Filter aufheben"><svg class="lvi" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M2 3h12l-4.6 5.4V13l-2.8 1.2V8.4z" fill="currentColor"/></svg><span class="lvt"></span><span class="lvx">Alle zeigen ✕</span></button>
       <span class="count" id="count"></span>
     </div>
     <div class="tools" id="tools" hidden>
@@ -2296,7 +2301,21 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
   // Sprachniveau (A1–C2): filtert Tabelle und Quiz
   let lvlFilter = ""; try{ lvlFilter = localStorage.getItem("rw-lvl") || ""; }catch(e){}
   const LEVELS = ["A1","A2","B1","B2","C1","C2"];
-  { const ls = document.getElementById("lvlsel"); if(ls){ ls.value = lvlFilter; ls.addEventListener("change",()=>{ lvlFilter = ls.value; try{ localStorage.setItem("rw-lvl", lvlFilter); }catch(e){} render(); if(lvlFilter){ const n = entries().filter(e=>!e.lvl).length; if(n) showNotice(`${n.toLocaleString("de-DE")} Einträge sind noch keinem Sprachniveau zugeordnet und werden beim Filtern ausgeblendet.${sample ? " Die Einstufung läuft im Hintergrund." : ""}`); } }); } }
+  // Filter der Tabelle; das Quiz übernimmt ihn (umgekehrt nicht)
+  function setLvlFilter(v){
+    lvlFilter = v || ""; try{ localStorage.setItem("rw-lvl", lvlFilter); }catch(e){}
+    const ls = document.getElementById("lvlsel"); if(ls && ls.value!==lvlFilter) ls.value = lvlFilter;
+    if(typeof qs==="object"){ qs.lvl = lvlFilter; try{ localStorage.setItem("rw-quiz", JSON.stringify({lang:qs.lang, dir:qs.dir, scope:qs.scope, lvl:qs.lvl})); }catch(e){} }
+    updLvlChip(); render();
+  }
+  document.getElementById("lvlchip")?.addEventListener("click", ()=>setLvlFilter(""));
+  setTimeout(updLvlChip);
+  function updLvlChip(){
+    const c = document.getElementById("lvlchip"); if(!c) return;
+    c.hidden = !lvlFilter;
+    if(lvlFilter){ c.querySelector(".lvt").textContent = "Nur Niveau " + lvlFilter; }
+  }
+  { const ls = document.getElementById("lvlsel"); if(ls){ ls.value = lvlFilter; ls.addEventListener("change",()=>{ setLvlFilter(ls.value); if(lvlFilter){ const n = entries().filter(e=>!e.lvl).length; if(n) showNotice(`${n.toLocaleString("de-DE")} Einträge sind noch keinem Sprachniveau zugeordnet und werden beim Filtern ausgeblendet.${sample ? " Die Einstufung läuft im Hintergrund." : ""}`); } }); } }
   // Bereiche nach Inhalt: überwiegend Sätze → Redewendungen, sonst Wortschatz
   function leafKind(sec, list){
     if(sec){ const top = parentOf(sec) ? secById(parentOf(sec)) : sec; if(top && (top.title||"").trim().toLowerCase()===WZ.toLowerCase()) return "wz"; }
@@ -2387,7 +2406,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     }
 
     const shown = all.filter(match).length;
-    $("#count").textContent = all.length ? (q ? `${shown} von ${all.length} Einträgen` : `${all.length} ${all.length===1?"Eintrag":"Einträge"}`) : "";
+    $("#count").textContent = all.length ? ((q || lvlFilter) ? `${shown} von ${all.length} Einträgen` : `${all.length} ${all.length===1?"Eintrag":"Einträge"}`) : "";
 
     const focusId = document.activeElement && document.activeElement.id;
     rowsEl.replaceChildren();
@@ -4176,13 +4195,13 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
   const quizEl = document.getElementById("quiz"), quizBody = document.getElementById("quizbody"), quizBtn = document.getElementById("quizbtn");
   const MASTER = 3, ROUND = 10;
   let qs = { lang: "", dir: "de2x", scope: "", phase: "setup", round: [], i: 0, right: 0, learned: 0, answered: null, confirmReset: false };
-  try{ const st = JSON.parse(localStorage.getItem("rw-quiz") || "{}"); Object.assign(qs, {lang: st.lang||"", dir: st.dir||"de2x", scope: st.scope||""}); }catch(e){}
-  const saveQuizPrefs = () => { try{ localStorage.setItem("rw-quiz", JSON.stringify({lang:qs.lang, dir:qs.dir, scope:qs.scope})); }catch(e){} };
+  try{ const st = JSON.parse(localStorage.getItem("rw-quiz") || "{}"); Object.assign(qs, {lang: st.lang||"", dir: st.dir||"de2x", scope: st.scope||"", lvl: st.lvl||""}); }catch(e){}
+  const saveQuizPrefs = () => { try{ localStorage.setItem("rw-quiz", JSON.stringify({lang:qs.lang, dir:qs.dir, scope:qs.scope, lvl:qs.lvl||""})); }catch(e){} };
   const shuffle = a => { a = a.slice(); for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; } return a; };
   const qCount = (e, lang) => (e.quiz && e.quiz[lang]) || 0;
   const txt = (e, lang) => ((valOf(e, lang)||{}).text) || "";
   function quizScope(){
-    const all = entries().filter(e=>e.status==="done" && (!lvlFilter || e.lvl===lvlFilter));
+    const all = entries().filter(e=>e.status==="done" && (!qs.lvl || e.lvl===qs.lvl));
     if(!qs.scope || !secById(qs.scope)) return all;
     const ids = [qs.scope, ...subSecs(qs.scope).map(x=>x.id)];
     return all.filter(e=>ids.some(id=>shownIn(e, id)));
@@ -4232,11 +4251,7 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
     // Sprachniveau (gleicher Filter wie in der Tabelle)
     const g4 = el("div","qgroup"); g4.append(el("span","qlabel","Sprachniveau"));
     const c4 = el("div","qchips");
-    ["", ...LEVELS].forEach(v=>c4.append(chip(v || "Alle", lvlFilter===v, ()=>{
-      lvlFilter = v; try{ localStorage.setItem("rw-lvl", v); }catch(e){}
-      const ls = document.getElementById("lvlsel"); if(ls) ls.value = v;
-      qs.confirmReset=false; renderQuiz(); render();
-    })));
+    ["", ...LEVELS].forEach(v=>c4.append(chip(v || "Alle", (qs.lvl||"")===v, ()=>{ qs.lvl = v; qs.confirmReset=false; saveQuizPrefs(); renderQuiz(); })));
     g4.append(c4);
     // Statistik
     const pool = quizScope().filter(e=>txt(e, qs.lang));
