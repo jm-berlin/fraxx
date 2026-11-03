@@ -843,6 +843,16 @@ form.add.hflash{animation:hflash 1.2s ease-out}
 .lvlchip .lvx{background:rgb(0 0 0 / .12);border-radius:999px;padding:1px 8px;font-weight:600}
 .lvlchip:hover .lvx{background:rgb(0 0 0 / .22)}
 .lvlchip:not([hidden]) + .count{margin-left:10px}
+/* Niveau-Filter als Reiter, der an der Tabelle hängt */
+.tabrow .lvlchip{align-self:flex-end;margin:0 0 -1px auto;position:relative;z-index:1;gap:8px;background:var(--surface);color:var(--ink);border-radius:12px 12px 0 0;padding:8px 8px 9px 14px;font-size:13px;line-height:18px;font-weight:600;box-shadow:inset 0 3px 0 var(--hl), 0 -1px 2px rgb(16 24 40 / .05)}
+.tabrow .lvlchip .lvi{color:var(--hl)}
+.tabrow .lvlchip .lvx{background:var(--surface-2);color:var(--muted);border-radius:999px;padding:0 8px;font-size:12px;font-weight:600;line-height:20px}
+.tabrow .lvlchip:hover .lvx{background:var(--hl);color:var(--hl-ink,#131923)}
+.tabrow .count{line-height:18px;padding-bottom:9px}
+.tabrow .lvlchip:not([hidden]) + .count{margin-left:12px}
+.tabrow:has(.lvlchip:not([hidden])) .posf{order:-2;flex:0 0 auto}
+.tabrow:has(.lvlchip:not([hidden]))::before{content:"";order:-1;flex:1 1 100%;height:0}
+@media (max-width:760px){ .tabrow .lvlchip{padding:7px 6px 8px 11px;font-size:12.5px} .tabrow .lvlchip .lvx{padding:0 6px} .tabrow:has(.lvlchip:not([hidden])) .count{flex:1 1 100%;order:-1;text-align:right;padding:0 2px;margin:0} .tabrow:has(.lvlchip:not([hidden]))::before{display:none} .tabrow:has(.lvlchip:not([hidden])) .posf{flex:1 1 100%} }
 /* Meine Liste */
 .favstar{font-size:17px;color:var(--muted)}
 .favstar.on,.favrm{color:var(--hl);-webkit-text-stroke:.6px var(--hl-ink)}
@@ -2653,7 +2663,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
   function updLvlChip(){
     const c = document.getElementById("lvlchip"); if(!c) return;
     c.hidden = !lvlFilter;
-    if(lvlFilter){ c.querySelector(".lvt").textContent = "Nur Niveau " + lvlFilter; }
+    if(lvlFilter){ c.querySelector(".lvt").textContent = "Niveau " + lvlFilter; }
   }
   { const ls = document.getElementById("lvlsel"); if(ls){ ls.value = lvlFilter; ls.addEventListener("change",()=>{ setLvlFilter(ls.value); if(lvlFilter){ const n = entries().filter(e=>!e.lvl).length; if(n) showNotice(`${n.toLocaleString("de-DE")} Einträge sind noch keinem Sprachniveau zugeordnet und werden beim Filtern ausgeblendet.${sample ? " Die Einstufung läuft im Hintergrund." : ""}`); } }); } }
   // Bereiche nach Inhalt: überwiegend Sätze → Redewendungen, sonst Wortschatz
