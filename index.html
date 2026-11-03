@@ -1805,6 +1805,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     "arzneimittel": ["💊", "Bekannte Medikamente und ihre Wirkstoffe finden, nach Dosierung fragen und den Beipackzettel verstehen."],
     "gesundheitliche beschwerden": ["🌡", "Erklären, was dir fehlt, seit wann und wie stark, damit Apotheke oder Arzt dir gezielt helfen können."],
     "besichtigung": ["🔑", "Kita, Schule, Wohnung oder Auto: Was Anbieter erklären und Interessenten fragen sollten, bevor sie sich entscheiden."],
+    "amt": ["§", "Termine, Formulare und Anträge: vom Anmelden der Wohnung über Ausweis und Visum bis zu Steuern, Kindergeld und Führerschein."],
     "beruf": ["💼", "Über Job, Kollegen und Arbeitsalltag sprechen, beim Smalltalk wie im Vorstellungsgespräch."],
   };
   const TOC_ICONS = ["📁","🗂","📌","🧩","🔖","✳"];
@@ -1843,7 +1844,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       const b = el("button","tocmain"); b.type="button";
       const info = tocInfo(label, n);
       const lb = el("b","lbl",label); if(id==="") lb.dataset.tr = "1";
-      const top = el("span","ttop"); const ic = el("span","hi"); ic.append(el("span","hie" + (/^[0-9A-Za-z↱€⇄]+$/.test(info.icon) ? " txt" : ""), info.icon)); top.append(ic, lb);
+      const top = el("span","ttop"); const ic = el("span","hi"); ic.append(el("span","hie" + (/^[0-9A-Za-z↱€⇄§]+$/.test(info.icon) ? " txt" : ""), info.icon)); top.append(ic, lb);
       b.append(top, el("p","tdesc",info.desc));
       if(MED_SECS.includes((label||"").trim().toLowerCase())) b.append(el("span","tmed","Ohne Gewähr · ersetzt keine Beratung durch Arzt oder Apotheke"));
       const meta = el("span","tmeta"); meta.append(el("span","n",fmtN(n)));
