@@ -725,6 +725,30 @@ html[data-design="taupe"]{--p-dress:#cc5530; --p-shirt:#f3f1ef; --p-pants:#14121
 .m-road{stroke:var(--m-wall);stroke-width:3;stroke-dasharray:6 6;fill:none;opacity:.8}
 
 .home{display:flex;flex-direction:column;gap:22px;margin-top:4px}
+.devjobs{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow), inset 0 0 0 1px var(--line);padding:14px 18px;display:flex;flex-direction:column;gap:10px;font-size:13.5px}
+.djhead{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.djhead strong{font-size:15px}
+.djtag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border:1px dashed var(--line);border-radius:999px;padding:1px 8px}
+.djsum{margin-left:auto;font-weight:700;border-radius:999px;padding:3px 10px}
+.djsum.ok{background:var(--ok-soft);color:var(--ok)}
+.djsum.run,.djsum.wait{background:color-mix(in srgb, var(--hl) 18%, var(--surface));color:var(--ink)}
+.djlist{display:grid;grid-template-columns:1fr;gap:2px}
+.djrow{display:grid;grid-template-columns:12px minmax(0,1fr) auto 150px;gap:4px 10px;align-items:center;padding:5px 2px;border-top:1px solid var(--line)}
+.djrow .progress{grid-column:2 / -1;height:4px}
+.djrow .progress span{background:var(--hl)}
+.djdot{width:9px;height:9px;border-radius:999px;background:var(--line)}
+.djrow.run .djdot{background:var(--hl);box-shadow:0 0 0 3px color-mix(in srgb, var(--hl) 30%, transparent);animation:djp 1.2s ease-in-out infinite}
+.djrow.wait .djdot{background:var(--muted)}
+.djrow.pause .djdot{background:transparent;box-shadow:inset 0 0 0 2px var(--muted)}
+.djrow.err .djdot{background:var(--danger)}
+.djrow.ok .djdot{background:var(--ok)}
+.djrow.ok{color:var(--muted)}
+.djn{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.djst{font-size:12.5px;color:var(--muted);white-space:nowrap}
+.djrow.run .djst{color:var(--ink);font-weight:700}
+.djrow.err .djst{color:var(--danger)}
+@keyframes djp{50%{opacity:.4}}
+@media (max-width:760px){ .djrow{grid-template-columns:12px minmax(0,1fr) auto} .djst{grid-column:2 / -1} }
 .hhero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;align-items:center;background:var(--surface);border-radius:calc(var(--radius) + 10px);box-shadow:var(--shadow);padding:48px 44px;overflow:hidden;position:relative}
 .hkick{display:flex;align-items:center;gap:12px;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}
 .hslide{display:none}
@@ -1130,6 +1154,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   </header>
 
   <section class="home" id="home" aria-label="Startseite">
+    <div class="devjobs" id="devjobs" hidden></div>
     <div class="hhero">
       <div class="hcopy">
         <p class="hkick"><span class="hslide" data-notr>01 / 08</span>Mein bester Reisebegleiter</p>
@@ -5079,6 +5104,49 @@ ${JSON.stringify(items)}`;
   document.querySelectorAll("#guide .gcard li, #guide .guidehead p").forEach(e=>e.setAttribute("data-trhtml",""));
   // neue Übersetzungen können die alphabetische Reihenfolge der Bereiche ändern
   I18N.onChange = () => { if(SRC!=="de"){ renderData(); renderToc(); } };
+
+  // ---------- Entwicklung: Übersicht aller Hintergrundaufträge (DEV_JOBS = false blendet sie aus) ----------
+  const DEV_JOBS = true;
+  function devJobList(){
+    const all = entries();
+    const keys = new Set(all.map(e=>dupKey(e.de||"")).filter(Boolean));
+    const jobs = [];
+    docs.filter(d=>d.kind==="seed" && Array.isArray(d.items)).forEach(sd=>{
+      const left = sd.done ? 0 : sd.items.filter(it=>{ const k = dupKey(it.de||""); return k && !keys.has(k); }).length;
+      const running = !sd.done && seedBusy && sd.claimedAt && Date.now() - sd.claimedAt < 120000;
+      jobs.push({name:`Wortpaket „${sd.label || sd.name || sd.id}“ anlegen`, left, total: sd.items.length, running, unit:"Einträge"});
+    });
+    jobs.push({name:"Neue Einträge übersetzen", left: all.filter(e=>e.status==="pending").length, running: resuming || transInFlight.size>0, needsSample:true, unit:"Einträge"});
+    jobs.push({name:"Fehlgeschlagene Übersetzungen", left: all.filter(e=>e.status==="error").length, running:false, isErr:true, unit:"Einträge"});
+    const reloc = needsRelocal().filter(e=>!restorable(e)).length;
+    jobs.push({name:`Hinweise in ${srcName()} (Ausgangssprache) erstellen`, left: reloc, running: fillRunning && reloc>0, paused: fillPaused, needsSample:true, unit:"Einträge"});
+    LANGS.forEach(([c,n])=>{ const m = missingIn(c).length; jobs.push({name:`Fehlende Übersetzungen: ${n}`, left:m, running: fillRunning && m>0, paused: fillPaused, needsSample:true, unit:"Einträge"}); });
+    let conjLeft = 0; try{ conjLeft = conjCandidates().length + conjInFlight.size; }catch(_){}
+    jobs.push({name:"Konjugationen erstellen", left: conjLeft, running: conjRunning, paused: conjPaused, needsSample:true, unit:"Verben"});
+    jobs.push({name:"Sprachniveau einstufen", left: all.filter(e=>e.status==="done" && !e.lvl && (e.de||"").trim()).length, running: lvlBusy, needsSample:true, unit:"Einträge"});
+    return jobs;
+  }
+  function renderDevJobs(){
+    const box = document.getElementById("devjobs"); if(!box) return;
+    if(!DEV_JOBS || !loaded || !document.documentElement.hasAttribute("data-home")){ box.hidden = true; return; }
+    let jobs; try{ jobs = devJobList(); }catch(_){ return; }
+    const open = jobs.filter(j=>j.left>0), busy = open.filter(j=>j.running).length;
+    box.hidden = false; box.replaceChildren();
+    const hd = el("div","djhead");
+    hd.append(el("strong",null,"Hintergrundaufträge"), el("span","djtag","nur Entwicklung"));
+    hd.append(el("span","djsum " + (open.length ? (busy ? "run" : "wait") : "ok"), open.length ? `${busy} läuft · ${open.length-busy} in der Warteschlange · ${open.reduce((a,j)=>a+j.left,0).toLocaleString("de-DE")} offen` : "Alles erledigt ✓"));
+    box.append(hd);
+    const ul = el("div","djlist");
+    jobs.forEach(j=>{
+      const st = !j.left ? ["ok","erledigt"] : j.running ? ["run","läuft"] : j.paused ? ["pause","angehalten"] : (j.needsSample && !sample) ? ["pause","wartet: Übersetzen nicht verfügbar"] : j.isErr ? ["err","Fehler – ↻ in der Tabelle"] : ["wait","wartet"];
+      const r = el("div","djrow " + st[0]);
+      r.append(el("span","djdot"), el("span","djname", j.name), el("span","djn", j.left ? `noch ${j.left.toLocaleString("de-DE")}${j.total ? " von "+j.total.toLocaleString("de-DE") : ""} ${j.unit}` : "–"), el("span","djst", st[1]));
+      if(j.total && j.left){ const pr = el("div","progress"); const f = el("span"); f.style.width = Math.round(100*(j.total-j.left)/j.total)+"%"; pr.append(f); r.append(pr); }
+      ul.append(r);
+    });
+    box.append(ul);
+  }
+  if(DEV_JOBS){ setInterval(renderDevJobs, 2000); setTimeout(renderDevJobs, 1500); }
 
   // ---------- Start ----------
   applyLangs();
