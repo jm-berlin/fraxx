@@ -733,6 +733,26 @@ html[data-design="graphit"] .pc img, html[data-design="graphit"] .hbandimg{filte
 @keyframes hflash{0%{box-shadow:0 0 0 0 var(--accent)}40%{box-shadow:0 0 0 6px color-mix(in srgb, var(--accent) 35%, transparent)}100%{box-shadow:var(--shadow)}}
 form.add.hflash{animation:hflash 1.2s ease-out}
 
+/* Einstellungen: Sprachen */
+.langset{flex:1 1 100%;display:flex;flex-direction:column;gap:6px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.lshead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.lshead strong{font-size:14.5px}
+.lshint{font-size:12px;color:var(--muted)}
+.lslbl{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.lsrow{display:flex;flex-wrap:wrap;gap:6px}
+.lschip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 8px 4px 6px;font-size:13px;font-weight:600;border:0;font-family:inherit}
+.lschip.on{background:var(--accent-soft);color:var(--ink)}
+.lschip .mv,.lschip .rm{border:0;background:transparent;color:var(--muted);font-size:13px;padding:0 3px;cursor:pointer;line-height:1}
+.lschip .mv:disabled,.lschip .rm:disabled{opacity:.3;cursor:default}
+.lschip .rm:not(:disabled):hover{color:var(--danger)}
+.lschip.off{background:var(--surface-2);color:var(--muted);opacity:.6;cursor:pointer;padding:4px 10px 4px 6px}
+.lschip.off .flagimg{filter:grayscale(1);opacity:.6}
+.lschip.off:hover{opacity:1}
+.lschip.off .plus{font-weight:700;color:var(--accent)}
+.lsoff{max-height:116px;overflow:auto}
+.lvlpick{flex:0 1 220px;min-width:180px}
+.lvlb{display:inline-block;margin-left:7px;padding:0 6px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.03em;line-height:17px;vertical-align:2px;background:var(--surface-2);color:var(--muted)}
+
 /* Meine Liste */
 .favstar{font-size:17px;color:var(--muted)}
 .favstar.on,.favrm{color:var(--hl);-webkit-text-stroke:.6px var(--hl-ink)}
@@ -967,6 +987,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       <button class="setbtn round" id="setbtn" type="button" aria-expanded="false" aria-controls="setpop" title="Einstellungen" aria-label="Einstellungen"><span aria-hidden="true">⚙</span></button>
     </div>
     <div class="setpop" id="setpop" hidden role="group" aria-label="Einstellungen">
+      <div class="langset" id="langset" role="group" aria-label="Sprachen"></div>
+      <label class="srcpick lvlpick" for="lvlsel"><span class="lbl">Sprachniveau</span><select id="lvlsel"><option value="">Alle</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label>
       <label class="srcpick" for="srcsel"><span class="lbl">Ausgangssprache</span><select id="srcsel"></select></label>
       <div class="modes" role="group" aria-label="Darstellung">
         <button class="md" type="button" data-mode="auto" aria-pressed="true">Auto</button>
@@ -1275,8 +1297,10 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   try{ zielValue = localStorage.getItem("rw-ziel") || ""; }catch(e){}
   let hiddenLangs = new Set();
   try{ hiddenLangs = new Set(JSON.parse(localStorage.getItem("rw-hidden") || "[]")); }catch(e){}
+  const MAX_VIS = 4; // + Ausgangssprache = 5 Spalten
   function applyLangs(){
     computeLangs();
+    { const v = LANGS.filter(([c])=>!hiddenLangs.has(c)); if(v.length > MAX_VIS){ v.slice(MAX_VIS).forEach(([c])=>hiddenLangs.add(c)); saveHidden(); } }
     const vis = LANGS.filter(([c])=>!hiddenLangs.has(c));
     document.getElementById("table").style.setProperty("--cols", `40px minmax(0,1.15fr) ${"minmax(0,1fr) ".repeat(vis.length)}44px`);
     const head = document.querySelector(".row.head");
@@ -1293,13 +1317,13 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     LANGS.forEach(([c,n,,col])=>{
       const b = el("button","lt"); b.type="button"; b.dataset.lang=c; b.setAttribute("aria-pressed", String(!hiddenLangs.has(c)));
       const f = flagEl(c); b.append(f, document.createTextNode(n));
-      b.addEventListener("click",()=>{ hiddenLangs.has(c) ? hiddenLangs.delete(c) : hiddenLangs.add(c); saveHidden(); applyLangs(); render(); });
+      b.addEventListener("click",()=>{
+        if(hiddenLangs.has(c) && LANGS.filter(([x])=>!hiddenLangs.has(x)).length >= MAX_VIS){ showNotice(`In die Tabelle passen höchstens ${MAX_VIS+1} Sprachen (mit ${srcName()}). Blende zuerst eine andere aus.`); return; }
+        hiddenLangs.has(c) ? hiddenLangs.delete(c) : hiddenLangs.add(c); saveHidden(); applyLangs(); render();
+      });
       g.append(b);
     });
-    const panel = document.getElementById("langpanel");
-    const add = el("button","lt addlang","+ Sprache"); add.type="button"; add.setAttribute("aria-expanded", String(!panel.hidden));
-    add.addEventListener("click",()=>{ panel.hidden = !panel.hidden; renderLangPanel(); applyLangs(); });
-    g.append(add);
+    renderLangSet();
   }
   function saveHidden(){ try{ localStorage.setItem("rw-hidden", JSON.stringify([...hiddenLangs])); }catch(e){} }
 
@@ -1692,6 +1716,7 @@ Antworte ausschließlich mit JSON: {"pos":["…"]} mit genau ${part.length} Wert
     }
     for(const x of allSecs().filter(x=>(x.title||"").trim().toLowerCase()==="allgemeines")){ try{ await patchDoc(x.id, {title:"Noch nicht zugeordnet"}); }catch(_){} }
     themeWords();
+    setTimeout(levelWords, 8000);
   }
   // Verben und Adjektive einmalig passenden Themen zuordnen (als Spiegel)
   let themeBusy = false;
@@ -1734,6 +1759,38 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
       }
     }finally{ themeBusy = false; }
   }
+
+  // Sprachniveau (GER) im Hintergrund einstufen
+  let lvlBusy = false;
+  async function levelWords(){
+    if(lvlBusy || !sample || !loaded || importing) return;
+    const todo = entries().filter(e=>e.status==="done" && !e.lvl && (e.de||"").trim());
+    if(!todo.length) return;
+    lvlBusy = true;
+    try{
+      for(let i=0;i<todo.length;i+=100){
+        const part = todo.slice(i, i+100);
+        let out = null;
+        try{
+          out = await sample.json(`Ordne jedem deutschen Eintrag eines Vokabelhefts das Sprachniveau nach dem Gemeinsamen Europäischen Referenzrahmen zu (A1, A2, B1, B2, C1, C2): das Niveau, auf dem Lernende das Wort bzw. den Satz typischerweise lernen und aktiv verwenden. Orientiere dich an gängigen Wortlisten (z. B. Goethe-Zertifikat, Profile Deutsch). Grundwortschatz und Alltagssätze sind A1/A2, gehobener oder fachlicher Wortschatz B2–C2. Hinweise in Klammern sind nur Erklärungen.
+
+Einträge:
+${part.map((e,j)=>`${j+1}. ${e.de}`).join("\n")}
+
+Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} Werten in derselben Reihenfolge.`, { modelTier:"quick" });
+        }catch(err){ if(err && ["rate_limited","not_granted","sampling_disabled","session_expired","unauthenticated"].includes(err.code)) break; }
+        const arr = out && Array.isArray(out.l) ? out.l : null;
+        if(!arr) continue;
+        for(let j=0;j<part.length;j++){
+          const v = String(arr[j]||"").toUpperCase().trim();
+          if(!LEVELS.includes(v)) continue;
+          const cur = docs.find(d=>d.id===part[j].id); if(!cur || cur.lvl) continue;
+          try{ await patchDoc(cur.id, {lvl: v}); }catch(_){}
+        }
+      }
+    }finally{ lvlBusy = false; }
+  }
+  setInterval(()=>{ if(!lvlBusy) levelWords(); }, 60000);
 
   let verbsFixed = false;
   async function fixFalseVerbs(){
@@ -1868,7 +1925,7 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
   let uiEpoch = 0, fromData = false;
   function rowSig(e, ctx){
     let body = ""; try{ body = JSON.stringify(e); }catch(_){ return null; }
-    return [uiEpoch, ctx||"", SRC, posFilter, LANGS.map(l=>l[0]).join(), [...hiddenLangs].join(), selected.has(e.id), flashId===e.id,
+    return [uiEpoch, ctx||"", SRC, posFilter, lvlFilter, LANGS.map(l=>l[0]).join(), [...hiddenLangs].join(), selected.has(e.id), flashId===e.id,
       editId===e.id ? editCtx+"|"+editDraft : "", confirmId===e.id, openConj.has(e.id), conjTense.get(e.id)||"", transInFlight.has(e.id), body].join("\u0001");
   }
   function entryRow(e, ctx){
@@ -1926,6 +1983,7 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
       const t = el("button","detx"); t.append(artFrag(srcText(e), SRC, e.verb)); t.type="button"; t.title="Klicken zum Ändern"; t.setAttribute("aria-label","Ändern: "+srcText(e));
       t.addEventListener("click",()=>{ editId=e.id; editCtx=ctx||""; editDraft=srcText(e); confirmId=null; render(); });
       d.append(t, ...conjControls(e));
+      if(e.lvl){ const lb = el("span","lvlb", e.lvl); lb.title = "Sprachniveau " + e.lvl; t.append(lb); }
       if(SRC==="de" && e.denote) d.append(el("span","note denote", e.denote));
       if(mirror){
         const m = el("button","xref", "↪ aus „"+secTitle(secOf(e))+"“"); m.type="button"; m.title="Zum Heimatbereich springen";
@@ -2056,7 +2114,7 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
       h.append(title);
     }
     { const shown = (grand!=null && grand>total) ? grand : total;
-      const sc = el("span","seccount", searching && list.length!==total ? `${list.length} von ${total}` : String(shown));
+      const sc = el("span","seccount", (searching || lvlFilter) && list.length!==total ? `${list.length} von ${total}` : String(shown));
       if(!searching && grand!=null && grand>total) sc.title = `${grand} Einträge insgesamt, davon ${total} direkt in diesem Bereich und ${grand-total} in Unterbereichen`;
       h.append(sc); }
 
@@ -2220,6 +2278,7 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
   let scrollAnchor = null;
   async function openOnly(sec){
     if(!sec) return;
+    setZiel(sec.id); if(typeof ziel!=="undefined" && ziel) fillSelect(ziel, zielValue, false);
     const keep = new Set(); let cur = sec;
     while(cur){ keep.add(cur.id); const p = parentOf(cur); cur = p ? secById(p) : null; }
     const isInside = x => { let p = parentOf(x); while(p){ if(p===sec.id) return true; const ps = secById(p); p = ps ? parentOf(ps) : null; } return false; };
@@ -2248,6 +2307,10 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
   }
   // Wortart als Eigenschaft: automatische Übersichten „Verben“, „Adjektive“, „Substantive“
   let posFilter = "wz"; try{ posFilter = localStorage.getItem("rw-posf") || "wz"; }catch(e){}
+  // Sprachniveau (A1–C2): filtert Tabelle und Quiz
+  let lvlFilter = ""; try{ lvlFilter = localStorage.getItem("rw-lvl") || ""; }catch(e){}
+  const LEVELS = ["A1","A2","B1","B2","C1","C2"];
+  { const ls = document.getElementById("lvlsel"); if(ls){ ls.value = lvlFilter; ls.addEventListener("change",()=>{ lvlFilter = ls.value; try{ localStorage.setItem("rw-lvl", lvlFilter); }catch(e){} render(); if(lvlFilter){ const n = entries().filter(e=>!e.lvl).length; if(n) showNotice(`${n.toLocaleString("de-DE")} Einträge sind noch keinem Sprachniveau zugeordnet und werden beim Filtern ausgeblendet.${sample ? " Die Einstufung läuft im Hintergrund." : ""}`); } }); } }
   // Bereiche nach Inhalt: überwiegend Sätze → Redewendungen, sonst Wortschatz
   function leafKind(sec, list){
     if(sec){ const top = parentOf(sec) ? secById(parentOf(sec)) : sec; if(top && (top.title||"").trim().toLowerCase()===WZ.toLowerCase()) return "wz"; }
@@ -2323,7 +2386,7 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
     { const fb = document.getElementById("foldall"); const secsAll = allSecs(); fb.hidden = secsAll.length < 2; fb.textContent = secsAll.some(x=>!x.collapsed) ? "Alle zuklappen" : "Alle aufklappen"; }
     const q = search.value.trim().toLowerCase();
     const searching = !!q;
-    const match = e => !q || [e.de, srcText(e), ...MYLANGS.map(([c])=>e[c] && e[c].text)].some(t=>t && t.toLowerCase().includes(q));
+    const match = e => (!lvlFilter || e.lvl===lvlFilter) && (!q || [e.de, srcText(e), ...MYLANGS.map(([c])=>e[c] && e[c].text)].some(t=>t && t.toLowerCase().includes(q)));
     const all = entries().sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
     const secs = sections();
 
@@ -2391,8 +2454,8 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
     if(!units.length && !q){ const em = el("div","empty"); em.append(el("p",null, view==="rw" ? "Hier erscheinen deine Bereiche mit Sätzen und Redewendungen." : "Hier erscheinen deine Bereiche mit einzelnen Wörtern.")); rowsEl.append(em); }
     units.forEach((u, i)=>{
       const inS = orderList(u.sec, u.list); const l = inS.filter(match);
-      const childBlocks = (u.group||[]).map((c, j)=>{ const inC = orderList(c.sec, c.list); const lc = inC.filter(match); return (!q || lc.length) ? sectionBlock(c.sec, lc, inC.length, j, u.group.length, searching, []) : null; }).filter(Boolean);
-      if(q && !l.length && !childBlocks.length) return;
+      const childBlocks = (u.group||[]).map((c, j)=>{ const inC = orderList(c.sec, c.list); const lc = inC.filter(match); return (!(q || lvlFilter) || lc.length) ? sectionBlock(c.sec, lc, inC.length, j, u.group.length, searching, []) : null; }).filter(Boolean);
+      if((q || lvlFilter) && !l.length && !childBlocks.length) return;
       const grand = u.group ? new Set([...u.list, ...u.group.flatMap(c=>c.list)].map(e=>e.id)).size : undefined;
       const blk = sectionBlock(u.sec, l, inS.length, i, units.length, searching, childBlocks, grand);
       if(u.flat) blk.classList.add("flatsub");
@@ -2867,9 +2930,43 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
     p.append(el("span","hint2","Mit ‹ › änderst du die Reihenfolge der Sprachen, sie gilt für Spalten, Reiter, Quiz und Grammatik."));
     p.append(el("span","hint2","Neue Sprachen werden für alle vorhandenen Einträge automatisch nachübersetzt. Entfernst du eine Sprache, verschwindet sie nur aus der Ansicht, ihre Übersetzungen bleiben gespeichert."));
   }
+  function renderLangSet(){
+    const box = document.getElementById("langset"); if(!box) return;
+    box.replaceChildren();
+    const hd = el("div","lshead"); hd.append(el("strong",null,"Sprachen"), el("span","lshint","Antippen zum Hinzufügen · ‹ › Reihenfolge · ✕ entfernen"));
+    const on = el("div","lsrow"), off = el("div","lsrow lsoff");
+    MYLANGS.forEach(([c,n],i)=>{
+      const ch = el("span","lschip on"); ch.title = n + " ist installiert";
+      const lf = el("button","mv","‹"); lf.type="button"; lf.disabled = i===0; lf.setAttribute("aria-label", n+" nach vorne"); lf.addEventListener("click",()=>moveLang(c,-1));
+      const rt = el("button","mv","›"); rt.type="button"; rt.disabled = i===MYLANGS.length-1; rt.setAttribute("aria-label", n+" nach hinten"); rt.addEventListener("click",()=>moveLang(c,1));
+      const x = el("button","rm","✕"); x.type="button"; x.setAttribute("aria-label", n+" entfernen"); x.disabled = MYLANGS.length<=1 || c===SRC;
+      x.addEventListener("click",()=>removeLang(c));
+      ch.append(lf, flagEl(c), el("span","lsn", n), rt, x); on.append(ch);
+    });
+    CATALOG.filter(([c])=>!activeCodes.includes(c)).forEach(([c,n])=>{
+      const b = el("button","lschip off"); b.type="button"; b.title = n + " hinzufügen";
+      b.append(flagEl(c), el("span","lsn", n), el("span","plus","+"));
+      b.addEventListener("click",()=>askAddLang(c, n));
+      off.append(b);
+    });
+    box.append(hd, el("span","lslbl","Installiert"), on);
+    if(off.childNodes.length) box.append(el("span","lslbl","Weitere Sprachen"), off);
+  }
+  function askAddLang(c, n){
+    const sp = document.getElementById("setbtn"); if(sp && sp.getAttribute("aria-expanded")==="true") sp.click();
+    const pack = window.Multilingo && Multilingo.index && (Multilingo.index().packs||[]).some(p=>p.lang===c);
+    const cnt = entries().length;
+    const txt = pack ? `${n} hinzufügen? Das Sprachpaket wird geladen.`
+      : sample ? `${n} hinzufügen? Alle ${cnt.toLocaleString("de-DE")} Einträge werden dafür im Hintergrund übersetzt. Das dauert einige Minuten.`
+      : `${n} hinzufügen? Für ${n} gibt es kein Sprachpaket, und ohne Online-Übersetzung bleibt die Spalte zunächst leer.`;
+    showNotice(txt, null, [{label:"Hinzufügen", fn: ()=>addLang(c)}, {label:"Abbrechen", fn: ()=>{}}]);
+  }
   async function addLang(c){
     if(!c || activeCodes.includes(c)) return;
-    activeCodes = [...activeCodes, c]; hiddenLangs.delete(c); saveHidden();
+    try{ if(window.Multilingo && Multilingo.index && (Multilingo.index().packs||[]).some(p=>p.lang===c) && !Multilingo.installed().includes(c)) await Multilingo.installPack(c); }catch(_){}
+    activeCodes = [...activeCodes, c]; hiddenLangs.delete(c);
+    if(LANGS.filter(([x])=>!hiddenLangs.has(x)).length >= MAX_VIS) hiddenLangs.add(c);
+    saveHidden();
     try{ await saveLangs(); }catch(_){ fail(); }
     applyLangs(); renderLangPanel(); render();
     fillSkip.clear(); fillLang(c);
@@ -4099,7 +4196,7 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
   const qCount = (e, lang) => (e.quiz && e.quiz[lang]) || 0;
   const txt = (e, lang) => ((valOf(e, lang)||{}).text) || "";
   function quizScope(){
-    const all = entries().filter(e=>e.status==="done");
+    const all = entries().filter(e=>e.status==="done" && (!lvlFilter || e.lvl===lvlFilter));
     if(!qs.scope || !secById(qs.scope)) return all;
     const ids = [qs.scope, ...subSecs(qs.scope).map(x=>x.id)];
     return all.filter(e=>ids.some(id=>shownIn(e, id)));
@@ -4146,6 +4243,15 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
     sel.value = secById(qs.scope) ? qs.scope : "";
     sel.addEventListener("change",()=>{ qs.scope = sel.value; qs.confirmReset=false; saveQuizPrefs(); renderQuiz(); });
     g3.append(sel);
+    // Sprachniveau (gleicher Filter wie in der Tabelle)
+    const g4 = el("div","qgroup"); g4.append(el("span","qlabel","Sprachniveau"));
+    const c4 = el("div","qchips");
+    ["", ...LEVELS].forEach(v=>c4.append(chip(v || "Alle", lvlFilter===v, ()=>{
+      lvlFilter = v; try{ localStorage.setItem("rw-lvl", v); }catch(e){}
+      const ls = document.getElementById("lvlsel"); if(ls) ls.value = v;
+      qs.confirmReset=false; renderQuiz(); render();
+    })));
+    g4.append(c4);
     // Statistik
     const pool = quizScope().filter(e=>txt(e, qs.lang));
     const learned = pool.filter(e=>qCount(e, qs.lang)>=MASTER).length;
@@ -4163,7 +4269,7 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
       rs.addEventListener("click",()=>{ qs.confirmReset = true; renderQuiz(); });
       acts.append(rs);
     }
-    quizBody.append(g1, g2, g3, stats, acts);
+    quizBody.append(g1, g2, g3, g4, stats, acts);
     if(qs.confirmReset){
       const cf = el("div","qconfirm");
       cf.append(el("span",null,`Lernstand für ${lname}${qs.scope && secById(qs.scope) ? ` im Bereich „${secTitle(qs.scope)}“` : ""} zurücksetzen? ${learned} gelernte Einträge werden wieder abgefragt.`));
@@ -4344,9 +4450,7 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
       } else if(go==="verbs"){
         document.querySelector('#posf [data-pos="verb"]')?.click(); requestAnimationFrame(toTable);
       } else if(go==="langs"){
-        const st = document.getElementById("settab"); if(st && st.getAttribute("aria-expanded")!=="true") st.click();
-        const lp = document.getElementById("langpanel"); if(lp && lp.hidden) document.querySelector("#langs .addlang")?.click();
-        requestAnimationFrame(()=>document.getElementById("tools")?.scrollIntoView({behavior:"smooth", block:"start"}));
+        window.scrollTo(0,0); const sb = document.getElementById("setbtn"); if(sb && sb.getAttribute("aria-expanded")!=="true") sb.click();
       } else document.getElementById(go)?.click(); });
     stats(); setInterval(()=>{ if(root.hasAttribute("data-home")) stats(); }, 1500);
   })();
