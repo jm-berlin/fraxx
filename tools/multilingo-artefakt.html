@@ -1435,8 +1435,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     const par = sec && parentOf(sec) && secById(parentOf(sec));
     setToc(false);
     try{
-      if(par && par.collapsed) await patchDoc(par.id,{collapsed:false});
-      if(sec && sec.collapsed) await patchDoc(sec.id,{collapsed:false});
+      await openOnly(sec || par);
     }catch(_){}
     renderNow();
     const n = document.getElementById("sec-" + (id || "none"));
@@ -1521,8 +1520,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     const sec = secId && secById(secId);
     const par = sec && parentOf(sec) && secById(parentOf(sec));
     try{
-      if(par && par.collapsed) await patchDoc(par.id,{collapsed:false});
-      if(sec && sec.collapsed) await patchDoc(sec.id,{collapsed:false});
+      await openOnly(sec || par);
     }catch(_){}
     flashId = d.id; clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 2500);
     renderNow();
@@ -2012,7 +2010,11 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
     all.addEventListener("change",()=>{ list.forEach(e=> all.checked ? selected.add(e.id) : selected.delete(e.id)); render(); });
     h.append(all);
 
-    const toggleSec = () => { if(sec) patchDoc(sec.id,{collapsed:!sec.collapsed}).catch(fail); };
+    const toggleSec = () => {
+      if(!sec) return;
+      if(sec.collapsed){ const hd = document.getElementById("sec-" + sec.id); scrollAnchor = {id: sec.id, top: hd ? hd.getBoundingClientRect().top : null}; openOnly(sec).catch(fail); }
+      else patchDoc(sec.id,{collapsed:true}).catch(fail);
+    };
     if(sec){
       const t = el("button","toggle","▾"); t.type="button";
       t.setAttribute("aria-expanded", String(!(sec.collapsed && !searching)));
@@ -2200,11 +2202,35 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
     if(since >= gap && !dataTimer) renderFromData();
     else if(!dataTimer) dataTimer = setTimeout(()=>{ dataTimer = null; renderFromData(); }, Math.max(0, gap - since));
   }
+  // Immer nur ein Bereich aufgeklappt: beim Öffnen werden die anderen geschlossen (übergeordnete Bereiche bleiben offen)
+  let scrollAnchor = null;
+  async function openOnly(sec){
+    if(!sec) return;
+    const keep = new Set(); let cur = sec;
+    while(cur){ keep.add(cur.id); const p = parentOf(cur); cur = p ? secById(p) : null; }
+    const isInside = x => { let p = parentOf(x); while(p){ if(p===sec.id) return true; const ps = secById(p); p = ps ? parentOf(ps) : null; } return false; };
+    for(const x of allSecs()){
+      if(keep.has(x.id)){ if(x.collapsed) await patchDoc(x.id,{collapsed:false}); }
+      else if(!x.collapsed && !isInside(x)) await patchDoc(x.id,{collapsed:true});
+    }
+  }
   function renderNow(){
     if(dragIds || secDrag){ pendingRender = true; return; }
     if(dataTimer){ clearTimeout(dataTimer); dataTimer = null; }
     const t0 = performance.now();
     try{ renderInner(); } finally { lastRenderAt = performance.now(); lastRenderDur = lastRenderAt - t0; }
+    // den gerade geöffneten Bereich an seiner Position halten, auch wenn darüber einer zugeklappt wurde
+    if(scrollAnchor){
+      const s0 = secById(scrollAnchor.id), hd = document.getElementById("sec-" + scrollAnchor.id);
+      if(!s0 || !hd) scrollAnchor = null;
+      else if(!s0.collapsed){
+        const now = hd.getBoundingClientRect().top;
+        if(scrollAnchor.top!=null) window.scrollBy(0, now - scrollAnchor.top);
+        const t2 = hd.getBoundingClientRect().top;
+        if(t2 < 0 || t2 > innerHeight - 80) hd.scrollIntoView({block:"start"});
+        scrollAnchor = null;
+      }
+    }
   }
   // Wortart als Eigenschaft: automatische Übersichten „Verben“, „Adjektive“, „Substantive“
   let posFilter = "wz"; try{ posFilter = localStorage.getItem("rw-posf") || "wz"; }catch(e){}
