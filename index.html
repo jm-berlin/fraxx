@@ -2078,6 +2078,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
           if(n===0) showProgress(`Neue Wörter werden eingefügt …`, 0, s.items.length);
           have.add(k);
           const e = {id:newId(), de:it.de, section:sec, status:"pending", error:"", createdAt: stamp--, pos: it.pos||"noun", lvl: it.lvl||"", verb: !!it.verb};
+          if(it.full && typeof it.full==="object"){ Object.assign(e, it.full, {status:"done", noteLang:"de", conj:null, conjFor:"", conjStatus:""}); }
           try{ await putDoc(e); n++; }catch(_){}
           if(n % 10 === 0) showProgress(`Neue Wörter werden eingefügt … ${n} von ${s.items.length}`, n, s.items.length);
         }
@@ -2694,7 +2695,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     { const fb = document.getElementById("foldall"); const secsAll = allSecs(); fb.hidden = secsAll.length < 2; fb.textContent = secsAll.some(x=>!x.collapsed) ? "Alle zuklappen" : "Alle aufklappen"; }
     const q = search.value.trim().toLowerCase();
     const searching = !!q;
-    const match = e => (!lvlFilter || e.lvl===lvlFilter) && (!q || [e.de, srcText(e), ...MYLANGS.map(([c])=>e[c] && e[c].text)].some(t=>t && t.toLowerCase().includes(q)));
+    const match = e => (!lvlFilter || e.lvl===lvlFilter) && (!q || [e.de, e.denote, srcText(e), ...MYLANGS.flatMap(([c])=>e[c] ? [e[c].text, e[c].note] : [])].some(t=>t && t.toLowerCase().includes(q)));
     const all = entries().sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
     const secs = sections();
 
