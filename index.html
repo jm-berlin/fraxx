@@ -543,6 +543,55 @@ html:root[data-design="graphit"]{
   --setbtn-bg:#262423; --setbtn-fg:#f1ede9; --tense-on:#5a534e; color-scheme:dark;
   --t-dart:#f08a5d; --t-g1:#4a4440; --t-g2:#332f2c; --t-gink:#fff; --t-s1:#2f2c2a; --t-s2:#34312e;
 }
+/* Hinweise: Popup an der bearbeiteten Stelle (Akzentfarbe des Designs), blendet sich selbst aus */
+.toast{position:fixed;z-index:200;left:0;top:0;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:flex-start;gap:6px 12px;padding:11px 38px 11px 15px;border-radius:12px;
+  background:var(--hl);color:var(--hl-ink,#131923);font-size:14px;font-weight:500;line-height:1.45;box-shadow:0 10px 30px rgb(10 14 20 / .25), 0 2px 6px rgb(10 14 20 / .12);
+  opacity:0;transform:translateY(6px);transition:opacity .25s ease, transform .25s ease;pointer-events:auto}
+.toast.below{transform:translateY(-6px)}
+.toast.show{opacity:1;transform:none}
+.toast.fading{opacity:0;transition:opacity .9s ease}
+.toast::after{content:"";position:absolute;left:calc(var(--ax,50%) - 7px);top:100%;border:7px solid transparent;border-top-color:var(--hl)}
+.toast.below::after{top:auto;bottom:100%;border-top-color:transparent;border-bottom-color:var(--hl)}
+.toast.free::after{display:none}
+.toast .toasttx{flex:1 1 220px;min-width:0}
+.toast a,.toast .noticebtn{color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px}
+.toast .toastacts{display:flex;flex-wrap:wrap;gap:4px 14px;flex-basis:100%}
+.toast .toastx{position:absolute;right:6px;top:6px;width:26px;height:26px;border:0;border-radius:999px;background:transparent;color:inherit;opacity:.7;font-size:13px;line-height:1}
+.toast .toastx:hover{opacity:1;background:rgb(0 0 0 / .08)}
+@media (prefers-reduced-motion: reduce){ .toast,.toast.fading{transition:opacity .2s} }
+/* Laufende Arbeiten: bleiben an ihrer Stelle, gleiche Farbfamilie, mit Fortschrittsbalken */
+.notice,.conjbar{background:color-mix(in srgb, var(--hl) 20%, var(--surface));color:var(--ink);box-shadow:inset 4px 0 0 var(--hl)}
+#notice{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;transition:opacity .9s ease}
+#notice.fading{opacity:0}
+#notice .progtx{flex:1 1 240px;font-weight:600}
+#notice .progress,#fillbar .progress{background:color-mix(in srgb, var(--hl) 18%, var(--surface-2))}
+#notice .progress span,#fillbar .progress span{background:var(--hl)}
+#fillbar{box-shadow:inset 4px 0 0 var(--hl), var(--shadow)}
+/* Sprachleiste der Tabelle: nur gewählte Sprachen, daneben „Sprachen ändern“ */
+.langs .lt{cursor:default;background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.langs .lt.lsrc{box-shadow:0 0 0 2px var(--hl), var(--shadow)}
+.langs .srctag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--hl-ink,#131923);background:var(--hl);border-radius:999px;padding:1px 7px;margin-left:2px}
+.lchg{border:0;background:transparent;color:var(--accent);font-weight:600;font-size:14px;border-radius:999px;padding:5px 12px;display:inline-flex;gap:8px;align-items:center;margin-left:4px}
+.lchg:hover,.lchg[aria-expanded="true"]{background:var(--surface)}
+.lchg .lcnt{font-size:12px;font-weight:600;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:0 7px}
+.langpick{flex-basis:100%;display:flex;flex-direction:column;gap:8px;background:var(--surface);border-radius:12px;padding:14px 16px;box-shadow:0 0 0 1px var(--line), var(--shadow);font-size:14px}
+.lphead{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.lphead strong{font-size:15px}
+.lpcount{font-size:12.5px;font-weight:600;color:var(--muted);background:var(--surface-2);border-radius:999px;padding:2px 9px}
+.lpcount.full{background:var(--hl);color:var(--hl-ink,#131923)}
+.lpdone{margin-left:auto;padding:5px 14px}
+.lphint{margin:0;color:var(--muted);font-size:13px}
+.lplbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:4px}
+.lprow{display:flex;flex-wrap:wrap;gap:6px}
+.lpchip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:14px;display:inline-flex;gap:7px;align-items:center}
+.lpchip:hover{background:var(--hover)}
+.lpchip[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);font-weight:600}
+.lpchip.src[aria-pressed="true"]{border-color:var(--hl);box-shadow:inset 0 0 0 1px var(--hl);background:color-mix(in srgb, var(--hl) 16%, var(--surface))}
+.lpchip .lpbox{width:16px;height:16px;border-radius:5px;border:1.5px solid var(--line);display:inline-grid;place-items:center;font-size:11px;line-height:1}
+.lpchip[aria-pressed="true"] .lpbox{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.lpchip.blocked{opacity:.45}
+.lpchip.blocked .flagimg{filter:grayscale(1)}
+.lpmore{align-self:flex-start;margin-top:2px;font-size:13.5px}
 html[data-tf] body{font-weight:500}
 html[data-tf] h1{font-weight:700;letter-spacing:-.03em}
 html[data-tf] h1 em{color:var(--ink)}
@@ -1174,8 +1223,9 @@ form.add.hflash{animation:hflash 1.2s ease-out}
         <button class="ghost" type="button" id="cancelsec">Abbrechen</button>
       </form>
       <div class="langs" id="langs" role="group" aria-label="Angezeigte Sprachen">
-        <span class="lbl">Anzeigen:</span>
+        <span class="lbl">Sprachen:</span>
       </div>
+      <div class="langpick" id="langpick" hidden role="group" aria-label="Sprachen der Tabelle ändern"></div>
       <div class="langpanel" id="langpanel" hidden></div>
     </div>
   <div class="table" id="table" role="table" aria-label="Übersetzungen">
@@ -1286,7 +1336,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   const langColor = code => (LANGS.find(l=>l[0]===code) || [])[3] || "var(--muted)";
   const EXAMPLES = ["Tomaten auf den Augen haben","Das ist nicht mein Bier","Feierabend","Ich verstehe nur Bahnhof"];
   const $ = s => document.querySelector(s);
-  const rowsEl = $("#rows"), statusEl = $("#status"), noticeEl = $("#notice");
+  const rowsEl = $("#rows"), statusEl = $("#status"), progEl = $("#notice");
+  const noticeEl = document.createElement("div"); noticeEl.className = "toast"; noticeEl.id = "toast"; noticeEl.hidden = true; noticeEl.setAttribute("role","status"); noticeEl.setAttribute("aria-live","polite"); document.body.append(noticeEl);
   const form = $("#form"), input = $("#neu"), goBtn = $("#go"), ziel = $("#ziel");
   // Suche: das Eingabefeld filtert die Tabelle, solange es eine Zeile enthält
   let searchQ = "", searchTimer = null;
@@ -1318,19 +1369,56 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       head.insertBefore(h, last);
     });
     const g = document.getElementById("langs");
-    g.querySelectorAll(".lt").forEach(n=>n.remove());
-    LANGS.forEach(([c,n,,col])=>{
-      const b = el("button","lt"); b.type="button"; b.dataset.lang=c; b.setAttribute("aria-pressed", String(!hiddenLangs.has(c)));
-      const f = flagEl(c); b.append(f, document.createTextNode(n));
-      b.addEventListener("click",()=>{
-        if(hiddenLangs.has(c) && LANGS.filter(([x])=>!hiddenLangs.has(x)).length >= MAX_VIS){ showNotice(`In die Tabelle passen höchstens ${MAX_VIS+1} Sprachen (mit ${srcName()}). Blende zuerst eine andere aus.`); return; }
-        hiddenLangs.has(c) ? hiddenLangs.delete(c) : hiddenLangs.add(c); saveHidden(); applyLangs(); render();
-      });
-      g.append(b);
-    });
+    g.querySelectorAll(".lt,.lchg").forEach(n=>n.remove());
+    { const s0 = el("span","lt lsrc"); s0.dataset.lang = SRC; s0.title = srcName()+" ist die Ausgangssprache"; s0.append(flagEl(SRC), document.createTextNode(srcName()), el("span","srctag","Ausgangssprache")); g.append(s0); }
+    vis.forEach(([c,n])=>{ const s1 = el("span","lt"); s1.dataset.lang = c; s1.append(flagEl(c), document.createTextNode(n)); g.append(s1); });
+    { const open = !document.getElementById("langpick").hidden;
+      const b = el("button","lchg"); b.type="button"; b.setAttribute("aria-expanded", String(open)); b.setAttribute("aria-controls","langpick");
+      b.append(el("span",null,"Sprachen ändern"), el("span","lcnt",`${vis.length+1}/${MAX_VIS+1}`));
+      b.title = `Höchstens ${MAX_VIS+1} Sprachen gleichzeitig in der Tabelle (Ausgangssprache und ${MAX_VIS} weitere)`;
+      b.addEventListener("click",()=>{ const pk = document.getElementById("langpick"); pk.hidden = !pk.hidden; applyLangs(); });
+      g.append(b); }
+    renderLangPick();
     renderLangSet();
   }
   function saveHidden(){ try{ localStorage.setItem("rw-hidden", JSON.stringify([...hiddenLangs])); }catch(e){} }
+  function renderLangPick(){
+    const pk = document.getElementById("langpick"); if(!pk || pk.hidden) return;
+    pk.replaceChildren();
+    const nVis = LANGS.filter(([x])=>!hiddenLangs.has(x)).length + 1, full = nVis >= MAX_VIS+1;
+    const hd = el("div","lphead");
+    hd.append(el("strong",null,"Sprachen in der Tabelle"), el("span", "lpcount" + (full ? " full" : ""), `${nVis} von ${MAX_VIS+1} gewählt`));
+    const done = el("button","ghost lpdone","Fertig"); done.type="button"; done.addEventListener("click",()=>{ pk.hidden = true; applyLangs(); });
+    hd.append(done);
+    pk.append(hd, el("p","lphint",`Es passen höchstens ${MAX_VIS+1} Sprachen in die Tabelle: deine Ausgangssprache und bis zu ${MAX_VIS} weitere.`));
+    pk.append(el("span","lplbl","Ausgangssprache"));
+    const r1 = el("div","lprow");
+    [["de","Deutsch"], ...MYLANGS.map(l=>[l[0], l[1]])].forEach(([c,n])=>{
+      const b = el("button","lpchip src"); b.type="button"; b.setAttribute("aria-pressed", String(c===SRC));
+      b.title = c===SRC ? n+" ist die Ausgangssprache" : n+" als Ausgangssprache wählen";
+      b.append(flagEl(c), el("span",null,n));
+      b.addEventListener("click",()=>{ if(c!==SRC) applySrc(c, true); });
+      r1.append(b);
+    });
+    pk.append(r1, el("span","lplbl","Weitere Spalten"));
+    const r2 = el("div","lprow");
+    LANGS.forEach(([c,n])=>{
+      const on = !hiddenLangs.has(c);
+      const b = el("button","lpchip"); b.type="button"; b.setAttribute("aria-pressed", String(on));
+      const blocked = !on && full;
+      if(blocked){ b.classList.add("blocked"); b.title = `Schon ${MAX_VIS+1} Sprachen gewählt. Nimm zuerst eine andere heraus.`; } else b.title = on ? n+" ausblenden" : n+" anzeigen";
+      b.append(el("span","lpbox", on ? "✓" : ""), flagEl(c), el("span",null,n));
+      b.addEventListener("click",()=>{
+        if(blocked){ showNotice(`Es sind schon ${MAX_VIS+1} Sprachen gewählt. Nimm zuerst eine andere heraus.`); return; }
+        on ? hiddenLangs.add(c) : hiddenLangs.delete(c); saveHidden(); applyLangs(); render();
+      });
+      r2.append(b);
+    });
+    pk.append(r2);
+    const more = el("button","noticebtn lpmore","Sprachen hinzufügen oder entfernen …"); more.type="button";
+    more.addEventListener("click",()=>{ const sp = document.getElementById("setbtn"); if(sp && sp.getAttribute("aria-expanded")!=="true") sp.click(); });
+    pk.append(more);
+  }
 
   // Zwischenspeicher: Einträge, Bereiche und Bereich-nach-ID nur neu berechnen, wenn sich die Dokumentliste ändert
   let memoDocs = null, memoLen = -1, memoEntries = [], memoSecs = [], memoSecMap = new Map();
@@ -1394,14 +1482,67 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   function trEl(tag, text){ const n = el(tag, null, text); n.dataset.tr = "1"; return n; }
   function trB(text){ return trEl("b", text); }
   function el(tag, cls, text){ const n = document.createElement(tag); if(cls) n.className = cls; if(text!=null) n.textContent = text; return n; }
-  function showNotice(t, link, actions){
-    noticeEl.replaceChildren();
-    if(t){
-      noticeEl.append(document.createTextNode(t));
-      if(link){ const a = el("a",null,link.label); a.href = link.href; a.target = "_blank"; a.rel = "noopener"; noticeEl.append(" ", a); }
-      (actions || []).forEach((ac,i)=>{ const b = el("button","noticebtn",ac.label); b.type="button"; b.addEventListener("click", ac.fn); noticeEl.append(i ? "" : " ", b); });
+  // Hinweise erscheinen als kleines Popup direkt über der Stelle, an der gerade gearbeitet wird, und blenden sich von selbst aus
+  let lastSpot = null, lastSpotAt = 0, toastTimer = null, toastFade = null, toastLeft = 0, toastStart = 0;
+  const spotOf = t => t && t.closest ? (t.closest("button,select,input,textarea,a,label,.row,.sechead,.lt,.lchg,.lpchip,.dz,.md") || t) : null;
+  document.addEventListener("pointerdown", ev=>{ if(!noticeEl.contains(ev.target)){ lastSpot = spotOf(ev.target); lastSpotAt = Date.now(); } }, true);
+  document.addEventListener("focusin", ev=>{ if(!noticeEl.contains(ev.target)){ lastSpot = spotOf(ev.target); lastSpotAt = Date.now(); } }, true);
+  window.addEventListener("scroll", ()=>{ if(!noticeEl.hidden) placeToast(); }, {passive:true});
+  window.addEventListener("resize", ()=>{ if(!noticeEl.hidden) placeToast(); });
+  function placeToast(){
+    const vw = document.documentElement.clientWidth, vh = window.innerHeight;
+    const w = Math.min(420, vw - 24); noticeEl.style.maxWidth = w + "px";
+    let r = null;
+    if(lastSpot && lastSpot.isConnected && Date.now() - lastSpotAt < 15000){ const b = lastSpot.getBoundingClientRect(); if(b.width || b.height){ if(b.bottom > 0 && b.top < vh) r = b; } }
+    const tw = noticeEl.offsetWidth, th = noticeEl.offsetHeight;
+    let left, top, below = false;
+    if(r){
+      left = Math.max(12, Math.min(vw - tw - 12, r.left + r.width/2 - tw/2));
+      top = r.top - th - 12;
+      if(top < 8){ top = r.bottom + 12; below = true; }
+      const ax = Math.max(14, Math.min(tw - 14, r.left + r.width/2 - left));
+      noticeEl.style.setProperty("--ax", ax + "px");
+      noticeEl.classList.toggle("below", below); noticeEl.classList.remove("free");
+    } else {
+      left = Math.max(12, (vw - tw)/2); top = Math.max(12, Math.min(vh - th - 16, vh * 0.18));
+      noticeEl.classList.add("free");
     }
-    noticeEl.hidden = !t;
+    noticeEl.style.left = Math.round(left) + "px"; noticeEl.style.top = Math.round(Math.min(top, vh - th - 8)) + "px";
+  }
+  function hideToast(){ clearTimeout(toastTimer); clearTimeout(toastFade); noticeEl.classList.add("fading"); toastFade = setTimeout(()=>{ noticeEl.hidden = true; noticeEl.classList.remove("fading","show"); noticeEl.replaceChildren(); }, 900); }
+  function armToast(ms){ clearTimeout(toastTimer); toastLeft = ms; toastStart = Date.now(); toastTimer = setTimeout(hideToast, ms); }
+  noticeEl.addEventListener("pointerenter", ()=>{ if(noticeEl.hidden) return; clearTimeout(toastTimer); toastLeft = Math.max(1500, toastLeft - (Date.now() - toastStart)); noticeEl.classList.remove("fading"); clearTimeout(toastFade); });
+  noticeEl.addEventListener("pointerleave", ()=>{ if(!noticeEl.hidden) armToast(Math.max(1500, toastLeft)); });
+  function showNotice(t, link, actions){
+    clearTimeout(toastTimer); clearTimeout(toastFade);
+    if(!t){ if(!noticeEl.hidden) hideToast(); return; }
+    noticeEl.replaceChildren();
+    const tx = el("span","toasttx"); tx.append(document.createTextNode(t));
+    if(link){ const a = el("a",null,link.label); a.href = link.href; a.target = "_blank"; a.rel = "noopener"; tx.append(" ", a); }
+    noticeEl.append(tx);
+    if(actions && actions.length){
+      const box = el("span","toastacts");
+      actions.forEach(ac=>{ const b = el("button","noticebtn",ac.label); b.type="button"; b.addEventListener("click", ()=>{ hideToast(); ac.fn(); }); box.append(b); });
+      noticeEl.append(box);
+    }
+    const x = el("button","toastx","✕"); x.type="button"; x.setAttribute("aria-label","Hinweis schließen"); x.addEventListener("click", hideToast); noticeEl.append(x);
+    noticeEl.classList.remove("fading","show"); noticeEl.hidden = false;
+    placeToast(); void noticeEl.offsetWidth; noticeEl.classList.add("show");
+    const words = t.split(/\s+/).length + (link ? 4 : 0);
+    armToast(Math.min(15000, 2600 + words * 330) + (actions && actions.length ? 7000 : 0));
+  }
+  // Laufende Arbeiten (z. B. neue Wörter einfügen) bleiben an ihrer Stelle stehen, mit Fortschrittsbalken
+  function showProgress(t, done, total){
+    progEl.replaceChildren(); clearTimeout(progEl._t); progEl.classList.remove("fading");
+    const tx = el("span","progtx", t); progEl.append(tx);
+    if(total){ const pr = el("div","progress"); pr.setAttribute("role","progressbar"); pr.setAttribute("aria-valuemin","0"); pr.setAttribute("aria-valuemax",String(total)); pr.setAttribute("aria-valuenow",String(done||0)); const f = el("span"); f.style.width = Math.round(100*Math.min(1,(done||0)/total))+"%"; pr.append(f); progEl.append(pr); }
+    progEl.hidden = false;
+  }
+  function endProgress(t){
+    if(progEl.hidden && !t) return;
+    if(t){ showProgress(t, 1, 1); progEl.classList.add("finished"); }
+    clearTimeout(progEl._t);
+    progEl._t = setTimeout(()=>{ progEl.classList.add("fading"); progEl._t = setTimeout(()=>{ progEl.hidden = true; progEl.classList.remove("fading","finished"); progEl.replaceChildren(); }, 900); }, t ? 4000 : 0);
   }
   function secOf(e){ const s = e.section || ""; return s && secById(s) ? s : ""; }
 
@@ -1824,12 +1965,13 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
             sec = made.get(t);
           }
           if(!allSecs().some(x=>x.id===sec) && ![...made.values()].includes(sec)) continue;
+          if(n===0) showProgress(`Neue Wörter werden eingefügt …`, 0, s.items.length);
           have.add(k);
           const e = {id:newId(), de:it.de, section:sec, status:"pending", error:"", createdAt: stamp--, pos: it.pos||"noun", lvl: it.lvl||"", verb: !!it.verb};
           try{ await putDoc(e); n++; }catch(_){}
-          if(n % 100 === 0) showNotice(`Neue Wörter werden angelegt … ${n}`);
+          if(n % 10 === 0) showProgress(`Neue Wörter werden eingefügt … ${n} von ${s.items.length}`, n, s.items.length);
         }
-        showNotice(`${n} neue Wörter (B1–C1) sind dazugekommen. Sie werden jetzt nach und nach übersetzt.`);
+        endProgress(`${n} neue Wörter (B1–C1) sind dazugekommen. Sie werden jetzt nach und nach übersetzt.`);
       }
     }finally{ seedBusy = false; scheduleResume(2000); }
   }
@@ -3212,15 +3354,19 @@ ${words.map((w,i)=>`${i+1}. ${w}`).join("\n")}`;
     const stuck = entries().filter(e=>e.status==="pending" && !transInFlight.has(e.id));
     if(!stuck.length){ scheduleFill(500); return; }
     resuming = true;
-    showNotice(`${stuck.length===1 ? "1 unterbrochene Übersetzung wird" : stuck.length+" unterbrochene Übersetzungen werden"} fortgesetzt …`);
+    const label = stuck.length===1 ? "Eine Übersetzung wird fortgesetzt" : `Übersetzungen werden fortgesetzt`;
+    showProgress(`${label} … 0 von ${stuck.length}`, 0, stuck.length);
+    let ok = false;
     try{
       for(let i=0;i<stuck.length;i+=20){
         if(!sample || importing) break;
         const batch = stuck.slice(i, i+20).filter(e=>!transInFlight.has(e.id));
         if(batch.length) await translate(batch);
+        const d = Math.min(stuck.length, i+20); showProgress(`${label} … ${d} von ${stuck.length}`, d, stuck.length);
       }
-      if(sample) showNotice(`${stuck.length===1 ? "Die unterbrochene Übersetzung ist" : "Die "+stuck.length+" unterbrochenen Übersetzungen sind"} fertig.`);
-    }finally{ resuming = false; scheduleFill(500); }
+      ok = !!sample;
+    }finally{
+      endProgress(ok ? (stuck.length===1 ? "Die Übersetzung ist fertig." : `Alle ${stuck.length} Übersetzungen sind fertig.`) : ""); resuming = false; scheduleFill(500); }
   }
   async function translate(list, opts){
     opts = opts || {};
