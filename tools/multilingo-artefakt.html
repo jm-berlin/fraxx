@@ -485,6 +485,10 @@ header{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto a
 .tocpanel .tocgrid:has(.toccard.open){padding-bottom:340px}
 html[data-design] .tocgrid .tocmain .lbl{font-family:var(--font-head)}
 html[data-tf] .tocgrid .tocmain .hi{background:var(--blue);color:var(--blue-ink)}
+.mednote{display:flex;gap:12px;align-items:flex-start;margin:0 0 2px;padding:12px 16px;background:color-mix(in srgb, var(--hl) 14%, var(--surface));box-shadow:inset 4px 0 0 var(--hl);font-size:13.5px;line-height:1.5;color:var(--ink)}
+.mednote p{margin:0;max-width:900px}
+.mednote .medico{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:999px;background:var(--hl);color:var(--hl-ink,#131923);font-weight:800;font-size:13px;margin-top:1px}
+.tocgrid .tocmain .tmed{font-size:12px;font-weight:600;color:var(--ink);background:color-mix(in srgb, var(--hl) 16%, var(--surface));border-radius:8px;padding:3px 8px;box-shadow:inset 3px 0 0 var(--hl)}
 .tochint{grid-column:1 / -1;margin:4px 2px 0;font-size:13px;color:var(--muted)}
 /* Design-Auswahl */
 .designs{display:flex;align-items:center;gap:2px;background:var(--surface-2);border-radius:999px;padding:3px 3px 3px 14px;flex:0 1 auto;flex-wrap:wrap}
@@ -1644,6 +1648,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       const info = tocInfo(label, n);
       const lb = el("b","lbl",label); if(id==="") lb.dataset.tr = "1";
       b.append(el("span","hi",info.icon), lb, el("p","tdesc",info.desc));
+      if(MED_SECS.includes((label||"").trim().toLowerCase())) b.append(el("span","tmed","Ohne Gewähr · ersetzt keine Beratung durch Arzt oder Apotheke"));
       const meta = el("span","tmeta"); meta.append(el("span","n",fmtN(n)));
       if(nSubs) meta.append(el("span","nsub", nSubs===1 ? "1 Unterthema" : `${nSubs} Unterthemen`));
       b.append(meta, el("span","hgo", id==="" ? "Einsortieren →" : "Öffnen →"));
@@ -2308,6 +2313,15 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     return r;
   }
 
+  // Gesundheitsbereiche: Hinweis zu Haftung und Zweck der Angaben
+  const MED_SECS = ["arzneimittel", "gesundheitliche beschwerden", "gesundheit/arzt"];
+  const isMedSec = s => !!s && MED_SECS.includes((s.title||"").trim().toLowerCase());
+  const MED_TEXT = "Alle Angaben zu Arzneimitteln, Wirkstoffen, Markennamen und Beschwerden sind ohne Gewähr. Für ihre Richtigkeit und Vollständigkeit übernehmen wir keine Haftung. Sie ersetzen keine ärztliche oder pharmazeutische Beratung, sondern sollen dir nur helfen, dich mit Arzt oder Apotheker zu verständigen. Lies vor der Einnahme immer die Packungsbeilage und frag im Zweifel nach.";
+  function medNote(){
+    const n = el("div","mednote"); n.setAttribute("role","note");
+    n.append(el("span","medico","!"), el("p",null, MED_TEXT));
+    return n;
+  }
   function sectionBlock(sec, list, total, idx, nSecs, searching, childBlocks, grand){
     childBlocks = childBlocks || [];
     const isSub = !!(sec && parentOf(sec));
@@ -2424,6 +2438,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
       acts.append(up,dn,mg,rn,del); h.append(acts);
     }
     block.append(h);
+    if(sec && !isSub && isMedSec(sec) && !(sec.collapsed && !searching)) block.append(medNote());
 
     if(sec && confirmId==="merge:"+sec.id){
       const cf = el("div","confirm");
