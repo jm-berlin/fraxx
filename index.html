@@ -482,8 +482,21 @@ header{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto a
 .tocgrid .tocfold{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;align-items:center;margin:0 12px 12px;padding:7px 10px;border-radius:10px;background:var(--surface-2);color:var(--ink);font-size:13px;font-weight:600}
 .tocgrid .tocfold:hover{background:var(--accent-soft)}
 .tocgrid .tocfold:focus-visible{outline:3px solid var(--accent-soft)}
-.tocgrid .toccard.open .tocfold{margin-bottom:4px}
+
 .tocgrid .tocsubs{padding:2px 8px 12px}
+.tocpanel .tocgrid{align-items:stretch}
+.tocgrid .toccard{height:100%}
+.tocgrid .tocmain{flex:1 1 auto}
+.tocgrid .toccard.open{z-index:6;box-shadow:0 0 0 2px var(--accent-soft), var(--shadow)}
+.tocgrid .toccard.open:hover{transform:none}
+.tocgrid .toccard{position:relative;overflow:visible}
+.tocgrid .tocmain .tmeta{margin-top:auto;padding-top:4px}
+.tocgrid .tocmain .hgo{margin-top:0}
+.tocgrid .toccard .tocfold{position:absolute;right:16px;bottom:14px;margin:0;gap:6px;padding:4px 10px;border-radius:999px;font-size:12.5px}
+.tocgrid .toccard .tocfold span:first-child{font-weight:700}
+.tocgrid .toccard.open .tocsubs{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:7;background:var(--surface);border-radius:var(--radius);box-shadow:0 0 0 1px var(--line), 0 16px 40px rgb(10 14 20 / .22);padding:6px;max-height:320px;overflow:auto}
+.tocgrid .toccard.searching .tocfold{display:none}
+.tocpanel .tocgrid:has(.toccard.open){padding-bottom:340px}
 html[data-design] .tocgrid .tocmain .lbl{font-family:var(--font-head)}
 html[data-tf] .tocgrid .tocmain .hi{background:var(--blue);color:var(--blue-ink)}
 .tochint{grid-column:1 / -1;margin:4px 2px 0;font-size:13px;color:var(--muted)}
@@ -1653,8 +1666,10 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     if(unsorted && hit("Noch nicht zugeordnet")){
       const c = mkCard("Noch nicht zugeordnet", unsorted, "", 0); c.classList.add("unsorted"); nav.append(c); shown++;
     }
-    topSecs().filter(s=>!isHiddenTop(s)).forEach(s=>{
-      const subs = subSecs(s.id);
+    const tk = t => (typeof I18N==="object" ? I18N.t(t||"") : (t||""));
+    const byName = (a,b) => tk(a.title).localeCompare(tk(b.title), SRC, {sensitivity:"base"});
+    topSecs().filter(s=>!isHiddenTop(s)).sort(byName).forEach(s=>{
+      const subs = subSecs(s.id).slice().sort(byName);
       const subHits = subs.filter(c=>hit(c.title));
       if(!hit(s.title) && !subHits.length) return;
       const total = all.filter(e=>shownIn(e, s.id) || subs.some(c=>shownIn(e, c.id))).length;
@@ -1664,9 +1679,9 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       const open = !!q || tocOpen.has(s.id);
       if(list.length){
         const fold = el("button","tocfold"); fold.type="button";
-        fold.append(el("span",null, open ? "Unterthemen ausblenden" : "Unterthemen zeigen"), el("span","chev", open ? "▴" : "▾"));
+        fold.append(el("span",null, "Unterthemen"), el("span","chev", open ? "▴" : "▾"));
         fold.setAttribute("aria-expanded", String(open));
-        fold.addEventListener("click",()=>{ tocOpen.has(s.id) ? tocOpen.delete(s.id) : tocOpen.add(s.id); renderToc(); });
+        fold.addEventListener("click",()=>{ const was = tocOpen.has(s.id); tocOpen.clear(); if(!was) tocOpen.add(s.id); renderToc(); });
         card.append(fold);
       }
       if(list.length && open){
@@ -1674,7 +1689,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
         list.forEach(c=>{ const b = el("button","tocsub"); b.type="button"; b.append(el("span",null,c.title || "Ohne Titel"), el("span","n",String(cnt(c.id)))); b.addEventListener("click",()=>goToSection(c.id)); wrap.append(b); });
         card.append(wrap);
       }
-      if(open || list.length > 0) card.classList.toggle("open", open);
+      card.classList.toggle("open", open && !q); card.classList.toggle("searching", !!q && list.length > 0);
       nav.append(card); shown++;
     });
     const nSecs = allSecs().length;
@@ -1698,6 +1713,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   tocBtn.addEventListener("click",()=>setToc(true));
   document.getElementById("tocclose").addEventListener("click",()=>{ setToc(false); tocBtn.focus(); });
   tocEl.addEventListener("click",ev=>{ if(ev.target===tocEl){ setToc(false); tocBtn.focus(); } });
+  tocEl.addEventListener("click",ev=>{ if(tocOpen.size && ev.target.isConnected && !ev.target.closest(".toccard.open, .tocfold")){ tocOpen.clear(); renderToc(); } });
   tocFilter.addEventListener("input", renderToc);
   tocFilter.addEventListener("keydown",ev=>{ if(ev.key==="Enter"){ const f = document.querySelector("#tocnav button"); if(f) f.click(); } });
   document.addEventListener("keydown",ev=>{ if(ev.key==="Escape" && !tocEl.hidden){ setToc(false); tocBtn.focus(); } });
@@ -4938,7 +4954,7 @@ ${JSON.stringify(items)}`;
   })();
   document.querySelectorAll("#guide .gcard li, #guide .guidehead p").forEach(e=>e.setAttribute("data-trhtml",""));
   // neue Übersetzungen können die alphabetische Reihenfolge der Bereiche ändern
-  I18N.onChange = () => { if(SRC!=="de") renderData(); };
+  I18N.onChange = () => { if(SRC!=="de"){ renderData(); renderToc(); } };
 
   // ---------- Start ----------
   applyLangs();
