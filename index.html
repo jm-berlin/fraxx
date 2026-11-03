@@ -465,6 +465,27 @@ header{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto a
 .spinner.sm{width:16px;height:16px;border-width:2px}
 @media (max-width:760px){ .dishgrid{grid-template-columns:1fr} }
 
+/* Inhalt: Karten im Stil der Startseite */
+.tocpanel .tocgrid{background:var(--bg);grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;padding:20px 22px 24px}
+.tocgrid .toccard{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .15s, box-shadow .15s}
+.tocgrid .toccard:hover{transform:translateY(-3px)}
+.tocgrid .tocmain{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:100%;padding:20px 20px 16px;color:var(--ink);text-align:left}
+.tocgrid .tocmain:focus-visible{outline:3px solid var(--accent-soft);outline-offset:-3px;border-radius:var(--radius)}
+.tocgrid .tocmain:hover{filter:none}
+.tocgrid .tocmain .hi{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--accent-soft);font-size:21px;line-height:1}
+.tocgrid .tocmain .lbl{font-size:17px;font-weight:700;letter-spacing:-.01em;margin-top:4px;line-height:1.3;overflow-wrap:anywhere}
+.tocgrid .tocmain .tdesc{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+.tocgrid .tmeta{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.tocgrid .tmeta span{font-size:12px;font-weight:600;color:var(--muted);background:var(--surface-2);border-radius:999px;padding:2px 9px;font-variant-numeric:tabular-nums}
+.tocgrid .tocmain .hgo{margin-top:auto;padding-top:4px;font-size:13px;font-weight:700;color:var(--accent)}
+.tocgrid .toccard.unsorted .tocmain .lbl{font-size:17px;letter-spacing:-.01em;text-transform:none}
+.tocgrid .tocfold{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;align-items:center;margin:0 12px 12px;padding:7px 10px;border-radius:10px;background:var(--surface-2);color:var(--ink);font-size:13px;font-weight:600}
+.tocgrid .tocfold:hover{background:var(--accent-soft)}
+.tocgrid .tocfold:focus-visible{outline:3px solid var(--accent-soft)}
+.tocgrid .toccard.open .tocfold{margin-bottom:4px}
+.tocgrid .tocsubs{padding:2px 8px 12px}
+html[data-design] .tocgrid .tocmain .lbl{font-family:var(--font-head)}
+html[data-tf] .tocgrid .tocmain .hi{background:var(--blue);color:var(--blue-ink)}
 .tochint{grid-column:1 / -1;margin:4px 2px 0;font-size:13px;color:var(--muted)}
 /* Design-Auswahl */
 .designs{display:flex;align-items:center;gap:2px;background:var(--surface-2);border-radius:999px;padding:3px 3px 3px 14px;flex:0 1 auto;flex-wrap:wrap}
@@ -1564,6 +1585,48 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     if(open){ tocFilter.value = ""; renderToc(); setTimeout(()=>tocFilter.focus(), 30); }
   }
   const tocOpen = new Set();
+  // Kurzbeschreibung und Symbol je Bereich für das Inhaltsverzeichnis
+  const TOC_INFO = {
+    "noch nicht zugeordnet": ["📥", "Einträge, die noch auf ihr Thema warten. Von hier aus sortierst du sie mit wenigen Klicks ein."],
+    "wortschatz nach themen": ["📚", "Der große Grundwortschatz nach Lebensbereichen sortiert, jedes Wort mit Sprachniveau von A1 bis C1."],
+    "begrüßung & höflichkeit": ["👋", "Hallo, bitte, danke, Entschuldigung: die kleinen Sätze, mit denen jedes Gespräch freundlich beginnt."],
+    "leute kennenlernen": ["🤝", "Sich vorstellen, nach Herkunft und Hobbys fragen und mit Fremden ganz natürlich ins Plaudern kommen."],
+    "hotel": ["🛏", "Vom Einchecken bis zur tropfenden Dusche: was du an der Rezeption und im Zimmer brauchst."],
+    "restaurant": ["🍽", "Einen Tisch reservieren, nach Zutaten fragen, bestellen und am Ende um die Rechnung bitten."],
+    "bar": ["🍷", "Ein Bier, ein Glas Wein, noch eine Runde: Getränke bestellen und gemeinsam anstoßen."],
+    "supermarkt": ["🛒", "Regale durchsuchen, Mengen erfragen und an der Kasse oder der Frischetheke zurechtkommen."],
+    "bezahlen": ["💳", "Preise verstehen, bar oder mit Karte zahlen, Wechselgeld prüfen und über Trinkgeld reden."],
+    "flughafen": ["✈", "Check-in, Gepäck, Sicherheitskontrolle und Gate: entspannt durch Abflug, Umstieg und Ankunft."],
+    "fähre/hafen": ["⛴", "Überfahrt buchen, das Auto an Bord bringen und dich zwischen Kai und Deck orientieren."],
+    "tankstelle": ["⛽", "Volltanken, Luftdruck prüfen, Öl nachfüllen und nach der Waschanlage fragen."],
+    "autowerkstatt": ["🔧", "Wenn das Auto streikt: Schäden beschreiben, Reparaturen absprechen und Kosten klären."],
+    "motorradwerkstatt": ["🏍", "Pannenhilfe auf zwei Rädern, von der lockeren Kette bis zum platten Reifen."],
+    "fahrzeugteile": ["⚙", "Motor, Bremsen, Elektrik und Karosserie beim richtigen Namen nennen, damit die Werkstatt dich versteht."],
+    "werkzeuge": ["🔨", "Hammer, Bohrer, Schrauben und Dübel: Fachwörter für Baumarkt, Heimwerken und schnelle Reparaturen."],
+    "nach dem weg fragen": ["🧭", "Links, rechts, geradeaus: Wegbeschreibungen verstehen und selbst nach der Richtung fragen."],
+    "verkehr": ["🚦", "Schilder, Regeln und Sätze für Stau, Unfall oder Polizeikontrolle unterwegs auf der Straße."],
+    "öffentlicher verkehr": ["🚆", "Fahrkarten lösen, umsteigen und Durchsagen in Zug, Bus, Metro und Taxi verstehen."],
+    "gesundheit/arzt": ["🩺", "Beschwerden schildern, beim Arzt einen Termin bekommen und in der Apotheke das Richtige finden."],
+    "notfall": ["🚑", "Hilfe rufen, einen Unfall melden, Polizei oder Feuerwehr verständigen, wenn jede Sekunde zählt."],
+    "strand": ["🏖", "Liegen mieten, Strömung und Flaggen deuten und einen sorglosen Tag am Meer verbringen."],
+    "wetter": ["☀", "Vorhersagen lesen und mitreden, ob Sonne, Gewitter, Hitzewelle oder Glatteis kommt."],
+    "zeiten": ["🕒", "Uhrzeit, Wochentage, Monate und Jahreszeiten, damit jede Verabredung sicher klappt."],
+    "zahlen": ["🔢", "Von null bis zur Million, dazu Ordnungszahlen für Datum, Stockwerk und Reihenfolge."],
+    "tiere": ["🐾", "Vom Hofhund bis zum Wal: Haustiere, Wildtiere, Vögel und Meeresbewohner."],
+    "beruf": ["💼", "Über Job, Kollegen und Arbeitsalltag sprechen, beim Smalltalk wie im Vorstellungsgespräch."],
+  };
+  const TOC_ICONS = ["📁","🗂","📌","🧩","🔖","✳"];
+  function tocInfo(title, n){
+    const k = (title||"").trim().toLowerCase();
+    if(TOC_INFO[k]) return {icon: TOC_INFO[k][0], desc: TOC_INFO[k][1]};
+    let h = 0; for(const ch of k) h = (h*31 + ch.charCodeAt(0)) >>> 0;
+    const own = [
+      `Deine eigene Sammlung mit ${n} Einträgen, in allen Sprachen nebeneinander.`,
+      `Ein von dir angelegter Bereich, ${n===1 ? "ein Eintrag" : n+" Einträge"} zum Nachschlagen und Üben.`,
+      `Selbst zusammengestellt: Wörter und Sätze, die dir hier wichtig sind.`,
+    ];
+    return {icon: TOC_ICONS[h % TOC_ICONS.length], desc: own[h % own.length]};
+  }
   function renderToc(){
     if(tocEl.hidden) return;
     const nav = document.getElementById("tocnav"); nav.replaceChildren();
@@ -1573,38 +1636,45 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     const cnt = id => all.filter(e=>shownIn(e, id)).length;
     const unsorted = all.filter(e=>!secOf(e)).length;
     let shown = 0;
-    const mkMain = (label, n, id) => {
+    const fmtN = n => n===1 ? "1 Eintrag" : `${n.toLocaleString("de-DE")} Einträge`;
+    const mkCard = (label, n, id, nSubs) => {
+      const card = el("div","toccard");
       const b = el("button","tocmain"); b.type="button";
-      const lb = el("span","lbl",label); if(id==="") lb.dataset.tr = "1";
-      b.append(lb, el("span","n",String(n)));
+      const info = tocInfo(label, n);
+      const lb = el("b","lbl",label); if(id==="") lb.dataset.tr = "1";
+      b.append(el("span","hi",info.icon), lb, el("p","tdesc",info.desc));
+      const meta = el("span","tmeta"); meta.append(el("span","n",fmtN(n)));
+      if(nSubs) meta.append(el("span","nsub", nSubs===1 ? "1 Unterthema" : `${nSubs} Unterthemen`));
+      b.append(meta, el("span","hgo", id==="" ? "Einsortieren →" : "Öffnen →"));
       b.addEventListener("click",()=>goToSection(id));
-      return b;
+      card.append(b);
+      return card;
     };
     if(unsorted && hit("Noch nicht zugeordnet")){
-      const c = el("div","toccard unsorted"); c.append(mkMain("Noch nicht zugeordnet", unsorted, "")); nav.append(c); shown++;
+      const c = mkCard("Noch nicht zugeordnet", unsorted, "", 0); c.classList.add("unsorted"); nav.append(c); shown++;
     }
     topSecs().filter(s=>!isHiddenTop(s)).forEach(s=>{
       const subs = subSecs(s.id);
       const subHits = subs.filter(c=>hit(c.title));
       if(!hit(s.title) && !subHits.length) return;
       const total = all.filter(e=>shownIn(e, s.id) || subs.some(c=>shownIn(e, c.id))).length;
-      const card = el("div","toccard");
       const list = hit(s.title) ? subs : subHits;
-      const band = el("div","tocband"); band.append(mkMain(s.title || "Ohne Titel", total, s.id));
+      if(!total && !subs.length && (s.title||"").trim().toLowerCase()==="noch nicht zugeordnet") return;
+      const card = mkCard(s.title || "Ohne Titel", total, s.id, subs.length);
       const open = !!q || tocOpen.has(s.id);
       if(list.length){
-        const fold = el("button","tocfold", open ? "▴" : "▾"); fold.type="button";
+        const fold = el("button","tocfold"); fold.type="button";
+        fold.append(el("span",null, open ? "Unterthemen ausblenden" : "Unterthemen zeigen"), el("span","chev", open ? "▴" : "▾"));
         fold.setAttribute("aria-expanded", String(open));
-        fold.setAttribute("aria-label", (open ? "Unterbereiche ausblenden: " : "Unterbereiche zeigen: ") + (s.title||""));
         fold.addEventListener("click",()=>{ tocOpen.has(s.id) ? tocOpen.delete(s.id) : tocOpen.add(s.id); renderToc(); });
-        band.append(fold);
+        card.append(fold);
       }
-      card.append(band);
       if(list.length && open){
         const wrap = el("div","tocsubs");
         list.forEach(c=>{ const b = el("button","tocsub"); b.type="button"; b.append(el("span",null,c.title || "Ohne Titel"), el("span","n",String(cnt(c.id)))); b.addEventListener("click",()=>goToSection(c.id)); wrap.append(b); });
         card.append(wrap);
       }
+      if(open || list.length > 0) card.classList.toggle("open", open);
       nav.append(card); shown++;
     });
     const nSecs = allSecs().length;
@@ -4634,7 +4704,7 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
   // ---------- Startseite ----------
   (()=>{
     const root = document.documentElement, home = document.getElementById("home");
-    const stats = ()=>{ try{ document.getElementById("hsn").textContent = entries().length.toLocaleString("de-DE"); }catch(e){} try{ document.getElementById("hsl").textContent = String((MYLANGS && MYLANGS.length ? MYLANGS.length : LANGS.length) + 1); }catch(e){} };
+    const stats = ()=>{ try{ document.getElementById("hsn").textContent = entries().length.toLocaleString("de-DE"); }catch(e){} try{ document.getElementById("hsl").textContent = String(Math.min(MAX_VIS + 1, (MYLANGS && MYLANGS.length ? MYLANGS.length : LANGS.length) + 1)); }catch(e){} };
     const setHome = on => { root.toggleAttribute("data-home", on); if(on){ stats(); window.scrollTo(0,0); } };
     const logo = document.getElementById("logo");
     logo.addEventListener("click", ()=>setHome(true));
