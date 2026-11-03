@@ -1864,7 +1864,24 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
       if(hadFocus && focusSel){ const f = n.querySelector(focusSel); if(f) f.focus({preventScroll:true}); }
     });
   }
+  // Zeilen wiederverwenden, solange sich weder der Eintrag noch sein Anzeigezustand geändert hat
+  // (verhindert Flackern, während im Hintergrund übersetzt wird)
+  const rowCache = new Map();
+  let uiEpoch = 0, fromData = false;
+  function rowSig(e, ctx){
+    let body = ""; try{ body = JSON.stringify(e); }catch(_){ return null; }
+    return [uiEpoch, ctx||"", SRC, posFilter, LANGS.map(l=>l[0]).join(), [...hiddenLangs].join(), selected.has(e.id), flashId===e.id,
+      editId===e.id ? editCtx+"|"+editDraft : "", confirmId===e.id, openConj.has(e.id), conjTense.get(e.id)||"", transInFlight.has(e.id), body].join("\u0001");
+  }
   function entryRow(e, ctx){
+    const key = e.id + "|" + (ctx||""), sig = rowSig(e, ctx), hit = rowCache.get(key);
+    if(sig && hit && hit.sig===sig && !hit.node.isConnected){ hit.node.classList.remove("lastpin"); return hit.node; }
+    const node = entryRowBuild(e, ctx);
+    if(sig) rowCache.set(key, {sig, node});
+    if(rowCache.size > 6000) rowCache.clear();
+    return node;
+  }
+  function entryRowBuild(e, ctx){
     const mirror = !!ctx && secOf(e)!==ctx;
     const r = el("div","row" + (mirror ? " mirror" : "")); r.setAttribute("role","row"); r.dataset.id = e.id; r.dataset.ctx = ctx || ""; r.id = rowDomId(e, ctx);
     if(selected.has(e.id)) r.classList.add("selected");
@@ -2181,20 +2198,21 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
   }
 
   let renderQueued = false;
-  function render(){ if(renderQueued) return; renderQueued = true; requestAnimationFrame(()=>{ renderQueued = false; renderNow(); }); }
+  function render(){ if(!fromData) uiEpoch++; if(renderQueued) return; renderQueued = true; requestAnimationFrame(()=>{ renderQueued = false; renderNow(); }); }
   // Datenänderungen (z. B. Hintergrund-Übersetzungen) gebündelt darstellen, damit die Seite bedienbar bleibt
   let lastRenderAt = 0, lastRenderDur = 0, dataTimer = null;
   let lastInput = 0, pointerIsDown = false;
   ["pointerdown","keydown"].forEach(t=>document.addEventListener(t, ()=>{ lastInput = performance.now(); }, true));
   document.addEventListener("pointerdown", ()=>{ pointerIsDown = true; }, true);
   ["pointerup","pointercancel"].forEach(t=>document.addEventListener(t, ()=>{ setTimeout(()=>{ pointerIsDown = false; }, 60); }, true));
+  function renderFromData(){ fromData = true; try{ render(); } finally { fromData = false; } }
   function renderData(){
     // Nicht neu zeichnen, während eine Maustaste gedrückt ist – sonst geht der Klick verloren
     if(pointerIsDown){ if(!dataTimer) dataTimer = setTimeout(()=>{ dataTimer = null; renderData(); }, 150); return; }
-    if(performance.now() - lastInput < 1500){ render(); return; }
+    if(performance.now() - lastInput < 1500){ renderFromData(); return; }
     const gap = Math.max(800, lastRenderDur * 8), since = performance.now() - lastRenderAt;
-    if(since >= gap && !dataTimer) render();
-    else if(!dataTimer) dataTimer = setTimeout(()=>{ dataTimer = null; render(); }, Math.max(0, gap - since));
+    if(since >= gap && !dataTimer) renderFromData();
+    else if(!dataTimer) dataTimer = setTimeout(()=>{ dataTimer = null; renderFromData(); }, Math.max(0, gap - since));
   }
   function renderNow(){
     if(dragIds || secDrag){ pendingRender = true; return; }
@@ -2260,6 +2278,7 @@ Antworte ausschließlich mit JSON: {"t":[["Thema", …], …]} mit genau ${part.
     list.forEach(e=>{
       const r = entryRow(e, null);
       const de = r.querySelector(".cell.de");
+      if(de) de.querySelectorAll(".rowtheme").forEach(n=>n.remove());
       // Bereiche als Sprungziele; der Bereich, der der Wortart selbst entspricht (z. B. „Verben“), entfällt
       const self = {verb:"verben", adj:"adjektive", noun:"substantive", pron:"pronomen", prep:"präpositionen", konj:"konjunktionen"}[posFilter];
       const secs = [e.section, ...alsoOf(e)].map(id=>secById(id)).filter(s=>s && !(!parentOf(s) && (s.title||"").trim().toLowerCase()===self));
