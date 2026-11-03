@@ -1612,6 +1612,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     "zeiten": ["🕒", "Uhrzeit, Wochentage, Monate und Jahreszeiten, damit jede Verabredung sicher klappt."],
     "zahlen": ["🔢", "Von null bis zur Million, dazu Ordnungszahlen für Datum, Stockwerk und Reihenfolge."],
     "tiere": ["🐾", "Vom Hofhund bis zum Wal: Haustiere, Wildtiere, Vögel und Meeresbewohner."],
+    "arzneimittel": ["💊", "Bekannte Medikamente und ihre Wirkstoffe finden, nach Dosierung fragen und den Beipackzettel verstehen."],
+    "gesundheitliche beschwerden": ["🤒", "Erklären, was dir fehlt, seit wann und wie stark, damit Apotheke oder Arzt dir gezielt helfen können."],
     "beruf": ["💼", "Über Job, Kollegen und Arbeitsalltag sprechen, beim Smalltalk wie im Vorstellungsgespräch."],
   };
   const TOC_ICONS = ["📁","🗂","📌","🧩","🔖","✳"];
@@ -2024,9 +2026,30 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
         try{ await patchDoc(s.id, {done:true, doneAt:Date.now()}); }catch(_){ continue; }
         const have = new Set(entries().map(e=>dupKey(e.de||"")).filter(Boolean));
         const made = new Map(); let stamp = Date.now(), n = 0;
+        const ensureSec = async (title, parent) => {
+          const key = (parent||"") + ">" + title.toLowerCase();
+          if(made.has(key)) return made.get(key);
+          const pool = parent ? subSecs(parent) : topSecs();
+          let x = pool.find(y=>(y.title||"").trim().toLowerCase()===title.toLowerCase());
+          if(!x){ x = {id:newId(), kind:"section", title, ...(parent ? {parent} : {}), order: pool.reduce((m,y)=>Math.max(m, y.order||0), -1) + 1, collapsed:true, createdAt:Date.now()}; try{ await putDoc(x); }catch(_){ return null; } }
+          made.set(key, x.id); return x.id;
+        };
+        let mirrored = 0;
         for(const it of s.items){
-          const k = dupKey(it.de||""); if(!k || have.has(k)) continue;
+          const k = dupKey(it.de||""); if(!k) continue;
           let sec = String(it.sec||"");
+          if(sec.startsWith("top:")){
+            const [t, sub] = sec.slice(4).split(">");
+            const topId = await ensureSec(t.trim(), ""); if(!topId) continue;
+            sec = sub ? await ensureSec(sub.trim(), topId) : topId; if(!sec) continue;
+          }
+          if(have.has(k)){
+            if(it.mirror && sec && !sec.startsWith("new:")){
+              const ex = entries().find(e=>dupKey(e.de||"")===k);
+              if(ex && ex.section!==sec && !(ex.also||[]).includes(sec)){ try{ await patchDoc(ex.id, {also:[...(ex.also||[]), sec]}); mirrored++; }catch(_){} }
+            }
+            continue;
+          }
           if(sec.startsWith("new:")){
             const t = sec.slice(4); if(!wz) continue;
             if(!made.has(t)){
@@ -2037,13 +2060,14 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
             sec = made.get(t);
           }
           if(!allSecs().some(x=>x.id===sec) && ![...made.values()].includes(sec)) continue;
+          if(it.pos==="phrase") it.verb = false;
           if(n===0) showProgress(`Neue Wörter werden eingefügt …`, 0, s.items.length);
           have.add(k);
           const e = {id:newId(), de:it.de, section:sec, status:"pending", error:"", createdAt: stamp--, pos: it.pos||"noun", lvl: it.lvl||"", verb: !!it.verb};
           try{ await putDoc(e); n++; }catch(_){}
           if(n % 10 === 0) showProgress(`Neue Wörter werden eingefügt … ${n} von ${s.items.length}`, n, s.items.length);
         }
-        endProgress(`${n} neue Wörter (B1–C1) sind dazugekommen. Sie werden jetzt nach und nach übersetzt.`);
+        endProgress(`${s.label || "Wortpaket"}: ${n} neue Einträge${mirrored ? `, ${mirrored} vorhandene zusätzlich einsortiert` : ""}. Sie werden jetzt nach und nach übersetzt.`);
       }
     }finally{ seedBusy = false; scheduleResume(2000); }
   }
