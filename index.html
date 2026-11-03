@@ -638,6 +638,14 @@ html:root[data-design="graphit"]{
 .lplbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:4px}
 .lprow{display:flex;flex-wrap:wrap;gap:6px}
 .lpchip{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:14px;display:inline-flex;gap:7px;align-items:center}
+span.lpchip{padding:0;gap:0;overflow:hidden}
+span.lpchip .lptog{border:0;background:transparent;color:inherit;font:inherit;display:inline-flex;gap:7px;align-items:center;padding:5px 12px;cursor:pointer}
+span.lpchip.on .lptog{padding:5px 4px;font-weight:600}
+span.lpchip .mv{border:0;background:transparent;color:var(--muted);font-size:16px;line-height:1;width:26px;align-self:stretch;cursor:pointer}
+span.lpchip .mv:hover:not(:disabled){background:var(--surface-2);color:var(--ink)}
+span.lpchip .mv:disabled{opacity:.25;cursor:default}
+span.lpchip.on{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+span.lpchip.on .lpbox{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .lpchip:hover{background:var(--hover)}
 .lpchip[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);font-weight:600}
 .lpchip.src[aria-pressed="true"]{border-color:var(--hl);box-shadow:inset 0 0 0 1px var(--hl);background:color-mix(in srgb, var(--hl) 16%, var(--surface))}
@@ -1210,7 +1218,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
         <li>Das Quiz übernimmt das Niveau aus der Tabelle. Umgekehrt ändert eine Auswahl im Quiz die Tabelle nicht.</li>
       </ul></div>
       <div class="gcard"><h3><span class="gnum">7</span>Sprachen</h3><ul>
-        <li>In der Leiste unter <span class="k">Tabelle anpassen</span> siehst du die Sprachen der Tabelle, die Ausgangssprache ist markiert. <span class="k">Sprachen ändern</span> öffnet die Auswahl: höchstens 5 Sprachen passen in die Tabelle, deine Ausgangssprache und bis zu 4 weitere. Dort wechselst du auch die Ausgangssprache.</li>
+        <li>In der Leiste unter <span class="k">Tabelle anpassen</span> siehst du die Sprachen der Tabelle, die Ausgangssprache ist markiert. <span class="k">Sprachen ändern</span> öffnet die Auswahl: höchstens 5 Sprachen passen in die Tabelle, deine Ausgangssprache und bis zu 4 weitere. Dort wechselst du auch die Ausgangssprache und änderst mit <span class="k">‹ ›</span> die Reihenfolge der Spalten.</li>
         <li>Unter <span class="k">⚙</span> stehen ganz oben Ausgangssprache und Sprachniveau, darunter verwaltest du deine Sprachen: installierte Sprachen ordnest du mit <span class="k">‹ ›</span> oder entfernst sie mit <span class="k">✕</span>, ausgegraute Sprachen fügst du per Tipp hinzu. Vorhandene Einträge werden dann automatisch nachübersetzt.</li>
         <li>Bei Sprachen mit anderer Schrift steht die Umschrift unter der Übersetzung.</li>
       </ul></div>
@@ -1459,6 +1467,18 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     renderLangSet();
   }
   function saveHidden(){ try{ localStorage.setItem("rw-hidden", JSON.stringify([...hiddenLangs])); }catch(e){} }
+  // Spalten der Tabelle umsortieren (Deutsch steht bei anderer Ausgangssprache an deren Platz)
+  async function moveCol(c, other, dir){
+    if(!other) return;
+    const code = x => x==="de" ? SRC : x;
+    const i = activeCodes.indexOf(code(c)), j = activeCodes.indexOf(code(other));
+    if(i<0 || j<0) return;
+    const next = activeCodes.slice(); [next[i], next[j]] = [next[j], next[i]];
+    activeCodes = next;
+    try{ await saveLangs(); }catch(_){ fail(); }
+    applyLangs(); renderLangPanel(); render();
+    const f = document.querySelector(`#langpick .lpchip[data-lang="${c}"] .mv:${dir==="l" ? "first-child" : "last-child"}`); if(f && !f.disabled) f.focus();
+  }
   function renderLangPick(){
     const pk = document.getElementById("langpick"); if(!pk || pk.hidden) return;
     pk.replaceChildren();
@@ -1477,19 +1497,28 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       b.addEventListener("click",()=>{ if(c!==SRC) applySrc(c, true); });
       r1.append(b);
     });
-    pk.append(r1, el("span","lplbl","Weitere Spalten"));
+    pk.append(r1, el("span","lplbl","Weitere Spalten · Reihenfolge mit ‹ ›"));
     const r2 = el("div","lprow");
-    LANGS.forEach(([c,n])=>{
-      const on = !hiddenLangs.has(c);
-      const b = el("button","lpchip"); b.type="button"; b.setAttribute("aria-pressed", String(on));
+    const visL = LANGS.filter(([x])=>!hiddenLangs.has(x)), hidL = LANGS.filter(([x])=>hiddenLangs.has(x));
+    [...visL, ...hidL].forEach(([c,n])=>{
+      const on = !hiddenLangs.has(c), vi = visL.findIndex(([x])=>x===c);
+      const wrap = el("span","lpchip" + (on ? " on" : "")); wrap.dataset.lang = c;
+      const b = el("button","lptog"); b.type="button"; b.setAttribute("aria-pressed", String(on));
       const blocked = !on && full;
-      if(blocked){ b.classList.add("blocked"); b.title = `Schon ${MAX_VIS+1} Sprachen gewählt. Nimm zuerst eine andere heraus.`; } else b.title = on ? n+" ausblenden" : n+" anzeigen";
+      if(blocked){ wrap.classList.add("blocked"); b.title = `Schon ${MAX_VIS+1} Sprachen gewählt. Nimm zuerst eine andere heraus.`; } else b.title = on ? n+" ausblenden" : n+" anzeigen";
       b.append(el("span","lpbox", on ? "✓" : ""), flagEl(c), el("span",null,n));
       b.addEventListener("click",()=>{
         if(blocked){ showNotice(`Es sind schon ${MAX_VIS+1} Sprachen gewählt. Nimm zuerst eine andere heraus.`); return; }
         on ? hiddenLangs.add(c) : hiddenLangs.delete(c); saveHidden(); applyLangs(); render();
       });
-      r2.append(b);
+      if(on){
+        const lf = el("button","mv","‹"); lf.type="button"; lf.disabled = vi===0; lf.setAttribute("aria-label", n+" eine Spalte nach links"); lf.title = "Nach links";
+        const rt = el("button","mv","›"); rt.type="button"; rt.disabled = vi===visL.length-1; rt.setAttribute("aria-label", n+" eine Spalte nach rechts"); rt.title = "Nach rechts";
+        lf.addEventListener("click",()=>moveCol(c, visL[vi-1] && visL[vi-1][0], "l"));
+        rt.addEventListener("click",()=>moveCol(c, visL[vi+1] && visL[vi+1][0], "r"));
+        wrap.append(lf, b, rt);
+      } else wrap.append(b);
+      r2.append(wrap);
     });
     pk.append(r2);
     const more = el("button","noticebtn lpmore","Sprachen hinzufügen oder entfernen …"); more.type="button";
