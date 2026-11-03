@@ -347,6 +347,9 @@ header{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto a
 .favcount{min-width:18px;height:18px;border-radius:999px;background:var(--blue);color:var(--blue-ink);font-size:11px;font-weight:700;display:inline-grid;place-items:center;padding:0 5px}
 .setpop{position:absolute;left:0;right:0;top:calc(100% + 18px);align-content:center;box-sizing:border-box;z-index:30;background:var(--surface);border-radius:var(--radius);box-shadow:0 0 0 1px var(--line), 0 16px 40px rgb(10 14 20 / .28);padding:14px 16px;display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
 .setpop .srcpick{flex:0 1 340px;min-width:240px}
+.setpop .srcpick.mainsrc{background:var(--blue)}
+.setpop .srcpick.mainsrc .lbl{color:var(--blue-ink);font-weight:600}
+.setpop .langset{flex-basis:100%;padding-top:12px;border-top:1px solid var(--line)}
 .setpop .modes{flex:0 1 300px;min-width:240px}
 .setpop .status{margin-left:auto}
 @media (max-width:760px){ .setpop{align-content:flex-start} .setpop .srcpick,.setpop .modes{flex:1 1 100%;min-width:0} .setpop .status{margin-left:0} }
@@ -1106,9 +1109,9 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       <button class="setbtn round" id="setbtn" type="button" aria-expanded="false" aria-controls="setpop" title="Einstellungen" aria-label="Einstellungen"><span aria-hidden="true">⚙</span></button>
     </div>
     <div class="setpop" id="setpop" hidden role="group" aria-label="Einstellungen">
-      <div class="langset" id="langset" role="group" aria-label="Sprachen"></div>
+      <label class="srcpick mainsrc" for="srcsel"><span class="lbl">Ausgangssprache</span><select id="srcsel"></select></label>
       <label class="srcpick lvlpick" for="lvlsel"><span class="lbl">Sprachniveau</span><select id="lvlsel"><option value="">Alle</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label>
-      <label class="srcpick" for="srcsel"><span class="lbl">Ausgangssprache</span><select id="srcsel"></select></label>
+      <div class="langset" id="langset" role="group" aria-label="Sprachen"></div>
       <div class="modes" role="group" aria-label="Darstellung">
         <button class="md" type="button" data-mode="auto" aria-pressed="true">Auto</button>
         <button class="md" type="button" data-mode="light" aria-pressed="false"><span aria-hidden="true">☀︎</span>Hell</button>
@@ -1208,7 +1211,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       </ul></div>
       <div class="gcard"><h3><span class="gnum">7</span>Sprachen</h3><ul>
         <li>In der Leiste unter <span class="k">Tabelle anpassen</span> siehst du die Sprachen der Tabelle, die Ausgangssprache ist markiert. <span class="k">Sprachen ändern</span> öffnet die Auswahl: höchstens 5 Sprachen passen in die Tabelle, deine Ausgangssprache und bis zu 4 weitere. Dort wechselst du auch die Ausgangssprache.</li>
-        <li>Unter <span class="k">⚙</span> ganz oben verwaltest du deine Sprachen: installierte Sprachen ordnest du mit <span class="k">‹ ›</span> oder entfernst sie mit <span class="k">✕</span>, ausgegraute Sprachen fügst du per Tipp hinzu. Vorhandene Einträge werden dann automatisch nachübersetzt.</li>
+        <li>Unter <span class="k">⚙</span> stehen ganz oben Ausgangssprache und Sprachniveau, darunter verwaltest du deine Sprachen: installierte Sprachen ordnest du mit <span class="k">‹ ›</span> oder entfernst sie mit <span class="k">✕</span>, ausgegraute Sprachen fügst du per Tipp hinzu. Vorhandene Einträge werden dann automatisch nachübersetzt.</li>
         <li>Bei Sprachen mit anderer Schrift steht die Umschrift unter der Übersetzung.</li>
       </ul></div>
       <div class="gcard"><h3><span class="gnum">8</span>Aussprache</h3><ul>
