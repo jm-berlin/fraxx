@@ -2844,7 +2844,9 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
       if(!subs.length){ if(fits(leafKind(t, direct))) units.push({title:t.title||"", sec:t, list:direct}); return; }
       const subUnits = subs.map(c=>{ const l = all.filter(e=>shownIn(e, c.id)); return {sec:c, list:l, kind:leafKind(c, l)}; }).filter(x=>fits(x.kind));
       const directFits = direct.length ? fits(leafKind(t, direct)) : false;
-      if(subUnits.length || directFits) units.push({title:t.title||"", sec:t, list: directFits ? direct : [], group: subUnits});
+      // Nur ein Unterbereich in diesem Reiter: direkt unter der Bereichsüberschrift zeigen, ohne Zwischenebene
+      if(subUnits.length===1 && !directFits) units.push({title:t.title||"", sec:subUnits[0].sec, list:subUnits[0].list, asTop:t});
+      else if(subUnits.length || directFits) units.push({title:t.title||"", sec:t, list: directFits ? direct : [], group: subUnits});
     });
     const tKey = t => (typeof I18N==="object" ? I18N.t(t||"") : (t||""));
     units.sort((a,b)=> tKey(a.title).localeCompare(tKey(b.title), SRC, {sensitivity:"base"}));
@@ -2857,6 +2859,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
       const grand = u.group ? new Set([...u.list, ...u.group.flatMap(c=>c.list)].map(e=>e.id)).size : undefined;
       const blk = sectionBlock(u.sec, l, inS.length, i, units.length, searching, childBlocks, grand);
       if(u.flat) blk.classList.add("flatsub");
+      if(u.asTop){ blk.classList.remove("subsec"); blk.classList.add("astop"); const tt = blk.querySelector(".sectitle"); if(tt) tt.textContent = u.asTop.title || "Ohne Titel"; if(isMedSec(u.asTop) && !blk.classList.contains("collapsed")){ const hd = blk.querySelector(".sechead"); if(hd) hd.after(medNote()); } }
       rowsEl.append(blk);
     });
     if(focusId && focusId!=="neu"){ const f = document.getElementById(focusId); if(f && f!==document.activeElement) f.focus(); }
