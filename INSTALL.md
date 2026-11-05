@@ -65,6 +65,10 @@ Your own entries and changes are stored **only on this device**. To take them to
 2. Save the file, e.g. in iCloud, Google Drive or OneDrive.
 3. On the other device: install Multilingo → ⚙ → **“Sicherung einlesen”** (restore backup) → choose the file.
 
+Multilingo reminds you automatically: once you have entries of your own, a notice with **“Jetzt sichern”** (back up now) appears after 14 days without a backup (and every 30 days after that).
+
+> **Important:** Clearing the normal browser cache is harmless. **Clearing “site data” / “cookies and other site data”**, however, also removes your own entries. Back up first!
+
 ---
 
 ## 5. Translating new words (optional)

@@ -65,6 +65,10 @@ Deine eigenen Einträge und Änderungen liegen **nur auf diesem Gerät**. So nim
 2. Speichere die Datei z. B. in iCloud, Google Drive oder OneDrive.
 3. Auf dem anderen Gerät: Multilingo installieren → ⚙ → **„Sicherung einlesen“** → Datei auswählen.
 
+Multilingo erinnert dich von selbst: Sobald du eigene Einträge hast, erscheint nach 14 Tagen ohne Sicherung (danach alle 30 Tage) ein Hinweis mit **„Jetzt sichern“**.
+
+> **Wichtig:** Normales Cache-Leeren im Browser schadet nicht. **„Websitedaten“ bzw. „Cookies und andere Websitedaten“ löschen** entfernt dagegen auch deine eigenen Einträge. Vorher sichern!
+
 ---
 
 ## 5. Neue Wörter übersetzen lassen (optional)
