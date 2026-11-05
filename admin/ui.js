@@ -154,6 +154,40 @@
     catch (err) { m.className = "mlmsg err"; m.textContent = err.message || "Die Datei konnte nicht gelesen werden."; }
   });
 
+  // Erinnerung an die Sicherung: eigene Einträge liegen nur auf diesem Gerät
+  const DAY = 864e5;
+  async function backupReminder() {
+    try {
+      await ML.ready();
+      const n = ML.ownCount();
+      if (!n) return;
+      let since = await ML.meta.get("ownSince"); if (!since) { since = Date.now(); await ML.meta.set("ownSince", since); }
+      const last = await ML.meta.get("lastBackup"), snooze = await ML.meta.get("backupSnooze"), handle = await ML.meta.get("backupHandle");
+      const now = Date.now();
+      if (snooze && snooze > now) return;
+      if (handle && last && now - last < 30 * DAY) return;
+      const due = last ? now - last >= 30 * DAY : now - since >= 14 * DAY;
+      if (!due) return;
+      const days = last ? Math.floor((now - last) / DAY) : 0;
+      const box = document.createElement("div"); box.id = "mlbackupremind";
+      box.setAttribute("role", "status");
+      box.innerHTML = `<style>#mlbackupremind{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:250;width:min(560px,calc(100% - 32px));background:var(--ink,#141212);color:var(--surface,#f3f1ef);border-radius:16px;box-shadow:0 12px 32px rgb(0 0 0 / .3);padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font-size:14.5px;line-height:1.45}
+#mlbackupremind p{margin:0;flex:1 1 260px}#mlbackupremind b{font-weight:700}
+#mlbackupremind .r{display:flex;gap:8px;margin-left:auto}#mlbackupremind button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:8px 14px;cursor:pointer}
+#mlbackupremind .y{background:var(--hl,#cc5530);color:var(--hl-ink,#fff)}#mlbackupremind .n{background:transparent;color:inherit;opacity:.8}</style>
+<p></p><div class="r"><button type="button" class="n">Später</button><button type="button" class="y">Jetzt sichern</button></div>`;
+      const what = n === 1 ? "Deine eigene Änderung liegt" : `Deine ${n.toLocaleString("de-DE")} eigenen Einträge und Änderungen liegen`;
+      box.querySelector("p").innerHTML = (last ? `<b>Letzte Sicherung vor ${days} Tagen.</b> ` : `<b>Noch keine Sicherung.</b> `) + what + " nur auf diesem Gerät.";
+      box.querySelector(".n").addEventListener("click", async () => { await ML.meta.set("backupSnooze", Date.now() + 7 * DAY); box.remove(); });
+      box.querySelector(".y").addEventListener("click", async () => {
+        try { if (await ML.meta.get("backupHandle")) await autoSave(true); else await download(); } catch (e) {}
+        box.remove();
+      });
+      document.body.appendChild(box);
+    } catch (e) { console.warn("Erinnerung", e); }
+  }
+  setTimeout(backupReminder, 6000);
+
   // Automatische Sicherung in eine Datei (Chrome/Edge am PC)
   let autoTimer = null;
   async function autoSave(interactive) {

@@ -345,6 +345,8 @@
     index: () => state.index,
     installed: () => state.installed.slice(),
     userCount: () => Object.keys(state.user).length,
+    // Eigene Daten, die bei einem Verlust wirklich fehlen würden (ohne Einstellungen und Oberflächen-Übersetzungen)
+    ownCount: () => Object.entries(state.user).filter(([id, d]) => id !== "settings" && !(d && (d.kind === "ui" || d.kind === "settings"))).length,
     onChange: fn => state.changeHooks.add(fn),
     async installPack(lang) {
       const p = state.index.packs.find(x => x.lang === lang); if (!p) throw new Error("unbekannt");

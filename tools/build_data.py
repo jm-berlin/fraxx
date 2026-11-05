@@ -31,6 +31,41 @@ for d in docs:
         else: d[c] = {**(d.get(c) or {}), "text": v["text"], "note": v.get("note","")}
     d["nb"] = nb2; d["noteLang"] = "de"; d["nbCur"] = json.dumps(_snap(d), ensure_ascii=False, separators=(",",":")); _norm += 1
 print("auf Deutsch umgestellt:", _norm)
+# Aufräumen wie die App beim Start (sonst schreibt die Web-App diese Korrekturen bei jedem Nutzer in „Meine Daten“):
+# Wörter, die keine Verben sein können, verlieren die Verb-Markierung; leere „Weitere“-Unterbereiche fallen weg
+SECS = {d["id"]: d for d in docs if d.get("kind") == "section"}
+GRAM_POS = {"pron", "prep", "konj"}
+def _top(sec):
+    while sec and sec.get("parent") and sec["parent"] in SECS: sec = SECS[sec["parent"]]
+    return sec
+def no_verb_here(d):
+    t = (d.get("de") or "").strip()
+    if re.match(r"^(der|die|das|ein|eine)\s", t, re.I): return True
+    if d.get("pos") in ("adj", "noun") or d.get("pos") in GRAM_POS: return True
+    ids = [d.get("section")] + list(d.get("also") or [])
+    for i, sid in enumerate(ids):
+        sec = SECS.get(sid)
+        if not sec: continue
+        tt = ((_top(sec) or {}).get("title") or "").strip().lower()
+        if tt == "adjektive" or (i == 0 and tt == "substantive") or (sec.get("title") or "").strip().lower() == "farben": return True
+    return False
+_fixed = 0
+for d in docs:
+    if d.get("kind") is None and d.get("verb") is True and no_verb_here(d):
+        d.update({"verb": False, "conj": None, "conjFor": "", "conjStatus": ""}); _fixed += 1
+# „Weitere“ unter Substantive / Wortschatz nach Themen auflösen (wie undoWeitere in der App)
+for top in [x for x in SECS.values() if not x.get("parent") and (x.get("title") or "").strip().lower() in ("substantive", "wortschatz nach themen")]:
+    for w in [x for x in SECS.values() if x.get("parent") == top["id"] and (x.get("title") or "").strip().lower() == "weitere"]:
+        for d in docs:
+            if d.get("kind") is None and d.get("section") == w["id"]:
+                also = [x for x in (d.get("also") or []) if x != w["id"] and x in SECS]
+                if also: d["section"] = also[-1]; d["also"] = also[:-1]
+            elif d.get("kind") is None and w["id"] in (d.get("also") or []):
+                d["also"] = [x for x in d["also"] if x != w["id"]]
+_used = {d.get("section") for d in docs if d.get("kind") is None} | {x for d in docs if d.get("kind") is None for x in (d.get("also") or [])}
+_drop = {i for i, sdoc in SECS.items() if (sdoc.get("title") or "").strip() == "Weitere" and sdoc.get("parent") and i not in _used and not any(x.get("parent") == i for x in SECS.values())}
+docs = [d for d in docs if d.get("id") not in _drop]
+print("Verb-Markierung korrigiert:", _fixed, "· leere Unterbereiche entfernt:", len(_drop))
 # Sprachen mit Übersetzungen finden
 from collections import Counter
 _cnt = Counter(l for d in docs if d.get("kind") is None for l in CATALOG if isinstance(d.get(l), dict) and d[l].get("text"))
