@@ -1,0 +1,50 @@
+{
+ "releases": [
+  {
+   "release": "2026-11-05T11:27:09.000Z",
+   "date": "2026-11-05",
+   "notes": {
+    "de": [
+     "Neu: Bevor Multilingo sich aktualisiert, siehst du, was sich geändert hat, und entscheidest selbst, wann du aktualisierst.",
+     "Bis dahin funktioniert alles wie gewohnt, auch offline."
+    ],
+    "en": [
+     "New: before Multilingo updates, you see what has changed and decide yourself when to update.",
+     "Until then everything works as usual, offline too."
+    ],
+    "fr": [
+     "Nouveau : avant une mise à jour, Multilingo te montre ce qui a changé et tu décides quand l’installer.",
+     "D’ici là, tout fonctionne comme d’habitude, même hors ligne."
+    ],
+    "it": [
+     "Novità: prima di aggiornarsi, Multilingo ti mostra cosa è cambiato e decidi tu quando aggiornare.",
+     "Fino ad allora tutto funziona come sempre, anche offline."
+    ],
+    "es": [
+     "Nuevo: antes de actualizarse, Multilingo te muestra qué ha cambiado y tú decides cuándo actualizar.",
+     "Hasta entonces todo funciona como siempre, también sin conexión."
+    ],
+    "pt": [
+     "Novo: antes de atualizar, o Multilingo mostra o que mudou e tu decides quando atualizar.",
+     "Até lá tudo funciona como de costume, também offline."
+    ],
+    "nl": [
+     "Nieuw: voordat Multilingo bijwerkt, zie je wat er veranderd is en bepaal je zelf wanneer je bijwerkt.",
+     "Tot die tijd werkt alles zoals gewoonlijk, ook offline."
+    ],
+    "pl": [
+     "Nowość: przed aktualizacją Multilingo pokazuje, co się zmieniło, a ty sam decydujesz, kiedy zaktualizować.",
+     "Do tego czasu wszystko działa jak zwykle, także offline."
+    ],
+    "sv": [
+     "Nytt: innan Multilingo uppdateras ser du vad som har ändrats och bestämmer själv när du uppdaterar.",
+     "Tills dess fungerar allt som vanligt, även offline."
+    ],
+    "nb": [
+     "Nytt: før Multilingo oppdateres, ser du hva som er endret, og bestemmer selv når du oppdaterer.",
+     "Inntil da fungerer alt som vanlig, også uten nett."
+    ]
+   }
+  }
+ ]
+}

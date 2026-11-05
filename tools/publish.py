@@ -1,12 +1,14 @@
 """Veröffentlichen: Export aus dem Claude-Artefakt -> öffentliche Fassung + Admin-Fassung in diesem Repository.
 
 Aufruf (im Repository-Ordner):
-    python3 tools/publish.py <ordner-mit-export-teilen> <artefakt.html>
+    python3 tools/publish.py <ordner-mit-export-teilen> <artefakt.html> [hinweise.json]
 
 <ordner-mit-export-teilen>: die JSON-Dateien, die der Knopf „Export für Web-App“ im Artefakt in dessen
 Dateispeicher legt (je Teil eine Datei mit {"app":"multilingo","type":"export","stamp",...,"docs":[...]}).
 Es dürfen auch Teile älterer Exporte darin liegen: verwendet wird nur der neueste vollständige Export.
 <artefakt.html>: die aktuelle Fassung des Artefakts (Quelltext der Seite).
+[hinweise.json]: was sich für Nutzer geändert hat, in allen Oberflächensprachen (Format siehe tools/release.py).
+Die App zeigt es beim nächsten Start im Hinweis „Update verfügbar“.
 
 Ergebnis (letzte Zeile der Ausgabe):
     ERGEBNIS: NICHTS-NEU        Dieser Export ist schon veröffentlicht. Nichts geändert.
@@ -24,8 +26,12 @@ def stop(msg, code=1):
 
 
 def main():
-    if len(sys.argv) != 3: stop("ABBRUCH Aufruf: publish.py <export-ordner> <artefakt.html>", 2)
+    if len(sys.argv) not in (3, 4): stop("ABBRUCH Aufruf: publish.py <export-ordner> <artefakt.html> [hinweise.json]", 2)
     exp_dir, art = sys.argv[1], sys.argv[2]
+    notes = {}
+    if len(sys.argv) == 4:
+        try: notes = json.load(open(sys.argv[3]))
+        except Exception as e: stop(f"ABBRUCH Hinweise nicht lesbar: {e}")
 
     # 1) Neuesten vollständigen Export finden
     groups = {}
@@ -94,7 +100,11 @@ def main():
     for f in ("index.html", "admin/index.html"):
         if not os.path.exists(os.path.join(REPO, f)): stop("ABBRUCH " + f + " fehlt")
 
-    # 6) Übernehmen
+    # 6) Übernehmen (Release-Kennung und Änderungshinweise für den Hinweis „Update verfügbar“)
+    try: old_changes = json.load(open(os.path.join(REPO, "data", "changes.json")))
+    except Exception: old_changes = {}
+    sys.path.insert(0, os.path.join(REPO, "tools")); from release import add_release
+    add_release(data_new, stamp, notes, old_changes)
     shutil.rmtree(os.path.join(REPO, "data"), ignore_errors=True)
     shutil.copytree(data_new, os.path.join(REPO, "data"))
     json.dump({"stamp": stamp, "documents": total, "entries": n_new,

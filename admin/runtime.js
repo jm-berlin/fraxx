@@ -65,7 +65,8 @@
 
   // ---------- Datenschichten ----------
   const state = {
-    index: null,          // data/packs.json
+    index: null,          // data/packs.json (aktive Fassung)
+    pending: null,        // neuere Fassung, die auf Zustimmung wartet
     installed: [],        // installierte Sprachpakete
     base: new Map(),      // Standard + Pakete (zusammengeführt)
     user: {},             // eigene Änderungen: id -> Dokument oder {__deleted:true}
@@ -74,13 +75,17 @@
     changeHooks: new Set()
   };
 
+  // Neue Veröffentlichung (anderes „release“) wird nicht sofort übernommen: sie wartet in state.pending,
+  // bis der Nutzer im Hinweis „Update verfügbar“ zustimmt. Erster Start und ältere Stände: direkt übernehmen.
   async function loadIndex() {
+    const active = await iget("meta", "index");
     try {
       const idx = await getJSON(DATA + "packs.json", { cache: "no-cache" });
+      if (active && active.release && idx.release && idx.release !== active.release) { state.pending = idx; return active; }
+      state.pending = null;
       await iput("meta", "index", idx); return idx;
     } catch (e) {
-      const idx = await iget("meta", "index");
-      if (idx) return idx;
+      if (active) return active;
       throw e;
     }
   }
@@ -366,7 +371,18 @@
     },
     async checkUpdates() {
       state.index = await loadIndex(); await rebuildBase(); changed();
+      return !!state.pending;
     },
+    // Update: was wartet, und übernehmen
+    pendingUpdate: () => state.pending ? { release: state.pending.release, from: (state.index && state.index.release) || "" } : null,
+    release: () => (state.index && state.index.release) || "",
+    async applyUpdate() {
+      if (!state.pending) return;
+      const idx = state.pending; state.pending = null;
+      state.index = idx; await iput("meta", "index", idx);
+      await rebuildBase(); changed();
+    },
+    srcLang: () => curSrc(),
     async exportBackup() {
       await state.ready;
       const prefs = {};

@@ -192,6 +192,91 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
   }
   setTimeout(backupReminder, 6000);
 
+  // ---------- Update verfügbar: erst zeigen, was neu ist, dann auf Wunsch übernehmen ----------
+  const UPD_T = {
+    de: { t: "Update verfügbar", l: "Eine neue Version von Multilingo ist da.", w: "Was ist neu", now: "Jetzt aktualisieren", later: "Später", h: "Bis dahin funktioniert alles wie gewohnt, auch offline. Deine eigenen Einträge bleiben erhalten.", busy: "Wird aktualisiert …", gen: "Verbesserungen und Korrekturen." },
+    en: { t: "Update available", l: "A new version of Multilingo is ready.", w: "What’s new", now: "Update now", later: "Later", h: "Until then everything works as usual, offline too. Your own entries are kept.", busy: "Updating …", gen: "Improvements and fixes." },
+    fr: { t: "Mise à jour disponible", l: "Une nouvelle version de Multilingo est prête.", w: "Nouveautés", now: "Mettre à jour", later: "Plus tard", h: "D’ici là, tout fonctionne comme d’habitude, même hors ligne. Tes propres entrées sont conservées.", busy: "Mise à jour …", gen: "Améliorations et corrections." },
+    it: { t: "Aggiornamento disponibile", l: "È pronta una nuova versione di Multilingo.", w: "Novità", now: "Aggiorna ora", later: "Più tardi", h: "Fino ad allora tutto funziona come sempre, anche offline. Le tue voci restano salvate.", busy: "Aggiornamento …", gen: "Miglioramenti e correzioni." },
+    es: { t: "Actualización disponible", l: "Hay una nueva versión de Multilingo.", w: "Novedades", now: "Actualizar ahora", later: "Más tarde", h: "Hasta entonces todo funciona como siempre, también sin conexión. Tus propias entradas se conservan.", busy: "Actualizando …", gen: "Mejoras y correcciones." },
+    pt: { t: "Atualização disponível", l: "Há uma nova versão do Multilingo.", w: "Novidades", now: "Atualizar agora", later: "Mais tarde", h: "Até lá tudo funciona como de costume, também offline. As tuas entradas são mantidas.", busy: "A atualizar …", gen: "Melhorias e correções." },
+    nl: { t: "Update beschikbaar", l: "Er is een nieuwe versie van Multilingo.", w: "Wat is er nieuw", now: "Nu bijwerken", later: "Later", h: "Tot die tijd werkt alles zoals gewoonlijk, ook offline. Je eigen items blijven bewaard.", busy: "Bijwerken …", gen: "Verbeteringen en correcties." },
+    pl: { t: "Dostępna aktualizacja", l: "Jest nowa wersja Multilingo.", w: "Co nowego", now: "Aktualizuj teraz", later: "Później", h: "Do tego czasu wszystko działa jak zwykle, także offline. Twoje własne wpisy zostaną zachowane.", busy: "Aktualizacja …", gen: "Ulepszenia i poprawki." },
+    sv: { t: "Uppdatering tillgänglig", l: "En ny version av Multilingo finns.", w: "Nyheter", now: "Uppdatera nu", later: "Senare", h: "Tills dess fungerar allt som vanligt, även offline. Dina egna poster finns kvar.", busy: "Uppdaterar …", gen: "Förbättringar och rättelser." },
+    nb: { t: "Oppdatering tilgjengelig", l: "En ny versjon av Multilingo er klar.", w: "Hva er nytt", now: "Oppdater nå", later: "Senere", h: "Inntil da fungerer alt som vanlig, også uten nett. Dine egne oppføringer beholdes.", busy: "Oppdaterer …", gen: "Forbedringer og rettelser." }
+  };
+  let updShown = false;
+  const swReg = async () => { try { return await navigator.serviceWorker?.getRegistration(); } catch (e) { return null; } };
+  function waitWaiting(reg, ms) {
+    return new Promise(res => {
+      if (!reg) return res(null);
+      if (reg.waiting) return res(reg.waiting);
+      const t = setTimeout(() => res(reg.waiting || null), ms);
+      const watch = w => w && w.addEventListener("statechange", () => { if (w.state === "installed") { clearTimeout(t); res(reg.waiting || w); } });
+      watch(reg.installing);
+      reg.addEventListener("updatefound", () => watch(reg.installing));
+    });
+  }
+  async function updateDialog() {
+    if (updShown) return;
+    try {
+      await ML.ready();
+      const reg = await swReg();
+      const pend = ML.pendingUpdate();
+      const codeWaiting = !!(reg && reg.waiting && navigator.serviceWorker.controller);
+      if (!pend && !codeWaiting) return;
+      updShown = true;
+      const lang = ML.srcLang(), T = UPD_T[lang] || UPD_T.en;
+      // Änderungen seit der eigenen Fassung (neueste zuerst)
+      let notes = [];
+      try {
+        const ch = await (await fetch((window.ML_DATA || "data/") + "changes.json", { cache: "no-cache" })).json();
+        const from = (pend && pend.from) || ML.release();
+        const rel = (ch.releases || []).filter(r => !from || r.release > from);
+        (rel.length ? rel : (ch.releases || []).slice(0, 1)).slice(0, 5).forEach(r => {
+          const n = (r.notes && (r.notes[lang] || r.notes.en || r.notes.de)) || [];
+          n.forEach(x => { if (!notes.includes(x)) notes.push(x); });
+        });
+      } catch (e) {}
+      if (!notes.length) notes = [T.gen];
+      const ov = document.createElement("div"); ov.id = "mlupd"; ov.setAttribute("data-notr", "");
+      ov.innerHTML = `<style>#mlupd{position:fixed;inset:0;z-index:300;background:rgb(10 14 20 / .45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:16px}
+#mlupd .b{width:min(520px,100%);max-height:calc(100vh - 32px);overflow:auto;background:var(--surface,#f3f1ef);color:var(--ink,#141212);border-radius:22px;box-shadow:0 24px 60px rgb(10 14 20 / .3);padding:24px 24px 20px}
+#mlupd .k{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--hl,#cc5530);margin:0 0 6px}
+#mlupd h2{margin:0 0 6px;font-size:1.5rem;letter-spacing:-.02em}#mlupd p{margin:0;color:var(--muted,#6b635d);line-height:1.5}
+#mlupd h3{margin:16px 0 8px;font-size:1rem}#mlupd ul{margin:0;padding-left:20px;line-height:1.5}#mlupd li{margin:4px 0}
+#mlupd .r{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:20px}
+#mlupd button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:10px 18px;cursor:pointer}
+#mlupd .y{background:var(--hl,#cc5530);color:var(--hl-ink,#fff)}#mlupd .n{background:var(--surface-2,#e9e5e2);color:inherit}#mlupd .y:disabled{opacity:.7;cursor:default}
+#mlupd .h{font-size:13px;margin-top:14px}</style>
+<div class="b" role="dialog" aria-modal="true" aria-labelledby="mlupdt"><p class="k">Multilingo</p><h2 id="mlupdt"></h2><p class="l"></p><h3></h3><ul></ul><p class="h"></p>
+<div class="r"><button type="button" class="n"></button><button type="button" class="y"></button></div></div>`;
+      ov.querySelector("h2").textContent = T.t; ov.querySelector(".l").textContent = T.l; ov.querySelector("h3").textContent = T.w;
+      ov.querySelector(".h").textContent = T.h;
+      const ul = ov.querySelector("ul"); notes.forEach(x => { const li = document.createElement("li"); li.textContent = x; ul.appendChild(li); });
+      const yes = ov.querySelector(".y"), no = ov.querySelector(".n");
+      yes.textContent = T.now; no.textContent = T.later;
+      no.addEventListener("click", () => ov.remove());
+      yes.addEventListener("click", async () => {
+        yes.disabled = true; no.disabled = true; yes.textContent = T.busy;
+        try { await ML.applyUpdate(); } catch (e) {}
+        // Neue App-Fassung (falls vorhanden) aktivieren und neu laden
+        const r = await swReg(); try { await r?.update(); } catch (e) {}
+        const w = await waitWaiting(r, 12000);
+        if (w && navigator.serviceWorker.controller) {
+          navigator.serviceWorker.addEventListener("controllerchange", () => location.reload(), { once: true });
+          w.postMessage("skipWaiting");
+          setTimeout(() => location.reload(), 5000);
+        } else location.reload();
+      });
+      document.body.appendChild(ov);
+      setTimeout(() => yes.focus(), 50);
+    } catch (e) { console.warn("Update", e); }
+  }
+  setTimeout(updateDialog, 2500);
+  // Eine neue App-Fassung kann auch erst während der Nutzung fertig geladen sein
+  (async () => { const r = await swReg(); if (!r) return; r.addEventListener("updatefound", () => { const w = r.installing; w && w.addEventListener("statechange", () => { if (w.state === "installed" && navigator.serviceWorker.controller) updateDialog(); }); }); })();
+
   // Automatische Sicherung in eine Datei (Chrome/Edge am PC)
   let autoTimer = null;
   async function autoSave(interactive) {
@@ -239,7 +324,7 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
   });
   $("mlupdate").addEventListener("click", async () => {
     const m = $("mlresetmsg"); m.className = "mlmsg"; m.textContent = "Suche …";
-    try { const reg = await navigator.serviceWorker?.getRegistration(); await reg?.update(); await ML.checkUpdates(); m.textContent = "Alles aktuell."; }
+    try { const reg = await navigator.serviceWorker?.getRegistration(); await reg?.update(); const has = await ML.checkUpdates(); await new Promise(r => setTimeout(r, 1500)); if (has || (reg && reg.waiting)) { m.textContent = ""; close(); updShown = false; updateDialog(); } else m.textContent = "Alles aktuell."; }
     catch (e) { m.className = "mlmsg err"; m.textContent = "Keine Verbindung."; }
   });
 })();

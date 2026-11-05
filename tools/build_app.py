@@ -56,7 +56,7 @@ man = _json.load(open(os.path.join(out, "manifest.webmanifest")))
 man.update({"name": "Multilingo Admin", "short_name": "ML Admin", "id": "./admin/"})
 man["icons"] = [{**i, "src": "../" + i["src"]} for i in man["icons"]]
 _json.dump(man, open(os.path.join(adm, "manifest.webmanifest"), "w"), ensure_ascii=False, indent=2)
-aver = hashlib.sha1((a + open(os.path.join(adm, "runtime.js")).read()).encode()).hexdigest()[:10]
+aver = hashlib.sha1((a + open(os.path.join(adm, "runtime.js")).read() + open(os.path.join(adm, "ui.js")).read()).encode()).hexdigest()[:10]
 asw = (open(os.path.join(os.path.dirname(__file__), "sw.template.js")).read().replace("__VERSION__", aver)
        .replace('"ml-shell-"', '"mla-shell-"').replace('"ml-runtime"', '"mla-runtime"')
        .replace('"icons/', '"../icons/').replace('"img/', '"../img/').replace('"data/packs.json"', '"../data/packs.json"'))
