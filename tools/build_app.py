@@ -24,10 +24,11 @@ head = '''<!doctype html>
 '''
 s = head + s
 # Hinweise an die App anpassen
-rep('if(!sample){ showNotice("Übersetzen ist in dieser Ansicht nicht verfügbar. Öffne die Seite in Claude, angemeldet mit deinem Konto."); return; }',
-    'if(!sample){ showNotice("Für neue Übersetzungen braucht Multilingo einen Claude-API-Schlüssel. Du kannst ihn unter ⚙ → App, Sprachpakete & Sicherung eintragen."); return; }')
-rep('if(!sample) showNotice("Übersetzen ist in dieser Ansicht nicht verfügbar. Öffne die Seite in Claude, angemeldet mit deinem Konto.");',
-    'if(!sample){ try{ if(!localStorage.getItem("ml-offnote")){ localStorage.setItem("ml-offnote","1"); showNotice("Multilingo läuft offline mit deinen Sprachpaketen. Neue Wörter übersetzt es, sobald du unter ⚙ → App, Sprachpakete & Sicherung einen Claude-API-Schlüssel einträgst."); } }catch(e){} }')
+# Öffentliche Testversion: keine eigene Übersetzung, kein Schlüssel. Admin: Hinweis auf den Schlüssel
+rep('if(!sample){ showNotice(IN_WEBAPP ? "Eigene Übersetzungen sind in dieser Testversion noch nicht freigeschaltet. Sie kommen in einer späteren Version." : "Übersetzen ist in dieser Ansicht nicht verfügbar. Öffne die Seite in Claude, angemeldet mit deinem Konto."); return; }',
+    'if(!sample){ showNotice(window.ML_ADMIN ? "Für neue Übersetzungen braucht Multilingo einen Claude-API-Schlüssel. Du kannst ihn unter ⚙ → App, Sprachpakete & Sicherung eintragen." : "Eigene Übersetzungen sind in dieser Testversion noch nicht freigeschaltet. Sie kommen in einer späteren Version."); return; }')
+rep('if(!sample && !IN_WEBAPP) showNotice("Übersetzen ist in dieser Ansicht nicht verfügbar. Öffne die Seite in Claude, angemeldet mit deinem Konto.");',
+    'if(!sample && window.ML_ADMIN){ try{ if(!localStorage.getItem("ml-offnote")){ localStorage.setItem("ml-offnote","1"); showNotice("Multilingo läuft offline mit deinen Sprachpaketen. Neue Wörter übersetzt es, sobald du unter ⚙ → App, Sprachpakete & Sicherung einen Claude-API-Schlüssel einträgst."); } }catch(e){} }')
 rep('statusEl.textContent = "Gespeichert in deinem Konto";', 'statusEl.textContent = "Gespeichert auf diesem Gerät";')
 s = re.sub(r'(data-img="(\w+)" src=")data:image/jpeg;base64,[^"]+', lambda m: m.group(1) + 'img/' + m.group(2) + '.jpg', s)
 s = s.rstrip() + '\n<script src="ui.js"></script>\n</html>\n'

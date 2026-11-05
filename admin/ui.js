@@ -1,4 +1,6 @@
-/* Multilingo – App-Einstellungen: Sprachpakete, Sicherung, Online-Übersetzung, Installation */
+/* Multilingo – App-Einstellungen: Sprachpakete, Sicherung, Online-Übersetzung (nur Admin), Installation */
+// Eigene Übersetzung mit API-Schlüssel ist in der öffentlichen Testversion noch nicht freigeschaltet
+const KEYUI = window.ML_ADMIN === true;
 (() => {
   "use strict";
   const ML = window.Multilingo;
@@ -59,9 +61,9 @@
         <div class="mlrow"><button type="button" class="mlbtn pri" id="mlexport">Sicherung herunterladen</button><button type="button" class="mlbtn" id="mlimport">Sicherung einlesen</button><input type="file" id="mlfile" accept=".json,application/json" hidden></div>
         <div class="mlrow" id="mlautorow" style="margin-top:8px" hidden><button type="button" class="mlbtn" id="mlauto">Automatisch in eine Datei sichern …</button><button type="button" class="mlbtn" id="mlautoperm" hidden>Automatische Sicherung fortsetzen</button></div>
         <div class="mlmsg" id="mlbackmsg"></div></section>
-      <section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel arbeitet Multilingo komplett offline mit allem, was in den Sprachpaketen steckt. Mit einem eigenen <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">Claude-API-Schlüssel</a> übersetzt es neue Wörter, Konjugationen und Speisekarten wie bisher. Die Kosten liegen bei Bruchteilen eines Cents pro Eintrag. Der Schlüssel bleibt nur auf diesem Gerät.</p>
+${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel arbeitet Multilingo komplett offline mit allem, was in den Sprachpaketen steckt. Mit einem eigenen <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">Claude-API-Schlüssel</a> übersetzt es neue Wörter, Konjugationen und Speisekarten wie bisher. Die Kosten liegen bei Bruchteilen eines Cents pro Eintrag. Der Schlüssel bleibt nur auf diesem Gerät.</p>
         <div class="mlrow"><input class="mlkey" id="mlkey" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-…"><button type="button" class="mlbtn pri" id="mlkeysave">Speichern</button><button type="button" class="mlbtn warn" id="mlkeydel" hidden>Entfernen</button></div>
-        <div class="mlmsg" id="mlkeymsg"></div></section>
+        <div class="mlmsg" id="mlkeymsg"></div></section>` : ""}
       <section class="mlsec"><h3>Zurücksetzen</h3><p>Löscht alle eigenen Änderungen auf diesem Gerät. Die Standarddaten bleiben. Lade vorher eine Sicherung herunter.</p><div class="mlrow"><button type="button" class="mlbtn warn" id="mlreset">Eigene Änderungen löschen</button><button type="button" class="mlbtn" id="mlupdate">Nach Updates suchen</button></div><div class="mlmsg" id="mlresetmsg"></div></section>
     </div></div>`;
   document.body.appendChild(wrap);
@@ -130,8 +132,10 @@
     }
     // Schlüssel
     const k = ML.apiKey.get();
+    if (KEYUI) {
     $("mlkey").value = k ? "••••••••••••" + k.slice(-4) : ""; $("mlkey").dataset.masked = k ? "1" : "";
     $("mlkeydel").hidden = !k;
+    }
   }
 
   $("mlinstallbtn").addEventListener("click", async () => { if (!installEvt) return; installEvt.prompt(); try { await installEvt.userChoice; } catch (e) {} installEvt = null; refresh(); });
@@ -212,6 +216,7 @@
   ML.onChange(() => { clearTimeout(autoTimer); autoTimer = setTimeout(() => autoSave(false), 4000); });
 
   // Schlüssel
+  if (KEYUI) {
   $("mlkey").addEventListener("focus", e => { if (e.target.dataset.masked) { e.target.value = ""; e.target.dataset.masked = ""; } });
   $("mlkeysave").addEventListener("click", async () => {
     const v = $("mlkey").value.trim(), m = $("mlkeymsg");
@@ -224,6 +229,7 @@
     ML.apiKey.set(v); m.className = "mlmsg"; m.textContent = "Gespeichert. Multilingo lädt neu …"; setTimeout(() => location.reload(), 900);
   });
   $("mlkeydel").addEventListener("click", () => { ML.apiKey.set(""); $("mlkeymsg").textContent = "Schlüssel entfernt. Multilingo lädt neu …"; setTimeout(() => location.reload(), 900); });
+  }
   window.addEventListener("ml-badkey", () => { const n = document.getElementById("notice"); if (n) { n.hidden = false; n.textContent = "Der Claude-API-Schlüssel wurde abgelehnt. Unter ⚙ → App, Sprachpakete & Sicherung kannst du ihn ändern."; } });
 
   // Zurücksetzen / Updates

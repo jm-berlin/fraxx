@@ -65,6 +65,58 @@ for top in [x for x in SECS.values() if not x.get("parent") and (x.get("title") 
 _used = {d.get("section") for d in docs if d.get("kind") is None} | {x for d in docs if d.get("kind") is None for x in (d.get("also") or [])}
 _drop = {i for i, sdoc in SECS.items() if (sdoc.get("title") or "").strip() == "Weitere" and sdoc.get("parent") and i not in _used and not any(x.get("parent") == i for x in SECS.values())}
 docs = [d for d in docs if d.get("id") not in _drop]
+# Doppelte Einträge zusammenführen (wie „Zusammenführen“ in der App), sonst meldet die Web-App sie bei jedem neuen Nutzer.
+# Pronomen u. ä. unterscheiden Groß-/Kleinschreibung („ihnen“/„Ihnen“).
+import unicodedata
+def _nd(t, keepcase=False):
+    t = unicodedata.normalize("NFC", t or "")
+    if not keepcase: t = t.lower()
+    return re.sub(r"\s+", " ", re.sub(r'[.!?,;:¿¡"„“”«»]+', "", t)).strip()
+_groups = {}
+for d in docs:
+    if d.get("kind") is not None: continue
+    o = d.get("orig") or "de"
+    t = d.get("de", "") if o == "de" else ((d.get(o) or {}).get("text") or d.get("de", ""))
+    k = _nd(t, d.get("pos") in GRAM_POS)
+    if k: _groups.setdefault(o + "|" + k, []).append(d)
+_gone = set()
+for g in _groups.values():
+    if len(g) < 2: continue
+    keep = sorted(g, key=lambda e: (-(1 if e.get("conj") else 0), -(1 if e.get("status") == "done" else 0), e.get("createdAt") or 0))[0]
+    secs = list(keep.get("also") or []); quiz = dict(keep.get("quiz") or {})
+    for e in g:
+        if e is keep: continue
+        for x in [e.get("section")] + list(e.get("also") or []):
+            if x and x != keep.get("section") and x in SECS and x not in secs: secs.append(x)
+        for c, n in (e.get("quiz") or {}).items(): quiz[c] = max(quiz.get(c, 0), n or 0)
+        _gone.add(e["id"])
+    keep["also"] = secs
+    if quiz: keep["quiz"] = quiz
+docs = [d for d in docs if d.get("id") not in _gone]
+print("doppelte Einträge zusammengeführt:", len(_gone))
+# Anleitung ohne API-Schlüssel: vorhandene Übersetzungen des geänderten Satzes übernehmen
+for d in docs:
+    if d.get("kind") != "ui" or not isinstance(d.get("pairs"), list): continue
+    for p in d["pairs"]:
+        if isinstance(p, list) and len(p) == 2 and "Sprachpakete, API-Schlüssel und Sicherungen" in p[0]:
+            p[0] = p[0].replace("Sprachpakete, API-Schlüssel und Sicherungen", "Sprachpakete und Sicherungen")
+            p[1] = re.sub(r",\s[^,]*API[^,]*?\s(and|y|et|e|og|en|i|och)\s", r" \1 ", p[1])
+# Hinweis der Testversion (eigene Übersetzungen noch nicht freigeschaltet) in allen Oberflächen
+UI_EXTRA = {"Eigene Übersetzungen sind in dieser Testversion noch nicht freigeschaltet. Sie kommen in einer späteren Version.": {
+  "en": "Your own translations are not yet enabled in this test version. They will come in a later version.",
+  "fr": "Les traductions personnelles ne sont pas encore activées dans cette version de test. Elles arriveront dans une version ultérieure.",
+  "it": "Le traduzioni personali non sono ancora attive in questa versione di prova. Arriveranno in una versione successiva.",
+  "es": "Las traducciones propias aún no están activadas en esta versión de prueba. Llegarán en una versión posterior.",
+  "pt": "As traduções próprias ainda não estão ativadas nesta versão de teste. Chegarão numa versão posterior.",
+  "nl": "Eigen vertalingen zijn in deze testversie nog niet ingeschakeld. Ze komen in een latere versie.",
+  "pl": "Własne tłumaczenia nie są jeszcze włączone w tej wersji testowej. Pojawią się w późniejszej wersji.",
+  "sv": "Egna översättningar är ännu inte aktiverade i den här testversionen. De kommer i en senare version.",
+  "nb": "Egne oversettelser er ennå ikke aktivert i denne testversjonen. De kommer i en senere versjon."}}
+for d in docs:
+    if d.get("kind") != "ui" or not isinstance(d.get("pairs"), list): continue
+    have = {p[0] for p in d["pairs"] if isinstance(p, list)}
+    for k, tr in UI_EXTRA.items():
+        if k not in have and d.get("lang") in tr: d["pairs"].append([k, tr[d["lang"]]])
 print("Verb-Markierung korrigiert:", _fixed, "· leere Unterbereiche entfernt:", len(_drop))
 # Sprachen mit Übersetzungen finden
 from collections import Counter
