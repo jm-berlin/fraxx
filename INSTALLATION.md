@@ -71,13 +71,9 @@ Multilingo erinnert dich von selbst: Sobald du eigene Einträge hast, erscheint 
 
 ---
 
-## 5. Neue Wörter übersetzen lassen (optional)
+## 5. Eigene Übersetzungen (demnächst)
 
-Ohne weitere Einstellungen nutzt Multilingo alles, was in den Sprachpaketen steckt. Für **neue eigene Wörter** braucht die App einen eigenen **Claude-API-Schlüssel**:
-
-1. Erstelle einen Schlüssel unter https://console.anthropic.com/settings/keys (ein Anthropic-Konto mit Guthaben ist nötig).
-2. In Multilingo: ⚙ → **„App, Sprachpakete & Sicherung“** → **„Online-Übersetzung“** → Schlüssel einfügen → speichern.
-3. Der Schlüssel bleibt nur auf deinem Gerät. Ein neuer Eintrag kostet Bruchteile eines Cents.
+Multilingo bringt in den Sprachpaketen bereits über 6.400 fertig übersetzte Einträge mit. Neue eigene Wörter und Sätze automatisch übersetzen zu lassen, ist in dieser Testversion noch nicht freigeschaltet. Diese Funktion kommt in einer späteren Version.
 
 ---
 

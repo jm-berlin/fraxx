@@ -21,15 +21,15 @@ Beim ersten Start lässt sich die Ausgangssprache wählen.
 
 - **Standarddaten** (`data/core.json`) und **Sprachpakete** (`data/lang-xx.json`) kommen von hier. Bei Updates laden die Geräte nur geänderte Pakete neu.
 - **Eigene Einträge und Änderungen** liegen getrennt auf dem Gerät und bleiben bei Updates erhalten. Unter ⚙ lassen sie sich als Datei sichern und auf einem anderen Gerät einlesen.
-- **Online-Übersetzung** neuer Wörter ist optional: mit einem eigenen Claude-API-Schlüssel (bleibt nur auf dem Gerät).
+- **Eigene Übersetzungen** neuer Wörter sind in der Testversion noch nicht freigeschaltet und kommen in einer späteren Version.
 
 ## Aufbau
 
 ```
 index.html            App
 admin/                Admin-Fassung (Auftragsliste, alle Sprachpakete, eigener Speicher)
-runtime.js            lokaler Speicher (Standard + eigene Daten), Ausgangssprache, optionale Online-Übersetzung
-ui.js                 App-Einstellungen: Sprachpakete, Sicherung, Schlüssel, Installation
+runtime.js            lokaler Speicher (Standard + eigene Daten), Ausgangssprache
+ui.js                 App-Einstellungen: Sprachpakete, Sicherung, Installation
 sw.js                 Offline-Betrieb
 data/                 core.json, lang-xx.json, packs.json
 tools/                Bauskripte (build_app.py, build_data.py), Design-Archiv

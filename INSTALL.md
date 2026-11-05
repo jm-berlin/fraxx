@@ -71,13 +71,9 @@ Multilingo reminds you automatically: once you have entries of your own, a notic
 
 ---
 
-## 5. Translating new words (optional)
+## 5. Your own translations (coming soon)
 
-Out of the box Multilingo uses everything contained in the language packs. For **new words of your own** the app needs your own **Claude API key**:
-
-1. Create a key at https://console.anthropic.com/settings/keys (requires an Anthropic account with credit).
-2. In Multilingo: ⚙ → **“App, Sprachpakete & Sicherung”** → **“Online-Übersetzung”** → paste the key → save.
-3. The key stays on your device only. A new entry costs a fraction of a cent.
+The language packs already contain more than 6,400 ready-made translated entries. Automatically translating new words and sentences of your own is not yet enabled in this test version. This feature will come in a later version.
 
 ---
 
