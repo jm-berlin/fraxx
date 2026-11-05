@@ -4,7 +4,7 @@ Multilingo is a **web app** (PWA). There is no installer to download: you open t
 
 **Address:** https://jm-berlin.github.io/multilingo/
 
-> Deutsche Fassung: [INSTALLATION.md](INSTALLATION.md)
+> Deutsche Fassung: [INSTALLATION.md](INSTALLATION.md) · PDF: [Multilingo-Install-Guide.pdf](Multilingo-Install-Guide.pdf)
 
 ---
 

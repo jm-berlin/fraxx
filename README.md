@@ -8,8 +8,8 @@ Persönliche Sprach-App für Reisen: Wörter und Redewendungen eintragen, dazu �
 
 Multilingo ist eine Web-App: Adresse im Browser öffnen und als App hinzufügen. Es gibt keinen Installer.
 
-- **Anleitung auf Deutsch:** [INSTALLATION.md](INSTALLATION.md)
-- **Guide in English:** [INSTALL.md](INSTALL.md)
+- **Anleitung auf Deutsch:** [INSTALLATION.md](INSTALLATION.md) · [PDF](Multilingo-Installation.pdf)
+- **Guide in English:** [INSTALL.md](INSTALL.md) · [PDF](Multilingo-Install-Guide.pdf)
 
 ## Sprachen
 
