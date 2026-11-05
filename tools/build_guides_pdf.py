@@ -19,8 +19,13 @@ h1{font-size:30pt;line-height:1.02;letter-spacing:-.035em;font-weight:800;margin
 h1 em{font-style:normal;color:var(--hl)}
 .hero p{color:var(--muted);font-size:11pt;line-height:1.6;margin:0 0 3mm;max-width:150mm}
 .hero p strong{color:var(--ink)}
-.hero p.addr{margin:5mm 0 0;color:var(--ink);font-size:10pt}
-.hero p.addr span{display:inline-block;background:var(--ink);color:#f3f1ef;border-radius:99px;padding:2mm 5mm;font-weight:600;margin-left:2mm}
+.herogrid{display:flex;gap:8mm;align-items:flex-start;justify-content:space-between}
+.qr{flex:none;width:36mm;text-decoration:none;text-align:center;color:var(--muted);font-size:7.6pt;line-height:1.3}
+.qr svg{display:block;width:36mm;height:36mm;border-radius:3mm;margin-bottom:1.6mm}
+.addr{display:flex;align-items:center;gap:4mm;flex-wrap:wrap;margin:5mm 0 0}
+.addr a.go{background:var(--hl);color:#fff;text-decoration:none;font-weight:700;font-size:11pt;padding:2.8mm 6mm;border-radius:99px}
+.addr a.link{color:var(--ink);font-weight:600;font-size:10.5pt;text-decoration:underline;text-decoration-color:var(--hl);text-underline-offset:2px}
+.hero p.tip{margin:3.5mm 0 0;font-size:8.6pt;color:var(--muted)}
 .sec{break-inside:avoid}
 .sub h3{margin-top:0}
 h2{display:flex;align-items:center;gap:3.5mm;font-size:15pt;letter-spacing:-.02em;margin:0 0 4mm;break-after:avoid}
@@ -52,7 +57,13 @@ def build(src,out,lang,eyebrow,title,pg,addrlabel):
     intro=parts[0]; secs=parts[1:]
     m=re.search(r'\*\*[^*]+:\*\*\s*(\S+)',intro); url=m.group(1)
     intro=re.sub(r'^\*\*[^*]+:\*\*.*$','',intro,flags=re.M).strip()
-    hero=f'<div class="card hero"><p class="eyebrow">{eyebrow}</p><h1>{title}</h1>{markdown.markdown(intro)}<p class="addr">{addrlabel}: <span>{url.replace("https://","").rstrip("/")}</span></p></div>'
+    de = lang == "de"
+    qr = open(S+'qr.svg').read()
+    hero=(f'<div class="card hero"><div class="herogrid"><div><p class="eyebrow">{eyebrow}</p><h1>{title}</h1>{markdown.markdown(intro)}</div>'
+          f'<a class="qr" href="{url}">{qr}<span>{"Mit der Handykamera scannen" if de else "Scan with your phone camera"}</span></a></div>'
+          f'<div class="addr"><a class="go" href="{url}">{"Multilingo öffnen" if de else "Open Multilingo"} →</a>'
+          f'<a class="link" href="{url}">{url}</a></div>'
+          f'<p class="tip">{"Tippe oder klicke auf den Knopf: Multilingo öffnet sich direkt im Browser. Danach geht es mit Schritt 1 weiter." if de else "Tap or click the button: Multilingo opens directly in your browser. Then continue with step 1."}</p></div>')
     cards=[]
     for s in secs:
         h=markdown.markdown(s,extensions=['tables'])
