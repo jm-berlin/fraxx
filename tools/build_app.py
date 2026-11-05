@@ -11,7 +11,7 @@ head = '''<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Multilingo – dein persönliches Vokabelheft für Reisen.">
+<meta name="description" content="Multilingo – deine persönliche Sprach-App für Reisen.">
 <meta name="theme-color" content="#2f52d6">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
@@ -37,3 +37,28 @@ ver = hashlib.sha1((s + open(os.path.join(out, "runtime.js")).read() + open(os.p
 sw = open(os.path.join(os.path.dirname(__file__), "sw.template.js")).read().replace("__VERSION__", ver)
 open(os.path.join(out, "sw.js"), "w").write(sw)
 print("index.html", len(s), "Version", ver)
+
+# ---------- Admin-Fassung in …/admin/ ----------
+# Gleiche App, aber mit Auftragsliste, allen Sprachpaketen und eigenem Speicher. Daten kommen aus ../data/.
+adm = os.path.join(out, "admin"); os.makedirs(adm, exist_ok=True)
+a = s
+a = a.replace('<script src="runtime.js"></script>', '<script>window.ML_ADMIN = true; window.ML_DATA = "../data/";</script>\n<script src="runtime.js"></script>', 1)
+a = a.replace('<meta name="apple-mobile-web-app-title" content="Multilingo">', '<meta name="apple-mobile-web-app-title" content="ML Admin">', 1)
+a = a.replace('<title>Multilingo</title>', '<title>Multilingo Admin</title>', 1)
+a = a.replace('<meta name="robots"', '<meta name="robots"', 1)
+a = a.replace('<head>\n', '<head>\n<meta name="robots" content="noindex, nofollow">\n', 1)
+a = re.sub(r'(href|src)="(icons|img)/', lambda m: m.group(1) + '="../' + m.group(2) + '/', a)
+open(os.path.join(adm, "index.html"), "w").write(a)
+import shutil, json as _json
+for f in ("runtime.js", "ui.js"): shutil.copy(os.path.join(out, f), os.path.join(adm, f))
+man = _json.load(open(os.path.join(out, "manifest.webmanifest")))
+man.update({"name": "Multilingo Admin", "short_name": "ML Admin", "id": "./admin/"})
+man["icons"] = [{**i, "src": "../" + i["src"]} for i in man["icons"]]
+_json.dump(man, open(os.path.join(adm, "manifest.webmanifest"), "w"), ensure_ascii=False, indent=2)
+aver = hashlib.sha1((a + open(os.path.join(adm, "runtime.js")).read()).encode()).hexdigest()[:10]
+asw = (open(os.path.join(os.path.dirname(__file__), "sw.template.js")).read().replace("__VERSION__", aver)
+       .replace('"ml-shell-"', '"mla-shell-"').replace('"ml-runtime"', '"mla-runtime"')
+       .replace('"icons/', '"../icons/').replace('"img/', '"../img/').replace('"data/packs.json"', '"../data/packs.json"'))
+assert "mla-shell-" in asw
+open(os.path.join(adm, "sw.js"), "w").write(asw)
+print("admin/index.html", len(a), "Version", aver)

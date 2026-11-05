@@ -105,7 +105,7 @@
       const row = document.createElement("div"); row.className = "mlpack";
       row.innerHTML = `<b></b><small></small>`;
       row.querySelector("b").textContent = p.name;
-      row.querySelector("small").textContent = fmtMB(p.bytes);
+      row.querySelector("small").textContent = fmtMB(p.bytes) + (p.default ? " · Standard" : " · optional");
       const btn = document.createElement("button"); btn.type = "button";
       if (inst.has(p.lang)) { btn.className = "mlbtn"; btn.textContent = "Entfernen"; const ok = document.createElement("span"); ok.className = "mlok"; ok.textContent = "✓ installiert"; row.appendChild(ok); }
       else { btn.className = "mlbtn pri"; btn.textContent = "Laden"; }

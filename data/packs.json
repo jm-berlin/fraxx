@@ -1,54 +1,109 @@
 {
- "version": 1,
+ "version": 2,
  "core": {
   "file": "core.json",
-  "bytes": 2116754
+  "version": "3737798f2e0b",
+  "bytes": 2485201
  },
  "packs": [
   {
    "lang": "en",
    "name": "Englisch",
    "file": "lang-en.json",
-   "version": 1,
-   "bytes": 1851434,
-   "entries": 3003,
+   "version": "684bd9490aa6",
+   "default": true,
+   "src": true,
+   "bytes": 5344513,
+   "entries": 6431,
    "docs": 12
   },
   {
    "lang": "fr",
    "name": "Französisch",
    "file": "lang-fr.json",
-   "version": 1,
-   "bytes": 1960460,
-   "entries": 3003,
+   "version": "180754dcef43",
+   "default": true,
+   "src": true,
+   "bytes": 5481730,
+   "entries": 6431,
    "docs": 13
   },
   {
    "lang": "es",
    "name": "Spanisch",
    "file": "lang-es.json",
-   "version": 1,
-   "bytes": 1875335,
-   "entries": 3003,
+   "version": "3d824c67676e",
+   "default": true,
+   "src": true,
+   "bytes": 5396692,
+   "entries": 6431,
    "docs": 12
   },
   {
    "lang": "it",
    "name": "Italienisch",
    "file": "lang-it.json",
-   "version": 1,
-   "bytes": 1835220,
-   "entries": 3003,
+   "version": "ed32ba5a2e49",
+   "default": true,
+   "src": true,
+   "bytes": 5254778,
+   "entries": 6431,
    "docs": 15
+  },
+  {
+   "lang": "pt",
+   "name": "Portugiesisch",
+   "file": "lang-pt.json",
+   "version": "e84ee948fa6f",
+   "default": false,
+   "src": true,
+   "bytes": 5399314,
+   "entries": 6431,
+   "docs": 4
+  },
+  {
+   "lang": "nl",
+   "name": "Niederländisch",
+   "file": "lang-nl.json",
+   "version": "fb560fffb7d1",
+   "default": false,
+   "src": true,
+   "bytes": 5055067,
+   "entries": 6431,
+   "docs": 4
   },
   {
    "lang": "pl",
    "name": "Polnisch",
    "file": "lang-pl.json",
-   "version": 1,
-   "bytes": 1920991,
-   "entries": 3003,
+   "version": "a231a1a32a15",
+   "default": false,
+   "src": true,
+   "bytes": 5596010,
+   "entries": 6431,
    "docs": 13
+  },
+  {
+   "lang": "sv",
+   "name": "Schwedisch",
+   "file": "lang-sv.json",
+   "version": "975ab1455b4d",
+   "default": false,
+   "src": true,
+   "bytes": 5104125,
+   "entries": 6431,
+   "docs": 4
+  },
+  {
+   "lang": "nb",
+   "name": "Norwegisch",
+   "file": "lang-nb.json",
+   "version": "21d3ce52899c",
+   "default": false,
+   "src": true,
+   "bytes": 4607524,
+   "entries": 6431,
+   "docs": 4
   }
  ]
 }

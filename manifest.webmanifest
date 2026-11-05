@@ -1,7 +1,7 @@
 {
   "name": "Multilingo – Mein bester Reisebegleiter",
   "short_name": "Multilingo",
-  "description": "Persönliches Vokabelheft für Reisen: Übersetzungen, Aussprache, Konjugation, Grammatik und Speisekarten.",
+  "description": "Persönliche Sprach-App für Reisen: Übersetzungen, Aussprache, Konjugation, Grammatik und Speisekarten.",
   "lang": "de",
   "start_url": "./",
   "scope": "./",

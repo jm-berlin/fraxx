@@ -1,0 +1,93 @@
+/* Multilingo · Design-Archiv (Stand 3. November 2026)
+   Diese Designs wurden aus der Auswahl genommen, weil nur noch Taupe genutzt wird.
+   Wiederherstellen:
+   1. Die CSS-Blöcke unten wieder in den <style>-Bereich von multilingo-artefakt.html einfügen
+      (Token-Blöcke vor „/* Hinweise: Popup …“, die --m-…-Zeilen hinter „/* Taupe */“).
+   2. Die Knöpfe ganz unten wieder in <div class="designs"> einfügen.
+   3. Die Design-Namen in die Liste TF in applyDesign() und in das kleine Skript in Zeile 5 aufnehmen.
+   „Klassisch“ ist das Grunddesign ohne data-design-Attribut; sein CSS steckt weiterhin in der Datei,
+   es wird nur nicht mehr angeboten (applyDesign() setzt immer ein Taupe-Design).
+   Taupe in der Original-Fassung: Akzent #cc5530, Hover #b84a28, Soft #f2ddd3. */
+
+/* Taupe-Familie: Salbei & Moos */
+html:root[data-design="salbei"]{
+  --bg:#dde2da; --surface:#f1f3ee; --surface-2:#e6eae2; --hover:#e9ede5; --ink:#151a16; --muted:#5f6a5e; --line:#cbd2c7;
+  --accent:#151a16; --accent-soft:#d6ddd2; --on-accent:#f1f3ee; --blue:#151a16; --blue-ink:#f1f3ee; --blue-line:rgb(127 127 127 / .25);
+  --hl:#5d8a62; --hl-ink:#ffffff; --hl-soft:#dcebdc; --hl-hover:#4f7a54; --ok:#3f6b4c; --ok-soft:#dfe8df; --danger:#b4361f; --bad-soft:#f3dcd5;
+  --fr:#3c4a6b; --es:#a8532c; --it:#4d6b4f; --l1:#6b4f7a; --l2:#8c4a5c; --l3:#3f6b6b; --l4:#8a5a2b; --l5:#5b6b2a; --l6:#44608f;
+  --font:"Urbanist", "Inter", system-ui, sans-serif; --font-head:"Urbanist", "Inter", system-ui, sans-serif; --radius:16px;
+  --shadow:0 1px 2px rgb(40 30 25 / .05), 0 8px 24px rgb(40 30 25 / .06);
+  --setbtn-bg:#f1f3ee; --setbtn-fg:#151a16; --tense-on:#151a16; color-scheme:light;
+  --t-dart:#48704c; --t-g1:#8f9c8b; --t-g2:#66735f; --t-gink:#fff; --t-s1:#d6ddd2; --t-s2:#e4e9e0;
+}
+
+html[data-design="salbei"]{--m-sky:#d6ddd2; --m-sun:#5d8a62; --m-far:#b5c0b0; --m-mid:#8f9c8b; --m-near:#3f4a3d; --m-wall:#f1f3ee; --m-h2:#cfe0cf; --m-h3:#cbd2c7; --m-sea:#9ba99a; --m-acc:#5d8a62; --m-win:#151a16; --m-tree:#2f3a2e; --p-dress:#5d8a62}
+
+/* Taupe-Familie: Nebel & Kobalt */
+html:root[data-design="nebel"]{
+  --bg:#dfe3e8; --surface:#f2f4f6; --surface-2:#e7eaee; --hover:#eaedf1; --ink:#12161c; --muted:#5e6672; --line:#cdd3da;
+  --accent:#12161c; --accent-soft:#d6dbe2; --on-accent:#f2f4f6; --blue:#12161c; --blue-ink:#f2f4f6; --blue-line:rgb(127 127 127 / .25);
+  --hl:#2f62c8; --hl-ink:#ffffff; --hl-soft:#dbe5f7; --hl-hover:#2753ad; --ok:#3f6b4c; --ok-soft:#dfe8df; --danger:#b4361f; --bad-soft:#f3dcd5;
+  --fr:#3c4a6b; --es:#a8532c; --it:#4d6b4f; --l1:#6b4f7a; --l2:#8c4a5c; --l3:#3f6b6b; --l4:#8a5a2b; --l5:#5b6b2a; --l6:#44608f;
+  --font:"Urbanist", "Inter", system-ui, sans-serif; --font-head:"Urbanist", "Inter", system-ui, sans-serif; --radius:16px;
+  --shadow:0 1px 2px rgb(40 30 25 / .05), 0 8px 24px rgb(40 30 25 / .06);
+  --setbtn-bg:#f2f4f6; --setbtn-fg:#12161c; --tense-on:#12161c; color-scheme:light;
+  --t-dart:#2a59b8; --t-g1:#8b95a3; --t-g2:#5f6979; --t-gink:#fff; --t-s1:#d6dbe2; --t-s2:#e4e8ed;
+}
+
+html[data-design="nebel"]{--m-sky:#d6dbe2; --m-sun:#2f62c8; --m-far:#b6bec9; --m-mid:#8b95a3; --m-near:#3c4450; --m-wall:#f2f4f6; --m-h2:#cbd8f0; --m-h3:#cdd3da; --m-sea:#9aa6b6; --m-acc:#2f62c8; --m-win:#12161c; --m-tree:#2e3540; --p-dress:#2f62c8}
+
+/* Taupe-Familie: Sand & Ocker */
+html:root[data-design="sand"]{
+  --bg:#ebe3d6; --surface:#f8f3eb; --surface-2:#f0e9dd; --hover:#f3ece2; --ink:#1a1612; --muted:#6e6354; --line:#ddd2c1;
+  --accent:#1a1612; --accent-soft:#e6dccb; --on-accent:#f8f3eb; --blue:#1a1612; --blue-ink:#f8f3eb; --blue-line:rgb(127 127 127 / .25);
+  --hl:#b97f1d; --hl-ink:#ffffff; --hl-soft:#f2e3c4; --hl-hover:#a26e16; --ok:#3f6b4c; --ok-soft:#dfe8df; --danger:#b4361f; --bad-soft:#f3dcd5;
+  --fr:#3c4a6b; --es:#a8532c; --it:#4d6b4f; --l1:#6b4f7a; --l2:#8c4a5c; --l3:#3f6b6b; --l4:#8a5a2b; --l5:#5b6b2a; --l6:#44608f;
+  --font:"Urbanist", "Inter", system-ui, sans-serif; --font-head:"Urbanist", "Inter", system-ui, sans-serif; --radius:16px;
+  --shadow:0 1px 2px rgb(40 30 25 / .05), 0 8px 24px rgb(40 30 25 / .06);
+  --setbtn-bg:#f8f3eb; --setbtn-fg:#1a1612; --tense-on:#1a1612; color-scheme:light;
+  --t-dart:#9c6a14; --t-g1:#b3a389; --t-g2:#8a7a62; --t-gink:#fff; --t-s1:#e6dccb; --t-s2:#efe8dc;
+}
+
+html[data-design="sand"]{--m-sky:#e6dccb; --m-sun:#b97f1d; --m-far:#cbbda5; --m-mid:#b3a389; --m-near:#5a4d3c; --m-wall:#f8f3eb; --m-h2:#ecd9b0; --m-h3:#ddd2c1; --m-sea:#bfb19a; --m-acc:#b97f1d; --m-win:#1a1612; --m-tree:#4a4030; --p-dress:#b97f1d}
+
+/* Taupe-Familie: Rosé & Himbeere */
+html:root[data-design="rose"]{
+  --bg:#ecdfdc; --surface:#f8f1ef; --surface-2:#f1e6e3; --hover:#f3eae7; --ink:#1a1213; --muted:#6e5c5d; --line:#dfcdca;
+  --accent:#1a1213; --accent-soft:#e7d6d3; --on-accent:#f8f1ef; --blue:#1a1213; --blue-ink:#f8f1ef; --blue-line:rgb(127 127 127 / .25);
+  --hl:#b3405a; --hl-ink:#ffffff; --hl-soft:#f3d9df; --hl-hover:#9c3650; --ok:#3f6b4c; --ok-soft:#dfe8df; --danger:#b4361f; --bad-soft:#f3dcd5;
+  --fr:#3c4a6b; --es:#a8532c; --it:#4d6b4f; --l1:#6b4f7a; --l2:#8c4a5c; --l3:#3f6b6b; --l4:#8a5a2b; --l5:#5b6b2a; --l6:#44608f;
+  --font:"Urbanist", "Inter", system-ui, sans-serif; --font-head:"Urbanist", "Inter", system-ui, sans-serif; --radius:16px;
+  --shadow:0 1px 2px rgb(40 30 25 / .05), 0 8px 24px rgb(40 30 25 / .06);
+  --setbtn-bg:#f8f1ef; --setbtn-fg:#1a1213; --tense-on:#1a1213; color-scheme:light;
+  --t-dart:#9c3650; --t-g1:#b59a98; --t-g2:#8a6e6d; --t-gink:#fff; --t-s1:#e7d6d3; --t-s2:#efe4e1;
+}
+
+html[data-design="rose"]{--m-sky:#e7d6d3; --m-sun:#b3405a; --m-far:#cdb6b3; --m-mid:#b59a98; --m-near:#5a4446; --m-wall:#f8f1ef; --m-h2:#efcfd6; --m-h3:#dfcdca; --m-sea:#bfa8a6; --m-acc:#b3405a; --m-win:#1a1213; --m-tree:#4a3637; --p-dress:#b3405a}
+
+/* Taupe-Familie: Graphit & Kupfer */
+html:root[data-design="graphit"]{
+  --bg:#1b1a19; --surface:#262423; --surface-2:#2f2c2a; --hover:#2b2927; --ink:#f1ede9; --muted:#a9a19a; --line:#3a3633;
+  --accent:#f1ede9; --accent-soft:#34302d; --on-accent:#1b1a19; --blue:#f1ede9; --blue-ink:#1b1a19; --blue-line:rgb(127 127 127 / .25);
+  --hl:#e0703f; --hl-ink:#1b1a19; --hl-soft:#3d2a20; --hl-hover:#ec8456; --ok:#7fc39a; --ok-soft:#1f3326; --danger:#f08a78; --bad-soft:#3a221d;
+  --fr:#9fb5ff; --es:#f0b36a; --it:#8fd1ae; --l1:#c6a8ff; --l2:#f39cc0; --l3:#7fd3d3; --l4:#f0a070; --l5:#c3d36a; --l6:#93b0ec;
+  --font:"Urbanist", "Inter", system-ui, sans-serif; --font-head:"Urbanist", "Inter", system-ui, sans-serif; --radius:16px;
+  --shadow:0 1px 0 rgb(255 255 255 / .03) inset, 0 8px 24px rgb(0 0 0 / .35);
+  --setbtn-bg:#262423; --setbtn-fg:#f1ede9; --tense-on:#5a534e; color-scheme:dark;
+  --t-dart:#f08a5d; --t-g1:#4a4440; --t-g2:#332f2c; --t-gink:#fff; --t-s1:#2f2c2a; --t-s2:#34312e;
+}
+
+html[data-design="graphit"]{--m-sky:#2f2c2a; --m-sun:#e0703f; --m-far:#3d3936; --m-mid:#4a4440; --m-near:#141312; --m-wall:#4a4541; --m-h2:#5a3f31; --m-h3:#3a3633; --m-sea:#363230; --m-acc:#e0703f; --m-win:#f0c49a; --m-tree:#121110; --p-dress:#e0703f}
+
+html[data-design="graphit"] .tocgrid .tocmain .hie:not(.txt){filter:grayscale(1) brightness(0)}
+
+html[data-design="graphit"] .pc img, html[data-design="graphit"] .hbandimg{filter:brightness(.9)}
+
+/* Knöpfe für die Design-Auswahl:
+        <button type="button" class="dz" data-design="" aria-pressed="true"><span class="dsw" style="background:linear-gradient(135deg,#2f52d6 50%,#ffcf3f 50%)"></span>Klassisch</button>
+        <button type="button" class="dz" data-design="salbei" aria-pressed="false"><span class="dsw" style="background:conic-gradient(#151a16 0 33%,#5d8a62 0 66%,#c2cbbd 0)"></span>Salbei</button>
+        <button type="button" class="dz" data-design="nebel" aria-pressed="false"><span class="dsw" style="background:conic-gradient(#12161c 0 33%,#2f62c8 0 66%,#bcc4ce 0)"></span>Nebel</button>
+        <button type="button" class="dz" data-design="sand" aria-pressed="false"><span class="dsw" style="background:conic-gradient(#1a1612 0 33%,#b97f1d 0 66%,#d8ccb8 0)"></span>Sand</button>
+        <button type="button" class="dz" data-design="rose" aria-pressed="false"><span class="dsw" style="background:conic-gradient(#1a1213 0 33%,#b3405a 0 66%,#d9c4c1 0)"></span>Rosé</button>
+        <button type="button" class="dz" data-design="graphit" aria-pressed="false"><span class="dsw" style="background:conic-gradient(#f1ede9 0 33%,#e0703f 0 66%,#262423 0)"></span>Graphit</button>
+*/
