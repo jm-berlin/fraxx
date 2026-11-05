@@ -24,7 +24,7 @@ Multilingo is a **web app** (PWA). There is no installer to download: you open t
 3. If no prompt appears: tap the **menu ⋮** at the top right → **“Install app”** (on some devices “Add to Home screen”).
 4. The icon appears on your home screen and in the app drawer.
 
-### Windows and Mac (Chrome or Microsoft Edge)
+### Windows and Mac (Chrome or Microsoft Edge) – recommended on Mac
 1. Open **Chrome** or **Edge** and go to the address above.
 2. Click the **install icon** on the right of the address bar (a screen with an arrow or plus).
    - Alternatively in Chrome: **menu ⋮** → **“Cast, save and share”** → **“Install page as app …”**
@@ -33,6 +33,8 @@ Multilingo is a **web app** (PWA). There is no installer to download: you open t
 4. Multilingo opens in its own window and appears in the Start menu (Windows) or in the Applications folder and Dock (Mac).
 
 ### Mac (Safari, macOS Sonoma or later)
+This works too, but on Mac Safari only has the system voices. For the best pronunciation, use **Chrome** instead (see above and section 3).
+
 1. Open the address in **Safari**.
 2. Menu **“File”** → **“Add to Dock …”** → **“Add”**.
 
@@ -48,7 +50,20 @@ Multilingo is a **web app** (PWA). There is no installer to download: you open t
 
 ---
 
-## 3. Add more languages
+## 3. Better pronunciation
+
+Multilingo speaks with the voices of your device or browser and automatically picks the best one it finds.
+
+- **Mac and Windows:** **Chrome** additionally offers Google’s natural-sounding voices, **Edge** Microsoft’s “Natural” voices. Multilingo uses them automatically. They need an internet connection; offline the computer uses its own voices.
+- **iPhone and iPad:** All browsers use the same voices here, so Chrome makes no difference. It sounds better with the high-quality voices: **Settings → Accessibility → Spoken Content → Voices** → choose a language → download a voice marked **“Enhanced”** or **“Premium”**.
+- **Mac (for travelling without internet):** **System Settings → Accessibility → Spoken Content → System voice → Manage Voices** → download an “Enhanced” or “Premium” voice for each language.
+- **Android:** **Settings → Accessibility → Text-to-speech output** (on some devices under System → Languages) → under “Speech Services by Google”, download the voice data for your languages so it also works offline.
+
+> **Tip:** Download the voices at home on Wi-Fi before you travel. Then Multilingo sounds good even without internet.
+
+---
+
+## 4. Add more languages
 
 1. Tap **⚙** at the top → **“App, Sprachpakete & Sicherung”** (app, language packs & backup).
 2. Under **Sprachpakete** you see all available languages. “Standard” ones are already installed, “optional” ones can be added.
@@ -57,7 +72,7 @@ Multilingo is a **web app** (PWA). There is no installer to download: you open t
 
 ---
 
-## 4. Back up your own entries (recommended)
+## 5. Back up your own entries (recommended)
 
 Your own entries and changes are stored **only on this device**. To take them to a new device:
 
@@ -71,19 +86,19 @@ Multilingo reminds you automatically: once you have entries of your own, a notic
 
 ---
 
-## 5. Your own translations (coming soon)
+## 6. Your own translations (coming soon)
 
 The language packs already contain more than 6,400 ready-made translated entries. Automatically translating new words and sentences of your own is not yet enabled in this test version. This feature will come in a later version.
 
 ---
 
-## 6. Updates
+## 7. Updates
 
 Updates arrive automatically: every time Multilingo starts with an internet connection, it checks for a new version or new language packs and downloads only what has changed. To check manually: ⚙ → **“Nach Updates suchen”** (check for updates).
 
 ---
 
-## 7. Uninstall
+## 8. Uninstall
 
 - **iPhone/iPad:** long-press the icon → “Remove App”.
 - **Android:** long-press the icon → “Uninstall”.
@@ -99,5 +114,5 @@ Download a backup first if you want to keep your own entries.
 |---|---|
 | No “Add to Home Screen” on iPhone | The page must be opened in **Safari**, not in Chrome or another app. |
 | No install icon on the computer | Use Chrome or Edge. If Multilingo is already installed, the button says “Open in app” instead. |
-| No pronunciation | No voice for that language is installed on the device. Add voices in your device’s language settings. |
+| No or robotic pronunciation | No (good) voice is installed for that language. See section 3, “Better pronunciation”. |
 | A language pack does not load | Check your internet connection and tap “Laden” again under ⚙. |

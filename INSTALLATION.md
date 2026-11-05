@@ -24,7 +24,7 @@ Multilingo ist eine **Web-App** (PWA). Es gibt keinen Installer zum Herunterlade
 3. Erscheint kein Hinweis: Tippe oben rechts auf das **Menü ⋮** → **„App installieren“** (bei manchen Geräten „Zum Startbildschirm hinzufügen“).
 4. Das Symbol erscheint auf dem Startbildschirm und in der App-Übersicht.
 
-### Windows und Mac (Chrome oder Microsoft Edge)
+### Windows und Mac (Chrome oder Microsoft Edge) – auf dem Mac empfohlen
 1. Öffne **Chrome** oder **Edge** und rufe die Adresse oben auf.
 2. Klicke rechts in der Adressleiste auf das **Installieren-Symbol** (Bildschirm mit Pfeil bzw. Plus).
    - Alternativ in Chrome: **Menü ⋮** → **„Streamen, speichern und teilen“** → **„Seite als App installieren …“**
@@ -33,6 +33,8 @@ Multilingo ist eine **Web-App** (PWA). Es gibt keinen Installer zum Herunterlade
 4. Multilingo öffnet sich in einem eigenen Fenster und erscheint im Startmenü (Windows) bzw. im Programme-Ordner und Dock (Mac).
 
 ### Mac (Safari, ab macOS Sonoma)
+Funktioniert auch, aber Safari hat auf dem Mac nur die Systemstimmen. Für die beste Aussprache lieber **Chrome** nehmen (siehe oben und Abschnitt 3).
+
 1. Öffne die Adresse in **Safari**.
 2. Menü **„Ablage“** → **„Zum Dock hinzufügen …“** → **„Hinzufügen“**.
 
@@ -48,7 +50,20 @@ Multilingo ist eine **Web-App** (PWA). Es gibt keinen Installer zum Herunterlade
 
 ---
 
-## 3. Weitere Sprachen hinzufügen
+## 3. Bessere Aussprache
+
+Multilingo spricht mit den Stimmen deines Geräts bzw. Browsers und nimmt automatisch die beste, die es findet.
+
+- **Mac und Windows:** In **Chrome** stehen zusätzlich die natürlich klingenden Google-Stimmen zur Verfügung, in **Edge** die „Natural“-Stimmen von Microsoft. Multilingo nimmt sie automatisch. Sie brauchen eine Internetverbindung, offline spricht der Computer mit seinen eigenen Stimmen.
+- **iPhone und iPad:** Hier nutzen alle Browser dieselben Stimmen, Chrome bringt also nichts. Besser klingt es mit den hochwertigen Stimmen: **Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen** → Sprache wählen → eine Stimme mit **„Erweitert“** oder **„Premium“** laden.
+- **Mac (für unterwegs ohne Internet):** **Systemeinstellungen → Bedienungshilfen → Gesprochene Inhalte → Systemstimme → Stimmen verwalten** → für jede Sprache eine Stimme mit „Erweitert“ oder „Premium“ laden.
+- **Android:** **Einstellungen → Bedienungshilfen → Text-in-Sprache** (je nach Gerät auch unter System → Sprachen) → bei „Google Sprachdienste“ die Sprachdaten für deine Sprachen herunterladen, dann klappt es auch offline.
+
+> **Tipp:** Lade die Stimmen zu Hause im WLAN herunter, bevor du verreist. Dann klingt Multilingo auch ohne Internet gut.
+
+---
+
+## 4. Weitere Sprachen hinzufügen
 
 1. Tippe oben auf **⚙** → **„App, Sprachpakete & Sicherung“**.
 2. Unter **Sprachpakete** stehen alle verfügbaren Sprachen. „Standard“ ist schon installiert, „optional“ kannst du nachladen.
@@ -57,7 +72,7 @@ Multilingo ist eine **Web-App** (PWA). Es gibt keinen Installer zum Herunterlade
 
 ---
 
-## 4. Eigene Einträge sichern (empfohlen)
+## 5. Eigene Einträge sichern (empfohlen)
 
 Deine eigenen Einträge und Änderungen liegen **nur auf diesem Gerät**. So nimmst du sie auf ein neues Gerät mit:
 
@@ -71,19 +86,19 @@ Multilingo erinnert dich von selbst: Sobald du eigene Einträge hast, erscheint 
 
 ---
 
-## 5. Eigene Übersetzungen (demnächst)
+## 6. Eigene Übersetzungen (demnächst)
 
 Multilingo bringt in den Sprachpaketen bereits über 6.400 fertig übersetzte Einträge mit. Neue eigene Wörter und Sätze automatisch übersetzen zu lassen, ist in dieser Testversion noch nicht freigeschaltet. Diese Funktion kommt in einer späteren Version.
 
 ---
 
-## 6. Updates
+## 7. Updates
 
 Updates kommen automatisch: Bei jedem Start mit Internetverbindung prüft Multilingo, ob es eine neue Version oder neue Sprachpakete gibt, und lädt nur das, was sich geändert hat. Von Hand geht es unter ⚙ → **„Nach Updates suchen“**.
 
 ---
 
-## 7. Deinstallieren
+## 8. Deinstallieren
 
 - **iPhone/iPad:** Symbol lange drücken → „App entfernen“.
 - **Android:** Symbol lange drücken → „Deinstallieren“.
@@ -99,5 +114,5 @@ Lade vorher eine Sicherung herunter, wenn du deine eigenen Einträge behalten m�
 |---|---|
 | Kein „Zum Home-Bildschirm“ auf dem iPhone | Die Seite muss in **Safari** geöffnet sein, nicht in Chrome oder in einer anderen App. |
 | Kein Installieren-Symbol am Computer | Chrome oder Edge verwenden. Ist Multilingo schon installiert, steht dort stattdessen „In App öffnen“. |
-| Keine Aussprache | Für die Sprache ist auf dem Gerät keine Stimme installiert. Stimmen fügst du in den Sprach-Einstellungen deines Geräts hinzu. |
+| Keine oder blecherne Aussprache | Für die Sprache ist keine (gute) Stimme installiert. Siehe Abschnitt 3, „Bessere Aussprache“. |
 | Sprachpaket lädt nicht | Internetverbindung prüfen und unter ⚙ erneut „Laden“ tippen. |
