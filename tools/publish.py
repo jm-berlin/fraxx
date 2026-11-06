@@ -104,6 +104,15 @@ def main():
     try: old_changes = json.load(open(os.path.join(REPO, "data", "changes.json")))
     except Exception: old_changes = {}
     sys.path.insert(0, os.path.join(REPO, "tools")); from release import add_release
+    # Vorgemerkte Hinweise zu Änderungen an der App selbst (runtime.js/ui.js) kommen zuerst und werden danach geleert
+    pend_f = os.path.join(REPO, "tools", "offene-hinweise.json")
+    if os.path.exists(pend_f):
+        try:
+            pend = json.load(open(pend_f))
+            for l, v in pend.items():
+                if isinstance(v, list): notes[l] = list(v) + [x for x in (notes.get(l) or []) if x not in v and x != "Verbesserungen und Korrekturen."]
+        except Exception as e: print("Hinweis: offene-hinweise.json nicht lesbar:", e)
+        os.remove(pend_f)
     add_release(data_new, stamp, notes, old_changes)
     shutil.rmtree(os.path.join(REPO, "data"), ignore_errors=True)
     shutil.copytree(data_new, os.path.join(REPO, "data"))

@@ -194,16 +194,16 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
 
   // ---------- Update verfügbar: erst zeigen, was neu ist, dann auf Wunsch übernehmen ----------
   const UPD_T = {
-    de: { t: "Update verfügbar", l: "Eine neue Version von Multilingo ist da.", w: "Was ist neu", now: "Jetzt aktualisieren", later: "Später", h: "Bis dahin funktioniert alles wie gewohnt, auch offline. Deine eigenen Einträge bleiben erhalten.", busy: "Wird aktualisiert …", gen: "Verbesserungen und Korrekturen." },
-    en: { t: "Update available", l: "A new version of Multilingo is ready.", w: "What’s new", now: "Update now", later: "Later", h: "Until then everything works as usual, offline too. Your own entries are kept.", busy: "Updating …", gen: "Improvements and fixes." },
-    fr: { t: "Mise à jour disponible", l: "Une nouvelle version de Multilingo est prête.", w: "Nouveautés", now: "Mettre à jour", later: "Plus tard", h: "D’ici là, tout fonctionne comme d’habitude, même hors ligne. Tes propres entrées sont conservées.", busy: "Mise à jour …", gen: "Améliorations et corrections." },
-    it: { t: "Aggiornamento disponibile", l: "È pronta una nuova versione di Multilingo.", w: "Novità", now: "Aggiorna ora", later: "Più tardi", h: "Fino ad allora tutto funziona come sempre, anche offline. Le tue voci restano salvate.", busy: "Aggiornamento …", gen: "Miglioramenti e correzioni." },
-    es: { t: "Actualización disponible", l: "Hay una nueva versión de Multilingo.", w: "Novedades", now: "Actualizar ahora", later: "Más tarde", h: "Hasta entonces todo funciona como siempre, también sin conexión. Tus propias entradas se conservan.", busy: "Actualizando …", gen: "Mejoras y correcciones." },
-    pt: { t: "Atualização disponível", l: "Há uma nova versão do Multilingo.", w: "Novidades", now: "Atualizar agora", later: "Mais tarde", h: "Até lá tudo funciona como de costume, também offline. As tuas entradas são mantidas.", busy: "A atualizar …", gen: "Melhorias e correções." },
-    nl: { t: "Update beschikbaar", l: "Er is een nieuwe versie van Multilingo.", w: "Wat is er nieuw", now: "Nu bijwerken", later: "Later", h: "Tot die tijd werkt alles zoals gewoonlijk, ook offline. Je eigen items blijven bewaard.", busy: "Bijwerken …", gen: "Verbeteringen en correcties." },
-    pl: { t: "Dostępna aktualizacja", l: "Jest nowa wersja Multilingo.", w: "Co nowego", now: "Aktualizuj teraz", later: "Później", h: "Do tego czasu wszystko działa jak zwykle, także offline. Twoje własne wpisy zostaną zachowane.", busy: "Aktualizacja …", gen: "Ulepszenia i poprawki." },
-    sv: { t: "Uppdatering tillgänglig", l: "En ny version av Multilingo finns.", w: "Nyheter", now: "Uppdatera nu", later: "Senare", h: "Tills dess fungerar allt som vanligt, även offline. Dina egna poster finns kvar.", busy: "Uppdaterar …", gen: "Förbättringar och rättelser." },
-    nb: { t: "Oppdatering tilgjengelig", l: "En ny versjon av Multilingo er klar.", w: "Hva er nytt", now: "Oppdater nå", later: "Senere", h: "Inntil da fungerer alt som vanlig, også uten nett. Dine egne oppføringer beholdes.", busy: "Oppdaterer …", gen: "Forbedringer og rettelser." }
+    de: { v: "Version", ok: "Aktuell", since: "Neu seit deiner Version", t: "Update verfügbar", l: "Eine neue Version von Multilingo ist da.", w: "Was ist neu", now: "Jetzt aktualisieren", later: "Später", h: "Bis dahin funktioniert alles wie gewohnt, auch offline. Deine eigenen Einträge bleiben erhalten.", busy: "Wird aktualisiert …", gen: "Verbesserungen und Korrekturen." },
+    en: { v: "Version", ok: "Up to date", since: "New since your version", t: "Update available", l: "A new version of Multilingo is ready.", w: "What’s new", now: "Update now", later: "Later", h: "Until then everything works as usual, offline too. Your own entries are kept.", busy: "Updating …", gen: "Improvements and fixes." },
+    fr: { v: "Version", ok: "À jour", since: "Nouveau depuis ta version", t: "Mise à jour disponible", l: "Une nouvelle version de Multilingo est prête.", w: "Nouveautés", now: "Mettre à jour", later: "Plus tard", h: "D’ici là, tout fonctionne comme d’habitude, même hors ligne. Tes propres entrées sont conservées.", busy: "Mise à jour …", gen: "Améliorations et corrections." },
+    it: { v: "Versione", ok: "Aggiornata", since: "Novità dalla tua versione", t: "Aggiornamento disponibile", l: "È pronta una nuova versione di Multilingo.", w: "Novità", now: "Aggiorna ora", later: "Più tardi", h: "Fino ad allora tutto funziona come sempre, anche offline. Le tue voci restano salvate.", busy: "Aggiornamento …", gen: "Miglioramenti e correzioni." },
+    es: { v: "Versión", ok: "Actualizada", since: "Novedades desde tu versión", t: "Actualización disponible", l: "Hay una nueva versión de Multilingo.", w: "Novedades", now: "Actualizar ahora", later: "Más tarde", h: "Hasta entonces todo funciona como siempre, también sin conexión. Tus propias entradas se conservan.", busy: "Actualizando …", gen: "Mejoras y correcciones." },
+    pt: { v: "Versão", ok: "Atualizada", since: "Novidades desde a tua versão", t: "Atualização disponível", l: "Há uma nova versão do Multilingo.", w: "Novidades", now: "Atualizar agora", later: "Mais tarde", h: "Até lá tudo funciona como de costume, também offline. As tuas entradas são mantidas.", busy: "A atualizar …", gen: "Melhorias e correções." },
+    nl: { v: "Versie", ok: "Up-to-date", since: "Nieuw sinds jouw versie", t: "Update beschikbaar", l: "Er is een nieuwe versie van Multilingo.", w: "Wat is er nieuw", now: "Nu bijwerken", later: "Later", h: "Tot die tijd werkt alles zoals gewoonlijk, ook offline. Je eigen items blijven bewaard.", busy: "Bijwerken …", gen: "Verbeteringen en correcties." },
+    pl: { v: "Wersja", ok: "Aktualna", since: "Nowości od twojej wersji", t: "Dostępna aktualizacja", l: "Jest nowa wersja Multilingo.", w: "Co nowego", now: "Aktualizuj teraz", later: "Później", h: "Do tego czasu wszystko działa jak zwykle, także offline. Twoje własne wpisy zostaną zachowane.", busy: "Aktualizacja …", gen: "Ulepszenia i poprawki." },
+    sv: { v: "Version", ok: "Uppdaterad", since: "Nytt sedan din version", t: "Uppdatering tillgänglig", l: "En ny version av Multilingo finns.", w: "Nyheter", now: "Uppdatera nu", later: "Senare", h: "Tills dess fungerar allt som vanligt, även offline. Dina egna poster finns kvar.", busy: "Uppdaterar …", gen: "Förbättringar och rättelser." },
+    nb: { v: "Versjon", ok: "Oppdatert", since: "Nytt siden din versjon", t: "Oppdatering tilgjengelig", l: "En ny versjon av Multilingo er klar.", w: "Hva er nytt", now: "Oppdater nå", later: "Senere", h: "Inntil da fungerer alt som vanlig, også uten nett. Dine egne oppføringer beholdes.", busy: "Oppdaterer …", gen: "Forbedringer og rettelser." }
   };
   let updShown = false;
   const swReg = async () => { try { return await navigator.serviceWorker?.getRegistration(); } catch (e) { return null; } };
@@ -217,8 +217,9 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
       reg.addEventListener("updatefound", () => watch(reg.installing));
     });
   }
-  async function updateDialog() {
-    if (updShown) return;
+  async function updateDialog(force) {
+    if (updShown && !force) return;
+    if (document.getElementById("mlupd")) return;
     try {
       await ML.ready();
       const reg = await swReg();
@@ -228,17 +229,18 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
       updShown = true;
       const lang = ML.srcLang(), T = UPD_T[lang] || UPD_T.en;
       // Änderungen seit der eigenen Fassung (neueste zuerst)
-      let notes = [];
+      // Alle Änderungen von der Fassung des Nutzers bis zur neuesten, je Version gruppiert
+      let groups = [];
       try {
-        const ch = await (await fetch((window.ML_DATA || "data/") + "changes.json", { cache: "no-cache" })).json();
+        const ch = await changes(true);
         const from = (pend && pend.from) || ML.release();
         const rel = (ch.releases || []).filter(r => !from || r.release > from);
-        (rel.length ? rel : (ch.releases || []).slice(0, 1)).slice(0, 5).forEach(r => {
-          const n = (r.notes && (r.notes[lang] || r.notes.en || r.notes.de)) || [];
-          n.forEach(x => { if (!notes.includes(x)) notes.push(x); });
+        (rel.length ? rel : (ch.releases || []).slice(0, 1)).slice(0, 12).forEach(r => {
+          const n = ((r.notes && (r.notes[lang] || r.notes.en || r.notes.de)) || []).filter(x => !groups.some(g => g.n.includes(x)));
+          if (n.length) groups.push({ v: r.version || "", d: r.date || "", n });
         });
       } catch (e) {}
-      if (!notes.length) notes = [T.gen];
+      if (!groups.length) groups = [{ v: "", d: "", n: [T.gen] }];
       const ov = document.createElement("div"); ov.id = "mlupd"; ov.setAttribute("data-notr", "");
       ov.innerHTML = `<style>#mlupd{position:fixed;inset:0;z-index:300;background:rgb(10 14 20 / .45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:16px}
 #mlupd .b{width:min(520px,100%);max-height:calc(100vh - 32px);overflow:auto;background:var(--surface,#f3f1ef);color:var(--ink,#141212);border-radius:22px;box-shadow:0 24px 60px rgb(10 14 20 / .3);padding:24px 24px 20px}
@@ -248,12 +250,17 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
 #mlupd .r{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:20px}
 #mlupd button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:10px 18px;cursor:pointer}
 #mlupd .y{background:var(--hl,#cc5530);color:var(--hl-ink,#fff)}#mlupd .n{background:var(--surface-2,#e9e5e2);color:inherit}#mlupd .y:disabled{opacity:.7;cursor:default}
-#mlupd .h{font-size:13px;margin-top:14px}</style>
-<div class="b" role="dialog" aria-modal="true" aria-labelledby="mlupdt"><p class="k">Multilingo</p><h2 id="mlupdt"></h2><p class="l"></p><h3></h3><ul></ul><p class="h"></p>
+#mlupd .h{font-size:13px;margin-top:14px}#mlupd h4{margin:14px 0 4px;font-size:.92rem;color:var(--muted,#6b635d)}#mlupd h4:first-of-type{margin-top:4px}</style>
+<div class="b" role="dialog" aria-modal="true" aria-labelledby="mlupdt"><p class="k">Multilingo</p><h2 id="mlupdt"></h2><p class="l"></p><h3></h3><div class="g"></div><p class="h"></p>
 <div class="r"><button type="button" class="n"></button><button type="button" class="y"></button></div></div>`;
       ov.querySelector("h2").textContent = T.t; ov.querySelector(".l").textContent = T.l; ov.querySelector("h3").textContent = T.w;
       ov.querySelector(".h").textContent = T.h;
-      const ul = ov.querySelector("ul"); notes.forEach(x => { const li = document.createElement("li"); li.textContent = x; ul.appendChild(li); });
+      const cur = curVersion(), box = ov.querySelector(".g");
+      if (cur && groups.length > 1) ov.querySelector(".l").textContent = T.l + " " + T.since + " " + cur + ":";
+      groups.forEach(g => {
+        if (groups.length > 1 && g.v) { const h = document.createElement("h4"); h.textContent = T.v + " " + g.v + (g.d ? " · " + new Date(g.d).toLocaleDateString(lang, { day: "numeric", month: "long", year: "numeric" }) : ""); box.appendChild(h); }
+        const ul = document.createElement("ul"); g.n.forEach(x => { const li = document.createElement("li"); li.textContent = x; ul.appendChild(li); }); box.appendChild(ul);
+      });
       const yes = ov.querySelector(".y"), no = ov.querySelector(".n");
       yes.textContent = T.now; no.textContent = T.later;
       no.addEventListener("click", () => ov.remove());
@@ -275,7 +282,73 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
   }
   setTimeout(updateDialog, 2500);
   // Eine neue App-Fassung kann auch erst während der Nutzung fertig geladen sein
-  (async () => { const r = await swReg(); if (!r) return; r.addEventListener("updatefound", () => { const w = r.installing; w && w.addEventListener("statechange", () => { if (w.state === "installed" && navigator.serviceWorker.controller) updateDialog(); }); }); })();
+  (async () => { const r = await swReg(); if (!r) return; r.addEventListener("updatefound", () => { const w = r.installing; w && w.addEventListener("statechange", () => { if (w.state === "installed" && navigator.serviceWorker.controller) { updateDialog(); checkAvail(); } }); }); })();
+
+  // ---------- Version in den Einstellungen, Markierung am ⚙ ----------
+  let chCache = null;
+  async function changes(fresh) {
+    if (chCache && !fresh) return chCache;
+    try { chCache = await (await fetch((window.ML_DATA || "data/") + "changes.json", { cache: "no-cache" })).json(); } catch (e) { chCache = chCache || {}; }
+    return chCache;
+  }
+  // Versionsnummer der eigenen Fassung; ältere Installationen kennen sie noch nicht und schlagen sie nach
+  function curVersion() {
+    const v = ML.appVersion && ML.appVersion(); if (v) return v;
+    const rel = (chCache && chCache.releases) || [], mine = ML.release();
+    const r = rel.find(x => x.release === mine); if (r) return r.version || "0.1";
+    return rel.length ? (rel[rel.length - 1].version || "0.1") : "";
+  }
+  const vcss = document.createElement("style");
+  vcss.textContent = `
+  .mlver{flex:1 1 100%;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid var(--line);font-size:13.5px}
+  .mlver .vl{color:var(--muted);font-weight:500}.mlver b{font-weight:700;font-variant-numeric:tabular-nums}
+  .mlver .vok{color:var(--muted);font-size:13px}
+  .mlver .vup{margin-left:auto;border:0;cursor:pointer;font:inherit;font-size:13.5px;font-weight:700;border-radius:999px;padding:6px 14px;background:var(--hl,#a3395f);color:var(--hl-ink,#fff);display:inline-flex;align-items:center;gap:7px}
+  .mlver .vup::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.9}
+  .mlver .vup:hover{filter:brightness(1.08)}
+  #setbtn.mlhasupd{position:relative}
+  #setbtn.mlhasupd::after{content:"";position:absolute;top:-1px;right:-1px;width:12px;height:12px;border-radius:50%;background:var(--hl,#a3395f);box-shadow:0 0 0 2px var(--bg,#fff);animation:mlpulse 2.4s ease-in-out infinite}
+  @keyframes mlpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+  @media (prefers-reduced-motion:reduce){ #setbtn.mlhasupd::after{animation:none} }`;
+  document.head.appendChild(vcss);
+  function versionRow() {
+    const pop = document.getElementById("setpop"); if (!pop) return null;
+    let row = pop.querySelector(".mlver");
+    if (!row) {
+      row = document.createElement("div"); row.className = "mlver"; row.setAttribute("data-notr", "");
+      row.innerHTML = `<span class="vl"></span><b></b><span class="vok"></span><button type="button" class="vup" hidden></button>`;
+      row.querySelector(".vup").addEventListener("click", () => { document.getElementById("setbtn")?.click(); updateDialog(true); });
+      pop.prepend(row);
+    }
+    return row;
+  }
+  async function checkAvail() {
+    try {
+      await ML.ready(); await changes();
+      const reg = await swReg(), pend = ML.pendingUpdate();
+      const avail = !!pend || !!(reg && reg.waiting && navigator.serviceWorker.controller);
+      const T = UPD_T[ML.srcLang()] || UPD_T.en, row = versionRow();
+      if (row) {
+        const v = curVersion();
+        row.querySelector(".vl").textContent = T.v; row.querySelector("b").textContent = (v || "–") + " Beta";
+        row.querySelector(".vok").textContent = avail ? "" : "✓ " + T.ok;
+        const b = row.querySelector(".vup"); b.hidden = !avail;
+        b.textContent = T.t + (pend && pend.version ? " · " + pend.version : "");
+      }
+      document.getElementById("setbtn")?.classList.toggle("mlhasupd", avail);
+      const sb = document.getElementById("setbtn"); if (sb) sb.title = avail ? T.t : (sb.getAttribute("aria-label") || "");
+    } catch (e) { console.warn("Version", e); }
+  }
+  checkAvail();
+  ML.onChange(() => { clearTimeout(checkAvail.t); checkAvail.t = setTimeout(checkAvail, 800); });
+  // Wer die App lange offen hat, erfährt beim Zurückkehren von neuen Fassungen (höchstens alle 30 Minuten)
+  let lastLook = Date.now();
+  document.addEventListener("visibilitychange", async () => {
+    if (document.hidden || Date.now() - lastLook < 30 * 60e3) return;
+    lastLook = Date.now();
+    try { (await swReg())?.update(); await ML.checkUpdates(); } catch (e) {}
+    checkAvail();
+  });
 
   // Automatische Sicherung in eine Datei (Chrome/Edge am PC)
   let autoTimer = null;
@@ -324,7 +397,7 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
   });
   $("mlupdate").addEventListener("click", async () => {
     const m = $("mlresetmsg"); m.className = "mlmsg"; m.textContent = "Suche …";
-    try { const reg = await navigator.serviceWorker?.getRegistration(); await reg?.update(); const has = await ML.checkUpdates(); await new Promise(r => setTimeout(r, 1500)); if (has || (reg && reg.waiting)) { m.textContent = ""; close(); updShown = false; updateDialog(); } else m.textContent = "Alles aktuell."; }
+    try { const reg = await navigator.serviceWorker?.getRegistration(); await reg?.update(); const has = await ML.checkUpdates(); await new Promise(r => setTimeout(r, 1500)); checkAvail(); if (has || (reg && reg.waiting)) { m.textContent = ""; close(); updateDialog(true); } else m.textContent = "Alles aktuell."; }
     catch (e) { m.className = "mlmsg err"; m.textContent = "Keine Verbindung."; }
   });
 })();

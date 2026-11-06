@@ -374,7 +374,8 @@
       return !!state.pending;
     },
     // Update: was wartet, und übernehmen
-    pendingUpdate: () => state.pending ? { release: state.pending.release, from: (state.index && state.index.release) || "" } : null,
+    pendingUpdate: () => state.pending ? { release: state.pending.release, version: state.pending.appVersion || "", from: (state.index && state.index.release) || "" } : null,
+    appVersion: () => (state.index && state.index.appVersion) || "",
     release: () => (state.index && state.index.release) || "",
     async applyUpdate() {
       if (!state.pending) return;
