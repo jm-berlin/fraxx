@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multilingo Globus Varianten</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e5e2e0;--surface:#f3f1ef;--surface-2:#e9e5e2;--ink:#141212;--muted:#6b635d;--line:#d3ccc6;--hl:#a3395f;--radius:16px;--shadow:0 1px 2px rgb(40 30 25 / .05),0 8px 24px rgb(40 30 25 / .06)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#1b1719;--surface:#241f23;--surface-2:#2e282d;--ink:#f2ecef;--muted:#a69aa1;--line:#3a3338;--hl:#d8698f}}
+:root[data-theme="dark"]{--bg:#1b1719;--surface:#241f23;--surface-2:#2e282d;--ink:#f2ecef;--muted:#a69aa1;--line:#3a3338;--hl:#d8698f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Urbanist,Inter,system-ui,sans-serif;padding:28px 16px}
+.wrap{max-width:1180px;margin:0 auto}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.tabs button,.ctrl button{font:inherit;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 16px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.desc{color:var(--muted);font-size:15px;margin:0 4px 14px;min-height:2.6em;max-width:900px}
+.hhero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;align-items:center;background:var(--surface);border-radius:calc(var(--radius) + 10px);box-shadow:var(--shadow);padding:48px 44px;overflow:hidden;position:relative;min-height:600px}
+.hcopy{position:relative;z-index:2}
+.hkick{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin:0 0 14px}
+.htitle{font-size:clamp(40px,5.2vw,64px);line-height:1.02;letter-spacing:-.035em;font-weight:800;margin:0 0 22px}
+.htitle em{font-style:normal;color:var(--hl)}
+.hlead{color:var(--muted);font-size:18px;line-height:1.55;margin:0 0 26px;max-width:520px}
+.hcta{display:flex;gap:12px;flex-wrap:wrap}
+.hcta button{font:inherit;font-weight:700;font-size:16px;border-radius:999px;padding:14px 24px;border:1px solid var(--line);background:transparent;color:var(--ink)}
+.hcta .primary{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.hart{position:relative;align-self:stretch;min-height:500px}
+/* Bühne für den Globus: vom rechten Bereich bis an die Kastenkanten */
+.stage{position:absolute;left:0;top:-48px;bottom:-48px;right:-44px;touch-action:pan-y}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.wcard{position:absolute;left:2%;bottom:2%;z-index:3;background:var(--surface);border-radius:14px;box-shadow:0 12px 30px rgb(16 24 40 / .16);padding:14px 16px;min-width:210px;font-size:15px}
+.wl{display:flex;gap:14px;align-items:baseline;padding:3px 0}.wl i{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);width:20px}
+.dart{color:var(--hl);font-weight:700}
+.wsay{border-top:1px dashed var(--line);margin-top:8px;padding-top:8px;font-size:13px;color:var(--muted)}
+.ctrl{display:flex;gap:10px;flex-wrap:wrap;margin:14px 4px 0;font-size:14px;color:var(--muted);align-items:center}
+.ctrl button{font-weight:600;padding:6px 14px}
+@media (max-width:820px){
+  .hhero{grid-template-columns:1fr;padding:28px 22px 24px}
+  .hart{min-height:420px}
+  .stage{left:-22px;right:-22px;top:0;bottom:-24px}
+  .wcard{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="tabs" role="group" aria-label="Variante">
+    <button type="button" data-v="1" aria-pressed="true">1 · Hineinzoomen</button>
+    <button type="button" data-v="2" aria-pressed="false">2 · Fotos an Fäden</button>
+    <button type="button" data-v="3" aria-pressed="false">3 · Mosaik</button>
+  </div>
+  <p class="desc" id="desc"></p>
+  <section class="hhero">
+    <div class="hcopy">
+      <p class="hkick">Mein bester Reisebegleiter</p>
+      <h2 class="htitle">Sprich die Sprache deines <em>Reiseziels</em>.</h2>
+      <p class="hlead">Multilingo ist deine persönliche Sprach-App für unterwegs. Du schreibst ein Wort oder eine Redewendung auf Deutsch, den Rest erledigt Multilingo: Übersetzung, Aussprache, Artikel und Konjugation, in allen Sprachen deiner Reise.</p>
+      <div class="hcta"><button class="primary" type="button">Loslegen →</button><button type="button">Speisekarte ansehen</button></div>
+    </div>
+    <div class="hart" aria-hidden="true">
+      <div class="stage" id="stage"><canvas id="gl"></canvas><canvas id="lines"></canvas></div>
+      <div class="wcard"><div class="wl"><i>DE</i><b><span class="dart">der</span> Kaffee</b></div><div class="wl"><i>FR</i><span><span class="dart">le</span> café</span></div><div class="wl"><i>ES</i><span><span class="dart">el</span> café</span></div><div class="wl"><i>IT</i><span><span class="dart">il</span> caffè</span></div><div class="wsay">„<b>Un</b> café, s’il vous plaît.“</div></div>
+    </div>
+  </section>
+  <div class="ctrl"><button type="button" id="replay">Neu abspielen</button><button type="button" id="pause">Bewegung anhalten</button><button type="button" id="theme">Hell / Dunkel</button><span>Drehen mit Maus oder Finger. Paris, Andalusien und Toskana sind echte Fotos, die übrigen Karten Platzhalter.</span></div>
+</div>
+<script>
+(()=>{
+const COUNTRIES = "__COUNTRIES__";
+const IMG = {fr:"__PARIS__", es:"__ANDALUCIA__", it:"__TOSCANA__"};
+// 21 Sprachen mit einem typischen Ort (Pin) und einem Gruß für die Platzhalter
+const L = [
+ ["en","London",51.5,-0.1,"Hello"],["fr","Paris",48.9,2.3,"Bonjour"],["es","Andalucía",37.4,-5.9,"Hola"],["it","Toscana",43.4,11.2,"Ciao"],
+ ["pt","Lisboa",38.7,-9.1,"Olá"],["nl","Amsterdam",52.4,4.9,"Hallo"],["pl","Kraków",50.1,19.9,"Cześć"],["tr","İstanbul",41.0,29.0,"Merhaba"],
+ ["el","Αθήνα",38.0,23.7,"Γειά σου"],["hr","Dubrovnik",42.6,18.1,"Bok"],["sv","Stockholm",59.3,18.1,"Hej"],["da","København",55.7,12.6,"Goddag"],
+ ["nb","Oslo",59.9,10.7,"Hei"],["cs","Praha",50.1,14.4,"Ahoj"],["hu","Budapest",47.5,19.0,"Szia"],["ro","București",44.4,26.1,"Bună"],
+ ["ca","Barcelona",41.4,2.2,"Hola"],["ru","Москва",55.8,37.6,"Привет"],["ja","東京",35.7,139.7,"こんにちは"],["zh","北京",39.9,116.4,"你好"],["ar","القاهرة",30.0,31.2,"مرحبا"]
+];
+const TONES = ["#a3395f","#7a5c4f","#8c4570","#5f6f5a","#b06a3b","#4f6377","#9a7b4f","#6d5a7a","#3f6b6a","#a2524a"];
+const DESC = {
+ 1:"Der Globus dreht sich ein, zoomt heran und bleibt mit Europa groß in der Mitte stehen. Die Bilder liegen in ihren Ländern, danach pendelt er ganz sanft.",
+ 2:"Freie Drehung wie im ersten Entwurf. Die Bilder liegen im freien Raum rund um Europa und hängen an feinen Fäden an ihrem Ort.",
+ 3:"Die 21 Bilder sind gleichmäßig über die ganze Kugel verteilt, wie ein Mosaik unter dem Drahtgitter. Symbolisch statt geografisch, beim Drehen ist immer etwas zu sehen."
+};
+const D2R = Math.PI/180, N = L.length;
+const stage = document.getElementById("stage"), glc = document.getElementById("gl"), lc = document.getElementById("lines");
+const ctx = lc.getContext("2d");
+const rings = COUNTRIES.split(";").map(r=>{ const a = r.split(",").map(Number); const pts = []; let x = a[0], y = a[1]; pts.push([x/5, y/5]); for(let i=2;i<a.length;i+=2){ x += a[i]; y += a[i+1]; pts.push([x/5, y/5]); } return pts; });
+const grat = [];
+for(let lat=-75; lat<=75; lat+=15){ const l=[]; for(let lon=-180; lon<=180; lon+=2) l.push([lon,lat]); grat.push(l); }
+for(let lon=-180; lon<180; lon+=15){ const l=[]; for(let lat=-90; lat<=90; lat+=2) l.push([lon,lat]); grat.push(l); }
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// ---------- Kachel-Atlas: Fotos als Abzüge, übrige als farbige Postkarten ----------
+const CELL = 320, COLS = 5, ROWS = Math.ceil(N/COLS);
+const atlas = document.createElement("canvas"); atlas.width = CELL*COLS; atlas.height = CELL*ROWS;
+const tiles = []; // je Sprache: uv-Rechteck und Seitenverhältnis
+async function buildAtlas(){
+  try{ await document.fonts.ready; }catch(_){}
+  const ax = atlas.getContext("2d");
+  const imgs = {};
+  await Promise.all(Object.entries(IMG).map(([k,src])=>new Promise(res=>{ const im = new Image(); im.onload = ()=>{ imgs[k] = im; res(); }; im.onerror = res; im.src = src; })));
+  L.forEach(([code, city, , , hello], i)=>{
+    const cx = (i % COLS)*CELL, cy = Math.floor(i / COLS)*CELL;
+    const im = imgs[code];
+    let w, h;
+    if(im){ const a = im.naturalWidth/im.naturalHeight; if(a >= 1){ w = 300; h = Math.round(300/a); } else { h = 300; w = Math.round(300*a); } }
+    else { w = 300; h = 225; }
+    // Rahmen wie ein Abzug, unten etwas breiter für den Ortsnamen
+    const fw = 10, fb = 30, W = w, H = h; const iw = W - 2*fw, ih = H - fw - fb;
+    const x0 = cx + (CELL - W)/2, y0 = cy + (CELL - H)/2;
+    ax.fillStyle = "#f6f3f0"; ax.fillRect(x0, y0, W, H);
+    if(im){ ax.drawImage(im, x0+fw, y0+fw, iw, ih); }
+    else {
+      const tone = TONES[i % TONES.length];
+      ax.fillStyle = tone; ax.fillRect(x0+fw, y0+fw, iw, ih);
+      const g = ax.createLinearGradient(x0, y0, x0+iw, y0+ih); g.addColorStop(0,"rgba(255,255,255,.14)"); g.addColorStop(1,"rgba(0,0,0,.12)"); ax.fillStyle = g; ax.fillRect(x0+fw, y0+fw, iw, ih);
+      ax.fillStyle = "#fff"; ax.textAlign = "center"; ax.textBaseline = "middle";
+      let fs = 64; ax.font = `800 ${fs}px Urbanist, "Noto Sans", "Noto Sans CJK JP", "Noto Sans Arabic", system-ui, sans-serif`;
+      while(ax.measureText(hello).width > iw - 30 && fs > 20){ fs -= 4; ax.font = `800 ${fs}px Urbanist, "Noto Sans", system-ui, sans-serif`; }
+      ax.fillText(hello, x0 + fw + iw/2, y0 + fw + ih/2);
+    }
+    ax.fillStyle = "#6b635d"; ax.textAlign = "left"; ax.textBaseline = "middle"; ax.font = `700 15px Urbanist, system-ui, sans-serif`;
+    ax.fillText(city.toUpperCase(), x0 + fw + 2, y0 + H - fb/2);
+    tiles[i] = { uv:[x0/atlas.width, y0/atlas.height, (x0+W)/atlas.width, (y0+H)/atlas.height], asp: W/H };
+  });
+  if(gl){
+    const tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, atlas);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    gl.uniform1i(uni.uTex, 0);
+  }
+  setVariant(variant);
+}
+
+// ---------- Anordnung der Kacheln je Variante ----------
+// Kacheln (Breite/Höhe in Grad) auseinanderschieben, Federn ziehen sie zu ihrem Ort; Pins bleiben frei
+function spread(hDeg, spring, keepPinsFree, iters, gap){ gap = gap || 1.2;
+  const P = L.map(([ , , lat, lon], i)=>({ lat, lon, h:hDeg, w: hDeg*tiles[i].asp, alat:lat, alon:lon }));
+  const cosr = la => Math.max(0.35, Math.cos(la*D2R));
+  for(let it=0; it<iters; it++){
+    for(let a=0; a<N; a++) for(let b=a+1; b<N; b++){
+      const A = P[a], B = P[b]; const c = cosr((A.lat+B.lat)/2);
+      const dx = (B.lon - A.lon)*c, dy = B.lat - A.lat;
+      const ox = (A.w + B.w)/2 + gap - Math.abs(dx), oy = (A.h + B.h)/2 + gap - Math.abs(dy);
+      if(ox > 0 && oy > 0){
+        if(ox/ (A.w+B.w) < oy/(A.h+B.h)){ const s = (dx >= 0 ? 1 : -1) * ox/2 / c; A.lon -= s; B.lon += s; }
+        else { const s = (dy >= 0 ? 1 : -1) * oy/2; A.lat -= s; B.lat += s; }
+      }
+    }
+    if(keepPinsFree) for(const A of P) for(const B of P){
+      const c = cosr(A.lat); const dx = (B.alon - A.lon)*c, dy = B.alat - A.lat;
+      const ox = A.w/2 + 1.5 - Math.abs(dx), oy = A.h/2 + 1.5 - Math.abs(dy);
+      if(ox > 0 && oy > 0){ if(ox < oy) A.lon -= (dx >= 0 ? 1 : -1) * ox / c; else A.lat -= (dy >= 0 ? 1 : -1) * oy; }
+    }
+    for(const A of P){ A.lon += (A.alon - A.lon)*spring; A.lat += (A.alat - A.lat)*spring; A.lat = Math.max(-70, Math.min(78, A.lat)); }
+  }
+  return P;
+}
+function fibonacci(hDeg){
+  return L.map(([ , , alat, alon], i)=>{ const y = 1 - 2*(i+0.5)/N; const lat = Math.asin(y)/D2R*0.92; const lon = ((i*137.508) % 360) - 180; return { lat, lon, h:hDeg, w:hDeg*tiles[i].asp, alat, alon }; });
+}
+
+// ---------- WebGL ----------
+const gl = glc.getContext("webgl", {premultipliedAlpha:true, alpha:true, antialias:true});
+const VS = "attribute vec2 p; void main(){ gl_Position = vec4(p,0.,1.); }";
+const FS = `precision highp float;
+uniform vec2 uC; uniform float uR; uniform float uLon0; uniform float uTilt; uniform sampler2D uTex; uniform float uDark;
+uniform vec4 uRect[${N}]; uniform vec4 uUV[${N}];
+void main(){
+  vec2 p = (gl_FragCoord.xy - uC) / uR;
+  float r2 = dot(p,p); if(r2 > 1.0) discard;
+  float z = sqrt(1.0 - r2);
+  float ct = cos(uTilt), st = sin(uTilt);
+  float Y = ct*p.y + st*z; float z1 = -st*p.y + ct*z;
+  float a = uLon0; float X = cos(a)*p.x + sin(a)*z1; float Z = -sin(a)*p.x + cos(a)*z1;
+  float lat = asin(clamp(Y,-1.,1.)); float lon = atan(X, Z);
+  vec4 col = vec4(0.);
+  for(int i=0;i<${N};i++){
+    vec4 R = uRect[i];
+    if(R.w <= 0.0) continue;
+    float dl = mod(lon - R.x + 3.14159265, 6.2831853) - 3.14159265;
+    float u = dl * cos(R.y) / R.z + 0.5; float v = 0.5 - (lat - R.y) / R.w;
+    if(u>0. && u<1. && v>0. && v<1.){
+      vec4 uv = uUV[i];
+      vec3 c = texture2D(uTex, vec2(mix(uv.x, uv.z, u), mix(uv.y, uv.w, v))).rgb;
+      float shade = mix(0.7, 1.0, pow(z, 0.6));
+      col = vec4(c*shade*mix(1.0, 0.9, uDark), 0.97);
+    }
+  }
+  if(col.a <= 0.0) discard;
+  gl_FragColor = vec4(col.rgb*col.a, col.a);
+}`;
+let prog = null; const uni = {};
+function sh(type, src){ const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if(!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.warn(gl.getShaderInfoLog(s)); return s; }
+if(gl){
+  prog = gl.createProgram(); gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS)); gl.linkProgram(prog); gl.useProgram(prog);
+  const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+  const loc = gl.getAttribLocation(prog, "p"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  ["uC","uR","uLon0","uTilt","uTex","uDark","uRect","uUV"].forEach(n=>uni[n] = gl.getUniformLocation(prog, n));
+  gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+}
+
+// ---------- Kamera und Varianten ----------
+let variant = 1, place = [], pins = false, playing = !reduce;
+const cam = { lon0: 10, tilt: 22, zoom: 1, focus: 0 };   // focus 0 = Globus rechts angeschnitten, 1 = Europa groß in der Mitte
+let anim = null, t0 = 0, last = 0;
+function setVariant(v){
+  variant = v; t0 = performance.now();
+  document.querySelectorAll(".tabs button").forEach(b=>b.setAttribute("aria-pressed", String(+b.dataset.v===v)));
+  document.getElementById("desc").textContent = DESC[v];
+  if(!tiles.length) return;
+  if(v===1){ place = spread(7, 0.06, false, 260, 0.8); pins = false; Object.assign(cam, { lon0:-120, tilt:5, zoom:1, focus:0 }); }
+  if(v===2){ place = spread(10, 0.004, true, 700, 2.4); pins = true; Object.assign(cam, { lon0:30, tilt:26, zoom:1.15, focus:0 }); }
+  if(v===3){ place = fibonacci(24); pins = false; Object.assign(cam, { lon0:8, tilt:18, zoom:1, focus:0 }); }
+  if(reduce && v===1) Object.assign(cam, { lon0:14, tilt:44, zoom:1.45, focus:1 });
+  if(gl){
+    const rect = [], uv = [];
+    place.forEach((p,i)=>{ rect.push(p.lon*D2R, p.lat*D2R, p.w*D2R, p.h*D2R); uv.push(...tiles[i].uv); });
+    gl.uniform4fv(uni.uRect, new Float32Array(rect)); gl.uniform4fv(uni.uUV, new Float32Array(uv));
+  }
+  draw();
+}
+const ease = t => t<.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+function step(t, dt){
+  if(variant===1){
+    const k = Math.min(1, (t - t0)/5200), e = ease(k);
+    if(k < 1){ cam.lon0 = -120 + (14 + 120)*e; cam.tilt = 5 + (44-5)*e; cam.zoom = 1 + 0.45*e; cam.focus = e; }
+    else { const s = (t - t0 - 5200)/1000; cam.lon0 = 14 + Math.sin(s*0.35)*9; cam.tilt = 44 + Math.sin(s*0.23)*3; cam.zoom = 1.45; cam.focus = 1; }
+  } else {
+    cam.lon0 = (cam.lon0 + dt*0.006) % 360;
+  }
+}
+
+// ---------- Größe und Zeichnen ----------
+let W = 0, H = 0, dpr = 1;
+function size(){ dpr = Math.min(2, window.devicePixelRatio || 1); W = stage.clientWidth; H = stage.clientHeight; [glc, lc].forEach(c=>{ c.width = Math.round(W*dpr); c.height = Math.round(H*dpr); }); if(gl) gl.viewport(0,0,glc.width,glc.height); draw(); }
+new ResizeObserver(size).observe(stage);
+function geom(){
+  const mobile = W < 520;
+  const R0 = Math.min(mobile ? 230 : 290, H*0.47);
+  const cx0 = mobile ? W*0.62 : W - 0.5*R0, cy0 = H/2 + (mobile ? 20 : 0);
+  const cx1 = mobile ? W*0.55 : W*0.74, cy1 = H*0.6;
+  return { R: R0*cam.zoom, cx: cx0 + (cx1-cx0)*cam.focus, cy: cy0 + (cy1-cy0)*cam.focus };
+}
+function proj(lon, lat){
+  const la = lat*D2R, lo = lon*D2R, a = -cam.lon0*D2R, t = cam.tilt*D2R;
+  const X = Math.cos(la)*Math.sin(lo), Y = Math.sin(la), Z = Math.cos(la)*Math.cos(lo);
+  const x1 = Math.cos(a)*X + Math.sin(a)*Z, z1 = -Math.sin(a)*X + Math.cos(a)*Z;
+  return [x1, Math.cos(t)*Y - Math.sin(t)*z1, Math.sin(t)*Y + Math.cos(t)*z1];
+}
+function strokeLines(list, front, g, color, width, alpha){
+  ctx.beginPath();
+  for(const line of list){
+    let pen = false;
+    for(const [lo, la] of line){
+      const [x, y, z] = proj(lo, la);
+      if(front ? z < -0.02 : z > 0.02){ pen = false; continue; }
+      const sx = g.cx + x*g.R, sy = g.cy - y*g.R;
+      if(pen) ctx.lineTo(sx, sy); else ctx.moveTo(sx, sy); pen = true;
+    }
+  }
+  ctx.strokeStyle = color; ctx.globalAlpha = alpha; ctx.lineWidth = width; ctx.stroke(); ctx.globalAlpha = 1;
+}
+function draw(){
+  if(!W) return;
+  const g = geom(), ink = css("--ink") || "#141212", hl = css("--hl") || "#a3395f";
+  const dark = document.documentElement.dataset.theme==="dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+  if(gl && prog){
+    gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
+    if(tiles.length){
+      gl.uniform2f(uni.uC, g.cx*dpr, (H - g.cy)*dpr); gl.uniform1f(uni.uR, g.R*dpr); gl.uniform1f(uni.uLon0, cam.lon0*D2R); gl.uniform1f(uni.uTilt, cam.tilt*D2R); gl.uniform1f(uni.uDark, dark ? 1 : 0);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    }
+  }
+  ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,H); ctx.lineJoin = "round"; ctx.lineCap = "round";
+  const z = Math.min(1.6, cam.zoom);
+  strokeLines(grat, false, g, ink, 0.7, 0.07*(2-z/1.6));
+  strokeLines(rings, false, g, ink, 0.7, 0.07*(2-z/1.6));
+  strokeLines(grat, true, g, ink, 0.8, 0.22);
+  strokeLines(rings, true, g, ink, 0.9, 0.55);
+  ctx.beginPath(); ctx.arc(g.cx, g.cy, g.R, 0, Math.PI*2); ctx.strokeStyle = ink; ctx.globalAlpha = .7; ctx.lineWidth = 1.4; ctx.stroke(); ctx.globalAlpha = 1;
+  strokeLines([grat[5]], true, g, hl, 1.2, .6);
+  // Fäden und Pins
+  if(pins && place.length){
+    place.forEach(p=>{
+      // Startpunkt: Kantenmitte der Kachel, die dem Pin am nächsten liegt
+      const c = Math.max(0.35, Math.cos(p.lat*D2R));
+      const cand = [[p.lon - p.w/2/c, p.lat],[p.lon + p.w/2/c, p.lat],[p.lon, p.lat + p.h/2],[p.lon, p.lat - p.h/2]];
+      let best = cand[0], bd = 1e9; cand.forEach(q=>{ const d = ((q[0]-p.alon)*c)**2 + (q[1]-p.alat)**2; if(d < bd){ bd = d; best = q; } });
+      const line = []; for(let s=0; s<=20; s++){ const f = s/20; line.push([best[0] + (p.alon-best[0])*f, best[1] + (p.alat-best[1])*f]); }
+      strokeLines([line], true, g, hl, 1.3, .85);
+      const [x, y, zz] = proj(p.alon, p.alat);
+      if(zz > 0){ ctx.beginPath(); ctx.arc(g.cx + x*g.R, g.cy - y*g.R, 3.2, 0, Math.PI*2); ctx.fillStyle = hl; ctx.fill(); ctx.lineWidth = 1.5; ctx.strokeStyle = css("--surface") || "#fff"; ctx.stroke(); }
+    });
+  }
+}
+function tick(t){
+  const dt = last ? Math.min(64, t - last) : 16; last = t;
+  if(playing && !drag){ step(t, dt); draw(); }
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+// Drehen mit Maus/Finger
+let drag = null;
+stage.addEventListener("pointerdown", e=>{ drag = {x:e.clientX, y:e.clientY, lon:cam.lon0, tilt:cam.tilt}; stage.setPointerCapture(e.pointerId); });
+stage.addEventListener("pointermove", e=>{ if(!drag) return; const k = 160 / (geom().R); cam.lon0 = drag.lon - (e.clientX - drag.x)*k; cam.tilt = Math.max(-40, Math.min(70, drag.tilt + (e.clientY - drag.y)*k)); draw(); });
+["pointerup","pointercancel"].forEach(ev=>stage.addEventListener(ev, ()=>{ if(drag && variant===1){ t0 = performance.now() - 5200 - 0; } drag = null; }));
+document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click", ()=>setVariant(+b.dataset.v)));
+document.getElementById("replay").addEventListener("click", ()=>setVariant(variant));
+document.getElementById("pause").addEventListener("click", e=>{ playing = !playing; e.target.textContent = playing ? "Bewegung anhalten" : "Bewegung starten"; });
+document.getElementById("theme").addEventListener("click", ()=>{ const r = document.documentElement; const d = r.dataset.theme==="dark" || (!r.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches); r.dataset.theme = d ? "light" : "dark"; draw(); });
+setVariant(1);
+buildAtlas();
+})();
+</script>
+</body>
+</html>

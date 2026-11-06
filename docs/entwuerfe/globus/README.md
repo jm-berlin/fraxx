@@ -11,3 +11,12 @@ ein 2D-Canvas darüber die Linien (Gradnetz, Ländergrenzen, Umriss; Rückseite 
 ruht bei „Bewegung reduzieren“.
 
 Offene Frage: Anordnung der Fotos (die meisten Länder liegen in Europa). Ideen siehe Chat vom 6. November.
+
+## Entwurf 2: drei Varianten (6. November 2026)
+
+`globus-varianten.html` – zum Umschalten:
+1. **Hineinzoomen** – dreht sich ein, zoomt auf Europa, Bilder in ihren Ländern, danach sanftes Pendeln.
+2. **Fotos an Fäden** – freie Drehung, Bilder im freien Raum um Europa, Faden zum Pin am Ort.
+3. **Mosaik** – 21 Bilder gleichmäßig über die Kugel verteilt (symbolisch).
+
+Paris, Andalusien und Toskana sind echte Fotos, die übrigen 18 Karten Platzhalter (Gruß + Ort). Quelltext: `vorlage-varianten.html`.
