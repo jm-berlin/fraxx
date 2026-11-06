@@ -91,3 +91,8 @@ html[data-design="graphit"] .pc img, html[data-design="graphit"] .hbandimg{filte
         <button type="button" class="dz" data-design="rose" aria-pressed="false"><span class="dsw" style="background:conic-gradient(#1a1213 0 33%,#b3405a 0 66%,#d9c4c1 0)"></span>Rosé</button>
         <button type="button" class="dz" data-design="graphit" aria-pressed="false"><span class="dsw" style="background:conic-gradient(#f1ede9 0 33%,#e0703f 0 66%,#262423 0)"></span>Graphit</button>
 */
+
+/* Entfernt am 2026-11-06: taupe-rot, kirsche, pflaume (nur noch Hell/Dunkel aktiv) */
+html:root[data-design="taupe-rot"]{--hl:#c23f38; --hl-hover:#a8342e; --hl-soft:#f2d8d4; --t-dart:#a8342e; --m-hl2:#e8c4bf}
+html:root[data-design="taupe-kirsche"]{--hl:#b5374b; --hl-hover:#9b2e40; --hl-soft:#f1d6db; --t-dart:#9b2e40; --m-hl2:#e6c2c8}
+html:root[data-design="taupe-pflaume"]{--hl:#8c4570; --hl-hover:#763a5e; --hl-soft:#ead7e2; --t-dart:#763a5e; --m-hl2:#dcc6d3}
