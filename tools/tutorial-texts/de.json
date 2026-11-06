@@ -1,0 +1,125 @@
+{
+ "title": "Multilingo – Anleitung",
+ "eyebrow": "Anleitung · in 5 Minuten startklar",
+ "h1": "So funktioniert <em>Multilingo</em>.",
+ "lead": "Multilingo ist deine persönliche Sprach-App für Reisen und Alltag: Wörter, Sätze und Redewendungen in vielen Sprachen, mit Aussprache, Konjugation, Grammatik, Speisekarten und Quiz. Hier siehst du in wenigen Schritten, wie du loslegst, und danach alles, was in Multilingo steckt.",
+ "open": "Multilingo öffnen",
+ "pdf": "Als PDF",
+ "beta": "Testversion: Eigene neue Wörter übersetzen ist noch nicht freigeschaltet und kommt in einer späteren Version. Alles andere funktioniert schon, auch offline.",
+ "s1": "Die ersten Schritte",
+ "s1sub": "Fünf Schritte vom ersten Öffnen bis zur ersten Übersetzung.",
+ "steps": [
+  [
+   "src",
+   "Sprache wählen",
+   "Beim ersten Start fragt Multilingo, welche Sprache du sprichst. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."
+  ],
+  [
+   "home",
+   "Loslegen",
+   "Die Startseite zeigt, was Multilingo kann. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."
+  ],
+  [
+   "inhalt",
+   "Thema öffnen",
+   "Im <b>Inhalt</b> stehen alle Themen als Kästen: Redewendungen nach Themen (Restaurant, Hotel, Apotheke …) und Wortschatz nach Themen. <b>Öffnen ▾</b> springt direkt hinein."
+  ],
+  [
+   "tabelle",
+   "Lesen, hören, merken",
+   "Jede Zeile zeigt einen Eintrag in all deinen Sprachen. Der Lautsprecher 🔊 liest vor, graue Hinweise erklären Besonderheiten. Der Stern ☆ setzt den Eintrag auf deinen Spickzettel."
+  ],
+  [
+   "set",
+   "Einstellen",
+   "Unter <b>⚙</b> wählst du Ausgangssprache, Sprachniveau (A1 bis C2), deine Sprachen und das Design (Hell oder Dunkel). Ganz oben steht deine Version."
+  ]
+ ],
+ "s2": "Nach der Installation",
+ "s2sub": "Einmal einrichten, dann läuft Multilingo auch ohne Internet.",
+ "after": [
+  [
+   "Sprachpakete laden",
+   "Unter ⚙ → <b>App, Sprachpakete &amp; Sicherung</b> lädst du die Sprachen, die du brauchst. Jedes Paket enthält alle Übersetzungen, Konjugationen, Grammatik und Speisekarten dieser Sprache."
+  ],
+  [
+   "Offline nutzen",
+   "Alles, was installiert ist, funktioniert ohne Internet: im Flugzeug, im Ausland ohne Datenvolumen, im Funkloch."
+  ],
+  [
+   "Gute Stimmen",
+   "Vorgelesen wird mit den Stimmen deines Geräts. Am Mac und unter Windows klingt Chrome meist am natürlichsten. Weitere Stimmen installierst du in den Spracheinstellungen deines Geräts."
+  ],
+  [
+   "Daten sichern",
+   "Deine Sterne, Lernstände und Einstellungen liegen auf dem Gerät. Unter ⚙ → App, Sprachpakete &amp; Sicherung lädst du eine Sicherung herunter und spielst sie bei Bedarf wieder ein."
+  ],
+  [
+   "Updates",
+   "Gibt es eine neue Version, erscheint ein Punkt am ⚙. Dort siehst du, was neu ist, und entscheidest selbst, wann du aktualisierst."
+  ]
+ ],
+ "appcap": "App, Sprachpakete &amp; Sicherung: Sprachen laden oder entfernen, Sicherung herunterladen.",
+ "s3": "Alles, was Multilingo kann",
+ "s3sub": "Die Bereiche im Überblick – oben in der Leiste findest du sie alle.",
+ "navcap": "Die Leiste oben: Inhalt, Grammatik, Speisekarte, Spickzettel, Quiz, Hilfe (?) und Einstellungen (⚙).",
+ "features": [
+  [
+   "inhalt",
+   "☰ Inhalt",
+   "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Das Suchfeld findet Themen nach Namen."
+  ],
+  [
+   "tabelle",
+   "Übersetzungen und Aussprache",
+   "Jeder Eintrag steht in allen deinen Sprachen nebeneinander, Substantive mit Artikel, Redewendungen sinngemäß übersetzt. 🔊 liest vor, ein zweiter Tipp stoppt. Mit dem Pin hältst du wichtige Einträge oben, mit A–Z sortierst du."
+  ],
+  [
+   "konj",
+   "Verben und Konjugation",
+   "Verben werden in allen Sprachen konjugiert: Präsens, Perfekt, Präteritum und Futur. <b>Konjugation ▸</b> klappt die Tabellen auf, die Zeit-Knöpfe wechseln die Zeitform."
+  ],
+  [
+   "gram",
+   "§ Grammatik",
+   "Die wichtigsten Regeln jeder Sprache von A1 bis C1, mit Beispielen zum Anhören. <b>Verben &amp; Endungen</b> zeigt Endungstabellen und unregelmäßige Verben, <b>Typische Fehler</b> die Stolpersteine für Sprecher deiner Sprache. <b>Im Quiz üben</b> fragt ein Kapitel mit Lückensätzen ab."
+  ],
+  [
+   "verben",
+   "Verben &amp; Endungen",
+   "Endungen auf einen Blick: regelmäßige Muster, Ausnahmen und die wichtigsten unregelmäßigen Verben, jeweils mit Beispiel."
+  ],
+  [
+   "dish",
+   "🍽 Speisekarte",
+   "Rund 250 beliebte Gerichte und Getränke je Land mit Originalnamen und Erklärung, dazu Kaffee, Bier und Wein. Warnhinweise zeigen, wenn ein Name anderswo etwas anderes bedeutet. <b>Bestellen ▸</b> zeigt, wie du es bestellst."
+  ],
+  [
+   "spick",
+   "★ Spickzettel",
+   "Alles, was du mit dem Stern markiert hast, kompakt in einer Sprache: Wörter, Redewendungen und Gerichte. <b>Drucken</b> macht daraus einen Zettel für die Reise."
+  ],
+  [
+   "quiz",
+   "Quiz",
+   "Lernen mit vier Antworten pro Frage: Wörter &amp; Sätze oder Grammatik, in beide Richtungen, nach Niveau und Thema. Bei <b>🔊 Hören</b> wird nur vorgelesen. Nach drei richtigen Antworten gilt ein Eintrag als gelernt, der Lernstand zeigt deinen Fortschritt."
+  ]
+ ],
+ "mob": "Auf dem Handy",
+ "mobsub": "Gleiche Inhalte, für den Daumen gemacht: Die Zeilen werden zu Karten, die Leiste sitzt oben.",
+ "tips": "Kleine Tipps",
+ "tiplist": [
+  "Sprachniveau unter ⚙ blendet alles über deinem Niveau aus, in Tabelle, Grammatik und Quiz.",
+  "Bis zu 5 Sprachen passen nebeneinander in die Tabelle: deine Ausgangssprache und vier weitere.",
+  "Bei Sprachen mit anderer Schrift (Arabisch, Russisch, Japanisch …) steht die Umschrift kursiv darunter.",
+  "Das <b>?</b> oben rechts erklärt jede Funktion ausführlich.",
+  "Die Gesundheitsangaben sind ohne Gewähr und ersetzen keine Beratung. Sie helfen dir, dich mit Arzt oder Apotheke zu verständigen."
+ ],
+ "end": "Gute Reise!",
+ "endsub": "Viel Spaß mit Multilingo. Hast du eine Idee oder einen Fehler gefunden? Wir freuen uns über jede Rückmeldung.",
+ "pause": "Anhalten",
+ "play": "Abspielen",
+ "prev": "Zurück",
+ "next": "Weiter",
+ "step": "Schritt"
+}

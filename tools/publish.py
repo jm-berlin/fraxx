@@ -114,8 +114,25 @@ def main():
         except Exception as e: print("Hinweis: offene-hinweise.json nicht lesbar:", e)
         os.remove(pend_f)
     add_release(data_new, stamp, notes, old_changes)
+    # Anleitung: Übersetzungen aus dem Export übernehmen (nur passend zum aktuellen deutschen Text) und alle Sprachen neu bauen.
+    # Fehler hier brechen die Veröffentlichung nicht ab.
+    try:
+        import hashlib
+        tdir = os.path.join(REPO, "tools", "tutorial-texts"); os.makedirs(tdir, exist_ok=True)
+        de_txt = json.load(open(os.path.join(tdir, "de.json")))
+        th = hashlib.sha1(json.dumps(de_txt, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:10]
+        for d in docs:
+            if d.get("kind") == "tutorial" and d.get("hash") == th and isinstance(d.get("text"), dict) and d.get("lang"):
+                json.dump(d["text"], open(os.path.join(tdir, d["lang"] + ".json"), "w"), ensure_ascii=False, indent=1)
+    except Exception as e: print("Hinweis: Anleitungstexte nicht übernommen:", e)
+    tutorial_pending = True
     shutil.rmtree(os.path.join(REPO, "data"), ignore_errors=True)
     shutil.copytree(data_new, os.path.join(REPO, "data"))
+    if tutorial_pending:
+        try:
+            r = subprocess.run([sys.executable, "tools/tutorial_all.py"], cwd=REPO, capture_output=True, text=True, timeout=3600)
+            print(r.stdout[-1500:], r.stderr[-1500:])
+        except Exception as e: print("Hinweis: Anleitung nicht gebaut:", e)
     json.dump({"stamp": stamp, "documents": total, "entries": n_new,
                "publishedAt": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
                "langs": sorted(x for x in langs(new_packs) if x)}, open(STAMP_FILE, "w"), ensure_ascii=False, indent=1)

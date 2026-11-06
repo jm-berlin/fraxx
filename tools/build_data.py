@@ -162,6 +162,8 @@ for d in docs:
         core.append(x)
     elif kind == "section":
         core.append(d)
+    elif kind == "tutorial":
+        continue  # Anleitung: wird von publish.py als eigene Seite gebaut, nicht in die Sprachpakete
     else:
         cs = codes_in(d["id"])
         if not cs: core.append(d); continue

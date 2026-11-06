@@ -23,6 +23,14 @@ Grundregel: **Nur ein neuer Export wird veröffentlicht.** Der Klick auf „Expo
 7. **Hochladen:** `git add -A`, Commit „Veröffentlicht: Export vom <stamp>“ (mit den Attributionszeilen der Sitzung), `git push origin HEAD:main`. Danach mit `git ls-remote origin main` prüfen, dass der Commit angekommen ist.
 8. **Melden:** kurze Nachricht auf Deutsch: Export vom …, Anzahl Einträge, Sprachpakete, was sich gegenüber vorher geändert hat (z. B. neue Sprache, mehr Einträge). Hinweis: installierte Apps holen sich das Update beim nächsten Start mit Internet.
 
+## Anleitung
+
+`publish.py` baut am Ende auch die Anleitung für Erstnutzer neu (`tools/tutorial_all.py`): Screenshots aus der frisch gebauten
+Web-App je Sprache, `anleitung/index.html` (Deutsch), `anleitung/<lang>.html` und die PDFs. Die Übersetzungen kommen als
+Dokumente `tutorial-<lang>` aus dem Export (Auftrag „Anleitung … übersetzen“ im Artefakt). Das dauert einige Minuten und bricht
+die Veröffentlichung bei Fehlern nicht ab. Der deutsche Text steht in `tools/build_tutorial.py` (TEXT["de"]); ändert er sich,
+muss das Artefakt die neue Fassung kennen (TUT_DE/TUT_HASH), sonst übersetzt es nicht neu.
+
 ## Wichtig
 
 - Nie `.git` aus einem anderen Ordner in das Repository kopieren.

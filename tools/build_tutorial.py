@@ -1,5 +1,7 @@
-"""Baut die Anleitung für Erstnutzer: anleitung/index.html (animiert, eine Datei mit eingebetteten Bildern)
-und Multilingo-Anleitung.pdf. Texte stehen in TEXT[lang] – für weitere Sprachen dort ergänzen.
+"""Baut die Anleitung für Erstnutzer als animierte HTML-Seite (eine Datei mit eingebetteten Bildern).
+Deutsch → anleitung/index.html, andere Sprachen → anleitung/<lang>.html. Das PDF erzeugt tutorial_all.py.
+Der deutsche Text steht unten in TEXT["de"] (Quelle); die Übersetzungen erstellt das Artefakt (Auftrag
+„Anleitung übersetzen“), sie kommen mit dem Export und liegen dann in tools/tutorial-texts/<lang>.json.
 
     python3 tools/build_tutorial.py <screenshot-ordner> <ausgabe-ordner> [lang]
 """
@@ -30,8 +32,23 @@ SHOT = {
     "mkarte":  ("11b-mobile-karte.png", "m", []),
 }
 
+MARKS = {}
+try: MARKS = json.load(open(os.path.join(SHOTS, "marks.json")))
+except Exception: pass
+# Markierungen aus der Aufnahme (marks.json) haben Vorrang vor den festen Werten
+LIVE = {"src": ["src"], "home": ["loslegen"], "nav": ["setbtn"], "tabelle": ["speak"], "set": ["srcsel", "ver"]}
+
 def img(key):
     f, crop, marks = SHOT[key]
+    if key in LIVE and any(MARKS.get(k) for k in LIVE[key]):
+        marks = []
+        for k in LIVE[key]:
+            r = MARKS.get(k)
+            if not r: continue
+            x0, y0, w0, h0 = r
+            if k == "ver": w0 = min(w0, 190)
+            if k == "speak": x0, y0, w0, h0 = x0 - 4, y0 - 4, w0 + 8, h0 + 8
+            marks.append((x0, y0, w0, h0))
     im = Image.open(os.path.join(SHOTS, f)).convert("RGB")
     sc = im.width / (390 if crop == "m" else VIEW_W)
     if crop and crop != "m":
@@ -97,8 +114,28 @@ TEXT = {"de": {
   "pause": "Anhalten", "play": "Abspielen", "prev": "Zurück", "next": "Weiter", "step": "Schritt",
 }}
 
+TXT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tutorial-texts")
+def load_texts():
+    os.makedirs(TXT_DIR, exist_ok=True)
+    json.dump(TEXT["de"], open(os.path.join(TXT_DIR, "de.json"), "w"), ensure_ascii=False, indent=1)
+    for f in sorted(os.listdir(TXT_DIR)):
+        l = f[:-5]
+        if f.endswith(".json") and l != "de":
+            try:
+                t = json.load(open(os.path.join(TXT_DIR, f)))
+                TEXT[l] = {**TEXT["de"], **t}
+            except Exception as e: print("Text", f, "nicht lesbar:", e)
+NAMES = {"de": "Deutsch", "en": "English", "fr": "Français", "it": "Italiano", "es": "Español", "pt": "Português",
+         "nl": "Nederlands", "pl": "Polski", "sv": "Svenska", "nb": "Norsk"}
+page = lambda l: "index.html" if l == "de" else f"{l}.html"
+pdfname = lambda l: "Multilingo-Anleitung.pdf" if l == "de" else f"Multilingo-Anleitung-{l}.pdf"
+
 def build():
+    load_texts()
+    if LANG not in TEXT: sys.exit(f"Kein Text für {LANG}")
     T = TEXT[LANG]
+    avail = [l for l in NAMES if l in TEXT]
+    switch = "".join(f'<a href="{page(l)}"{" aria-current=\"page\"" if l == LANG else ""} hreflang="{l}">{NAMES[l]}</a>' for l in avail) if len(avail) > 1 else ""
     def fig(key, cap="", cls=""):
         src, pings, ar = img(key)
         c = f"<figcaption>{cap}</figcaption>" if cap else ""
@@ -130,6 +167,8 @@ body{{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;c
 header.top{{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 4px 20px}}
 .logo{{font-weight:900;font-size:clamp(30px,5vw,44px);letter-spacing:-.06em;line-height:1;position:relative;text-decoration:none;color:var(--ink)}}
 .logo sup{{position:absolute;left:100%;top:-2px;margin-left:4px;font-size:11px;letter-spacing:.08em;background:var(--hl);color:#fff;border-radius:99px;padding:3px 8px;font-weight:700}}
+.langs{{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;flex:1}} .langs a{{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:99px}} .langs a[aria-current]{{background:var(--ink);color:#fff}} .langs a:hover{{color:var(--ink)}}
+@media (max-width:860px){{ header.top{{flex-wrap:wrap}} .langs{{order:3;flex-basis:100%;justify-content:flex-start}} }}
 .pill{{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 22px;font-weight:700;font-size:15px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}}
 .pill.pri{{background:var(--ink);color:#fff}} .pill.sec{{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}}
 .pill:hover{{filter:brightness(1.1)}}
@@ -225,14 +264,14 @@ footer{{text-align:center;color:var(--muted);font-size:13px;margin-top:22px}}
 </head>
 <body>
 <div class="wrap">
-<header class="top"><a class="logo" href="{APP}">Multilingo<sup>BETA</sup></a><a class="pill pri noprint" href="{APP}">{T["open"]} →</a></header>
+<header class="top"><a class="logo" href="{APP}">Multilingo<sup>BETA</sup></a><nav class="langs noprint">{switch}</nav><a class="pill pri noprint" href="{APP}">{T["open"]} →</a></header>
 
 <section class="card hero">
   <div>
     <p class="eyebrow">{T["eyebrow"]}</p>
     <h1>{T["h1"]}</h1>
     <p class="lead">{T["lead"]}</p>
-    <div class="ctas"><a class="pill pri" href="{APP}">{T["open"]} →</a><a class="pill sec" href="Multilingo-Anleitung.pdf" download>⤓ {T["pdf"]}</a></div>
+    <div class="ctas"><a class="pill pri" href="{APP}">{T["open"]} →</a><a class="pill sec" href="{pdfname(LANG)}" download>⤓ {T["pdf"]}</a></div>
     <p class="beta">{T["beta"]}</p>
   </div>
   <div class="phones" aria-hidden="true">{fig("mhome")}{fig("mkarte")}</div>
@@ -265,6 +304,8 @@ footer{{text-align:center;color:var(--muted);font-size:13px;margin-top:22px}}
 <footer>Multilingo · {APP.replace("https://","")}</footer>
 </div>
 <script>
+(function(){{ var A = {json.dumps(avail)}, l = (new URLSearchParams(location.search).get("lang") || "").slice(0,2);
+  if({json.dumps(LANG == "de")} && l && l !== "de" && A.indexOf(l) >= 0) location.replace(l + ".html"); }})();
 document.documentElement.classList.add("js");
 (function(){{
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -295,7 +336,7 @@ document.documentElement.classList.add("js");
 </html>
 '''
     os.makedirs(OUT, exist_ok=True)
-    p = os.path.join(OUT, "index.html" if LANG == "de" else f"{LANG}.html")
+    p = os.path.join(OUT, page(LANG))
     open(p, "w").write(html)
     print(p, round(len(html)/1e6, 2), "MB")
     return p
