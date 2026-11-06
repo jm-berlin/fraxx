@@ -28,7 +28,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Urbanist,Inter,s
 .hcta .primary{background:var(--ink);color:var(--surface);border-color:var(--ink)}
 .hart{position:relative;align-self:stretch;min-height:500px}
 /* Bühne für den Globus: vom rechten Bereich bis an die Kastenkanten */
-.stage{position:absolute;left:0;top:-48px;bottom:-48px;right:-44px;touch-action:pan-y}
+.stage{position:absolute;left:-12%;top:-48px;bottom:-48px;right:-44px;touch-action:pan-y}
 .stage canvas{position:absolute;inset:0;width:100%;height:100%}
 .wcard{position:absolute;left:2%;bottom:2%;z-index:3;background:var(--surface);border-radius:14px;box-shadow:0 12px 30px rgb(16 24 40 / .16);padding:14px 16px;min-width:210px;font-size:15px}
 .wl{display:flex;gap:14px;align-items:baseline;padding:3px 0}.wl i{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);width:20px}
@@ -47,7 +47,8 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Urbanist,Inter,s
 <body>
 <div class="wrap">
   <div class="tabs" role="group" aria-label="Variante">
-    <button type="button" data-v="1" aria-pressed="true">1 · Hineinzoomen</button>
+    <button type="button" data-v="4" aria-pressed="true">4 · Grüße an Fäden</button>
+    <button type="button" data-v="1" aria-pressed="false">1 · Hineinzoomen</button>
     <button type="button" data-v="2" aria-pressed="false">2 · Fotos an Fäden</button>
     <button type="button" data-v="3" aria-pressed="false">3 · Mosaik</button>
   </div>
@@ -61,10 +62,9 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:Urbanist,Inter,s
     </div>
     <div class="hart" aria-hidden="true">
       <div class="stage" id="stage"><canvas id="gl"></canvas><canvas id="lines"></canvas></div>
-      <div class="wcard"><div class="wl"><i>DE</i><b><span class="dart">der</span> Kaffee</b></div><div class="wl"><i>FR</i><span><span class="dart">le</span> café</span></div><div class="wl"><i>ES</i><span><span class="dart">el</span> café</span></div><div class="wl"><i>IT</i><span><span class="dart">il</span> caffè</span></div><div class="wsay">„<b>Un</b> café, s’il vous plaît.“</div></div>
     </div>
   </section>
-  <div class="ctrl"><button type="button" id="replay">Neu abspielen</button><button type="button" id="pause">Bewegung anhalten</button><button type="button" id="theme">Hell / Dunkel</button><span>Drehen mit Maus oder Finger. Paris, Andalusien und Toskana sind echte Fotos, die übrigen Karten Platzhalter.</span></div>
+  <div class="ctrl"><button type="button" id="replay">Neu abspielen</button><button type="button" id="pause">Bewegung anhalten</button><button type="button" id="theme">Hell / Dunkel</button><span>Drehen mit Maus oder Finger. In 1–3 sind Paris, Andalusien und Toskana echte Fotos, die übrigen Karten Platzhalter.</span></div>
 </div>
 <script>
 (()=>{
@@ -78,10 +78,13 @@ const L = [
  ["nb","Oslo",59.9,10.7,"Hei"],["cs","Praha",50.1,14.4,"Ahoj"],["hu","Budapest",47.5,19.0,"Szia"],["ro","București",44.4,26.1,"Bună"],
  ["ca","Barcelona",41.4,2.2,"Hola"],["ru","Москва",55.8,37.6,"Привет"],["ja","東京",35.7,139.7,"こんにちは"],["zh","北京",39.9,116.4,"你好"],["ar","القاهرة",30.0,31.2,"مرحبا"]
 ];
+const PINS = {"en":[[54.4,-2.1],[53.1,-7.8],[39.5,-97.5],[60.3,-101.9],[-24.1,134.0],[-39.8,172.8],[-29.7,23.7],[22.7,79.4],[9.4,7.5],[7.7,-1.0],[0.5,37.9],[11.2,122.5],[18.1,-77.3]],"fr":[[46.7,2.6],[50.8,4.8],[46.7,7.5],[60.3,-101.9],[15.1,-14.8],[7.5,-5.6],[4.6,12.5],[-18.6,46.7],[19.3,-72.2],[-1.9,23.5],[18.7,-2.0],[17.4,9.5],[12.7,-1.4],[10.6,-10.0],[15.1,18.6],[-0.4,11.8],[0.1,15.9],[10.3,2.4],[8.8,1.1]],"es":[[40.1,-3.5],[23.9,-102.3],[15.0,-90.5],[14.8,-86.9],[13.7,-88.9],[12.7,-85.1],[10.1,-84.1],[8.7,-80.4],[21.3,-78.0],[19.1,-70.7],[3.4,-73.2],[7.2,-64.6],[-1.3,-78.2],[-13.0,-72.9],[-16.7,-64.6],[-38.2,-72.3],[-33.5,-64.2],[-33.0,-56.0],[-21.7,-60.1],[2.3,9.0],[18.2,-66.5]],"it":[[44.7,11.1],[46.7,7.5]],"pt":[[39.6,-8.3],[-12.1,-49.6],[-12.2,18.0],[-13.9,37.8],[12.2,-14.5],[-8.8,125.9]],"nl":[[52.4,5.6],[50.8,4.8],[4.1,-55.9]],"pl":[[52.0,19.5]],"tr":[[39.3,34.5],[34.9,33.1]],"el":[[39.5,21.7],[34.9,33.1]],"hr":[[45.8,16.4],[44.1,18.1]],"sv":[[65.9,19.0],[63.3,27.3]],"da":[[56.0,9.0],[74.3,-39.3]],"nb":[[61.4,9.7]],"cs":[[49.9,15.4]],"hu":[[47.1,19.4]],"ro":[[45.7,25.0],[47.4,28.5]],"ca":[[41.6,1.5]],"ru":[[58.2,44.7],[53.8,28.4],[49.1,68.7],[41.7,74.5]],"ja":[[36.1,138.4]],"zh":[[32.5,106.3],[23.7,120.9]],"ar":[[26.2,29.4],[23.8,44.7],[31.7,-7.2],[27.4,2.8],[33.7,9.0],[26.6,18.0],[16.3,29.3],[33.1,43.3],[35.0,38.3],[30.8,36.4],[34.1,36.0],[15.3,45.9],[22.1,57.3],[23.5,54.5],[25.2,51.1],[29.4,47.3],[19.6,-9.7],[32.0,35.3]]};
+const HELLO4 = {da:"Goddag", ca:"Bon dia"};
 const TONES = ["#a3395f","#7a5c4f","#8c4570","#5f6f5a","#b06a3b","#4f6377","#9a7b4f","#6d5a7a","#3f6b6a","#a2524a"];
 const DESC = {
  1:"Der Globus dreht sich ein, zoomt heran und bleibt mit Europa groß in der Mitte stehen. Die Bilder liegen in ihren Ländern, danach pendelt er ganz sanft.",
  2:"Freie Drehung wie im ersten Entwurf. Die Bilder liegen im freien Raum rund um Europa und hängen an feinen Fäden an ihrem Ort.",
+ 4:"Statt Fotos hängen Sprechblasen mit dem Gruß jeder Sprache über die ganze Kugel verteilt. Von jeder Blase führen Fäden zu allen Ländern, in denen die Sprache gesprochen wird – kreuz und quer über den Globus.",
  3:"Die 21 Bilder sind gleichmäßig über die ganze Kugel verteilt, wie ein Mosaik unter dem Drahtgitter. Symbolisch statt geografisch, beim Drehen ist immer etwas zu sehen."
 };
 const D2R = Math.PI/180, N = L.length;
@@ -127,15 +130,33 @@ async function buildAtlas(){
     ax.fillText(city.toUpperCase(), x0 + fw + 2, y0 + H - fb/2);
     tiles[i] = { uv:[x0/atlas.width, y0/atlas.height, (x0+W)/atlas.width, (y0+H)/atlas.height], asp: W/H };
   });
-  if(gl){
-    const tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, atlas);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    gl.uniform1i(uni.uTex, 0);
-  }
+  buildBubbles();
+  if(gl){ texPhotos = upload(atlas); texBubbles = upload(batlas); gl.uniform1i(uni.uTex, 0); }
   setVariant(variant);
 }
+
+// Sprechblasen für Variante 4
+const bubbles = []; const batlas = document.createElement("canvas"); batlas.width = 320*COLS; batlas.height = 170*ROWS;
+function buildBubbles(){
+  const bx = batlas.getContext("2d"); bx.clearRect(0,0,batlas.width,batlas.height);
+  L.forEach(([code, , , , hello0], i)=>{
+    const hello = HELLO4[code] || hello0;
+    const cx = (i % COLS)*320, cy = Math.floor(i / COLS)*170;
+    bx.font = `800 52px Urbanist, "Noto Sans", "Noto Sans CJK JP", "Noto Sans Arabic", system-ui, sans-serif`;
+    let fs = 52; while(bx.measureText(hello).width > 250 && fs > 24){ fs -= 4; bx.font = `800 ${fs}px Urbanist, "Noto Sans", system-ui, sans-serif`; }
+    const tw = bx.measureText(hello).width, w = Math.max(150, tw + 56), h = 96, x0 = cx + (320 - w)/2, y0 = cy + 14, r = 48;
+    const tone = TONES[i % TONES.length];
+    bx.beginPath(); bx.moveTo(x0 + r, y0); bx.lineTo(x0 + w - r, y0); bx.arc(x0 + w - r, y0 + r, r, -Math.PI/2, Math.PI/2);
+    bx.lineTo(x0 + w*0.42 + 18, y0 + h); bx.lineTo(x0 + w*0.36, y0 + h + 34); bx.lineTo(x0 + w*0.36 + 2, y0 + h);
+    bx.lineTo(x0 + r, y0 + h); bx.arc(x0 + r, y0 + r, r, Math.PI/2, Math.PI*1.5); bx.closePath();
+    bx.fillStyle = tone; bx.fill();
+    bx.fillStyle = "#fff"; bx.textAlign = "center"; bx.textBaseline = "middle"; bx.fillText(hello, x0 + w/2, y0 + h/2 + 2);
+    bubbles[i] = { uv:[x0/batlas.width, cy/batlas.height, (x0+w)/batlas.width, (cy+170)/batlas.height], asp: w/170, tipU: 0.36, tipV: (y0 - cy + h + 34)/170 };
+  });
+}
+let texPhotos = null, texBubbles = null;
+function upload(canvas){ const t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t); gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, canvas);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE); return t; }
 
 // ---------- Anordnung der Kacheln je Variante ----------
 // Kacheln (Breite/Höhe in Grad) auseinanderschieben, Federn ziehen sie zu ihrem Ort; Pins bleiben frei
@@ -187,9 +208,11 @@ void main(){
     float u = dl * cos(R.y) / R.z + 0.5; float v = 0.5 - (lat - R.y) / R.w;
     if(u>0. && u<1. && v>0. && v<1.){
       vec4 uv = uUV[i];
-      vec3 c = texture2D(uTex, vec2(mix(uv.x, uv.z, u), mix(uv.y, uv.w, v))).rgb;
-      float shade = mix(0.7, 1.0, pow(z, 0.6));
-      col = vec4(c*shade*mix(1.0, 0.9, uDark), 0.97);
+      vec4 t = texture2D(uTex, vec2(mix(uv.x, uv.z, u), mix(uv.y, uv.w, v)));
+      if(t.a > 0.02){
+        float shade = mix(0.7, 1.0, pow(z, 0.6));
+        col = vec4(t.rgb*shade*mix(1.0, 0.9, uDark), 0.97*t.a);
+      }
     }
   }
   if(col.a <= 0.0) discard;
@@ -206,7 +229,7 @@ if(gl){
 }
 
 // ---------- Kamera und Varianten ----------
-let variant = 1, place = [], pins = false, playing = !reduce;
+let variant = 4, place = [], pins = false, playing = !reduce;
 const cam = { lon0: 10, tilt: 22, zoom: 1, focus: 0 };   // focus 0 = Globus rechts angeschnitten, 1 = Europa groß in der Mitte
 let anim = null, t0 = 0, last = 0;
 function setVariant(v){
@@ -216,12 +239,29 @@ function setVariant(v){
   if(!tiles.length) return;
   if(v===1){ place = spread(7, 0.06, false, 260, 0.8); pins = false; Object.assign(cam, { lon0:-120, tilt:5, zoom:1, focus:0 }); }
   if(v===2){ place = spread(10, 0.004, true, 700, 2.4); pins = true; Object.assign(cam, { lon0:30, tilt:26, zoom:1.15, focus:0 }); }
+  if(v===4){
+    // Plätze gleichmäßig über die Kugel; jede Sprache bekommt den freien Platz, der ihren Ländern am nächsten liegt
+    const slots = L.map((_, i)=>{ const y = 1 - 2*(i+0.5)/N; return { lat: Math.asin(y)/D2R*0.7, lon: ((i*137.508) % 360) - 180, used:false }; });
+    const vec = (la, lo)=>[Math.cos(la*D2R)*Math.sin(lo*D2R), Math.sin(la*D2R), Math.cos(la*D2R)*Math.cos(lo*D2R)];
+    const order = L.map((l,i)=>i).sort((a,b)=>(PINS[L[b][0]]||[]).length - (PINS[L[a][0]]||[]).length);
+    place = [];
+    order.forEach(i=>{
+      const ps = PINS[L[i][0]] || [[L[i][2], L[i][3]]]; const c = [0,0,0]; ps.forEach(([la,lo])=>{ const q = vec(la,lo); c[0]+=q[0]; c[1]+=q[1]; c[2]+=q[2]; });
+      let best = null, bd = -2; slots.forEach(s=>{ if(s.used) return; const q = vec(s.lat, s.lon); const d = (q[0]*c[0]+q[1]*c[1]+q[2]*c[2]) / Math.hypot(...c); if(d > bd){ bd = d; best = s; } });
+      best.used = true; place[i] = { lat: best.lat, lon: best.lon, h: 15, w: 15*bubbles[i].asp, pins: ps };
+    });
+    pins = "threads"; Object.assign(cam, { lon0:15, tilt:20, zoom:1, focus:0 });
+  }
   if(v===3){ place = fibonacci(24); pins = false; Object.assign(cam, { lon0:8, tilt:18, zoom:1, focus:0 }); }
   if(reduce && v===1) Object.assign(cam, { lon0:14, tilt:44, zoom:1.45, focus:1 });
   if(gl){
     const rect = [], uv = [];
-    place.forEach((p,i)=>{ rect.push(p.lon*D2R, p.lat*D2R, p.w*D2R, p.h*D2R); uv.push(...tiles[i].uv); });
+    const src = v===4 ? bubbles : tiles;
+    place.forEach((p,i)=>{ rect.push(p.lon*D2R, p.lat*D2R, p.w*D2R, p.h*D2R); uv.push(...src[i].uv); });
     gl.uniform4fv(uni.uRect, new Float32Array(rect)); gl.uniform4fv(uni.uUV, new Float32Array(uv));
+    gl.bindTexture(gl.TEXTURE_2D, v===4 ? texBubbles : texPhotos);
+    // Sprechblasen liegen über dem Drahtgitter, Fotos darunter
+    glc.style.zIndex = v===4 ? "2" : "0"; lc.style.zIndex = "1";
   }
   draw();
 }
@@ -242,8 +282,9 @@ function size(){ dpr = Math.min(2, window.devicePixelRatio || 1); W = stage.clie
 new ResizeObserver(size).observe(stage);
 function geom(){
   const mobile = W < 520;
-  const R0 = Math.min(mobile ? 230 : 290, H*0.47);
-  const cx0 = mobile ? W*0.62 : W - 0.5*R0, cy0 = H/2 + (mobile ? 20 : 0);
+  const big = variant===4;
+  const R0 = Math.min(mobile ? 240 : (big ? 345 : 290), H*(big ? 0.53 : 0.47));
+  const cx0 = mobile ? W*0.62 : W - (big ? 0.78 : 0.5)*R0, cy0 = H/2 + (mobile ? 20 : 0);
   const cx1 = mobile ? W*0.55 : W*0.74, cy1 = H*0.6;
   return { R: R0*cam.zoom, cx: cx0 + (cx1-cx0)*cam.focus, cy: cy0 + (cy1-cy0)*cam.focus };
 }
@@ -285,8 +326,29 @@ function draw(){
   strokeLines(rings, true, g, ink, 0.9, 0.55);
   ctx.beginPath(); ctx.arc(g.cx, g.cy, g.R, 0, Math.PI*2); ctx.strokeStyle = ink; ctx.globalAlpha = .7; ctx.lineWidth = 1.4; ctx.stroke(); ctx.globalAlpha = 1;
   strokeLines([grat[5]], true, g, hl, 1.2, .6);
+  // Variante 4: Fäden von jeder Sprechblase zu allen Ländern der Sprache
+  if(pins==="threads" && place.length){
+    const vec = (la, lo)=>[Math.cos(la*D2R)*Math.sin(lo*D2R), Math.sin(la*D2R), Math.cos(la*D2R)*Math.cos(lo*D2R)];
+    const back = [], front = [];
+    place.forEach((p,i)=>{
+      const b = bubbles[i]; const tipLat = p.lat + (0.5 - b.tipV)*p.h, tipLon = p.lon + (b.tipU - 0.5)*p.w/Math.max(.3, Math.cos(p.lat*D2R));
+      const A = vec(tipLat, tipLon);
+      p.pins.forEach(([la, lo])=>{
+        const B = vec(la, lo); const om = Math.acos(Math.max(-1, Math.min(1, A[0]*B[0]+A[1]*B[1]+A[2]*B[2]))); const so = Math.sin(om) || 1;
+        const line = []; const n = Math.max(8, Math.ceil(om/D2R/3));
+        for(let s=0; s<=n; s++){ const f = s/n, k1 = Math.sin((1-f)*om)/so, k2 = Math.sin(f*om)/so; const q = [A[0]*k1+B[0]*k2, A[1]*k1+B[1]*k2, A[2]*k1+B[2]*k2];
+          // leicht nach außen gewölbt, damit die Fäden wie gespannt wirken
+          const lift = 1 + 0.06*Math.sin(f*Math.PI)*Math.min(1, om); line.push([Math.atan2(q[0], q[2])/D2R, Math.asin(Math.max(-1, Math.min(1, q[1]/Math.hypot(...q))))/D2R, lift]); }
+        front.push(line);
+      });
+    });
+    strokeLines(front.map(l=>l.map(([lo,la])=>[lo,la])), false, g, hl, 0.8, .14);
+    strokeLines(front.map(l=>l.map(([lo,la])=>[lo,la])), true, g, hl, 1.1, .55);
+    ctx.fillStyle = hl;
+    place.forEach(p=>p.pins.forEach(([la, lo])=>{ const [x, y, zz] = proj(lo, la); if(zz > 0){ ctx.beginPath(); ctx.arc(g.cx + x*g.R, g.cy - y*g.R, 2.6, 0, Math.PI*2); ctx.fill(); } }));
+  }
   // Fäden und Pins
-  if(pins && place.length){
+  if(pins===true && place.length){
     place.forEach(p=>{
       // Startpunkt: Kantenmitte der Kachel, die dem Pin am nächsten liegt
       const c = Math.max(0.35, Math.cos(p.lat*D2R));
@@ -314,7 +376,7 @@ document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",
 document.getElementById("replay").addEventListener("click", ()=>setVariant(variant));
 document.getElementById("pause").addEventListener("click", e=>{ playing = !playing; e.target.textContent = playing ? "Bewegung anhalten" : "Bewegung starten"; });
 document.getElementById("theme").addEventListener("click", ()=>{ const r = document.documentElement; const d = r.dataset.theme==="dark" || (!r.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches); r.dataset.theme = d ? "light" : "dark"; draw(); });
-setVariant(1);
+setVariant(4);
 buildAtlas();
 })();
 </script>

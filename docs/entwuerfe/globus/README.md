@@ -20,3 +20,10 @@ Offene Frage: Anordnung der Fotos (die meisten Länder liegen in Europa). Ideen 
 3. **Mosaik** – 21 Bilder gleichmäßig über die Kugel verteilt (symbolisch).
 
 Paris, Andalusien und Toskana sind echte Fotos, die übrigen 18 Karten Platzhalter (Gruß + Ort). Quelltext: `vorlage-varianten.html`.
+
+## Entwurf 3: Grüße an Fäden (6. November 2026, Favorit)
+
+Neue Variante 4 in `globus-varianten.html` (Standard): Sprechblasen mit dem Gruß jeder Sprache gleichmäßig über die Kugel verteilt
+(jede Sprache bekommt den freien Platz, der ihren Ländern am nächsten liegt). Von jeder Blase führen Fäden (Großkreisbögen) zu allen Ländern,
+in denen die Sprache gesprochen wird – `sprachen-laender.json` (Natural-Earth-Beschriftungspunkte, Katalanisch: Katalonien).
+Globus größer und weiter links, Kaffee-Kasten entfernt. Blasen liegen über dem Drahtgitter, Fotos (Varianten 1–3) darunter.
