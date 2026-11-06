@@ -122,7 +122,7 @@ def main():
         de_txt = json.load(open(os.path.join(tdir, "de.json")))
         th = hashlib.sha1(json.dumps(de_txt, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:10]
         for d in docs:
-            if d.get("kind") == "tutorial" and d.get("hash") == th and isinstance(d.get("text"), dict) and d.get("lang"):
+            if d.get("kind") == "tutorial" and d.get("hash") == th and isinstance(d.get("text"), dict) and d.get("lang") and (d["text"].get("after") or [[None]])[0][0] != de_txt["after"][0][0]:
                 json.dump(d["text"], open(os.path.join(tdir, d["lang"] + ".json"), "w"), ensure_ascii=False, indent=1)
     except Exception as e: print("Hinweis: Anleitungstexte nicht übernommen:", e)
     tutorial_pending = True
