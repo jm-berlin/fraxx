@@ -250,6 +250,7 @@
       // Erster Start: Ausgangssprache abfragen, dann nur die Standardpakete laden (Deutsch steckt im Kern)
       // plus das Paket der gewählten Ausgangssprache. Alle anderen lassen sich unter ⚙ nachladen.
       firstSrc = await askSource(state.index);
+      state.firstRun = true;
       const def = state.index.packs.filter(p => p.default);
       // Admin: alle verfügbaren Sprachen sofort mitinstallieren
       inst = (ADMIN || !def.length ? state.index.packs : def).map(p => p.lang);
@@ -375,6 +376,7 @@
     },
     // Update: was wartet, und übernehmen
     pendingUpdate: () => state.pending ? { release: state.pending.release, version: state.pending.appVersion || "", from: (state.index && state.index.release) || "" } : null,
+    firstRun: () => !!state.firstRun,
     appVersion: () => (state.index && state.index.appVersion) || "",
     release: () => (state.index && state.index.release) || "",
     async applyUpdate() {

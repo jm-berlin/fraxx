@@ -318,6 +318,9 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
       row = document.createElement("div"); row.className = "mlver"; row.setAttribute("data-notr", "");
       row.innerHTML = `<span class="vl"></span><b></b><span class="vok"></span><button type="button" class="vup" hidden></button>`;
       row.querySelector(".vup").addEventListener("click", () => { document.getElementById("setbtn")?.click(); updateDialog(true); });
+      const gb = document.createElement("button"); gb.type = "button"; gb.className = "vguide";
+      gb.addEventListener("click", () => { document.getElementById("setbtn")?.click(); ML.showGuide && ML.showGuide(); });
+      row.insertBefore(gb, row.querySelector(".vup"));
       pop.prepend(row);
     }
     return row;
@@ -332,6 +335,7 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
         const v = curVersion();
         row.querySelector(".vl").textContent = T.v; row.querySelector("b").textContent = (v || "–") + " Beta";
         row.querySelector(".vok").textContent = avail ? "" : "✓ " + T.ok;
+        { const gb = row.querySelector(".vguide"); if (gb) gb.textContent = "▶ " + (GUIDE_T[ML.srcLang()] || GUIDE_T.en)[0]; }
         const b = row.querySelector(".vup"); b.hidden = !avail;
         b.textContent = T.t + (pend && pend.version ? " · " + pend.version : "");
       }
@@ -400,4 +404,69 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
     try { const reg = await navigator.serviceWorker?.getRegistration(); await reg?.update(); const has = await ML.checkUpdates(); await new Promise(r => setTimeout(r, 1500)); checkAvail(); if (has || (reg && reg.waiting)) { m.textContent = ""; close(); updateDialog(true); } else m.textContent = "Alles aktuell."; }
     catch (e) { m.className = "mlmsg err"; m.textContent = "Keine Verbindung."; }
   });
+  // ---------- Anleitung: Willkommen nach dem ersten Start, Link in den Einstellungen ----------
+  const GUIDE_T = {
+    de: ["Anleitung", "Willkommen bei Multilingo!", "Möchtest du dir zuerst die kurze Anleitung ansehen? Sie zeigt dir in wenigen Minuten, wie alles funktioniert.", "Anleitung ansehen", "Sofort loslegen", "Schließen", "Jetzt loslegen"],
+    en: ["Guide", "Welcome to Multilingo!", "Would you like to watch the short guide first? It shows you how everything works in just a few minutes.", "Watch the guide", "Start right away", "Close", "Get started now"],
+    fr: ["Guide", "Bienvenue sur Multilingo !", "Veux-tu d'abord regarder le petit guide ? Il te montre en quelques minutes comment tout fonctionne.", "Voir le guide", "Commencer tout de suite", "Fermer", "Commencer maintenant"],
+    es: ["Guía", "¡Bienvenido a Multilingo!", "¿Quieres ver primero la guía breve? Te muestra en pocos minutos cómo funciona todo.", "Ver la guía", "Empezar ya", "Cerrar", "Empezar ahora"],
+    it: ["Guida", "Benvenuto su Multilingo!", "Vuoi guardare prima la breve guida? Ti mostra in pochi minuti come funziona tutto.", "Guarda la guida", "Inizia subito", "Chiudi", "Inizia ora"],
+    pt: ["Guia", "Bem-vindo ao Multilingo!", "Queres ver primeiro o guia rápido? Mostra-te em poucos minutos como tudo funciona.", "Ver o guia", "Começar já", "Fechar", "Começar agora"],
+    nl: ["Handleiding", "Welkom bij Multilingo!", "Wil je eerst de korte handleiding bekijken? Die laat je in een paar minuten zien hoe alles werkt.", "Handleiding bekijken", "Meteen beginnen", "Sluiten", "Nu beginnen"],
+    pl: ["Przewodnik", "Witaj w Multilingo!", "Chcesz najpierw obejrzeć krótki przewodnik? W kilka minut pokaże ci, jak wszystko działa.", "Zobacz przewodnik", "Zacznij od razu", "Zamknij", "Zacznij teraz"],
+    tr: ["Kılavuz", "Multilingo'ya hoş geldin!", "Önce kısa kılavuza göz atmak ister misin? Birkaç dakikada her şeyin nasıl çalıştığını gösterir.", "Kılavuzu izle", "Hemen başla", "Kapat", "Şimdi başla"],
+    el: ["Οδηγός", "Καλώς ήρθες στο Multilingo!", "Θέλεις να δεις πρώτα τον σύντομο οδηγό; Σου δείχνει σε λίγα λεπτά πώς λειτουργούν όλα.", "Δες τον οδηγό", "Ξεκίνα αμέσως", "Κλείσιμο", "Ξεκίνα τώρα"],
+    hr: ["Vodič", "Dobro došli u Multilingo!", "Želiš li prvo pogledati kratki vodič? U nekoliko minuta pokazuje kako sve funkcionira.", "Pogledaj vodič", "Odmah počni", "Zatvori", "Počni sada"],
+    sv: ["Guide", "Välkommen till Multilingo!", "Vill du titta på den korta guiden först? Den visar på några minuter hur allt fungerar.", "Visa guiden", "Börja direkt", "Stäng", "Börja nu"],
+    da: ["Vejledning", "Velkommen til Multilingo!", "Vil du først se den korte vejledning? Den viser dig på få minutter, hvordan alt fungerer.", "Se vejledningen", "Start med det samme", "Luk", "Kom i gang nu"],
+    nb: ["Veiledning", "Velkommen til Multilingo!", "Vil du se den korte veiledningen først? Den viser deg på noen få minutter hvordan alt fungerer.", "Se veiledningen", "Start med en gang", "Lukk", "Kom i gang nå"],
+    cs: ["Návod", "Vítej v Multilingu!", "Chceš se nejdřív podívat na krátký návod? Za pár minut ti ukáže, jak všechno funguje.", "Zobrazit návod", "Začít hned", "Zavřít", "Začít teď"],
+    hu: ["Útmutató", "Üdv a Multilingóban!", "Szeretnéd először megnézni a rövid útmutatót? Néhány perc alatt megmutatja, hogyan működik minden.", "Útmutató megnézése", "Azonnal kezdem", "Bezárás", "Kezdjük most"],
+    ro: ["Ghid", "Bine ai venit la Multilingo!", "Vrei să vezi mai întâi ghidul scurt? Îți arată în câteva minute cum funcționează totul.", "Vezi ghidul", "Începe imediat", "Închide", "Începe acum"],
+    ca: ["Guia", "Benvingut a Multilingo!", "Vols veure primer la guia breu? Et mostra en pocs minuts com funciona tot.", "Veure la guia", "Començar ja", "Tancar", "Començar ara"],
+    ru: ["Руководство", "Добро пожаловать в Multilingo!", "Хочешь сначала посмотреть короткое руководство? За несколько минут оно покажет, как всё работает.", "Смотреть руководство", "Начать сразу", "Закрыть", "Начать сейчас"],
+    ja: ["ガイド", "Multilingoへようこそ！", "まず短いガイドを見ますか？数分ですべての使い方がわかります。", "ガイドを見る", "すぐに始める", "閉じる", "今すぐ始める"],
+    zh: ["使用指南", "欢迎使用 Multilingo！", "要先看一下简短的使用指南吗？只需几分钟，就能了解所有功能。", "查看指南", "立即开始", "关闭", "现在开始"],
+    ar: ["الدليل", "مرحبًا بك في Multilingo!", "هل تريد مشاهدة الدليل القصير أولًا؟ يوضح لك في دقائق قليلة كيف يعمل كل شيء.", "مشاهدة الدليل", "ابدأ فورًا", "إغلاق", "ابدأ الآن"] };
+  const gT = () => GUIDE_T[ML.srcLang()] || GUIDE_T.en;
+  const GUIDE_BASE = window.ML_ADMIN ? "../anleitung/" : "anleitung/";
+  const gcss = document.createElement("style");
+  gcss.textContent = `#mlguide{position:fixed;inset:0;z-index:320;background:var(--bg,#e5e2e0);display:flex;flex-direction:column}
+  #mlguide iframe{flex:1 1 auto;width:100%;border:0;background:#fff}
+  #mlguide .gx{position:absolute;top:calc(10px + env(safe-area-inset-top));right:12px;width:40px;height:40px;border-radius:50%;border:0;background:rgb(20 18 18 / .78);color:#fff;font-size:18px;cursor:pointer;box-shadow:0 4px 14px rgb(0 0 0 / .2)}
+  #mlwel{position:fixed;inset:0;z-index:310;background:rgb(10 14 20 / .45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:grid;place-items:center;padding:16px;font-family:inherit}
+  #mlwel .wb{box-sizing:border-box;width:min(480px,100%);background:var(--surface,#f3f1ef);color:var(--ink,#141212);border-radius:24px;box-shadow:0 24px 60px rgb(10 14 20 / .3);padding:30px 26px 24px;text-align:center}
+  #mlwel h2{margin:0 0 10px;font-size:1.6rem;letter-spacing:-.02em}#mlwel p{margin:0 0 22px;color:var(--muted,#6b635d);line-height:1.5}
+  #mlwel .r{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  #mlwel button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:12px 22px;cursor:pointer}
+  #mlwel .y{background:var(--ink,#141212);color:var(--surface,#f3f1ef)}#mlwel .n{background:var(--surface-2,#e9e5e2);color:inherit}
+  .mlver .vguide{border:0;cursor:pointer;font:inherit;font-size:13.5px;font-weight:600;border-radius:999px;padding:6px 14px;background:var(--surface-2,#e9e5e2);color:var(--ink,#141212)}`;
+  document.head.appendChild(gcss);
+  function showGuide() {
+    if (document.getElementById("mlguide")) return;
+    const T = gT(), ov = document.createElement("div"); ov.id = "mlguide"; ov.setAttribute("data-notr", "");
+    ov.setAttribute("role", "dialog"); ov.setAttribute("aria-modal", "true"); ov.setAttribute("aria-label", T[0]);
+    const fr = document.createElement("iframe"); fr.title = T[0];
+    fr.src = GUIDE_BASE + "?lang=" + encodeURIComponent(ML.srcLang() || "de") + "&embed=1";
+    const x = document.createElement("button"); x.type = "button"; x.className = "gx"; x.textContent = "✕"; x.setAttribute("aria-label", T[5]); x.title = T[5];
+    const close = () => { ov.remove(); window.removeEventListener("message", onMsg); document.documentElement.style.overflow = ""; };
+    const onMsg = ev => { if (ev.origin === location.origin && ev.data === "ml-guide-close") close(); };
+    x.addEventListener("click", close); window.addEventListener("message", onMsg);
+    ov.append(fr, x); document.body.appendChild(ov); document.documentElement.style.overflow = "hidden";
+    setTimeout(() => x.focus(), 50);
+  }
+  ML.showGuide = showGuide;
+  (async () => {
+    try {
+      await ML.ready(); if (!(ML.firstRun && ML.firstRun())) return;
+      try { if (localStorage.getItem("ml-nowelcome")) return; } catch (e) {}
+      const T = gT(), ov = document.createElement("div"); ov.id = "mlwel"; ov.setAttribute("data-notr", "");
+      ov.innerHTML = `<div class="wb" role="dialog" aria-modal="true" aria-labelledby="mlwelt"><h2 id="mlwelt"></h2><p></p><div class="r"><button type="button" class="y"></button><button type="button" class="n"></button></div></div>`;
+      ov.querySelector("h2").textContent = T[1]; ov.querySelector("p").textContent = T[2];
+      const y = ov.querySelector(".y"), n = ov.querySelector(".n"); y.textContent = "▶ " + T[3]; n.textContent = T[4] + " →";
+      y.addEventListener("click", () => { ov.remove(); showGuide(); });
+      n.addEventListener("click", () => ov.remove());
+      document.body.appendChild(ov); setTimeout(() => y.focus(), 50);
+    } catch (e) { console.warn("Willkommen", e); }
+  })();
 })();

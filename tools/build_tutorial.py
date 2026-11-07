@@ -65,6 +65,12 @@ def img(key):
         for mx, my, mw, mh in marks)
     return src, pings, w / h
 
+# Text des Knopfs am Ende („Jetzt loslegen“), passend zum Willkommensfenster der App (ui.js GUIDE_T)
+START = {"de": "Jetzt loslegen", "en": "Get started now", "fr": "Commencer maintenant", "es": "Empezar ahora", "it": "Inizia ora", "pt": "Começar agora",
+         "nl": "Nu beginnen", "pl": "Zacznij teraz", "tr": "Şimdi başla", "el": "Ξεκίνα τώρα", "hr": "Počni sada", "sv": "Börja nu", "da": "Kom i gang nu",
+         "nb": "Kom i gang nå", "cs": "Začít teď", "hu": "Kezdjük most", "ro": "Începe acum", "ca": "Començar ara", "ru": "Начать сейчас", "ja": "今すぐ始める",
+         "zh": "现在开始", "ar": "ابدأ الآن"}
+
 TEXT = {"de": {
   "title": "Multilingo – Anleitung",
   "eyebrow": "Anleitung · in 5 Minuten startklar",
@@ -167,6 +173,7 @@ body{{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;c
 header.top{{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 4px 20px}}
 .logo{{font-weight:900;font-size:clamp(30px,5vw,44px);letter-spacing:-.06em;line-height:1;position:relative;text-decoration:none;color:var(--ink)}}
 .logo sup{{position:absolute;left:100%;top:-2px;margin-left:4px;font-size:11px;letter-spacing:.08em;background:var(--hl);color:#fff;border-radius:99px;padding:3px 8px;font-weight:700}}
+.embed .top>.pill{{visibility:hidden}}
 .langs{{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;flex:1}} .langs a{{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:99px}} .langs a[aria-current]{{background:var(--ink);color:#fff}} .langs a:hover{{color:var(--ink)}}
 @media (max-width:860px){{ header.top{{flex-wrap:wrap}} .langs{{order:3;flex-basis:100%;justify-content:flex-start}} }}
 .pill{{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 22px;font-weight:700;font-size:15px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}}
@@ -300,12 +307,17 @@ footer{{text-align:center;color:var(--muted);font-size:13px;margin-top:22px}}
 
 <section class="card tips rv"><h2>{T["tips"]}</h2><ul>{tips}</ul></section>
 
-<section class="card end rv"><h2>{T["end"]}</h2><p>{T["endsub"]}</p><a class="pill pri noprint" href="{APP}">{T["open"]} →</a></section>
+<section class="card end rv"><h2>{T["end"]}</h2><p>{T["endsub"]}</p><a class="pill pri noprint" href="{APP}">{START.get(LANG, START["en"])} →</a></section>
 <footer>Multilingo · {APP.replace("https://","")}</footer>
 </div>
 <script>
 (function(){{ var A = {json.dumps(avail)}, l = (new URLSearchParams(location.search).get("lang") || "").slice(0,2);
-  if({json.dumps(LANG == "de")} && l && l !== "de" && A.indexOf(l) >= 0) location.replace(l + ".html"); }})();
+  if({json.dumps(LANG == "de")} && l && l !== "de" && A.indexOf(l) >= 0) location.replace(l + ".html" + location.search); }})();
+// In der App geöffnet (?embed=1): Knöpfe zur App schließen die Anleitung, statt die App neu zu laden
+(function(){{ var emb = /[?&]embed=1/.test(location.search) && window.parent !== window; if(!emb) return;
+  document.documentElement.classList.add("embed");
+  document.querySelectorAll('a[href="{APP}"]').forEach(function(a){{ a.addEventListener("click", function(ev){{ ev.preventDefault(); parent.postMessage("ml-guide-close", location.origin); }}); }});
+  document.querySelectorAll(".langs a").forEach(function(a){{ a.href = a.getAttribute("href") + "?embed=1"; }}); }})();
 document.documentElement.classList.add("js");
 (function(){{
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;

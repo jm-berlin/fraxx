@@ -23,6 +23,12 @@ self.addEventListener("fetch", e => {
     return;
   }
   if (url.origin !== location.origin) return;
+  // Anleitung: eigene Seiten, nicht die App. Netz zuerst, offline die zuletzt gesehene Fassung
+  if (url.pathname.includes("/anleitung/")) {
+    e.respondWith(fetch(req).then(r => { if (r.ok) { const k = r.clone(); caches.open(RUNTIME).then(c => c.put(req, k)); } return r; })
+      .catch(async () => (await caches.match(req)) || (await caches.match(req, { ignoreSearch: true })) || Response.error()));
+    return;
+  }
   // Daten (Pakete) lädt die App selbst und speichert sie; hier nur Netz mit Rückfall auf Cache
   if (url.pathname.includes("/data/")) {
     e.respondWith(fetch(req).then(r => { if (r.ok) caches.open(RUNTIME).then(c => c.put(req, r.clone())); return r; }).catch(() => caches.match(req, { ignoreSearch: true })));

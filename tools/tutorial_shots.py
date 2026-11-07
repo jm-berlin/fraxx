@@ -20,7 +20,7 @@ def rect(pg, sel):
 
 with sync_playwright() as p:
     b = p.chromium.launch(args=["--use-gl=swiftshader", "--enable-webgl", "--ignore-gpu-blocklist"])
-    init = "try{localStorage.setItem('rw-design','taupe-beere'); localStorage.setItem('rw-mode','light')}catch(e){}"
+    init = "try{localStorage.setItem('rw-design','taupe-beere'); localStorage.setItem('rw-mode','light'); localStorage.setItem('ml-nowelcome','1')}catch(e){}"
 
     def context(w, h, dsf, mobile=False):
         ctx = b.new_context(viewport={"width": w, "height": h}, device_scale_factor=dsf, is_mobile=mobile, has_touch=mobile, locale=LOCALE.get(LANG, "de-DE"))
@@ -41,6 +41,7 @@ with sync_playwright() as p:
         except Exception: print("Sprache", LANG, "nicht gesetzt – Screenshots evtl. teilweise auf Deutsch")
         pg.wait_for_timeout(2500 if LANG != "de" else 1500)
         if pg.locator("#mlupd").count(): pg.locator("#mlupd .n").click()
+        if pg.locator("#mlwel").count(): pg.locator("#mlwel .n").click()
         if pg.locator(".mlremind, #mlremind").count():
             try: pg.locator(".mlremind button, #mlremind button").last.click()
             except Exception: pass
