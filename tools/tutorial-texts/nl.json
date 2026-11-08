@@ -1,0 +1,125 @@
+{
+ "after": [
+  [
+   "Taalpakketten downloaden",
+   "Onder ⚙ → <b>App, Taalpakketten &amp; back-up</b> download je de talen die je nodig hebt. Elk pakket bevat alle vertalingen, vervoegingen, grammatica en menukaarten van die taal."
+  ],
+  [
+   "Offline gebruiken",
+   "Alles wat geïnstalleerd is, werkt zonder internet: in het vliegtuig, in het buitenland zonder databundel, in een gebied zonder bereik."
+  ],
+  [
+   "Goede stemmen",
+   "Er wordt voorgelezen met de stemmen van je apparaat. Op Mac en Windows klinkt Chrome meestal het natuurlijkst. Extra stemmen installeer je in de taalinstellingen van je apparaat."
+  ],
+  [
+   "Gegevens veiligstellen",
+   "Je sterren, leervoortgang en instellingen staan op je apparaat. Onder ⚙ → App, Taalpakketten &amp; back-up download je een back-up en zet je die indien nodig weer terug."
+  ],
+  [
+   "Updates",
+   "Is er een nieuwe versie, dan verschijnt er een stip bij ⚙. Daar zie je wat er nieuw is en bepaal je zelf wanneer je bijwerkt."
+  ]
+ ],
+ "appcap": "App, Taalpakketten &amp; back-up: talen downloaden of verwijderen, back-up downloaden.",
+ "beta": "Testversie: eigen nieuwe woorden laten vertalen is nog niet beschikbaar en komt in een latere versie. Al het andere werkt al, ook offline.",
+ "end": "Goede reis!",
+ "endsub": "Veel plezier met Multilingo. Heb je een idee of een fout gevonden? We horen graag van je.",
+ "eyebrow": "Handleiding · in 5 minuten klaar voor gebruik",
+ "features": [
+  [
+   "inhalt",
+   "☰ Inhoud",
+   "Meer dan 6.000 woorden, zinnen en uitdrukkingen, geordend per onderwerp: van restaurant via apotheek en garage tot het gemeentehuis. Daarnaast alfabetische lijsten voor zelfstandige naamwoorden, werkwoorden, bijvoeglijke naamwoorden en meer. Met het zoekveld vind je onderwerpen op naam."
+  ],
+  [
+   "tabelle",
+   "Vertalingen en uitspraak",
+   "Elk item staat in al jouw talen naast elkaar, zelfstandige naamwoorden met lidwoord, uitdrukkingen naar de betekenis vertaald. 🔊 leest voor, een tweede tik stopt het. Met de pin houd je belangrijke items bovenaan, met A–Z sorteer je."
+  ],
+  [
+   "konj",
+   "Werkwoorden en vervoeging",
+   "Werkwoorden worden in alle talen vervoegd: tegenwoordige tijd, voltooid tegenwoordige tijd, verleden tijd en toekomende tijd. <b>Vervoeging ▸</b> klapt de tabellen open, met de tijdknoppen wissel je van tijd."
+  ],
+  [
+   "gram",
+   "§ Grammatica",
+   "De belangrijkste regels van elke taal van A1 tot C1, met voorbeelden om te beluisteren. <b>Werkwoorden &amp; uitgangen</b> toont tabellen met uitgangen en onregelmatige werkwoorden, <b>Veelgemaakte fouten</b> de valkuilen voor sprekers van jouw taal. <b>Oefenen in de quiz</b> overhoort een hoofdstuk met invulzinnen."
+  ],
+  [
+   "verben",
+   "Werkwoorden &amp; uitgangen",
+   "Uitgangen in één oogopslag: regelmatige patronen, uitzonderingen en de belangrijkste onregelmatige werkwoorden, steeds met een voorbeeld."
+  ],
+  [
+   "dish",
+   "🍽 Menukaart",
+   "Ongeveer 250 populaire gerechten en dranken per land met originele naam en uitleg, plus koffie, bier en wijn. Waarschuwingen laten zien als een naam elders iets anders betekent. <b>Bestellen ▸</b> laat zien hoe je het bestelt."
+  ],
+  [
+   "spick",
+   "★ Spiekbriefje",
+   "Alles wat je met de ster hebt gemarkeerd, compact in één taal: woorden, uitdrukkingen en gerechten. Met <b>Afdrukken</b> maak je er een briefje voor onderweg van."
+  ],
+  [
+   "quiz",
+   "Quiz",
+   "Leren met vier antwoorden per vraag: woorden &amp; zinnen of grammatica, in beide richtingen, per niveau en onderwerp. Bij <b>🔊 Luisteren</b> wordt er alleen voorgelezen. Na drie juiste antwoorden geldt een item als geleerd, de leervoortgang laat jouw vooruitgang zien."
+  ]
+ ],
+ "h1": "Zo werkt <em>Multilingo</em>.",
+ "lead": "Multilingo is jouw persoonlijke taal-app voor onderweg en voor elke dag: woorden, zinnen en uitdrukkingen in veel talen, met uitspraak, vervoeging, grammatica, menukaarten en quiz. Hier zie je in een paar stappen hoe je aan de slag gaat, en daarna alles wat er in Multilingo zit.",
+ "mob": "Op je telefoon",
+ "mobsub": "Dezelfde inhoud, gemaakt voor je duim: de regels worden kaarten, de balk staat bovenaan.",
+ "navcap": "De balk bovenaan: Inhoud, Grammatica, Menukaart, Spiekbriefje, Quiz, Help (?) en Instellingen (⚙).",
+ "next": "Verder",
+ "open": "Multilingo openen",
+ "pause": "Pauzeren",
+ "pdf": "Als pdf",
+ "play": "Afspelen",
+ "prev": "Terug",
+ "s1": "De eerste stappen",
+ "s1sub": "Vijf stappen van de eerste keer openen tot je eerste vertaling.",
+ "s2": "Na de installatie",
+ "s2sub": "Eén keer instellen, en Multilingo werkt ook zonder internet.",
+ "s3": "Alles wat Multilingo kan",
+ "s3sub": "De onderdelen in één overzicht – bovenaan in de balk vind je ze allemaal.",
+ "step": "Stap",
+ "steps": [
+  [
+   "src",
+   "Taal kiezen",
+   "Bij de eerste start vraagt Multilingo welke taal je spreekt. Dat is jouw <b>Brontaal</b>: daarin staan het menu, de uitleg en de tips. Je kunt die later altijd wijzigen onder ⚙."
+  ],
+  [
+   "home",
+   "Aan de slag",
+   "De startpagina laat zien wat Multilingo kan. <b>Aan de slag →</b> opent de inhoudsopgave. Met een tik op het logo kom je altijd weer hier terug."
+  ],
+  [
+   "inhalt",
+   "Onderwerp openen",
+   "In de <b>Inhoud</b> staan alle onderwerpen als vakken: idiomatische uitdrukkingen per onderwerp (restaurant, hotel, apotheek …) en woordenschat per onderwerp. <b>Openen ▾</b> brengt je er direct naartoe."
+  ],
+  [
+   "tabelle",
+   "Lezen, luisteren, onthouden",
+   "Elke regel toont een item in al jouw talen. De luidspreker 🔊 leest voor, grijze tips leggen bijzonderheden uit. Met de ster ☆ zet je het item op je spiekbriefje."
+  ],
+  [
+   "set",
+   "Instellen",
+   "Onder <b>⚙</b> kies je je brontaal, taalniveau (A1 tot en met C2), je talen en het uiterlijk (Licht of Donker). Helemaal bovenaan staat jouw versie."
+  ]
+ ],
+ "tiplist": [
+  "Het taalniveau onder ⚙ verbergt alles boven jouw niveau, in de tabel, grammatica en quiz.",
+  "Er passen maximaal 5 talen naast elkaar in de tabel: je brontaal en vier andere.",
+  "Bij talen met een ander schrift (Arabisch, Russisch, Japans …) staat de transcriptie cursief eronder.",
+  "Het <b>?</b> rechtsboven legt elke functie uitgebreid uit.",
+  "De gezondheidsinformatie is zonder garantie en vervangt geen advies. Ze helpt je om je verstaanbaar te maken bij arts of apotheek."
+ ],
+ "tips": "Handige tips",
+ "title": "Multilingo – Handleiding"
+}

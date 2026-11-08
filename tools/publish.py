@@ -130,7 +130,7 @@ def main():
     shutil.copytree(data_new, os.path.join(REPO, "data"))
     if tutorial_pending:
         try:
-            r = subprocess.run([sys.executable, "tools/tutorial_all.py"], cwd=REPO, capture_output=True, text=True, timeout=3600)
+            r = subprocess.run([sys.executable, "tools/tutorial_all.py"], cwd=REPO, capture_output=True, text=True, timeout=7200)
             print(r.stdout[-1500:], r.stderr[-1500:])
         except Exception as e: print("Hinweis: Anleitung nicht gebaut:", e)
     json.dump({"stamp": stamp, "documents": total, "entries": n_new,

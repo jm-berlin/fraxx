@@ -1,0 +1,125 @@
+{
+ "after": [
+  [
+   "Descarga paquetes de idiomas",
+   "En ⚙ → <b>App, paquetes de idiomas y copia de seguridad</b> descargas los idiomas que necesitas. Cada paquete incluye todas las traducciones, conjugaciones, gramática y cartas de restaurante de ese idioma."
+  ],
+  [
+   "Úsala sin conexión",
+   "Todo lo que está instalado funciona sin internet: en el avión, en el extranjero sin datos o donde no hay cobertura."
+  ],
+  [
+   "Buenas voces",
+   "La lectura en voz alta usa las voces de tu dispositivo. En Mac y Windows, Chrome suele sonar más natural. Puedes instalar más voces en los ajustes de idioma de tu dispositivo."
+  ],
+  [
+   "Guarda tus datos",
+   "Tus estrellas, tu progreso y tus ajustes se guardan en el dispositivo. En ⚙ → App, paquetes de idiomas y copia de seguridad descargas una copia y, si hace falta, la restauras."
+  ],
+  [
+   "Actualizaciones",
+   "Si hay una versión nueva, aparece un punto en ⚙. Ahí ves las novedades y decides tú cuándo actualizar."
+  ]
+ ],
+ "appcap": "App, paquetes de idiomas y copia de seguridad: descargar o quitar idiomas, descargar una copia de seguridad.",
+ "beta": "Versión de prueba: traducir tus propias palabras nuevas aún no está disponible y llegará en una versión posterior. Todo lo demás ya funciona, incluso sin conexión.",
+ "end": "¡Buen viaje!",
+ "endsub": "Disfruta de Multilingo. ¿Tienes una idea o has encontrado un error? Nos encantará recibir tu opinión.",
+ "eyebrow": "Instrucciones · listo en 5 minutos",
+ "features": [
+  [
+   "inhalt",
+   "☰ Contenido",
+   "Más de 6.000 palabras, frases y expresiones ordenadas por temas: del restaurante a la farmacia, el taller o la oficina de trámites. Además, listas alfabéticas de sustantivos, verbos, adjetivos y más. El buscador encuentra temas por su nombre."
+  ],
+  [
+   "tabelle",
+   "Traducciones y pronunciación",
+   "Cada entrada aparece en todos tus idiomas, una al lado de otra: los sustantivos con artículo y las expresiones traducidas según el sentido. 🔊 lee en voz alta y un segundo toque lo detiene. Con la chincheta fijas arriba las entradas importantes y con A–Z las ordenas."
+  ],
+  [
+   "konj",
+   "Verbos y conjugación",
+   "Los verbos se conjugan en todos los idiomas: presente, pretérito perfecto, pretérito y futuro. <b>Conjugación ▸</b> despliega las tablas y los botones de tiempo cambian la forma verbal."
+  ],
+  [
+   "gram",
+   "§ Gramática",
+   "Las reglas más importantes de cada idioma, de A1 a C1, con ejemplos para escuchar. <b>Verbos y terminaciones</b> muestra tablas de terminaciones y verbos irregulares, y <b>Errores típicos</b> las trampas habituales para hablantes de tu idioma. <b>Practicar en el quiz</b> te examina de un capítulo con frases para completar."
+  ],
+  [
+   "verben",
+   "Verbos y terminaciones",
+   "Las terminaciones de un vistazo: patrones regulares, excepciones y los verbos irregulares más importantes, cada uno con un ejemplo."
+  ],
+  [
+   "dish",
+   "🍽 Carta",
+   "Unos 250 platos y bebidas populares por país, con su nombre original y una explicación, además de café, cerveza y vino. Los avisos te indican cuando un nombre significa otra cosa en otro lugar. <b>Pedir ▸</b> te muestra cómo pedirlo."
+  ],
+  [
+   "spick",
+   "★ Chuleta",
+   "Todo lo que has marcado con la estrella, reunido en un solo idioma: palabras, expresiones y platos. <b>Imprimir</b> lo convierte en una hoja para el viaje."
+  ],
+  [
+   "quiz",
+   "Quiz",
+   "Aprende con cuatro respuestas por pregunta: palabras y frases o gramática, en ambas direcciones, por nivel y tema. En <b>🔊 Escuchar</b> solo se lee en voz alta. Tras tres respuestas correctas, una entrada se considera aprendida, y el progreso muestra tus avances."
+  ]
+ ],
+ "h1": "Así funciona <em>Multilingo</em>.",
+ "lead": "Multilingo es tu app de idiomas personal para viajes y el día a día: palabras, frases y expresiones en muchos idiomas, con pronunciación, conjugación, gramática, cartas de restaurante y quiz. Aquí ves en pocos pasos cómo empezar y, después, todo lo que hay en Multilingo.",
+ "mob": "En el móvil",
+ "mobsub": "El mismo contenido, pensado para el pulgar: las filas se convierten en tarjetas y la barra está arriba.",
+ "navcap": "La barra de arriba: Contenido, Gramática, Carta, Chuleta, Quiz, ayuda (?) y ajustes (⚙).",
+ "next": "Siguiente",
+ "open": "Abrir Multilingo",
+ "pause": "Pausar",
+ "pdf": "En PDF",
+ "play": "Reproducir",
+ "prev": "Atrás",
+ "s1": "Los primeros pasos",
+ "s1sub": "Cinco pasos desde que abres la app hasta tu primera traducción.",
+ "s2": "Después de la instalación",
+ "s2sub": "Se configura una vez y Multilingo funciona también sin internet.",
+ "s3": "Todo lo que puede hacer Multilingo",
+ "s3sub": "Un resumen de las secciones: las encuentras todas en la barra de arriba.",
+ "step": "Paso",
+ "steps": [
+  [
+   "src",
+   "Elige tu idioma",
+   "La primera vez, Multilingo te pregunta qué idioma hablas. Es tu <b>Idioma de origen</b>: en él están escritos el menú, las explicaciones y los consejos. Puedes cambiarlo cuando quieras en ⚙."
+  ],
+  [
+   "home",
+   "Empieza",
+   "La página de inicio muestra lo que puede hacer Multilingo. <b>Empezar →</b> abre el índice de contenidos. Si tocas el logo, vuelves aquí en cualquier momento."
+  ],
+  [
+   "inhalt",
+   "Abre un tema",
+   "En <b>Contenido</b> están todos los temas en forma de cajas: expresiones por temas (restaurante, hotel, farmacia …) y vocabulario por temas. <b>Abrir ▾</b> te lleva directo al tema."
+  ],
+  [
+   "tabelle",
+   "Lee, escucha, memoriza",
+   "Cada fila muestra una entrada en todos tus idiomas. El altavoz 🔊 la lee en voz alta y las notas grises explican detalles especiales. La estrella ☆ añade la entrada a tu chuleta."
+  ],
+  [
+   "set",
+   "Ajusta",
+   "En <b>⚙</b> eliges el idioma de origen, el nivel de idioma (de A1 a C2), tus idiomas y el diseño (claro u oscuro). Arriba del todo aparece tu versión."
+  ]
+ ],
+ "tiplist": [
+  "El nivel de idioma en ⚙ oculta todo lo que supera tu nivel, en la tabla, la gramática y el quiz.",
+  "En la tabla caben hasta 5 idiomas a la vez: tu idioma de origen y cuatro más.",
+  "En los idiomas con otra escritura (árabe, ruso, japonés …) la transcripción aparece debajo en cursiva.",
+  "El <b>?</b> de arriba a la derecha explica cada función con detalle.",
+  "La información sobre salud no tiene garantía y no sustituye el consejo profesional. Te ayuda a comunicarte con el médico o en la farmacia."
+ ],
+ "tips": "Pequeños consejos",
+ "title": "Multilingo – Instrucciones"
+}

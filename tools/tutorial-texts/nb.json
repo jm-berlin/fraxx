@@ -1,0 +1,125 @@
+{
+ "after": [
+  [
+   "Last ned språkpakker",
+   "Under ⚙ → <b>App, språkpakker og sikkerhetskopi</b> laster du ned språkene du trenger. Hver pakke inneholder alle oversettelser, bøyinger, grammatikk og menyer for det språket."
+  ],
+  [
+   "Bruk offline",
+   "Alt som er installert, fungerer uten internett: på flyet, i utlandet uten mobildata, i dårlig dekning."
+  ],
+  [
+   "Gode stemmer",
+   "Opplesingen bruker stemmene på enheten din. På Mac og Windows høres Chrome som regel mest naturlig ut. Flere stemmer kan du installere i språkinnstillingene på enheten din."
+  ],
+  [
+   "Sikre data",
+   "Stjernene, læringsstatusen og innstillingene dine ligger på enheten. Under ⚙ → App, språkpakker og sikkerhetskopi laster du ned en sikkerhetskopi og kan legge den inn igjen ved behov."
+  ],
+  [
+   "Oppdateringer",
+   "Finnes det en ny versjon, dukker det opp en prikk på ⚙. Der ser du hva som er nytt, og du bestemmer selv når du oppdaterer."
+  ]
+ ],
+ "appcap": "App, språkpakker og sikkerhetskopi: last ned eller fjern språk, last ned sikkerhetskopi.",
+ "beta": "Testversjon: Å oversette egne nye ord er ikke åpnet ennå og kommer i en senere versjon. Alt annet fungerer allerede, også offline.",
+ "end": "God tur!",
+ "endsub": "Ha det gøy med Multilingo. Har du en idé eller har du funnet en feil? Vi setter pris på alle tilbakemeldinger.",
+ "eyebrow": "Veiledning · klar på 5 minutter",
+ "features": [
+  [
+   "inhalt",
+   "☰ Innhold",
+   "Over 6 000 ord, setninger og uttrykk ordnet etter tema: fra restaurant via apotek og verksted til offentlige kontorer. Dessuten alfabetiske lister for substantiver, verb, adjektiver og mer. Søkefeltet finner temaer etter navn."
+  ],
+  [
+   "tabelle",
+   "Oversettelser og uttale",
+   "Hver oppføring står side om side på alle språkene dine, substantiver med artikkel, uttrykk oversatt etter meningen. 🔊 leser opp, et nytt trykk stopper. Med pinnen holder du viktige oppføringer øverst, med A–Z sorterer du."
+  ],
+  [
+   "konj",
+   "Verb og bøying",
+   "Verb bøyes på alle språk: presens, perfektum, preteritum og futurum. <b>Bøying ▸</b> åpner tabellene, tidsknappene bytter tidsform."
+  ],
+  [
+   "gram",
+   "§ Grammatikk",
+   "De viktigste reglene for hvert språk fra A1 til C1, med eksempler du kan høre på. <b>Verb & endelser</b> viser endelsestabeller og uregelmessige verb, <b>Typiske feil</b> viser fallgruvene for dem som snakker språket ditt. <b>Øv i quiz</b> tester deg på et kapittel med oppgaver der du fyller inn ord."
+  ],
+  [
+   "verben",
+   "Verb & endelser",
+   "Endelser på et blikk: regelmessige mønstre, unntak og de viktigste uregelmessige verbene, hver med eksempel."
+  ],
+  [
+   "dish",
+   "🍽 Menyen",
+   "Rundt 250 populære retter og drikker per land med originalnavn og forklaring, pluss kaffe, øl og vin. Advarsler viser når et navn betyr noe annet andre steder. <b>Bestill ▸</b> viser hvordan du bestiller."
+  ],
+  [
+   "spick",
+   "★ Jukselapp",
+   "Alt du har merket med stjerne, samlet på ett språk: ord, uttrykk og retter. <b>Skriv ut</b> gjør det til en lapp du kan ha med på reisen."
+  ],
+  [
+   "quiz",
+   "Quiz",
+   "Lær med fire svaralternativer per spørsmål: Ord og setninger eller grammatikk, begge veier, etter nivå og tema. Med <b>🔊 Hør</b> blir det bare lest opp. Etter tre riktige svar regnes en oppføring som lært, og læringsstatusen viser fremgangen din."
+  ]
+ ],
+ "h1": "Slik fungerer <em>Multilingo</em>.",
+ "lead": "Multilingo er din personlige språkapp for reise og hverdag: ord, setninger og uttrykk på mange språk, med uttale, bøying, grammatikk, menyer og quiz. Her ser du i noen få steg hvordan du kommer i gang, og etterpå alt som finnes i Multilingo.",
+ "mob": "På mobilen",
+ "mobsub": "Samme innhold, laget for tommelen: Radene blir til kort, og linjen ligger øverst.",
+ "navcap": "Linjen øverst: Innhold, Grammatikk, Menyen, Jukselapp, Quiz, hjelp (?) og innstillinger (⚙).",
+ "next": "Neste",
+ "open": "Åpne Multilingo",
+ "pause": "Pause",
+ "pdf": "Som PDF",
+ "play": "Spill av",
+ "prev": "Tilbake",
+ "s1": "De første stegene",
+ "s1sub": "Fem steg fra du åpner appen første gang til din første oversettelse.",
+ "s2": "Etter installasjonen",
+ "s2sub": "Sett det opp én gang, så fungerer Multilingo også uten internett.",
+ "s3": "Alt Multilingo kan",
+ "s3sub": "Oversikt over områdene – du finner dem alle i linjen øverst.",
+ "step": "Steg",
+ "steps": [
+  [
+   "src",
+   "Velg språk",
+   "Første gang du starter, spør Multilingo hvilket språk du snakker. Det er ditt <b>Kildespråk</b>: Menyen, forklaringene og tipsene er skrevet på det. Du kan når som helst endre det senere under ⚙."
+  ],
+  [
+   "home",
+   "Kom i gang",
+   "Startsiden viser hva Multilingo kan. <b>Kom i gang →</b> åpner innholdsfortegnelsen. Trykker du på logoen, kommer du alltid tilbake hit."
+  ],
+  [
+   "inhalt",
+   "Åpne et tema",
+   "Under <b>Innhold</b> ligger alle temaene som bokser: Uttrykk etter tema (restaurant, hotell, apotek …) og Ordforråd etter temaer. <b>Åpne ▾</b> tar deg rett inn."
+  ],
+  [
+   "tabelle",
+   "Les, hør, husk",
+   "Hver rad viser en oppføring på alle språkene dine. Høyttaleren 🔊 leser opp, grå tips forklarer det som er spesielt. Stjernen ☆ legger oppføringen på jukselappen din."
+  ],
+  [
+   "set",
+   "Innstillinger",
+   "Under <b>⚙</b> velger du Kildespråk, Språknivå (A1 til C2), språkene dine og designet (Lys eller Mørk). Helt øverst står versjonen din."
+  ]
+ ],
+ "tiplist": [
+  "Språknivå under ⚙ skjuler alt over nivået ditt, i tabellen, grammatikken og quizen.",
+  "Opptil 5 språk får plass ved siden av hverandre i tabellen: kildespråket ditt og fire til.",
+  "For språk med et annet skriftsystem (arabisk, russisk, japansk …) står translitterasjonen i kursiv under.",
+  "<b>?</b> øverst til høyre forklarer hver funksjon i detalj.",
+  "Helseinformasjonen er uten garanti og erstatter ikke rådgivning. Den hjelper deg å gjøre deg forstått hos lege eller apotek."
+ ],
+ "tips": "Små tips",
+ "title": "Multilingo – Veiledning"
+}

@@ -1,0 +1,125 @@
+{
+ "after": [
+  [
+   "Download language packs",
+   "Under ⚙ → <b>App, Language Packs &amp; Backup</b> you download the languages you need. Each pack contains all translations, conjugations, grammar and menus for that language."
+  ],
+  [
+   "Use it offline",
+   "Everything that's installed works without internet: on a plane, abroad without mobile data, or in a dead zone."
+  ],
+  [
+   "Good voices",
+   "Reading aloud uses your device's voices. On Mac and Windows, Chrome usually sounds the most natural. You can install more voices in your device's language settings."
+  ],
+  [
+   "Back up your data",
+   "Your stars, progress and settings are stored on your device. Under ⚙ → App, Language Packs &amp; Backup you can download a backup and restore it whenever you need to."
+  ],
+  [
+   "Updates",
+   "When there's a new version, a dot appears on the ⚙. There you can see what's new and decide for yourself when to update."
+  ]
+ ],
+ "appcap": "App, Language Packs &amp; Backup: add or remove languages, download a backup.",
+ "beta": "Test version: translating your own new words isn't available yet and will come in a later version. Everything else already works, even offline.",
+ "end": "Have a great trip!",
+ "endsub": "Have fun with Multilingo. Got an idea or found a bug? We'd love to hear from you.",
+ "eyebrow": "Instructions · ready in 5 minutes",
+ "features": [
+  [
+   "inhalt",
+   "☰ Contents",
+   "Over 6,000 words, phrases and idioms sorted by topic: from restaurants to pharmacies, garages and government offices. Plus alphabetical lists for nouns, verbs, adjectives and more. The search box finds topics by name."
+  ],
+  [
+   "tabelle",
+   "Translations and pronunciation",
+   "Each entry appears side by side in all your languages, with articles for nouns and idioms translated by meaning. 🔊 reads aloud, and a second tap stops it. Use the pin to keep important entries at the top, and A–Z to sort."
+  ],
+  [
+   "konj",
+   "Verbs and conjugation",
+   "Verbs are conjugated in all languages: present, perfect, past and future. <b>Conjugation ▸</b> opens the tables, and the tense buttons switch between tenses."
+  ],
+  [
+   "gram",
+   "§ Grammar",
+   "The most important rules of each language from A1 to C1, with examples you can listen to. <b>Verbs &amp; endings</b> shows ending tables and irregular verbs, and <b>Common Mistakes</b> covers the stumbling blocks for speakers of your language. <b>Practice in Quiz</b> tests you on a chapter with fill-in-the-blank sentences."
+  ],
+  [
+   "verben",
+   "Verbs &amp; endings",
+   "Endings at a glance: regular patterns, exceptions and the most important irregular verbs, each with an example."
+  ],
+  [
+   "dish",
+   "🍽 Menu",
+   "Around 250 popular dishes and drinks per country with original names and explanations, plus coffee, beer and wine. Warnings show when a name means something different elsewhere. <b>Order ▸</b> shows you how to order it."
+  ],
+  [
+   "spick",
+   "★ Cheat sheet",
+   "Everything you've marked with the star, collected in one language: words, idioms and dishes. <b>Print</b> turns it into a handy sheet for your trip."
+  ],
+  [
+   "quiz",
+   "Quiz",
+   "Learn with four answers per question: Words &amp; Sentences or Grammar, in both directions, by level and topic. With <b>🔊 Listening</b>, the question is only read aloud. After three correct answers, an entry counts as learned, and your progress shows how far you've come."
+  ]
+ ],
+ "h1": "How <em>Multilingo</em> works.",
+ "lead": "Multilingo is your personal language app for travel and everyday life: words, phrases and idioms in lots of languages, with pronunciation, conjugation, grammar, menus and quizzes. Here's how to get started in a few quick steps, followed by everything Multilingo has to offer.",
+ "mob": "On your phone",
+ "mobsub": "Same content, made for your thumb: rows turn into cards, and the bar sits at the top.",
+ "navcap": "The bar at the top: Contents, Grammar, Menu, Cheat sheet, Quiz, Help (?) and Settings (⚙).",
+ "next": "Next",
+ "open": "Open Multilingo",
+ "pause": "Pause",
+ "pdf": "As PDF",
+ "play": "Play",
+ "prev": "Back",
+ "s1": "First steps",
+ "s1sub": "Five steps from opening the app for the first time to your first translation.",
+ "s2": "After installing",
+ "s2sub": "Set it up once, and Multilingo works without internet too.",
+ "s3": "Everything Multilingo can do",
+ "s3sub": "The sections at a glance – you'll find them all in the bar at the top.",
+ "step": "Step",
+ "steps": [
+  [
+   "src",
+   "Pick your language",
+   "When you first start, Multilingo asks which language you speak. That's your <b>Source language</b>: the menu, explanations and tips are written in it. You can change it any time under ⚙."
+  ],
+  [
+   "home",
+   "Let's go",
+   "The home page shows what Multilingo can do. <b>Let's go →</b> opens the table of contents. Tap the logo any time to come back here."
+  ],
+  [
+   "inhalt",
+   "Open a topic",
+   "<b>Contents</b> shows all topics as boxes: Idioms by topic (restaurant, hotel, pharmacy …) and Vocabulary by Topic. <b>Open ▾</b> takes you straight in."
+  ],
+  [
+   "tabelle",
+   "Read, listen, remember",
+   "Each row shows an entry in all your languages. The speaker 🔊 reads it aloud, and grey notes explain special cases. The star ☆ adds the entry to your Cheat sheet."
+  ],
+  [
+   "set",
+   "Settings",
+   "Under <b>⚙</b> you choose your Source language, Level (A1 to C2), your languages and the design (Light or Dark). Your version is shown at the very top."
+  ]
+ ],
+ "tiplist": [
+  "Level under ⚙ hides everything above your level, in the table, grammar and quiz.",
+  "Up to 5 languages fit side by side in the table: your Source language and four more.",
+  "For languages with a different script (Arabic, Russian, Japanese …), the transliteration appears in italics underneath.",
+  "The <b>?</b> at the top right explains every feature in detail.",
+  "The health information comes without guarantee and doesn't replace professional advice. It helps you communicate with a doctor or pharmacist."
+ ],
+ "tips": "Quick tips",
+ "title": "Multilingo – Instructions"
+}

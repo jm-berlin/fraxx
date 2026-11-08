@@ -1,8 +1,8 @@
 /* Multilingo – Service Worker: Offline-Betrieb und Updates
    Die App kommt immer aus dem Speicher (schnell und offline). Eine neue Fassung wird im Hintergrund geladen,
    aber erst übernommen, wenn der Nutzer im Hinweis „Update verfügbar“ auf „Jetzt aktualisieren“ tippt. */
-const VERSION = "eb451876f3";
-const SHELL = ["./", "index.html", "runtime.js", "ui.js", "manifest.webmanifest", "../icons/icon-192.png", "../icons/icon-512.png", "../icons/apple-touch-icon.png", "../icons/favicon-32.png", "../img/paris.jpg", "../img/andalucia.jpg", "../img/toscana.jpg", "../img/band.jpg", "../data/packs.json"];
+const VERSION = "96dabf9711";
+const SHELL = ["./", "index.html", "runtime.js", "ui.js", "manifest.webmanifest", "../icons/icon-192.png", "../icons/icon-512.png", "../icons/apple-touch-icon.png", "../icons/favicon-32.png", "../img/band.jpg", "../data/packs.json"];
 const SHELL_CACHE = "mla-shell-" + VERSION, RUNTIME = "mla-runtime";
 
 self.addEventListener("install", e => {
@@ -23,6 +23,12 @@ self.addEventListener("fetch", e => {
     return;
   }
   if (url.origin !== location.origin) return;
+  // Anleitung: eigene Seiten, nicht die App. Netz zuerst, offline die zuletzt gesehene Fassung
+  if (url.pathname.includes("/anleitung/")) {
+    e.respondWith(fetch(req).then(r => { if (r.ok) { const k = r.clone(); caches.open(RUNTIME).then(c => c.put(req, k)); } return r; })
+      .catch(async () => (await caches.match(req)) || (await caches.match(req, { ignoreSearch: true })) || Response.error()));
+    return;
+  }
   // Daten (Pakete) lädt die App selbst und speichert sie; hier nur Netz mit Rückfall auf Cache
   if (url.pathname.includes("/data/")) {
     e.respondWith(fetch(req).then(r => { if (r.ok) caches.open(RUNTIME).then(c => c.put(req, r.clone())); return r; }).catch(() => caches.match(req, { ignoreSearch: true })));

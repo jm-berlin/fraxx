@@ -1,0 +1,125 @@
+{
+ "after": [
+  [
+   "Pobierz pakiety językowe",
+   "Pod ⚙ → <b>Aplikacja, pakiety językowe i kopia zapasowa</b> pobierasz języki, których potrzebujesz. Każdy pakiet zawiera wszystkie tłumaczenia, odmiany, gramatykę i karty dań danego języka."
+  ],
+  [
+   "Korzystaj offline",
+   "Wszystko, co jest zainstalowane, działa bez internetu: w samolocie, za granicą bez pakietu danych, tam, gdzie nie ma zasięgu."
+  ],
+  [
+   "Dobre głosy",
+   "Czytanie na głos odbywa się głosami Twojego urządzenia. Na Macu i w Windowsie najnaturalniej brzmi zwykle Chrome. Dodatkowe głosy zainstalujesz w ustawieniach językowych urządzenia."
+  ],
+  [
+   "Zabezpiecz dane",
+   "Twoje gwiazdki, postępy w nauce i ustawienia są zapisane na urządzeniu. Pod ⚙ → Aplikacja, pakiety językowe i kopia zapasowa pobierzesz kopię zapasową i w razie potrzeby ją przywrócisz."
+  ],
+  [
+   "Aktualizacje",
+   "Gdy pojawi się nowa wersja, przy ⚙ zobaczysz kropkę. Tam sprawdzisz, co nowego, i sam(a) zdecydujesz, kiedy zaktualizować."
+  ]
+ ],
+ "appcap": "Aplikacja, pakiety językowe i kopia zapasowa: pobieranie lub usuwanie języków, pobieranie kopii zapasowej.",
+ "beta": "Wersja testowa: tłumaczenie własnych nowych słów nie jest jeszcze dostępne i pojawi się w późniejszej wersji. Wszystko inne już działa, także offline.",
+ "end": "Udanej podróży!",
+ "endsub": "Miłej zabawy z Multilingo. Masz pomysł albo znalazłeś(-aś) błąd? Chętnie przeczytamy każdą opinię.",
+ "eyebrow": "Instrukcja · gotowe w 5 minut",
+ "features": [
+  [
+   "inhalt",
+   "☰ Treść",
+   "Ponad 6000 słów, zdań i idiomów uporządkowanych tematycznie: od restauracji przez aptekę i warsztat po urząd. Do tego listy alfabetyczne rzeczowników, czasowników, przymiotników i nie tylko. Pole wyszukiwania znajduje tematy po nazwie."
+  ],
+  [
+   "tabelle",
+   "Tłumaczenia i wymowa",
+   "Każde hasło stoi we wszystkich Twoich językach obok siebie, rzeczowniki z rodzajnikiem, idiomy tłumaczone sensem. 🔊 czyta na głos, drugie dotknięcie zatrzymuje. Pinezką przypinasz ważne hasła na górze, a A–Z sortuje alfabetycznie."
+  ],
+  [
+   "konj",
+   "Czasowniki i odmiana",
+   "Czasowniki są odmieniane we wszystkich językach: czas teraźniejszy, przeszły złożony, przeszły prosty i przyszły. <b>Odmiana ▸</b> rozwija tabele, a przyciski czasów przełączają formę czasową."
+  ],
+  [
+   "gram",
+   "§ Gramatyka",
+   "Najważniejsze zasady każdego języka od A1 do C1, z przykładami do odsłuchania. <b>Czasowniki i końcówki</b> pokazują tabele końcówek i czasowniki nieregularne, <b>Typowe błędy</b> – pułapki dla osób mówiących Twoim językiem. <b>Ćwicz w quizie</b> sprawdza cały rozdział zdaniami z lukami."
+  ],
+  [
+   "verben",
+   "Czasowniki i końcówki",
+   "Końcówki w pigułce: regularne wzorce, wyjątki i najważniejsze czasowniki nieregularne, każdy z przykładem."
+  ],
+  [
+   "dish",
+   "🍽 Karta dań",
+   "Około 250 popularnych dań i napojów w każdym kraju z oryginalnymi nazwami i objaśnieniem, do tego kawa, piwo i wino. Ostrzeżenia pokazują, gdy nazwa gdzie indziej znaczy coś innego. <b>Zamów ▸</b> pokazuje, jak to zamówić."
+  ],
+  [
+   "spick",
+   "★ Ściągawka",
+   "Wszystko, co oznaczyłeś(-aś) gwiazdką, zebrane w jednym języku: słowa, idiomy i dania. <b>Drukuj</b> robi z tego kartkę na podróż."
+  ],
+  [
+   "quiz",
+   "Quiz",
+   "Nauka z czterema odpowiedziami na pytanie: słowa i zdania lub gramatyka, w obu kierunkach, według poziomu i tematu. W trybie <b>🔊 Słuchanie</b> tylko czytamy na głos. Po trzech poprawnych odpowiedziach hasło uznawane jest za opanowane, a stan nauki pokazuje Twoje postępy."
+  ]
+ ],
+ "h1": "Tak działa <em>Multilingo</em>.",
+ "lead": "Multilingo to Twoja osobista aplikacja językowa na podróże i na co dzień: słowa, zdania i idiomy w wielu językach, z wymową, odmianą, gramatyką, kartami dań i quizem. Tutaj w kilku krokach zobaczysz, jak zacząć, a potem wszystko, co kryje się w Multilingo.",
+ "mob": "Na telefonie",
+ "mobsub": "Te same treści, stworzone pod kciuk: wiersze zamieniają się w karty, a pasek jest u góry.",
+ "navcap": "Pasek u góry: Treść, Gramatyka, Karta dań, Ściągawka, Quiz, Pomoc (?) i Ustawienia (⚙).",
+ "next": "Dalej",
+ "open": "Otwórz Multilingo",
+ "pause": "Zatrzymaj",
+ "pdf": "Jako PDF",
+ "play": "Odtwórz",
+ "prev": "Wstecz",
+ "s1": "Pierwsze kroki",
+ "s1sub": "Pięć kroków od pierwszego otwarcia do pierwszego tłumaczenia.",
+ "s2": "Po instalacji",
+ "s2sub": "Skonfiguruj raz, a Multilingo będzie działać także bez internetu.",
+ "s3": "Wszystko, co potrafi Multilingo",
+ "s3sub": "Przegląd działów – wszystkie znajdziesz na pasku u góry.",
+ "step": "Krok",
+ "steps": [
+  [
+   "src",
+   "Wybierz język",
+   "Przy pierwszym uruchomieniu Multilingo zapyta, jakim językiem mówisz. To Twój <b>język źródłowy</b>: w nim napisane są menu, objaśnienia i wskazówki. Możesz go zmienić w dowolnej chwili pod ⚙."
+  ],
+  [
+   "home",
+   "Zaczynamy",
+   "Strona główna pokazuje, co potrafi Multilingo. <b>Zaczynamy →</b> otwiera spis treści. Dotknięcie logo zawsze cofa Cię w to miejsce."
+  ],
+  [
+   "inhalt",
+   "Otwórz temat",
+   "W zakładce <b>Treść</b> wszystkie tematy są ułożone w kafelkach: idiomy według tematów (restauracja, hotel, apteka …) i słownictwo tematyczne. <b>Otwórz ▾</b> przenosi Cię od razu do środka."
+  ],
+  [
+   "tabelle",
+   "Czytaj, słuchaj, zapamiętuj",
+   "Każdy wiersz pokazuje hasło we wszystkich Twoich językach. Głośnik 🔊 czyta na głos, szare wskazówki wyjaśniają szczególne przypadki. Gwiazdka ☆ dodaje hasło do Twojej ściągawki."
+  ],
+  [
+   "set",
+   "Ustaw",
+   "Pod <b>⚙</b> wybierasz język źródłowy, poziom języka (od A1 do C2), swoje języki i wygląd (jasny lub ciemny). Na samej górze widać Twoją wersję."
+  ]
+ ],
+ "tiplist": [
+  "Poziom języka pod ⚙ ukrywa wszystko powyżej Twojego poziomu, w tabeli, gramatyce i quizie.",
+  "W tabeli obok siebie mieści się do 5 języków: Twój język źródłowy i cztery kolejne.",
+  "W językach z innym pismem (arabski, rosyjski, japoński …) transkrypcja widnieje pod spodem kursywą.",
+  "Znak <b>?</b> w prawym górnym rogu szczegółowo wyjaśnia każdą funkcję.",
+  "Informacje zdrowotne podajemy bez gwarancji i nie zastępują porady. Pomagają Ci porozumieć się z lekarzem lub w aptece."
+ ],
+ "tips": "Małe wskazówki",
+ "title": "Multilingo – Instrukcja"
+}

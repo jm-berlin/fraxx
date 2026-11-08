@@ -1,0 +1,125 @@
+{
+ "after": [
+  [
+   "Télécharger les packs de langues",
+   "Sous ⚙ → <b>Application, packs de langues et sauvegarde</b>, tu télécharges les langues dont tu as besoin. Chaque pack contient toutes les traductions, conjugaisons, la grammaire et les cartes de restaurant de cette langue."
+  ],
+  [
+   "Utiliser hors ligne",
+   "Tout ce qui est installé fonctionne sans internet : en avion, à l'étranger sans data, dans une zone sans réseau."
+  ],
+  [
+   "De belles voix",
+   "La lecture à voix haute utilise les voix de ton appareil. Sur Mac et sous Windows, Chrome sonne généralement le plus naturel. Tu peux installer d'autres voix dans les réglages de langue de ton appareil."
+  ],
+  [
+   "Sauvegarder tes données",
+   "Tes étoiles, ta progression et tes réglages sont stockés sur ton appareil. Sous ⚙ → Application, packs de langues et sauvegarde, tu télécharges une sauvegarde et tu la restaures si besoin."
+  ],
+  [
+   "Mises à jour",
+   "Quand une nouvelle version est disponible, un point apparaît sur ⚙. Tu y vois les nouveautés et tu décides toi-même quand mettre à jour."
+  ]
+ ],
+ "appcap": "Application, packs de langues et sauvegarde : ajouter ou supprimer des langues, télécharger une sauvegarde.",
+ "beta": "Version test : la traduction de tes propres mots n'est pas encore disponible, elle arrivera dans une prochaine version. Tout le reste fonctionne déjà, même hors ligne.",
+ "end": "Bon voyage !",
+ "endsub": "Amuse-toi bien avec Multilingo. Tu as une idée ou tu as trouvé une erreur ? On serait ravis d'avoir ton retour.",
+ "eyebrow": "Mode d'emploi · prêt en 5 minutes",
+ "features": [
+  [
+   "inhalt",
+   "☰ Contenu",
+   "Plus de 6 000 mots, phrases et expressions classés par thème : du restaurant à la pharmacie, en passant par le garage et l'administration. Il y a aussi des listes alphabétiques de noms, verbes, adjectifs et plus encore. Le champ de recherche trouve les thèmes par leur nom."
+  ],
+  [
+   "tabelle",
+   "Traductions et prononciation",
+   "Chaque entrée apparaît côte à côte dans toutes tes langues, les noms avec leur article, les expressions traduites selon le sens. 🔊 lit à voix haute, un deuxième tap arrête la lecture. Avec l'épingle, tu gardes les entrées importantes en haut, avec A–Z, tu trie par ordre alphabétique."
+  ],
+  [
+   "konj",
+   "Verbes et conjugaison",
+   "Les verbes sont conjugués dans toutes les langues : présent, passé composé, prétérit et futur. <b>Conjugaison ▸</b> déplie les tableaux, les boutons de temps permettent de changer de temps."
+  ],
+  [
+   "gram",
+   "§ Grammaire",
+   "Les règles essentielles de chaque langue, de A1 à C1, avec des exemples à écouter. <b>Verbes et terminaisons</b> montre les tableaux de terminaisons et les verbes irréguliers, <b>Fautes typiques</b> les pièges pour les locuteurs de ta langue. <b>S'entraîner au quiz</b> t'interroge sur un chapitre avec des phrases à trous."
+  ],
+  [
+   "verben",
+   "Verbes et terminaisons",
+   "Les terminaisons en un coup d'œil : modèles réguliers, exceptions et principaux verbes irréguliers, chacun avec un exemple."
+  ],
+  [
+   "dish",
+   "🍽 Carte",
+   "Environ 250 plats et boissons populaires par pays, avec le nom d'origine et une explication, plus le café, la bière et le vin. Des avertissements t'indiquent quand un nom veut dire autre chose ailleurs. <b>Commander ▸</b> te montre comment le commander."
+  ],
+  [
+   "spick",
+   "★ Aide-mémoire",
+   "Tout ce que tu as marqué d'une étoile, réuni dans une seule langue : mots, expressions et plats. <b>Imprimer</b> en fait une fiche pour le voyage."
+  ],
+  [
+   "quiz",
+   "Quiz",
+   "Apprendre avec quatre réponses par question : mots et phrases ou grammaire, dans les deux sens, par niveau et par thème. Avec <b>🔊 Écouter</b>, la question est seulement lue à voix haute. Après trois bonnes réponses, une entrée est considérée comme apprise, et ta progression montre où tu en es."
+  ]
+ ],
+ "h1": "Voici comment fonctionne <em>Multilingo</em>.",
+ "lead": "Multilingo est ton appli de langues personnelle pour les voyages et le quotidien : mots, phrases et expressions dans plein de langues, avec prononciation, conjugaison, grammaire, cartes de restaurant et quiz. Tu vois ici en quelques étapes comment démarrer, puis tout ce que Multilingo a dans le ventre.",
+ "mob": "Sur mobile",
+ "mobsub": "Même contenu, pensé pour le pouce : les lignes deviennent des cartes, la barre est en haut.",
+ "navcap": "La barre en haut : Contenu, Grammaire, Carte, Aide-mémoire, Quiz, aide (?) et réglages (⚙).",
+ "next": "Suivant",
+ "open": "Ouvrir Multilingo",
+ "pause": "Pause",
+ "pdf": "En PDF",
+ "play": "Lecture",
+ "prev": "Précédent",
+ "s1": "Les premiers pas",
+ "s1sub": "Cinq étapes, de la première ouverture à la première traduction.",
+ "s2": "Après l'installation",
+ "s2sub": "Une seule configuration, et Multilingo fonctionne ensuite sans internet.",
+ "s3": "Tout ce que Multilingo sait faire",
+ "s3sub": "Un aperçu des rubriques : tu les trouves toutes dans la barre en haut.",
+ "step": "Étape",
+ "steps": [
+  [
+   "src",
+   "Choisir la langue",
+   "Au premier lancement, Multilingo te demande quelle langue tu parles. C'est ta <b>Langue source</b> : le menu, les explications et les conseils sont écrits dans cette langue. Tu peux la changer à tout moment sous ⚙."
+  ],
+  [
+   "home",
+   "Commencer",
+   "La page d'accueil montre ce que Multilingo sait faire. <b>Commencer →</b> ouvre le sommaire. Un tap sur le logo te ramène ici à tout moment."
+  ],
+  [
+   "inhalt",
+   "Ouvrir un thème",
+   "Dans <b>Contenu</b>, tous les thèmes sont présentés sous forme de cases : expressions par thème (restaurant, hôtel, pharmacie …) et vocabulaire par thème. <b>Ouvrir ▾</b> t'y emmène directement."
+  ],
+  [
+   "tabelle",
+   "Lire, écouter, retenir",
+   "Chaque ligne montre une entrée dans toutes tes langues. Le haut-parleur 🔊 lit à voix haute, les remarques grises expliquent les particularités. L'étoile ☆ ajoute l'entrée à ton aide-mémoire."
+  ],
+  [
+   "set",
+   "Régler",
+   "Sous <b>⚙</b>, tu choisis ta langue source, ton niveau de langue (A1 à C2), tes langues et le thème d'affichage (Clair ou Sombre). Ta version est indiquée tout en haut."
+  ]
+ ],
+ "tiplist": [
+  "Le niveau de langue sous ⚙ masque tout ce qui dépasse ton niveau, dans le tableau, la grammaire et le quiz.",
+  "Jusqu'à 5 langues tiennent côte à côte dans le tableau : ta langue source et quatre autres.",
+  "Pour les langues avec une autre écriture (arabe, russe, japonais …), la transcription apparaît en italique en dessous.",
+  "Le <b>?</b> en haut à droite explique chaque fonction en détail.",
+  "Les informations de santé sont données sans garantie et ne remplacent pas un avis professionnel. Elles t'aident à te faire comprendre auprès d'un médecin ou d'un pharmacien."
+ ],
+ "tips": "Petits conseils",
+ "title": "Multilingo – Mode d'emploi"
+}

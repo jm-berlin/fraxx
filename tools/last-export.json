@@ -1,7 +1,20 @@
 {
- "stamp": "2026-11-05T07:51:10.909Z",
- "documents": 6674,
+ "stamp": "2026-11-08T06:36:02.771Z",
+ "documents": 7205,
  "entries": 6430,
- "publishedAt": "2026-11-05T11:12:00+00:00",
- "note": "Stand vom 5.11. (Export 07:51 plus Oberflächen-Nachträge vom Mittag)"
+ "publishedAt": "2026-11-08T07:39:20+00:00",
+ "langs": [
+  "ar",
+  "en",
+  "es",
+  "fr",
+  "it",
+  "nb",
+  "nl",
+  "pl",
+  "pt",
+  "sv",
+  "tr",
+  "zh"
+ ]
 }
