@@ -10,7 +10,7 @@ from PIL import Image
 
 SHOTS, OUT = sys.argv[1], sys.argv[2]
 LANG = sys.argv[3] if len(sys.argv) > 3 else "de"
-APP = "https://jm-berlin.github.io/multilingo/"
+APP = "https://jm-berlin.github.io/phraxx/"
 VIEW_W, VIEW_H = 1280, 820  # CSS-Pixel der Screenshots am PC
 
 # Ausschnitte (CSS-Pixel x, y, b, h) und Markierungen (CSS-Pixel x, y, b, h) je Screenshot
