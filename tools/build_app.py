@@ -11,24 +11,25 @@ head = '''<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Multilingo – deine persönliche Sprach-App für Reisen.">
-<meta name="theme-color" content="#2f52d6">
+<meta name="description" content="Viavox – deine persönliche Sprach-App für Reisen.">
+<meta name="theme-color" content="#e5e2e0">
 <link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="icons/viavox.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Multilingo">
+<meta name="apple-mobile-web-app-title" content="Viavox">
 <script src="runtime.js"></script>
 '''
 s = head + s
 # Hinweise an die App anpassen
 # Öffentliche Testversion: keine eigene Übersetzung, kein Schlüssel. Admin: Hinweis auf den Schlüssel
 rep('if(!sample){ showNotice(IN_WEBAPP ? "Eigene Übersetzungen sind in dieser Testversion noch nicht freigeschaltet. Sie kommen in einer späteren Version." : "Übersetzen ist in dieser Ansicht nicht verfügbar. Öffne die Seite in Claude, angemeldet mit deinem Konto."); return; }',
-    'if(!sample){ showNotice(window.ML_ADMIN ? "Für neue Übersetzungen braucht Multilingo einen Claude-API-Schlüssel. Du kannst ihn unter ⚙ → App, Sprachpakete & Sicherung eintragen." : "Eigene Übersetzungen sind in dieser Testversion noch nicht freigeschaltet. Sie kommen in einer späteren Version."); return; }')
+    'if(!sample){ showNotice(window.ML_ADMIN ? "Für neue Übersetzungen braucht Viavox einen Claude-API-Schlüssel. Du kannst ihn unter ⚙ → App, Sprachpakete & Sicherung eintragen." : "Eigene Übersetzungen sind in dieser Testversion noch nicht freigeschaltet. Sie kommen in einer späteren Version."); return; }')
 rep('if(!sample && !IN_WEBAPP) showNotice("Übersetzen ist in dieser Ansicht nicht verfügbar. Öffne die Seite in Claude, angemeldet mit deinem Konto.");',
-    'if(!sample && window.ML_ADMIN){ try{ if(!localStorage.getItem("ml-offnote")){ localStorage.setItem("ml-offnote","1"); showNotice("Multilingo läuft offline mit deinen Sprachpaketen. Neue Wörter übersetzt es, sobald du unter ⚙ → App, Sprachpakete & Sicherung einen Claude-API-Schlüssel einträgst."); } }catch(e){} }')
+    'if(!sample && window.ML_ADMIN){ try{ if(!localStorage.getItem("ml-offnote")){ localStorage.setItem("ml-offnote","1"); showNotice("Viavox läuft offline mit deinen Sprachpaketen. Neue Wörter übersetzt es, sobald du unter ⚙ → App, Sprachpakete & Sicherung einen Claude-API-Schlüssel einträgst."); } }catch(e){} }')
 rep('statusEl.textContent = "Gespeichert in deinem Konto";', 'statusEl.textContent = "Gespeichert auf diesem Gerät";')
 s = re.sub(r'(data-img="(\w+)" src=")data:image/jpeg;base64,[^"]+', lambda m: m.group(1) + 'img/' + m.group(2) + '.jpg', s)
 s = s.rstrip() + '\n<script src="ui.js"></script>\n</html>\n'
@@ -44,8 +45,8 @@ print("index.html", len(s), "Version", ver)
 adm = os.path.join(out, "admin"); os.makedirs(adm, exist_ok=True)
 a = s
 a = a.replace('<script src="runtime.js"></script>', '<script>window.ML_ADMIN = true; window.ML_DATA = "../data/";</script>\n<script src="runtime.js"></script>', 1)
-a = a.replace('<meta name="apple-mobile-web-app-title" content="Multilingo">', '<meta name="apple-mobile-web-app-title" content="ML Admin">', 1)
-a = a.replace('<title>Multilingo</title>', '<title>Multilingo Admin</title>', 1)
+a = a.replace('<meta name="apple-mobile-web-app-title" content="Viavox">', '<meta name="apple-mobile-web-app-title" content="VX Admin">', 1)
+a = a.replace('<title>Viavox</title>', '<title>Viavox Admin</title>', 1)
 a = a.replace('<meta name="robots"', '<meta name="robots"', 1)
 a = a.replace('<head>\n', '<head>\n<meta name="robots" content="noindex, nofollow">\n', 1)
 a = re.sub(r'(href|src)="(icons|img)/', lambda m: m.group(1) + '="../' + m.group(2) + '/', a)
@@ -53,7 +54,7 @@ open(os.path.join(adm, "index.html"), "w").write(a)
 import shutil, json as _json
 for f in ("runtime.js", "ui.js"): shutil.copy(os.path.join(out, f), os.path.join(adm, f))
 man = _json.load(open(os.path.join(out, "manifest.webmanifest")))
-man.update({"name": "Multilingo Admin", "short_name": "ML Admin", "id": "./admin/"})
+man.update({"name": "Viavox Admin", "short_name": "VX Admin", "id": "./admin/"})
 man["icons"] = [{**i, "src": "../" + i["src"]} for i in man["icons"]]
 _json.dump(man, open(os.path.join(adm, "manifest.webmanifest"), "w"), ensure_ascii=False, indent=2)
 aver = hashlib.sha1((a + open(os.path.join(adm, "runtime.js")).read() + open(os.path.join(adm, "ui.js")).read()).encode()).hexdigest()[:10]

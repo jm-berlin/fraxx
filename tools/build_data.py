@@ -1,7 +1,7 @@
 """Erzeugt aus dem Datenbank-Export die Standarddaten (core.json) und je Sprache ein Paket (lang-xx.json)."""
 import json, glob, os, sys, gzip, re
 SRC_DIR = sys.argv[1]; OUT = sys.argv[2]
-# Alle Sprachen, die Multilingo kennt (wie CATALOG in der App). Ein Paket entsteht automatisch für jede Sprache,
+# Alle Sprachen, die Viavox kennt (wie CATALOG in der App). Ein Paket entsteht automatisch für jede Sprache,
 # zu der im Export Übersetzungen stehen, also für jede Sprache, die in Claude angelegt wurde.
 CATALOG = {"en":"Englisch","fr":"Französisch","es":"Spanisch","it":"Italienisch","pt":"Portugiesisch","nl":"Niederländisch",
   "pl":"Polnisch","tr":"Türkisch","el":"Griechisch","hr":"Kroatisch","sv":"Schwedisch","da":"Dänisch","nb":"Norwegisch",

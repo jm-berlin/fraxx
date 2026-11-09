@@ -1,9 +1,9 @@
 {
- "title": "Multilingo – Anleitung",
+ "title": "Viavox – Anleitung",
  "eyebrow": "Anleitung · in 5 Minuten startklar",
- "h1": "So funktioniert <em>Multilingo</em>.",
- "lead": "Multilingo ist deine persönliche Sprach-App für Reisen und Alltag: Wörter, Sätze und Redewendungen in vielen Sprachen, mit Aussprache, Konjugation, Grammatik, Speisekarten und Quiz. Hier siehst du in wenigen Schritten, wie du loslegst, und danach alles, was in Multilingo steckt.",
- "open": "Multilingo öffnen",
+ "h1": "So funktioniert <em>Viavox</em>.",
+ "lead": "Viavox ist deine persönliche Sprach-App für Reisen und Alltag: Wörter, Sätze und Redewendungen in vielen Sprachen, mit Aussprache, Konjugation, Grammatik, Speisekarten und Quiz. Hier siehst du in wenigen Schritten, wie du loslegst, und danach alles, was in Viavox steckt.",
+ "open": "Viavox öffnen",
  "pdf": "Als PDF",
  "beta": "Testversion: Eigene neue Wörter übersetzen ist noch nicht freigeschaltet und kommt in einer späteren Version. Alles andere funktioniert schon, auch offline.",
  "s1": "Die ersten Schritte",
@@ -12,12 +12,12 @@
   [
    "src",
    "Sprache wählen",
-   "Beim ersten Start fragt Multilingo, welche Sprache du sprichst. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."
+   "Beim ersten Start fragt Viavox, welche Sprache du sprichst. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."
   ],
   [
    "home",
    "Loslegen",
-   "Die Startseite zeigt, was Multilingo kann. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."
+   "Die Startseite zeigt, was Viavox kann. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."
   ],
   [
    "inhalt",
@@ -36,7 +36,7 @@
   ]
  ],
  "s2": "Nach der Installation",
- "s2sub": "Einmal einrichten, dann läuft Multilingo auch ohne Internet.",
+ "s2sub": "Einmal einrichten, dann läuft Viavox auch ohne Internet.",
  "after": [
   [
    "Sprachpakete laden",
@@ -60,7 +60,7 @@
   ]
  ],
  "appcap": "App, Sprachpakete &amp; Sicherung: Sprachen laden oder entfernen, Sicherung herunterladen.",
- "s3": "Alles, was Multilingo kann",
+ "s3": "Alles, was Viavox kann",
  "s3sub": "Die Bereiche im Überblick – oben in der Leiste findest du sie alle.",
  "navcap": "Die Leiste oben: Inhalt, Grammatik, Speisekarte, Spickzettel, Quiz, Hilfe (?) und Einstellungen (⚙).",
  "features": [
@@ -116,7 +116,7 @@
   "Die Gesundheitsangaben sind ohne Gewähr und ersetzen keine Beratung. Sie helfen dir, dich mit Arzt oder Apotheke zu verständigen."
  ],
  "end": "Gute Reise!",
- "endsub": "Viel Spaß mit Multilingo. Hast du eine Idee oder einen Fehler gefunden? Wir freuen uns über jede Rückmeldung.",
+ "endsub": "Viel Spaß mit Viavox. Hast du eine Idee oder einen Fehler gefunden? Wir freuen uns über jede Rückmeldung.",
  "pause": "Anhalten",
  "play": "Abspielen",
  "prev": "Zurück",

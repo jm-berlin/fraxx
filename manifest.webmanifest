@@ -1,6 +1,6 @@
 {
-  "name": "Multilingo – Mein bester Reisebegleiter",
-  "short_name": "Multilingo",
+  "name": "Viavox – Mein bester Reisebegleiter",
+  "short_name": "Viavox",
   "description": "Persönliche Sprach-App für Reisen: Übersetzungen, Aussprache, Konjugation, Grammatik und Speisekarten.",
   "lang": "de",
   "start_url": "./",
@@ -8,12 +8,33 @@
   "id": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#f5f6f8",
-  "theme_color": "#2f52d6",
-  "categories": ["education", "travel"],
+  "background_color": "#e5e2e0",
+  "theme_color": "#e5e2e0",
+  "categories": [
+    "education",
+    "travel"
+  ],
   "icons": [
-    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/viavox.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
   ]
 }

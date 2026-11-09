@@ -24,7 +24,7 @@
  "appcap": "App, Taalpakketten &amp; back-up: talen downloaden of verwijderen, back-up downloaden.",
  "beta": "Testversie: eigen nieuwe woorden laten vertalen is nog niet beschikbaar en komt in een latere versie. Al het andere werkt al, ook offline.",
  "end": "Goede reis!",
- "endsub": "Veel plezier met Multilingo. Heb je een idee of een fout gevonden? We horen graag van je.",
+ "endsub": "Veel plezier met Viavox. Heb je een idee of een fout gevonden? We horen graag van je.",
  "eyebrow": "Handleiding · in 5 minuten klaar voor gebruik",
  "features": [
   [
@@ -68,13 +68,13 @@
    "Leren met vier antwoorden per vraag: woorden &amp; zinnen of grammatica, in beide richtingen, per niveau en onderwerp. Bij <b>🔊 Luisteren</b> wordt er alleen voorgelezen. Na drie juiste antwoorden geldt een item als geleerd, de leervoortgang laat jouw vooruitgang zien."
   ]
  ],
- "h1": "Zo werkt <em>Multilingo</em>.",
- "lead": "Multilingo is jouw persoonlijke taal-app voor onderweg en voor elke dag: woorden, zinnen en uitdrukkingen in veel talen, met uitspraak, vervoeging, grammatica, menukaarten en quiz. Hier zie je in een paar stappen hoe je aan de slag gaat, en daarna alles wat er in Multilingo zit.",
+ "h1": "Zo werkt <em>Viavox</em>.",
+ "lead": "Viavox is jouw persoonlijke taal-app voor onderweg en voor elke dag: woorden, zinnen en uitdrukkingen in veel talen, met uitspraak, vervoeging, grammatica, menukaarten en quiz. Hier zie je in een paar stappen hoe je aan de slag gaat, en daarna alles wat er in Viavox zit.",
  "mob": "Op je telefoon",
  "mobsub": "Dezelfde inhoud, gemaakt voor je duim: de regels worden kaarten, de balk staat bovenaan.",
  "navcap": "De balk bovenaan: Inhoud, Grammatica, Menukaart, Spiekbriefje, Quiz, Help (?) en Instellingen (⚙).",
  "next": "Verder",
- "open": "Multilingo openen",
+ "open": "Viavox openen",
  "pause": "Pauzeren",
  "pdf": "Als pdf",
  "play": "Afspelen",
@@ -82,20 +82,20 @@
  "s1": "De eerste stappen",
  "s1sub": "Vijf stappen van de eerste keer openen tot je eerste vertaling.",
  "s2": "Na de installatie",
- "s2sub": "Eén keer instellen, en Multilingo werkt ook zonder internet.",
- "s3": "Alles wat Multilingo kan",
+ "s2sub": "Eén keer instellen, en Viavox werkt ook zonder internet.",
+ "s3": "Alles wat Viavox kan",
  "s3sub": "De onderdelen in één overzicht – bovenaan in de balk vind je ze allemaal.",
  "step": "Stap",
  "steps": [
   [
    "src",
    "Taal kiezen",
-   "Bij de eerste start vraagt Multilingo welke taal je spreekt. Dat is jouw <b>Brontaal</b>: daarin staan het menu, de uitleg en de tips. Je kunt die later altijd wijzigen onder ⚙."
+   "Bij de eerste start vraagt Viavox welke taal je spreekt. Dat is jouw <b>Brontaal</b>: daarin staan het menu, de uitleg en de tips. Je kunt die later altijd wijzigen onder ⚙."
   ],
   [
    "home",
    "Aan de slag",
-   "De startpagina laat zien wat Multilingo kan. <b>Aan de slag →</b> opent de inhoudsopgave. Met een tik op het logo kom je altijd weer hier terug."
+   "De startpagina laat zien wat Viavox kan. <b>Aan de slag →</b> opent de inhoudsopgave. Met een tik op het logo kom je altijd weer hier terug."
   ],
   [
    "inhalt",
@@ -121,5 +121,5 @@
   "De gezondheidsinformatie is zonder garantie en vervangt geen advies. Ze helpt je om je verstaanbaar te maken bij arts of apotheek."
  ],
  "tips": "Handige tips",
- "title": "Multilingo – Handleiding"
+ "title": "Viavox – Handleiding"
 }

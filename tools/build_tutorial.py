@@ -73,22 +73,22 @@ START = {"de": "Jetzt loslegen", "en": "Get started now", "fr": "Commencer maint
          "zh": "现在开始", "ar": "ابدأ الآن"}
 
 TEXT = {"de": {
-  "title": "Multilingo – Anleitung",
+  "title": "Viavox – Anleitung",
   "eyebrow": "Anleitung · in 5 Minuten startklar",
-  "h1": "So funktioniert <em>Multilingo</em>.",
-  "lead": "Multilingo ist deine persönliche Sprach-App für Reisen und Alltag: Wörter, Sätze und Redewendungen in vielen Sprachen, mit Aussprache, Konjugation, Grammatik, Speisekarten und Quiz. Hier siehst du in wenigen Schritten, wie du loslegst, und danach alles, was in Multilingo steckt.",
-  "open": "Multilingo öffnen",
+  "h1": "So funktioniert <em>Viavox</em>.",
+  "lead": "Viavox ist deine persönliche Sprach-App für Reisen und Alltag: Wörter, Sätze und Redewendungen in vielen Sprachen, mit Aussprache, Konjugation, Grammatik, Speisekarten und Quiz. Hier siehst du in wenigen Schritten, wie du loslegst, und danach alles, was in Viavox steckt.",
+  "open": "Viavox öffnen",
   "pdf": "Als PDF",
   "beta": "Testversion: Eigene neue Wörter übersetzen ist noch nicht freigeschaltet und kommt in einer späteren Version. Alles andere funktioniert schon, auch offline.",
   "s1": "Die ersten Schritte", "s1sub": "Fünf Schritte vom ersten Öffnen bis zur ersten Übersetzung.",
   "steps": [
-    ("src", "Sprache wählen", "Beim ersten Start fragt Multilingo, welche Sprache du sprichst. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."),
-    ("home", "Loslegen", "Die Startseite zeigt, was Multilingo kann. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."),
+    ("src", "Sprache wählen", "Beim ersten Start fragt Viavox, welche Sprache du sprichst. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."),
+    ("home", "Loslegen", "Die Startseite zeigt, was Viavox kann. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."),
     ("inhalt", "Thema öffnen", "Im <b>Inhalt</b> stehen alle Themen als Kästen: Redewendungen nach Themen (Restaurant, Hotel, Apotheke …) und Wortschatz nach Themen. <b>Öffnen ▾</b> springt direkt hinein."),
     ("tabelle", "Lesen, hören, merken", "Jede Zeile zeigt einen Eintrag in all deinen Sprachen. Der Lautsprecher 🔊 liest vor, graue Hinweise erklären Besonderheiten. Der Stern ☆ setzt den Eintrag auf deinen Spickzettel."),
     ("set", "Einstellen", "Unter <b>⚙</b> wählst du Ausgangssprache, Sprachniveau (A1 bis C2), deine Sprachen und das Design (Hell oder Dunkel). Ganz oben steht deine Version."),
   ],
-  "s2": "Nach der Installation", "s2sub": "Einmal einrichten, dann läuft Multilingo auch ohne Internet.",
+  "s2": "Nach der Installation", "s2sub": "Einmal einrichten, dann läuft Viavox auch ohne Internet.",
   "after": [
     ("Sprachpakete laden", "Unter ⚙ → <b>App, Sprachpakete &amp; Sicherung</b> lädst du die Sprachen, die du brauchst. Jedes Paket enthält alle Übersetzungen, Konjugationen, Grammatik und Speisekarten dieser Sprache."),
     ("Offline nutzen", "Alles, was installiert ist, funktioniert ohne Internet: im Flugzeug, im Ausland ohne Datenvolumen, im Funkloch."),
@@ -97,7 +97,7 @@ TEXT = {"de": {
     ("Updates", "Gibt es eine neue Version, erscheint ein Punkt am ⚙. Dort siehst du, was neu ist, und entscheidest selbst, wann du aktualisierst."),
   ],
   "appcap": "App, Sprachpakete &amp; Sicherung: Sprachen laden oder entfernen, Sicherung herunterladen.",
-  "s3": "Alles, was Multilingo kann", "s3sub": "Die Bereiche im Überblick – oben in der Leiste findest du sie alle.",
+  "s3": "Alles, was Viavox kann", "s3sub": "Die Bereiche im Überblick – oben in der Leiste findest du sie alle.",
   "navcap": "Die Leiste oben: Inhalt, Grammatik, Speisekarte, Spickzettel, Quiz, Hilfe (?) und Einstellungen (⚙).",
   "features": [
     ("inhalt", "☰ Inhalt", "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Das Suchfeld findet Themen nach Namen."),
@@ -117,7 +117,7 @@ TEXT = {"de": {
     "Das <b>?</b> oben rechts erklärt jede Funktion ausführlich.",
     "Die Gesundheitsangaben sind ohne Gewähr und ersetzen keine Beratung. Sie helfen dir, dich mit Arzt oder Apotheke zu verständigen.",
   ],
-  "end": "Gute Reise!", "endsub": "Viel Spaß mit Multilingo. Hast du eine Idee oder einen Fehler gefunden? Wir freuen uns über jede Rückmeldung.",
+  "end": "Gute Reise!", "endsub": "Viel Spaß mit Viavox. Hast du eine Idee oder einen Fehler gefunden? Wir freuen uns über jede Rückmeldung.",
   "pause": "Anhalten", "play": "Abspielen", "prev": "Zurück", "next": "Weiter", "step": "Schritt",
 }}
 
@@ -130,12 +130,13 @@ def load_texts():
         if f.endswith(".json") and l != "de":
             try:
                 t = json.load(open(os.path.join(TXT_DIR, f)))
+                t = json.loads(json.dumps(t, ensure_ascii=False).replace("Multilingo", "Viavox"))  # neuer App-Name, ältere Übersetzungen
                 TEXT[l] = {**TEXT["de"], **t}
             except Exception as e: print("Text", f, "nicht lesbar:", e)
 NAMES = {"de": "Deutsch", "en": "English", "fr": "Français", "it": "Italiano", "es": "Español", "pt": "Português",
          "nl": "Nederlands", "pl": "Polski", "sv": "Svenska", "nb": "Norsk", "tr": "Türkçe", "ar": "العربية", "zh": "中文"}
 page = lambda l: "index.html" if l == "de" else f"{l}.html"
-pdfname = lambda l: "Multilingo-Anleitung.pdf" if l == "de" else f"Multilingo-Anleitung-{l}.pdf"
+pdfname = lambda l: "Viavox-Anleitung.pdf" if l == "de" else f"Viavox-Anleitung-{l}.pdf"
 
 def build():
     load_texts()
@@ -180,6 +181,7 @@ header.top{{display:flex;align-items:center;justify-content:space-between;gap:16
 .logo{{font-weight:900;font-size:clamp(30px,5vw,44px);letter-spacing:-.06em;line-height:1;position:relative;text-decoration:none;color:var(--ink)}}
 .logo sup{{position:absolute;left:100%;top:-2px;margin-left:4px;font-size:11px;letter-spacing:.08em;background:var(--hl);color:#fff;border-radius:99px;padding:3px 8px;font-weight:700}}
 .embed .top>.pill{{visibility:hidden}}
+.logo .mark{{width:.86em;height:.86em;vertical-align:-.06em;margin-right:.14em;border-radius:22%}}
 .figs{{display:flex;flex-direction:column;gap:14px;min-width:0}}
 .langs{{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;flex:1}} .langs a{{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:99px}} .langs a[aria-current]{{background:var(--ink);color:#fff}} .langs a:hover{{color:var(--ink)}}
 @media (max-width:860px){{ header.top{{flex-wrap:wrap}} .langs{{order:3;flex-basis:100%;justify-content:flex-start}} }}
@@ -278,7 +280,7 @@ footer{{text-align:center;color:var(--muted);font-size:13px;margin-top:22px}}
 </head>
 <body>
 <div class="wrap">
-<header class="top"><a class="logo" href="{APP}">Multilingo<sup>BETA</sup></a><nav class="langs noprint">{switch}</nav><a class="pill pri noprint" href="{APP}">{T["open"]} →</a></header>
+<header class="top"><a class="logo" href="{APP}"><svg class="mark" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="114" fill="#161314"/><path d="M150 150 L256 372" stroke="#fff" stroke-width="62" stroke-linecap="round" fill="none"/><path d="M362 150 L256 372" stroke="#a3395f" stroke-width="62" stroke-linecap="round" fill="none"/></svg>Viavox<sup>BETA</sup></a><nav class="langs noprint">{switch}</nav><a class="pill pri noprint" href="{APP}">{T["open"]} →</a></header>
 
 <section class="card hero">
   <div>
@@ -315,7 +317,7 @@ footer{{text-align:center;color:var(--muted);font-size:13px;margin-top:22px}}
 <section class="card tips rv"><h2>{T["tips"]}</h2><ul>{tips}</ul></section>
 
 <section class="card end rv"><h2>{T["end"]}</h2><p>{T["endsub"]}</p><a class="pill pri noprint" href="{APP}">{START.get(LANG, START["en"])} →</a></section>
-<footer>Multilingo · {APP.replace("https://","")}</footer>
+<footer>Viavox · {APP.replace("https://","")}</footer>
 </div>
 <script>
 (function(){{ var A = {json.dumps(avail)}, l = (new URLSearchParams(location.search).get("lang") || "").slice(0,2);

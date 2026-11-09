@@ -34,7 +34,7 @@ def main():
                 r = subprocess.run([sys.executable, os.path.join(REPO, "tools", "build_tutorial.py"), shots, OUT, l], capture_output=True, text=True, timeout=300)
                 if r.returncode != 0: print("Anleitung", l, "fehlgeschlagen:", r.stderr[-800:]); continue
                 page = "index.html" if l == "de" else f"{l}.html"
-                pdf = "Multilingo-Anleitung.pdf" if l == "de" else f"Multilingo-Anleitung-{l}.pdf"
+                pdf = "Viavox-Anleitung.pdf" if l == "de" else f"Viavox-Anleitung-{l}.pdf"
                 with sync_playwright() as p:
                     b = p.chromium.launch(); pg = b.new_page(viewport={"width": 1280, "height": 900})
                     pg.goto(base + "anleitung/" + page + "?print=1"); pg.wait_for_timeout(1500)

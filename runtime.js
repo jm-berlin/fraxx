@@ -1,4 +1,4 @@
-/* Multilingo – lokale Laufzeit für die Web-App.
+/* Viavox – lokale Laufzeit für die Web-App.
    Ersetzt die Claude-Umgebung (window.claude) durch:
    • Speicher auf dem Gerät (IndexedDB) in zwei Schichten:
        – Standarddaten + Sprachpakete (werden bei Updates erneuert)
@@ -221,7 +221,7 @@
 #mlsrc button{font:inherit;font-size:16px;font-weight:600;border:1px solid #d3ccc6;background:#fff;color:#141212;border-radius:14px;padding:13px 10px;cursor:pointer}
 #mlsrc button:hover,#mlsrc button:focus-visible{border-color:#141212;outline:none}
 #mlsrc button.pre{background:#141212;color:#f3f1ef;border-color:#141212}</style>
-<div class="bx" role="dialog" aria-modal="true" aria-labelledby="mlsrcq"><h1>Multilingo</h1><p class="q" id="mlsrcq"></p><p class="s">Du kannst das später unter ⚙ ändern · You can change this later under ⚙</p><div class="g"></div></div>`;
+<div class="bx" role="dialog" aria-modal="true" aria-labelledby="mlsrcq"><h1><svg viewBox="0 0 512 512" aria-hidden="true" style="width:.9em;height:.9em;vertical-align:-.08em;margin-right:.18em;border-radius:22%"><rect width="512" height="512" rx="114" fill="#161314"/><path d="M150 150 L256 372" stroke="#fff" stroke-width="62" stroke-linecap="round" fill="none"/><path d="M362 150 L256 372" stroke="#a3395f" stroke-width="62" stroke-linecap="round" fill="none"/></svg>Viavox</h1><p class="q" id="mlsrcq"></p><p class="s">Du kannst das später unter ⚙ ändern · You can change this later under ⚙</p><div class="g"></div></div>`;
         const g = ov.querySelector(".g"), q = ov.querySelector(".q");
         const first = ready.includes(nav) ? nav : "de";
         q.textContent = (ENDO[first] || ENDO.de)[1];
@@ -393,7 +393,7 @@
       return { app: "multilingo", type: "backup", version: 1, createdAt: new Date().toISOString(), installed: state.installed, user: state.user, prefs };
     },
     async importBackup(b) {
-      if (!b || b.app !== "multilingo" || b.type !== "backup" || typeof b.user !== "object") throw new Error("Das ist keine Multilingo-Sicherung.");
+      if (!b || b.app !== "multilingo" || b.type !== "backup" || typeof b.user !== "object") throw new Error("Das ist keine Viavox-Sicherung.");
       for (const id in b.user) { state.user[id] = b.user[id]; await iput("user", id, b.user[id]); }
       if (b.prefs) try { for (const k in b.prefs) localStorage.setItem(k, b.prefs[k]); } catch (e) {}
       if (Array.isArray(b.installed)) {
