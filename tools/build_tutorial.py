@@ -181,7 +181,7 @@ header.top{{display:flex;align-items:center;justify-content:space-between;gap:16
 .logo{{font-weight:900;font-size:clamp(30px,5vw,44px);letter-spacing:-.06em;line-height:1;position:relative;text-decoration:none;color:var(--ink)}}
 .logo sup{{position:absolute;left:100%;top:-2px;margin-left:4px;font-size:11px;letter-spacing:.08em;background:var(--hl);color:#fff;border-radius:99px;padding:3px 8px;font-weight:700}}
 .embed .top>.pill{{visibility:hidden}}
-.logo .mark{{width:.86em;height:.86em;vertical-align:-.06em;margin-right:.14em;border-radius:22%}}
+.logo .vxlogo{{height:.78em;width:auto;vertical-align:-.04em;color:var(--ink);--vxberry:#a3395f}}
 .figs{{display:flex;flex-direction:column;gap:14px;min-width:0}}
 .langs{{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;flex:1}} .langs a{{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:99px}} .langs a[aria-current]{{background:var(--ink);color:#fff}} .langs a:hover{{color:var(--ink)}}
 @media (max-width:860px){{ header.top{{flex-wrap:wrap}} .langs{{order:3;flex-basis:100%;justify-content:flex-start}} }}
@@ -280,7 +280,7 @@ footer{{text-align:center;color:var(--muted);font-size:13px;margin-top:22px}}
 </head>
 <body>
 <div class="wrap">
-<header class="top"><a class="logo" href="{APP}"><svg class="mark" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="114" fill="#161314"/><path d="M150 150 L256 372" stroke="#fff" stroke-width="62" stroke-linecap="round" fill="none"/><path d="M362 150 L256 372" stroke="#a3395f" stroke-width="62" stroke-linecap="round" fill="none"/></svg>Viavox<sup>BETA</sup></a><nav class="langs noprint">{switch}</nav><a class="pill pri noprint" href="{APP}">{T["open"]} →</a></header>
+<header class="top"><a class="logo" href="{APP}" aria-label="Viavox"><svg class="vxlogo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 537.8 100" role="img" aria-label="Viavox"><path d="M10.91 10.91 L43.00 89.09" stroke="currentColor" stroke-width="21.81" stroke-linecap="round" fill="none"/><path d="M75.09 10.91 L43.00 89.09" stroke="var(--vxberry, #a3395f)" stroke-width="21.81" stroke-linecap="round" fill="none"/><g transform="translate(106.00 0)"><path d="M10.91 10.91 L10.91 89.09" stroke="currentColor" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M52.72 89.09 L84.81 10.91 L116.91 89.09" stroke="currentColor" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M136.72 10.91 L168.81 89.09 L200.91 10.91" stroke="currentColor" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="281.81" cy="50.00" r="39.09" stroke="currentColor" stroke-width="21.81" fill="none"/><path d="M362.72 10.91 L420.91 89.09" stroke="currentColor" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M420.91 10.91 L362.72 89.09" stroke="currentColor" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></svg><sup>BETA</sup></a><nav class="langs noprint">{switch}</nav><a class="pill pri noprint" href="{APP}">{T["open"]} →</a></header>
 
 <section class="card hero">
   <div>
