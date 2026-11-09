@@ -27,6 +27,7 @@ SHOT = {
     "dish":    ("07-speisekarte.png",  None, []),
     "spick":   ("08-spick.png",        None, []),
     "quiz":    ("09-quiz.png",         None, []),
+    "quiz2":   ("09b-quiz-frage.png",  None, []),
     "app":     ("12-appdaten.png",     (210, 0, 800, 820), []),
     "mhome":   ("11-mobile-home.png",  "m", []),
     "mkarte":  ("11b-mobile-karte.png", "m", []),
@@ -132,7 +133,7 @@ def load_texts():
                 TEXT[l] = {**TEXT["de"], **t}
             except Exception as e: print("Text", f, "nicht lesbar:", e)
 NAMES = {"de": "Deutsch", "en": "English", "fr": "Français", "it": "Italiano", "es": "Español", "pt": "Português",
-         "nl": "Nederlands", "pl": "Polski", "sv": "Svenska", "nb": "Norsk"}
+         "nl": "Nederlands", "pl": "Polski", "sv": "Svenska", "nb": "Norsk", "tr": "Türkçe", "ar": "العربية", "zh": "中文"}
 page = lambda l: "index.html" if l == "de" else f"{l}.html"
 pdfname = lambda l: "Multilingo-Anleitung.pdf" if l == "de" else f"Multilingo-Anleitung-{l}.pdf"
 
@@ -146,17 +147,22 @@ def build():
         src, pings, ar = img(key)
         c = f"<figcaption>{cap}</figcaption>" if cap else ""
         return f'<figure class="shot {cls}"><div class="frame" style="aspect-ratio:{ar:.4f}"><img src="{src}" alt="">{pings}</div>{c}</figure>'
+    # Quiz: Auswahl und eine beantwortete Frage untereinander
+    def fig2(key):
+        if key == "quiz" and os.path.exists(os.path.join(SHOTS, SHOT["quiz2"][0])):
+            return f'<div class="figs">{fig(key)}{fig("quiz2")}</div>'
+        return fig(key)
     slides = "".join(
         f'<div class="slide" data-i="{i}"><div class="stxt"><span class="sn">{T["step"]} {i+1}</span><h3>{h}</h3><p>{p}</p></div>{fig(k)}</div>'
         for i, (k, h, p) in enumerate(T["steps"]))
     dots = "".join(f'<button type="button" class="dot" data-i="{i}" aria-label="{T["step"]} {i+1}"></button>' for i in range(len(T["steps"])))
     after = "".join(f'<li class="rv"><b>{h}</b><span>{p}</span></li>' for h, p in T["after"])
     feats = "".join(
-        f'<section class="feat card rv{" rev" if i % 2 else ""}"><div class="ftxt"><h3>{h}</h3><p>{p}</p></div>{fig(k)}</section>'
+        f'<section class="feat card rv{" rev" if i % 2 else ""}"><div class="ftxt"><h3>{h}</h3><p>{p}</p></div>{fig2(k)}</section>'
         for i, (k, h, p) in enumerate(T["features"]))
     tips = "".join(f"<li>{t}</li>" for t in T["tiplist"])
     html = f'''<!doctype html>
-<html lang="{LANG}">
+<html lang="{LANG}"{' dir="rtl"' if LANG == "ar" else ""}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -174,6 +180,7 @@ header.top{{display:flex;align-items:center;justify-content:space-between;gap:16
 .logo{{font-weight:900;font-size:clamp(30px,5vw,44px);letter-spacing:-.06em;line-height:1;position:relative;text-decoration:none;color:var(--ink)}}
 .logo sup{{position:absolute;left:100%;top:-2px;margin-left:4px;font-size:11px;letter-spacing:.08em;background:var(--hl);color:#fff;border-radius:99px;padding:3px 8px;font-weight:700}}
 .embed .top>.pill{{visibility:hidden}}
+.figs{{display:flex;flex-direction:column;gap:14px;min-width:0}}
 .langs{{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;flex:1}} .langs a{{font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:99px}} .langs a[aria-current]{{background:var(--ink);color:#fff}} .langs a:hover{{color:var(--ink)}}
 @media (max-width:860px){{ header.top{{flex-wrap:wrap}} .langs{{order:3;flex-basis:100%;justify-content:flex-start}} }}
 .pill{{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 22px;font-weight:700;font-size:15px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}}

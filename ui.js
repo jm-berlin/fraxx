@@ -433,7 +433,8 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
   const gcss = document.createElement("style");
   gcss.textContent = `#mlguide{position:fixed;inset:0;z-index:320;background:var(--bg,#e5e2e0);display:flex;flex-direction:column}
   #mlguide iframe{flex:1 1 auto;width:100%;border:0;background:#fff}
-  #mlguide .gx{position:absolute;top:calc(10px + env(safe-area-inset-top));right:12px;width:40px;height:40px;border-radius:50%;border:0;background:rgb(20 18 18 / .78);color:#fff;font-size:18px;cursor:pointer;box-shadow:0 4px 14px rgb(0 0 0 / .2)}
+  #mlguide .gbar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(8px + env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 8px max(16px, env(safe-area-inset-left));background:var(--surface,#f3f1ef);color:var(--ink,#141212);box-shadow:0 1px 0 var(--line,#d9d4d0);font-weight:700}
+  #mlguide .gx{width:38px;height:38px;flex:none;border-radius:50%;border:0;background:var(--surface-2,#e9e5e2);color:inherit;font-size:17px;cursor:pointer}
   #mlwel{position:fixed;inset:0;z-index:310;background:rgb(10 14 20 / .45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:grid;place-items:center;padding:16px;font-family:inherit}
   #mlwel .wb{box-sizing:border-box;width:min(480px,100%);background:var(--surface,#f3f1ef);color:var(--ink,#141212);border-radius:24px;box-shadow:0 24px 60px rgb(10 14 20 / .3);padding:30px 26px 24px;text-align:center}
   #mlwel h2{margin:0 0 10px;font-size:1.6rem;letter-spacing:-.02em}#mlwel p{margin:0 0 22px;color:var(--muted,#6b635d);line-height:1.5}
@@ -452,7 +453,9 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
     const close = () => { ov.remove(); window.removeEventListener("message", onMsg); document.documentElement.style.overflow = ""; };
     const onMsg = ev => { if (ev.origin === location.origin && ev.data === "ml-guide-close") close(); };
     x.addEventListener("click", close); window.addEventListener("message", onMsg);
-    ov.append(fr, x); document.body.appendChild(ov); document.documentElement.style.overflow = "hidden";
+    // Eigene Leiste oben (mit Abstand zur Statusleiste/Notch), damit nichts über der Anleitung liegt
+    const bar = document.createElement("div"); bar.className = "gbar"; const tt = document.createElement("span"); tt.textContent = T[0];
+    bar.append(tt, x); ov.append(bar, fr); document.body.appendChild(ov); document.documentElement.style.overflow = "hidden";
     setTimeout(() => x.focus(), 50);
   }
   ML.showGuide = showGuide;

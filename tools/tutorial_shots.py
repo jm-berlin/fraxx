@@ -12,7 +12,7 @@ LANG, D = sys.argv[1], sys.argv[2]
 BASE = sys.argv[3] if len(sys.argv) > 3 else "http://localhost:8765/"
 os.makedirs(D, exist_ok=True)
 P = lambda n: os.path.join(D, n)
-LOCALE = {"de": "de-DE", "en": "en-GB", "fr": "fr-FR", "it": "it-IT", "es": "es-ES", "pt": "pt-PT", "nl": "nl-NL", "pl": "pl-PL", "sv": "sv-SE", "nb": "nb-NO"}
+LOCALE = {"de": "de-DE", "en": "en-GB", "fr": "fr-FR", "it": "it-IT", "es": "es-ES", "pt": "pt-PT", "nl": "nl-NL", "pl": "pl-PL", "sv": "sv-SE", "nb": "nb-NO", "tr": "tr-TR", "ar": "ar", "zh": "zh-CN"}
 M = {}
 
 def rect(pg, sel):
@@ -75,6 +75,16 @@ with sync_playwright() as p:
         fresh(); pg.click(btn); pg.wait_for_timeout(2500)
         if tab is not None: pg.locator(".gramtab").nth(tab).click(); pg.wait_for_timeout(2000)
         pg.screenshot(path=P(name + ".png"))
+    # Quiz: eine Frage mit richtig gewählter Antwort (bei falscher Wahl neue Runde, höchstens 8 Versuche)
+    for _ in range(8):
+        fresh(); pg.click("#quizbtn"); pg.wait_for_timeout(2000)
+        st = pg.locator("#quizbody button.primary").first
+        if not st.count() or st.is_disabled(): break
+        st.click(); pg.wait_for_timeout(1200)
+        if not pg.locator("#quizbody .qopt").count(): break
+        pg.locator("#quizbody .qopt").nth(0).click(); pg.wait_for_timeout(900)
+        if pg.locator("#quizbody .qopt.ok").count() and not pg.locator("#quizbody .qopt.bad").count():
+            pg.screenshot(path=P("09b-quiz-frage.png")); break
     fresh(); pg.click("#setbtn"); pg.wait_for_timeout(600); pg.click(".mlsetbtn"); pg.wait_for_timeout(1500)
     pg.screenshot(path=P("12-appdaten.png"))
     ctx.close()
