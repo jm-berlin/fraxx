@@ -1,6 +1,6 @@
 {
-  "name": "Multilingo Admin",
-  "short_name": "ML Admin",
+  "name": "Viavox Admin",
+  "short_name": "VX Admin",
   "description": "Persönliche Sprach-App für Reisen: Übersetzungen, Aussprache, Konjugation, Grammatik und Speisekarten.",
   "lang": "de",
   "start_url": "./",
@@ -8,8 +8,8 @@
   "id": "./admin/",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#f5f6f8",
-  "theme_color": "#2f52d6",
+  "background_color": "#e5e2e0",
+  "theme_color": "#e5e2e0",
   "categories": [
     "education",
     "travel"
@@ -30,6 +30,11 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    },
+    {
+      "src": "../icons/viavox.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ]
 }

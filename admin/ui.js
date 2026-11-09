@@ -1,4 +1,4 @@
-/* Multilingo – App-Einstellungen: Sprachpakete, Sicherung, Online-Übersetzung (nur Admin), Installation */
+/* Viavox – App-Einstellungen: Sprachpakete, Sicherung, Online-Übersetzung (nur Admin), Installation */
 // Eigene Übersetzung mit API-Schlüssel ist in der öffentlichen Testversion noch nicht freigeschaltet
 const KEYUI = window.ML_ADMIN === true;
 (() => {
@@ -61,7 +61,7 @@ const KEYUI = window.ML_ADMIN === true;
         <div class="mlrow"><button type="button" class="mlbtn pri" id="mlexport">Sicherung herunterladen</button><button type="button" class="mlbtn" id="mlimport">Sicherung einlesen</button><input type="file" id="mlfile" accept=".json,application/json" hidden></div>
         <div class="mlrow" id="mlautorow" style="margin-top:8px" hidden><button type="button" class="mlbtn" id="mlauto">Automatisch in eine Datei sichern …</button><button type="button" class="mlbtn" id="mlautoperm" hidden>Automatische Sicherung fortsetzen</button></div>
         <div class="mlmsg" id="mlbackmsg"></div></section>
-${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel arbeitet Multilingo komplett offline mit allem, was in den Sprachpaketen steckt. Mit einem eigenen <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">Claude-API-Schlüssel</a> übersetzt es neue Wörter, Konjugationen und Speisekarten wie bisher. Die Kosten liegen bei Bruchteilen eines Cents pro Eintrag. Der Schlüssel bleibt nur auf diesem Gerät.</p>
+${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel arbeitet Viavox komplett offline mit allem, was in den Sprachpaketen steckt. Mit einem eigenen <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">Claude-API-Schlüssel</a> übersetzt es neue Wörter, Konjugationen und Speisekarten wie bisher. Die Kosten liegen bei Bruchteilen eines Cents pro Eintrag. Der Schlüssel bleibt nur auf diesem Gerät.</p>
         <div class="mlrow"><input class="mlkey" id="mlkey" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-…"><button type="button" class="mlbtn pri" id="mlkeysave">Speichern</button><button type="button" class="mlbtn warn" id="mlkeydel" hidden>Entfernen</button></div>
         <div class="mlmsg" id="mlkeymsg"></div></section>` : ""}
       <section class="mlsec"><h3>Zurücksetzen</h3><p>Löscht alle eigenen Änderungen auf diesem Gerät. Die Standarddaten bleiben. Lade vorher eine Sicherung herunter.</p><div class="mlrow"><button type="button" class="mlbtn warn" id="mlreset">Eigene Änderungen löschen</button><button type="button" class="mlbtn" id="mlupdate">Nach Updates suchen</button></div><div class="mlmsg" id="mlresetmsg"></div></section>
@@ -96,7 +96,7 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
     else {
       $("mlinstall").hidden = false;
       ib.hidden = !installEvt;
-      it.textContent = installEvt ? "Multilingo bekommt ein eigenes Fenster und ein Symbol auf dem Startbildschirm bzw. im Startmenü und funktioniert auch offline."
+      it.textContent = installEvt ? "Viavox bekommt ein eigenes Fenster und ein Symbol auf dem Startbildschirm bzw. im Startmenü und funktioniert auch offline."
         : isIOS ? "In Safari unten auf das Teilen-Symbol tippen und „Zum Home-Bildschirm“ wählen."
         : "Im Browsermenü (⋮) „App installieren“ oder „Zum Startbildschirm hinzufügen“ wählen.";
     }
@@ -154,7 +154,7 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
   $("mlfile").addEventListener("change", async e => {
     const f = e.target.files[0]; e.target.value = ""; if (!f) return;
     const m = $("mlbackmsg");
-    try { const n = await ML.importBackup(JSON.parse(await f.text())); m.className = "mlmsg"; m.textContent = `${n.toLocaleString("de-DE")} eigene Einträge eingelesen. Multilingo lädt neu …`; setTimeout(() => location.reload(), 1200); }
+    try { const n = await ML.importBackup(JSON.parse(await f.text())); m.className = "mlmsg"; m.textContent = `${n.toLocaleString("de-DE")} eigene Einträge eingelesen. Viavox lädt neu …`; setTimeout(() => location.reload(), 1200); }
     catch (err) { m.className = "mlmsg err"; m.textContent = err.message || "Die Datei konnte nicht gelesen werden."; }
   });
 
@@ -194,16 +194,16 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
 
   // ---------- Update verfügbar: erst zeigen, was neu ist, dann auf Wunsch übernehmen ----------
   const UPD_T = {
-    de: { v: "Version", ok: "Aktuell", since: "Neu seit deiner Version", t: "Update verfügbar", l: "Eine neue Version von Multilingo ist da.", w: "Was ist neu", now: "Jetzt aktualisieren", later: "Später", h: "Bis dahin funktioniert alles wie gewohnt, auch offline. Deine eigenen Einträge bleiben erhalten.", busy: "Wird aktualisiert …", gen: "Verbesserungen und Korrekturen." },
-    en: { v: "Version", ok: "Up to date", since: "New since your version", t: "Update available", l: "A new version of Multilingo is ready.", w: "What’s new", now: "Update now", later: "Later", h: "Until then everything works as usual, offline too. Your own entries are kept.", busy: "Updating …", gen: "Improvements and fixes." },
-    fr: { v: "Version", ok: "À jour", since: "Nouveau depuis ta version", t: "Mise à jour disponible", l: "Une nouvelle version de Multilingo est prête.", w: "Nouveautés", now: "Mettre à jour", later: "Plus tard", h: "D’ici là, tout fonctionne comme d’habitude, même hors ligne. Tes propres entrées sont conservées.", busy: "Mise à jour …", gen: "Améliorations et corrections." },
-    it: { v: "Versione", ok: "Aggiornata", since: "Novità dalla tua versione", t: "Aggiornamento disponibile", l: "È pronta una nuova versione di Multilingo.", w: "Novità", now: "Aggiorna ora", later: "Più tardi", h: "Fino ad allora tutto funziona come sempre, anche offline. Le tue voci restano salvate.", busy: "Aggiornamento …", gen: "Miglioramenti e correzioni." },
-    es: { v: "Versión", ok: "Actualizada", since: "Novedades desde tu versión", t: "Actualización disponible", l: "Hay una nueva versión de Multilingo.", w: "Novedades", now: "Actualizar ahora", later: "Más tarde", h: "Hasta entonces todo funciona como siempre, también sin conexión. Tus propias entradas se conservan.", busy: "Actualizando …", gen: "Mejoras y correcciones." },
-    pt: { v: "Versão", ok: "Atualizada", since: "Novidades desde a tua versão", t: "Atualização disponível", l: "Há uma nova versão do Multilingo.", w: "Novidades", now: "Atualizar agora", later: "Mais tarde", h: "Até lá tudo funciona como de costume, também offline. As tuas entradas são mantidas.", busy: "A atualizar …", gen: "Melhorias e correções." },
-    nl: { v: "Versie", ok: "Up-to-date", since: "Nieuw sinds jouw versie", t: "Update beschikbaar", l: "Er is een nieuwe versie van Multilingo.", w: "Wat is er nieuw", now: "Nu bijwerken", later: "Later", h: "Tot die tijd werkt alles zoals gewoonlijk, ook offline. Je eigen items blijven bewaard.", busy: "Bijwerken …", gen: "Verbeteringen en correcties." },
-    pl: { v: "Wersja", ok: "Aktualna", since: "Nowości od twojej wersji", t: "Dostępna aktualizacja", l: "Jest nowa wersja Multilingo.", w: "Co nowego", now: "Aktualizuj teraz", later: "Później", h: "Do tego czasu wszystko działa jak zwykle, także offline. Twoje własne wpisy zostaną zachowane.", busy: "Aktualizacja …", gen: "Ulepszenia i poprawki." },
-    sv: { v: "Version", ok: "Uppdaterad", since: "Nytt sedan din version", t: "Uppdatering tillgänglig", l: "En ny version av Multilingo finns.", w: "Nyheter", now: "Uppdatera nu", later: "Senare", h: "Tills dess fungerar allt som vanligt, även offline. Dina egna poster finns kvar.", busy: "Uppdaterar …", gen: "Förbättringar och rättelser." },
-    nb: { v: "Versjon", ok: "Oppdatert", since: "Nytt siden din versjon", t: "Oppdatering tilgjengelig", l: "En ny versjon av Multilingo er klar.", w: "Hva er nytt", now: "Oppdater nå", later: "Senere", h: "Inntil da fungerer alt som vanlig, også uten nett. Dine egne oppføringer beholdes.", busy: "Oppdaterer …", gen: "Forbedringer og rettelser." }
+    de: { v: "Version", ok: "Aktuell", since: "Neu seit deiner Version", t: "Update verfügbar", l: "Eine neue Version von Viavox ist da.", w: "Was ist neu", now: "Jetzt aktualisieren", later: "Später", h: "Bis dahin funktioniert alles wie gewohnt, auch offline. Deine eigenen Einträge bleiben erhalten.", busy: "Wird aktualisiert …", gen: "Verbesserungen und Korrekturen." },
+    en: { v: "Version", ok: "Up to date", since: "New since your version", t: "Update available", l: "A new version of Viavox is ready.", w: "What’s new", now: "Update now", later: "Later", h: "Until then everything works as usual, offline too. Your own entries are kept.", busy: "Updating …", gen: "Improvements and fixes." },
+    fr: { v: "Version", ok: "À jour", since: "Nouveau depuis ta version", t: "Mise à jour disponible", l: "Une nouvelle version de Viavox est prête.", w: "Nouveautés", now: "Mettre à jour", later: "Plus tard", h: "D’ici là, tout fonctionne comme d’habitude, même hors ligne. Tes propres entrées sont conservées.", busy: "Mise à jour …", gen: "Améliorations et corrections." },
+    it: { v: "Versione", ok: "Aggiornata", since: "Novità dalla tua versione", t: "Aggiornamento disponibile", l: "È pronta una nuova versione di Viavox.", w: "Novità", now: "Aggiorna ora", later: "Più tardi", h: "Fino ad allora tutto funziona come sempre, anche offline. Le tue voci restano salvate.", busy: "Aggiornamento …", gen: "Miglioramenti e correzioni." },
+    es: { v: "Versión", ok: "Actualizada", since: "Novedades desde tu versión", t: "Actualización disponible", l: "Hay una nueva versión de Viavox.", w: "Novedades", now: "Actualizar ahora", later: "Más tarde", h: "Hasta entonces todo funciona como siempre, también sin conexión. Tus propias entradas se conservan.", busy: "Actualizando …", gen: "Mejoras y correcciones." },
+    pt: { v: "Versão", ok: "Atualizada", since: "Novidades desde a tua versão", t: "Atualização disponível", l: "Há uma nova versão do Viavox.", w: "Novidades", now: "Atualizar agora", later: "Mais tarde", h: "Até lá tudo funciona como de costume, também offline. As tuas entradas são mantidas.", busy: "A atualizar …", gen: "Melhorias e correções." },
+    nl: { v: "Versie", ok: "Up-to-date", since: "Nieuw sinds jouw versie", t: "Update beschikbaar", l: "Er is een nieuwe versie van Viavox.", w: "Wat is er nieuw", now: "Nu bijwerken", later: "Later", h: "Tot die tijd werkt alles zoals gewoonlijk, ook offline. Je eigen items blijven bewaard.", busy: "Bijwerken …", gen: "Verbeteringen en correcties." },
+    pl: { v: "Wersja", ok: "Aktualna", since: "Nowości od twojej wersji", t: "Dostępna aktualizacja", l: "Jest nowa wersja Viavox.", w: "Co nowego", now: "Aktualizuj teraz", later: "Później", h: "Do tego czasu wszystko działa jak zwykle, także offline. Twoje własne wpisy zostaną zachowane.", busy: "Aktualizacja …", gen: "Ulepszenia i poprawki." },
+    sv: { v: "Version", ok: "Uppdaterad", since: "Nytt sedan din version", t: "Uppdatering tillgänglig", l: "En ny version av Viavox finns.", w: "Nyheter", now: "Uppdatera nu", later: "Senare", h: "Tills dess fungerar allt som vanligt, även offline. Dina egna poster finns kvar.", busy: "Uppdaterar …", gen: "Förbättringar och rättelser." },
+    nb: { v: "Versjon", ok: "Oppdatert", since: "Nytt siden din versjon", t: "Oppdatering tilgjengelig", l: "En ny versjon av Viavox er klar.", w: "Hva er nytt", now: "Oppdater nå", later: "Senere", h: "Inntil da fungerer alt som vanlig, også uten nett. Dine egne oppføringer beholdes.", busy: "Oppdaterer …", gen: "Forbedringer og rettelser." }
   };
   let updShown = false;
   const swReg = async () => { try { return await navigator.serviceWorker?.getRegistration(); } catch (e) { return null; } };
@@ -251,7 +251,7 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
 #mlupd button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:10px 18px;cursor:pointer}
 #mlupd .y{background:var(--hl,#cc5530);color:var(--hl-ink,#fff)}#mlupd .n{background:var(--surface-2,#e9e5e2);color:inherit}#mlupd .y:disabled{opacity:.7;cursor:default}
 #mlupd .h{font-size:13px;margin-top:14px}#mlupd h4{margin:14px 0 4px;font-size:.92rem;color:var(--muted,#6b635d)}#mlupd h4:first-of-type{margin-top:4px}</style>
-<div class="b" role="dialog" aria-modal="true" aria-labelledby="mlupdt"><p class="k">Multilingo</p><h2 id="mlupdt"></h2><p class="l"></p><h3></h3><div class="g"></div><p class="h"></p>
+<div class="b" role="dialog" aria-modal="true" aria-labelledby="mlupdt"><p class="k">Viavox</p><h2 id="mlupdt"></h2><p class="l"></p><h3></h3><div class="g"></div><p class="h"></p>
 <div class="r"><button type="button" class="n"></button><button type="button" class="y"></button></div></div>`;
       ov.querySelector("h2").textContent = T.t; ov.querySelector(".l").textContent = T.l; ov.querySelector("h3").textContent = T.w;
       ov.querySelector(".h").textContent = T.h;
@@ -368,7 +368,7 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
   }
   $("mlauto").addEventListener("click", async () => {
     try {
-      const h = await window.showSaveFilePicker({ suggestedName: "multilingo-sicherung.json", types: [{ description: "Multilingo-Sicherung", accept: { "application/json": [".json"] } }] });
+      const h = await window.showSaveFilePicker({ suggestedName: "multilingo-sicherung.json", types: [{ description: "Viavox-Sicherung", accept: { "application/json": [".json"] } }] });
       await ML.meta.set("backupHandle", h); await autoSave(true);
       $("mlbackmsg").className = "mlmsg"; $("mlbackmsg").textContent = `Automatische Sicherung aktiv: ${h.name}. Jede Änderung wird dort gespeichert.`;
     } catch (e) { if (e.name !== "AbortError") { $("mlbackmsg").className = "mlmsg err"; $("mlbackmsg").textContent = "Die Datei konnte nicht angelegt werden."; } }
@@ -388,16 +388,16 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
       const r = await fetch("https://api.anthropic.com/v1/messages", { method: "POST", headers: { "content-type": "application/json", "x-api-key": v, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" }, body: JSON.stringify({ model: "claude-haiku-5-5", max_tokens: 5, messages: [{ role: "user", content: "Hi" }] }) });
       if (r.status === 401 || r.status === 403) { m.className = "mlmsg err"; m.textContent = "Der Schlüssel wurde abgelehnt. Bitte prüfen."; return; }
     } catch (e) { m.textContent = "Konnte den Schlüssel gerade nicht prüfen (offline?). Er wird trotzdem gespeichert."; }
-    ML.apiKey.set(v); m.className = "mlmsg"; m.textContent = "Gespeichert. Multilingo lädt neu …"; setTimeout(() => location.reload(), 900);
+    ML.apiKey.set(v); m.className = "mlmsg"; m.textContent = "Gespeichert. Viavox lädt neu …"; setTimeout(() => location.reload(), 900);
   });
-  $("mlkeydel").addEventListener("click", () => { ML.apiKey.set(""); $("mlkeymsg").textContent = "Schlüssel entfernt. Multilingo lädt neu …"; setTimeout(() => location.reload(), 900); });
+  $("mlkeydel").addEventListener("click", () => { ML.apiKey.set(""); $("mlkeymsg").textContent = "Schlüssel entfernt. Viavox lädt neu …"; setTimeout(() => location.reload(), 900); });
   }
   window.addEventListener("ml-badkey", () => { const n = document.getElementById("notice"); if (n) { n.hidden = false; n.textContent = "Der Claude-API-Schlüssel wurde abgelehnt. Unter ⚙ → App, Sprachpakete & Sicherung kannst du ihn ändern."; } });
 
   // Zurücksetzen / Updates
   $("mlreset").addEventListener("click", async () => {
     if (!confirm("Wirklich alle eigenen Änderungen auf diesem Gerät löschen?")) return;
-    await ML.resetUser(); $("mlresetmsg").textContent = "Gelöscht. Multilingo lädt neu …"; setTimeout(() => location.reload(), 900);
+    await ML.resetUser(); $("mlresetmsg").textContent = "Gelöscht. Viavox lädt neu …"; setTimeout(() => location.reload(), 900);
   });
   $("mlupdate").addEventListener("click", async () => {
     const m = $("mlresetmsg"); m.className = "mlmsg"; m.textContent = "Suche …";
@@ -406,34 +406,35 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
   });
   // ---------- Anleitung: Willkommen nach dem ersten Start, Link in den Einstellungen ----------
   const GUIDE_T = {
-    de: ["Anleitung", "Willkommen bei Multilingo!", "Möchtest du dir zuerst die kurze Anleitung ansehen? Sie zeigt dir in wenigen Minuten, wie alles funktioniert.", "Anleitung ansehen", "Sofort loslegen", "Schließen", "Jetzt loslegen"],
-    en: ["Guide", "Welcome to Multilingo!", "Would you like to watch the short guide first? It shows you how everything works in just a few minutes.", "Watch the guide", "Start right away", "Close", "Get started now"],
-    fr: ["Guide", "Bienvenue sur Multilingo !", "Veux-tu d'abord regarder le petit guide ? Il te montre en quelques minutes comment tout fonctionne.", "Voir le guide", "Commencer tout de suite", "Fermer", "Commencer maintenant"],
-    es: ["Guía", "¡Bienvenido a Multilingo!", "¿Quieres ver primero la guía breve? Te muestra en pocos minutos cómo funciona todo.", "Ver la guía", "Empezar ya", "Cerrar", "Empezar ahora"],
-    it: ["Guida", "Benvenuto su Multilingo!", "Vuoi guardare prima la breve guida? Ti mostra in pochi minuti come funziona tutto.", "Guarda la guida", "Inizia subito", "Chiudi", "Inizia ora"],
-    pt: ["Guia", "Bem-vindo ao Multilingo!", "Queres ver primeiro o guia rápido? Mostra-te em poucos minutos como tudo funciona.", "Ver o guia", "Começar já", "Fechar", "Começar agora"],
-    nl: ["Handleiding", "Welkom bij Multilingo!", "Wil je eerst de korte handleiding bekijken? Die laat je in een paar minuten zien hoe alles werkt.", "Handleiding bekijken", "Meteen beginnen", "Sluiten", "Nu beginnen"],
-    pl: ["Przewodnik", "Witaj w Multilingo!", "Chcesz najpierw obejrzeć krótki przewodnik? W kilka minut pokaże ci, jak wszystko działa.", "Zobacz przewodnik", "Zacznij od razu", "Zamknij", "Zacznij teraz"],
-    tr: ["Kılavuz", "Multilingo'ya hoş geldin!", "Önce kısa kılavuza göz atmak ister misin? Birkaç dakikada her şeyin nasıl çalıştığını gösterir.", "Kılavuzu izle", "Hemen başla", "Kapat", "Şimdi başla"],
-    el: ["Οδηγός", "Καλώς ήρθες στο Multilingo!", "Θέλεις να δεις πρώτα τον σύντομο οδηγό; Σου δείχνει σε λίγα λεπτά πώς λειτουργούν όλα.", "Δες τον οδηγό", "Ξεκίνα αμέσως", "Κλείσιμο", "Ξεκίνα τώρα"],
-    hr: ["Vodič", "Dobro došli u Multilingo!", "Želiš li prvo pogledati kratki vodič? U nekoliko minuta pokazuje kako sve funkcionira.", "Pogledaj vodič", "Odmah počni", "Zatvori", "Počni sada"],
-    sv: ["Guide", "Välkommen till Multilingo!", "Vill du titta på den korta guiden först? Den visar på några minuter hur allt fungerar.", "Visa guiden", "Börja direkt", "Stäng", "Börja nu"],
-    da: ["Vejledning", "Velkommen til Multilingo!", "Vil du først se den korte vejledning? Den viser dig på få minutter, hvordan alt fungerer.", "Se vejledningen", "Start med det samme", "Luk", "Kom i gang nu"],
-    nb: ["Veiledning", "Velkommen til Multilingo!", "Vil du se den korte veiledningen først? Den viser deg på noen få minutter hvordan alt fungerer.", "Se veiledningen", "Start med en gang", "Lukk", "Kom i gang nå"],
+    de: ["Anleitung", "Willkommen bei Viavox!", "Möchtest du dir zuerst die kurze Anleitung ansehen? Sie zeigt dir in wenigen Minuten, wie alles funktioniert.", "Anleitung ansehen", "Sofort loslegen", "Schließen", "Jetzt loslegen"],
+    en: ["Guide", "Welcome to Viavox!", "Would you like to watch the short guide first? It shows you how everything works in just a few minutes.", "Watch the guide", "Start right away", "Close", "Get started now"],
+    fr: ["Guide", "Bienvenue sur Viavox !", "Veux-tu d'abord regarder le petit guide ? Il te montre en quelques minutes comment tout fonctionne.", "Voir le guide", "Commencer tout de suite", "Fermer", "Commencer maintenant"],
+    es: ["Guía", "¡Bienvenido a Viavox!", "¿Quieres ver primero la guía breve? Te muestra en pocos minutos cómo funciona todo.", "Ver la guía", "Empezar ya", "Cerrar", "Empezar ahora"],
+    it: ["Guida", "Benvenuto su Viavox!", "Vuoi guardare prima la breve guida? Ti mostra in pochi minuti come funziona tutto.", "Guarda la guida", "Inizia subito", "Chiudi", "Inizia ora"],
+    pt: ["Guia", "Bem-vindo ao Viavox!", "Queres ver primeiro o guia rápido? Mostra-te em poucos minutos como tudo funciona.", "Ver o guia", "Começar já", "Fechar", "Começar agora"],
+    nl: ["Handleiding", "Welkom bij Viavox!", "Wil je eerst de korte handleiding bekijken? Die laat je in een paar minuten zien hoe alles werkt.", "Handleiding bekijken", "Meteen beginnen", "Sluiten", "Nu beginnen"],
+    pl: ["Przewodnik", "Witaj w Viavox!", "Chcesz najpierw obejrzeć krótki przewodnik? W kilka minut pokaże ci, jak wszystko działa.", "Zobacz przewodnik", "Zacznij od razu", "Zamknij", "Zacznij teraz"],
+    tr: ["Kılavuz", "Viavox'a hoş geldin!", "Önce kısa kılavuza göz atmak ister misin? Birkaç dakikada her şeyin nasıl çalıştığını gösterir.", "Kılavuzu izle", "Hemen başla", "Kapat", "Şimdi başla"],
+    el: ["Οδηγός", "Καλώς ήρθες στο Viavox!", "Θέλεις να δεις πρώτα τον σύντομο οδηγό; Σου δείχνει σε λίγα λεπτά πώς λειτουργούν όλα.", "Δες τον οδηγό", "Ξεκίνα αμέσως", "Κλείσιμο", "Ξεκίνα τώρα"],
+    hr: ["Vodič", "Dobro došli u Viavox!", "Želiš li prvo pogledati kratki vodič? U nekoliko minuta pokazuje kako sve funkcionira.", "Pogledaj vodič", "Odmah počni", "Zatvori", "Počni sada"],
+    sv: ["Guide", "Välkommen till Viavox!", "Vill du titta på den korta guiden först? Den visar på några minuter hur allt fungerar.", "Visa guiden", "Börja direkt", "Stäng", "Börja nu"],
+    da: ["Vejledning", "Velkommen til Viavox!", "Vil du først se den korte vejledning? Den viser dig på få minutter, hvordan alt fungerer.", "Se vejledningen", "Start med det samme", "Luk", "Kom i gang nu"],
+    nb: ["Veiledning", "Velkommen til Viavox!", "Vil du se den korte veiledningen først? Den viser deg på noen få minutter hvordan alt fungerer.", "Se veiledningen", "Start med en gang", "Lukk", "Kom i gang nå"],
     cs: ["Návod", "Vítej v Multilingu!", "Chceš se nejdřív podívat na krátký návod? Za pár minut ti ukáže, jak všechno funguje.", "Zobrazit návod", "Začít hned", "Zavřít", "Začít teď"],
     hu: ["Útmutató", "Üdv a Multilingóban!", "Szeretnéd először megnézni a rövid útmutatót? Néhány perc alatt megmutatja, hogyan működik minden.", "Útmutató megnézése", "Azonnal kezdem", "Bezárás", "Kezdjük most"],
-    ro: ["Ghid", "Bine ai venit la Multilingo!", "Vrei să vezi mai întâi ghidul scurt? Îți arată în câteva minute cum funcționează totul.", "Vezi ghidul", "Începe imediat", "Închide", "Începe acum"],
-    ca: ["Guia", "Benvingut a Multilingo!", "Vols veure primer la guia breu? Et mostra en pocs minuts com funciona tot.", "Veure la guia", "Començar ja", "Tancar", "Començar ara"],
-    ru: ["Руководство", "Добро пожаловать в Multilingo!", "Хочешь сначала посмотреть короткое руководство? За несколько минут оно покажет, как всё работает.", "Смотреть руководство", "Начать сразу", "Закрыть", "Начать сейчас"],
-    ja: ["ガイド", "Multilingoへようこそ！", "まず短いガイドを見ますか？数分ですべての使い方がわかります。", "ガイドを見る", "すぐに始める", "閉じる", "今すぐ始める"],
-    zh: ["使用指南", "欢迎使用 Multilingo！", "要先看一下简短的使用指南吗？只需几分钟，就能了解所有功能。", "查看指南", "立即开始", "关闭", "现在开始"],
-    ar: ["الدليل", "مرحبًا بك في Multilingo!", "هل تريد مشاهدة الدليل القصير أولًا؟ يوضح لك في دقائق قليلة كيف يعمل كل شيء.", "مشاهدة الدليل", "ابدأ فورًا", "إغلاق", "ابدأ الآن"] };
+    ro: ["Ghid", "Bine ai venit la Viavox!", "Vrei să vezi mai întâi ghidul scurt? Îți arată în câteva minute cum funcționează totul.", "Vezi ghidul", "Începe imediat", "Închide", "Începe acum"],
+    ca: ["Guia", "Benvingut a Viavox!", "Vols veure primer la guia breu? Et mostra en pocs minuts com funciona tot.", "Veure la guia", "Començar ja", "Tancar", "Començar ara"],
+    ru: ["Руководство", "Добро пожаловать в Viavox!", "Хочешь сначала посмотреть короткое руководство? За несколько минут оно покажет, как всё работает.", "Смотреть руководство", "Начать сразу", "Закрыть", "Начать сейчас"],
+    ja: ["ガイド", "Viavoxへようこそ！", "まず短いガイドを見ますか？数分ですべての使い方がわかります。", "ガイドを見る", "すぐに始める", "閉じる", "今すぐ始める"],
+    zh: ["使用指南", "欢迎使用 Viavox！", "要先看一下简短的使用指南吗？只需几分钟，就能了解所有功能。", "查看指南", "立即开始", "关闭", "现在开始"],
+    ar: ["الدليل", "مرحبًا بك في Viavox!", "هل تريد مشاهدة الدليل القصير أولًا؟ يوضح لك في دقائق قليلة كيف يعمل كل شيء.", "مشاهدة الدليل", "ابدأ فورًا", "إغلاق", "ابدأ الآن"] };
   const gT = () => GUIDE_T[ML.srcLang()] || GUIDE_T.en;
   const GUIDE_BASE = window.ML_ADMIN ? "../anleitung/" : "anleitung/";
   const gcss = document.createElement("style");
   gcss.textContent = `#mlguide{position:fixed;inset:0;z-index:320;background:var(--bg,#e5e2e0);display:flex;flex-direction:column}
   #mlguide iframe{flex:1 1 auto;width:100%;border:0;background:#fff}
-  #mlguide .gx{position:absolute;top:calc(10px + env(safe-area-inset-top));right:12px;width:40px;height:40px;border-radius:50%;border:0;background:rgb(20 18 18 / .78);color:#fff;font-size:18px;cursor:pointer;box-shadow:0 4px 14px rgb(0 0 0 / .2)}
+  #mlguide .gbar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(8px + env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 8px max(16px, env(safe-area-inset-left));background:var(--surface,#f3f1ef);color:var(--ink,#141212);box-shadow:0 1px 0 var(--line,#d9d4d0);font-weight:700}
+  #mlguide .gx{width:38px;height:38px;flex:none;border-radius:50%;border:0;background:var(--surface-2,#e9e5e2);color:inherit;font-size:17px;cursor:pointer}
   #mlwel{position:fixed;inset:0;z-index:310;background:rgb(10 14 20 / .45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:grid;place-items:center;padding:16px;font-family:inherit}
   #mlwel .wb{box-sizing:border-box;width:min(480px,100%);background:var(--surface,#f3f1ef);color:var(--ink,#141212);border-radius:24px;box-shadow:0 24px 60px rgb(10 14 20 / .3);padding:30px 26px 24px;text-align:center}
   #mlwel h2{margin:0 0 10px;font-size:1.6rem;letter-spacing:-.02em}#mlwel p{margin:0 0 22px;color:var(--muted,#6b635d);line-height:1.5}
@@ -452,7 +453,9 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
     const close = () => { ov.remove(); window.removeEventListener("message", onMsg); document.documentElement.style.overflow = ""; };
     const onMsg = ev => { if (ev.origin === location.origin && ev.data === "ml-guide-close") close(); };
     x.addEventListener("click", close); window.addEventListener("message", onMsg);
-    ov.append(fr, x); document.body.appendChild(ov); document.documentElement.style.overflow = "hidden";
+    // Eigene Leiste oben (mit Abstand zur Statusleiste/Notch), damit nichts über der Anleitung liegt
+    const bar = document.createElement("div"); bar.className = "gbar"; const tt = document.createElement("span"); tt.textContent = T[0];
+    bar.append(tt, x); ov.append(bar, fr); document.body.appendChild(ov); document.documentElement.style.overflow = "hidden";
     setTimeout(() => x.focus(), 50);
   }
   ML.showGuide = showGuide;

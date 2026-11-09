@@ -1,4 +1,4 @@
-/* Multilingo – lokale Laufzeit für die Web-App.
+/* Viavox – lokale Laufzeit für die Web-App.
    Ersetzt die Claude-Umgebung (window.claude) durch:
    • Speicher auf dem Gerät (IndexedDB) in zwei Schichten:
        – Standarddaten + Sprachpakete (werden bei Updates erneuert)
@@ -221,7 +221,7 @@
 #mlsrc button{font:inherit;font-size:16px;font-weight:600;border:1px solid #d3ccc6;background:#fff;color:#141212;border-radius:14px;padding:13px 10px;cursor:pointer}
 #mlsrc button:hover,#mlsrc button:focus-visible{border-color:#141212;outline:none}
 #mlsrc button.pre{background:#141212;color:#f3f1ef;border-color:#141212}</style>
-<div class="bx" role="dialog" aria-modal="true" aria-labelledby="mlsrcq"><h1>Multilingo</h1><p class="q" id="mlsrcq"></p><p class="s">Du kannst das später unter ⚙ ändern · You can change this later under ⚙</p><div class="g"></div></div>`;
+<div class="bx" role="dialog" aria-modal="true" aria-labelledby="mlsrcq"><h1><svg class="vxlogo" style="height:.8em;width:auto;display:inline-block;vertical-align:-.05em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 537.8 100" role="img" aria-label="Viavox"><path d="M10.91 10.91 L43.00 89.09" stroke="#161314" stroke-width="21.81" stroke-linecap="round" fill="none"/><path d="M75.09 10.91 L43.00 89.09" stroke="#a3395f" stroke-width="21.81" stroke-linecap="round" fill="none"/><g transform="translate(106.00 0)"><path d="M10.91 10.91 L10.91 89.09" stroke="#161314" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M52.72 89.09 L84.81 10.91 L116.91 89.09" stroke="#161314" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M136.72 10.91 L168.81 89.09 L200.91 10.91" stroke="#161314" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="281.81" cy="50.00" r="39.09" stroke="#161314" stroke-width="21.81" fill="none"/><path d="M362.72 10.91 L420.91 89.09" stroke="#161314" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M420.91 10.91 L362.72 89.09" stroke="#161314" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></svg></h1><p class="q" id="mlsrcq"></p><p class="s">Du kannst das später unter ⚙ ändern · You can change this later under ⚙</p><div class="g"></div></div>`;
         const g = ov.querySelector(".g"), q = ov.querySelector(".q");
         const first = ready.includes(nav) ? nav : "de";
         q.textContent = (ENDO[first] || ENDO.de)[1];
@@ -393,7 +393,7 @@
       return { app: "multilingo", type: "backup", version: 1, createdAt: new Date().toISOString(), installed: state.installed, user: state.user, prefs };
     },
     async importBackup(b) {
-      if (!b || b.app !== "multilingo" || b.type !== "backup" || typeof b.user !== "object") throw new Error("Das ist keine Multilingo-Sicherung.");
+      if (!b || b.app !== "multilingo" || b.type !== "backup" || typeof b.user !== "object") throw new Error("Das ist keine Viavox-Sicherung.");
       for (const id in b.user) { state.user[id] = b.user[id]; await iput("user", id, b.user[id]); }
       if (b.prefs) try { for (const k in b.prefs) localStorage.setItem(k, b.prefs[k]); } catch (e) {}
       if (Array.isArray(b.installed)) {
