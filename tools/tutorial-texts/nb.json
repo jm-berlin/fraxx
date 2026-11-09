@@ -24,7 +24,7 @@
  "appcap": "App, språkpakker og sikkerhetskopi: last ned eller fjern språk, last ned sikkerhetskopi.",
  "beta": "Testversjon: Å oversette egne nye ord er ikke åpnet ennå og kommer i en senere versjon. Alt annet fungerer allerede, også offline.",
  "end": "God tur!",
- "endsub": "Ha det gøy med Viavox. Har du en idé eller har du funnet en feil? Vi setter pris på alle tilbakemeldinger.",
+ "endsub": "Ha det gøy med Phraxx. Har du en idé eller har du funnet en feil? Vi setter pris på alle tilbakemeldinger.",
  "eyebrow": "Veiledning · klar på 5 minutter",
  "features": [
   [
@@ -68,13 +68,13 @@
    "Lær med fire svaralternativer per spørsmål: Ord og setninger eller grammatikk, begge veier, etter nivå og tema. Med <b>🔊 Hør</b> blir det bare lest opp. Etter tre riktige svar regnes en oppføring som lært, og læringsstatusen viser fremgangen din."
   ]
  ],
- "h1": "Slik fungerer <em>Viavox</em>.",
- "lead": "Viavox er din personlige språkapp for reise og hverdag: ord, setninger og uttrykk på mange språk, med uttale, bøying, grammatikk, menyer og quiz. Her ser du i noen få steg hvordan du kommer i gang, og etterpå alt som finnes i Viavox.",
+ "h1": "Slik fungerer <em>Phraxx</em>.",
+ "lead": "Phraxx er din personlige språkapp for reise og hverdag: ord, setninger og uttrykk på mange språk, med uttale, bøying, grammatikk, menyer og quiz. Her ser du i noen få steg hvordan du kommer i gang, og etterpå alt som finnes i Phraxx.",
  "mob": "På mobilen",
  "mobsub": "Samme innhold, laget for tommelen: Radene blir til kort, og linjen ligger øverst.",
  "navcap": "Linjen øverst: Innhold, Grammatikk, Menyen, Jukselapp, Quiz, hjelp (?) og innstillinger (⚙).",
  "next": "Neste",
- "open": "Åpne Viavox",
+ "open": "Åpne Phraxx",
  "pause": "Pause",
  "pdf": "Som PDF",
  "play": "Spill av",
@@ -82,20 +82,20 @@
  "s1": "De første stegene",
  "s1sub": "Fem steg fra du åpner appen første gang til din første oversettelse.",
  "s2": "Etter installasjonen",
- "s2sub": "Sett det opp én gang, så fungerer Viavox også uten internett.",
- "s3": "Alt Viavox kan",
+ "s2sub": "Sett det opp én gang, så fungerer Phraxx også uten internett.",
+ "s3": "Alt Phraxx kan",
  "s3sub": "Oversikt over områdene – du finner dem alle i linjen øverst.",
  "step": "Steg",
  "steps": [
   [
    "src",
    "Velg språk",
-   "Første gang du starter, spør Viavox hvilket språk du snakker. Det er ditt <b>Kildespråk</b>: Menyen, forklaringene og tipsene er skrevet på det. Du kan når som helst endre det senere under ⚙."
+   "Første gang du starter, spør Phraxx hvilket språk du snakker. Det er ditt <b>Kildespråk</b>: Menyen, forklaringene og tipsene er skrevet på det. Du kan når som helst endre det senere under ⚙."
   ],
   [
    "home",
    "Kom i gang",
-   "Startsiden viser hva Viavox kan. <b>Kom i gang →</b> åpner innholdsfortegnelsen. Trykker du på logoen, kommer du alltid tilbake hit."
+   "Startsiden viser hva Phraxx kan. <b>Kom i gang →</b> åpner innholdsfortegnelsen. Trykker du på logoen, kommer du alltid tilbake hit."
   ],
   [
    "inhalt",
@@ -121,5 +121,5 @@
   "Helseinformasjonen er uten garanti og erstatter ikke rådgivning. Den hjelper deg å gjøre deg forstått hos lege eller apotek."
  ],
  "tips": "Små tips",
- "title": "Viavox – Veiledning"
+ "title": "Phraxx – Veiledning"
 }

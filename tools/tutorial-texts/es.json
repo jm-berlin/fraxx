@@ -24,7 +24,7 @@
  "appcap": "App, paquetes de idiomas y copia de seguridad: descargar o quitar idiomas, descargar una copia de seguridad.",
  "beta": "Versión de prueba: traducir tus propias palabras nuevas aún no está disponible y llegará en una versión posterior. Todo lo demás ya funciona, incluso sin conexión.",
  "end": "¡Buen viaje!",
- "endsub": "Disfruta de Viavox. ¿Tienes una idea o has encontrado un error? Nos encantará recibir tu opinión.",
+ "endsub": "Disfruta de Phraxx. ¿Tienes una idea o has encontrado un error? Nos encantará recibir tu opinión.",
  "eyebrow": "Instrucciones · listo en 5 minutos",
  "features": [
   [
@@ -68,13 +68,13 @@
    "Aprende con cuatro respuestas por pregunta: palabras y frases o gramática, en ambas direcciones, por nivel y tema. En <b>🔊 Escuchar</b> solo se lee en voz alta. Tras tres respuestas correctas, una entrada se considera aprendida, y el progreso muestra tus avances."
   ]
  ],
- "h1": "Así funciona <em>Viavox</em>.",
- "lead": "Viavox es tu app de idiomas personal para viajes y el día a día: palabras, frases y expresiones en muchos idiomas, con pronunciación, conjugación, gramática, cartas de restaurante y quiz. Aquí ves en pocos pasos cómo empezar y, después, todo lo que hay en Viavox.",
+ "h1": "Así funciona <em>Phraxx</em>.",
+ "lead": "Phraxx es tu app de idiomas personal para viajes y el día a día: palabras, frases y expresiones en muchos idiomas, con pronunciación, conjugación, gramática, cartas de restaurante y quiz. Aquí ves en pocos pasos cómo empezar y, después, todo lo que hay en Phraxx.",
  "mob": "En el móvil",
  "mobsub": "El mismo contenido, pensado para el pulgar: las filas se convierten en tarjetas y la barra está arriba.",
  "navcap": "La barra de arriba: Contenido, Gramática, Carta, Chuleta, Quiz, ayuda (?) y ajustes (⚙).",
  "next": "Siguiente",
- "open": "Abrir Viavox",
+ "open": "Abrir Phraxx",
  "pause": "Pausar",
  "pdf": "En PDF",
  "play": "Reproducir",
@@ -82,20 +82,20 @@
  "s1": "Los primeros pasos",
  "s1sub": "Cinco pasos desde que abres la app hasta tu primera traducción.",
  "s2": "Después de la instalación",
- "s2sub": "Se configura una vez y Viavox funciona también sin internet.",
- "s3": "Todo lo que puede hacer Viavox",
+ "s2sub": "Se configura una vez y Phraxx funciona también sin internet.",
+ "s3": "Todo lo que puede hacer Phraxx",
  "s3sub": "Un resumen de las secciones: las encuentras todas en la barra de arriba.",
  "step": "Paso",
  "steps": [
   [
    "src",
    "Elige tu idioma",
-   "La primera vez, Viavox te pregunta qué idioma hablas. Es tu <b>Idioma de origen</b>: en él están escritos el menú, las explicaciones y los consejos. Puedes cambiarlo cuando quieras en ⚙."
+   "La primera vez, Phraxx te pregunta qué idioma hablas. Es tu <b>Idioma de origen</b>: en él están escritos el menú, las explicaciones y los consejos. Puedes cambiarlo cuando quieras en ⚙."
   ],
   [
    "home",
    "Empieza",
-   "La página de inicio muestra lo que puede hacer Viavox. <b>Empezar →</b> abre el índice de contenidos. Si tocas el logo, vuelves aquí en cualquier momento."
+   "La página de inicio muestra lo que puede hacer Phraxx. <b>Empezar →</b> abre el índice de contenidos. Si tocas el logo, vuelves aquí en cualquier momento."
   ],
   [
    "inhalt",
@@ -121,5 +121,5 @@
   "La información sobre salud no tiene garantía y no sustituye el consejo profesional. Te ayuda a comunicarte con el médico o en la farmacia."
  ],
  "tips": "Pequeños consejos",
- "title": "Viavox – Instrucciones"
+ "title": "Phraxx – Instrucciones"
 }

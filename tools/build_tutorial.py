@@ -73,22 +73,22 @@ START = {"de": "Jetzt loslegen", "en": "Get started now", "fr": "Commencer maint
          "zh": "现在开始", "ar": "ابدأ الآن"}
 
 TEXT = {"de": {
-  "title": "Viavox – Anleitung",
+  "title": "Phraxx – Anleitung",
   "eyebrow": "Anleitung · in 5 Minuten startklar",
-  "h1": "So funktioniert <em>Viavox</em>.",
-  "lead": "Viavox ist deine persönliche Sprach-App für Reisen und Alltag: Wörter, Sätze und Redewendungen in vielen Sprachen, mit Aussprache, Konjugation, Grammatik, Speisekarten und Quiz. Hier siehst du in wenigen Schritten, wie du loslegst, und danach alles, was in Viavox steckt.",
-  "open": "Viavox öffnen",
+  "h1": "So funktioniert <em>Phraxx</em>.",
+  "lead": "Phraxx ist deine persönliche Sprach-App für Reisen und Alltag: Wörter, Sätze und Redewendungen in vielen Sprachen, mit Aussprache, Konjugation, Grammatik, Speisekarten und Quiz. Hier siehst du in wenigen Schritten, wie du loslegst, und danach alles, was in Phraxx steckt.",
+  "open": "Phraxx öffnen",
   "pdf": "Als PDF",
   "beta": "Testversion: Eigene neue Wörter übersetzen ist noch nicht freigeschaltet und kommt in einer späteren Version. Alles andere funktioniert schon, auch offline.",
   "s1": "Die ersten Schritte", "s1sub": "Fünf Schritte vom ersten Öffnen bis zur ersten Übersetzung.",
   "steps": [
-    ("src", "Sprache wählen", "Beim ersten Start fragt Viavox, welche Sprache du sprichst. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."),
-    ("home", "Loslegen", "Die Startseite zeigt, was Viavox kann. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."),
+    ("src", "Sprache wählen", "Beim ersten Start fragt Phraxx, welche Sprache du sprichst. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."),
+    ("home", "Loslegen", "Die Startseite zeigt, was Phraxx kann. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."),
     ("inhalt", "Thema öffnen", "Im <b>Inhalt</b> stehen alle Themen als Kästen: Redewendungen nach Themen (Restaurant, Hotel, Apotheke …) und Wortschatz nach Themen. <b>Öffnen ▾</b> springt direkt hinein."),
     ("tabelle", "Lesen, hören, merken", "Jede Zeile zeigt einen Eintrag in all deinen Sprachen. Der Lautsprecher 🔊 liest vor, graue Hinweise erklären Besonderheiten. Der Stern ☆ setzt den Eintrag auf deinen Spickzettel."),
     ("set", "Einstellen", "Unter <b>⚙</b> wählst du Ausgangssprache, Sprachniveau (A1 bis C2), deine Sprachen und das Design (Hell oder Dunkel). Ganz oben steht deine Version."),
   ],
-  "s2": "Nach der Installation", "s2sub": "Einmal einrichten, dann läuft Viavox auch ohne Internet.",
+  "s2": "Nach der Installation", "s2sub": "Einmal einrichten, dann läuft Phraxx auch ohne Internet.",
   "after": [
     ("Sprachpakete laden", "Unter ⚙ → <b>App, Sprachpakete &amp; Sicherung</b> lädst du die Sprachen, die du brauchst. Jedes Paket enthält alle Übersetzungen, Konjugationen, Grammatik und Speisekarten dieser Sprache."),
     ("Offline nutzen", "Alles, was installiert ist, funktioniert ohne Internet: im Flugzeug, im Ausland ohne Datenvolumen, im Funkloch."),
@@ -97,7 +97,7 @@ TEXT = {"de": {
     ("Updates", "Gibt es eine neue Version, erscheint ein Punkt am ⚙. Dort siehst du, was neu ist, und entscheidest selbst, wann du aktualisierst."),
   ],
   "appcap": "App, Sprachpakete &amp; Sicherung: Sprachen laden oder entfernen, Sicherung herunterladen.",
-  "s3": "Alles, was Viavox kann", "s3sub": "Die Bereiche im Überblick – oben in der Leiste findest du sie alle.",
+  "s3": "Alles, was Phraxx kann", "s3sub": "Die Bereiche im Überblick – oben in der Leiste findest du sie alle.",
   "navcap": "Die Leiste oben: Inhalt, Grammatik, Speisekarte, Spickzettel, Quiz, Hilfe (?) und Einstellungen (⚙).",
   "features": [
     ("inhalt", "☰ Inhalt", "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Das Suchfeld findet Themen nach Namen."),
@@ -117,7 +117,7 @@ TEXT = {"de": {
     "Das <b>?</b> oben rechts erklärt jede Funktion ausführlich.",
     "Die Gesundheitsangaben sind ohne Gewähr und ersetzen keine Beratung. Sie helfen dir, dich mit Arzt oder Apotheke zu verständigen.",
   ],
-  "end": "Gute Reise!", "endsub": "Viel Spaß mit Viavox. Hast du eine Idee oder einen Fehler gefunden? Wir freuen uns über jede Rückmeldung.",
+  "end": "Gute Reise!", "endsub": "Viel Spaß mit Phraxx. Hast du eine Idee oder einen Fehler gefunden? Wir freuen uns über jede Rückmeldung.",
   "pause": "Anhalten", "play": "Abspielen", "prev": "Zurück", "next": "Weiter", "step": "Schritt",
 }}
 
@@ -130,13 +130,13 @@ def load_texts():
         if f.endswith(".json") and l != "de":
             try:
                 t = json.load(open(os.path.join(TXT_DIR, f)))
-                t = json.loads(json.dumps(t, ensure_ascii=False).replace("Multilingo", "Viavox"))  # neuer App-Name, ältere Übersetzungen
+                t = json.loads(json.dumps(t, ensure_ascii=False).replace("Multilingo", "Phraxx").replace("Phraxx", "Phraxx"))  # neuer App-Name, ältere Übersetzungen
                 TEXT[l] = {**TEXT["de"], **t}
             except Exception as e: print("Text", f, "nicht lesbar:", e)
 NAMES = {"de": "Deutsch", "en": "English", "fr": "Français", "it": "Italiano", "es": "Español", "pt": "Português",
          "nl": "Nederlands", "pl": "Polski", "sv": "Svenska", "nb": "Norsk", "tr": "Türkçe", "ar": "العربية", "zh": "中文"}
 page = lambda l: "index.html" if l == "de" else f"{l}.html"
-pdfname = lambda l: "Viavox-Anleitung.pdf" if l == "de" else f"Viavox-Anleitung-{l}.pdf"
+pdfname = lambda l: "Phraxx-Anleitung.pdf" if l == "de" else f"Phraxx-Anleitung-{l}.pdf"
 
 def build():
     load_texts()
@@ -280,7 +280,7 @@ footer{{text-align:center;color:var(--muted);font-size:13px;margin-top:22px}}
 </head>
 <body>
 <div class="wrap">
-<header class="top"><a class="logo" href="{APP}" aria-label="Viavox"><svg class="vxlogo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 537.8 100" role="img" aria-label="Viavox"><path d="M10.91 10.91 L43.00 89.09" stroke="currentColor" stroke-width="21.81" stroke-linecap="round" fill="none"/><path d="M75.09 10.91 L43.00 89.09" stroke="var(--vxberry, #a3395f)" stroke-width="21.81" stroke-linecap="round" fill="none"/><g transform="translate(106.00 0)"><path d="M10.91 10.91 L10.91 89.09" stroke="currentColor" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M52.72 89.09 L84.81 10.91 L116.91 89.09" stroke="currentColor" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M136.72 10.91 L168.81 89.09 L200.91 10.91" stroke="currentColor" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="281.81" cy="50.00" r="39.09" stroke="currentColor" stroke-width="21.81" fill="none"/><path d="M362.72 10.91 L420.91 89.09" stroke="currentColor" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M420.91 10.91 L362.72 89.09" stroke="currentColor" stroke-width="21.81" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g></svg><sup>BETA</sup></a><nav class="langs noprint">{switch}</nav><a class="pill pri noprint" href="{APP}">{T["open"]} →</a></header>
+<header class="top"><a class="logo" href="{APP}" aria-label="Phraxx"><svg class="vxlogo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540.0 100" role="img" aria-label="Phraxx"><path d="M10.90 10.90 L37.00 10.90 A20.10 20.10 0 0 1 37.00 51.10 L10.90 51.10" stroke="var(--vxberry, #a3395f)" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M10.90 89.10 L10.90 10.90" stroke="currentColor" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M98.90 10.90 L98.90 89.10" stroke="currentColor" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M147.10 10.90 L147.10 89.10" stroke="currentColor" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M98.90 50.00 L147.10 50.00" stroke="currentColor" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M188.90 10.90 L215.00 10.90 A20.10 20.10 0 0 1 215.00 51.10 L188.90 51.10" stroke="currentColor" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M188.90 89.10 L188.90 10.90" stroke="currentColor" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M211.99 51.10 L237.10 89.10" stroke="currentColor" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M278.90 89.10 L311.00 10.90 L343.10 89.10" stroke="currentColor" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M384.90 10.90 L443.10 89.10" stroke="currentColor" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M443.10 10.90 L384.90 89.10" stroke="currentColor" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M470.90 10.90 L529.10 89.10" stroke="currentColor" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M529.10 10.90 L470.90 89.10" stroke="currentColor" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><sup>BETA</sup></a><nav class="langs noprint">{switch}</nav><a class="pill pri noprint" href="{APP}">{T["open"]} →</a></header>
 
 <section class="card hero">
   <div>
@@ -317,7 +317,7 @@ footer{{text-align:center;color:var(--muted);font-size:13px;margin-top:22px}}
 <section class="card tips rv"><h2>{T["tips"]}</h2><ul>{tips}</ul></section>
 
 <section class="card end rv"><h2>{T["end"]}</h2><p>{T["endsub"]}</p><a class="pill pri noprint" href="{APP}">{START.get(LANG, START["en"])} →</a></section>
-<footer>Viavox · {APP.replace("https://","")}</footer>
+<footer>Phraxx · {APP.replace("https://","")}</footer>
 </div>
 <script>
 (function(){{ var A = {json.dumps(avail)}, l = (new URLSearchParams(location.search).get("lang") || "").slice(0,2);

@@ -24,7 +24,7 @@
  "appcap": "Application, packs de langues et sauvegarde : ajouter ou supprimer des langues, télécharger une sauvegarde.",
  "beta": "Version test : la traduction de tes propres mots n'est pas encore disponible, elle arrivera dans une prochaine version. Tout le reste fonctionne déjà, même hors ligne.",
  "end": "Bon voyage !",
- "endsub": "Amuse-toi bien avec Viavox. Tu as une idée ou tu as trouvé une erreur ? On serait ravis d'avoir ton retour.",
+ "endsub": "Amuse-toi bien avec Phraxx. Tu as une idée ou tu as trouvé une erreur ? On serait ravis d'avoir ton retour.",
  "eyebrow": "Mode d'emploi · prêt en 5 minutes",
  "features": [
   [
@@ -68,13 +68,13 @@
    "Apprendre avec quatre réponses par question : mots et phrases ou grammaire, dans les deux sens, par niveau et par thème. Avec <b>🔊 Écouter</b>, la question est seulement lue à voix haute. Après trois bonnes réponses, une entrée est considérée comme apprise, et ta progression montre où tu en es."
   ]
  ],
- "h1": "Voici comment fonctionne <em>Viavox</em>.",
- "lead": "Viavox est ton appli de langues personnelle pour les voyages et le quotidien : mots, phrases et expressions dans plein de langues, avec prononciation, conjugaison, grammaire, cartes de restaurant et quiz. Tu vois ici en quelques étapes comment démarrer, puis tout ce que Viavox a dans le ventre.",
+ "h1": "Voici comment fonctionne <em>Phraxx</em>.",
+ "lead": "Phraxx est ton appli de langues personnelle pour les voyages et le quotidien : mots, phrases et expressions dans plein de langues, avec prononciation, conjugaison, grammaire, cartes de restaurant et quiz. Tu vois ici en quelques étapes comment démarrer, puis tout ce que Phraxx a dans le ventre.",
  "mob": "Sur mobile",
  "mobsub": "Même contenu, pensé pour le pouce : les lignes deviennent des cartes, la barre est en haut.",
  "navcap": "La barre en haut : Contenu, Grammaire, Carte, Aide-mémoire, Quiz, aide (?) et réglages (⚙).",
  "next": "Suivant",
- "open": "Ouvrir Viavox",
+ "open": "Ouvrir Phraxx",
  "pause": "Pause",
  "pdf": "En PDF",
  "play": "Lecture",
@@ -82,20 +82,20 @@
  "s1": "Les premiers pas",
  "s1sub": "Cinq étapes, de la première ouverture à la première traduction.",
  "s2": "Après l'installation",
- "s2sub": "Une seule configuration, et Viavox fonctionne ensuite sans internet.",
- "s3": "Tout ce que Viavox sait faire",
+ "s2sub": "Une seule configuration, et Phraxx fonctionne ensuite sans internet.",
+ "s3": "Tout ce que Phraxx sait faire",
  "s3sub": "Un aperçu des rubriques : tu les trouves toutes dans la barre en haut.",
  "step": "Étape",
  "steps": [
   [
    "src",
    "Choisir la langue",
-   "Au premier lancement, Viavox te demande quelle langue tu parles. C'est ta <b>Langue source</b> : le menu, les explications et les conseils sont écrits dans cette langue. Tu peux la changer à tout moment sous ⚙."
+   "Au premier lancement, Phraxx te demande quelle langue tu parles. C'est ta <b>Langue source</b> : le menu, les explications et les conseils sont écrits dans cette langue. Tu peux la changer à tout moment sous ⚙."
   ],
   [
    "home",
    "Commencer",
-   "La page d'accueil montre ce que Viavox sait faire. <b>Commencer →</b> ouvre le sommaire. Un tap sur le logo te ramène ici à tout moment."
+   "La page d'accueil montre ce que Phraxx sait faire. <b>Commencer →</b> ouvre le sommaire. Un tap sur le logo te ramène ici à tout moment."
   ],
   [
    "inhalt",
@@ -121,5 +121,5 @@
   "Les informations de santé sont données sans garantie et ne remplacent pas un avis professionnel. Elles t'aident à te faire comprendre auprès d'un médecin ou d'un pharmacien."
  ],
  "tips": "Petits conseils",
- "title": "Viavox – Mode d'emploi"
+ "title": "Phraxx – Mode d'emploi"
 }
