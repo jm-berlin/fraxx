@@ -1,0 +1,125 @@
+{
+ "after": [
+  [
+   "Dil paketlerini indir",
+   "⚙ → <b>Uygulama, dil paketleri ve yedekleme</b> altından ihtiyacın olan dilleri indirirsin. Her paket, o dilin tüm çevirilerini, çekimlemelerini, dil bilgisini ve yemek listelerini içerir."
+  ],
+  [
+   "Çevrimdışı kullan",
+   "Yüklü olan her şey internetsiz çalışır: uçakta, mobil verisiz yurt dışında, çekmeyen yerlerde."
+  ],
+  [
+   "Güzel sesler",
+   "Sesli okuma cihazının sesleriyle yapılır. Mac'te ve Windows'ta genelde Chrome en doğal duyulur. Başka sesleri cihazının dil ayarlarından yükleyebilirsin."
+  ],
+  [
+   "Verilerini yedekle",
+   "Yıldızların, öğrenme durumun ve ayarların cihazında durur. ⚙ → Uygulama, dil paketleri ve yedekleme altından bir yedek indirirsin, gerekirse geri yüklersin."
+  ],
+  [
+   "Güncellemeler",
+   "Yeni bir sürüm olduğunda ⚙ üzerinde bir nokta belirir. Orada nelerin yeni olduğunu görürsün ve ne zaman güncelleyeceğine kendin karar verirsin."
+  ]
+ ],
+ "appcap": "Uygulama, dil paketleri ve yedekleme: Dilleri yükle veya kaldır, yedek indir.",
+ "beta": "Deneme sürümü: Kendi yeni kelimelerini çevirme özelliği henüz açık değil, sonraki bir sürümde gelecek. Geri kalan her şey şimdiden çalışıyor, çevrimdışı da.",
+ "end": "İyi yolculuklar!",
+ "endsub": "Multilingo ile iyi eğlenceler. Bir fikrin mi var ya da bir hata mı buldun? Her geri bildirime seviniriz.",
+ "eyebrow": "Kılavuz · 5 dakikada hazırsın",
+ "features": [
+  [
+   "inhalt",
+   "☰ İçerik",
+   "6.000'den fazla kelime, cümle ve deyim, konulara göre düzenlenmiş: restorandan eczaneye, tamirhaneden resmi daireye kadar. Ayrıca isimler, fiiller, sıfatlar ve daha fazlası için alfabetik listeler. Arama alanı konuları adlarına göre bulur."
+  ],
+  [
+   "tabelle",
+   "Çeviriler ve telaffuz",
+   "Her girdi tüm dillerinde yan yana durur, isimler artikelleriyle, deyimler anlamca çevrilmiş. 🔊 sesli okur, ikinci dokunuş durdurur. Raptiye ile önemli girdileri üstte tutarsın, A–Z ile sıralarsın."
+  ],
+  [
+   "konj",
+   "Fiiller ve çekimleme",
+   "Fiiller tüm dillerde çekimlenir: şimdiki zaman, geçmiş zaman ve gelecek zaman. <b>Çekimleme ▸</b> tabloları açar, zaman düğmeleri zaman kipini değiştirir."
+  ],
+  [
+   "gram",
+   "§ Dil bilgisi",
+   "Her dilin en önemli kuralları A1'den C1'e, dinleyebileceğin örneklerle. <b>Fiiller ve çekim ekleri</b> çekim eki tablolarını ve düzensiz fiilleri, <b>Tipik hatalar</b> senin dilini konuşanlar için tuzakları gösterir. <b>Quizde pratik yap</b> bir bölümü boşluk doldurma cümleleriyle sorar."
+  ],
+  [
+   "verben",
+   "Fiiller ve çekim ekleri",
+   "Çekim ekleri bir bakışta: düzenli kalıplar, istisnalar ve en önemli düzensiz fiiller, her biri örnekle."
+  ],
+  [
+   "dish",
+   "🍽 Yemek listesi",
+   "Her ülkeden yaklaşık 250 popüler yemek ve içecek, özgün adları ve açıklamalarıyla; ayrıca kahve, bira ve şarap. Uyarılar, bir adın başka yerde farklı bir anlama geldiğini gösterir. <b>Sipariş ▸</b> nasıl sipariş vereceğini gösterir."
+  ],
+  [
+   "spick",
+   "★ Kopya kâğıdı",
+   "Yıldızla işaretlediğin her şey tek dilde özetlenir: kelimeler, deyimler ve yemekler. <b>Yazdır</b> bundan seyahat için bir kâğıt hazırlar."
+  ],
+  [
+   "quiz",
+   "Quiz",
+   "Soru başına dört cevapla öğren: kelimeler & cümleler veya dil bilgisi, iki yönde, düzeye ve konuya göre. <b>🔊 Dinle</b> seçeneğinde yalnızca sesli okunur. Üç doğru cevaptan sonra bir girdi öğrenilmiş sayılır, öğrenme durumu ilerlemeni gösterir."
+  ]
+ ],
+ "h1": "<em>Multilingo</em> böyle çalışır.",
+ "lead": "Multilingo, seyahat ve günlük hayat için kişisel dil uygulaman: Birçok dilde kelimeler, cümleler ve deyimler; yanında telaffuz, çekimleme, dil bilgisi, yemek listeleri ve quiz. Burada birkaç adımda nasıl başlayacağını, ardından da Multilingo'da neler olduğunu görürsün.",
+ "mob": "Telefonda",
+ "mobsub": "Aynı içerik, başparmak için yapıldı: Satırlar kartlara dönüşür, çubuk üstte durur.",
+ "navcap": "Üstteki çubuk: İçerik, Dil bilgisi, Yemek listesi, Kopya kâğıdı, Quiz, Yardım (?) ve Ayarlar (⚙).",
+ "next": "İleri",
+ "open": "Multilingo'yu aç",
+ "pause": "Durdur",
+ "pdf": "PDF olarak",
+ "play": "Oynat",
+ "prev": "Geri",
+ "s1": "İlk adımlar",
+ "s1sub": "İlk açılıştan ilk çeviriye beş adım.",
+ "s2": "Kurulumdan sonra",
+ "s2sub": "Bir kez ayarla, sonra Multilingo internetsiz de çalışır.",
+ "s3": "Multilingo'nun yapabildiği her şey",
+ "s3sub": "Bölümlere genel bakış – hepsini üstteki çubukta bulursun.",
+ "step": "Adım",
+ "steps": [
+  [
+   "src",
+   "Dil seç",
+   "İlk açılışta Multilingo hangi dili konuştuğunu sorar. Bu senin <b>kaynak dilin</b>: Menü, açıklamalar ve ipuçları bu dilde yazılır. Daha sonra ⚙ altından istediğin zaman değiştirebilirsin."
+  ],
+  [
+   "home",
+   "Başla",
+   "Ana sayfa Multilingo'nun neler yapabildiğini gösterir. <b>Başla →</b> içerik listesini açar. Logoya dokunarak istediğin zaman buraya dönebilirsin."
+  ],
+  [
+   "inhalt",
+   "Konu aç",
+   "<b>İçerik</b> bölümünde tüm konular kutular halinde durur: konuya göre deyimler (restoran, otel, eczane …) ve konulara göre kelime dağarcığı. <b>Aç ▾</b> seni doğrudan içine götürür."
+  ],
+  [
+   "tabelle",
+   "Oku, dinle, aklında tut",
+   "Her satır, bir girdiyi tüm dillerinde gösterir. Hoparlör 🔊 sesli okur, gri ipuçları özel durumları açıklar. Yıldız ☆ girdiyi kopya kâğıdına ekler."
+  ],
+  [
+   "set",
+   "Ayarla",
+   "<b>⚙</b> altında kaynak dilini, dil düzeyini (A1'den C2'ye), dillerini ve görünümü (Açık veya Koyu) seçersin. En üstte sürümün yazar."
+  ]
+ ],
+ "tiplist": [
+  "⚙ altındaki dil düzeyi, tabloda, dil bilgisinde ve quizde düzeyinin üstündeki her şeyi gizler.",
+  "Tabloya en fazla 5 dil yan yana sığar: kaynak dilin ve dört dil daha.",
+  "Farklı alfabeli dillerde (Arapça, Rusça, Japonca …) okunuş altta italik olarak yazılır.",
+  "Sağ üstteki <b>?</b> her işlevi ayrıntılı açıklar.",
+  "Sağlıkla ilgili bilgiler garanti vermez ve tavsiyenin yerini tutmaz. Doktor veya eczacıyla anlaşmana yardımcı olurlar."
+ ],
+ "tips": "Küçük ipuçları",
+ "title": "Multilingo – Kılavuz"
+}
