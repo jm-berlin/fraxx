@@ -24,7 +24,7 @@
  "appcap": "App, språkpaket &amp; säkerhetskopiering: Ladda eller ta bort språk, ladda ner säkerhetskopia.",
  "beta": "Testversion: Att översätta egna nya ord är inte öppnat än och kommer i en senare version. Allt annat fungerar redan, även offline.",
  "end": "Trevlig resa!",
- "endsub": "Ha det så kul med Phraxx. Har du en idé eller hittat ett fel? Vi blir glada för all feedback.",
+ "endsub": "Ha det så kul med Multilingo. Har du en idé eller hittat ett fel? Vi blir glada för all feedback.",
  "eyebrow": "Instruktioner · redo på 5 minuter",
  "features": [
   [
@@ -68,13 +68,13 @@
    "Lär dig med fyra svarsalternativ per fråga: Ord &amp; meningar eller Grammatik, i båda riktningarna, efter nivå och ämne. Vid <b>🔊 Lyssna</b> läses det bara upp. Efter tre rätta svar räknas en post som inlärd, och inlärningsstatusen visar dina framsteg."
   ]
  ],
- "h1": "Så fungerar <em>Phraxx</em>.",
- "lead": "Phraxx är din personliga språkapp för resor och vardag: ord, meningar och idiom på många språk, med uttal, böjning, grammatik, matkartor och quiz. Här ser du i några få steg hur du kommer igång, och sedan allt som finns i Phraxx.",
+ "h1": "Så fungerar <em>Multilingo</em>.",
+ "lead": "Multilingo är din personliga språkapp för resor och vardag: ord, meningar och idiom på många språk, med uttal, böjning, grammatik, matkartor och quiz. Här ser du i några få steg hur du kommer igång, och sedan allt som finns i Multilingo.",
  "mob": "På mobilen",
  "mobsub": "Samma innehåll, gjort för tummen: Raderna blir kort, fältet sitter högst upp.",
  "navcap": "Fältet högst upp: Innehåll, Grammatik, Matkarta, Fusklapp, Quiz, Hjälp (?) och Inställningar (⚙).",
  "next": "Nästa",
- "open": "Öppna Phraxx",
+ "open": "Öppna Multilingo",
  "pause": "Pausa",
  "pdf": "Som PDF",
  "play": "Spela upp",
@@ -82,20 +82,20 @@
  "s1": "De första stegen",
  "s1sub": "Fem steg från första start till din första översättning.",
  "s2": "Efter installationen",
- "s2sub": "Ställ in en gång, sedan fungerar Phraxx även utan internet.",
- "s3": "Allt som Phraxx kan",
+ "s2sub": "Ställ in en gång, sedan fungerar Multilingo även utan internet.",
+ "s3": "Allt som Multilingo kan",
  "s3sub": "Områdena i överblick – i fältet högst upp hittar du dem alla.",
  "step": "Steg",
  "steps": [
   [
    "src",
    "Välj språk",
-   "Vid första start frågar Phraxx vilket språk du talar. Det är ditt <b>Källspråk</b>: På det språket är menyn, förklaringarna och tipsen skrivna. Du kan ändra det när som helst senare under ⚙."
+   "Vid första start frågar Multilingo vilket språk du talar. Det är ditt <b>Källspråk</b>: På det språket är menyn, förklaringarna och tipsen skrivna. Du kan ändra det när som helst senare under ⚙."
   ],
   [
    "home",
    "Kör igång",
-   "Startsidan visar vad Phraxx kan. <b>Kör igång →</b> öppnar innehållsförteckningen. Tryck på logotypen så kommer du alltid tillbaka hit."
+   "Startsidan visar vad Multilingo kan. <b>Kör igång →</b> öppnar innehållsförteckningen. Tryck på logotypen så kommer du alltid tillbaka hit."
   ],
   [
    "inhalt",
@@ -121,5 +121,5 @@
   "Hälsouppgifterna ges utan garanti och ersätter inte rådgivning. De hjälper dig att göra dig förstådd hos läkare eller apotek."
  ],
  "tips": "Små tips",
- "title": "Phraxx – Instruktioner"
+ "title": "Multilingo – Instruktioner"
 }

@@ -1,6 +1,6 @@
 {
-  "name": "Viavox Admin",
-  "short_name": "VX Admin",
+  "name": "Phraxx Admin",
+  "short_name": "PX Admin",
   "description": "Persönliche Sprach-App für Reisen: Übersetzungen, Aussprache, Konjugation, Grammatik und Speisekarten.",
   "lang": "de",
   "start_url": "./",
@@ -32,7 +32,7 @@
       "purpose": "maskable"
     },
     {
-      "src": "../icons/viavox.svg",
+      "src": "../icons/phraxx.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }

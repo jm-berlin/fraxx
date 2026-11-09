@@ -24,7 +24,7 @@
  "appcap": "App, Language Packs &amp; Backup: add or remove languages, download a backup.",
  "beta": "Test version: translating your own new words isn't available yet and will come in a later version. Everything else already works, even offline.",
  "end": "Have a great trip!",
- "endsub": "Have fun with Phraxx. Got an idea or found a bug? We'd love to hear from you.",
+ "endsub": "Have fun with Multilingo. Got an idea or found a bug? We'd love to hear from you.",
  "eyebrow": "Instructions · ready in 5 minutes",
  "features": [
   [
@@ -68,13 +68,13 @@
    "Learn with four answers per question: Words &amp; Sentences or Grammar, in both directions, by level and topic. With <b>🔊 Listening</b>, the question is only read aloud. After three correct answers, an entry counts as learned, and your progress shows how far you've come."
   ]
  ],
- "h1": "How <em>Phraxx</em> works.",
- "lead": "Phraxx is your personal language app for travel and everyday life: words, phrases and idioms in lots of languages, with pronunciation, conjugation, grammar, menus and quizzes. Here's how to get started in a few quick steps, followed by everything Phraxx has to offer.",
+ "h1": "How <em>Multilingo</em> works.",
+ "lead": "Multilingo is your personal language app for travel and everyday life: words, phrases and idioms in lots of languages, with pronunciation, conjugation, grammar, menus and quizzes. Here's how to get started in a few quick steps, followed by everything Multilingo has to offer.",
  "mob": "On your phone",
  "mobsub": "Same content, made for your thumb: rows turn into cards, and the bar sits at the top.",
  "navcap": "The bar at the top: Contents, Grammar, Menu, Cheat sheet, Quiz, Help (?) and Settings (⚙).",
  "next": "Next",
- "open": "Open Phraxx",
+ "open": "Open Multilingo",
  "pause": "Pause",
  "pdf": "As PDF",
  "play": "Play",
@@ -82,20 +82,20 @@
  "s1": "First steps",
  "s1sub": "Five steps from opening the app for the first time to your first translation.",
  "s2": "After installing",
- "s2sub": "Set it up once, and Phraxx works without internet too.",
- "s3": "Everything Phraxx can do",
+ "s2sub": "Set it up once, and Multilingo works without internet too.",
+ "s3": "Everything Multilingo can do",
  "s3sub": "The sections at a glance – you'll find them all in the bar at the top.",
  "step": "Step",
  "steps": [
   [
    "src",
    "Pick your language",
-   "When you first start, Phraxx asks which language you speak. That's your <b>Source language</b>: the menu, explanations and tips are written in it. You can change it any time under ⚙."
+   "When you first start, Multilingo asks which language you speak. That's your <b>Source language</b>: the menu, explanations and tips are written in it. You can change it any time under ⚙."
   ],
   [
    "home",
    "Let's go",
-   "The home page shows what Phraxx can do. <b>Let's go →</b> opens the table of contents. Tap the logo any time to come back here."
+   "The home page shows what Multilingo can do. <b>Let's go →</b> opens the table of contents. Tap the logo any time to come back here."
   ],
   [
    "inhalt",
@@ -121,5 +121,5 @@
   "The health information comes without guarantee and doesn't replace professional advice. It helps you communicate with a doctor or pharmacist."
  ],
  "tips": "Quick tips",
- "title": "Phraxx – Instructions"
+ "title": "Multilingo – Instructions"
 }
