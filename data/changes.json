@@ -1,6 +1,63 @@
 {
  "releases": [
   {
+   "release": "2026-11-09T07:18:07.184Z",
+   "version": "0.3",
+   "date": "2026-11-09",
+   "notes": {
+    "de": [
+     "Situationen wie Hotel, Taxi, Restaurant oder Flughafen zeigen die Sätze jetzt in der Reihenfolge, in der du sie brauchst – mit Zwischenschritten. Auf Wunsch lässt sich wieder alphabetisch sortieren.",
+     "Einen ganzen Ablauf oder einzelne Schritte kannst du mit einem Tipp auf den Spickzettel setzen.",
+     "39 neue Sätze, vor allem für Taxi und Hotel."
+    ],
+    "en": [
+     "Situations such as hotel, taxi, restaurant or airport now show the phrases in the order you need them, with steps in between. You can still switch to alphabetical order.",
+     "You can add a whole sequence or single steps to your cheat sheet with one tap.",
+     "39 new phrases, mainly for taxi and hotel."
+    ],
+    "fr": [
+     "Les situations comme l’hôtel, le taxi, le restaurant ou l’aéroport affichent désormais les phrases dans l’ordre où vous en avez besoin, avec des étapes intermédiaires. Vous pouvez toujours revenir à l’ordre alphabétique.",
+     "Vous pouvez ajouter tout un déroulé ou des étapes isolées à votre aide-mémoire d’un seul geste.",
+     "39 nouvelles phrases, surtout pour le taxi et l’hôtel."
+    ],
+    "it": [
+     "Situazioni come hotel, taxi, ristorante o aeroporto mostrano ora le frasi nell’ordine in cui ti servono, con passaggi intermedi. Puoi sempre tornare all’ordine alfabetico.",
+     "Puoi aggiungere un intero percorso o singoli passaggi al tuo promemoria con un tocco.",
+     "39 nuove frasi, soprattutto per taxi e hotel."
+    ],
+    "es": [
+     "Situaciones como hotel, taxi, restaurante o aeropuerto muestran ahora las frases en el orden en que las necesitas, con pasos intermedios. Siempre puedes volver al orden alfabético.",
+     "Puedes añadir un recorrido completo o pasos sueltos a tu chuleta con un toque.",
+     "39 frases nuevas, sobre todo para taxi y hotel."
+    ],
+    "pt": [
+     "Situações como hotel, táxi, restaurante ou aeroporto mostram agora as frases na ordem em que precisas delas, com passos intermédios. Podes sempre voltar à ordem alfabética.",
+     "Podes adicionar uma sequência inteira ou passos individuais à tua cábula com um toque.",
+     "39 frases novas, sobretudo para táxi e hotel."
+    ],
+    "nl": [
+     "Situaties zoals hotel, taxi, restaurant of vliegveld tonen de zinnen nu in de volgorde waarin je ze nodig hebt, met tussenstappen. Je kunt altijd terug naar alfabetische volgorde.",
+     "Je kunt een hele reeks of losse stappen met één tik op je spiekbriefje zetten.",
+     "39 nieuwe zinnen, vooral voor taxi en hotel."
+    ],
+    "pl": [
+     "Sytuacje takie jak hotel, taksówka, restauracja czy lotnisko pokazują teraz zdania w kolejności, w jakiej ich potrzebujesz, z etapami pośrednimi. Zawsze możesz wrócić do kolejności alfabetycznej.",
+     "Cały przebieg lub pojedyncze etapy możesz jednym dotknięciem dodać do ściągawki.",
+     "39 nowych zdań, głównie na taksówkę i hotel."
+    ],
+    "sv": [
+     "Situationer som hotell, taxi, restaurang eller flygplats visar nu fraserna i den ordning du behöver dem, med steg emellan. Du kan fortfarande byta till alfabetisk ordning.",
+     "Du kan lägga till ett helt förlopp eller enskilda steg på din fusklapp med ett tryck.",
+     "39 nya fraser, främst för taxi och hotell."
+    ],
+    "nb": [
+     "Situasjoner som hotell, taxi, restaurant eller flyplass viser nå setningene i den rekkefølgen du trenger dem, med trinn underveis. Du kan fortsatt bytte til alfabetisk rekkefølge.",
+     "Du kan legge et helt forløp eller enkelttrinn på jukselappen din med ett trykk.",
+     "39 nye setninger, mest for taxi og hotell."
+    ]
+   }
+  },
+  {
    "release": "2026-11-08T06:36:02.771Z",
    "version": "0.2",
    "date": "2026-11-08",
