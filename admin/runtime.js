@@ -72,8 +72,13 @@
     user: {},             // eigene Änderungen: id -> Dokument oder {__deleted:true}
     listeners: new Set(),
     ready: null,
-    changeHooks: new Set()
+    changeHooks: new Set(),
+    load: { active: false, done: 0, total: 0, error: false }   // Fortschritt beim Laden der Sprachpakete (für die Ladeanzeige)
   };
+  function loadSet(patch) {
+    Object.assign(state.load, patch);
+    try { window.dispatchEvent(new CustomEvent("ml-load", { detail: { ...state.load } })); } catch (e) {}
+  }
 
   // Neue Veröffentlichung (anderes „release“) wird nicht sofort übernommen: sie wartet in state.pending,
   // bis der Nutzer im Hinweis „Update verfügbar“ zustimmt. Erster Start und ältere Stände: direkt übernehmen.
@@ -102,13 +107,17 @@
 
   async function rebuildBase() {
     const idx = state.index;
+    const todo = state.installed.filter(l => idx.packs.some(x => x.lang === l)).length + 1;
+    loadSet({ done: 0, total: todo });
     const core = await loadFile("core", idx.core.file, idx.core.version || idx.version);
+    loadSet({ done: 1 });
     const base = new Map(core.docs.map(d => [d.id, clone(d)]));
     const packs = {};
     for (const l of state.installed) {
       const p = idx.packs.find(x => x.lang === l);
       if (!p) continue;
       try { packs[l] = await loadFile("lang-" + l, p.file, p.version); } catch (e) { console.warn("Paket fehlt", l, e); }
+      loadSet({ done: state.load.done + 1 });
     }
     const have = new Set(Object.keys(packs));
     for (const l of Object.keys(packs)) {
@@ -243,13 +252,16 @@
   // ---------- Start ----------
   state.ready = (async () => {
     try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (e) {}
+    loadSet({ active: true });
     state.index = await loadIndex();
     let inst = await iget("meta", "installed");
     let firstSrc = "";
     if (!Array.isArray(inst)) {
       // Erster Start: Ausgangssprache abfragen, dann nur die Standardpakete laden (Deutsch steckt im Kern)
       // plus das Paket der gewählten Ausgangssprache. Alle anderen lassen sich unter ⚙ nachladen.
+      loadSet({ active: false });
       firstSrc = await askSource(state.index);
+      loadSet({ active: true });
       state.firstRun = true;
       const def = state.index.packs.filter(p => p.default);
       // Admin: alle verfügbaren Sprachen sofort mitinstallieren
@@ -271,6 +283,7 @@
     }
     await rebuildBase();
   })();
+  state.ready.then(() => loadSet({ active: false }), () => loadSet({ active: false, error: true }));
 
   // ---------- Datenbank-Schnittstelle (wie in Claude) ----------
   function docRef(id) {
@@ -348,6 +361,7 @@
   // ---------- Verwaltung (für die Einstellungen der App) ----------
   window.Multilingo = {
     ready: () => state.ready,
+    loading: () => ({ ...state.load }),
     index: () => state.index,
     installed: () => state.installed.slice(),
     userCount: () => Object.keys(state.user).length,

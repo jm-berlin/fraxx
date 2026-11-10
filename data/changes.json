@@ -1,6 +1,63 @@
 {
  "releases": [
   {
+   "release": "2026-11-10T17:59:01.000Z",
+   "version": "0.6",
+   "date": "2026-11-10",
+   "notes": {
+    "de": [
+     "Auf dem Handy öffnet ein Tipp auf ein Wort oder einen Satz jetzt die Übersetzungen darunter. Ändern geht über ✎.",
+     "Die Auswahl von Bereich und Kapitel im Quiz ist neu gestaltet und leichter zu bedienen.",
+     "Beim ersten Start zeigt Phraxx an, dass die Sprachen noch geladen werden."
+    ],
+    "en": [
+     "On your phone, tapping a word or sentence now opens its translations below. Use ✎ to edit.",
+     "Choosing a topic or chapter in the quiz has a new, easier-to-use design.",
+     "On first start, Phraxx now shows that the languages are still loading."
+    ],
+    "fr": [
+     "Sur le téléphone, toucher un mot ou une phrase ouvre maintenant les traductions en dessous. Pour modifier, utilise ✎.",
+     "Le choix du thème et du chapitre dans le quiz a un nouveau design, plus simple à utiliser.",
+     "Au premier démarrage, Phraxx indique que les langues sont encore en cours de chargement."
+    ],
+    "it": [
+     "Sul telefono, toccando una parola o una frase ora si aprono le traduzioni sotto. Per modificare usa ✎.",
+     "La scelta di argomento e capitolo nel quiz ha un nuovo design, più facile da usare.",
+     "Al primo avvio Phraxx mostra che le lingue sono ancora in caricamento."
+    ],
+    "es": [
+     "En el móvil, al tocar una palabra o una frase ahora se abren las traducciones debajo. Para editar, usa ✎.",
+     "La selección de tema y capítulo en el quiz tiene un diseño nuevo y más fácil de usar.",
+     "En el primer inicio, Phraxx muestra que los idiomas todavía se están cargando."
+    ],
+    "pt": [
+     "No telemóvel, tocar numa palavra ou frase abre agora as traduções por baixo. Para editar, usa ✎.",
+     "A escolha de tema e capítulo no quiz tem um novo design, mais fácil de usar.",
+     "No primeiro arranque, o Phraxx mostra que os idiomas ainda estão a carregar."
+    ],
+    "nl": [
+     "Op je telefoon opent een tik op een woord of zin nu de vertalingen eronder. Bewerken gaat via ✎.",
+     "Het kiezen van onderwerp en hoofdstuk in de quiz heeft een nieuw, makkelijker ontwerp.",
+     "Bij de eerste start laat Phraxx zien dat de talen nog worden geladen."
+    ],
+    "pl": [
+     "Na telefonie dotknięcie słowa lub zdania otwiera teraz tłumaczenia pod spodem. Edycja przez ✎.",
+     "Wybór tematu i rozdziału w quizie ma nowy, prostszy wygląd.",
+     "Przy pierwszym uruchomieniu Phraxx pokazuje, że języki są jeszcze ładowane."
+    ],
+    "sv": [
+     "På mobilen öppnar ett tryck på ett ord eller en mening nu översättningarna under. Redigera med ✎.",
+     "Valet av ämne och kapitel i quizet har en ny design som är lättare att använda.",
+     "Vid första starten visar Phraxx att språken fortfarande laddas."
+    ],
+    "nb": [
+     "På mobilen åpner et trykk på et ord eller en setning nå oversettelsene under. Rediger med ✎.",
+     "Valget av tema og kapittel i quizen har fått et nytt design som er enklere å bruke.",
+     "Ved første oppstart viser Phraxx at språkene fortsatt lastes inn."
+    ]
+   }
+  },
+  {
    "release": "2026-11-09T22:33:38.279Z",
    "version": "0.5",
    "date": "2026-11-09",

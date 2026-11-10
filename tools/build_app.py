@@ -2,6 +2,10 @@
 import sys, re, hashlib, os
 src, out = sys.argv[1], sys.argv[2]
 s = open(src).read()
+# Vorgemerkte App-Änderungen, die im Artefakt noch fehlen (siehe tools/app_patches.py)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import app_patches
+s = app_patches.apply(s)
 def rep(a, b, count=1):
     global s
     assert a in s, a[:80]; s = s.replace(a, b, count)

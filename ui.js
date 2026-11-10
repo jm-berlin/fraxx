@@ -459,6 +459,83 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
     setTimeout(() => x.focus(), 50);
   }
   ML.showGuide = showGuide;
+  // ---------- Ladeanzeige: Sprachpakete werden noch geladen ----------
+  // Beim ersten Start (oder nach einem Update) kommen die Einträge erst nach ein paar Sekunden.
+  // Damit niemand denkt, die App sei leer oder kaputt, steht solange unten ein Hinweis mit Fortschritt.
+  const LOAD_T = {
+    de: ["Sprachen werden geladen …", "Beim ersten Start dauert das einen Moment.", "Die Sprachen konnten nicht geladen werden. Prüfe deine Internetverbindung.", "Erneut versuchen"],
+    en: ["Loading languages …", "The first start takes a moment.", "The languages could not be loaded. Check your internet connection.", "Try again"],
+    fr: ["Chargement des langues …", "Le premier démarrage prend un instant.", "Les langues n'ont pas pu être chargées. Vérifie ta connexion Internet.", "Réessayer"],
+    es: ["Cargando idiomas …", "El primer inicio tarda un momento.", "No se han podido cargar los idiomas. Comprueba tu conexión a Internet.", "Reintentar"],
+    it: ["Caricamento delle lingue …", "Il primo avvio richiede un momento.", "Non è stato possibile caricare le lingue. Controlla la connessione a Internet.", "Riprova"],
+    pt: ["A carregar idiomas …", "O primeiro arranque demora um momento.", "Não foi possível carregar os idiomas. Verifica a tua ligação à Internet.", "Tentar novamente"],
+    nl: ["Talen worden geladen …", "De eerste keer duurt dit even.", "De talen konden niet worden geladen. Controleer je internetverbinding.", "Opnieuw proberen"],
+    pl: ["Ładowanie języków …", "Pierwsze uruchomienie chwilę trwa.", "Nie udało się załadować języków. Sprawdź połączenie z internetem.", "Spróbuj ponownie"],
+    tr: ["Diller yükleniyor …", "İlk açılış biraz sürer.", "Diller yüklenemedi. İnternet bağlantını kontrol et.", "Tekrar dene"],
+    el: ["Φόρτωση γλωσσών …", "Η πρώτη εκκίνηση διαρκεί λίγο.", "Δεν ήταν δυνατή η φόρτωση των γλωσσών. Έλεγξε τη σύνδεσή σου στο διαδίκτυο.", "Δοκίμασε ξανά"],
+    hr: ["Učitavanje jezika …", "Prvo pokretanje traje trenutak.", "Jezici se nisu mogli učitati. Provjeri internetsku vezu.", "Pokušaj ponovno"],
+    sv: ["Språken laddas …", "Första starten tar en stund.", "Språken kunde inte laddas. Kontrollera din internetanslutning.", "Försök igen"],
+    da: ["Sprogene indlæses …", "Første start tager et øjeblik.", "Sprogene kunne ikke indlæses. Tjek din internetforbindelse.", "Prøv igen"],
+    nb: ["Språkene lastes inn …", "Første oppstart tar et øyeblikk.", "Språkene kunne ikke lastes inn. Sjekk internettforbindelsen.", "Prøv igjen"],
+    cs: ["Načítání jazyků …", "První spuštění chvíli trvá.", "Jazyky se nepodařilo načíst. Zkontroluj připojení k internetu.", "Zkusit znovu"],
+    hu: ["Nyelvek betöltése …", "Az első indítás eltart egy pillanatig.", "A nyelveket nem sikerült betölteni. Ellenőrizd az internetkapcsolatot.", "Újra"],
+    ro: ["Se încarcă limbile …", "Prima pornire durează puțin.", "Limbile nu au putut fi încărcate. Verifică conexiunea la internet.", "Încearcă din nou"],
+    ca: ["S'estan carregant les llengües …", "El primer inici triga un moment.", "No s'han pogut carregar les llengües. Comprova la connexió a Internet.", "Torna-ho a provar"],
+    ru: ["Загрузка языков …", "Первый запуск занимает немного времени.", "Не удалось загрузить языки. Проверь подключение к интернету.", "Повторить"],
+    ja: ["言語を読み込んでいます …", "初回の起動には少し時間がかかります。", "言語を読み込めませんでした。インターネット接続を確認してください。", "再試行"],
+    zh: ["正在加载语言 …", "首次启动需要一点时间。", "无法加载语言。请检查网络连接。", "重试"],
+    ar: ["جارٍ تحميل اللغات …", "يستغرق التشغيل الأول لحظة.", "تعذّر تحميل اللغات. تحقّق من اتصالك بالإنترنت.", "إعادة المحاولة"]
+  };
+  {
+    const lcss = document.createElement("style");
+    lcss.textContent = `
+    #mlload{box-sizing:border-box;position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translate(-50%,12px);z-index:70;width:min(420px,calc(100% - 28px));
+      background:var(--ink);color:var(--surface);border-radius:18px;box-shadow:0 12px 36px rgb(20 14 12 / .28);padding:13px 16px 12px;
+      display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:center;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none}
+    #mlload.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+    #mlload .lsp{grid-row:1 / span 2;width:22px;height:22px;border-radius:50%;border:3px solid rgb(255 255 255 / .25);border-top-color:var(--hl,#a3395f);animation:mlspin .9s linear infinite}
+    #mlload b{font-size:15px;font-weight:700}
+    #mlload small{font-size:13px;opacity:.75;line-height:1.35}
+    #mlload .lbar{grid-column:1 / -1;height:4px;border-radius:4px;background:rgb(255 255 255 / .18);margin-top:9px;overflow:hidden}
+    #mlload .lbar > i{display:block;height:100%;width:0;background:var(--hl,#a3395f);border-radius:inherit;transition:width .3s}
+    #mlload.err .lsp{display:none}
+    #mlload.err{grid-template-columns:1fr}
+    #mlload .lbtn{grid-column:1 / -1;justify-self:start;margin-top:9px;border:0;border-radius:999px;background:var(--surface);color:var(--ink);font:inherit;font-size:13.5px;font-weight:700;padding:6px 14px;cursor:pointer}
+    @keyframes mlspin{to{transform:rotate(360deg)}}
+    @media (prefers-reduced-motion:reduce){ #mlload .lsp{animation:none} #mlload{transition:none} }
+    @media print{ #mlload{display:none} }`;
+    document.head.appendChild(lcss);
+    const box = document.createElement("div"); box.id = "mlload"; box.setAttribute("data-notr", "");
+    box.setAttribute("role", "status"); box.setAttribute("aria-live", "polite");
+    let timer = null, shown = false;
+    const lt = () => LOAD_T[ML.srcLang()] || LOAD_T.en;
+    const draw = st => {
+      const T = lt();
+      box.classList.toggle("err", !!st.error);
+      box.dir = ML.srcLang() === "ar" ? "rtl" : "";
+      if (st.error) {
+        box.innerHTML = `<b></b><button type="button" class="lbtn"></button>`;
+        box.querySelector("b").textContent = T[2]; const r = box.querySelector("button"); r.textContent = T[3];
+        r.addEventListener("click", () => location.reload());
+        return;
+      }
+      if (!box.querySelector(".lbar")) box.innerHTML = `<span class="lsp" aria-hidden="true"></span><b></b><small></small><span class="lbar" aria-hidden="true"><i></i></span>`;
+      box.querySelector("b").textContent = T[0];
+      box.querySelector("small").textContent = st.total > 1 ? `${T[1]} ${Math.min(st.done, st.total)}\u202f/\u202f${st.total}` : T[1];
+      box.querySelector(".lbar > i").style.width = (st.total ? Math.round(100 * Math.min(st.done, st.total) / st.total) : 5) + "%";
+    };
+    const show = () => { if (!box.isConnected) document.body.appendChild(box); shown = true; requestAnimationFrame(() => box.classList.add("on")); };
+    const hide = () => { clearTimeout(timer); timer = null; if (!shown) return; shown = false; box.classList.remove("on"); setTimeout(() => { if (!shown) box.remove(); }, 300); };
+    const update = st => {
+      if (st.error) { clearTimeout(timer); draw(st); show(); return; }
+      if (!st.active) { hide(); return; }
+      draw(st);
+      // Nur zeigen, wenn es spürbar dauert (aus dem Gerätespeicher ist es meist sofort fertig)
+      if (!shown && !timer) timer = setTimeout(() => { timer = null; if (ML.loading().active) { draw(ML.loading()); show(); } }, 350);
+    };
+    window.addEventListener("ml-load", e => update(e.detail || {}));
+    if (ML.loading) update(ML.loading());
+  }
   (async () => {
     try {
       await ML.ready(); if (!(ML.firstRun && ML.firstRun())) return;
