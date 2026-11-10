@@ -31,6 +31,13 @@ Dokumente `tutorial-<lang>` aus dem Export (Auftrag „Anleitung … übersetzen
 die Veröffentlichung bei Fehlern nicht ab. Der deutsche Text steht in `tools/build_tutorial.py` (TEXT["de"]); ändert er sich,
 muss das Artefakt die neue Fassung kennen (TUT_DE/TUT_HASH), sonst übersetzt es nicht neu.
 
+## Artefakt nachziehen (einmalig)
+
+Das Artefakt heißt noch „Phraxx“ und enthält einige App-Änderungen noch nicht (sie stehen in `tools/app_patches.py`;
+`build_app.py` setzt sie und den Namen Fraxx beim Bauen ohnehin ein). Zum Nachziehen in einer Sitzung mit Netzzugang:
+Artefakt-HTML holen (Artifact `read`), `python3 tools/artefakt_update.py <artefakt.html> neu.html`, dann `neu.html`
+mit `publish_files` (slug des Artefakts, aktuelle Version als base_version, Titel „Fraxx“) veröffentlichen.
+
 ## Wichtig
 
 - Nie `.git` aus einem anderen Ordner in das Repository kopieren.

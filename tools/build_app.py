@@ -4,10 +4,12 @@ src, out = sys.argv[1], sys.argv[2]
 s = open(src).read()
 # Vorgemerkte App-Änderungen, die im Artefakt noch fehlen (siehe tools/app_patches.py)
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import app_patches
+import app_patches, rename_fraxx
 s = app_patches.apply(s)
 def rep(a, b, count=1):
     global s
+    # Das Artefakt heißt inzwischen evtl. schon „Fraxx“: dann die Suchtexte ebenso umstellen
+    if a not in s: a, b = rename_fraxx.convert(a), rename_fraxx.convert(b)
     assert a in s, a[:80]; s = s.replace(a, b, count)
 rep('<meta name="claude:viewport-fit-sides" content="cover">\n', '')
 head = '''<!doctype html>
@@ -38,7 +40,6 @@ rep('statusEl.textContent = "Gespeichert in deinem Konto";', 'statusEl.textConte
 s = re.sub(r'(data-img="(\w+)" src=")data:image/jpeg;base64,[^"]+', lambda m: m.group(1) + 'img/' + m.group(2) + '.jpg', s)
 s = s.rstrip() + '\n<script src="ui.js"></script>\n</html>\n'
 # Neuer Name Fraxx (Wortmarke, Icon, Texte, Adresse), solange das Artefakt noch „Phraxx“ heißt
-import rename_fraxx
 s = rename_fraxx.convert(s)
 os.makedirs(out, exist_ok=True)
 open(os.path.join(out, "index.html"), "w").write(s)
