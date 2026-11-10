@@ -2,8 +2,8 @@ import markdown,re,sys
 from playwright.sync_api import sync_playwright
 S='/tmp/claude-0/-home-claude/2ad5d760-ad6f-557c-9e99-6e8f89c257dc/scratchpad/'
 R='/home/claude/multilingo/'
-JOBS=[("INSTALLATION.md","Multilingo-Installation","de","Schritt für Schritt","Multilingo <em>installieren</em>","Seite","Adresse"),
-      ("INSTALL.md","Multilingo-Install-Guide","en","Step by step","Install <em>Multilingo</em>","Page","Address")]
+JOBS=[("INSTALLATION.md","Fraxx-Installation","de","Schritt für Schritt","Fraxx <em>installieren</em>","Seite","Adresse"),
+      ("INSTALL.md","Fraxx-Install-Guide","en","Step by step","Install <em>Fraxx</em>","Page","Address")]
 CSS='''
 @page{size:A4;margin:12mm 0 14mm}
 :root{--bg:#e5e2e0;--surface:#f3f1ef;--ink:#141212;--muted:#6b635d;--line:#d3ccc6;--hl:#a3395f;--hl-soft:#efd5df;--chip:#e5e2e0}
@@ -61,9 +61,9 @@ def build(src,out,lang,eyebrow,title,pg,addrlabel):
     qr = open(S+'qr.svg').read()
     hero=(f'<div class="card hero"><div class="herogrid"><div><p class="eyebrow">{eyebrow}</p><h1>{title}</h1>{markdown.markdown(intro)}</div>'
           f'<a class="qr" href="{url}">{qr}<span>{"Mit der Handykamera scannen" if de else "Scan with your phone camera"}</span></a></div>'
-          f'<div class="addr"><a class="go" href="{url}">{"Multilingo öffnen" if de else "Open Multilingo"} →</a>'
+          f'<div class="addr"><a class="go" href="{url}">{"Fraxx öffnen" if de else "Open Fraxx"} →</a>'
           f'<a class="link" href="{url}">{url}</a></div>'
-          f'<p class="tip">{"Tippe oder klicke auf den Knopf: Multilingo öffnet sich direkt im Browser. Danach geht es mit Schritt 1 weiter." if de else "Tap or click the button: Multilingo opens directly in your browser. Then continue with step 1."}</p></div>')
+          f'<p class="tip">{"Tippe oder klicke auf den Knopf: Fraxx öffnet sich direkt im Browser. Danach geht es mit Schritt 1 weiter." if de else "Tap or click the button: Fraxx opens directly in your browser. Then continue with step 1."}</p></div>')
     cards=[]
     for s in secs:
         h=markdown.markdown(s,extensions=['tables'])
@@ -81,7 +81,7 @@ def build(src,out,lang,eyebrow,title,pg,addrlabel):
             cards.append(f'<section class="card sec sub">{rest[-1]}{bq}</section>')
         else:
             cards.append(f'<section class="card sec">{h}</section>')
-    html=f'<!doctype html><html lang="{lang}"><meta charset="utf-8"><title>{out}</title><style>{CSS}</style><body><div class="top"><div class="mark">Multilingo</div><div class="url">{"Testversion" if lang=="de" else "Test version"}</div></div>{hero}{"".join(cards)}</body></html>'
+    html=f'<!doctype html><html lang="{lang}"><meta charset="utf-8"><title>{out}</title><style>{CSS}</style><body><div class="top"><div class="mark">Fraxx</div><div class="url">{"Testversion" if lang=="de" else "Test version"}</div></div>{hero}{"".join(cards)}</body></html>'
     open(S+out+'.html','w').write(html)
     return pg
 with sync_playwright() as p:
@@ -90,5 +90,5 @@ with sync_playwright() as p:
         pgw=build(*j)
         page.goto("file://"+S+j[1]+".html"); page.wait_for_timeout(300)
         page.pdf(path=S+j[1]+".pdf",prefer_css_page_size=True,print_background=True,display_header_footer=True,header_template='<div style="-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#e5e2e0;position:fixed;left:0;right:0;top:0;height:12mm"></div>',
-          footer_template=f'<div style="-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#e5e2e0;position:fixed;left:0;right:0;bottom:0;height:14mm;padding-top:4mm;box-sizing:border-box;font-family:Inter,sans-serif;font-size:7.5pt;color:#6b635d;width:100%;text-align:center">Multilingo · {pgw} <span class="pageNumber"></span> / <span class="totalPages"></span></div>')
+          footer_template=f'<div style="-webkit-print-color-adjust:exact;print-color-adjust:exact;background:#e5e2e0;position:fixed;left:0;right:0;bottom:0;height:14mm;padding-top:4mm;box-sizing:border-box;font-family:Inter,sans-serif;font-size:7.5pt;color:#6b635d;width:100%;text-align:center">Fraxx · {pgw} <span class="pageNumber"></span> / <span class="totalPages"></span></div>')
     b.close()

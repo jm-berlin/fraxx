@@ -15,16 +15,16 @@ head = '''<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Phraxx – deine persönliche Sprach-App für Reisen.">
+<meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
 <meta name="theme-color" content="#e5e2e0">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" type="image/svg+xml" href="icons/phraxx.svg">
+<link rel="icon" type="image/svg+xml" href="icons/fraxx.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=2">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Phraxx">
+<meta name="apple-mobile-web-app-title" content="Fraxx">
 <script src="runtime.js"></script>
 '''
 s = head + s
@@ -37,6 +37,9 @@ rep('if(!sample && !IN_WEBAPP) showNotice("Übersetzen ist in dieser Ansicht nic
 rep('statusEl.textContent = "Gespeichert in deinem Konto";', 'statusEl.textContent = "Gespeichert auf diesem Gerät";')
 s = re.sub(r'(data-img="(\w+)" src=")data:image/jpeg;base64,[^"]+', lambda m: m.group(1) + 'img/' + m.group(2) + '.jpg', s)
 s = s.rstrip() + '\n<script src="ui.js"></script>\n</html>\n'
+# Neuer Name Fraxx (Wortmarke, Icon, Texte, Adresse), solange das Artefakt noch „Phraxx“ heißt
+import rename_fraxx
+s = rename_fraxx.convert(s)
 os.makedirs(out, exist_ok=True)
 open(os.path.join(out, "index.html"), "w").write(s)
 ver = hashlib.sha1((s + open(os.path.join(out, "runtime.js")).read() + open(os.path.join(out, "ui.js")).read()).encode()).hexdigest()[:10]
@@ -49,8 +52,8 @@ print("index.html", len(s), "Version", ver)
 adm = os.path.join(out, "admin"); os.makedirs(adm, exist_ok=True)
 a = s
 a = a.replace('<script src="runtime.js"></script>', '<script>window.ML_ADMIN = true; window.ML_DATA = "../data/";</script>\n<script src="runtime.js"></script>', 1)
-a = a.replace('<meta name="apple-mobile-web-app-title" content="Phraxx">', '<meta name="apple-mobile-web-app-title" content="PX Admin">', 1)
-a = a.replace('<title>Phraxx</title>', '<title>Phraxx Admin</title>', 1)
+a = a.replace('<meta name="apple-mobile-web-app-title" content="Fraxx">', '<meta name="apple-mobile-web-app-title" content="FX Admin">', 1)
+a = a.replace('<title>Fraxx</title>', '<title>Fraxx Admin</title>', 1)
 a = a.replace('<meta name="robots"', '<meta name="robots"', 1)
 a = a.replace('<head>\n', '<head>\n<meta name="robots" content="noindex, nofollow">\n', 1)
 a = re.sub(r'(href|src)="(icons|img)/', lambda m: m.group(1) + '="../' + m.group(2) + '/', a)
@@ -58,7 +61,7 @@ open(os.path.join(adm, "index.html"), "w").write(a)
 import shutil, json as _json
 for f in ("runtime.js", "ui.js"): shutil.copy(os.path.join(out, f), os.path.join(adm, f))
 man = _json.load(open(os.path.join(out, "manifest.webmanifest")))
-man.update({"name": "Phraxx Admin", "short_name": "PX Admin", "id": "./admin/"})
+man.update({"name": "Fraxx Admin", "short_name": "FX Admin", "id": "./admin/"})
 man["icons"] = [{**i, "src": "../" + i["src"]} for i in man["icons"]]
 _json.dump(man, open(os.path.join(adm, "manifest.webmanifest"), "w"), ensure_ascii=False, indent=2)
 aver = hashlib.sha1((a + open(os.path.join(adm, "runtime.js")).read() + open(os.path.join(adm, "ui.js")).read()).encode()).hexdigest()[:10]

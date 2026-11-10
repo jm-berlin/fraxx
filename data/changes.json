@@ -1,6 +1,63 @@
 {
  "releases": [
   {
+   "release": "2026-11-10T18:19:04.000Z",
+   "version": "0.7",
+   "date": "2026-11-10",
+   "notes": {
+    "de": [
+     "Phraxx heißt jetzt Fraxx – mit neuem Logo und App-Symbol. Die App zieht bald unter eine neue Adresse um, deine Einträge bleiben erhalten.",
+     "Sterne, Pins und Lernstand bremsen keine Updates mehr: Standardeinträge bleiben mit jedem Update aktuell.",
+     "Ändern lassen sich jetzt nur noch eigene Einträge. Einträge aus den Sprachpaketen werden zentral gepflegt."
+    ],
+    "en": [
+     "Phraxx is now called Fraxx – with a new logo and app icon. The app will soon move to a new address, your entries are kept.",
+     "Stars, pins and learning progress no longer hold back updates: standard entries stay current with every update.",
+     "Only your own entries can be edited now. Entries from the language packs are maintained centrally."
+    ],
+    "fr": [
+     "Phraxx s'appelle désormais Fraxx – avec un nouveau logo et une nouvelle icône. L'application déménagera bientôt à une nouvelle adresse, tes entrées sont conservées.",
+     "Les étoiles, épingles et la progression ne bloquent plus les mises à jour : les entrées standard restent à jour.",
+     "Seules tes propres entrées sont désormais modifiables. Les entrées des packs de langue sont gérées de façon centrale."
+    ],
+    "it": [
+     "Phraxx ora si chiama Fraxx, con nuovo logo e nuova icona. L'app si trasferirà presto a un nuovo indirizzo, le tue voci restano.",
+     "Stelle, puntine e progressi non bloccano più gli aggiornamenti: le voci standard restano sempre aggiornate.",
+     "Ora si possono modificare solo le proprie voci. Le voci dei pacchetti lingua sono curate centralmente."
+    ],
+    "es": [
+     "Phraxx ahora se llama Fraxx, con nuevo logotipo e icono. La app se mudará pronto a una nueva dirección; tus entradas se conservan.",
+     "Las estrellas, chinchetas y el progreso ya no frenan las actualizaciones: las entradas estándar siempre están al día.",
+     "Ahora solo se pueden editar tus propias entradas. Las entradas de los paquetes de idiomas se mantienen de forma central."
+    ],
+    "pt": [
+     "O Phraxx agora chama-se Fraxx, com novo logótipo e ícone. A app vai mudar em breve para um novo endereço; as tuas entradas mantêm-se.",
+     "Estrelas, pins e progresso já não travam atualizações: as entradas padrão ficam sempre atualizadas.",
+     "Agora só podes editar as tuas próprias entradas. As entradas dos pacotes de idiomas são mantidas centralmente."
+    ],
+    "nl": [
+     "Phraxx heet nu Fraxx – met een nieuw logo en app-icoon. De app verhuist binnenkort naar een nieuw adres, je items blijven bewaard.",
+     "Sterren, pins en leervoortgang houden updates niet meer tegen: standaarditems blijven bij elke update actueel.",
+     "Alleen je eigen items zijn nu nog te wijzigen. Items uit de taalpakketten worden centraal bijgehouden."
+    ],
+    "pl": [
+     "Phraxx nazywa się teraz Fraxx – z nowym logo i ikoną. Aplikacja wkrótce przeniesie się pod nowy adres, twoje wpisy zostaną zachowane.",
+     "Gwiazdki, pinezki i postęp nauki nie blokują już aktualizacji: standardowe wpisy są zawsze aktualne.",
+     "Edytować można teraz tylko własne wpisy. Wpisy z pakietów językowych są utrzymywane centralnie."
+    ],
+    "sv": [
+     "Phraxx heter nu Fraxx – med ny logotyp och ny appikon. Appen flyttar snart till en ny adress, dina poster finns kvar.",
+     "Stjärnor, nålar och inlärningsstatus stoppar inte längre uppdateringar: standardposter hålls aktuella.",
+     "Nu kan bara dina egna poster ändras. Poster från språkpaketen sköts centralt."
+    ],
+    "nb": [
+     "Phraxx heter nå Fraxx – med ny logo og nytt appikon. Appen flytter snart til en ny adresse, oppføringene dine beholdes.",
+     "Stjerner, nåler og læringsstatus stopper ikke lenger oppdateringer: standardoppføringer holdes oppdatert.",
+     "Nå kan bare dine egne oppføringer endres. Oppføringer fra språkpakkene vedlikeholdes sentralt."
+    ]
+   }
+  },
+  {
    "release": "2026-11-10T17:59:01.000Z",
    "version": "0.6",
    "date": "2026-11-10",
@@ -8,52 +65,52 @@
     "de": [
      "Auf dem Handy öffnet ein Tipp auf ein Wort oder einen Satz jetzt die Übersetzungen darunter. Ändern geht über ✎.",
      "Die Auswahl von Bereich und Kapitel im Quiz ist neu gestaltet und leichter zu bedienen.",
-     "Beim ersten Start zeigt Phraxx an, dass die Sprachen noch geladen werden."
+     "Beim ersten Start zeigt Fraxx an, dass die Sprachen noch geladen werden."
     ],
     "en": [
      "On your phone, tapping a word or sentence now opens its translations below. Use ✎ to edit.",
      "Choosing a topic or chapter in the quiz has a new, easier-to-use design.",
-     "On first start, Phraxx now shows that the languages are still loading."
+     "On first start, Fraxx now shows that the languages are still loading."
     ],
     "fr": [
      "Sur le téléphone, toucher un mot ou une phrase ouvre maintenant les traductions en dessous. Pour modifier, utilise ✎.",
      "Le choix du thème et du chapitre dans le quiz a un nouveau design, plus simple à utiliser.",
-     "Au premier démarrage, Phraxx indique que les langues sont encore en cours de chargement."
+     "Au premier démarrage, Fraxx indique que les langues sont encore en cours de chargement."
     ],
     "it": [
      "Sul telefono, toccando una parola o una frase ora si aprono le traduzioni sotto. Per modificare usa ✎.",
      "La scelta di argomento e capitolo nel quiz ha un nuovo design, più facile da usare.",
-     "Al primo avvio Phraxx mostra che le lingue sono ancora in caricamento."
+     "Al primo avvio Fraxx mostra che le lingue sono ancora in caricamento."
     ],
     "es": [
      "En el móvil, al tocar una palabra o una frase ahora se abren las traducciones debajo. Para editar, usa ✎.",
      "La selección de tema y capítulo en el quiz tiene un diseño nuevo y más fácil de usar.",
-     "En el primer inicio, Phraxx muestra que los idiomas todavía se están cargando."
+     "En el primer inicio, Fraxx muestra que los idiomas todavía se están cargando."
     ],
     "pt": [
      "No telemóvel, tocar numa palavra ou frase abre agora as traduções por baixo. Para editar, usa ✎.",
      "A escolha de tema e capítulo no quiz tem um novo design, mais fácil de usar.",
-     "No primeiro arranque, o Phraxx mostra que os idiomas ainda estão a carregar."
+     "No primeiro arranque, o Fraxx mostra que os idiomas ainda estão a carregar."
     ],
     "nl": [
      "Op je telefoon opent een tik op een woord of zin nu de vertalingen eronder. Bewerken gaat via ✎.",
      "Het kiezen van onderwerp en hoofdstuk in de quiz heeft een nieuw, makkelijker ontwerp.",
-     "Bij de eerste start laat Phraxx zien dat de talen nog worden geladen."
+     "Bij de eerste start laat Fraxx zien dat de talen nog worden geladen."
     ],
     "pl": [
      "Na telefonie dotknięcie słowa lub zdania otwiera teraz tłumaczenia pod spodem. Edycja przez ✎.",
      "Wybór tematu i rozdziału w quizie ma nowy, prostszy wygląd.",
-     "Przy pierwszym uruchomieniu Phraxx pokazuje, że języki są jeszcze ładowane."
+     "Przy pierwszym uruchomieniu Fraxx pokazuje, że języki są jeszcze ładowane."
     ],
     "sv": [
      "På mobilen öppnar ett tryck på ett ord eller en mening nu översättningarna under. Redigera med ✎.",
      "Valet av ämne och kapitel i quizet har en ny design som är lättare att använda.",
-     "Vid första starten visar Phraxx att språken fortfarande laddas."
+     "Vid första starten visar Fraxx att språken fortfarande laddas."
     ],
     "nb": [
      "På mobilen åpner et trykk på et ord eller en setning nå oversettelsene under. Rediger med ✎.",
      "Valget av tema og kapittel i quizen har fått et nytt design som er enklere å bruke.",
-     "Ved første oppstart viser Phraxx at språkene fortsatt lastes inn."
+     "Ved første oppstart viser Fraxx at språkene fortsatt lastes inn."
     ]
    }
   },
@@ -63,34 +120,34 @@
    "date": "2026-11-09",
    "notes": {
     "de": [
-     "Viavox heißt jetzt Phraxx – mit neuem P-Icon. Auf dem iPhone die App einmal neu zum Home-Bildschirm hinzufügen, dann erscheint das neue Icon."
+     "Viavox heißt jetzt Fraxx – mit neuem P-Icon. Auf dem iPhone die App einmal neu zum Home-Bildschirm hinzufügen, dann erscheint das neue Icon."
     ],
     "en": [
-     "Viavox is now called Phraxx – with a new P icon. On iPhone, re-add the app to the Home Screen to see the new icon."
+     "Viavox is now called Fraxx – with a new P icon. On iPhone, re-add the app to the Home Screen to see the new icon."
     ],
     "fr": [
-     "Viavox s’appelle désormais Phraxx – avec une nouvelle icône P. Sur iPhone, ajoute de nouveau l’app à l’écran d’accueil pour voir la nouvelle icône."
+     "Viavox s’appelle désormais Fraxx – avec une nouvelle icône P. Sur iPhone, ajoute de nouveau l’app à l’écran d’accueil pour voir la nouvelle icône."
     ],
     "it": [
-     "Viavox ora si chiama Phraxx – con una nuova icona P. Su iPhone aggiungi di nuovo l’app alla schermata Home per vedere la nuova icona."
+     "Viavox ora si chiama Fraxx – con una nuova icona P. Su iPhone aggiungi di nuovo l’app alla schermata Home per vedere la nuova icona."
     ],
     "es": [
-     "Viavox ahora se llama Phraxx, con un nuevo icono P. En el iPhone, vuelve a añadir la app a la pantalla de inicio para ver el icono nuevo."
+     "Viavox ahora se llama Fraxx, con un nuevo icono P. En el iPhone, vuelve a añadir la app a la pantalla de inicio para ver el icono nuevo."
     ],
     "pt": [
-     "O Viavox chama-se agora Phraxx – com um novo ícone P. No iPhone, volta a adicionar a app ao ecrã principal para ver o novo ícone."
+     "O Viavox chama-se agora Fraxx – com um novo ícone P. No iPhone, volta a adicionar a app ao ecrã principal para ver o novo ícone."
     ],
     "nl": [
-     "Viavox heet nu Phraxx – met een nieuw P-icoon. Zet de app op de iPhone opnieuw op het beginscherm om het nieuwe icoon te zien."
+     "Viavox heet nu Fraxx – met een nieuw P-icoon. Zet de app op de iPhone opnieuw op het beginscherm om het nieuwe icoon te zien."
     ],
     "pl": [
-     "Viavox nazywa się teraz Phraxx – z nową ikoną P. Na iPhonie dodaj aplikację ponownie do ekranu początkowego, aby zobaczyć nową ikonę."
+     "Viavox nazywa się teraz Fraxx – z nową ikoną P. Na iPhonie dodaj aplikację ponownie do ekranu początkowego, aby zobaczyć nową ikonę."
     ],
     "sv": [
-     "Viavox heter nu Phraxx – med en ny P-ikon. På iPhone lägger du till appen på hemskärmen igen för att se den nya ikonen."
+     "Viavox heter nu Fraxx – med en ny P-ikon. På iPhone lägger du till appen på hemskärmen igen för att se den nya ikonen."
     ],
     "nb": [
-     "Viavox heter nå Phraxx – med nytt P-ikon. På iPhone legger du appen til på Hjem-skjermen på nytt for å se det nye ikonet."
+     "Viavox heter nå Fraxx – med nytt P-ikon. På iPhone legger du appen til på Hjem-skjermen på nytt for å se det nye ikonet."
     ]
    }
   },

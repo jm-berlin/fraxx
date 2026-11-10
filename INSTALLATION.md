@@ -1,10 +1,10 @@
-# Multilingo installieren – Schritt für Schritt
+# Fraxx installieren – Schritt für Schritt
 
-Multilingo ist eine **Web-App** (PWA). Es gibt keinen Installer zum Herunterladen: Du öffnest die Adresse einmal im Browser und fügst die App von dort aus hinzu. Danach hat Multilingo ein eigenes Symbol, öffnet sich ohne Browserleiste und funktioniert auch **offline**.
+Fraxx ist eine **Web-App** (PWA). Es gibt keinen Installer zum Herunterladen: Du öffnest die Adresse einmal im Browser und fügst die App von dort aus hinzu. Danach hat Fraxx ein eigenes Symbol, öffnet sich ohne Browserleiste und funktioniert auch **offline**.
 
-**Adresse:** https://jm-berlin.github.io/phraxx/
+**Adresse:** https://jm-berlin.github.io/fraxx/
 
-> English version: [INSTALL.md](INSTALL.md) · PDF: [Multilingo-Installation.pdf](Multilingo-Installation.pdf)
+> English version: [INSTALL.md](INSTALL.md) · PDF: [Fraxx-Installation.pdf](Fraxx-Installation.pdf)
 
 ---
 
@@ -15,12 +15,12 @@ Multilingo ist eine **Web-App** (PWA). Es gibt keinen Installer zum Herunterlade
 2. Warte, bis die Startseite ganz geladen ist.
 3. Tippe auf das **Teilen-Symbol** (Quadrat mit Pfeil nach oben). Auf dem iPhone ist es unten, auf dem iPad oben rechts.
 4. Scrolle in der Liste nach unten und tippe auf **„Zum Home-Bildschirm“**.
-5. Der Name „Multilingo“ ist schon eingetragen. Tippe oben rechts auf **„Hinzufügen“**.
-6. Das Multilingo-Symbol erscheint auf deinem Home-Bildschirm. Ab jetzt startest du die App dort.
+5. Der Name „Fraxx“ ist schon eingetragen. Tippe oben rechts auf **„Hinzufügen“**.
+6. Das Fraxx-Symbol erscheint auf deinem Home-Bildschirm. Ab jetzt startest du die App dort.
 
 ### Android (Chrome)
 1. Öffne **Chrome** und rufe die Adresse oben auf.
-2. Oft erscheint unten von selbst der Hinweis **„Multilingo installieren“**. Tippe darauf und bestätige mit **„Installieren“**.
+2. Oft erscheint unten von selbst der Hinweis **„Fraxx installieren“**. Tippe darauf und bestätige mit **„Installieren“**.
 3. Erscheint kein Hinweis: Tippe oben rechts auf das **Menü ⋮** → **„App installieren“** (bei manchen Geräten „Zum Startbildschirm hinzufügen“).
 4. Das Symbol erscheint auf dem Startbildschirm und in der App-Übersicht.
 
@@ -30,7 +30,7 @@ Multilingo ist eine **Web-App** (PWA). Es gibt keinen Installer zum Herunterlade
    - Alternativ in Chrome: **Menü ⋮** → **„Streamen, speichern und teilen“** → **„Seite als App installieren …“**
    - In Edge: **Menü …** → **„Apps“** → **„Diese Website als App installieren“**
 3. Bestätige mit **„Installieren“**.
-4. Multilingo öffnet sich in einem eigenen Fenster und erscheint im Startmenü (Windows) bzw. im Programme-Ordner und Dock (Mac).
+4. Fraxx öffnet sich in einem eigenen Fenster und erscheint im Startmenü (Windows) bzw. im Programme-Ordner und Dock (Mac).
 
 ### Mac (Safari, ab macOS Sonoma)
 Funktioniert auch, aber Safari hat auf dem Mac nur die Systemstimmen. Für die beste Aussprache lieber **Chrome** nehmen (siehe oben und Abschnitt 3).
@@ -38,28 +38,28 @@ Funktioniert auch, aber Safari hat auf dem Mac nur die Systemstimmen. Für die b
 1. Öffne die Adresse in **Safari**.
 2. Menü **„Ablage“** → **„Zum Dock hinzufügen …“** → **„Hinzufügen“**.
 
-> **Firefox** kann Web-Apps auf dem Computer nicht installieren. Du kannst Multilingo dort trotzdem ganz normal im Browser benutzen, oder du nimmst Chrome, Edge oder Safari zum Installieren.
+> **Firefox** kann Web-Apps auf dem Computer nicht installieren. Du kannst Fraxx dort trotzdem ganz normal im Browser benutzen, oder du nimmst Chrome, Edge oder Safari zum Installieren.
 
 ---
 
 ## 2. Der erste Start
 
-1. **Ausgangssprache wählen:** Falls ein Fenster „Welche Sprache sprichst du?“ erscheint, tippe auf deine Sprache. Das lässt sich später unter ⚙ ändern. Erscheint kein Fenster, startet Multilingo auf Deutsch.
-2. **Sprachpakete laden:** Beim ersten Start lädt Multilingo Deutsch, Englisch, Französisch, Italienisch und Spanisch. Das dauert je nach Verbindung ein paar Sekunden (zusammen etwa 2–3 MB). Bitte dabei online bleiben.
+1. **Ausgangssprache wählen:** Falls ein Fenster „Welche Sprache sprichst du?“ erscheint, tippe auf deine Sprache. Das lässt sich später unter ⚙ ändern. Erscheint kein Fenster, startet Fraxx auf Deutsch.
+2. **Sprachpakete laden:** Beim ersten Start lädt Fraxx Deutsch, Englisch, Französisch, Italienisch und Spanisch. Das dauert je nach Verbindung ein paar Sekunden (zusammen etwa 2–3 MB). Bitte dabei online bleiben.
 3. Fertig. Ab jetzt funktioniert alles auch **ohne Internet**: Tabelle, Aussprache (mit den Stimmen deines Geräts), Quiz, Grammatik, Speisekarte und Spickzettel.
 
 ---
 
 ## 3. Bessere Aussprache
 
-Multilingo spricht mit den Stimmen deines Geräts bzw. Browsers und nimmt automatisch die beste, die es findet.
+Fraxx spricht mit den Stimmen deines Geräts bzw. Browsers und nimmt automatisch die beste, die es findet.
 
-- **Mac und Windows:** In **Chrome** stehen zusätzlich die natürlich klingenden Google-Stimmen zur Verfügung, in **Edge** die „Natural“-Stimmen von Microsoft. Multilingo nimmt sie automatisch. Sie brauchen eine Internetverbindung, offline spricht der Computer mit seinen eigenen Stimmen.
+- **Mac und Windows:** In **Chrome** stehen zusätzlich die natürlich klingenden Google-Stimmen zur Verfügung, in **Edge** die „Natural“-Stimmen von Microsoft. Fraxx nimmt sie automatisch. Sie brauchen eine Internetverbindung, offline spricht der Computer mit seinen eigenen Stimmen.
 - **iPhone und iPad:** Hier nutzen alle Browser dieselben Stimmen, Chrome bringt also nichts. Besser klingt es mit den hochwertigen Stimmen: **Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen** → Sprache wählen → eine Stimme mit **„Erweitert“** oder **„Premium“** laden.
 - **Mac (für unterwegs ohne Internet):** **Systemeinstellungen → Bedienungshilfen → Gesprochene Inhalte → Systemstimme → Stimmen verwalten** → für jede Sprache eine Stimme mit „Erweitert“ oder „Premium“ laden.
 - **Android:** **Einstellungen → Bedienungshilfen → Text-in-Sprache** (je nach Gerät auch unter System → Sprachen) → bei „Google Sprachdienste“ die Sprachdaten für deine Sprachen herunterladen, dann klappt es auch offline.
 
-> **Tipp:** Lade die Stimmen zu Hause im WLAN herunter, bevor du verreist. Dann klingt Multilingo auch ohne Internet gut.
+> **Tipp:** Lade die Stimmen zu Hause im WLAN herunter, bevor du verreist. Dann klingt Fraxx auch ohne Internet gut.
 
 ---
 
@@ -78,9 +78,9 @@ Deine eigenen Einträge und Änderungen liegen **nur auf diesem Gerät**. So nim
 
 1. ⚙ → **„App, Sprachpakete & Sicherung“** → **„Sicherung herunterladen“**.
 2. Speichere die Datei z. B. in iCloud, Google Drive oder OneDrive.
-3. Auf dem anderen Gerät: Multilingo installieren → ⚙ → **„Sicherung einlesen“** → Datei auswählen.
+3. Auf dem anderen Gerät: Fraxx installieren → ⚙ → **„Sicherung einlesen“** → Datei auswählen.
 
-Multilingo erinnert dich von selbst: Sobald du eigene Einträge hast, erscheint nach 14 Tagen ohne Sicherung (danach alle 30 Tage) ein Hinweis mit **„Jetzt sichern“**.
+Fraxx erinnert dich von selbst: Sobald du eigene Einträge hast, erscheint nach 14 Tagen ohne Sicherung (danach alle 30 Tage) ein Hinweis mit **„Jetzt sichern“**.
 
 > **Wichtig:** Normales Cache-Leeren im Browser schadet nicht. **„Websitedaten“ bzw. „Cookies und andere Websitedaten“ löschen** entfernt dagegen auch deine eigenen Einträge. Vorher sichern!
 
@@ -88,13 +88,13 @@ Multilingo erinnert dich von selbst: Sobald du eigene Einträge hast, erscheint 
 
 ## 6. Eigene Übersetzungen (demnächst)
 
-Multilingo bringt in den Sprachpaketen bereits über 6.400 fertig übersetzte Einträge mit. Neue eigene Wörter und Sätze automatisch übersetzen zu lassen, ist in dieser Testversion noch nicht freigeschaltet. Diese Funktion kommt in einer späteren Version.
+Fraxx bringt in den Sprachpaketen bereits über 6.400 fertig übersetzte Einträge mit. Neue eigene Wörter und Sätze automatisch übersetzen zu lassen, ist in dieser Testversion noch nicht freigeschaltet. Diese Funktion kommt in einer späteren Version.
 
 ---
 
 ## 7. Updates
 
-Updates kommen automatisch: Bei jedem Start mit Internetverbindung prüft Multilingo, ob es eine neue Version oder neue Sprachpakete gibt, und lädt nur das, was sich geändert hat. Von Hand geht es unter ⚙ → **„Nach Updates suchen“**.
+Updates kommen automatisch: Bei jedem Start mit Internetverbindung prüft Fraxx, ob es eine neue Version oder neue Sprachpakete gibt, und lädt nur das, was sich geändert hat. Von Hand geht es unter ⚙ → **„Nach Updates suchen“**.
 
 ---
 
@@ -102,7 +102,7 @@ Updates kommen automatisch: Bei jedem Start mit Internetverbindung prüft Multil
 
 - **iPhone/iPad:** Symbol lange drücken → „App entfernen“.
 - **Android:** Symbol lange drücken → „Deinstallieren“.
-- **Windows/Mac (Chrome/Edge):** App öffnen → Menü ⋮ oben rechts → „Multilingo deinstallieren“.
+- **Windows/Mac (Chrome/Edge):** App öffnen → Menü ⋮ oben rechts → „Fraxx deinstallieren“.
 
 Lade vorher eine Sicherung herunter, wenn du deine eigenen Einträge behalten möchtest.
 
@@ -113,6 +113,6 @@ Lade vorher eine Sicherung herunter, wenn du deine eigenen Einträge behalten m�
 | Problem | Lösung |
 |---|---|
 | Kein „Zum Home-Bildschirm“ auf dem iPhone | Die Seite muss in **Safari** geöffnet sein, nicht in Chrome oder in einer anderen App. |
-| Kein Installieren-Symbol am Computer | Chrome oder Edge verwenden. Ist Multilingo schon installiert, steht dort stattdessen „In App öffnen“. |
+| Kein Installieren-Symbol am Computer | Chrome oder Edge verwenden. Ist Fraxx schon installiert, steht dort stattdessen „In App öffnen“. |
 | Keine oder blecherne Aussprache | Für die Sprache ist keine (gute) Stimme installiert. Siehe Abschnitt 3, „Bessere Aussprache“. |
 | Sprachpaket lädt nicht | Internetverbindung prüfen und unter ⚙ erneut „Laden“ tippen. |

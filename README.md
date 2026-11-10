@@ -1,15 +1,15 @@
-# Multilingo – Mein bester Reisebegleiter
+# Fraxx – Mein bester Reisebegleiter
 
 Persönliche Sprach-App für Reisen: Wörter und Redewendungen eintragen, dazu Übersetzungen, Aussprache, Artikel, Konjugationen, Grammatik und Speisekarten aus vielen Ländern. Funktioniert nach der Installation auch offline.
 
-**Zur App:** https://jm-berlin.github.io/phraxx/
+**Zur App:** https://jm-berlin.github.io/fraxx/
 
 ## Installieren
 
-Multilingo ist eine Web-App: Adresse im Browser öffnen und als App hinzufügen. Es gibt keinen Installer.
+Fraxx ist eine Web-App: Adresse im Browser öffnen und als App hinzufügen. Es gibt keinen Installer.
 
-- **Anleitung auf Deutsch:** [INSTALLATION.md](INSTALLATION.md) · [PDF](Multilingo-Installation.pdf)
-- **Guide in English:** [INSTALL.md](INSTALL.md) · [PDF](Multilingo-Install-Guide.pdf)
+- **Anleitung auf Deutsch:** [INSTALLATION.md](INSTALLATION.md) · [PDF](Fraxx-Installation.pdf)
+- **Guide in English:** [INSTALL.md](INSTALL.md) · [PDF](Fraxx-Install-Guide.pdf)
 
 ## Sprachen
 

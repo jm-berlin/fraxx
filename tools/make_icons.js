@@ -1,6 +1,6 @@
-// Erzeugt die App-Icons (PNG) aus icons/phraxx.svg. Aufruf im Repo-Ordner: node tools/make_icons.js
+// Erzeugt die App-Icons (PNG) aus icons/fraxx.svg. Aufruf im Repo-Ordner: node tools/make_icons.js
 const {chromium}=require('playwright');const fs=require('fs');
-const svg=fs.readFileSync('icons/phraxx.svg','utf8');
+const svg=fs.readFileSync('icons/fraxx.svg','utf8');
 const inner=svg.replace(/^<svg[^>]*>/,'').replace(/<\/svg>$/,'');
 const glyph=inner.replace(/<rect[^>]*\/>/,'');
 function page(size,mode){ // mode: round (transparent corners), square (full bg), mask (full bg, glyph scaled to 0.8)

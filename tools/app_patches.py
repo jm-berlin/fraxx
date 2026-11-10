@@ -7,14 +7,19 @@ def E(a, b): EDITS.append((a, b))
 # 1) Tabelle: Tipp auf das Wort öffnet auf dem Handy die Übersetzungen; Ändern über ✎
 E('''      t.addEventListener("click",()=>{ editId=e.id; editCtx=ekey; editDraft=srcText(e); confirmId=null; render(); });''',
   '''      // Handy: Tipp auf Wort oder Satz klappt die Übersetzungen darunter auf (Ändern über ✎). Breiter Bildschirm: Tipp ändert.
-      t.addEventListener("click",()=>{ if(window.matchMedia && matchMedia("(max-width:760px)").matches && r._mt){ r._mt.click(); return; } editId=e.id; editCtx=ekey; editDraft=srcText(e); confirmId=null; render(); });''')
+      // Öffentliche Web-App: nur eigene Einträge lassen sich ändern (Standardeinträge kommen aus den Sprachpaketen)
+      if(!canEditEntry(e)){ t.classList.add("ro"); t.title = ""; t.setAttribute("aria-label", srcText(e)); }
+      t.addEventListener("click",()=>{ if(window.matchMedia && matchMedia("(max-width:760px)").matches && r._mt){ r._mt.click(); return; } if(!canEditEntry(e)) return; editId=e.id; editCtx=ekey; editDraft=srcText(e); confirmId=null; render(); });''')
 E('''    a.append(star, pin, re, del); r.append(a);''',
   '''    const ed = el("button","icon medit","✎"); ed.type="button"; ed.title="Ändern"; ed.setAttribute("aria-label","Ändern: "+srcText(e));
     ed.addEventListener("click",()=>{ editId=e.id; editCtx=ekey; editDraft=srcText(e); confirmId=null; render(); });
-    a.append(star, pin, ed, re, del); r.append(a);''')
+    if(canEditEntry(e)) a.append(star, pin, ed, re, del); else a.append(star, pin, re, del);
+    r.append(a);''')
 E('''.icon.del:hover{color:var(--danger)}''',
   '''.icon.del:hover{color:var(--danger)}
 .icon.medit{display:none}
+.detx.ro{cursor:default}
+.detx.ro:hover{background:transparent}
 @media (max-width:760px){ .row:not(.head) .actions .icon.medit{display:inline-grid} .detx{cursor:pointer} }
 @media (max-width:760px) and (hover:none){ .detx:hover{background:transparent} }''')
 
@@ -98,6 +103,15 @@ E('''#quiz .sel{background:var(--surface);box-shadow:var(--shadow)}''',
 @keyframes fsfade{from{opacity:0}}
 @keyframes fsup{from{transform:translateY(100%)}}
 @media (prefers-reduced-motion:reduce){ .fspop,.fsback{animation:none} }''')
+
+E('''  function entryRowBuild(e, ctx, copy){''',
+  '''  // Ändern erlaubt? In Claude und in der Admin-Fassung immer, in der öffentlichen Web-App nur bei eigenen Einträgen.
+  const canEditEntry = e => window.ML_ADMIN === true || !window.Multilingo || typeof window.Multilingo.isOwn !== "function" || window.Multilingo.isOwn(e.id);
+  function entryRowBuild(e, ctx, copy){''')
+
+# 3) Hilfe: Ändern-Hinweis an das neue Verhalten anpassen (Übersetzungen dazu in runtime.js, UI_EXTRA)
+E('''        <li>Auf einen deutschen Eintrag tippen, um ihn zu ändern. Die Übersetzungen werden danach automatisch erneuert.</li>''', '''        <li>Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class="k">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.</li>''')
+E('''"HTML:Auf einen deutschen Eintrag tippen, um ihn zu ändern. Die Übersetzungen werden danach automatisch erneuert."''', '''"HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\\"k\\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert."''')
 
 def apply(s, log=print):
     for a, b in EDITS:

@@ -35,7 +35,7 @@ flowchart LR
   subgraph PUB["Veröffentlichung"]
     P1["Geplante Aufgabe<br/>täglich 20:33<br/>oder „Multilingo hochladen“"]
     P2["publish.py<br/>build_app.py · build_data.py<br/>Prüfungen · Release-Hinweise"]
-    P3[("GitHub<br/>jm-berlin/phraxx")]
+    P3[("GitHub<br/>jm-berlin/fraxx")]
     P4["GitHub Pages<br/>/ (öffentlich) · /admin/"]
     P1 --> P2 --> P3 --> P4
   end

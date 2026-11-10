@@ -1,4 +1,4 @@
-/* Phraxx – lokale Laufzeit für die Web-App.
+/* Fraxx – lokale Laufzeit für die Web-App.
    Ersetzt die Claude-Umgebung (window.claude) durch:
    • Speicher auf dem Gerät (IndexedDB) in zwei Schichten:
        – Standarddaten + Sprachpakete (werden bei Updates erneuert)
@@ -128,8 +128,23 @@
         const x = clone(d); delete x.__req; base.set(x.id, x);
       }
     }
+    addUiExtra(base);
     state.raw = base; state.installedSet = have;
     state.base = localize(base, curSrc());
+  }
+
+  // Oberflächentexte der Web-App, die (noch) nicht in den Sprachpaketen stehen: werden in die ui-Dokumente ergänzt
+  const UI_EXTRA = {"en": [["HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\"k\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.", "On your phone, tapping an entry opens its translations below. You edit your own entries on a computer by clicking the text, on your phone with <span class=\"k\">✎</span>. Entries from the language packs stay unchanged and are updated with every update."]], "fr": [["HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\"k\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.", "Sur le téléphone, toucher une entrée ouvre les traductions en dessous. Tu modifies tes propres entrées sur l'ordinateur en cliquant sur le texte, sur le téléphone avec <span class=\"k\">✎</span>. Les entrées des packs de langue restent inchangées et sont actualisées à chaque mise à jour."]], "it": [["HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\"k\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.", "Sul telefono, toccando una voce si aprono le traduzioni sotto. Le tue voci le modifichi al computer con un clic sul testo, sul telefono con <span class=\"k\">✎</span>. Le voci dei pacchetti lingua restano invariate e vengono aggiornate a ogni aggiornamento."]], "es": [["HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\"k\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.", "En el móvil, al tocar una entrada se abren las traducciones debajo. Tus propias entradas las cambias en el ordenador con un clic en el texto, en el móvil con <span class=\"k\">✎</span>. Las entradas de los paquetes de idiomas no cambian y se actualizan con cada actualización."]], "pt": [["HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\"k\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.", "No telemóvel, tocar numa entrada abre as traduções por baixo. As tuas próprias entradas alteras no computador com um clique no texto, no telemóvel com <span class=\"k\">✎</span>. As entradas dos pacotes de idiomas ficam inalteradas e são atualizadas a cada atualização."]], "nl": [["HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\"k\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.", "Op je telefoon opent een tik op een item de vertalingen eronder. Je eigen items wijzig je op de computer met een klik op de tekst, op je telefoon met <span class=\"k\">✎</span>. Items uit de taalpakketten blijven ongewijzigd en worden bij elke update bijgewerkt."]], "pl": [["HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\"k\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.", "Na telefonie dotknięcie wpisu otwiera tłumaczenia pod spodem. Własne wpisy zmieniasz na komputerze, klikając tekst, a na telefonie przez <span class=\"k\">✎</span>. Wpisy z pakietów językowych pozostają bez zmian i są aktualizowane przy każdej aktualizacji."]], "sv": [["HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\"k\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.", "På mobilen öppnar ett tryck på en post översättningarna under. Dina egna poster ändrar du på datorn genom att klicka på texten, på mobilen med <span class=\"k\">✎</span>. Poster från språkpaketen förblir oförändrade och uppdateras vid varje uppdatering."]], "nb": [["HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\"k\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.", "På mobilen åpner et trykk på en oppføring oversettelsene under. Dine egne oppføringer endrer du på datamaskinen ved å klikke på teksten, på mobilen med <span class=\"k\">✎</span>. Oppføringer fra språkpakkene forblir uendret og oppdateres ved hver oppdatering."]], "tr": [["HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\"k\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.", "Telefonda bir girişe dokunmak, çevirileri altında açar. Kendi girişlerini bilgisayarda metne tıklayarak, telefonda <span class=\"k\">✎</span> ile değiştirirsin. Dil paketlerinden gelen girişler değişmeden kalır ve her güncellemeyle yenilenir."]], "zh": [["HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\"k\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.", "在手机上，点击词条会在下方展开译文。你自己的词条在电脑上点击文字即可修改，在手机上用 <span class=\"k\">✎</span>。语言包中的词条保持不变，并随每次更新而更新。"]], "ar": [["HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\"k\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.", "على الهاتف، يؤدي النقر على مدخل إلى فتح الترجمات أسفله. تُعدّل مدخلاتك الخاصة على الحاسوب بالنقر على النص، وعلى الهاتف عبر <span class=\"k\">✎</span>. تبقى مدخلات حزم اللغات دون تغيير وتُحدَّث مع كل تحديث."]]};
+  function addUiExtra(base) {
+    for (const d of base.values()) {
+      if (d.kind !== "ui" || !Array.isArray(d.pairs)) continue;
+      // Neuer App-Name: ältere Übersetzungen nennen noch „Phraxx“ (Schlüssel und Übersetzung)
+      d.pairs = d.pairs.map(p => Array.isArray(p) && typeof p[0] === "string" && typeof p[1] === "string" && /Phraxx|PHRAXX/.test(p[0] + p[1]) ? p.map(x => x.replace(/Phraxx/g, "Fraxx").replace(/PHRAXX/g, "FRAXX")) : p);
+      if (!UI_EXTRA[d.lang]) continue;
+      const have = new Set(d.pairs.map(p => p && p[0]));
+      const add = UI_EXTRA[d.lang].filter(p => !have.has(p[0]));
+      if (add.length) d.pairs = [...d.pairs, ...add];
+    }
   }
 
   // ---------- Ausgangssprache ----------
@@ -163,11 +178,54 @@
   }
 
   const packLangs = () => new Set((state.index?.packs || []).map(p => p.lang));
+  // „Meine Daten“ zu Standardeinträgen enthalten nur die Unterschiede ({__patch, __unset}). So frieren Stern, Pin,
+  // Lernstand oder Verschieben einen Eintrag nicht ein: alles andere kommt weiter frisch aus den Sprachpaketen.
+  // Eigene Einträge (nicht in den Standarddaten) und die Einstellungen werden weiter vollständig gespeichert.
   function merged(id) {
     const u = state.user[id];
-    if (u) return u.__deleted ? null : { ...u, id };
+    if (u) {
+      if (u.__deleted) return null;
+      if (u.__patch) {
+        const b = state.base.get(id); if (!b) return null;
+        const d = { ...b, ...u.__patch, id }; (u.__unset || []).forEach(k => { delete d[k]; }); return d;
+      }
+      return { ...u, id };
+    }
     const b = state.base.get(id);
     return b ? b : null;
+  }
+  function same(a, b) {
+    if (a === b) return true;
+    if (a == null || b == null || typeof a !== "object" || typeof b !== "object") return a == null && b == null ? a === b : false;
+    if (Array.isArray(a) !== Array.isArray(b)) return false;
+    const ka = Object.keys(a), kb = Object.keys(b);
+    if (ka.length !== kb.length) return false;
+    return ka.every(k => Object.prototype.hasOwnProperty.call(b, k) && same(a[k], b[k]));
+  }
+  const fullDoc = id => id === "settings";
+  // Vollständiges Dokument → was gespeichert wird (bei Standardeinträgen nur der Unterschied; undefined = nichts mehr anders)
+  function toStored(id, doc) {
+    if (doc === undefined || doc.__deleted || fullDoc(id)) return doc;
+    const b = state.base.get(id); if (!b) return doc;
+    const p = {}, un = [];
+    for (const k in doc) if (k !== "id" && !same(doc[k], b[k])) p[k] = doc[k];
+    for (const k in b) if (k !== "id" && !(k in doc)) un.push(k);
+    if (!Object.keys(p).length && !un.length) return undefined;
+    const st = { __patch: p }; if (un.length) st.__unset = un; return st;
+  }
+  // Ältere Stände speicherten bei jedem Stern/Pin eine vollständige Kopie. Einmalig in Unterschiede umwandeln.
+  // Öffentliche Version: nur persönliche Angaben übernehmen (Texte waren dort nicht sinnvoll änderbar und wären veraltet).
+  const PERSONAL = ["fav", "favAt", "favOrd", "favSec", "pinned", "pinnedAt", "quiz", "section", "also", "order", "parent", "collapsed", "sort", "hidden", "title"];
+  async function migrateUser() {
+    for (const id of Object.keys(state.user)) {
+      const u = state.user[id];
+      if (!u || u.__deleted || u.__patch || fullDoc(id) || !state.base.has(id)) continue;
+      let doc = { ...u };
+      if (!ADMIN) { doc = { ...state.base.get(id) }; for (const k of PERSONAL) if (k in u) doc[k] = u[k]; }
+      const st = toStored(id, doc);
+      if (st === undefined) { delete state.user[id]; await idel("user", id); }
+      else { state.user[id] = st; await iput("user", id, st); }
+    }
   }
   function viewDoc(d) {
     if (d.kind === "settings" && Array.isArray(d.langs)) {
@@ -202,6 +260,7 @@
       const nsrc = (doc && !doc.__deleted && doc.srcLang) || "de";
       if (nsrc !== state.src) state.base = localize(state.raw, nsrc);
     }
+    doc = toStored(id, doc);
     if (doc === undefined) { delete state.user[id]; await idel("user", id); }
     else { state.user[id] = doc; await iput("user", id, doc); }
     changed();
@@ -230,7 +289,7 @@
 #mlsrc button{font:inherit;font-size:16px;font-weight:600;border:1px solid #d3ccc6;background:#fff;color:#141212;border-radius:14px;padding:13px 10px;cursor:pointer}
 #mlsrc button:hover,#mlsrc button:focus-visible{border-color:#141212;outline:none}
 #mlsrc button.pre{background:#141212;color:#f3f1ef;border-color:#141212}</style>
-<div class="bx" role="dialog" aria-modal="true" aria-labelledby="mlsrcq"><h1><svg class="vxlogo" style="height:.8em;width:auto;display:inline-block;vertical-align:-.05em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540.0 100" role="img" aria-label="Phraxx"><path d="M10.90 10.90 L37.00 10.90 A20.10 20.10 0 0 1 37.00 51.10 L10.90 51.10" stroke="#a3395f" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M10.90 89.10 L10.90 10.90" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M98.90 10.90 L98.90 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M147.10 10.90 L147.10 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M98.90 50.00 L147.10 50.00" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M188.90 10.90 L215.00 10.90 A20.10 20.10 0 0 1 215.00 51.10 L188.90 51.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M188.90 89.10 L188.90 10.90" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M211.99 51.10 L237.10 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M278.90 89.10 L311.00 10.90 L343.10 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M384.90 10.90 L443.10 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M443.10 10.90 L384.90 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M470.90 10.90 L529.10 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M529.10 10.90 L470.90 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></h1><p class="q" id="mlsrcq"></p><p class="s">Du kannst das später unter ⚙ ändern · You can change this later under ⚙</p><div class="g"></div></div>`;
+<div class="bx" role="dialog" aria-modal="true" aria-labelledby="mlsrcq"><h1><svg class="vxlogo" style="height:.8em;width:auto;display:inline-block;vertical-align:-.05em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450.0 100" role="img" aria-label="Fraxx"><path d="M57.10 10.90 L10.90 10.90 M10.90 50.00 L47.00 50.00" stroke="#a3395f" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M10.90 89.10 L10.90 10.90" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M98.90 10.90 L125.00 10.90 A20.10 20.10 0 0 1 125.00 51.10 L98.90 51.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M98.90 89.10 L98.90 10.90" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M121.99 51.10 L147.10 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M188.90 89.10 L221.00 10.90 L253.10 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M294.90 10.90 L353.10 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M353.10 10.90 L294.90 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M380.90 10.90 L439.10 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M439.10 10.90 L380.90 89.10" stroke="#161314" stroke-width="21.80" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></h1><p class="q" id="mlsrcq"></p><p class="s">Du kannst das später unter ⚙ ändern · You can change this later under ⚙</p><div class="g"></div></div>`;
         const g = ov.querySelector(".g"), q = ov.querySelector(".q");
         const first = ready.includes(nav) ? nav : "de";
         q.textContent = (ENDO[first] || ENDO.de)[1];
@@ -282,6 +341,7 @@
       }
     }
     await rebuildBase();
+    try { await migrateUser(); } catch (e) { console.warn("Umwandeln", e); }
   })();
   state.ready.then(() => loadSet({ active: false }), () => loadSet({ active: false, error: true }));
 
@@ -362,6 +422,8 @@
   window.Multilingo = {
     ready: () => state.ready,
     loading: () => ({ ...state.load }),
+    // Eigener Eintrag (nicht aus den Standarddaten)? Nur solche lassen sich in der öffentlichen Version ändern.
+    isOwn: id => !state.base.has(id) && !(state.raw && state.raw.has(id)),
     index: () => state.index,
     installed: () => state.installed.slice(),
     userCount: () => Object.keys(state.user).length,
@@ -407,14 +469,14 @@
       return { app: "multilingo", type: "backup", version: 1, createdAt: new Date().toISOString(), installed: state.installed, user: state.user, prefs };
     },
     async importBackup(b) {
-      if (!b || b.app !== "multilingo" || b.type !== "backup" || typeof b.user !== "object") throw new Error("Das ist keine Phraxx-Sicherung.");
+      if (!b || b.app !== "multilingo" || b.type !== "backup" || typeof b.user !== "object") throw new Error("Das ist keine Fraxx-Sicherung.");
       for (const id in b.user) { state.user[id] = b.user[id]; await iput("user", id, b.user[id]); }
       if (b.prefs) try { for (const k in b.prefs) localStorage.setItem(k, b.prefs[k]); } catch (e) {}
       if (Array.isArray(b.installed)) {
         for (const l of b.installed) if (!state.installed.includes(l) && state.index.packs.some(p => p.lang === l)) { try { await loadFile("lang-" + l, state.index.packs.find(p => p.lang === l).file, state.index.packs.find(p => p.lang === l).version); state.installed.push(l); } catch (e) {} }
         await iput("meta", "installed", state.installed);
       }
-      await rebuildBase(); changed();
+      await rebuildBase(); try { await migrateUser(); } catch (e) {} changed();
       return Object.keys(b.user).length;
     },
     async resetUser() { state.user = {}; await iclear("user"); changed(); },

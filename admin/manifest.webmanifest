@@ -1,6 +1,6 @@
 {
-  "name": "Phraxx Admin",
-  "short_name": "PX Admin",
+  "name": "Fraxx Admin",
+  "short_name": "FX Admin",
   "description": "Persönliche Sprach-App für Reisen: Übersetzungen, Aussprache, Konjugation, Grammatik und Speisekarten.",
   "lang": "de",
   "start_url": "./",
@@ -32,7 +32,7 @@
       "purpose": "maskable"
     },
     {
-      "src": "../icons/phraxx.svg",
+      "src": "../icons/fraxx.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }

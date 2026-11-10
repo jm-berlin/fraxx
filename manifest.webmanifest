@@ -1,6 +1,6 @@
 {
-  "name": "Phraxx – Mein bester Reisebegleiter",
-  "short_name": "Phraxx",
+  "name": "Fraxx – Mein bester Reisebegleiter",
+  "short_name": "Fraxx",
   "description": "Persönliche Sprach-App für Reisen: Übersetzungen, Aussprache, Konjugation, Grammatik und Speisekarten.",
   "lang": "de",
   "start_url": "./",
@@ -32,7 +32,7 @@
       "purpose": "maskable"
     },
     {
-      "src": "icons/phraxx.svg",
+      "src": "icons/fraxx.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }
