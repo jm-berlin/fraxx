@@ -24,6 +24,11 @@ self.addEventListener("fetch", e => {
   }
   if (url.origin !== location.origin) return;
   // Anleitung: eigene Seiten, nicht die App. Netz zuerst, offline die zuletzt gesehene Fassung
+  // Icons und Manifest: Netz zuerst, damit neue Icons sofort beim Installieren ankommen
+  if (url.pathname.includes("/icons/") || url.pathname.endsWith("manifest.webmanifest")) {
+    e.respondWith(fetch(req, { cache: "no-cache" }).catch(async () => (await caches.match(req, { ignoreSearch: true })) || Response.error()));
+    return;
+  }
   if (url.pathname.includes("/anleitung/")) {
     e.respondWith(fetch(req).then(r => { if (r.ok) { const k = r.clone(); caches.open(RUNTIME).then(c => c.put(req, k)); } return r; })
       .catch(async () => (await caches.match(req)) || (await caches.match(req, { ignoreSearch: true })) || Response.error()));

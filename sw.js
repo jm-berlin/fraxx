@@ -1,7 +1,7 @@
 /* Phraxx – Service Worker: Offline-Betrieb und Updates
    Die App kommt immer aus dem Speicher (schnell und offline). Eine neue Fassung wird im Hintergrund geladen,
    aber erst übernommen, wenn der Nutzer im Hinweis „Update verfügbar“ auf „Jetzt aktualisieren“ tippt. */
-const VERSION = "a0a0e1877b";
+const VERSION = "a0a0e1877c";
 const SHELL = ["./", "index.html", "runtime.js", "ui.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png", "icons/phraxx.svg", "img/band.jpg", "data/packs.json"];
 const SHELL_CACHE = "ml-shell-" + VERSION, RUNTIME = "ml-runtime";
 
@@ -24,6 +24,11 @@ self.addEventListener("fetch", e => {
   }
   if (url.origin !== location.origin) return;
   // Anleitung: eigene Seiten, nicht die App. Netz zuerst, offline die zuletzt gesehene Fassung
+  // Icons und Manifest: Netz zuerst, damit neue Icons sofort beim Installieren ankommen
+  if (url.pathname.includes("/icons/") || url.pathname.endsWith("manifest.webmanifest")) {
+    e.respondWith(fetch(req, { cache: "no-cache" }).catch(async () => (await caches.match(req, { ignoreSearch: true })) || Response.error()));
+    return;
+  }
   if (url.pathname.includes("/anleitung/")) {
     e.respondWith(fetch(req).then(r => { if (r.ok) { const k = r.clone(); caches.open(RUNTIME).then(c => c.put(req, k)); } return r; })
       .catch(async () => (await caches.match(req)) || (await caches.match(req, { ignoreSearch: true })) || Response.error()));
