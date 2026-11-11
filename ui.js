@@ -303,6 +303,7 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
   .mlver{flex:1 1 100%;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid var(--line);font-size:13.5px}
   .mlver .vl{color:var(--muted);font-weight:500}.mlver b{font-weight:700;font-variant-numeric:tabular-nums}
   .mlver .vok{color:var(--muted);font-size:13px}
+  .mlver .vbuild{color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}
   .mlver .vup{margin-left:auto;border:0;cursor:pointer;font:inherit;font-size:13.5px;font-weight:700;border-radius:999px;padding:6px 14px;background:var(--hl,#a3395f);color:var(--hl-ink,#fff);display:inline-flex;align-items:center;gap:7px}
   .mlver .vup::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.9}
   .mlver .vup:hover{filter:brightness(1.08)}
@@ -316,7 +317,8 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
     let row = pop.querySelector(".mlver");
     if (!row) {
       row = document.createElement("div"); row.className = "mlver"; row.setAttribute("data-notr", "");
-      row.innerHTML = `<span class="vl"></span><b></b><span class="vok"></span><button type="button" class="vup" hidden></button>`;
+      row.innerHTML = `<span class="vl"></span><b></b><span class="vok"></span><span class="vbuild"></span><button type="button" class="vup" hidden></button>`;
+      { const m = document.querySelector('meta[name="fraxx-build"]'); const vb = row.querySelector(".vbuild"); if (vb && m) vb.textContent = "· Stand " + String(m.content || "").slice(0, 7); }
       row.querySelector(".vup").addEventListener("click", () => { document.getElementById("setbtn")?.click(); updateDialog(true); });
       const gb = document.createElement("button"); gb.type = "button"; gb.className = "vguide";
       gb.addEventListener("click", () => { document.getElementById("setbtn")?.click(); ML.showGuide && ML.showGuide(); });

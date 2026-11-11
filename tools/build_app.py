@@ -46,6 +46,9 @@ s = s.replace("https://jm-berlin.github.io/fraxx/", "https://fraxx.app/")
 os.makedirs(out, exist_ok=True)
 open(os.path.join(out, "index.html"), "w").write(s)
 ver = hashlib.sha1((s + open(os.path.join(out, "runtime.js")).read() + open(os.path.join(out, "ui.js")).read()).encode()).hexdigest()[:10]
+# Stand der App (Fingerabdruck) sichtbar machen: unter ⚙ neben der Version
+s = s.replace("<head>", '<head>\n<meta name="fraxx-build" content="' + ver + '">', 1) if "<head>" in s else s.replace("<title>", '<meta name="fraxx-build" content="' + ver + '">\n<title>', 1)
+open(os.path.join(out, "index.html"), "w").write(s)
 sw = open(os.path.join(os.path.dirname(__file__), "sw.template.js")).read().replace("__VERSION__", ver)
 open(os.path.join(out, "sw.js"), "w").write(sw)
 print("index.html", len(s), "Version", ver)
