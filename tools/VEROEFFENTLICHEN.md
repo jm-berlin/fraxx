@@ -24,6 +24,10 @@ Grundregel: **Nur ein neuer Export wird veröffentlicht.** Der Klick auf „Expo
 8. **Sichern:** privates Repo `jm-berlin/fraxx-backup` klonen (`git clone --depth 1 https://github.com/jm-berlin/fraxx-backup.git`; falls nötig erst mit Schreibrechten zur Sitzung hinzufügen), dann `python3 tools/backup.py <export-ordner> <artefakt.html> <backup-ordner>`. Bei `BACKUP …` committen („Sicherung: Export vom <stamp>“, mit Attributionszeilen) und auf `main` pushen. Schlägt die Sicherung fehl, die Veröffentlichung trotzdem melden und den Fehler dazuschreiben.
 9. **Melden:** kurze Nachricht auf Deutsch: Export vom …, Anzahl Einträge, Sprachpakete, was sich gegenüber vorher geändert hat (z. B. neue Sprache, mehr Einträge). Hinweis: installierte Apps holen sich das Update beim nächsten Start mit Internet.
 
+**Fassungen ergänzen (vor publish.py):** Exporte mit `"nbFull": false` enthalten die Fassungen für andere Ausgangssprachen nicht
+(sie liegen im Artefakt in einer eigenen Ablage). Dann zuerst das Backup-Repo klonen und `python3 tools/fill_nb.py <export-ordner> <backup-ordner>`
+ausführen – es übernimmt fehlende Fassungen aus der letzten Sicherung. Erst danach publish.py und backup.py.
+
 ## Anleitung
 
 `publish.py` baut am Ende auch die Anleitung für Erstnutzer neu (`tools/tutorial_all.py`): Screenshots aus der frisch gebauten
