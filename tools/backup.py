@@ -19,6 +19,11 @@ if [p["part"] for p in parts] != list(range(1, n + 1)): sys.exit("ABBRUCH Export
 docs = [d for p in parts for d in p["docs"]]
 if len(docs) != parts[0]["total"]: sys.exit(f"ABBRUCH {len(docs)} statt {parts[0]['total']} Einträge")
 os.makedirs(repo, exist_ok=True)
+# Nie einen deutlich kleineren Stand über die letzte Sicherung legen (halb geladenes Fenster, abgebrochener Export)
+try:
+    prev = json.load(open(os.path.join(repo, "stand.json"))).get("eintraege", 0)
+    if prev and len(docs) < prev * 0.97: sys.exit(f"ABBRUCH nur {len(docs)} Einträge, letzte Sicherung hatte {prev}")
+except FileNotFoundError: pass
 with gzip.open(os.path.join(repo, "export.json.gz"), "wt", encoding="utf-8", compresslevel=9) as g:
     json.dump({"app": parts[0].get("app"), "type": "export", "stamp": stamp, "total": len(docs), "docs": docs}, g, ensure_ascii=False)
 with open(art, "rb") as src, gzip.open(os.path.join(repo, "artefakt.html.gz"), "wb", compresslevel=9) as g:
