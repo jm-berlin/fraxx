@@ -14,7 +14,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Fraxx">
 <script src="runtime.js"></script>
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Fraxx</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Urbanist:wght@300;400;500;600;700;800&family=Archivo:wght@400;500;600;700;800;900&display=swap">
@@ -1680,6 +1679,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       </div>
     </div>
     <p class="loadprog" id="loadprog" hidden></p>
+    <p class="loadprog" id="migprog" hidden></p>
     <p class="hint" id="inhint">Sucht in allen Einträgen und Speisekarten · Fehlt etwas, erscheint „Übersetzen“ · Shift + Enter für mehrere Einträge</p>
     <div class="recent" id="recent" hidden></div>
   </form>
@@ -2003,7 +2003,54 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   function saveLocalNow(){ clearTimeout(saveTimer); saveTimer = null; try{ localStorage.setItem(LKEY, JSON.stringify(docs)); }catch(e){} }
   function saveLocal(){ if(!saveTimer) saveTimer = setTimeout(saveLocalNow, 600); }
   window.addEventListener("pagehide", ()=>{ if(saveTimer) saveLocalNow(); });
-  function strip(e){ const o = {...e}; delete o.id; if(o.nb && typeof o.nb==="object" && Object.keys(o.nb).length){ o.nbx = nbEncode(o.nb); o.nb = null; } else if("nbx" in o && !o.nb) {} return o; }
+  // Achtung: e.nb enthält zweierlei – die norwegische Übersetzung (text/note) und die Fassungen je Ausgangssprache (Objekte).
+  // Norwegisch bleibt im Eintrag, nur die Fassungen kommen in die Ablage.
+  const nbR = nb => { const r = {}; if(nb && typeof nb==="object") Object.entries(nb).forEach(([k,v])=>{ if(!v || typeof v!=="object") r[k] = v; }); return r; };
+  const nbV = nb => { const o = {}; if(nb && typeof nb==="object") Object.entries(nb).forEach(([k,v])=>{ if(v && typeof v==="object") o[k] = v; }); return o; };
+  function strip(e){ const o = {...e}; delete o.id; delete o.__side; if(o.nb && typeof o.nb==="object" && Object.keys(o.nb).length){ if(sideCol){ const r = nbR(o.nb); o.nbx = null; o.nb = Object.keys(r).length ? r : null; } else { o.nbx = nbEncode(o.nb); o.nb = null; } } else if("nbx" in o && !o.nb) {} return o; }
+  // ---------- Fassungen für andere Ausgangssprachen in eigener Ablage ----------
+  // Sie machten drei Viertel der Datenmenge aus. Jetzt liegen sie in data/users/<id>/nbs/p (ein Dokument je Eintrag)
+  // und werden nur geladen, wenn sie gebraucht werden (andere Ausgangssprache, „alle Ausgangssprachen“).
+  let sideCol = null, sideSub = null; const sideMap = new Map(); const sideState = {n: 0, at: 0};
+  async function sideWrite(id, nb){ if(!sideCol) return; const v = nbV(nb); if(!Object.keys(v).length) return; sideMap.set(id, v); await withRetry(()=>sideCol.doc(id).set({nbx: nbEncode(v), at: Date.now()})); }
+  const sideMerge = (e, v) => ({...nbV(v), ...nbR(e.nb)});
+  function applySide(){ let k = 0; docs.forEach(e=>{ const v = sideMap.get(e.id); if(v && !e.__side){ e.nb = sideMerge(e, v); e.__side = true; k++; } }); if(k){ memoDocs = null; try{ renderData(); }catch(_){} } nbRepair(); }
+  // Reparatur (Version 298 hatte Norwegisch mit in die Ablage verschoben): Norwegisch aus der Ablage zurück in den Eintrag
+  let nbFixDone = false, nbFixBusy = false;
+  async function nbRepair(){
+    if(nbFixDone || nbFixBusy || !sideReady() || !liveFull || !docsReady() || !remoteCol || !(DEV_JOBS && !IN_WEBAPP)) return; nbFixBusy = true;
+    try{
+      const raw = sideRaw; let n = 0;
+      for(const [id, r] of raw){ const e = docs.find(x=>x.id===id); if(!e || e.kind) continue; const cur = nbR(e.nb); if(Object.keys(cur).length) continue;
+        try{ await withRetry(()=>store.doc(id).update({nb: r})); e.nb = {...nbV(e.nb), ...r}; n++; }catch(_){} }
+      await remoteCol.doc("nbfix").set({done: true, at: Date.now(), fixed: n}); nbFixDone = true;
+    }catch(_){} finally{ nbFixBusy = false; }
+  }
+  const sideRaw = new Map();
+  setInterval(()=>{ if(!nbFixDone && sideSub) nbRepair(); }, 20000);
+  function loadSide(){
+    if(sideSub || !sideCol) return;
+    sideSub = sideCol.onSnapshot(snap=>{
+      snap.docs.forEach(d=>{ const v = d.data(); if(v && v.nbx){ const nb = nbDecode(v.nbx); if(nb){ sideMap.set(d.id, nbV(nb)); const r = nbR(nb); if(Object.keys(r).length) sideRaw.set(d.id, r); } } });
+      sideState.n = snap.size; sideState.at = Date.now(); if(snap.metadata) sideState.full = !snap.metadata.fromCache; applySide();
+    }, ()=>{ sideSub = null; });
+  }
+  // Umzug: Einträge, die ihre Fassungen noch selbst tragen, legen sie in der Ablage ab und werden dadurch klein
+  const migQ = [], migDone = new Set(); let migRun = 0, migTotal = 0, migFail = 0;
+  function migEnqueue(x){ if(!sideCol || migDone.has(x.id) || !x.nbx || typeof x.nbx!=="object" || !x.nb) return; migDone.add(x.id); migQ.push({id:x.id, nb:x.nb}); migTotal++; migPump(); }
+  function migPump(){
+    while(migRun < 3 && migQ.length){
+      const it = migQ.shift(); migRun++;
+      (async()=>{ try{ const v = nbV(it.nb), r = nbR(it.nb);
+          if(Object.keys(v).length){ await withRetry(()=>sideCol.doc(it.id).set({nbx: nbEncode(v), at: Date.now()})); sideMap.set(it.id, v); }
+          await withRetry(()=>store.doc(it.id).update({nbx: null, nb: Object.keys(r).length ? r : null})); }
+        catch(_){ migFail++; migDone.delete(it.id); }
+        finally{ migRun--; migShow(); migPump(); } })();
+    }
+  }
+  // Ablage vollständig da? (seit 15 s keine neue Lieferung). Vorher dürfen keine Aufträge die Fassungen anfassen.
+  function sideReady(){ if(!sideCol) return true; if(!sideSub || !sideState.at) return false; if(sideState.full===true) return true; if(sideState.full===false) return false; return Date.now() - sideState.at > 15000; }
+  function migShow(){ try{ const pe = document.getElementById("migprog"); if(!pe) return; const left = migQ.length + migRun; pe.hidden = !left; if(left) pe.textContent = `Daten werden verschlankt … noch ${left.toLocaleString("de-DE")} von ${migTotal.toLocaleString("de-DE")}`; }catch(_){} }
   // Fassungen je Ausgangssprache platzsparend speichern (nbx statt nb): Jeder Text steht nur einmal in t[sprache],
   // je Ausgangssprache bleibt nur der Hinweis (oder [Text, Hinweis], wenn der Text abweicht). Im Speicher der Seite
   // liegt immer das ausgepackte nb, alle übrige Logik bleibt gleich.
@@ -2037,11 +2084,13 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     }
   }
   async function putDoc(e){
-    if(store){ await withRetry(()=>store.doc(e.id).set(strip(e))); }
+    if(store){ if(sideCol && e.nb && typeof e.nb==="object" && Object.keys(e.nb).length) await sideWrite(e.id, e.nb); await withRetry(()=>store.doc(e.id).set(strip(e))); }
     else { memoDocs = null; const i = docs.findIndex(x=>x.id===e.id); if(i<0) docs.unshift(e); else docs[i]=e; saveLocal(); renderData(); }
   }
   async function patchDoc(id, patch){
-    if(store && patch && patch.nb && typeof patch.nb==="object"){ patch = {...patch, nbx: nbEncode(patch.nb), nb: null}; }
+    if(store && patch && patch.nb && typeof patch.nb==="object"){
+      if(sideCol){ await sideWrite(id, patch.nb); const e0 = docs.find(x=>x.id===id); if(e0) e0.nb = patch.nb; const r = nbR(patch.nb); patch = {...patch, nbx: null, nb: Object.keys(r).length ? r : null}; }
+      else patch = {...patch, nbx: nbEncode(patch.nb), nb: null}; }
     if(patch && "pos" in patch && !GRAM_POS.includes(patch.pos)){ const cur = docs.find(x=>x.id===id); if(cur && GRAM_POS.includes(cur.pos)){ patch = {...patch}; delete patch.pos; } }
     if(store){ await withRetry(()=>store.doc(id).update(patch)); }
     else { memoDocs = null; const e = docs.find(x=>x.id===id); if(e){ Object.assign(e, patch); saveLocal(); renderData(); } }
@@ -3502,10 +3551,13 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
       const exact = [], starts = [];
       all.forEach(e=>{ if(lvlFilter && e.lvl!==lvlFilter) return; const ks = texts(e).map(dupKey);
         if(ks.includes(qk)) exact.push(e);
-        else if(qk.length>=2 && words(e)<=3 && [e.de, srcText(e)].filter(Boolean).map(dupKey).some(k=>k.startsWith(qk))) starts.push(e); });
+        else if(qk.length>=2 && words(e)<=4 && [e.de, srcText(e)].filter(Boolean).map(dupKey).some(k=>k.startsWith(qk) || k.split(/[\s\-\/]+/).some(w=>w.startsWith(qk)))) starts.push(e); });
       const byLen = (a,b)=>dupKey(srcText(a)||a.de).length - dupKey(srcText(b)||b.de).length || sortKey(a).localeCompare(sortKey(b), SRC);
-      exact.sort(byLen); starts.sort(byLen);
-      topHits.push(...exact, ...starts.slice(0, Math.max(0, 8 - exact.length)));
+      // Wortanfang: am nächsten dran zuerst (wenige zusätzliche Buchstaben, erstes Wort vor späteren), dann kürzere Einträge
+      const near = e => { const t = dupKey(e.de || srcText(e) || ""); const ws = t.split(/[\s\-\/]+/); let best = 99;
+        ws.forEach((w,i)=>{ if(w.startsWith(qk)) best = Math.min(best, (w.length - qk.length) + (i ? 2 : 0)); }); return best; };
+      exact.sort(byLen); starts.sort((a,b)=>near(a)-near(b) || byLen(a,b));
+      topHits.push(...exact, ...starts.slice(0, Math.max(0, 12 - exact.length)));
     }
     const topIds = new Set(topHits.map(e=>e.id));
     const match = e => !topIds.has(e.id) && match0(e);
@@ -3555,7 +3607,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
       if(SRC==="de") EXAMPLES.forEach(x=>{ const b = el("button","chip",x); b.type="button"; b.addEventListener("click",()=>{ input.value=x; submit(); }); chips.append(b); });
       em.append(chips); rowsEl.append(em); return;
     }
-    if(posFilter && posFilter!=="wz" && posFilter!=="rw"){
+    if(!q && posFilter && posFilter!=="wz" && posFilter!=="rw"){
       rowsEl.classList.remove("flatview"); document.getElementById("table").classList.remove("tilemode","tilesonly");
       const pl = all.filter(e=>posOf(e)===posFilter).filter(match).sort((a,b)=>sortKey(a).localeCompare(sortKey(b), SRC));
       $("#count").textContent = `${pl.length} von ${all.length} Einträgen`;
@@ -3701,7 +3753,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     const isNZ = t => (t.title||"").trim().toLowerCase()==="noch nicht zugeordnet";
     const nzSec = topSecs().find(t=>isNZ(t) && !subSecs(t.id).length) || null;
     const nzList = all.filter(e=>!secOf(e) || (nzSec && shownIn(e, nzSec.id))).filter(e=>q || (view==="rw" ? posOf(e)==="phrase" : posOf(e)!=="phrase"));
-    topSecs().filter(t=>!isHiddenTop(t) && t!==nzSec).forEach(t=>{
+    topSecs().filter(t=>(q || !isHiddenTop(t)) && t!==nzSec).forEach(t=>{
       const subs = subSecs(t.id);
       const direct = all.filter(e=>shownIn(e, t.id));
       const isWZ = (t.title||"").trim().toLowerCase()===WZ.toLowerCase();
@@ -4379,12 +4431,15 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
       }
     }finally{ gapBusy = false; }
   }
-  setInterval(()=>{ if(!gapBusy && gapList().length) gapFill(); }, 20000);
+  setInterval(()=>{ if(sideCol && !sideReady()) return; if(!gapBusy && gapList().length) gapFill(); }, 20000);
   let fillTimer = null;
   let fillCurCode = "";
   function scheduleFill(delay){ clearTimeout(fillTimer); fillTimer = setTimeout(runFill, delay==null ? 2000 : delay); }
   async function runFill(){
     if(!jobsHere()){ try{ updateFillBar(); }catch(_){} return; }
+    if(sideCol && !sideReady() && (SRC!=="de" || needsRelocal().length)){ loadSide(); scheduleFill(5000); return; }
+    // Erst die Norwegisch-Reparatur abwarten, sonst würden die verschobenen Texte neu übersetzt
+    if(sideCol && !nbFixDone && DEV_JOBS && !IN_WEBAPP){ loadSide(); nbRepair(); scheduleFill(10000); return; }
     if(!fillRunning && !fillPaused) await restoreCached();
     if(fillRunning || fillPaused || importing || resuming || !sample || !loaded){ updateFillBar(); return; }
     const todo = () => { const rl = needsRelocal(); return [...(rl.length ? [[null, rl]] : []), ...LANGS.map(l=>[l, missingIn(l[0])]).filter(([,m])=>m.length)]; };
@@ -6909,6 +6964,7 @@ void main(){
   function applySrc(code, user){
     if(code!=="de" && !MYLANGS.some(l=>l[0]===code)) code = "de";
     if(code===SRC){ fillSrcSelect(); return; }
+    if(code!=="de") loadSide();
     SRC = code;
     try{ localStorage.setItem("rw-src", SRC); }catch(e){}
     computeLangs(); applyLangs(); renderLangPanel(); fillSrcSelect();
@@ -7235,7 +7291,7 @@ ${JSON.stringify(its)}`;
     // danach Grammatik, Verb-Endungen und Speisekarten, immer nur eins zur Zeit
     // Hängt eine Aufgabe von „alle Ausgangssprachen“ länger als 15 Minuten, gilt sie als abgebrochen
     if(allSrcBusy && Date.now() - allSrcStart > 15*60000){ allSrcBusy = false; if(allSrcRun) allSrcFail.set(allSrcRun.key, allSrcRun.label); allSrcRun = null; allSrcCur = ""; }
-    if(allSrcOn() && !allSrcBusy) runAllSrc();
+    if(allSrcOn() && !allSrcBusy){ if(sideReady()) runAllSrc(); else loadSide(); }
     if(gramBusy.size || vBusy.size || dishBusy.size || mBusy.size || tutBusy.size || ingrBusy.size) return;
     const content = jobs.find(j=>/^(gram|gram2|mist|verbs|dish|tut|ingr):/.test(j.id) && j.left>0 && !j.isErr && !j.running && !contentStall(j));
     if(content){ contentPushed(j=>j, content); content.push(); }
@@ -7431,7 +7487,7 @@ ${JSON.stringify(TUT_DE)}`;
   // Für jede Kombination aus Ausgangssprache und Lernsprache (alle Sprachen mit Paket + Deutsch):
   // Grammatik (mit Ausbau), Verb-Endungen, Typische Fehler; Speisekarten als Übersetzung der deutschen Karte.
   const allSrcOn = () => { try{ return localStorage.getItem("rw-allsrc")==="1"; }catch(_){ return false; } };
-  function setAllSrc(v){ try{ localStorage.setItem("rw-allsrc", v ? "1" : "0"); }catch(_){} if(v) setTimeout(autoQueue, 300); renderDevJobs(); }
+  function setAllSrc(v){ try{ localStorage.setItem("rw-allsrc", v ? "1" : "0"); }catch(_){} if(v){ loadSide(); setTimeout(autoQueue, 300); } renderDevJobs(); }
   let allSrcStart = 0, allSrcRun = null, allSrcCur = "", allSrcBusy = false, allSrcCache = {docs:null, t:0, list:[]}; const allSrcFail = new Map();
   function allSrcTasks(){
     if(allSrcCache.docs===docs && Date.now()-allSrcCache.t < 30000) return allSrcCache.list;
@@ -7475,6 +7531,7 @@ ${JSON.stringify(TUT_DE)}`;
   }
   async function runAllSrc(){
     if(allSrcBusy || !sample || !allSrcOn()) return;
+    if(!sideReady()){ loadSide(); return; }
     // Reihenfolge: erst Übersetzungen, dann Fassungen, dann Inhalte für alle Ausgangssprachen
     if(allSrcWaitReason()) return;
     const list = allSrcTasks(); if(!list.length) return;
@@ -7574,14 +7631,15 @@ ${JSON.stringify(TUT_DE)}`;
     let res = {ok:false};
     try{
       const assets = await window.claude.use("assets"); if(!assets) throw {code:"not_granted"};
-      const all = docs.map(d=>{ const o = {...d}; delete o.nbx; if(o.nb===null) delete o.nb; return o; });
+      const all = docs.map(d=>{ const o = {...d}; delete o.nbx; delete o.__side; if(o.nb===null) delete o.nb; return o; });
+      const nbFull = !sideCol || (sideReady() && !!sideSub);
       // Teile nach Größe (höchstens ~9 MB), nicht nach Anzahl: Dateien über 16 MB nimmt der Dateispeicher nicht an
       const groups = []; let cur = [], size = 0;
       for(const o of all){ const l = JSON.stringify(o).length; if(cur.length && size + l > 9e6){ groups.push(cur); cur = []; size = 0; } cur.push(o); size += l; }
       if(cur.length) groups.push(cur);
       const n = groups.length, stamp = new Date().toISOString();
       for(let i=0;i<n;i++){
-        const part = {app:"multilingo", type:"export", stamp, part:i+1, parts:n, total:all.length, docs: groups[i]};
+        const part = {app:"multilingo", type:"export", stamp, part:i+1, parts:n, total:all.length, nbFull, docs: groups[i]};
         const blob = new Blob([JSON.stringify(part)], {type:"application/json"});
         for(let a=0;;a++){ try{ await assets.upload(blob, {type:"application/json"}); break; }catch(e){ if(a>=2) throw e; await new Promise(r=>setTimeout(r, 4000*(a+1))); } }
         exportBusy = `Export ${i+1}/${n} …`; renderDevJobs();
@@ -7745,6 +7803,9 @@ ${JSON.stringify(TUT_DE)}`;
       try{ remoteCol = db.collection("data/users/" + uid + "/admin/remote"); }catch(_){}
       if(remoteCol && DEV_JOBS && !IN_WEBAPP){ const t0 = Date.now(); const first = ()=>{ if(loaded) jobLockTick(); else if(Date.now() - t0 < 120000) setTimeout(first, 2000); }; setTimeout(first, 3000); }
       statusEl.textContent = "Gespeichert auf diesem Gerät";
+      try{ sideCol = db.collection("data/users/" + uid + "/nbs/p"); }catch(_){ sideCol = null; }
+      if(SRC!=="de" || allSrcOn()) loadSide();
+      try{ if(remoteCol && DEV_JOBS && !IN_WEBAPP) remoteCol.doc("nbfix").get().then(f=>{ if(f.exists && (f.data()||{}).done){ nbFixDone = true; } else loadSide(); }).catch(()=>{}); }catch(_){}
       liveFull = false;
       const CK = "docs-" + uid; let cacheT = null, lastGrow = Date.now(), lastLive = [];
       try{ remoteCol && remoteCol.doc("status").get().then(st0=>{ const nd = st0.exists ? Number((st0.data()||{}).docs) || 0 : 0; if(nd > remoteExpect) remoteExpect = nd; }).catch(()=>{}); }catch(_){}
@@ -7763,11 +7824,11 @@ ${JSON.stringify(TUT_DE)}`;
       // Ohne orderBy: die Datenbank sortiert sonst bei jeder Seite alle Dokumente neu (sehr langsam bei vielen großen Dokumenten).
       // Reihenfolge stellen wir hier selbst her.
       store.onSnapshot(snap=>{
-        const live = snap.docs.map(d=>{ const x = {id:d.id, ...d.data()}; if(x.nbx && !x.nb){ const nb = nbDecode(x.nbx); if(nb) x.nb = nb; } return x; }).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+        const live = snap.docs.map(d=>{ const x = {id:d.id, ...d.data()}; if(x.nbx && !x.nb){ const nb = nbDecode(x.nbx); if(nb) x.nb = nb; if(DEV_JOBS && !IN_WEBAPP && !x.kind) migEnqueue(x); } else if(sideMap.has(x.id)){ x.nb = sideMerge(x, sideMap.get(x.id)); x.__side = true; } return x; }).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
         if(live.length > liveCount) lastGrow = Date.now();
         lastLive = live;
         liveCount = live.length;
-        if(!liveFull){ const want = Math.max(expectDocs, remoteExpect, cacheDocs ? cacheDocs.length : 0); if(want && live.length >= want * 0.95){ liveFull = true; cacheDocs = null; try{ const pe = document.getElementById("loadprog"); if(pe) pe.hidden = true; }catch(_){} } }
+        if(!liveFull){ const want = Math.max(expectDocs, remoteExpect, cacheDocs ? cacheDocs.length : 0); if((snap.metadata && snap.metadata.fromCache===false && (!want || live.length >= want * 0.95)) || (want && live.length >= want * 0.95)){ liveFull = true; cacheDocs = null; try{ const pe = document.getElementById("loadprog"); if(pe) pe.hidden = true; }catch(_){} } }
         docs = liveFull ? live : mergeCache(live);
         if(liveFull) saveCache(live);
         const st = docs.find(d=>d.kind==="settings");
@@ -7805,7 +7866,5 @@ ${JSON.stringify(TUT_DE)}`;
   })();
 })();
 </script>
-
-</body></html>
 <script src="ui.js"></script>
 </html>
