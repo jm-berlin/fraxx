@@ -61,7 +61,9 @@ with sync_playwright() as p:
       if(!e) return null; const b=e.getBoundingClientRect(); return [b.x,b.y,b.width,b.height]}""")
     # Verben mit Konjugation
     fresh(); pg.click("#tocbtn"); pg.wait_for_timeout(1000)
-    pg.locator("#tocposf .tpt").nth(3).click(); pg.wait_for_timeout(2500)
+    pg.locator("#tocposf .tpt").nth(2).click(); pg.wait_for_timeout(1500)
+    v = pg.locator('#posf2 [data-pos="verb"]')
+    if v.count(): v.click(); pg.wait_for_timeout(2500)
     kb = pg.locator("button.conjbtn:visible").first
     if kb.count(): kb.click(); pg.wait_for_timeout(1500)
     pg.screenshot(path=P("04b-konjugation.png"))
