@@ -1,6 +1,93 @@
 {
  "releases": [
   {
+   "release": "2026-11-11T09:56:30.368Z",
+   "version": "0.8",
+   "date": "2026-11-11",
+   "notes": {
+    "de": [
+     "Beim ersten Start zeigt Fraxx für jede Sprache einen eigenen Ladebalken und öffnet sich erst, wenn alles geladen ist.",
+     "iPhone: Die Aussprache ist jetzt auch zu hören, wenn das iPhone auf lautlos steht. Bleibt es stumm, zeigt Fraxx, woran es liegen kann.",
+     "Suchen überall: Die Lupe oben sucht auf jeder Seite in allen Einträgen. Auf dem Handy zeigt ein Tipp auf einen Treffer die Übersetzungen groß zum Vorlesen. Zuletzt gesuchte Wörter stehen unter dem Feld, die Wortarten sind unter einem Reiter zusammengefasst.",
+     "Neues Logo: Fraxx hat einen neuen Schriftzug und ein neues App-Icon. Für das neue Icon auf dem Home-Bildschirm die App einmal entfernen und neu hinzufügen.",
+     "Suche: Das gesuchte Wort steht jetzt ganz oben als Treffer. Kurze Wörter wie „und“ finden nur noch passende Wörter. „Anzeigen“ springt auch bei Präpositionen, Konjunktionen und Pronomen zum Eintrag.",
+     "Startseite und Hilfe nennen jetzt in allen Sprachen den neuen Namen Fraxx."
+    ],
+    "en": [
+     "On first start, Fraxx shows a progress bar for each language and opens once everything is loaded.",
+     "iPhone: pronunciation now plays even when the iPhone is on silent. If it stays quiet, Fraxx shows what to check.",
+     "Search everywhere: the magnifier at the top searches all entries from any page. On phones, tapping a result shows the translations large, ready to play aloud. Recent searches appear below the field, and word classes are grouped under one tab.",
+     "New logo: Fraxx has a new wordmark and app icon. To see the new icon on your home screen, remove the app and add it again.",
+     "Search: the exact word now appears at the top as the hit. Short words like “und” only find matching words. “Show” now also jumps to prepositions, conjunctions and pronouns.",
+     "The home page and help now use the new name Fraxx in every language."
+    ],
+    "fr": [
+     "Au premier démarrage, Fraxx affiche une barre de progression par langue et s’ouvre une fois tout chargé.",
+     "iPhone : la prononciation s’entend désormais même en mode silencieux. Si rien ne sort, Fraxx indique quoi vérifier.",
+     "Recherche partout : la loupe en haut cherche dans toutes les entrées depuis chaque page. Sur mobile, un appui sur un résultat affiche les traductions en grand, prêtes à écouter. Les recherches récentes s’affichent sous le champ et les classes de mots sont regroupées dans un onglet.",
+     "Nouveau logo : Fraxx a une nouvelle typographie et une nouvelle icône. Pour voir la nouvelle icône sur l’écran d’accueil, supprimez l’app puis ajoutez-la à nouveau.",
+     "Recherche : le mot exact apparaît désormais en premier. Les mots courts ne trouvent plus que des mots correspondants. « Afficher » mène aussi aux prépositions, conjonctions et pronoms.",
+     "La page d'accueil et l'aide utilisent désormais le nouveau nom Fraxx dans toutes les langues."
+    ],
+    "it": [
+     "Al primo avvio Fraxx mostra una barra di avanzamento per ogni lingua e si apre quando tutto è caricato.",
+     "iPhone: la pronuncia ora si sente anche con l’iPhone in silenzioso. Se resta muto, Fraxx indica cosa controllare.",
+     "Cerca ovunque: la lente in alto cerca in tutte le voci da ogni pagina. Sul telefono, toccando un risultato le traduzioni appaiono in grande, pronte da ascoltare. Le ricerche recenti compaiono sotto il campo e le parti del discorso sono riunite in una scheda.",
+     "Nuovo logo: Fraxx ha un nuovo logotipo e una nuova icona. Per vedere la nuova icona nella schermata Home, rimuovi l’app e aggiungila di nuovo.",
+     "Ricerca: la parola esatta compare ora in cima ai risultati. Le parole brevi trovano solo parole corrispondenti. «Mostra» porta anche a preposizioni, congiunzioni e pronomi.",
+     "La pagina iniziale e la guida ora usano il nuovo nome Fraxx in tutte le lingue."
+    ],
+    "es": [
+     "En el primer inicio, Fraxx muestra una barra de progreso por idioma y se abre cuando todo está cargado.",
+     "iPhone: la pronunciación ahora suena aunque el iPhone esté en silencio. Si no suena, Fraxx indica qué revisar.",
+     "Buscar en todas partes: la lupa de arriba busca en todas las entradas desde cualquier página. En el móvil, al tocar un resultado se ven las traducciones en grande, listas para escuchar. Las búsquedas recientes aparecen bajo el campo y las clases de palabras están en una sola pestaña.",
+     "Nuevo logo: Fraxx tiene un nuevo logotipo y un nuevo icono. Para ver el nuevo icono en la pantalla de inicio, elimina la app y vuelve a añadirla.",
+     "Búsqueda: la palabra exacta aparece ahora arriba como resultado. Las palabras cortas solo encuentran palabras que coinciden. «Mostrar» también lleva a preposiciones, conjunciones y pronombres.",
+     "La página de inicio y la ayuda usan ahora el nuevo nombre Fraxx en todos los idiomas."
+    ],
+    "pt": [
+     "No primeiro arranque, o Fraxx mostra uma barra de progresso por idioma e abre quando tudo estiver carregado.",
+     "iPhone: a pronúncia agora ouve-se mesmo com o iPhone em silêncio. Se continuar sem som, o Fraxx mostra o que verificar.",
+     "Pesquisar em todo o lado: a lupa no topo pesquisa todas as entradas em qualquer página. No telemóvel, tocar num resultado mostra as traduções em grande, prontas a ouvir. As pesquisas recentes aparecem sob o campo e as classes de palavras estão num só separador.",
+     "Novo logótipo: o Fraxx tem um novo logótipo e um novo ícone. Para ver o novo ícone no ecrã inicial, remova a app e adicione-a novamente.",
+     "Pesquisa: a palavra exata aparece agora no topo. Palavras curtas só encontram palavras correspondentes. «Mostrar» também leva a preposições, conjunções e pronomes.",
+     "A página inicial e a ajuda usam agora o novo nome Fraxx em todos os idiomas."
+    ],
+    "nl": [
+     "Bij de eerste start toont Fraxx per taal een voortgangsbalk en opent pas als alles geladen is.",
+     "iPhone: de uitspraak is nu ook te horen als de iPhone op stil staat. Blijft het stil, dan laat Fraxx zien wat je kunt controleren.",
+     "Overal zoeken: het vergrootglas bovenaan doorzoekt vanaf elke pagina alle items. Op de telefoon toont een tik op een treffer de vertalingen groot, klaar om voor te lezen. Recente zoekopdrachten staan onder het veld en woordsoorten zitten onder één tabblad.",
+     "Nieuw logo: Fraxx heeft een nieuw woordmerk en app-icoon. Verwijder de app en voeg hem opnieuw toe om het nieuwe icoon op je beginscherm te zien.",
+     "Zoeken: het exacte woord staat nu bovenaan als treffer. Korte woorden vinden alleen nog passende woorden. ‘Tonen’ springt nu ook naar voorzetsels, voegwoorden en voornaamwoorden.",
+     "De startpagina en de hulp gebruiken nu in alle talen de nieuwe naam Fraxx."
+    ],
+    "pl": [
+     "Przy pierwszym uruchomieniu Fraxx pokazuje pasek postępu dla każdego języka i otwiera się po załadowaniu wszystkiego.",
+     "iPhone: wymowa jest teraz słyszalna także w trybie cichym. Jeśli nadal nic nie słychać, Fraxx podpowie, co sprawdzić.",
+     "Szukaj wszędzie: lupa na górze przeszukuje wszystkie wpisy z każdej strony. Na telefonie dotknięcie wyniku pokazuje duże tłumaczenia gotowe do odsłuchania. Ostatnie wyszukiwania są pod polem, a części mowy zebrano w jednej zakładce.",
+     "Nowe logo: Fraxx ma nowy napis i nową ikonę. Aby zobaczyć nową ikonę na ekranie głównym, usuń aplikację i dodaj ją ponownie.",
+     "Wyszukiwanie: szukane słowo pojawia się teraz na górze. Krótkie słowa znajdują tylko pasujące wyrazy. „Pokaż” prowadzi też do przyimków, spójników i zaimków.",
+     "Strona startowa i pomoc używają teraz we wszystkich językach nowej nazwy Fraxx."
+    ],
+    "sv": [
+     "Vid första starten visar Fraxx en förloppsindikator per språk och öppnas när allt är laddat.",
+     "iPhone: uttalet hörs nu även när iPhone är i ljudlöst läge. Hörs inget visar Fraxx vad du kan kontrollera.",
+     "Sök överallt: förstoringsglaset överst söker i alla poster från varje sida. På mobilen visar ett tryck på en träff översättningarna stort, redo att läsas upp. Senaste sökningar visas under fältet och ordklasserna finns under en flik.",
+     "Ny logotyp: Fraxx har en ny ordbild och en ny appikon. Ta bort appen och lägg till den igen för att se den nya ikonen på hemskärmen.",
+     "Sök: det exakta ordet visas nu överst som träff. Korta ord hittar bara passande ord. ”Visa” hoppar nu även till prepositioner, konjunktioner och pronomen.",
+     "Startsidan och hjälpen använder nu det nya namnet Fraxx på alla språk."
+    ],
+    "nb": [
+     "Ved første oppstart viser Fraxx en fremdriftslinje for hvert språk og åpnes når alt er lastet inn.",
+     "iPhone: uttalen høres nå også når iPhone står på lydløs. Hvis det fortsatt er stille, viser Fraxx hva du kan sjekke.",
+     "Søk overalt: forstørrelsesglasset øverst søker i alle oppføringer fra hver side. På mobilen viser et trykk på et treff oversettelsene stort, klare til opplesing. Siste søk vises under feltet, og ordklassene er samlet under én fane.",
+     "Ny logo: Fraxx har en ny ordlogo og et nytt appikon. Fjern appen og legg den til på nytt for å se det nye ikonet på hjemskjermen.",
+     "Søk: det eksakte ordet vises nå øverst som treff. Korte ord finner bare passende ord. «Vis» hopper nå også til preposisjoner, konjunksjoner og pronomen.",
+     "Startsiden og hjelpen bruker nå det nye navnet Fraxx på alle språk."
+    ]
+   }
+  },
+  {
    "release": "2026-11-10T18:19:04.000Z",
    "version": "0.7",
    "date": "2026-11-10",
