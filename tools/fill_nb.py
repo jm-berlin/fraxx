@@ -14,6 +14,11 @@ for f in glob.glob(os.path.join(exp, "*.json")):
     if p.get("type") != "export" or p.get("nbFull") is not False: continue
     ch = False
     for d in p["docs"]:
-        if not d.get("kind") and not d.get("nb") and d.get("id") in old: d["nb"] = old[d["id"]]; n += 1; ch = True
+        # nb = norwegische Übersetzung (text/note) + Fassungen (Objekte je Ausgangssprache); nur fehlende Fassungen ergänzen
+        if d.get("kind") or d.get("id") not in old: continue
+        cur = d.get("nb") or {}
+        if any(isinstance(v, dict) for v in cur.values()): continue
+        vers = {k: v for k, v in old[d["id"]].items() if isinstance(v, dict)}
+        if vers: d["nb"] = {**vers, **cur}; n += 1; ch = True
     if ch: json.dump(p, open(f, "w"), ensure_ascii=False)
 print(f"FASSUNGEN ergänzt: {n}")
