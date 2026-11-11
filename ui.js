@@ -403,7 +403,10 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
   });
   $("mlupdate").addEventListener("click", async () => {
     const m = $("mlresetmsg"); m.className = "mlmsg"; m.textContent = "Suche …";
-    try { const reg = await navigator.serviceWorker?.getRegistration(); await reg?.update(); const has = await ML.checkUpdates(); await new Promise(r => setTimeout(r, 1500)); checkAvail(); if (has || (reg && reg.waiting)) { m.textContent = ""; close(); updateDialog(true); } else m.textContent = "Alles aktuell."; }
+    try { const reg = await navigator.serviceWorker?.getRegistration(); await reg?.update(); const has = await ML.checkUpdates(); await new Promise(r => setTimeout(r, 1500));
+      // Neue App-Fassung wird gerade geladen: abwarten, bis sie bereitsteht (sonst hieße es fälschlich „Alles aktuell“)
+      const w = reg && reg.installing; if (w) { m.textContent = "…"; await new Promise(r => { const t = setTimeout(r, 45000); w.addEventListener("statechange", () => { if (w.state === "installed" || w.state === "redundant") { clearTimeout(t); r(); } }); }); }
+      checkAvail(); if (has || (reg && reg.waiting)) { m.textContent = ""; close(); updateDialog(true); } else m.textContent = "Alles aktuell."; }
     catch (e) { m.className = "mlmsg err"; m.textContent = "Keine Verbindung."; }
   });
   // ---------- Anleitung: Willkommen nach dem ersten Start, Link in den Einstellungen ----------
