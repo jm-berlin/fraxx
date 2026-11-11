@@ -57,10 +57,15 @@
     }
     return a;
   }
-  async function getJSON(url, opts) {
+  async function getJSON(url, opts, onProgress) {
     const r = await fetch(url, opts);
     if (!r.ok) throw new Error(url + ": " + r.status);
-    return r.json();
+    if (!onProgress || !r.body || !r.body.getReader) return r.json();
+    // Mit Fortschritt: Datei stückweise lesen (für die Ladebalken je Sprache)
+    const rd = r.body.getReader(), parts = []; let got = 0;
+    for (;;) { const { done, value } = await rd.read(); if (done) break; parts.push(value); got += value.length; try { onProgress(got); } catch (e) {} }
+    const all = new Uint8Array(got); let o = 0; for (const c of parts) { all.set(c, o); o += c.length; }
+    return JSON.parse(new TextDecoder().decode(all));
   }
 
   // ---------- Datenschichten ----------
@@ -94,13 +99,13 @@
       throw e;
     }
   }
-  async function loadFile(key, file, version) {
+  async function loadFile(key, file, version, onProgress) {
     const cached = await iget("packs", key);
     // Gleiche Version (Fingerabdruck des Inhalts) = schon aktuell; sonst die neue, vollständige Datei laden
     if (cached && version && cached.version === version) return cached;
     if (cached && !version) return cached;
     try {
-      const data = await getJSON(DATA + file, { cache: "no-cache" });
+      const data = await getJSON(DATA + file, { cache: "no-cache" }, onProgress);
       await iput("packs", key, data); return data;
     } catch (e) { if (cached) return cached; throw e; }
   }
@@ -108,15 +113,25 @@
   async function rebuildBase() {
     const idx = state.index;
     const todo = state.installed.filter(l => idx.packs.some(x => x.lang === l)).length + 1;
-    loadSet({ done: 0, total: todo });
-    const core = await loadFile("core", idx.core.file, idx.core.version || idx.version);
+    // Fortschritt je Datei: Grunddaten + jede Sprache mit eigenem Balken
+    const items = [{ k: "core", bytes: (idx.core && idx.core.bytes) || 0, got: 0, st: "wait" }]
+      .concat(state.installed.map(l => idx.packs.find(x => x.lang === l)).filter(Boolean).map(p => ({ k: p.lang, name: p.name, bytes: p.bytes || 0, got: 0, st: "wait" })));
+    let lastEmit = 0;
+    const emit = force => { const t = Date.now(); if (!force && t - lastEmit < 120) return; lastEmit = t; loadSet({ items: items.map(x => ({ ...x })) }); };
+    const prog = it => got => { it.got = got; it.st = "load"; emit(false); };
+    loadSet({ done: 0, total: todo, items: items.map(x => ({ ...x })) });
+    items[0].st = "load"; emit(true);
+    const core = await loadFile("core", idx.core.file, idx.core.version || idx.version, prog(items[0]));
+    items[0].st = "done"; items[0].got = items[0].bytes; emit(true);
     loadSet({ done: 1 });
     const base = new Map(core.docs.map(d => [d.id, clone(d)]));
     const packs = {};
     for (const l of state.installed) {
       const p = idx.packs.find(x => x.lang === l);
       if (!p) continue;
-      try { packs[l] = await loadFile("lang-" + l, p.file, p.version); } catch (e) { console.warn("Paket fehlt", l, e); }
+      const it = items.find(x => x.k === l); if (it) { it.st = "load"; emit(true); }
+      try { packs[l] = await loadFile("lang-" + l, p.file, p.version, it ? prog(it) : null); } catch (e) { console.warn("Paket fehlt", l, e); }
+      if (it) { it.st = "done"; it.got = it.bytes; emit(true); }
       loadSet({ done: state.load.done + 1 });
     }
     const have = new Set(Object.keys(packs));

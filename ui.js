@@ -494,6 +494,15 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
       background:var(--ink);color:var(--surface);border-radius:18px;box-shadow:0 12px 36px rgb(20 14 12 / .28);padding:13px 16px 12px;
       display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:center;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none}
     #mlload.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+    #mlload.full{inset:0;left:0;bottom:0;transform:none;width:auto;border-radius:0;background:var(--bg,#e5e2e0);color:var(--ink,#141212);box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right)) 24px max(16px,env(safe-area-inset-left));z-index:300}
+    #mlload.full .fwrap{width:min(420px,100%);display:flex;flex-direction:column;gap:14px}
+    #mlload.full .flogo{height:44px;width:auto;align-self:center;margin-bottom:10px;color:var(--ink,#141212)}
+    #mlload.full b{font-size:20px;text-align:center}
+    #mlload.full small{font-size:14px;text-align:center;opacity:.7}
+    #mlload.full .frow{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:center;font-size:15px;font-weight:600}
+    #mlload.full .frow em{font-style:normal;font-size:13px;font-weight:600;opacity:.6;font-variant-numeric:tabular-nums}
+    #mlload.full .frow .lbar{grid-column:1 / -1;margin:0;height:6px;background:rgb(0 0 0 / .1)}
+    #mlload.full .frow.done em{color:var(--ok,#1f8a53);opacity:1}
     #mlload .lsp{grid-row:1 / span 2;width:22px;height:22px;border-radius:50%;border:3px solid rgb(255 255 255 / .25);border-top-color:var(--hl,#a3395f);animation:mlspin .9s linear infinite}
     #mlload b{font-size:15px;font-weight:700}
     #mlload small{font-size:13px;opacity:.75;line-height:1.35}
@@ -510,7 +519,34 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
     box.setAttribute("role", "status"); box.setAttribute("aria-live", "polite");
     let timer = null, shown = false;
     const lt = () => LOAD_T[ML.srcLang()] || LOAD_T.en;
+    // Erster Start (Pakete werden aus dem Netz geholt): ganzer Bildschirm mit einem Balken je Sprache,
+    // die App erscheint erst, wenn alles da ist. Spätere Starts kommen aus dem Gerätespeicher und zeigen nur den kleinen Hinweis.
+    let full = false;
+    const names = (() => { try { return new Intl.DisplayNames([ML.srcLang()], { type: "language" }); } catch (e) { return null; } })();
+    const nm = it => it.k === "core" ? ({ de: "Grunddaten", en: "Basics", fr: "Données de base", es: "Datos básicos", it: "Dati di base", pt: "Dados básicos", nl: "Basisgegevens", pl: "Dane podstawowe", sv: "Grunddata", nb: "Grunndata", tr: "Temel veriler", zh: "基础数据", ar: "البيانات الأساسية" }[ML.srcLang()] || "Basics")
+      : ((names && (() => { try { const n = names.of(it.k === "nb" ? "nb" : it.k); return n ? n.charAt(0).toUpperCase() + n.slice(1) : ""; } catch (e) { return ""; } })()) || it.name || it.k);
+    const drawFull = st => {
+      const T = lt();
+      if (!box.querySelector(".fwrap")) {
+        box.innerHTML = `<div class="fwrap"></div>`;
+        const w = box.querySelector(".fwrap");
+        const lg = document.querySelector("#logo .vxlogo"); if (lg) { const c = lg.cloneNode(true); c.setAttribute("class", "flogo"); c.removeAttribute("style"); w.append(c); }
+        const b = document.createElement("b"); const sm = document.createElement("small"); w.append(b, sm);
+        const list = document.createElement("div"); list.className = "flist"; list.style.cssText = "display:flex;flex-direction:column;gap:12px;margin-top:6px"; w.append(list);
+      }
+      box.querySelector("b").textContent = T[0]; box.querySelector("small").textContent = T[1];
+      const list = box.querySelector(".flist"); list.replaceChildren();
+      (st.items || []).forEach(it => {
+        const r = document.createElement("div"); r.className = "frow" + (it.st === "done" ? " done" : "");
+        const pc = it.st === "done" ? 100 : (it.bytes ? Math.min(99, Math.round(100 * it.got / it.bytes)) : (it.st === "load" ? 5 : 0));
+        const n = document.createElement("span"); n.textContent = nm(it);
+        const e = document.createElement("em"); e.textContent = it.st === "done" ? "✓" : pc + " %";
+        const bar = document.createElement("span"); bar.className = "lbar"; const i = document.createElement("i"); i.style.width = pc + "%"; bar.append(i);
+        r.append(n, e, bar); list.append(r);
+      });
+    };
     const draw = st => {
+      if (full && !st.error) { drawFull(st); return; }
       const T = lt();
       box.classList.toggle("err", !!st.error);
       box.dir = ML.srcLang() === "ar" ? "rtl" : "";
@@ -529,7 +565,9 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
     const hide = () => { clearTimeout(timer); timer = null; if (!shown) return; shown = false; box.classList.remove("on"); setTimeout(() => { if (!shown) box.remove(); }, 300); };
     const update = st => {
       if (st.error) { clearTimeout(timer); draw(st); show(); return; }
-      if (!st.active) { hide(); return; }
+      if (!st.active) { hide(); full = false; box.classList.remove("full"); return; }
+      // Vollbild, sobald wirklich aus dem Netz geladen wird (dann gibt es Fortschritt in Bytes)
+      if (!full && (st.items || []).some(x => x.st === "load" && x.got > 0)) { full = true; box.innerHTML = ""; box.classList.add("full"); box.classList.remove("err"); clearTimeout(timer); timer = null; draw(st); show(); return; }
       draw(st);
       // Nur zeigen, wenn es spürbar dauert (aus dem Gerätespeicher ist es meist sofort fertig)
       if (!shown && !timer) timer = setTimeout(() => { timer = null; if (ML.loading().active) { draw(ML.loading()); show(); } }, 350);
