@@ -51,6 +51,9 @@ open(os.path.join(out, "sw.js"), "w").write(sw)
 print("index.html", len(s), "Version", ver)
 
 # ---------- Admin-Fassung in …/admin/ ----------
+# Seit 11.11.2026 nicht mehr öffentlich (Admin arbeitet im Claude-Artefakt). Nur bauen mit ML_BUILD_ADMIN=1.
+if not os.environ.get("ML_BUILD_ADMIN"):
+    raise SystemExit(0)
 # Gleiche App, aber mit Auftragsliste, allen Sprachpaketen und eigenem Speicher. Daten kommen aus ../data/.
 adm = os.path.join(out, "admin"); os.makedirs(adm, exist_ok=True)
 a = s

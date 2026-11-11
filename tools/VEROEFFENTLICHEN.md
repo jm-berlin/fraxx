@@ -6,7 +6,7 @@ Grundregel: **Nur ein neuer Export wird veröffentlicht.** Der Klick auf „Expo
 
 - Artefakt (Admin-Master): https://claude.ai/artifact/2U2W7WC52qfFMDeqTGo8om
 - Repository: jm-berlin/fraxx (Branch `main`, GitHub Pages)
-- Öffentlich: https://fraxx.app/ · Admin: https://fraxx.app/admin/
+- Öffentlich: https://fraxx.app/ (eine öffentliche Admin-Fassung gibt es nicht mehr; der Admin arbeitet im Claude-Artefakt)
 
 ## Schritte
 

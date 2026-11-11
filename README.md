@@ -27,7 +27,6 @@ Beim ersten Start lässt sich die Ausgangssprache wählen.
 
 ```
 index.html            App
-admin/                Admin-Fassung (Auftragsliste, alle Sprachpakete, eigener Speicher)
 runtime.js            lokaler Speicher (Standard + eigene Daten), Ausgangssprache
 ui.js                 App-Einstellungen: Sprachpakete, Sicherung, Installation
 sw.js                 Offline-Betrieb

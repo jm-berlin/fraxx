@@ -69,7 +69,7 @@ def main():
         try: old_packs = json.load(open(pj))
         except Exception: old_packs = {}
 
-    # 3) App bauen (öffentlich + admin/) aus der aktuellen Artefakt-Fassung
+    # 3) App bauen (nur öffentlich; admin/ gibt es nicht mehr) aus der aktuellen Artefakt-Fassung
     shutil.copy(art, os.path.join(REPO, "tools", "multilingo-artefakt.html"))
     r = subprocess.run([sys.executable, "tools/build_app.py", "tools/multilingo-artefakt.html", "."], cwd=REPO, capture_output=True, text=True)
     print(r.stdout[-2000:], r.stderr[-2000:])
@@ -97,7 +97,7 @@ def main():
     n_old, n_new = entries(os.path.join(REPO, "data")), entries(data_new)
     print(f"Einträge: vorher {n_old}, jetzt {n_new}")
     if n_old and n_new < n_old * 0.97: stop(f"ABBRUCH deutlich weniger Einträge als vorher ({n_new} statt {n_old})")
-    for f in ("index.html", "admin/index.html"):
+    for f in ("index.html",):
         if not os.path.exists(os.path.join(REPO, f)): stop("ABBRUCH " + f + " fehlt")
 
     # 6) Übernehmen (Release-Kennung und Änderungshinweise für den Hinweis „Update verfügbar“)
