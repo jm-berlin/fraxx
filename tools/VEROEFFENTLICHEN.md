@@ -21,7 +21,8 @@ Grundregel: **Nur ein neuer Export wird veröffentlicht.** Der Klick auf „Expo
    - `ERGEBNIS: ABBRUCH …` → nichts committen; dem Admin den Grund kurz melden.
    - `ERGEBNIS: FERTIG` → weiter mit 7.
 7. **Hochladen:** `git add -A`, Commit „Veröffentlicht: Export vom <stamp>“ (mit den Attributionszeilen der Sitzung), `git push origin HEAD:main`. Danach mit `git ls-remote origin main` prüfen, dass der Commit angekommen ist.
-8. **Melden:** kurze Nachricht auf Deutsch: Export vom …, Anzahl Einträge, Sprachpakete, was sich gegenüber vorher geändert hat (z. B. neue Sprache, mehr Einträge). Hinweis: installierte Apps holen sich das Update beim nächsten Start mit Internet.
+8. **Sichern:** privates Repo `jm-berlin/fraxx-backup` klonen (`git clone --depth 1 https://github.com/jm-berlin/fraxx-backup.git`; falls nötig erst mit Schreibrechten zur Sitzung hinzufügen), dann `python3 tools/backup.py <export-ordner> <artefakt.html> <backup-ordner>`. Bei `BACKUP …` committen („Sicherung: Export vom <stamp>“, mit Attributionszeilen) und auf `main` pushen. Schlägt die Sicherung fehl, die Veröffentlichung trotzdem melden und den Fehler dazuschreiben.
+9. **Melden:** kurze Nachricht auf Deutsch: Export vom …, Anzahl Einträge, Sprachpakete, was sich gegenüber vorher geändert hat (z. B. neue Sprache, mehr Einträge). Hinweis: installierte Apps holen sich das Update beim nächsten Start mit Internet.
 
 ## Anleitung
 
@@ -31,12 +32,9 @@ Dokumente `tutorial-<lang>` aus dem Export (Auftrag „Anleitung … übersetzen
 die Veröffentlichung bei Fehlern nicht ab. Der deutsche Text steht in `tools/build_tutorial.py` (TEXT["de"]); ändert er sich,
 muss das Artefakt die neue Fassung kennen (TUT_DE/TUT_HASH), sonst übersetzt es nicht neu.
 
-## Artefakt nachziehen (einmalig)
+## Artefakt nachziehen
 
-Das Artefakt heißt noch „Phraxx“ und enthält einige App-Änderungen noch nicht (sie stehen in `tools/app_patches.py`;
-`build_app.py` setzt sie und den Namen Fraxx beim Bauen ohnehin ein). Zum Nachziehen in einer Sitzung mit Netzzugang:
-Artefakt-HTML holen (Artifact `read`), `python3 tools/artefakt_update.py <artefakt.html> neu.html`, dann `neu.html`
-mit `publish_files` (slug des Artefakts, aktuelle Version als base_version, Titel „Fraxx“) veröffentlichen.
+Erledigt am 10.11.2026 (Artefakt Version 288 heißt Fraxx und enthält die App-Änderungen). `tools/artefakt_update.py` bleibt für künftige Fälle.
 
 ## Wichtig
 
