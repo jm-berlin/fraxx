@@ -242,12 +242,12 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
       } catch (e) {}
       if (!groups.length) groups = [{ v: "", d: "", n: [T.gen] }];
       const ov = document.createElement("div"); ov.id = "mlupd"; ov.setAttribute("data-notr", "");
-      ov.innerHTML = `<style>#mlupd{position:fixed;inset:0;z-index:300;background:rgb(10 14 20 / .45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:16px}
-#mlupd .b{width:min(520px,100%);max-height:calc(100vh - 32px);overflow:auto;background:var(--surface,#f3f1ef);color:var(--ink,#141212);border-radius:22px;box-shadow:0 24px 60px rgb(10 14 20 / .3);padding:24px 24px 20px}
+      ov.innerHTML = `<style>#mlupd{position:fixed;inset:0;z-index:300;background:rgb(10 14 20 / .45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(24px,calc(env(safe-area-inset-bottom) + 16px)) max(16px,env(safe-area-inset-left));box-sizing:border-box}
+#mlupd .b{box-sizing:border-box;width:min(520px,100%);max-height:100%;overflow:auto;-webkit-overflow-scrolling:touch;background:var(--surface,#f3f1ef);color:var(--ink,#141212);border-radius:22px;box-shadow:0 24px 60px rgb(10 14 20 / .3);padding:24px 24px 20px}
 #mlupd .k{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--hl,#cc5530);margin:0 0 6px}
 #mlupd h2{margin:0 0 6px;font-size:1.5rem;letter-spacing:-.02em}#mlupd p{margin:0;color:var(--muted,#6b635d);line-height:1.5}
 #mlupd h3{margin:16px 0 8px;font-size:1rem}#mlupd ul{margin:0;padding-left:20px;line-height:1.5}#mlupd li{margin:4px 0}
-#mlupd .r{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:20px}
+#mlupd .r{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:20px;position:sticky;bottom:-20px;background:var(--surface,#f3f1ef);padding:12px 0 20px;margin-bottom:-20px;z-index:1}
 #mlupd button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:10px 18px;cursor:pointer}
 #mlupd .y{background:var(--hl,#cc5530);color:var(--hl-ink,#fff)}#mlupd .n{background:var(--surface-2,#e9e5e2);color:inherit}#mlupd .y:disabled{opacity:.7;cursor:default}
 #mlupd .h{font-size:13px;margin-top:14px}#mlupd h4{margin:14px 0 4px;font-size:.92rem;color:var(--muted,#6b635d)}#mlupd h4:first-of-type{margin-top:4px}</style>
