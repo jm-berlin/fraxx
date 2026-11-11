@@ -1516,7 +1516,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
         <h2 class="htitle">Sprich die Sprache deines <em>Reiseziels</em>.</h2>
         <p class="hlead">Fraxx ist deine persönliche Sprach-App für unterwegs. Du schreibst ein Wort oder eine Redewendung auf Deutsch, den Rest erledigt Fraxx: Übersetzung, Aussprache, Artikel und Konjugation, in allen Sprachen deiner Reise.</p>
         <p class="hreach"><span class="hrsrc" hidden>Du kannst in über 100 Ländern dieser Welt mit Fraxx kommunizieren. Die Fäden und roten Punkte auf dem Globus zeigen genau diese Länder.</span><span class="hrout" data-notr></span></p>
-        <div class="hcta"><button type="button" class="primary" data-go="tocbtn">Loslegen →</button><span class="hplat">Für PC, Mac, iOS und Android</span><a class="hguide" id="hguide" href="https://jm-berlin.github.io/fraxx/anleitung/" target="_blank" rel="noopener">Anleitung</a></div>
+        <div class="hcta"><button type="button" class="primary" data-go="tocbtn">Loslegen →</button><span class="hplat">Für PC, Mac, iOS und Android</span><a class="hguide" id="hguide" href="https://fraxx.app/anleitung/" target="_blank" rel="noopener">Anleitung</a></div>
       </div>
       <div class="hart" aria-hidden="true">
         <div class="gstage" id="gstage"><canvas class="gl"></canvas><canvas class="gl2"></canvas></div>
@@ -6628,7 +6628,7 @@ void main(){
   })();
   // Button „Anleitung“: öffnet die Fassung in der Ausgangssprache (fehlt sie, bleibt es bei Deutsch)
   (()=>{ const g = document.getElementById("hguide"); if(!g) return;
-    g.addEventListener("click", ()=>{ try{ g.href = "https://jm-berlin.github.io/fraxx/anleitung/" + (SRC && SRC!=="de" ? "?lang=" + SRC : ""); }catch(_){} }); })();
+    g.addEventListener("click", ()=>{ try{ g.href = "https://fraxx.app/anleitung/" + (SRC && SRC!=="de" ? "?lang=" + SRC : ""); }catch(_){} }); })();
   // ---------- Startseite ----------
   (()=>{
     const root = document.documentElement, home = document.getElementById("home");

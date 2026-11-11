@@ -2,7 +2,7 @@
 
 Fraxx ist eine **Web-App** (PWA). Es gibt keinen Installer zum Herunterladen: Du öffnest die Adresse einmal im Browser und fügst die App von dort aus hinzu. Danach hat Fraxx ein eigenes Symbol, öffnet sich ohne Browserleiste und funktioniert auch **offline**.
 
-**Adresse:** https://jm-berlin.github.io/fraxx/
+**Adresse:** https://fraxx.app/
 
 > English version: [INSTALL.md](INSTALL.md) · PDF: [Fraxx-Installation.pdf](Fraxx-Installation.pdf)
 

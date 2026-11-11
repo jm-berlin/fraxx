@@ -41,6 +41,8 @@ s = re.sub(r'(data-img="(\w+)" src=")data:image/jpeg;base64,[^"]+', lambda m: m.
 s = s.rstrip() + '\n<script src="ui.js"></script>\n</html>\n'
 # Neuer Name Fraxx (Wortmarke, Icon, Texte, Adresse), solange das Artefakt noch „Phraxx“ heißt
 s = rename_fraxx.convert(s)
+# Eigene Domain: alte GitHub-Pages-Adresse durch https://fraxx.app/ ersetzen (auch wenn das Artefakt sie noch enthält)
+s = s.replace("https://jm-berlin.github.io/fraxx/", "https://fraxx.app/")
 os.makedirs(out, exist_ok=True)
 open(os.path.join(out, "index.html"), "w").write(s)
 ver = hashlib.sha1((s + open(os.path.join(out, "runtime.js")).read() + open(os.path.join(out, "ui.js")).read()).encode()).hexdigest()[:10]

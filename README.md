@@ -2,7 +2,7 @@
 
 Persönliche Sprach-App für Reisen: Wörter und Redewendungen eintragen, dazu Übersetzungen, Aussprache, Artikel, Konjugationen, Grammatik und Speisekarten aus vielen Ländern. Funktioniert nach der Installation auch offline.
 
-**Zur App:** https://jm-berlin.github.io/fraxx/
+**Zur App:** https://fraxx.app/
 
 ## Installieren
 

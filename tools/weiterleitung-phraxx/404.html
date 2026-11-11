@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Fraxx – neue Adresse</title>
-<link rel="canonical" href="https://jm-berlin.github.io/fraxx/">
+<link rel="canonical" href="https://fraxx.app/">
 <style>
 body{margin:0;min-height:100vh;display:grid;place-items:center;background:#e5e2e0;color:#141212;font-family:Urbanist,Inter,system-ui,sans-serif;padding:20px;box-sizing:border-box}
 .bx{background:#f3f1ef;border-radius:24px;box-shadow:0 8px 32px rgb(40 30 25 / .12);padding:32px 28px;max-width:460px;text-align:center}
@@ -18,13 +18,13 @@ a.b{display:inline-block;background:#141212;color:#f3f1ef;text-decoration:none;f
 <div class="bx">
   <h1>Phraxx heißt jetzt Fraxx</h1>
   <p id="t">Die App ist umgezogen. Du wirst gleich weitergeleitet.</p>
-  <a class="b" id="go" href="https://jm-berlin.github.io/fraxx/">Zu Fraxx →</a>
+  <a class="b" id="go" href="https://fraxx.app/">Zu Fraxx →</a>
 </div>
 <script>
 (function(){
   // Alte Adresse /phraxx/… → /fraxx/… (Pfad, Suche und Anker bleiben erhalten)
   var rest = location.pathname.replace(/^\/phraxx\/?/, "");
-  var url = "https://jm-berlin.github.io/fraxx/" + rest + location.search + location.hash;
+  var url = "https://fraxx.app/" + rest + location.search + location.hash;
   document.getElementById("go").href = url;
   var app = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
   if (app) {
