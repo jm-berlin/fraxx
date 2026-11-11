@@ -113,6 +113,10 @@ E('''  function entryRowBuild(e, ctx, copy){''',
 E('''        <li>Auf einen deutschen Eintrag tippen, um ihn zu ändern. Die Übersetzungen werden danach automatisch erneuert.</li>''', '''        <li>Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class="k">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert.</li>''')
 E('''"HTML:Auf einen deutschen Eintrag tippen, um ihn zu ändern. Die Übersetzungen werden danach automatisch erneuert."''', '''"HTML:Auf dem Handy öffnet ein Tipp auf einen Eintrag die Übersetzungen darunter. Eigene Einträge änderst du am PC mit einem Klick auf den Text, auf dem Handy mit <span class=\\"k\\">✎</span>. Einträge aus den Sprachpaketen bleiben unverändert und werden mit jedem Update aktualisiert."''')
 
+# Startseite: Zahl der Einträge (6.469 Wörter und Sätze; die übrigen Datensätze sind Speisekarten, Grammatik, Oberflächentexte)
+E('''<div class="hstat"><b id="hsn" data-notr>6.430</b><span>Einträge in deiner App</span></div>''',
+  '''<div class="hstat"><b id="hsn" data-notr>6.400+</b><span>Einträge in deiner App</span></div>''')
+
 def apply(s, log=print):
     for a, b in EDITS:
         if b in s: continue
