@@ -567,7 +567,8 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
       if (st.error) { clearTimeout(timer); draw(st); show(); return; }
       if (!st.active) { hide(); full = false; box.classList.remove("full"); return; }
       // Vollbild, sobald wirklich aus dem Netz geladen wird (dann gibt es Fortschritt in Bytes)
-      if (!full && (st.items || []).some(x => x.st === "load" && x.got > 0)) { full = true; box.innerHTML = ""; box.classList.add("full"); box.classList.remove("err"); clearTimeout(timer); timer = null; draw(st); show(); return; }
+      // Nur wenn ein Paket noch gar nicht auf dem Gerät ist (erster Start, neue Sprache); Aktualisierungen zeigen den kleinen Hinweis
+      if (!full && (st.items || []).some(x => x.st === "load" && x.got > 0 && x.fresh)) { full = true; box.innerHTML = ""; box.classList.add("full"); box.classList.remove("err"); clearTimeout(timer); timer = null; draw(st); show(); return; }
       draw(st);
       // Nur zeigen, wenn es spürbar dauert (aus dem Gerätespeicher ist es meist sofort fertig)
       if (!shown && !timer) timer = setTimeout(() => { timer = null; if (ML.loading().active) { draw(ML.loading()); show(); } }, 350);

@@ -99,11 +99,21 @@
       throw e;
     }
   }
-  async function loadFile(key, file, version, onProgress) {
+  // Version einer Datei in der Fassung, die noch auf Zustimmung wartet (Update verfügbar)
+  function pendingVersion(key) {
+    const p = state.pending; if (!p) return null;
+    if (key === "core") return (p.core && (p.core.version || p.version)) || null;
+    const x = (p.packs || []).find(q => "lang-" + q.lang === key); return x ? x.version : null;
+  }
+  async function loadFile(key, file, version, onProgress, onFetch) {
     const cached = await iget("packs", key);
     // Gleiche Version (Fingerabdruck des Inhalts) = schon aktuell; sonst die neue, vollständige Datei laden
     if (cached && version && cached.version === version) return cached;
     if (cached && !version) return cached;
+    // Schon die neuere Fassung im Speicher (Update noch nicht übernommen): die nehmen, statt bei jedem Start neu zu laden.
+    // Unter derselben Adresse liegt im Netz ohnehin nur die neue Datei.
+    if (cached && cached.version && cached.version === pendingVersion(key)) return cached;
+    if (onFetch) try { onFetch(!!cached); } catch (e) {}
     try {
       const data = await getJSON(DATA + file, { cache: "no-cache" }, onProgress);
       await iput("packs", key, data); return data;
@@ -119,9 +129,10 @@
     let lastEmit = 0;
     const emit = force => { const t = Date.now(); if (!force && t - lastEmit < 120) return; lastEmit = t; loadSet({ items: items.map(x => ({ ...x })) }); };
     const prog = it => got => { it.got = got; it.st = "load"; emit(false); };
+    const fresh = it => had => { it.fresh = !had; };
     loadSet({ done: 0, total: todo, items: items.map(x => ({ ...x })) });
     items[0].st = "load"; emit(true);
-    const core = await loadFile("core", idx.core.file, idx.core.version || idx.version, prog(items[0]));
+    const core = await loadFile("core", idx.core.file, idx.core.version || idx.version, prog(items[0]), fresh(items[0]));
     items[0].st = "done"; items[0].got = items[0].bytes; emit(true);
     loadSet({ done: 1 });
     const base = new Map(core.docs.map(d => [d.id, clone(d)]));
@@ -130,7 +141,7 @@
       const p = idx.packs.find(x => x.lang === l);
       if (!p) continue;
       const it = items.find(x => x.k === l); if (it) { it.st = "load"; emit(true); }
-      try { packs[l] = await loadFile("lang-" + l, p.file, p.version, it ? prog(it) : null); } catch (e) { console.warn("Paket fehlt", l, e); }
+      try { packs[l] = await loadFile("lang-" + l, p.file, p.version, it ? prog(it) : null, it ? fresh(it) : null); } catch (e) { console.warn("Paket fehlt", l, e); }
       if (it) { it.st = "done"; it.got = it.bytes; emit(true); }
       loadSet({ done: state.load.done + 1 });
     }
