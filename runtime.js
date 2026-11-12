@@ -129,7 +129,7 @@
     let lastEmit = 0;
     const emit = force => { const t = Date.now(); if (!force && t - lastEmit < 120) return; lastEmit = t; loadSet({ items: items.map(x => ({ ...x })) }); };
     const prog = it => got => { it.got = got; it.st = "load"; emit(false); };
-    const fresh = it => had => { it.fresh = !had; };
+    const fresh = it => had => { it.fresh = !had; it.net = true; };
     loadSet({ done: 0, total: todo, items: items.map(x => ({ ...x })) });
     items[0].st = "load"; emit(true);
     const core = await loadFile("core", idx.core.file, idx.core.version || idx.version, prog(items[0]), fresh(items[0]));

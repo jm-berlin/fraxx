@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="77c72e3166">
+<meta name="fraxx-build" content="7c889fd8a6">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
@@ -2803,8 +2803,12 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     dupChecked = true;
     const groups = dupGroups(); if(!groups.length) return;
     const extra = groups.reduce((n,g)=>n+g.length-1, 0);
-    const ex = groups.slice(0,3).map(g=>`„${srcText(g[0])}“`).join(", ");
-    showNotice(`${extra===1 ? "1 Begriff steht" : extra+" Begriffe stehen"} als eigener Eintrag mehrfach in deiner Liste, zum Beispiel ${ex}. Beim Zusammenführen bleibt jeweils ein Haupteintrag übrig, der in allen bisherigen Bereichen gespiegelt erscheint. Quiz-Fortschritt und Konjugation bleiben erhalten.`, null, [
+    // Einmal weggeklickt: erst wieder melden, wenn neue Dubletten dazukommen
+    const sig = groups.map(g=>g.map(e=>e.id).sort().join(",")).sort().join("|");
+    try{ if(localStorage.getItem("rw-dupseen")===sig) return; }catch(_){}
+    const where = g => [...new Set(g.map(e=>secPath(e)))].join(" und ");
+    const ex = groups.length===1 ? `„${srcText(groups[0][0])}“ (in ${where(groups[0])})` : "zum Beispiel " + groups.slice(0,3).map(g=>`„${srcText(g[0])}“`).join(", ");
+    showNotice(`${extra===1 ? "1 Begriff steht" : extra+" Begriffe stehen"} als eigener Eintrag mehrfach in deiner Liste: ${ex}. Beim Zusammenführen bleibt jeweils ein Haupteintrag übrig, der in allen bisherigen Bereichen gespiegelt erscheint. Quiz-Fortschritt und Konjugation bleiben erhalten.`, null, [
       {label:"Zusammenführen", fn: async ()=>{
         let merged = 0;
         for(const g of dupGroups()){
@@ -2827,7 +2831,13 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
         render();
         showNotice(merged===1 ? "1 doppelter Eintrag wurde zusammengeführt. Er erscheint weiter in allen seinen Bereichen." : `${merged} doppelte Einträge wurden zusammengeführt. Sie erscheinen weiter in allen ihren Bereichen.`);
       }},
-      {label:"Anzeigen", fn: ()=>{ search.value = srcText(groups[0][0]); render(); }}
+      {label:"Anzeigen", fn: ()=>{
+        const t = srcText(groups[0][0]);
+        clearTimeout(searchTimer); input.value = t; autosize(); updateGo(); searchQ = t; renderNow();
+        const n = document.getElementById("row-"+groups[0][0].id) || document.querySelector(".hits, #list");
+        if(n) n.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"center"});
+      }},
+      {label:"Nicht mehr zeigen", fn: ()=>{ try{ localStorage.setItem("rw-dupseen", sig); }catch(_){} }}
     ]);
   }
 
@@ -7217,7 +7227,9 @@ ${JSON.stringify(its)}`;
     let cc = []; try{ cc = conjCandidates(); }catch(_){}
     jobs.push({id:"conj", name:"Konjugationen erstellen", left: cc.length + conjInFlight.size, items: cc, running: conjRunning, paused: conjPaused, needsSample:true, unit:"Verben", push: ()=>{ conjPaused = false; scheduleConjQueue(0); }});
     // Schrift von rechts nach links (Arabisch …) ist vorerst keine Ausgangssprache: keine Fassung nötig
+    const sideOk = !sideCol || sideReady();
     ["de", ...MYLANGS.map(l=>l[0])].filter(c=>c!==SRC && !RTL.includes(c)).forEach(c=>{
+      if(!sideOk){ jobs.push({id:"prep:"+c, optional:true, name:`Fassung für Ausgangssprache ${langName(c)} · gespeicherte Fassungen noch nicht geladen`, left:0, unit:"Einträge"}); return; }
       const m = prepMissing(c);
       jobs.push({id:"prep:"+c, optional:true, name:`Fassung für Ausgangssprache ${langName(c)}${prepBusy && prepCur===c && prepWaiting ? " · wartet, bis die Übersetzungen fertig sind" : ""}`, left:m.length, items:m, running: prepBusy && prepCur===c && !prepWaiting, queued: (prepQueue.includes(c) && prepCur!==c) || (prepBusy && prepCur===c && prepWaiting), needsSample:true, unit:"Einträge", push: ()=>queuePrep([c]), pushLabel:"Vorbereiten"});
     });
@@ -7389,7 +7401,11 @@ ${JSON.stringify(TUT_DE)}`;
   }
   function jobHost(){
     try{ let h = localStorage.getItem("rw-jobhost");
-      if(!h){ const p = navigator.platform || ""; h = (/Mac|iPhone|iPad/.test(p) ? "Mac" : /Win/.test(p) ? "Windows" : /Linux/.test(p) ? "Linux" : "Gerät") + " " + Math.random().toString(36).slice(2, 6).toUpperCase(); localStorage.setItem("rw-jobhost", h); }
+      // iPhone und iPad heißen jetzt auch so (das iPad meldet sich sonst als „Mac“)
+      const p = navigator.platform || "", ua = navigator.userAgent || "";
+      const kind = /iPhone/.test(p+ua) ? "iPhone" : (/iPad/.test(p+ua) || (/Mac/.test(p) && navigator.maxTouchPoints > 1)) ? "iPad" : /Mac/.test(p) ? "Mac" : /Win/.test(p) ? "Windows" : /Android/.test(ua) ? "Android" : /Linux/.test(p) ? "Linux" : "Gerät";
+      if(h && /^Mac /.test(h) && kind!=="Mac"){ h = kind + h.slice(3); localStorage.setItem("rw-jobhost", h); }
+      if(!h){ h = kind + " " + Math.random().toString(36).slice(2, 6).toUpperCase(); localStorage.setItem("rw-jobhost", h); }
       return h; }catch(_){ return "Gerät"; }
   }
   async function jobLockTick(force){
@@ -7397,7 +7413,7 @@ ${JSON.stringify(TUT_DE)}`;
     let cur = null; try{ const snap = await remoteCol.doc("lock").get(); cur = snap.exists ? snap.data() : null; }catch(_){ return; }
     try{ const st0 = await remoteCol.doc("status").get(); const nd = st0.exists ? Number((st0.data()||{}).docs) || 0 : 0; if(nd > remoteExpect) remoteExpect = nd; }catch(_){}
     const now = Date.now(), was = jobLockMine;
-    const free = docsReady() && (!cur || !cur.tab || cur.tab===JOB_TAB || now - (Number(cur.at)||0) > 4*60000);
+    const free = docsReady() && (!cur || !cur.tab || cur.tab===JOB_TAB || now - (Number(cur.at)||0) > (String(cur.host||"").split(" ").pop()===jobHost().split(" ").pop() ? 90000 : 4*60000));
     if((force && docsReady()) || free){
       try{ await remoteCol.doc("lock").set({tab: JOB_TAB, host: jobHost(), at: now, atIso: new Date(now).toISOString()}); jobLockMine = true; jobLockOther = null; }catch(_){}
     } else {
@@ -7572,6 +7588,8 @@ ${JSON.stringify(TUT_DE)}`;
   let prepWaiting = false;
   async function runPrep(){
     if(prepBusy || !sample || !loaded) return;
+    // Fassungen liegen in der Ablage: erst laden, sonst sähe alles fehlend aus und würde neu erzeugt
+    if(sideCol && !sideReady()){ loadSide(); setTimeout(runPrep, 5000); return; }
     prepBusy = true;
     try{
       while(prepQueue.length && sample){

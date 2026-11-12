@@ -576,7 +576,9 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
       if (!full && (st.items || []).some(x => x.st === "load" && x.got > 0 && x.fresh)) { full = true; box.innerHTML = ""; box.classList.add("full"); box.classList.remove("err"); clearTimeout(timer); timer = null; draw(st); show(); return; }
       draw(st);
       // Nur zeigen, wenn es spürbar dauert (aus dem Gerätespeicher ist es meist sofort fertig)
-      if (!shown && !timer) timer = setTimeout(() => { timer = null; if (ML.loading().active) { draw(ML.loading()); show(); } }, 350);
+      // Aus dem Gerätespeicher (kein Download) gar nicht anzeigen: das Lesen kann auf dem Handy ein paar Sekunden dauern, ist aber kein „Laden“
+      const net = s => (s.items || []).some(x => x.net);
+      if (!shown && !timer && net(st)) timer = setTimeout(() => { timer = null; const l = ML.loading(); if (l.active && net(l)) { draw(l); show(); } }, 350);
     };
     window.addEventListener("ml-load", e => update(e.detail || {}));
     if (ML.loading) update(ML.loading());
