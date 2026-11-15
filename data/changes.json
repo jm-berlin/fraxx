@@ -1,6 +1,73 @@
 {
  "releases": [
   {
+   "release": "2026-11-15T10:21:25.526Z",
+   "version": "0.9",
+   "date": "2026-11-15",
+   "notes": {
+    "de": [
+     "Neuer Reiter „Essentials“: die wichtigsten Sätze und Wörter für den Anfang, von Begrüßung über Zahlen bis Notfall.",
+     "Neue Grundwörter: ja, nein, hier, dort, links, rechts, geradeaus, wo, wann, wie.",
+     "Quiz: Der Lernstand wächst schon mit jeder richtigen Antwort und zeigt dein nächstes Ziel.",
+     "Auf dem Handy sind die Übersetzungen in der Wortkarte etwas kleiner."
+    ],
+    "en": [
+     "New “Essentials” tab: the most important phrases and words to start with, from greetings and numbers to emergencies.",
+     "New basic words: yes, no, here, there, left, right, straight ahead, where, when, how.",
+     "Quiz: your progress now grows with every correct answer and shows your next goal.",
+     "On phones, translations in the word card are a little smaller."
+    ],
+    "fr": [
+     "Nouvel onglet « Essentials » : les phrases et mots les plus importants pour débuter, des salutations aux chiffres jusqu’aux urgences.",
+     "Nouveaux mots de base : oui, non, ici, là-bas, à gauche, à droite, tout droit, où, quand, comment.",
+     "Quiz : ta progression augmente à chaque bonne réponse et affiche ton prochain objectif.",
+     "Sur mobile, les traductions de la fiche sont un peu plus petites."
+    ],
+    "it": [
+     "Nuova scheda “Essentials”: le frasi e le parole più importanti per iniziare, dai saluti ai numeri fino alle emergenze.",
+     "Nuove parole di base: sì, no, qui, lì, a sinistra, a destra, dritto, dove, quando, come.",
+     "Quiz: i tuoi progressi crescono a ogni risposta giusta e mostrano il prossimo obiettivo.",
+     "Sul telefono le traduzioni nella scheda sono un po’ più piccole."
+    ],
+    "es": [
+     "Nueva pestaña «Essentials»: las frases y palabras más importantes para empezar, desde saludos y números hasta emergencias.",
+     "Nuevas palabras básicas: sí, no, aquí, allí, a la izquierda, a la derecha, recto, dónde, cuándo, cómo.",
+     "Quiz: tu progreso crece con cada respuesta correcta y muestra tu próxima meta.",
+     "En el móvil, las traducciones de la ficha son un poco más pequeñas."
+    ],
+    "pt": [
+     "Novo separador “Essentials”: as frases e palavras mais importantes para começar, de cumprimentos e números até emergências.",
+     "Novas palavras básicas: sim, não, aqui, ali, à esquerda, à direita, em frente, onde, quando, como.",
+     "Quiz: o teu progresso cresce a cada resposta certa e mostra o próximo objetivo.",
+     "No telemóvel, as traduções no cartão são um pouco mais pequenas."
+    ],
+    "nl": [
+     "Nieuw tabblad ‘Essentials’: de belangrijkste zinnen en woorden om mee te beginnen, van begroeten en getallen tot noodgevallen.",
+     "Nieuwe basiswoorden: ja, nee, hier, daar, links, rechts, rechtdoor, waar, wanneer, hoe.",
+     "Quiz: je voortgang groeit nu bij elk goed antwoord en toont je volgende doel.",
+     "Op de telefoon zijn de vertalingen in de woordkaart iets kleiner."
+    ],
+    "pl": [
+     "Nowa zakładka „Essentials”: najważniejsze zdania i słowa na początek, od powitań i liczb po nagłe wypadki.",
+     "Nowe podstawowe słowa: tak, nie, tutaj, tam, w lewo, w prawo, prosto, gdzie, kiedy, jak.",
+     "Quiz: postęp rośnie z każdą poprawną odpowiedzią i pokazuje następny cel.",
+     "Na telefonie tłumaczenia na karcie słowa są nieco mniejsze."
+    ],
+    "sv": [
+     "Ny flik ”Essentials”: de viktigaste fraserna och orden att börja med, från hälsningar och siffror till nödsituationer.",
+     "Nya grundord: ja, nej, här, där, vänster, höger, rakt fram, var, när, hur.",
+     "Quiz: din framsteg växer nu med varje rätt svar och visar ditt nästa mål.",
+     "På mobilen är översättningarna i ordkortet lite mindre."
+    ],
+    "nb": [
+     "Ny fane «Essentials»: de viktigste setningene og ordene å begynne med, fra hilsener og tall til nødsituasjoner.",
+     "Nye grunnord: ja, nei, her, der, til venstre, til høyre, rett frem, hvor, når, hvordan.",
+     "Quiz: fremgangen din vokser nå med hvert riktige svar og viser neste mål.",
+     "På mobilen er oversettelsene i ordkortet litt mindre."
+    ]
+   }
+  },
+  {
    "release": "2026-11-11T09:56:30.368Z",
    "version": "0.8",
    "date": "2026-11-11",

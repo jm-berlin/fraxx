@@ -29,7 +29,7 @@ def main():
         for l in langs:
             shots = tempfile.mkdtemp(prefix=f"tut-{l}-")
             try:
-                r = subprocess.run([sys.executable, os.path.join(REPO, "tools", "tutorial_shots.py"), l, shots, base], capture_output=True, text=True, timeout=600)
+                r = subprocess.run([sys.executable, os.path.join(REPO, "tools", "tutorial_shots.py"), l, shots, base], capture_output=True, text=True, timeout=1500)
                 if r.returncode != 0: print("Screenshots", l, "fehlgeschlagen:", r.stderr[-800:]); continue
                 r = subprocess.run([sys.executable, os.path.join(REPO, "tools", "build_tutorial.py"), shots, OUT, l], capture_output=True, text=True, timeout=300)
                 if r.returncode != 0: print("Anleitung", l, "fehlgeschlagen:", r.stderr[-800:]); continue

@@ -51,7 +51,7 @@ with sync_playwright() as p:
     M["loslegen"] = rect(pg, ".hcta .primary"); M["setbtn"] = rect(pg, "#setbtn")
     # Inhalt, Reiter „Redewendungen nach Themen“
     pg.click("#tocbtn"); pg.wait_for_timeout(1200)
-    pg.locator("#tocposf .tpt").nth(0).click(); pg.wait_for_timeout(800)
+    pg.locator("#tocposf .tpt").nth(1).click(); pg.wait_for_timeout(800)
     pg.screenshot(path=P("03-inhalt.png"))
     card = pg.locator("#tocnav .toccard").filter(has=pg.locator(".hie", has_text="🍽")).first
     if not card.count(): card = pg.locator("#tocnav .toccard").nth(3)
@@ -61,7 +61,7 @@ with sync_playwright() as p:
       if(!e) return null; const b=e.getBoundingClientRect(); return [b.x,b.y,b.width,b.height]}""")
     # Verben mit Konjugation
     fresh(); pg.click("#tocbtn"); pg.wait_for_timeout(1000)
-    pg.locator("#tocposf .tpt").nth(2).click(); pg.wait_for_timeout(1500)
+    pg.locator("#tocposf .tpt").nth(3).click(); pg.wait_for_timeout(1500)
     v = pg.locator('#posf2 [data-pos="verb"]')
     if v.count(): v.click(); pg.wait_for_timeout(2500)
     kb = pg.locator("button.conjbtn:visible").first
@@ -93,7 +93,7 @@ with sync_playwright() as p:
     # Handy
     ctx, pg = context(390, 844, 3, True)
     fresh(); pg.screenshot(path=P("11-mobile-home.png"))
-    pg.click("#tocbtn"); pg.wait_for_timeout(1000); pg.locator("#tocposf .tpt").nth(0).click(); pg.wait_for_timeout(600)
+    pg.click("#tocbtn"); pg.wait_for_timeout(1000); pg.locator("#tocposf .tpt").nth(1).click(); pg.wait_for_timeout(600)
     card = pg.locator("#tocnav .toccard").filter(has=pg.locator(".hie", has_text="🍽")).first
     if not card.count(): card = pg.locator("#tocnav .toccard").nth(3)
     card.locator(".tocmain").click(); pg.wait_for_timeout(2500)

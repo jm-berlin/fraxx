@@ -7706,6 +7706,7 @@ ${JSON.stringify(TUT_DE)}`;
     if(exportBusy) return {ok:false, err:"läuft schon"};
     if(!docsReady()) return {ok:false, err:"nicht alle Einträge geladen"};
     exportBusy = "Export läuft …"; renderDevJobs();
+    showNotice("Export läuft … Das dauert etwa eine Minute. Wenn er fertig ist, erscheint hier „Export fertig“.");
     let res = {ok:false};
     try{
       const assets = await window.claude.use("assets"); if(!assets) throw {code:"not_granted"};
