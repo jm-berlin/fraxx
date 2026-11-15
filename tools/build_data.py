@@ -140,7 +140,7 @@ for d in docs:
         if isinstance(conj, dict): c["conj"] = {k:v for k,v in conj.items() if k not in CATALOG}
         elif "conj" in d: c["conj"] = conj
         if nb: c["nb"] = {"de": {k:v for k,v in (nb.get("de") or {}).items() if k not in CATALOG}} if "de" in nb else {}
-        if isinstance(quiz, dict): c["quiz"] = {k:v for k,v in quiz.items() if k not in LANGS}
+        # Lernstand ist persönlich (Admin-Konto) und gehört nicht in die öffentlichen Pakete
         core.append(c)
         for l in LANGS:
             o = {}
@@ -153,7 +153,6 @@ for d in docs:
                     owner = t if t != "de" else s
                     if owner == l and not (s == "de" and t == "de"): nbo.setdefault(s, {})[t] = v
             if nbo: o["nb"] = nbo
-            if isinstance(quiz, dict) and l in quiz: o["quiz"] = {l: quiz[l]}
             if o: packs[l]["overlay"][d["id"]] = o
     elif kind == "settings":
         # Grundeinstellung der App: Deutsch als Ausgangssprache, Standardsprachen in fester Reihenfolge
