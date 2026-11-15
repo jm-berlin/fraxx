@@ -84,7 +84,7 @@ TEXT = {"de": {
   "steps": [
     ("src", "Sprache wählen", "Beim ersten Start fragt Fraxx, welche Sprache du sprichst. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."),
     ("home", "Loslegen", "Die Startseite zeigt, was Fraxx kann. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."),
-    ("inhalt", "Thema öffnen", "Im <b>Inhalt</b> stehen alle Themen als Kästen: Redewendungen nach Themen (Restaurant, Hotel, Apotheke …) und Wortschatz nach Themen. <b>Öffnen ▾</b> springt direkt hinein."),
+    ("inhalt", "Thema öffnen", "Im <b>Inhalt</b> stehen alle Themen als Kästen. Ganz vorne liegen die <b>Essentials</b>: rund 110 Sätze und Wörter, die du auf jeder Reise zuerst brauchst. Damit fängst du am besten an. Dahinter folgen Redewendungen nach Themen (Restaurant, Hotel, Apotheke …) und Wortschatz nach Themen. <b>Öffnen ▾</b> springt direkt hinein."),
     ("tabelle", "Lesen, hören, merken", "Jede Zeile zeigt einen Eintrag in all deinen Sprachen. Der Lautsprecher 🔊 liest vor, graue Hinweise erklären Besonderheiten. Der Stern ☆ setzt den Eintrag auf deinen Spickzettel."),
     ("set", "Einstellen", "Unter <b>⚙</b> wählst du Ausgangssprache, Sprachniveau (A1 bis C2), deine Sprachen und das Design (Hell oder Dunkel). Ganz oben steht deine Version."),
   ],
@@ -100,7 +100,7 @@ TEXT = {"de": {
   "s3": "Alles, was Fraxx kann", "s3sub": "Die Bereiche im Überblick – oben in der Leiste findest du sie alle.",
   "navcap": "Die Leiste oben: Inhalt, Grammatik, Speisekarte, Spickzettel, Quiz, Hilfe (?) und Einstellungen (⚙).",
   "features": [
-    ("inhalt", "☰ Inhalt", "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Das Suchfeld findet Themen nach Namen."),
+    ("inhalt", "☰ Inhalt", "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Der erste Reiter <b>Essentials</b> sammelt das Wichtigste zum Einstieg: Begrüßung, Höflichkeit, Verständigung, Zahlen, Notfall und die nötigsten Wörter. Das Suchfeld findet Themen nach Namen."),
     ("tabelle", "Übersetzungen und Aussprache", "Jeder Eintrag steht in allen deinen Sprachen nebeneinander, Substantive mit Artikel, Redewendungen sinngemäß übersetzt. 🔊 liest vor, ein zweiter Tipp stoppt. Mit dem Pin hältst du wichtige Einträge oben, mit A–Z sortierst du."),
     ("konj", "Verben und Konjugation", "Verben werden in allen Sprachen konjugiert: Präsens, Perfekt, Präteritum und Futur. <b>Konjugation ▸</b> klappt die Tabellen auf, die Zeit-Knöpfe wechseln die Zeitform."),
     ("gram", "§ Grammatik", "Die wichtigsten Regeln jeder Sprache von A1 bis C1, mit Beispielen zum Anhören. <b>Verben &amp; Endungen</b> zeigt Endungstabellen und unregelmäßige Verben, <b>Typische Fehler</b> die Stolpersteine für Sprecher deiner Sprache. <b>Im Quiz üben</b> fragt ein Kapitel mit Lückensätzen ab."),
@@ -111,6 +111,7 @@ TEXT = {"de": {
   ],
   "mob": "Auf dem Handy", "mobsub": "Gleiche Inhalte, für den Daumen gemacht: Die Zeilen werden zu Karten, die Leiste sitzt oben.",
   "tips": "Kleine Tipps", "tiplist": [
+    "Neu in einer Sprache? Fang mit den <b>Essentials</b> an und übe sie im Quiz: Unter Bereich „Essentials“ wählen.",
     "Sprachniveau unter ⚙ blendet alles über deinem Niveau aus, in Tabelle, Grammatik und Quiz.",
     "Bis zu 5 Sprachen passen nebeneinander in die Tabelle: deine Ausgangssprache und vier weitere.",
     "Bei Sprachen mit anderer Schrift (Arabisch, Russisch, Japanisch …) steht die Umschrift kursiv darunter.",
