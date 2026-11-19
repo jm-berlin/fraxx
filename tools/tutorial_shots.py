@@ -35,7 +35,7 @@ with sync_playwright() as p:
     ctx, pg = context(1280, 1100, 2)
 
     def fresh(first=False):
-        pg.goto(BASE); pg.wait_for_timeout(1500)
+        pg.goto(BASE + ("?chooselang" if first else "")); pg.wait_for_timeout(1500)
         if pg.locator("#mlsrc").count():
             if first:
                 M["src"] = rect(pg, f'#mlsrc button[lang="{LANG}"]'); pg.screenshot(path=P("01-src.png"))
