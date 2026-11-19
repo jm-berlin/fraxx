@@ -1,6 +1,97 @@
 {
  "releases": [
   {
+   "release": "2026-11-19T20:25:29.264Z",
+   "version": "0.10",
+   "date": "2026-11-19",
+   "notes": {
+    "de": [
+     "Neu: der Reiter „Business“ mit rund 430 Sätzen und Wörtern für Meetings, E-Mails, Telefonate, Präsentationen, Verhandlungen, Bewerbung und Geschäftsreise.",
+     "Quiz: „Hören“ hat jetzt einen eigenen Lernstand, und unter Bereich gibt es „Business (alle)“.",
+     "Als App installiert, startet Fraxx mit einer kompakten Startseite: Suche, alle Bereiche, dein Lernstand und zuletzt Geöffnetes.",
+     "Die Hilfe (?) ist jetzt vollständig übersetzt.",
+     "Verbesserungen und Korrekturen."
+    ],
+    "en": [
+     "New: the “Business” tab with around 430 phrases and words for meetings, emails, phone calls, presentations, negotiations, job applications and business trips.",
+     "Quiz: “Listening” now has its own progress, and under Section you can choose “Business (all)”.",
+     "When installed as an app, Fraxx opens with a compact start page: search, all sections, your progress and recently opened sections.",
+     "The help (?) is now fully translated.",
+     "Improvements and fixes."
+    ],
+    "fr": [
+     "Nouveau : l’onglet « Business » avec environ 430 phrases et mots pour les réunions, les e-mails, le téléphone, les présentations, les négociations, les candidatures et les voyages d’affaires.",
+     "Quiz : « Écouter » a désormais sa propre progression, et dans Domaine vous pouvez choisir « Business (tout) ».",
+     "Installée comme application, Fraxx s’ouvre sur une page d’accueil compacte : recherche, tous les domaines, ta progression et les domaines ouverts récemment.",
+     "L’aide (?) est maintenant entièrement traduite.",
+     "Améliorations et corrections."
+    ],
+    "it": [
+     "Novità: la scheda «Business» con circa 430 frasi e parole per riunioni, e-mail, telefonate, presentazioni, trattative, candidature e viaggi di lavoro.",
+     "Quiz: «Ascolto» ha ora un proprio livello di apprendimento e in Sezione puoi scegliere «Business (tutto)».",
+     "Installata come app, Fraxx si apre con una pagina iniziale compatta: ricerca, tutte le sezioni, i tuoi progressi e le sezioni aperte di recente.",
+     "L’aiuto (?) è ora completamente tradotto.",
+     "Miglioramenti e correzioni."
+    ],
+    "es": [
+     "Novedad: la pestaña «Business» con unas 430 frases y palabras para reuniones, correos, llamadas, presentaciones, negociaciones, candidaturas y viajes de negocios.",
+     "Quiz: «Escuchar» tiene ahora su propio progreso y en Sección puedes elegir «Business (todo)».",
+     "Instalada como app, Fraxx se abre con una página de inicio compacta: búsqueda, todas las secciones, tu progreso y lo último que abriste.",
+     "La ayuda (?) está ahora totalmente traducida.",
+     "Mejoras y correcciones."
+    ],
+    "pt": [
+     "Novidade: o separador «Business» com cerca de 430 frases e palavras para reuniões, e-mails, telefonemas, apresentações, negociações, candidaturas e viagens de negócios.",
+     "Quiz: «Ouvir» tem agora o seu próprio progresso e em Secção podes escolher «Business (tudo)».",
+     "Instalada como app, a Fraxx abre com uma página inicial compacta: pesquisa, todas as secções, o teu progresso e o que abriste recentemente.",
+     "A ajuda (?) está agora totalmente traduzida.",
+     "Melhorias e correções."
+    ],
+    "nl": [
+     "Nieuw: het tabblad ‘Business’ met zo’n 430 zinnen en woorden voor vergaderingen, e-mails, telefoongesprekken, presentaties, onderhandelingen, sollicitaties en zakenreizen.",
+     "Quiz: ‘Luisteren’ heeft nu een eigen leervoortgang en bij Onderdeel kun je ‘Business (alle)’ kiezen.",
+     "Als app geïnstalleerd opent Fraxx met een compacte startpagina: zoeken, alle onderdelen, je voortgang en wat je onlangs hebt geopend.",
+     "De hulp (?) is nu volledig vertaald.",
+     "Verbeteringen en correcties."
+    ],
+    "pl": [
+     "Nowość: zakładka „Business” z około 430 zdaniami i słowami na spotkania, e-maile, rozmowy telefoniczne, prezentacje, negocjacje, rekrutację i podróże służbowe.",
+     "Quiz: „Słuchanie” ma teraz własny postęp, a w Dziale można wybrać „Business (wszystko)”.",
+     "Po zainstalowaniu jako aplikacja Fraxx otwiera się kompaktową stroną startową: wyszukiwanie, wszystkie działy, twój postęp i ostatnio otwierane działy.",
+     "Pomoc (?) jest teraz w pełni przetłumaczona.",
+     "Ulepszenia i poprawki."
+    ],
+    "sv": [
+     "Nytt: fliken ”Business” med cirka 430 fraser och ord för möten, mejl, telefonsamtal, presentationer, förhandlingar, jobbansökningar och affärsresor.",
+     "Quiz: ”Lyssna” har nu en egen inlärningsnivå, och under Avsnitt kan du välja ”Business (alla)”.",
+     "Installerad som app öppnar Fraxx med en kompakt startsida: sök, alla avsnitt, dina framsteg och det du nyligen öppnat.",
+     "Hjälpen (?) är nu helt översatt.",
+     "Förbättringar och rättelser."
+    ],
+    "nb": [
+     "Nytt: fanen «Business» med rundt 430 setninger og ord for møter, e-post, telefonsamtaler, presentasjoner, forhandlinger, jobbsøknader og forretningsreiser.",
+     "Quiz: «Lytte» har nå sin egen læringsstatus, og under Område kan du velge «Business (alle)».",
+     "Installert som app åpner Fraxx med en kompakt startside: søk, alle områder, fremgangen din og det du nylig åpnet.",
+     "Hjelpen (?) er nå fullt oversatt.",
+     "Forbedringer og rettelser."
+    ],
+    "tr": [
+     "Yeni: toplantılar, e-postalar, telefon görüşmeleri, sunumlar, pazarlıklar, iş başvuruları ve iş seyahatleri için yaklaşık 430 cümle ve kelime içeren “Business” sekmesi.",
+     "Quiz: “Dinleme” artık kendi öğrenme durumuna sahip ve Bölüm altında “Business (tümü)” seçilebilir.",
+     "Uygulama olarak yüklendiğinde Fraxx kompakt bir başlangıç sayfasıyla açılır: arama, tüm bölümler, ilerlemen ve son açtıkların.",
+     "Yardım (?) artık tamamen çevrildi.",
+     "İyileştirmeler ve düzeltmeler."
+    ],
+    "zh": [
+     "新增：“Business”标签页，约 430 个用于会议、邮件、电话、演示、谈判、求职和商务出行的句子与词语。",
+     "测验：“听力”现在有单独的学习进度，在“范围”中可选择“Business（全部）”。",
+     "安装为应用后，Fraxx 会以简洁的首页打开：搜索、所有板块、你的进度和最近打开的内容。",
+     "帮助（?）现已完整翻译。",
+     "改进与修正。"
+    ]
+   }
+  },
+  {
    "release": "2026-11-15T10:21:25.526Z",
    "version": "0.9",
    "date": "2026-11-15",

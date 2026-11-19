@@ -2,60 +2,64 @@
  "after": [
   [
    "Last ned språkpakker",
-   "Under ⚙ → <b>App, språkpakker og sikkerhetskopi</b> laster du ned språkene du trenger. Hver pakke inneholder alle oversettelser, bøyinger, grammatikk og menyer for det språket."
+   "Under ⚙ → <b>App, språkpakker og sikkerhetskopi</b> laster du ned språkene du trenger. Hver pakke inneholder alle oversettelser, bøyninger, grammatikk og menyer for det språket."
+  ],
+  [
+   "Kort startside",
+   "Når Fraxx er installert som app, åpnes den med en kompakt startside: søkefelt, ruter til alle områdene, quiz-statusen din og områdene du sist åpnet. Den utførlige presentasjonen finner du der under «Hva er Fraxx?»."
   ],
   [
    "Bruk offline",
-   "Alt som er installert, fungerer uten internett: på flyet, i utlandet uten mobildata, i dårlig dekning."
+   "Alt som er installert, fungerer uten internett: på flyet, i utlandet uten datapakke, i dårlig dekning."
   ],
   [
    "Gode stemmer",
-   "Opplesingen bruker stemmene på enheten din. På Mac og Windows høres Chrome som regel mest naturlig ut. Flere stemmer kan du installere i språkinnstillingene på enheten din."
+   "Opplesingen bruker stemmene på enheten din. På Mac og Windows høres Chrome som regel mest naturlig ut. Flere stemmer installerer du i språkinnstillingene på enheten."
   ],
   [
-   "Sikre data",
-   "Stjernene, læringsstatusen og innstillingene dine ligger på enheten. Under ⚙ → App, språkpakker og sikkerhetskopi laster du ned en sikkerhetskopi og kan legge den inn igjen ved behov."
+   "Sikkerhetskopier data",
+   "Stjernene, læringsstatusen og innstillingene dine ligger på enheten. Under ⚙ → App, språkpakker og sikkerhetskopi laster du ned en sikkerhetskopi og legger den inn igjen ved behov."
   ],
   [
    "Oppdateringer",
-   "Finnes det en ny versjon, dukker det opp en prikk på ⚙. Der ser du hva som er nytt, og du bestemmer selv når du oppdaterer."
+   "Når det finnes en ny versjon, dukker det opp en prikk på ⚙. Der ser du hva som er nytt, og du bestemmer selv når du vil oppdatere."
   ]
  ],
- "appcap": "App, språkpakker og sikkerhetskopi: last ned eller fjern språk, last ned sikkerhetskopi.",
+ "appcap": "App, språkpakker og sikkerhetskopi: Last ned eller fjern språk, last ned sikkerhetskopi.",
  "beta": "Testversjon: Å oversette egne nye ord er ikke åpnet ennå og kommer i en senere versjon. Alt annet fungerer allerede, også offline.",
- "end": "God tur!",
- "endsub": "Ha det gøy med Multilingo. Har du en idé eller har du funnet en feil? Vi setter pris på alle tilbakemeldinger.",
+ "end": "God reise!",
+ "endsub": "Ha det gøy med Fraxx. Har du en idé eller har du funnet en feil? Vi blir glade for alle tilbakemeldinger.",
  "eyebrow": "Veiledning · klar på 5 minutter",
  "features": [
   [
    "inhalt",
    "☰ Innhold",
-   "Over 6 000 ord, setninger og uttrykk ordnet etter tema: fra restaurant via apotek og verksted til offentlige kontorer. Dessuten alfabetiske lister for substantiver, verb, adjektiver og mer. Søkefeltet finner temaer etter navn."
+   "Over 6 000 ord, setninger og uttrykk ordnet etter tema: fra restaurant via apotek og verksted til offentlige kontorer. Dessuten alfabetiske lister over substantiver, verb, adjektiver og mer. Den første fanen <b>Essentials</b> samler det viktigste til å begynne med: hilsener, høflighet, å gjøre seg forstått, tall, nød og de aller nødvendigste ordene. Fanen <b>Business</b> byr på rundt 430 setninger og ord som i et businessspråkkurs: smalltalk, møter, telefon og videosamtale, e-poster, presentasjon, forhandling, jobbsøknad, kundeservice, forretningsreise og tall. Søkefeltet finner temaer etter navn."
   ],
   [
    "tabelle",
    "Oversettelser og uttale",
-   "Hver oppføring står side om side på alle språkene dine, substantiver med artikkel, uttrykk oversatt etter meningen. 🔊 leser opp, et nytt trykk stopper. Med pinnen holder du viktige oppføringer øverst, med A–Z sorterer du."
+   "Hver oppføring står på alle språkene dine side om side, substantiver med artikkel og uttrykk oversatt etter meningen. 🔊 leser opp, et nytt trykk stopper. Med pinnen holder du viktige oppføringer øverst, og med A–Z sorterer du."
   ],
   [
    "konj",
    "Verb og bøying",
-   "Verb bøyes på alle språk: presens, perfektum, preteritum og futurum. <b>Bøying ▸</b> åpner tabellene, tidsknappene bytter tidsform."
+   "Verb bøyes på alle språk: presens, perfektum, preteritum og futurum. <b>Bøying ▸</b> åpner tabellene, og tidsknappene bytter tidsform."
   ],
   [
    "gram",
    "§ Grammatikk",
-   "De viktigste reglene for hvert språk fra A1 til C1, med eksempler du kan høre på. <b>Verb & endelser</b> viser endelsestabeller og uregelmessige verb, <b>Typiske feil</b> viser fallgruvene for dem som snakker språket ditt. <b>Øv i quiz</b> tester deg på et kapittel med oppgaver der du fyller inn ord."
+   "De viktigste reglene i hvert språk fra A1 til C1, med eksempler du kan høre på. <b>Verb & endelser</b> viser tabeller over endelser og uregelmessige verb, <b>Typiske feil</b> viser snublesteinene for dem som snakker språket ditt. <b>Øv i quiz</b> tester deg på et kapittel med oppgaver der du fyller inn ord."
   ],
   [
    "verben",
    "Verb & endelser",
-   "Endelser på et blikk: regelmessige mønstre, unntak og de viktigste uregelmessige verbene, hver med eksempel."
+   "Endelser på et blikk: regelmessige mønstre, unntak og de viktigste uregelmessige verbene, hver med et eksempel."
   ],
   [
    "dish",
    "🍽 Menyen",
-   "Rundt 250 populære retter og drikker per land med originalnavn og forklaring, pluss kaffe, øl og vin. Advarsler viser når et navn betyr noe annet andre steder. <b>Bestill ▸</b> viser hvordan du bestiller."
+   "Rundt 250 populære retter og drikker per land med originalnavn og forklaring, pluss kaffe, øl og vin. Advarsler viser når et navn betyr noe annet et annet sted. <b>Bestille ▸</b> viser hvordan du bestiller det."
   ],
   [
    "spick",
@@ -65,61 +69,63 @@
   [
    "quiz",
    "Quiz",
-   "Lær med fire svaralternativer per spørsmål: Ord og setninger eller grammatikk, begge veier, etter nivå og tema. Med <b>🔊 Hør</b> blir det bare lest opp. Etter tre riktige svar regnes en oppføring som lært, og læringsstatusen viser fremgangen din."
+   "Læring med fire svaralternativer per spørsmål: ord og setninger eller grammatikk, i begge retninger, etter nivå og tema. Ved <b>🔊 Hør</b> blir det bare lest opp, slik sjekker du om du forstår det som sies. Hør har sin egen læringsstatus. Etter tre riktige svar regnes en oppføring som lært, og læringsstatusen viser fremgangen din."
   ]
  ],
- "h1": "Slik fungerer <em>Multilingo</em>.",
- "lead": "Multilingo er din personlige språkapp for reise og hverdag: ord, setninger og uttrykk på mange språk, med uttale, bøying, grammatikk, menyer og quiz. Her ser du i noen få steg hvordan du kommer i gang, og etterpå alt som finnes i Multilingo.",
+ "h1": "Slik fungerer <em>Fraxx</em>.",
+ "lead": "Fraxx er din personlige språkapp for reise og hverdag: ord, setninger og uttrykk på mange språk, med uttale, bøying, grammatikk, menyer og quiz. Her ser du i noen få steg hvordan du kommer i gang, og etterpå alt som finnes i Fraxx.",
  "mob": "På mobilen",
  "mobsub": "Samme innhold, laget for tommelen: Radene blir til kort, og linjen ligger øverst.",
- "navcap": "Linjen øverst: Innhold, Grammatikk, Menyen, Jukselapp, Quiz, hjelp (?) og innstillinger (⚙).",
+ "navcap": "Linjen øverst: Innhold, Grammatikk, Menyen, Jukselapp, Quiz, Hjelp (?) og Innstillinger (⚙).",
  "next": "Neste",
- "open": "Åpne Multilingo",
+ "open": "Åpne Fraxx",
  "pause": "Pause",
  "pdf": "Som PDF",
  "play": "Spill av",
  "prev": "Tilbake",
  "s1": "De første stegene",
- "s1sub": "Fem steg fra du åpner appen første gang til din første oversettelse.",
+ "s1sub": "Fem steg fra første åpning til første oversettelse.",
  "s2": "Etter installasjonen",
- "s2sub": "Sett det opp én gang, så fungerer Multilingo også uten internett.",
- "s3": "Alt Multilingo kan",
- "s3sub": "Oversikt over områdene – du finner dem alle i linjen øverst.",
+ "s2sub": "Sett det opp én gang, så fungerer Fraxx også uten internett.",
+ "s3": "Alt Fraxx kan",
+ "s3sub": "Områdene i oversikt – du finner dem alle i linjen øverst.",
  "step": "Steg",
  "steps": [
   [
    "src",
    "Velg språk",
-   "Første gang du starter, spør Multilingo hvilket språk du snakker. Det er ditt <b>Kildespråk</b>: Menyen, forklaringene og tipsene er skrevet på det. Du kan når som helst endre det senere under ⚙."
+   "Fraxx vises med en gang på språket i nettleseren din. Første gang du går videre, spør Fraxx hvilket språk du snakker, og ditt er allerede forhåndsvalgt. Det er ditt <b>Kildespråk</b>: Menyen, forklaringene og tipsene er skrevet på det. Du kan når som helst endre det senere under ⚙."
   ],
   [
    "home",
    "Kom i gang",
-   "Startsiden viser hva Multilingo kan. <b>Kom i gang →</b> åpner innholdsfortegnelsen. Trykker du på logoen, kommer du alltid tilbake hit."
+   "Startsiden viser hva Fraxx kan. Øverst til høyre bytter du språk på siden. <b>Kom i gang →</b> åpner innholdsfortegnelsen. Et trykk på logoen tar deg alltid tilbake hit."
   ],
   [
    "inhalt",
    "Åpne et tema",
-   "Under <b>Innhold</b> ligger alle temaene som bokser: Uttrykk etter tema (restaurant, hotell, apotek …) og Ordforråd etter temaer. <b>Åpne ▾</b> tar deg rett inn."
+   "Under <b>Innhold</b> ligger alle temaene som bokser. Helt foran ligger <b>Essentials</b>: rundt 110 setninger og ord du trenger først på enhver reise. Det er best å begynne med dem. Ved siden av ligger <b>Business</b> med setninger og ord til møter, e-poster, telefonsamtaler og forhandlinger. Etter det følger uttrykk etter tema (restaurant, hotell, apotek …) og ordforråd etter temaer. <b>Åpne ▾</b> tar deg rett inn."
   ],
   [
    "tabelle",
    "Les, hør, husk",
-   "Hver rad viser en oppføring på alle språkene dine. Høyttaleren 🔊 leser opp, grå tips forklarer det som er spesielt. Stjernen ☆ legger oppføringen på jukselappen din."
+   "Hver rad viser én oppføring på alle språkene dine. Høyttaleren 🔊 leser opp, og grå merknader forklarer det som er spesielt. Stjernen ☆ legger oppføringen på jukselappen din."
   ],
   [
    "set",
    "Innstillinger",
-   "Under <b>⚙</b> velger du Kildespråk, Språknivå (A1 til C2), språkene dine og designet (Lys eller Mørk). Helt øverst står versjonen din."
+   "Under <b>⚙</b> velger du kildespråk, språknivå (A1 til C2), språkene dine og utseende (Lys eller Mørk). Øverst står versjonen din."
   ]
  ],
  "tiplist": [
-  "Språknivå under ⚙ skjuler alt over nivået ditt, i tabellen, grammatikken og quizen.",
+  "Ny i et språk? Begynn med <b>Essentials</b> og øv på dem i quiz: Velg «Essentials» under Område.",
+  "Til jobben: Velg «Business (alle)» under Område i quiz og øv på møter, e-poster og forhandling.",
+  "Språknivå under ⚙ skjuler alt over nivået ditt, i tabell, grammatikk og quiz.",
   "Opptil 5 språk får plass ved siden av hverandre i tabellen: kildespråket ditt og fire til.",
-  "For språk med et annet skriftsystem (arabisk, russisk, japansk …) står translitterasjonen i kursiv under.",
-  "<b>?</b> øverst til høyre forklarer hver funksjon i detalj.",
-  "Helseinformasjonen er uten garanti og erstatter ikke rådgivning. Den hjelper deg å gjøre deg forstått hos lege eller apotek."
+  "For språk med et annet skriftsystem (arabisk, russisk, japansk …) står transkripsjonen i kursiv under.",
+  "<b>?</b> øverst til høyre forklarer hver funksjon utførlig.",
+  "Helseopplysningene er uten garanti og erstatter ikke rådgivning. De hjelper deg å gjøre deg forstått hos lege eller apotek."
  ],
  "tips": "Små tips",
- "title": "Multilingo – Veiledning"
+ "title": "Fraxx – Veiledning"
 }

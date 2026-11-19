@@ -1,125 +1,131 @@
 {
  "after": [
   [
-   "Dil paketlerini indir",
-   "⚙ → <b>Uygulama, dil paketleri ve yedekleme</b> altından ihtiyacın olan dilleri indirirsin. Her paket, o dilin tüm çevirilerini, çekimlemelerini, dil bilgisini ve yemek listelerini içerir."
+   "Dil paketlerini yükle",
+   "⚙ → <b>Uygulama, dil paketleri ve yedekleme</b> altında ihtiyacın olan dilleri yüklersin. Her paket o dilin tüm çevirilerini, çekimlerini, dil bilgisini ve yemek listelerini içerir."
+  ],
+  [
+   "Kısa ana sayfa",
+   "Uygulama olarak kurulduğunda Fraxx kompakt bir ana sayfayla açılır: arama kutusu, tüm bölümler için kutucuklar, quiz durumun ve en son açtığın bölümler. Ayrıntılı tanıtıma orada „Fraxx nedir?“ üzerinden ulaşırsın."
   ],
   [
    "Çevrimdışı kullan",
-   "Yüklü olan her şey internetsiz çalışır: uçakta, mobil verisiz yurt dışında, çekmeyen yerlerde."
+   "Kurulu olan her şey internetsiz çalışır: uçakta, yurt dışında mobil veri olmadan, çekmeyen yerlerde."
   ],
   [
    "Güzel sesler",
-   "Sesli okuma cihazının sesleriyle yapılır. Mac'te ve Windows'ta genelde Chrome en doğal duyulur. Başka sesleri cihazının dil ayarlarından yükleyebilirsin."
+   "Sesli okuma cihazının sesleriyle yapılır. Mac'te ve Windows'ta Chrome genellikle en doğal sesi verir. Başka sesleri cihazının dil ayarlarından yükleyebilirsin."
   ],
   [
    "Verilerini yedekle",
-   "Yıldızların, öğrenme durumun ve ayarların cihazında durur. ⚙ → Uygulama, dil paketleri ve yedekleme altından bir yedek indirirsin, gerekirse geri yüklersin."
+   "Yıldızların, öğrenme durumun ve ayarların cihazında durur. ⚙ → Uygulama, dil paketleri ve yedekleme altından bir yedek indirir, gerekirse geri yüklersin."
   ],
   [
    "Güncellemeler",
-   "Yeni bir sürüm olduğunda ⚙ üzerinde bir nokta belirir. Orada nelerin yeni olduğunu görürsün ve ne zaman güncelleyeceğine kendin karar verirsin."
+   "Yeni bir sürüm olduğunda ⚙ üzerinde bir nokta belirir. Orada nelerin yeni olduğunu görür ve ne zaman güncelleyeceğine kendin karar verirsin."
   ]
  ],
  "appcap": "Uygulama, dil paketleri ve yedekleme: Dilleri yükle veya kaldır, yedek indir.",
  "beta": "Deneme sürümü: Kendi yeni kelimelerini çevirme özelliği henüz açık değil, sonraki bir sürümde gelecek. Geri kalan her şey şimdiden çalışıyor, çevrimdışı da.",
  "end": "İyi yolculuklar!",
- "endsub": "Multilingo ile iyi eğlenceler. Bir fikrin mi var ya da bir hata mı buldun? Her geri bildirime seviniriz.",
+ "endsub": "Fraxx ile iyi eğlenceler. Bir fikrin mi var ya da bir hata mı buldun? Her geri bildirime seviniriz.",
  "eyebrow": "Kılavuz · 5 dakikada hazırsın",
  "features": [
   [
    "inhalt",
    "☰ İçerik",
-   "6.000'den fazla kelime, cümle ve deyim, konulara göre düzenlenmiş: restorandan eczaneye, tamirhaneden resmi daireye kadar. Ayrıca isimler, fiiller, sıfatlar ve daha fazlası için alfabetik listeler. Arama alanı konuları adlarına göre bulur."
+   "6.000'den fazla kelime, cümle ve deyim, konulara göre düzenli: restorandan eczaneye, tamirhaneden resmi daireye kadar. Ayrıca isimler, fiiller, sıfatlar ve daha fazlası için alfabetik listeler. İlk sekme <b>Essentials</b> başlangıç için en önemli şeyleri toplar: selamlaşma, nezaket, anlaşma, sayılar, acil durum ve en gerekli kelimeler. <b>Business</b> sekmesi bir iş dili kursundaki gibi yaklaşık 430 cümle ve kelime sunar: sohbet, toplantılar, telefon ve görüntülü görüşme, e-postalar, sunum yapma, pazarlık, iş başvurusu, müşteri hizmetleri, iş seyahati ve sayılar. Arama kutusu konuları adlarına göre bulur."
   ],
   [
    "tabelle",
    "Çeviriler ve telaffuz",
-   "Her girdi tüm dillerinde yan yana durur, isimler artikelleriyle, deyimler anlamca çevrilmiş. 🔊 sesli okur, ikinci dokunuş durdurur. Raptiye ile önemli girdileri üstte tutarsın, A–Z ile sıralarsın."
+   "Her girdi tüm dillerinde yan yana durur, isimler artikelle, deyimler anlamına uygun çevrilmiş. 🔊 sesli okur, ikinci dokunuş durdurur. Raptiye ile önemli girdileri üstte tutar, A–Z ile sıralarsın."
   ],
   [
    "konj",
    "Fiiller ve çekimleme",
-   "Fiiller tüm dillerde çekimlenir: şimdiki zaman, geçmiş zaman ve gelecek zaman. <b>Çekimleme ▸</b> tabloları açar, zaman düğmeleri zaman kipini değiştirir."
+   "Fiiller tüm dillerde çekimlenir: şimdiki zaman, geçmiş zaman ve gelecek zaman biçimleri. <b>Çekimleme ▸</b> tabloları açar, zaman düğmeleri zaman kipini değiştirir."
   ],
   [
    "gram",
    "§ Dil bilgisi",
-   "Her dilin en önemli kuralları A1'den C1'e, dinleyebileceğin örneklerle. <b>Fiiller ve çekim ekleri</b> çekim eki tablolarını ve düzensiz fiilleri, <b>Tipik hatalar</b> senin dilini konuşanlar için tuzakları gösterir. <b>Quizde pratik yap</b> bir bölümü boşluk doldurma cümleleriyle sorar."
+   "Her dilin A1'den C1'e en önemli kuralları, dinleyebileceğin örneklerle. <b>Fiiller ve çekim ekleri</b> ek tablolarını ve düzensiz fiilleri, <b>Tipik hatalar</b> dilini konuşanlar için tökezleme noktalarını gösterir. <b>Quizde pratik yap</b> bir bölümü boşluk doldurma cümleleriyle sorar."
   ],
   [
    "verben",
    "Fiiller ve çekim ekleri",
-   "Çekim ekleri bir bakışta: düzenli kalıplar, istisnalar ve en önemli düzensiz fiiller, her biri örnekle."
+   "Ekler tek bakışta: düzenli kalıplar, istisnalar ve en önemli düzensiz fiiller, her biri örnekle."
   ],
   [
    "dish",
    "🍽 Yemek listesi",
-   "Her ülkeden yaklaşık 250 popüler yemek ve içecek, özgün adları ve açıklamalarıyla; ayrıca kahve, bira ve şarap. Uyarılar, bir adın başka yerde farklı bir anlama geldiğini gösterir. <b>Sipariş ▸</b> nasıl sipariş vereceğini gösterir."
+   "Her ülkeden yaklaşık 250 sevilen yemek ve içecek, orijinal adları ve açıklamalarıyla; ayrıca kahve, bira ve şarap. Uyarılar, bir adın başka yerde farklı bir anlama geldiğini gösterir. <b>Sipariş ▸</b> nasıl sipariş vereceğini gösterir."
   ],
   [
    "spick",
    "★ Kopya kâğıdı",
-   "Yıldızla işaretlediğin her şey tek dilde özetlenir: kelimeler, deyimler ve yemekler. <b>Yazdır</b> bundan seyahat için bir kâğıt hazırlar."
+   "Yıldızla işaretlediğin her şey tek dilde derli toplu: kelimeler, deyimler ve yemekler. <b>Yazdır</b> bundan seyahat için bir kâğıt yapar."
   ],
   [
    "quiz",
    "Quiz",
-   "Soru başına dört cevapla öğren: kelimeler & cümleler veya dil bilgisi, iki yönde, düzeye ve konuya göre. <b>🔊 Dinle</b> seçeneğinde yalnızca sesli okunur. Üç doğru cevaptan sonra bir girdi öğrenilmiş sayılır, öğrenme durumu ilerlemeni gösterir."
+   "Her soruda dört cevapla öğren: Kelimeler & Cümleler veya dil bilgisi, her iki yönde, düzeye ve konuya göre. <b>🔊 Dinle</b> seçeneğinde yalnızca sesli okunur, böylece söyleneni anlayıp anlamadığını sınarsın. Dinlemenin ayrı bir öğrenme durumu vardır. Üç doğru cevaptan sonra bir girdi öğrenilmiş sayılır, öğrenme durumu ilerlemeni gösterir."
   ]
  ],
- "h1": "<em>Multilingo</em> böyle çalışır.",
- "lead": "Multilingo, seyahat ve günlük hayat için kişisel dil uygulaman: Birçok dilde kelimeler, cümleler ve deyimler; yanında telaffuz, çekimleme, dil bilgisi, yemek listeleri ve quiz. Burada birkaç adımda nasıl başlayacağını, ardından da Multilingo'da neler olduğunu görürsün.",
+ "h1": "<em>Fraxx</em> böyle çalışır.",
+ "lead": "Fraxx, seyahat ve günlük hayat için kişisel dil uygulaman: Birçok dilde kelimeler, cümleler ve deyimler; telaffuz, çekimleme, dil bilgisi, yemek listeleri ve quiz ile birlikte. Burada birkaç adımda nasıl başlayacağını, ardından Fraxx'in sunduğu her şeyi görebilirsin.",
  "mob": "Telefonda",
- "mobsub": "Aynı içerik, başparmak için yapıldı: Satırlar kartlara dönüşür, çubuk üstte durur.",
+ "mobsub": "Aynı içerik, başparmağa göre yapılmış: Satırlar kartlara dönüşür, çubuk üstte durur.",
  "navcap": "Üstteki çubuk: İçerik, Dil bilgisi, Yemek listesi, Kopya kâğıdı, Quiz, Yardım (?) ve Ayarlar (⚙).",
  "next": "İleri",
- "open": "Multilingo'yu aç",
- "pause": "Durdur",
+ "open": "Fraxx'i aç",
+ "pause": "Duraklat",
  "pdf": "PDF olarak",
  "play": "Oynat",
  "prev": "Geri",
  "s1": "İlk adımlar",
- "s1sub": "İlk açılıştan ilk çeviriye beş adım.",
+ "s1sub": "İlk açılıştan ilk çeviriye kadar beş adım.",
  "s2": "Kurulumdan sonra",
- "s2sub": "Bir kez ayarla, sonra Multilingo internetsiz de çalışır.",
- "s3": "Multilingo'nun yapabildiği her şey",
+ "s2sub": "Bir kez ayarla, sonra Fraxx internetsiz de çalışır.",
+ "s3": "Fraxx'in sunduğu her şey",
  "s3sub": "Bölümlere genel bakış – hepsini üstteki çubukta bulursun.",
  "step": "Adım",
  "steps": [
   [
    "src",
    "Dil seç",
-   "İlk açılışta Multilingo hangi dili konuştuğunu sorar. Bu senin <b>kaynak dilin</b>: Menü, açıklamalar ve ipuçları bu dilde yazılır. Daha sonra ⚙ altından istediğin zaman değiştirebilirsin."
+   "Fraxx hemen tarayıcının dilinde açılır. İlk ilerleyişinde Fraxx bir kez hangi dili konuştuğunu sorar, seninki zaten seçili gelir. Bu senin <b>Kaynak dilin</b>: Menü, açıklamalar ve ipuçları bu dilde yazılır. Bunu sonradan ⚙ altından istediğin zaman değiştirebilirsin."
   ],
   [
    "home",
    "Başla",
-   "Ana sayfa Multilingo'nun neler yapabildiğini gösterir. <b>Başla →</b> içerik listesini açar. Logoya dokunarak istediğin zaman buraya dönebilirsin."
+   "Ana sayfa Fraxx'in neler yapabildiğini gösterir. Sağ üstten sayfanın dilini değiştirirsin. <b>Başla →</b> içindekiler sayfasını açar. Logoya dokunarak istediğin zaman buraya dönebilirsin."
   ],
   [
    "inhalt",
-   "Konu aç",
-   "<b>İçerik</b> bölümünde tüm konular kutular halinde durur: konuya göre deyimler (restoran, otel, eczane …) ve konulara göre kelime dağarcığı. <b>Aç ▾</b> seni doğrudan içine götürür."
+   "Bir konu aç",
+   "<b>İçerik</b> bölümünde tüm konular kutular halinde durur. En başta <b>Essentials</b> var: Her seyahatte ilk ihtiyaç duyacağın yaklaşık 110 cümle ve kelime. En iyisi buradan başlamak. Yanında toplantılar, e-postalar, telefon görüşmeleri ve pazarlıklar için cümle ve kelimeler içeren <b>Business</b> yer alır. Ardından konulara göre deyimler (restoran, otel, eczane …) ve konulara göre kelime dağarcığı gelir. <b>Aç ▾</b> seni doğrudan içine götürür."
   ],
   [
    "tabelle",
    "Oku, dinle, aklında tut",
-   "Her satır, bir girdiyi tüm dillerinde gösterir. Hoparlör 🔊 sesli okur, gri ipuçları özel durumları açıklar. Yıldız ☆ girdiyi kopya kâğıdına ekler."
+   "Her satır bir girdiyi tüm dillerinde gösterir. Hoparlör 🔊 sesli okur, gri notlar özel durumları açıklar. Yıldız ☆ girdiyi kopya kâğıdına ekler."
   ],
   [
    "set",
    "Ayarla",
-   "<b>⚙</b> altında kaynak dilini, dil düzeyini (A1'den C2'ye), dillerini ve görünümü (Açık veya Koyu) seçersin. En üstte sürümün yazar."
+   "<b>⚙</b> altında kaynak dilini, dil düzeyini (A1'den C2'ye), dillerini ve görünümü (Açık veya Koyu) seçersin. En üstte sürümünü görürsün."
   ]
  ],
  "tiplist": [
-  "⚙ altındaki dil düzeyi, tabloda, dil bilgisinde ve quizde düzeyinin üstündeki her şeyi gizler.",
-  "Tabloya en fazla 5 dil yan yana sığar: kaynak dilin ve dört dil daha.",
-  "Farklı alfabeli dillerde (Arapça, Rusça, Japonca …) okunuş altta italik olarak yazılır.",
+  "Bir dilde yeni misin? <b>Essentials</b> ile başla ve quizde pratik yap: Bölüm altında „Essentials“ seç.",
+  "İş için: Quizde Bölüm altında „Business (hepsi)“ seç ve toplantıları, e-postaları ve pazarlığı çalış.",
+  "⚙ altındaki dil düzeyi, düzeyinin üzerindeki her şeyi tabloda, dil bilgisinde ve quizde gizler.",
+  "Tabloya yan yana en fazla 5 dil sığar: kaynak dilin ve dört dil daha.",
+  "Farklı alfabeli dillerde (Arapça, Rusça, Japonca …) okunuş italik olarak altta yer alır.",
   "Sağ üstteki <b>?</b> her işlevi ayrıntılı açıklar.",
-  "Sağlıkla ilgili bilgiler garanti vermez ve tavsiyenin yerini tutmaz. Doktor veya eczacıyla anlaşmana yardımcı olurlar."
+  "Sağlık bilgileri garanti vermez ve danışmanlığın yerini tutmaz. Doktor veya eczacıyla anlaşmana yardımcı olurlar."
  ],
  "tips": "Küçük ipuçları",
- "title": "Multilingo – Kılavuz"
+ "title": "Fraxx – Kılavuz"
 }

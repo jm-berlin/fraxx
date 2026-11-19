@@ -302,6 +302,12 @@
   function askSource(idx) {
     const ready = ["de", ...(idx.packs || []).filter(p => p.src).map(p => p.lang)];
     if (ready.length < 2) return Promise.resolve("de");
+    // Browsersprache direkt übernehmen, wenn es sie als Ausgangssprache gibt (Auswahl erzwingen: ?chooselang)
+    const pick = !/[?&]chooselang\b/.test(location.search);
+    const prefs = [...(navigator.languages || []), navigator.language || ""].map(x => String(x).slice(0, 2).toLowerCase());
+    const auto = prefs.find(x => ready.includes(x));
+    // Die App fragt dann beim ersten Weitergehen von der Startseite noch einmal nach (vorausgewählt: diese Sprache)
+    if (pick && auto) { try { localStorage.setItem("ml-srcask", "1"); } catch (e) {} return Promise.resolve(auto); }
     return new Promise(res => {
       const show = () => {
         const nav = (navigator.language || "de").slice(0, 2).toLowerCase();
