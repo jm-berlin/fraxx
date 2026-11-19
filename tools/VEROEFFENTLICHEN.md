@@ -11,7 +11,7 @@ Grundregel: **Nur ein neuer Export wird veröffentlicht.** Der Klick auf „Expo
 ## Schritte
 
 1. **Repository holen:** `git clone --depth 1 https://github.com/jm-berlin/fraxx.git` (falls nicht erreichbar: Repository mit Schreibrechten zur Sitzung hinzufügen, dann klonen).
-2. **Exportteile finden:** Dateispeicher des Artefakts auflisten (Artifact `list`, `scope: "assets"`). Ein Export besteht aus mehreren JSON-Teilen, die innerhalb weniger Minuten hochgeladen wurden. Die Teile des **neuesten** Exports nehmen (alle mit fast gleicher Uhrzeit wie die jüngste Datei).
+2. **Exportteile finden:** Dateispeicher des Artefakts auflisten (Artifact `list`, `scope: "assets"`). Ein Export besteht aus mehreren JSON-Teilen, die innerhalb weniger Minuten hochgeladen wurden. Die Teile des **neuesten** Exports nehmen (alle mit fast gleicher Uhrzeit wie die jüngste Datei). Seit 19.11.2026 löscht die Admin-Seite nach jedem Export die älteren Teile selbst (Knopf „Alte Exporte löschen“ unter ⚙ → Admin macht das auch von Hand).
    - Ist die jüngste Datei nicht neuer als `publishedAt`/`stamp` in `tools/last-export.json`: **nichts tun**, fertig (keine Nachricht nötig).
 3. **Teile herunterladen:** jede Datei mit Artifact `read` (`path` = Asset-ID) in einen leeren Ordner, z. B. `export/`.
 4. **Artefakt-Quelltext holen:** Artifact `read` mit der Artefakt-URL; die gespeicherte HTML-Datei verwenden.
