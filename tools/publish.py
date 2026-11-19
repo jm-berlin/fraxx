@@ -121,8 +121,9 @@ def main():
         tdir = os.path.join(REPO, "tools", "tutorial-texts"); os.makedirs(tdir, exist_ok=True)
         de_txt = json.load(open(os.path.join(tdir, "de.json")))
         th = hashlib.sha1(json.dumps(de_txt, ensure_ascii=False, sort_keys=True).replace("Fraxx", "Multilingo").replace("Phraxx", "Multilingo").replace("Viavox", "Multilingo").encode()).hexdigest()[:10]  # Hash wie im Artefakt (Text noch mit altem Namen)
+        th2 = hashlib.sha1(json.dumps(de_txt, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:10]  # so rechnet das Artefakt heute
         for d in docs:
-            if d.get("kind") == "tutorial" and d.get("hash") == th and isinstance(d.get("text"), dict) and d.get("lang") and (d["text"].get("after") or [[None]])[0][0] != de_txt["after"][0][0]:
+            if d.get("kind") == "tutorial" and d.get("hash") in (th, th2) and isinstance(d.get("text"), dict) and d.get("lang") and (d["text"].get("after") or [[None]])[0][0] != de_txt["after"][0][0]:
                 json.dump(d["text"], open(os.path.join(tdir, d["lang"] + ".json"), "w"), ensure_ascii=False, indent=1)
     except Exception as e: print("Hinweis: Anleitungstexte nicht übernommen:", e)
     tutorial_pending = True

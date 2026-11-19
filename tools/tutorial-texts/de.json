@@ -22,7 +22,7 @@
   [
    "inhalt",
    "Thema öffnen",
-   "Im <b>Inhalt</b> stehen alle Themen als Kästen. Ganz vorne liegen die <b>Essentials</b>: rund 110 Sätze und Wörter, die du auf jeder Reise zuerst brauchst. Damit fängst du am besten an. Dahinter folgen Redewendungen nach Themen (Restaurant, Hotel, Apotheke …) und Wortschatz nach Themen. <b>Öffnen ▾</b> springt direkt hinein."
+   "Im <b>Inhalt</b> stehen alle Themen als Kästen. Ganz vorne liegen die <b>Essentials</b>: rund 110 Sätze und Wörter, die du auf jeder Reise zuerst brauchst. Damit fängst du am besten an. Daneben liegt <b>Business</b> mit Sätzen und Wörtern für Meetings, E-Mails, Telefonate und Verhandlungen. Dahinter folgen Redewendungen nach Themen (Restaurant, Hotel, Apotheke …) und Wortschatz nach Themen. <b>Öffnen ▾</b> springt direkt hinein."
   ],
   [
    "tabelle",
@@ -67,7 +67,7 @@
   [
    "inhalt",
    "☰ Inhalt",
-   "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Der erste Reiter <b>Essentials</b> sammelt das Wichtigste zum Einstieg: Begrüßung, Höflichkeit, Verständigung, Zahlen, Notfall und die nötigsten Wörter. Das Suchfeld findet Themen nach Namen."
+   "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Der erste Reiter <b>Essentials</b> sammelt das Wichtigste zum Einstieg: Begrüßung, Höflichkeit, Verständigung, Zahlen, Notfall und die nötigsten Wörter. Der Reiter <b>Business</b> bringt rund 430 Sätze und Wörter wie in einem Business-Sprachkurs: Small Talk, Meetings, Telefon und Videocall, E-Mails, Präsentieren, Verhandeln, Bewerbung, Kundenservice, Geschäftsreise und Zahlen. Das Suchfeld findet Themen nach Namen."
   ],
   [
    "tabelle",
@@ -102,7 +102,7 @@
   [
    "quiz",
    "Quiz",
-   "Lernen mit vier Antworten pro Frage: Wörter &amp; Sätze oder Grammatik, in beide Richtungen, nach Niveau und Thema. Bei <b>🔊 Hören</b> wird nur vorgelesen. Nach drei richtigen Antworten gilt ein Eintrag als gelernt, der Lernstand zeigt deinen Fortschritt."
+   "Lernen mit vier Antworten pro Frage: Wörter &amp; Sätze oder Grammatik, in beide Richtungen, nach Niveau und Thema. Bei <b>🔊 Hören</b> wird nur vorgelesen, so prüfst du, ob du verstehst, was gesagt wird. Hören hat einen eigenen Lernstand. Nach drei richtigen Antworten gilt ein Eintrag als gelernt, der Lernstand zeigt deinen Fortschritt."
   ]
  ],
  "mob": "Auf dem Handy",
@@ -110,6 +110,7 @@
  "tips": "Kleine Tipps",
  "tiplist": [
   "Neu in einer Sprache? Fang mit den <b>Essentials</b> an und übe sie im Quiz: Unter Bereich „Essentials“ wählen.",
+  "Für den Beruf: Im Quiz unter Bereich „Business (alle)“ wählen und Meetings, E-Mails und Verhandeln üben.",
   "Sprachniveau unter ⚙ blendet alles über deinem Niveau aus, in Tabelle, Grammatik und Quiz.",
   "Bis zu 5 Sprachen passen nebeneinander in die Tabelle: deine Ausgangssprache und vier weitere.",
   "Bei Sprachen mit anderer Schrift (Arabisch, Russisch, Japanisch …) steht die Umschrift kursiv darunter.",

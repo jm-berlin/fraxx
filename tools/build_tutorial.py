@@ -11,7 +11,7 @@ from PIL import Image
 SHOTS, OUT = sys.argv[1], sys.argv[2]
 LANG = sys.argv[3] if len(sys.argv) > 3 else "de"
 APP = "https://fraxx.app/"
-VIEW_W, VIEW_H = 1280, 820  # CSS-Pixel der Screenshots am PC
+VIEW_W, VIEW_H = 1280, 1100  # CSS-Pixel der Screenshots am PC
 
 # Ausschnitte (CSS-Pixel x, y, b, h) und Markierungen (CSS-Pixel x, y, b, h) je Screenshot
 SHOT = {
@@ -19,7 +19,7 @@ SHOT = {
     "home":    ("02-home.png",         None, [(94, 636, 142, 51)]),
     "nav":     ("02-home.png",         (560, 30, 700, 80), [(1193, 52, 37, 37)]),
     "inhalt":  ("03-inhalt.png",       None, []),
-    "tabelle": ("04-tabelle.png",      (0, 34, 1280, 786), [(480, 135, 22, 22)]),
+    "tabelle": ("04-tabelle.png",      (0, 34, 1280, 1066), [(480, 135, 22, 22)]),
     "konj":    ("04b-konjugation.png", None, []),
     "set":     ("05-settings.png",     (0, 30, 1280, 560), [(204, 189, 220, 31), (62, 140, 190, 30)]),
     "gram":    ("06-grammatik.png",    None, []),
@@ -28,7 +28,7 @@ SHOT = {
     "spick":   ("08-spick.png",        None, []),
     "quiz":    ("09-quiz.png",         None, []),
     "quiz2":   ("09b-quiz-frage.png",  None, []),
-    "app":     ("12-appdaten.png",     (210, 0, 800, 820), []),
+    "app":     ("12-appdaten.png",     (210, 0, 800, 1100), []),
     "mhome":   ("11-mobile-home.png",  "m", []),
     "mkarte":  ("11b-mobile-karte.png", "m", []),
 }
@@ -84,7 +84,7 @@ TEXT = {"de": {
   "steps": [
     ("src", "Sprache wählen", "Beim ersten Start fragt Fraxx, welche Sprache du sprichst. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."),
     ("home", "Loslegen", "Die Startseite zeigt, was Fraxx kann. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."),
-    ("inhalt", "Thema öffnen", "Im <b>Inhalt</b> stehen alle Themen als Kästen. Ganz vorne liegen die <b>Essentials</b>: rund 110 Sätze und Wörter, die du auf jeder Reise zuerst brauchst. Damit fängst du am besten an. Dahinter folgen Redewendungen nach Themen (Restaurant, Hotel, Apotheke …) und Wortschatz nach Themen. <b>Öffnen ▾</b> springt direkt hinein."),
+    ("inhalt", "Thema öffnen", "Im <b>Inhalt</b> stehen alle Themen als Kästen. Ganz vorne liegen die <b>Essentials</b>: rund 110 Sätze und Wörter, die du auf jeder Reise zuerst brauchst. Damit fängst du am besten an. Daneben liegt <b>Business</b> mit Sätzen und Wörtern für Meetings, E-Mails, Telefonate und Verhandlungen. Dahinter folgen Redewendungen nach Themen (Restaurant, Hotel, Apotheke …) und Wortschatz nach Themen. <b>Öffnen ▾</b> springt direkt hinein."),
     ("tabelle", "Lesen, hören, merken", "Jede Zeile zeigt einen Eintrag in all deinen Sprachen. Der Lautsprecher 🔊 liest vor, graue Hinweise erklären Besonderheiten. Der Stern ☆ setzt den Eintrag auf deinen Spickzettel."),
     ("set", "Einstellen", "Unter <b>⚙</b> wählst du Ausgangssprache, Sprachniveau (A1 bis C2), deine Sprachen und das Design (Hell oder Dunkel). Ganz oben steht deine Version."),
   ],
@@ -100,18 +100,19 @@ TEXT = {"de": {
   "s3": "Alles, was Fraxx kann", "s3sub": "Die Bereiche im Überblick – oben in der Leiste findest du sie alle.",
   "navcap": "Die Leiste oben: Inhalt, Grammatik, Speisekarte, Spickzettel, Quiz, Hilfe (?) und Einstellungen (⚙).",
   "features": [
-    ("inhalt", "☰ Inhalt", "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Der erste Reiter <b>Essentials</b> sammelt das Wichtigste zum Einstieg: Begrüßung, Höflichkeit, Verständigung, Zahlen, Notfall und die nötigsten Wörter. Das Suchfeld findet Themen nach Namen."),
+    ("inhalt", "☰ Inhalt", "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Der erste Reiter <b>Essentials</b> sammelt das Wichtigste zum Einstieg: Begrüßung, Höflichkeit, Verständigung, Zahlen, Notfall und die nötigsten Wörter. Der Reiter <b>Business</b> bringt rund 430 Sätze und Wörter wie in einem Business-Sprachkurs: Small Talk, Meetings, Telefon und Videocall, E-Mails, Präsentieren, Verhandeln, Bewerbung, Kundenservice, Geschäftsreise und Zahlen. Das Suchfeld findet Themen nach Namen."),
     ("tabelle", "Übersetzungen und Aussprache", "Jeder Eintrag steht in allen deinen Sprachen nebeneinander, Substantive mit Artikel, Redewendungen sinngemäß übersetzt. 🔊 liest vor, ein zweiter Tipp stoppt. Mit dem Pin hältst du wichtige Einträge oben, mit A–Z sortierst du."),
     ("konj", "Verben und Konjugation", "Verben werden in allen Sprachen konjugiert: Präsens, Perfekt, Präteritum und Futur. <b>Konjugation ▸</b> klappt die Tabellen auf, die Zeit-Knöpfe wechseln die Zeitform."),
     ("gram", "§ Grammatik", "Die wichtigsten Regeln jeder Sprache von A1 bis C1, mit Beispielen zum Anhören. <b>Verben &amp; Endungen</b> zeigt Endungstabellen und unregelmäßige Verben, <b>Typische Fehler</b> die Stolpersteine für Sprecher deiner Sprache. <b>Im Quiz üben</b> fragt ein Kapitel mit Lückensätzen ab."),
     ("verben", "Verben &amp; Endungen", "Endungen auf einen Blick: regelmäßige Muster, Ausnahmen und die wichtigsten unregelmäßigen Verben, jeweils mit Beispiel."),
     ("dish", "🍽 Speisekarte", "Rund 250 beliebte Gerichte und Getränke je Land mit Originalnamen und Erklärung, dazu Kaffee, Bier und Wein. Warnhinweise zeigen, wenn ein Name anderswo etwas anderes bedeutet. <b>Bestellen ▸</b> zeigt, wie du es bestellst."),
     ("spick", "★ Spickzettel", "Alles, was du mit dem Stern markiert hast, kompakt in einer Sprache: Wörter, Redewendungen und Gerichte. <b>Drucken</b> macht daraus einen Zettel für die Reise."),
-    ("quiz", "Quiz", "Lernen mit vier Antworten pro Frage: Wörter &amp; Sätze oder Grammatik, in beide Richtungen, nach Niveau und Thema. Bei <b>🔊 Hören</b> wird nur vorgelesen. Nach drei richtigen Antworten gilt ein Eintrag als gelernt, der Lernstand zeigt deinen Fortschritt."),
+    ("quiz", "Quiz", "Lernen mit vier Antworten pro Frage: Wörter &amp; Sätze oder Grammatik, in beide Richtungen, nach Niveau und Thema. Bei <b>🔊 Hören</b> wird nur vorgelesen, so prüfst du, ob du verstehst, was gesagt wird. Hören hat einen eigenen Lernstand. Nach drei richtigen Antworten gilt ein Eintrag als gelernt, der Lernstand zeigt deinen Fortschritt."),
   ],
   "mob": "Auf dem Handy", "mobsub": "Gleiche Inhalte, für den Daumen gemacht: Die Zeilen werden zu Karten, die Leiste sitzt oben.",
   "tips": "Kleine Tipps", "tiplist": [
     "Neu in einer Sprache? Fang mit den <b>Essentials</b> an und übe sie im Quiz: Unter Bereich „Essentials“ wählen.",
+    "Für den Beruf: Im Quiz unter Bereich „Business (alle)“ wählen und Meetings, E-Mails und Verhandeln üben.",
     "Sprachniveau unter ⚙ blendet alles über deinem Niveau aus, in Tabelle, Grammatik und Quiz.",
     "Bis zu 5 Sprachen passen nebeneinander in die Tabelle: deine Ausgangssprache und vier weitere.",
     "Bei Sprachen mit anderer Schrift (Arabisch, Russisch, Japanisch …) steht die Umschrift kursiv darunter.",
