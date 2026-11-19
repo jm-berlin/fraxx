@@ -82,8 +82,8 @@ TEXT = {"de": {
   "beta": "Testversion: Eigene neue Wörter übersetzen ist noch nicht freigeschaltet und kommt in einer späteren Version. Alles andere funktioniert schon, auch offline.",
   "s1": "Die ersten Schritte", "s1sub": "Fünf Schritte vom ersten Öffnen bis zur ersten Übersetzung.",
   "steps": [
-    ("src", "Sprache wählen", "Beim ersten Start fragt Fraxx, welche Sprache du sprichst. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."),
-    ("home", "Loslegen", "Die Startseite zeigt, was Fraxx kann. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."),
+    ("src", "Sprache wählen", "Fraxx erscheint gleich in der Sprache deines Browsers. Beim ersten Weitergehen fragt Fraxx einmal, welche Sprache du sprichst, deine ist schon vorausgewählt. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."),
+    ("home", "Loslegen", "Die Startseite zeigt, was Fraxx kann. Ganz oben rechts wechselst du die Sprache der Seite. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."),
     ("inhalt", "Thema öffnen", "Im <b>Inhalt</b> stehen alle Themen als Kästen. Ganz vorne liegen die <b>Essentials</b>: rund 110 Sätze und Wörter, die du auf jeder Reise zuerst brauchst. Damit fängst du am besten an. Daneben liegt <b>Business</b> mit Sätzen und Wörtern für Meetings, E-Mails, Telefonate und Verhandlungen. Dahinter folgen Redewendungen nach Themen (Restaurant, Hotel, Apotheke …) und Wortschatz nach Themen. <b>Öffnen ▾</b> springt direkt hinein."),
     ("tabelle", "Lesen, hören, merken", "Jede Zeile zeigt einen Eintrag in all deinen Sprachen. Der Lautsprecher 🔊 liest vor, graue Hinweise erklären Besonderheiten. Der Stern ☆ setzt den Eintrag auf deinen Spickzettel."),
     ("set", "Einstellen", "Unter <b>⚙</b> wählst du Ausgangssprache, Sprachniveau (A1 bis C2), deine Sprachen und das Design (Hell oder Dunkel). Ganz oben steht deine Version."),
@@ -91,6 +91,7 @@ TEXT = {"de": {
   "s2": "Nach der Installation", "s2sub": "Einmal einrichten, dann läuft Fraxx auch ohne Internet.",
   "after": [
     ("Sprachpakete laden", "Unter ⚙ → <b>App, Sprachpakete &amp; Sicherung</b> lädst du die Sprachen, die du brauchst. Jedes Paket enthält alle Übersetzungen, Konjugationen, Grammatik und Speisekarten dieser Sprache."),
+    ("Kurze Startseite", "Als App installiert, öffnet Fraxx mit einer kompakten Startseite: Suchfeld, Kacheln zu allen Bereichen, dein Quiz-Stand und die zuletzt geöffneten Bereiche. Die ausführliche Vorstellung erreichst du dort über „Was ist Fraxx?“."),
     ("Offline nutzen", "Alles, was installiert ist, funktioniert ohne Internet: im Flugzeug, im Ausland ohne Datenvolumen, im Funkloch."),
     ("Gute Stimmen", "Vorgelesen wird mit den Stimmen deines Geräts. Am Mac und unter Windows klingt Chrome meist am natürlichsten. Weitere Stimmen installierst du in den Spracheinstellungen deines Geräts."),
     ("Daten sichern", "Deine Sterne, Lernstände und Einstellungen liegen auf dem Gerät. Unter ⚙ → App, Sprachpakete &amp; Sicherung lädst du eine Sicherung herunter und spielst sie bei Bedarf wieder ein."),

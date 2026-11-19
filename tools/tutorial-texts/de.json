@@ -12,12 +12,12 @@
   [
    "src",
    "Sprache wählen",
-   "Beim ersten Start fragt Fraxx, welche Sprache du sprichst. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."
+   "Fraxx erscheint gleich in der Sprache deines Browsers. Beim ersten Weitergehen fragt Fraxx einmal, welche Sprache du sprichst, deine ist schon vorausgewählt. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."
   ],
   [
    "home",
    "Loslegen",
-   "Die Startseite zeigt, was Fraxx kann. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."
+   "Die Startseite zeigt, was Fraxx kann. Ganz oben rechts wechselst du die Sprache der Seite. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."
   ],
   [
    "inhalt",
@@ -41,6 +41,10 @@
   [
    "Sprachpakete laden",
    "Unter ⚙ → <b>App, Sprachpakete &amp; Sicherung</b> lädst du die Sprachen, die du brauchst. Jedes Paket enthält alle Übersetzungen, Konjugationen, Grammatik und Speisekarten dieser Sprache."
+  ],
+  [
+   "Kurze Startseite",
+   "Als App installiert, öffnet Fraxx mit einer kompakten Startseite: Suchfeld, Kacheln zu allen Bereichen, dein Quiz-Stand und die zuletzt geöffneten Bereiche. Die ausführliche Vorstellung erreichst du dort über „Was ist Fraxx?“."
   ],
   [
    "Offline nutzen",
