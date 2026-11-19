@@ -1,6 +1,49 @@
 {
  "releases": [
   {
+   "release": "2026-11-19T23:58:27.000Z",
+   "version": "0.11",
+   "date": "2026-11-19",
+   "notes": {
+    "de": [
+     "Deutlich schneller: Suche, Reiter und Wortarten reagieren jetzt ohne Verzögerung, auch bei langen Listen."
+    ],
+    "en": [
+     "Much faster: search, tabs and word classes now respond without delay, even with long lists."
+    ],
+    "fr": [
+     "Beaucoup plus rapide : la recherche, les onglets et les classes de mots réagissent désormais sans délai, même avec de longues listes."
+    ],
+    "it": [
+     "Molto più veloce: ricerca, schede e categorie grammaticali ora rispondono senza ritardi, anche con elenchi lunghi."
+    ],
+    "es": [
+     "Mucho más rápida: la búsqueda, las pestañas y las clases de palabras responden ahora sin retraso, incluso con listas largas."
+    ],
+    "pt": [
+     "Muito mais rápida: a pesquisa, os separadores e as classes de palavras respondem agora sem atraso, mesmo com listas longas."
+    ],
+    "nl": [
+     "Veel sneller: zoeken, tabbladen en woordsoorten reageren nu zonder vertraging, ook bij lange lijsten."
+    ],
+    "pl": [
+     "Znacznie szybciej: wyszukiwanie, zakładki i części mowy reagują teraz bez opóźnień, także przy długich listach."
+    ],
+    "sv": [
+     "Mycket snabbare: sökning, flikar och ordklasser svarar nu utan fördröjning, även med långa listor."
+    ],
+    "nb": [
+     "Mye raskere: søk, faner og ordklasser reagerer nå uten forsinkelse, også med lange lister."
+    ],
+    "tr": [
+     "Çok daha hızlı: arama, sekmeler ve sözcük türleri artık uzun listelerde bile gecikmeden tepki veriyor."
+    ],
+    "zh": [
+     "速度大幅提升：搜索、标签页和词类现在即使在长列表中也能即时响应。"
+    ]
+   }
+  },
+  {
    "release": "2026-11-19T20:25:29.264Z",
    "version": "0.10",
    "date": "2026-11-19",

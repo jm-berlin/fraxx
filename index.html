@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="167d9a7f6b">
+<meta name="fraxx-build" content="bad04c6a9e">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
@@ -184,6 +184,8 @@ form.add{background:var(--surface);border:0;border-radius:var(--radius);box-shad
 /* Tabelle */
 .table{background:var(--surface);border:0;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;overflow:clip}
 .row{scroll-margin-top:46px}
+.table .row:not(.head){content-visibility:auto;contain-intrinsic-size:auto 64px}
+.lazyrow{height:64px;border-top:1px solid var(--line)}
 .table .row.head{position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;background:var(--surface);box-shadow:0 1px 0 var(--line), 0 6px 14px -10px rgb(10 14 20 / .25)}
 .sec{scroll-margin-top:calc(var(--headh, 0px) + 8px)}
 .totop{position:fixed;right:max(18px, env(safe-area-inset-right, 0px));bottom:max(18px, env(safe-area-inset-bottom, 0px));z-index:40;width:46px;height:46px;border:0;border-radius:999px;background:var(--blue);color:var(--blue-ink);font-size:20px;font-weight:700;box-shadow:0 8px 24px rgb(10 14 20 / .28);display:grid;place-items:center;opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .2s, transform .2s}
@@ -2399,7 +2401,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     const all = entries();
     const q = tocFilter.value.trim().toLowerCase();
     const hit = t => !q || (t||"").toLowerCase().includes(q);
-    const cnt = id => all.filter(e=>shownIn(e, id)).length;
+    const cntMap = new Map(); all.forEach(e=>{ new Set([e.section, ...alsoOf(e)]).forEach(id=>{ if(id) cntMap.set(id, (cntMap.get(id)||0) + 1); }); });
+    const cnt = id => cntMap.get(id) || 0;
     const unsorted = all.filter(e=>!secOf(e)).length;
     let shown = 0;
     const fmtN = n => n===1 ? "1 Eintrag" : `${n.toLocaleString("de-DE")} Einträge`;
@@ -2530,10 +2533,13 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   }
 
   // ---------- Dubletten ----------
-  const normDe = t => (t||"").normalize("NFC").toLowerCase().replace(/[.!?,;:¿¡"„“”«»]+/g,"").replace(/\s+/g," ").trim();
+  const normDeRaw = t => (t||"").normalize("NFC").toLowerCase().replace(/[.!?,;:¿¡"„“”«»]+/g,"").replace(/\s+/g," ").trim();
+  const normMemo = new Map();
+  const normDe = t => { if(!t) return ""; let v = normMemo.get(t); if(v===undefined){ v = normDeRaw(t); if(normMemo.size > 60000) normMemo.clear(); normMemo.set(t, v); } return v; };
   // Vergleich ohne Groß-/Kleinschreibung und ohne führenden Artikel („Hund“ = „der Hund“)
   const LEAD_ART = /^(der|die|das|den|dem|des|ein|eine|einen|le|la|les|l'|un|une|des|el|los|las|il|lo|gli|i|uno|una|o|a|os|as|um|uma|the|a|an|de|het|een|en|ett|et|ei)\s+|^l['’]/i;
-  const dupKey = t => normDe(t).replace(LEAD_ART, "").trim();
+  const dupMemo = new Map();
+  const dupKey = t => { if(!t) return ""; let v = dupMemo.get(t); if(v===undefined){ v = normDe(t).replace(LEAD_ART, "").trim(); if(dupMemo.size > 60000) dupMemo.clear(); dupMemo.set(t, v); } return v; };
   function findDup(text, exceptId){ const k = dupKey(text); if(!k) return null; return entries().find(e=>e.id!==exceptId && dupKey(srcText(e))===k) || null; }
   function findDupDe(text){ const k = normDe(text); if(!k) return null; return entries().find(e=>normDe(e.de)===k) || null; }
   function secPath(e){
@@ -2555,7 +2561,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
           setViewQuiet(pv);
           flashId = d.id; clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 2500);
           renderNow();
-          const go = () => { const n = document.getElementById("row-"+d.id); if(n) n.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"center"}); return !!n; };
+          const go = () => { flushLazy(); const n = document.getElementById("row-"+d.id); if(n) jumpTo(n, "center"); return !!n; };
           if(!go()) setTimeout(go, 450);
           return;
         }
@@ -2569,7 +2575,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     flashId = d.id; clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 2500);
     renderNow();
     const target = sec ? rowDomId(d, sec.id) : "row-"+d.id;
-    const go = () => { const n = document.getElementById(target) || document.getElementById("row-"+d.id); if(n) n.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"center"}); return !!n; };
+    const go = () => { flushLazy(); const n = document.getElementById(target) || document.getElementById("row-"+d.id); if(n) jumpTo(n, "center"); return !!n; };
     if(!go()) setTimeout(go, 450);
   }
   function dupGroups(){
@@ -2997,8 +3003,8 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
       {label:"Anzeigen", fn: ()=>{
         const t = srcText(groups[0][0]);
         clearTimeout(searchTimer); input.value = t; autosize(); updateGo(); searchQ = t; renderNow();
-        const n = document.getElementById("row-"+groups[0][0].id) || document.querySelector(".hits, #list");
-        if(n) n.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"center"});
+        flushLazy(); const n = document.getElementById("row-"+groups[0][0].id) || document.querySelector(".hits, #list");
+        if(n) jumpTo(n, "center");
       }},
       {label:"Nicht mehr zeigen", fn: ()=>{ try{ localStorage.setItem("rw-dupseen", sig); }catch(_){} }}
     ]);
@@ -3091,6 +3097,26 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     return [uiEpoch, ctx||"", SRC, posFilter, lvlFilter, LANGS.map(l=>l[0]).join(), [...hiddenLangs].join(), selected.has(e.id), flashId===e.id,
       editId===e.id ? editCtx+"|"+editDraft : "", confirmId===e.id, openConj.has(e.id), conjTense.get(e.id)||"", transInFlight.has(e.id), body].join("\u0001");
   }
+  // Lange Listen: die ersten Zeilen sofort, der Rest in Portionen, damit die Seite bedienbar bleibt
+  let lazyBudget = Infinity, lazyQ = [], lazyAt = 0, lazyGen = 0;
+  function lazyRow(id, make){
+    if(lazyBudget > 0){ lazyBudget--; return make(); }
+    const ph = el("div","lazyrow"); if(id) ph.id = id; lazyQ.push([ph, make]); return ph;
+  }
+  function lazyFill(ph, make){ if(!ph.isConnected) return; const n = make(); ph.replaceWith(n); }
+  function lazyDrain(gen){
+    if(gen!==lazyGen) return;
+    const t = performance.now();
+    while(lazyAt < lazyQ.length && performance.now() - t < 12){ const [ph, make] = lazyQ[lazyAt++]; lazyFill(ph, make); }
+    if(lazyAt < lazyQ.length) setTimeout(()=>lazyDrain(gen), 0); else { lazyQ = []; lazyAt = 0; }
+  }
+  // Springen: Zeilen außerhalb des Bildschirms haben nur eine geschätzte Höhe, deshalb nachjustieren, bis die Lage stimmt
+  function jumpTo(n, block){
+    let k = 0, lastY = -1;
+    const step = () => { if(!n.isConnected) return; n.scrollIntoView({block}); if(scrollY!==lastY && k++ < 6){ lastY = scrollY; requestAnimationFrame(step); } };
+    step();
+  }
+  function flushLazy(){ while(lazyAt < lazyQ.length){ const [ph, make] = lazyQ[lazyAt++]; lazyFill(ph, make); } lazyQ = []; lazyAt = 0; }
   function entryRow(e, ctx, copy){
     const key = e.id + "|" + (ctx||"") + (copy ? "|pin" : "") + (searchQ && matchMedia("(max-width:760px)").matches ? "|big" : ""), sig = rowSig(e, ctx), hit = rowCache.get(key);
     if(sig && hit && hit.sig===sig && !hit.node.isConnected){ hit.node.classList.remove("lastpin", "pinlast"); return hit.node; }
@@ -3419,7 +3445,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
           const b = el("button",null,L); b.type="button";
           const target = first.get(L);
           if(!target) b.disabled = true;
-          else { b.setAttribute("aria-label","Zu "+L+" springen"); b.addEventListener("click",()=>{ const n = document.getElementById(target); if(n) n.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"}); }); }
+          else { b.setAttribute("aria-label","Zu "+L+" springen"); b.addEventListener("click",()=>{ flushLazy(); const n = document.getElementById(target); if(n) jumpTo(n, "start"); }); }
           nav.append(b);
         });
         block.append(nav);
@@ -3441,13 +3467,13 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
         list.forEach(e=>{
           const h = flowHead(sec, e);
           if(h!==cur){ cur = h; if(h) block.append(flowHeadEl(h, groups.get(h))); }
-          block.append(entryRow(e, id));
+          block.append(lazyRow(rowDomId(e, id), ()=>entryRow(e, id)));
         });
       }
       else if(list.length){
         if(isNum){ const b = el("button","numtoggle ghost","Als Tafel anzeigen"); b.type="button"; b.addEventListener("click",()=>{ numAsList.delete(id); saveNumList(); render(); }); block.append(b); }
         if(hasFlow(sec) && !searching) block.append(flowBar(sec, list));
-        list.forEach(e=>block.append(entryRow(e, id)));
+        list.forEach(e=>block.append(lazyRow(rowDomId(e, id), ()=>entryRow(e, id))));
         const pins = list.filter(e=>e.pinned);
         if(pins.length && pins.length < list.length){ const lp = document.getElementById(rowDomId(pins[pins.length-1], id)); if(lp) lp.classList.add("lastpin"); }
       }
@@ -3601,7 +3627,9 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     if(dragIds || secDrag){ pendingRender = true; return; }
     if(dataTimer){ clearTimeout(dataTimer); dataTimer = null; }
     const t0 = performance.now();
-    try{ renderInner(); } finally { lastRenderAt = performance.now(); lastRenderDur = lastRenderAt - t0; }
+    lazyGen++; lazyQ = []; lazyAt = 0; lazyBudget = 120;
+    try{ renderInner(); } finally { lazyBudget = Infinity; lastRenderAt = performance.now(); lastRenderDur = lastRenderAt - t0; }
+    if(lazyQ.length){ const g = lazyGen; setTimeout(()=>lazyDrain(g), 0); }
     // den gerade geöffneten Bereich an seiner Position halten, auch wenn darüber einer zugeklappt wurde
     if(scrollAnchor){
       const s0 = secById(scrollAnchor.id), hd = document.getElementById("sec-" + scrollAnchor.id);
@@ -3640,12 +3668,14 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
   }
   function leaves(all){
     const out = [];
+    const bySec = new Map(); all.forEach(e=>{ new Set([e.section, ...alsoOf(e)]).forEach(id=>{ if(!id) return; const l = bySec.get(id); if(l) l.push(e); else bySec.set(id, [e]); }); });
+    const inSec = id => (bySec.get(id) || []).slice();
     const uns = all.filter(e=>!secOf(e)); if(uns.length) out.push({sec:null, list:uns});
     topSecs().filter(t=>!isHiddenTop(t)).forEach(t=>{
       const subs = subSecs(t.id);
-      const direct = all.filter(e=>shownIn(e, t.id));
+      const direct = inSec(t.id);
       if(!subs.length || direct.length) out.push({sec:t, list:direct});
-      subs.forEach(c=>out.push({sec:c, list:all.filter(e=>shownIn(e, c.id))}));
+      subs.forEach(c=>out.push({sec:c, list:inSec(c.id)}));
     });
     return out.map(x=>({...x, kind: leafKind(x.sec, x.list)}));
   }
@@ -3689,10 +3719,10 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
       const letterOf = e => { const c = sortKey(e).charAt(0).toUpperCase(); return ({"Ä":"A","Ö":"O","Ü":"U"})[c] || c; };
       const first = new Map(); list.forEach(e=>{ const l = letterOf(e); if(!first.has(l)) first.set(l, "row-"+e.id); });
       const nav = el("nav","alpha"); nav.setAttribute("aria-label","Zu Buchstabe springen");
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(L=>{ const b = el("button",null,L); b.type="button"; const t = first.get(L); if(!t) b.disabled = true; else b.addEventListener("click",()=>{ const n = document.getElementById(t); if(n) n.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"}); }); nav.append(b); });
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(L=>{ const b = el("button",null,L); b.type="button"; const t = first.get(L); if(!t) b.disabled = true; else b.addEventListener("click",()=>{ flushLazy(); const n = document.getElementById(t); if(n) jumpTo(n, "start"); }); nav.append(b); });
       block.append(nav);
     }
-    list.forEach(e=>{
+    list.forEach(e=>{ block.append(lazyRow(rowDomId(e, null), ()=>{
       const r = entryRow(e, null);
       const de = r.querySelector(".cell.de");
       if(de) de.querySelectorAll(".rowtheme").forEach(n=>n.remove());
@@ -3704,8 +3734,8 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
         secs.forEach((s,i)=>{ if(i) t.append(document.createTextNode(" · ")); const a = el("button","themelink", s.title); a.type="button"; a.title = "Im Bereich „" + s.title + "“ zeigen"; a.addEventListener("click",ev=>{ ev.stopPropagation(); revealEntry(e, s.id); }); t.append(a); });
         de.append(t);
       }
-      block.append(r);
-    });
+      return r;
+    })); });
     if(!list.length){ const em = el("div","empty"); em.append(el("p",null, total ? "Keine Treffer." : "Noch keine Einträge dieser Wortart.")); block.append(em); }
     return block;
   }
@@ -3925,6 +3955,10 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
   // Bereiche eines Reiters („rw“ = Redewendungen, „wz“ = Wortschatz) als Einheiten, alphabetisch; für Tabelle und Inhalt
   function viewUnits(view, all, q){
     const fits = k => q || k===view || k==="both";
+    // Einträge je Bereich einmal einsammeln (statt für jeden Bereich alle Einträge zu durchsuchen)
+    const bySec = new Map();
+    all.forEach(e=>{ const ids = new Set([e.section, ...alsoOf(e)]); ids.forEach(id=>{ if(!id) return; const l = bySec.get(id); if(l) l.push(e); else bySec.set(id, [e]); }); });
+    const inSec = id => (bySec.get(id) || []).slice();
     const units = [];
     // „Noch nicht zugeordnet“: Einträge ohne Bereich und der gleichnamige Bereich, in beiden Reitern je nach Art
     const isNZ = t => (t.title||"").trim().toLowerCase()==="noch nicht zugeordnet";
@@ -3932,19 +3966,19 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     const nzList = all.filter(e=>!secOf(e) || (nzSec && shownIn(e, nzSec.id))).filter(e=>q || (view==="rw" ? posOf(e)==="phrase" : posOf(e)!=="phrase"));
     // Reiter „Essentials“: nur die angehefteten Bereiche; in den anderen Reitern und in der Suche erscheinen deren Einträge in ihren eigenen Bereichen
     if(SEC_TABS.includes(view) && !hasTab(view)) view = "wz";
-    if(SEC_TABS.includes(view)) return topSecs().filter(t=>tabOf(t)===view).map(t=>({title:t.title||"", sec:t, list:all.filter(e=>shownIn(e, t.id))}));
+    if(SEC_TABS.includes(view)) return topSecs().filter(t=>tabOf(t)===view).map(t=>({title:t.title||"", sec:t, list:inSec(t.id)}));
     // Business-Einträge stehen nur dort; in der Suche erscheinen sie trotzdem (Essentials sind nur Kopien, die zeigt die Suche an ihrem eigenen Platz)
     topSecs().filter(t=>(q || !isHiddenTop(t)) && t!==nzSec && tabOf(t)!=="es" && (q || !tabOf(t))).forEach(t=>{
       const subs = subSecs(t.id);
-      const direct = all.filter(e=>shownIn(e, t.id));
+      const direct = inSec(t.id);
       const isWZ = (t.title||"").trim().toLowerCase()===WZ.toLowerCase();
       if(isWZ){
-        subs.forEach(c=>{ if(fits("wz")) units.push({title:c.title||"", sec:c, list:all.filter(e=>shownIn(e, c.id)), flat:true}); });
+        subs.forEach(c=>{ if(fits("wz")) units.push({title:c.title||"", sec:c, list:inSec(c.id), flat:true}); });
         if(direct.length && fits("wz")) units.push({title:t.title||"", sec:t, list:direct});
         return;
       }
       if(!subs.length){ if(fits(leafKind(t, direct))) units.push({title:t.title||"", sec:t, list:direct}); return; }
-      const subUnits = subs.map(c=>{ const l = all.filter(e=>shownIn(e, c.id)); return {sec:c, list:l, kind:leafKind(c, l)}; }).filter(x=>fits(x.kind));
+      const subUnits = subs.map(c=>{ const l = inSec(c.id); return {sec:c, list:l, kind:leafKind(c, l)}; }).filter(x=>fits(x.kind));
       const directFits = direct.length ? fits(leafKind(t, direct)) : false;
       // Nur ein Unterbereich in diesem Reiter: direkt unter der Bereichsüberschrift zeigen, ohne Zwischenebene
       if(subUnits.length===1 && !directFits) units.push({title:t.title||"", sec:subUnits[0].sec, list:subUnits[0].list, asTop:t});
@@ -4780,6 +4814,12 @@ ${JSON.stringify(notes)}`, { modelTier:"quick" });
   const TR_STYLE = { zh:"Pinyin mit Tonzeichen", ja:"Hepburn-Rōmaji", ru:"einfache, gut lesbare lateinische Umschrift", ar:"einfache, gut lesbare lateinische Umschrift (ohne Sonderzeichen)", el:"einfache lateinische Umschrift", ko:"Revidierte Romanisierung" };
   const trStyle = c => TR_STYLE[c] || "einfache, gut lesbare lateinische Umschrift";
   // Lange Hinweise (z. B. Dialektformen) eingeklappt: zwei Zeilen, Tippen klappt auf
+  let noteObs = null;
+  const noteIO = () => noteObs || (noteObs = new IntersectionObserver(es=>{
+    const vis = es.filter(x=>x.isIntersecting).map(x=>x.target); vis.forEach(n=>noteObs.unobserve(n));
+    const fits = vis.filter(n=>n.isConnected && n.scrollHeight <= n.clientHeight + 2);
+    fits.forEach(n=>{ n.classList.remove("clamp"); if(n._more) n._more.remove(); });
+  }, {rootMargin:"300px 0px"}));
   function noteEl(text){
     const n = el("span","note", text);
     if(String(text).length <= 40) return n;
@@ -4788,7 +4828,7 @@ ${JSON.stringify(notes)}`, { modelTier:"quick" });
     b.addEventListener("click", ev=>{ ev.stopPropagation(); const o = n.classList.toggle("open"); b.textContent = o ? "weniger ▴" : "mehr ▾"; });
     w.append(n, b);
     // Nur einklappen, wenn der Hinweis wirklich mehr als zwei Zeilen braucht
-    requestAnimationFrame(()=>{ if(n.isConnected && n.scrollHeight <= n.clientHeight + 2){ n.classList.remove("clamp"); b.remove(); } });
+    noteIO().observe(n); n._more = b;
     return w;
   }
   const splitTr = note => { const m = /^\s*\[([^\]]{1,160})\]\s*/.exec(String(note||"")); return m ? {tr:m[1], rest:String(note).slice(m[0].length)} : {tr:"", rest:String(note||"")}; };
@@ -8129,9 +8169,14 @@ ${JSON.stringify(TUT_DE)}`;
       // Ohne bekannte Zielzahl gilt die Datenbank als fertig geladen, wenn 20 Sekunden lang nichts mehr dazukommt
       const fullCheck = setInterval(()=>{ if(liveFull){ clearInterval(fullCheck); return; } const want = Math.max(expectDocs, remoteExpect, cacheDocs ? cacheDocs.length : 0);
         if((!want && liveCount && Date.now() - lastGrow > 20000) || Date.now() - lastGrow > 180000){ liveFull = true; cacheDocs = null; docs = lastLive; saveCache(lastLive); try{ renderData(); docsReady(); updateOffer(); }catch(_){} } }, 5000);
-      const saveCache = list => { clearTimeout(cacheT); cacheT = setTimeout(()=>{ IDB.set(CK, {at: Date.now(), docs: list}); }, 8000); };
+      // Web-App: die Daten liegen schon im eigenen Gerätespeicher der App, ein zweiter Zwischenspeicher bremst nur (Speichern blockiert die Seite kurz)
+      if(IN_WEBAPP){ try{ indexedDB.deleteDatabase("fraxx-cache"); }catch(_){} }
+      const saveCache = list => { if(IN_WEBAPP) return; clearTimeout(cacheT);
+        const go = () => { let busy = false; try{ busy = performance.now() - lastInput < 5000; }catch(_){}
+          if(busy){ cacheT = setTimeout(go, 5000); return; } IDB.set(CK, {at: Date.now(), docs: list}); };
+        cacheT = setTimeout(go, 8000); };
       const mergeCache = live => { if(!cacheDocs) return live; const ids = new Set(live.map(d=>d.id)); return live.concat(cacheDocs.filter(d=>!ids.has(d.id))).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0)); };
-      IDB.get(CK).then(c=>{
+      (IN_WEBAPP ? Promise.resolve(null) : IDB.get(CK)).then(c=>{
         if(liveFull || !c || !Array.isArray(c.docs) || !c.docs.length) return;
         cacheDocs = c.docs; docs = mergeCache(docs);
         try{ renderData(); }catch(_){}

@@ -77,10 +77,10 @@ with sync_playwright() as p:
     pg.screenshot(path=P("05-settings.png"))
     M["srcsel"] = rect(pg, "#srcsel"); M["ver"] = rect(pg, ".mlver")
     # Grammatik, Verben & Endungen, Speisekarte, Spickzettel, Quiz
-    for name, btn, tab in [("06-grammatik", "#grambtn", 0), ("06c-verben", "#grambtn", 1), ("07-speisekarte", "#dishbtn", None),
+    for name, btn, gi in [("06-grammatik", "#grambtn", 0), ("06c-verben", "#grambtn", 1), ("07-speisekarte", "#dishbtn", None),
                            ("08-spick", "#favbtn", None), ("09-quiz", "#quizbtn", None)]:
         fresh(); pg.click(btn); pg.wait_for_timeout(2500)
-        if tab is not None: pg.locator(".gramtab").nth(tab).click(); pg.wait_for_timeout(2000)
+        if gi is not None: pg.locator(".gramtab").nth(gi).click(); pg.wait_for_timeout(2000)
         pg.screenshot(path=P(name + ".png"))
     # Quiz: eine Frage mit richtig gewählter Antwort (bei falscher Wahl neue Runde, höchstens 8 Versuche)
     for _ in range(8):
