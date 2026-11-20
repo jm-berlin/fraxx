@@ -12,7 +12,7 @@
   [
    "src",
    "Sprache wählen",
-   "Fraxx erscheint gleich in der Sprache deines Browsers. Beim ersten Weitergehen fragt Fraxx einmal, welche Sprache du sprichst, deine ist schon vorausgewählt. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."
+   "Fraxx erscheint gleich in der Sprache deines Browsers. Beim ersten Weitergehen fragt Fraxx einmal, welche Sprache du sprichst, deine ist schon vorausgewählt. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern. Gibt es deine Browsersprache noch nicht, startet Fraxx auf Englisch."
   ],
   [
    "home",
@@ -22,7 +22,7 @@
   [
    "inhalt",
    "Thema öffnen",
-   "Im <b>Inhalt</b> stehen alle Themen als Kästen. Ganz vorne liegen die <b>Essentials</b>: rund 110 Sätze und Wörter, die du auf jeder Reise zuerst brauchst. Damit fängst du am besten an. Daneben liegt <b>Business</b> mit Sätzen und Wörtern für Meetings, E-Mails, Telefonate und Verhandlungen. Dahinter folgen Redewendungen nach Themen (Restaurant, Hotel, Apotheke …) und Wortschatz nach Themen. <b>Öffnen ▾</b> springt direkt hinein."
+   "Im <b>Inhalt</b> stehen alle Themen als Kästen. Ganz vorne liegen die <b>Essentials</b>: rund 110 Sätze und Wörter, die du auf jeder Reise zuerst brauchst, mit eigenen Kästen für Begrüßung, Höflichkeit, Notfall und mehr. Damit fängst du am besten an. Dahinter folgen Redewendungen nach Themen (Restaurant, Hotel, Apotheke …), Wortschatz nach Themen und ganz am Ende <b>Business</b> mit Sätzen und Wörtern für Meetings, E-Mails, Telefonate und Verhandlungen. <b>Öffnen ▾</b> springt direkt hinein."
   ],
   [
    "tabelle",
@@ -44,7 +44,7 @@
   ],
   [
    "Kurze Startseite",
-   "Als App installiert, öffnet Fraxx mit einer kompakten Startseite: Suchfeld, Kacheln zu allen Bereichen, dein Quiz-Stand und die zuletzt geöffneten Bereiche. Die ausführliche Vorstellung erreichst du dort über „Was ist Fraxx?“."
+   "Als App installiert, öffnet Fraxx mit einer kompakten Startseite: Suchfeld, Kacheln zu allen Bereichen, dein Quiz-Stand und die zuletzt geöffneten Bereiche. Die ausführliche Vorstellung erreichst du dort über „Was ist Fraxx?“ oder mit einem Tipp auf das Logo."
   ],
   [
    "Offline nutzen",
@@ -71,7 +71,7 @@
   [
    "inhalt",
    "☰ Inhalt",
-   "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Der erste Reiter <b>Essentials</b> sammelt das Wichtigste zum Einstieg: Begrüßung, Höflichkeit, Verständigung, Zahlen, Notfall und die nötigsten Wörter. Der Reiter <b>Business</b> bringt rund 430 Sätze und Wörter wie in einem Business-Sprachkurs: Small Talk, Meetings, Telefon und Videocall, E-Mails, Präsentieren, Verhandeln, Bewerbung, Kundenservice, Geschäftsreise und Zahlen. Das Suchfeld findet Themen nach Namen."
+   "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Der erste Reiter <b>Essentials</b> sammelt das Wichtigste zum Einstieg: Begrüßung, Höflichkeit, Verständigung, Zahlen, Notfall und die nötigsten Wörter, jedes Thema in einem eigenen Kasten. Der letzte Reiter <b>Business</b> bringt rund 430 Sätze und Wörter wie in einem Business-Sprachkurs: Small Talk, Meetings, Telefon und Videocall, E-Mails, Präsentieren, Verhandeln, Bewerbung, Kundenservice, Geschäftsreise und Zahlen. Das Suchfeld findet Themen nach Namen."
   ],
   [
    "tabelle",
@@ -115,6 +115,7 @@
  "tiplist": [
   "Neu in einer Sprache? Fang mit den <b>Essentials</b> an und übe sie im Quiz: Unter Bereich „Essentials“ wählen.",
   "Für den Beruf: Im Quiz unter Bereich „Business (alle)“ wählen und Meetings, E-Mails und Verhandeln üben.",
+  "Die Suche findet Wörter und Sätze in deiner Sprache. Unter dem Suchfeld wählst du mit <b>Andere Sprache ▾</b> eine deiner Sprachen oder alle Sprachen.",
   "Sprachniveau unter ⚙ blendet alles über deinem Niveau aus, in Tabelle, Grammatik und Quiz.",
   "Bis zu 5 Sprachen passen nebeneinander in die Tabelle: deine Ausgangssprache und vier weitere.",
   "Bei Sprachen mit anderer Schrift (Arabisch, Russisch, Japanisch …) steht die Umschrift kursiv darunter.",

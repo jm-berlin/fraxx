@@ -1,6 +1,61 @@
 {
  "releases": [
   {
+   "release": "2026-11-20T09:12:29.445Z",
+   "version": "0.16",
+   "date": "2026-11-20",
+   "notes": {
+    "de": [
+     "Die Anleitung ist überarbeitet und öffnet sich in deiner Sprache.",
+     "Verbesserungen und Korrekturen."
+    ],
+    "en": [
+     "The guide has been updated and opens in your language.",
+     "Improvements and fixes."
+    ],
+    "fr": [
+     "Le guide a été mis à jour et s’ouvre dans ta langue.",
+     "Améliorations et corrections."
+    ],
+    "it": [
+     "La guida è stata aggiornata e si apre nella tua lingua.",
+     "Miglioramenti e correzioni."
+    ],
+    "es": [
+     "La guía se ha actualizado y se abre en tu idioma.",
+     "Mejoras y correcciones."
+    ],
+    "pt": [
+     "O guia foi atualizado e abre no teu idioma.",
+     "Melhorias e correções."
+    ],
+    "nl": [
+     "De handleiding is bijgewerkt en opent in jouw taal.",
+     "Verbeteringen en correcties."
+    ],
+    "pl": [
+     "Przewodnik został zaktualizowany i otwiera się w twoim języku.",
+     "Ulepszenia i poprawki."
+    ],
+    "sv": [
+     "Guiden är uppdaterad och öppnas på ditt språk.",
+     "Förbättringar och rättelser."
+    ],
+    "nb": [
+     "Veiledningen er oppdatert og åpnes på ditt språk.",
+     "Forbedringer og rettelser."
+    ],
+    "tr": [
+     "Kılavuz güncellendi ve senin dilinde açılıyor.",
+     "İyileştirmeler ve düzeltmeler."
+    ],
+    "zh": [
+     "使用指南已更新，并会以你的语言打开。",
+     "改进与修正。"
+    ]
+   }
+  },
+  {
    "release": "2026-11-20T08:47:32.061Z",
    "version": "0.15",
    "date": "2026-11-20",

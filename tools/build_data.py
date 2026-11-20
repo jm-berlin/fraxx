@@ -135,7 +135,7 @@ def codes_in(id_):
 for d in docs:
     kind = d.get("kind")
     if kind is None:  # Eintrag
-        c = {k:v for k,v in d.items() if k not in CATALOG and k not in ("conj","nb","quiz","nbCur","nbGap","nbGapFrom")}
+        c = {k:v for k,v in d.items() if k not in CATALOG and k not in ("conj","nb","quiz","nbCur","nbGap","nbGapFrom","fav","favAt","favOrd","favSec")}  # Sterne/Spickzettel des Admins sind persönlich
         conj = d.get("conj"); nb = d.get("nb") or {}; quiz = d.get("quiz")
         if isinstance(conj, dict): c["conj"] = {k:v for k,v in conj.items() if k not in CATALOG}
         elif "conj" in d: c["conj"] = conj

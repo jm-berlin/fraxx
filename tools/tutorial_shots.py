@@ -40,6 +40,12 @@ with sync_playwright() as p:
             if first:
                 M["src"] = rect(pg, f'#mlsrc button[lang="{LANG}"]'); pg.screenshot(path=P("01-src.png"))
             pg.locator(f'#mlsrc button[lang="{LANG}"]').click()
+        # Die Sprachwahl kann auch später erscheinen (langsamer Paketabruf) – dann ebenfalls wählen
+        for _ in range(40):
+            if pg.evaluate(f"document.documentElement.lang === '{LANG}' && !document.getElementById('mlsrc')"): break
+            b = pg.locator(f'#mlsrc button[lang="{LANG}"]')
+            if b.count(): b.click()
+            pg.wait_for_timeout(500)
         pg.wait_for_timeout(4000)
         # Oberfläche ist erst übersetzt, wenn die Seite die Sprache gesetzt hat
         try: pg.wait_for_function(f"document.documentElement.lang === '{LANG}'", timeout=120000)
