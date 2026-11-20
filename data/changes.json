@@ -1,6 +1,49 @@
 {
  "releases": [
   {
+   "release": "2026-11-20T08:47:32.061Z",
+   "version": "0.15",
+   "date": "2026-11-20",
+   "notes": {
+    "de": [
+     "Konjugation korrigiert: Bei rund 140 Verben passte die Konjugation nicht zur angezeigten Übersetzung, z. B. „to dismantle“ mit „I reduce“."
+    ],
+    "en": [
+     "Conjugation fixed: for about 140 verbs the conjugation didn’t match the translation shown, e.g. “to dismantle” with “I reduce”."
+    ],
+    "fr": [
+     "Conjugaison corrigée : pour environ 140 verbes, la conjugaison ne correspondait pas à la traduction affichée, p. ex. « démonter » avec « je réduis »."
+    ],
+    "it": [
+     "Coniugazione corretta: per circa 140 verbi la coniugazione non corrispondeva alla traduzione mostrata, ad es. «smontare» con «io riduco»."
+    ],
+    "es": [
+     "Conjugación corregida: en unos 140 verbos la conjugación no coincidía con la traducción mostrada, p. ej. «desmontar» con «yo reduzco»."
+    ],
+    "pt": [
+     "Conjugação corrigida: em cerca de 140 verbos a conjugação não correspondia à tradução mostrada, p. ex. «desmontar» com «eu reduzo»."
+    ],
+    "nl": [
+     "Vervoeging gecorrigeerd: bij zo’n 140 werkwoorden paste de vervoeging niet bij de getoonde vertaling, bijv. ‘leiden’ met ‘ik lijd’."
+    ],
+    "pl": [
+     "Poprawiona odmiana: przy około 140 czasownikach odmiana nie pasowała do pokazanego tłumaczenia, np. „demontować” z „ja redukuję”."
+    ],
+    "sv": [
+     "Böjning rättad: för cirka 140 verb passade böjningen inte till den visade översättningen."
+    ],
+    "nb": [
+     "Bøying rettet: for rundt 140 verb passet ikke bøyingen til oversettelsen som ble vist."
+    ],
+    "tr": [
+     "Çekim düzeltildi: yaklaşık 140 fiilde çekim, gösterilen çeviriyle uyuşmuyordu."
+    ],
+    "zh": [
+     "动词变位已修正：约 140 个动词的变位与显示的译文不一致。"
+    ]
+   }
+  },
+  {
    "release": "2026-11-20T08:44:31.000Z",
    "version": "0.14",
    "date": "2026-11-20",
