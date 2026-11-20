@@ -6,11 +6,11 @@
   ],
   [
    "Korte startpagina",
-   "Als je Fraxx als app installeert, opent het met een compacte startpagina: zoekveld, tegels voor alle onderdelen, jouw quizstand en de laatst geopende onderdelen. De uitgebreide introductie vind je daar via „Wat is Fraxx?“."
+   "Als app geïnstalleerd opent Fraxx met een compacte startpagina: zoekveld, tegels voor alle onderdelen, je quizstand en de laatst geopende onderdelen. De uitgebreide introductie vind je daar via „Wat is Fraxx?“ of met een tik op het logo."
   ],
   [
    "Offline gebruiken",
-   "Alles wat geïnstalleerd is, werkt zonder internet: in het vliegtuig, in het buitenland zonder databundel, of op plekken zonder bereik."
+   "Alles wat geïnstalleerd is, werkt zonder internet: in het vliegtuig, in het buitenland zonder databundel, in een gebied zonder bereik."
   ],
   [
    "Goede stemmen",
@@ -18,7 +18,7 @@
   ],
   [
    "Gegevens veiligstellen",
-   "Je sterren, leerstanden en instellingen staan op je apparaat. Onder ⚙ → App, Taalpakketten &amp; back-up download je een back-up en zet je die er indien nodig weer op."
+   "Je sterren, leervoortgang en instellingen staan op je apparaat. Onder ⚙ → App, Taalpakketten &amp; back-up download je een back-up en zet je die indien nodig weer terug."
   ],
   [
    "Updates",
@@ -26,45 +26,45 @@
   ]
  ],
  "appcap": "App, Taalpakketten &amp; back-up: talen downloaden of verwijderen, back-up downloaden.",
- "beta": "Testversie: eigen nieuwe woorden vertalen is nog niet beschikbaar en komt in een latere versie. Al het andere werkt al, ook offline.",
+ "beta": "Testversie: eigen nieuwe woorden laten vertalen is nog niet beschikbaar en komt in een latere versie. Al het andere werkt al, ook offline.",
  "end": "Goede reis!",
- "endsub": "Veel plezier met Fraxx. Heb je een idee of een fout gevonden? We zijn blij met elke reactie.",
+ "endsub": "Veel plezier met Fraxx. Heb je een idee of een fout gevonden? We horen graag van je.",
  "eyebrow": "Handleiding · in 5 minuten klaar voor gebruik",
  "features": [
   [
    "inhalt",
    "☰ Inhoud",
-   "Meer dan 6.000 woorden, zinnen en uitdrukkingen, geordend per onderwerp: van restaurant via apotheek en garage tot het gemeentehuis. Daarnaast alfabetische lijsten voor zelfstandige naamwoorden, werkwoorden, bijvoeglijke naamwoorden en meer. Het eerste tabblad <b>Essentials</b> bundelt het belangrijkste om mee te beginnen: begroeting, beleefdheid, verstaanbaar maken, getallen, noodgevallen en de hoognodige woorden. Het tabblad <b>Business</b> biedt zo'n 430 zinnen en woorden zoals in een zakelijke taalcursus: small talk, meetings, telefoon en videocall, e-mails, presenteren, onderhandelen, solliciteren, klantenservice, zakenreis en getallen. Met het zoekveld vind je onderwerpen op naam."
+   "Ruim 6.000 woorden, zinnen en idiomatische uitdrukkingen, geordend per onderwerp: van restaurant via apotheek en garage tot het gemeentehuis. Daarnaast alfabetische lijsten voor zelfstandige naamwoorden, werkwoorden, bijvoeglijke naamwoorden en meer. Het eerste tabblad <b>Essentials</b> bundelt het belangrijkste om mee te beginnen: begroeting, beleefdheid, elkaar verstaan, getallen, noodgevallen en de allernodigste woorden, elk onderwerp in een eigen vak. Het laatste tabblad <b>Business</b> biedt zo'n 430 zinnen en woorden zoals in een zakelijke taalcursus: small talk, meetings, telefoon en videocall, e-mails, presenteren, onderhandelen, solliciteren, klantenservice, zakenreis en getallen. Het zoekveld vindt onderwerpen op naam."
   ],
   [
    "tabelle",
    "Vertalingen en uitspraak",
-   "Elk item staat in al jouw talen naast elkaar, zelfstandige naamwoorden met lidwoord, uitdrukkingen naar de betekenis vertaald. 🔊 leest voor, een tweede tik stopt. Met de pin houd je belangrijke items bovenaan, met A–Z sorteer je."
+   "Elk item staat in al je talen naast elkaar, zelfstandige naamwoorden met lidwoord, idiomatische uitdrukkingen naar de betekenis vertaald. 🔊 leest voor, een tweede tik stopt het. Met de pin houd je belangrijke items bovenaan, met A–Z sorteer je."
   ],
   [
    "konj",
    "Werkwoorden en vervoeging",
-   "Werkwoorden worden in alle talen vervoegd: tegenwoordige tijd, voltooide tijd, verleden tijd en toekomende tijd. <b>Vervoeging ▸</b> klapt de tabellen open, met de tijdknoppen wissel je van tijdvorm."
+   "Werkwoorden worden in alle talen vervoegd: tegenwoordige tijd, voltooide tijd, verleden tijd en toekomende tijd. <b>Vervoeging ▸</b> klapt de tabellen open, met de tijdknoppen wissel je van tijd."
   ],
   [
    "gram",
    "§ Grammatica",
-   "De belangrijkste regels van elke taal van A1 tot C1, met voorbeelden om te beluisteren. <b>Werkwoorden &amp; uitgangen</b> toont tabellen met uitgangen en onregelmatige werkwoorden, <b>Veelgemaakte fouten</b> de struikelblokken voor sprekers van jouw taal. <b>Oefenen in de quiz</b> overhoort een hoofdstuk met invulzinnen."
+   "De belangrijkste regels van elke taal van A1 tot C1, met voorbeelden om te beluisteren. <b>Werkwoorden &amp; uitgangen</b> toont uitgangentabellen en onregelmatige werkwoorden, <b>Veelgemaakte fouten</b> de struikelblokken voor sprekers van jouw taal. <b>Oefenen in de quiz</b> overhoort een hoofdstuk met invulzinnen."
   ],
   [
    "verben",
    "Werkwoorden &amp; uitgangen",
-   "Uitgangen in één oogopslag: regelmatige patronen, uitzonderingen en de belangrijkste onregelmatige werkwoorden, elk met een voorbeeld."
+   "Uitgangen in één oogopslag: regelmatige patronen, uitzonderingen en de belangrijkste onregelmatige werkwoorden, telkens met een voorbeeld."
   ],
   [
    "dish",
    "🍽 Menukaart",
-   "Zo'n 250 populaire gerechten en dranken per land met originele naam en uitleg, plus koffie, bier en wijn. Waarschuwingen laten zien wanneer een naam elders iets anders betekent. <b>Bestellen ▸</b> laat zien hoe je het bestelt."
+   "Zo'n 250 populaire gerechten en dranken per land met originele naam en uitleg, plus koffie, bier en wijn. Waarschuwingen laten zien als een naam elders iets anders betekent. <b>Bestellen ▸</b> laat zien hoe je het bestelt."
   ],
   [
    "spick",
    "★ Spiekbriefje",
-   "Alles wat je met de ster hebt gemarkeerd, compact in één taal: woorden, uitdrukkingen en gerechten. Met <b>Afdrukken</b> maak je er een briefje voor onderweg van."
+   "Alles wat je met de ster hebt gemarkeerd, compact in één taal: woorden, idiomatische uitdrukkingen en gerechten. Met <b>Afdrukken</b> maak je er een briefje voor onderweg van."
   ],
   [
    "quiz",
@@ -73,7 +73,7 @@
   ]
  ],
  "h1": "Zo werkt <em>Fraxx</em>.",
- "lead": "Fraxx is jouw persoonlijke taal-app voor onderweg en voor elke dag: woorden, zinnen en uitdrukkingen in veel talen, met uitspraak, vervoeging, grammatica, menukaarten en quiz. Hier zie je in een paar stappen hoe je aan de slag gaat, en daarna alles wat Fraxx te bieden heeft.",
+ "lead": "Fraxx is jouw persoonlijke taal-app voor onderweg en voor elke dag: woorden, zinnen en idiomatische uitdrukkingen in veel talen, met uitspraak, vervoeging, grammatica, menukaarten en quiz. Hier zie je in een paar stappen hoe je aan de slag gaat, en daarna alles wat Fraxx te bieden heeft.",
  "mob": "Op je telefoon",
  "mobsub": "Dezelfde inhoud, gemaakt voor je duim: de regels worden kaarten, de balk staat bovenaan.",
  "navcap": "De balk bovenaan: Inhoud, Grammatica, Menukaart, Spiekbriefje, Quiz, Help (?) en Instellingen (⚙).",
@@ -88,38 +88,39 @@
  "s2": "Na de installatie",
  "s2sub": "Eén keer instellen, daarna werkt Fraxx ook zonder internet.",
  "s3": "Alles wat Fraxx kan",
- "s3sub": "De onderdelen in één oogopslag – bovenaan in de balk vind je ze allemaal.",
+ "s3sub": "De onderdelen in een overzicht – je vindt ze allemaal in de balk bovenaan.",
  "step": "Stap",
  "steps": [
   [
    "src",
-   "Taal kiezen",
-   "Fraxx verschijnt meteen in de taal van je browser. Bij de eerste keer doorgaan vraagt Fraxx eenmalig welke taal jij spreekt. Die van jou is al voorgeselecteerd. Dat is je <b>Brontaal</b>: daarin staan het menu, de uitleg en de tips. Je kunt haar later altijd wijzigen via ⚙."
+   "Kies je taal",
+   "Fraxx verschijnt meteen in de taal van je browser. Bij de eerste keer verder gaan vraagt Fraxx één keer welke taal je spreekt, die van jou is al voorgeselecteerd. Dat is je <b>Brontaal</b>: daarin staan het menu, de uitleg en de tips. Je kunt die later altijd wijzigen via ⚙. Is jouw browsertaal er nog niet, dan start Fraxx in het Engels."
   ],
   [
    "home",
    "Aan de slag",
-   "De startpagina laat zien wat Fraxx kan. Rechtsboven wissel je de taal van de pagina. <b>Aan de slag →</b> opent de inhoudsopgave. Met een tik op het logo ga je altijd terug naar hier."
+   "De startpagina laat zien wat Fraxx kan. Rechtsboven wissel je de taal van de pagina. <b>Aan de slag →</b> opent de inhoudsopgave. Met een tik op het logo kom je altijd weer hier terug."
   ],
   [
    "inhalt",
-   "Onderwerp openen",
-   "Bij <b>Inhoud</b> staan alle onderwerpen als vakken. Helemaal vooraan staan de <b>Essentials</b>: zo'n 110 zinnen en woorden die je op elke reis als eerste nodig hebt. Daar begin je het best mee. Ernaast vind je <b>Business</b> met zinnen en woorden voor meetings, e-mails, telefoongesprekken en onderhandelingen. Daarna volgen idiomatische uitdrukkingen per onderwerp (restaurant, hotel, apotheek …) en woordenschat per onderwerp. Met <b>Openen ▾</b> spring je er meteen in."
+   "Een onderwerp openen",
+   "In de <b>Inhoud</b> staan alle onderwerpen als vakken. Helemaal vooraan staan de <b>Essentials</b>: zo'n 110 zinnen en woorden die je op elke reis als eerste nodig hebt, met eigen vakken voor begroeting, beleefdheid, noodgevallen en meer. Daar begin je het best mee. Daarna volgen idiomatische uitdrukkingen per onderwerp (restaurant, hotel, apotheek …), woordenschat per onderwerp en helemaal aan het eind <b>Business</b> met zinnen en woorden voor meetings, e-mails, telefoongesprekken en onderhandelingen. <b>Openen ▾</b> brengt je er direct naartoe."
   ],
   [
    "tabelle",
-   "Lezen, horen, onthouden",
-   "Elke regel toont een item in al jouw talen. De luidspreker 🔊 leest voor, grijze tips leggen bijzonderheden uit. Met de ster ☆ zet je het item op je spiekbriefje."
+   "Lezen, luisteren, onthouden",
+   "Elke regel toont een item in al je talen. De luidspreker 🔊 leest voor, grijze opmerkingen leggen bijzonderheden uit. Met de ster ☆ zet je het item op je spiekbriefje."
   ],
   [
    "set",
    "Instellen",
-   "Onder <b>⚙</b> kies je je brontaal, taalniveau (A1 tot C2), je talen en het thema (Licht of Donker). Bovenaan staat je versie."
+   "Onder <b>⚙</b> kies je je brontaal, taalniveau (A1 tot C2), je talen en het uiterlijk (Licht of Donker). Bovenaan staat je versie."
   ]
  ],
  "tiplist": [
-  "Nieuw in een taal? Begin met de <b>Essentials</b> en oefen ze in de quiz: kies bij Onderdeel „Essentials“.",
-  "Voor je werk: kies in de quiz bij Onderdeel „Business (alle)“ en oefen meetings, e-mails en onderhandelen.",
+  "Nieuw in een taal? Begin met de <b>Essentials</b> en oefen ze in de quiz: kies onder Onderdeel „Essentials“.",
+  "Voor je werk: kies in de quiz onder Onderdeel „Business (alle)“ en oefen meetings, e-mails en onderhandelen.",
+  "De zoekfunctie vindt woorden en zinnen in jouw taal. Onder het zoekveld kies je met <b>Andere taal ▾</b> een van je talen of alle talen.",
   "Taalniveau onder ⚙ verbergt alles boven jouw niveau, in tabel, grammatica en quiz.",
   "Maximaal 5 talen passen naast elkaar in de tabel: je brontaal en vier andere.",
   "Bij talen met een ander schrift (Arabisch, Russisch, Japans …) staat de transcriptie cursief eronder.",

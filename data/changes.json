@@ -1,6 +1,52 @@
 {
  "releases": [
   {
+   "release": "2026-11-20T19:34:14.433Z",
+   "version": "0.18",
+   "date": "2026-11-20",
+   "notes": {
+    "de": [
+     "Verbesserungen und Korrekturen."
+    ],
+    "en": [
+     "Improvements and fixes."
+    ],
+    "fr": [
+     "Améliorations et corrections."
+    ],
+    "it": [
+     "Miglioramenti e correzioni."
+    ],
+    "es": [
+     "Mejoras y correcciones."
+    ],
+    "pt": [
+     "Melhorias e correções."
+    ],
+    "nl": [
+     "Verbeteringen en correcties."
+    ],
+    "pl": [
+     "Ulepszenia i poprawki."
+    ],
+    "sv": [
+     "Förbättringar och rättelser."
+    ],
+    "nb": [
+     "Forbedringer og rettelser."
+    ],
+    "tr": [
+     "İyileştirmeler ve düzeltmeler."
+    ],
+    "zh": [
+     "改进与修正。"
+    ],
+    "ar": [
+     "تحسينات وإصلاحات."
+    ]
+   }
+  },
+  {
    "release": "2026-11-20T19:13:33.000Z",
    "version": "0.17",
    "date": "2026-11-20",
