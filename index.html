@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="08c4efe7f1">
+<meta name="fraxx-build" content="d5d8ee370e">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
@@ -896,7 +896,7 @@ html:root[data-design="navy-orange"]{
   --head-btn:#ff5a1f; --head-btn-ink:#0b1b33; --head-btn2:transparent; --head-btn2-ink:#ffffff; --head-btn2-line:#ffffff;
   --head-field:#ffffff; --hl-big:#ff5a1f; --hl-text:#0b1b33; --tab-mark:#ff5a1f;
   --globe-ink:#ffffff; --globe-hl:#ff5a1f; --globe-dark:1;
-  --globe-tones:#2f5d9e, #3b7a8c, #5a4f8c, #2d7a5f, #4a6a9e, #6b5b95, #36648b, #3f7f6a, #55607a, #2b6cb0;
+  --globe-tones:#ff5a1f, #ffffff, #ffe4d6; --globe-bubble-ink:#0b1b33;
 }
 /* Beere dunkel: dunkle Fassung von Taupe Beere */
 html:root[data-design="taupe-beere-dunkel"]{
@@ -1164,7 +1164,8 @@ html[data-design^="taupe"]{--p-dress:var(--hl); --p-shirt:#f3f1ef; --p-pants:#14
 @keyframes djp{50%{opacity:.4}}
 @media (max-width:760px){ .djrow{grid-template-columns:12px minmax(0,1fr) auto} .djst{grid-column:2 / -1} }
 .hhero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;align-items:center;background:var(--head-bg);color:var(--head-ink);border-radius:calc(var(--radius) + 10px);box-shadow:var(--shadow);padding:48px 44px;overflow:hidden;position:relative}
-.hkick{display:flex;align-items:center;gap:12px;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--head-kick);margin:0 0 16px}
+.hkick{display:flex;align-items:center;gap:12px;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}
+:is(.hhero,.dhead) .hkick{color:var(--head-kick)}
 .hslide{display:none}
 .htitle{font-size:clamp(2.2rem,4.8vw,3.8rem);line-height:1.02;letter-spacing:-.035em;margin:0;font-weight:800;text-wrap:balance}
 .htitle em{font-style:normal;color:var(--accent)}
@@ -7009,7 +7010,7 @@ Antworte ausschließlich mit JSON: {"expl":["…"]} – genau ${part.length} Tex
     const TONES0 = ["#a3395f","#7a5c4f","#8c4570","#5f6f5a","#b06a3b","#4f6377","#9a7b4f","#6d5a7a","#3f6b6a","#a2524a"];
     let TONES = TONES0, tonesKey = "";
     // Farben der Sprechblasen: je Schema über --globe-tones (Komma-Liste), sonst die Beere-Töne
-    function readTones(){ const v = getComputedStyle(document.documentElement).getPropertyValue("--globe-tones").trim(); TONES = v ? v.split(",").map(x=>x.trim()) : TONES0; const k = TONES.join(); const ch = k !== tonesKey; tonesKey = k; return ch; }
+    function readTones(){ const v = getComputedStyle(document.documentElement).getPropertyValue("--globe-tones").trim(); TONES = v ? v.split(",").map(x=>x.trim()) : TONES0; const k = TONES.join() + getComputedStyle(document.documentElement).getPropertyValue("--globe-bubble-ink"); const ch = k !== tonesKey; tonesKey = k; return ch; }
     const D2R = Math.PI/180, N = L.length;
     const glc = stage.querySelector(".gl"), lc = stage.querySelector(".gl2"), ctx = lc.getContext("2d");
     const rings = COUNTRIES.split(";").map(r=>{ const a = r.split(",").map(Number); const pts = []; let x = a[0], y = a[1]; pts.push([x/5, y/5]); for(let i=2;i<a.length;i+=2){ x += a[i]; y += a[i+1]; pts.push([x/5, y/5]); } return pts; });
@@ -7024,7 +7025,7 @@ Antworte ausschließlich mit JSON: {"expl":["…"]} – genau ${part.length} Tex
     const atlas = document.createElement("canvas"); atlas.width = CW*COLS; atlas.height = CH*ROWS;
     const bub = [];
     function buildAtlas(){
-      readTones(); const bx = atlas.getContext("2d"); bx.clearRect(0,0,atlas.width,atlas.height);
+      readTones(); const bubbleInk = getComputedStyle(document.documentElement).getPropertyValue("--globe-bubble-ink").trim() || "#fff"; const bx = atlas.getContext("2d"); bx.clearRect(0,0,atlas.width,atlas.height);
       const FONT = s => `800 ${s}px Urbanist, "Noto Sans", "Noto Sans CJK JP", "Noto Sans Arabic", system-ui, sans-serif`;
       L.forEach(([code, hello], i)=>{
         const cx = (i % COLS)*CW, cy = Math.floor(i / COLS)*CH;
@@ -7034,7 +7035,7 @@ Antworte ausschließlich mit JSON: {"expl":["…"]} – genau ${part.length} Tex
         bx.lineTo(x0 + w*0.42 + 18, y0 + h); bx.lineTo(x0 + w*0.36, y0 + h + 34); bx.lineTo(x0 + w*0.36 + 2, y0 + h);
         bx.lineTo(x0 + r, y0 + h); bx.arc(x0 + r, y0 + r, r, Math.PI/2, Math.PI*1.5); bx.closePath();
         bx.fillStyle = TONES[i % TONES.length]; bx.fill();
-        bx.fillStyle = "#fff"; bx.textAlign = "center"; bx.textBaseline = "middle"; bx.fillText(hello, x0 + w/2, y0 + h/2 + 2);
+        bx.fillStyle = bubbleInk; bx.textAlign = "center"; bx.textBaseline = "middle"; bx.fillText(hello, x0 + w/2, y0 + h/2 + 2);
         bub[i] = { uv:[x0/atlas.width, cy/atlas.height, (x0+w)/atlas.width, (cy+CH)/atlas.height], asp: w/CH, tipU: 0.36, tipV: (y0 - cy + h + 34)/CH, sx:x0, sy:cy, sw:w };
       });
     }
