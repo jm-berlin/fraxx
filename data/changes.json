@@ -1,6 +1,61 @@
 {
  "releases": [
   {
+   "release": "2026-11-20T08:44:31.000Z",
+   "version": "0.14",
+   "date": "2026-11-20",
+   "notes": {
+    "de": [
+     "Beim ersten Besuch erscheint Fraxx in der Sprache deines Browsers. Gibt es sie noch nicht, startet Fraxx auf Englisch. Außerdem war die Startseite auf Französisch, Spanisch und Italienisch teilweise noch deutsch, das ist behoben.",
+     "In den Einstellungen siehst du jetzt klar, welche Sprachen du sofort laden kannst und welche erst demnächst kommen."
+    ],
+    "en": [
+     "On your first visit, Fraxx appears in your browser’s language. If that language isn’t available yet, Fraxx starts in English. The start page in French, Spanish and Italian was also partly still in German, which is fixed.",
+     "In the settings you can now clearly see which languages you can load right away and which are coming soon."
+    ],
+    "fr": [
+     "Lors de ta première visite, Fraxx s’affiche dans la langue de ton navigateur. Si elle n’est pas encore disponible, Fraxx démarre en anglais. La page d’accueil en français, espagnol et italien était en partie encore en allemand, c’est corrigé.",
+     "Dans les réglages, tu vois maintenant clairement quelles langues tu peux charger tout de suite et lesquelles arrivent bientôt."
+    ],
+    "it": [
+     "Alla prima visita Fraxx appare nella lingua del tuo browser. Se non è ancora disponibile, Fraxx parte in inglese. Inoltre la pagina iniziale in francese, spagnolo e italiano era in parte ancora in tedesco: ora è corretto.",
+     "Nelle impostazioni vedi ora chiaramente quali lingue puoi caricare subito e quali arriveranno presto."
+    ],
+    "es": [
+     "En tu primera visita, Fraxx aparece en el idioma de tu navegador. Si aún no está disponible, Fraxx empieza en inglés. Además, la página de inicio en francés, español e italiano seguía en parte en alemán; ya está corregido.",
+     "En los ajustes ves ahora claramente qué idiomas puedes cargar ya y cuáles llegarán pronto."
+    ],
+    "pt": [
+     "Na primeira visita, a Fraxx aparece no idioma do teu navegador. Se ainda não estiver disponível, a Fraxx começa em inglês. A página inicial em francês, espanhol e italiano estava em parte ainda em alemão; já está corrigido.",
+     "Nas definições vês agora claramente que idiomas podes carregar já e quais chegam em breve."
+    ],
+    "nl": [
+     "Bij je eerste bezoek verschijnt Fraxx in de taal van je browser. Bestaat die nog niet, dan start Fraxx in het Engels. Ook was de startpagina in het Frans, Spaans en Italiaans deels nog Duits; dat is opgelost.",
+     "In de instellingen zie je nu duidelijk welke talen je meteen kunt laden en welke binnenkort komen."
+    ],
+    "pl": [
+     "Przy pierwszej wizycie Fraxx wyświetla się w języku przeglądarki. Jeśli tego języka jeszcze nie ma, Fraxx uruchamia się po angielsku. Strona startowa po francusku, hiszpańsku i włosku była też częściowo po niemiecku – to już poprawione.",
+     "W ustawieniach widać teraz wyraźnie, które języki można od razu pobrać, a które pojawią się wkrótce."
+    ],
+    "sv": [
+     "Vid första besöket visas Fraxx på din webbläsares språk. Finns det inte än startar Fraxx på engelska. Startsidan på franska, spanska och italienska var dessutom delvis kvar på tyska, det är åtgärdat.",
+     "I inställningarna ser du nu tydligt vilka språk du kan ladda direkt och vilka som kommer snart."
+    ],
+    "nb": [
+     "Ved første besøk vises Fraxx på nettleserens språk. Finnes det ikke ennå, starter Fraxx på engelsk. Startsiden på fransk, spansk og italiensk var dessuten delvis fortsatt på tysk, det er rettet.",
+     "I innstillingene ser du nå tydelig hvilke språk du kan laste ned med en gang og hvilke som kommer snart."
+    ],
+    "tr": [
+     "İlk ziyaretinde Fraxx tarayıcının dilinde açılır. Bu dil henüz yoksa Fraxx İngilizce başlar. Ayrıca Fransızca, İspanyolca ve İtalyanca başlangıç sayfası kısmen hâlâ Almancaydı, düzeltildi.",
+     "Ayarlarda artık hangi dilleri hemen yükleyebileceğini ve hangilerinin yakında geleceğini açıkça görüyorsun."
+    ],
+    "zh": [
+     "首次访问时，Fraxx 会以浏览器语言显示。如果暂不支持该语言，Fraxx 将以英语启动。此外，法语、西班牙语和意大利语首页部分仍显示德语的问题已修复。",
+     "在设置中，你现在可以清楚地看到哪些语言可以立即加载，哪些即将推出。"
+    ]
+   }
+  },
+  {
    "release": "2026-11-20T08:11:09.000Z",
    "version": "0.13",
    "date": "2026-11-20",

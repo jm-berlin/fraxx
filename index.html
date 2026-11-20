@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="31076f4c7d">
+<meta name="fraxx-build" content="1dfe24f017">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
@@ -1655,7 +1655,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       </div>
     </div>
     <div class="hstats">
-      <div class="hstat"><b id="hsn" data-notr>6.400+</b><span>Einträge in deiner App</span></div>
+      <div class="hstat"><b id="hsn" data-notr>6.500+</b><span>Einträge in deiner App</span></div>
       <div class="hstat"><b id="hsc">21</b><span>Sprachen zur Auswahl</span></div>
       <div class="hstat"><b id="hsl">–</b><span>Sprachen gleichzeitig</span></div>
       <div class="hstat"><b data-notr>~250</b><span>Speisen &amp; Getränke je Land</span></div>
@@ -3633,7 +3633,8 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
   new MutationObserver(()=>{ if(homeDirty && !document.documentElement.hasAttribute("data-home")){ homeDirty = false; renderFromData(); } }).observe(document.documentElement, {attributes:true, attributeFilter:["data-home"]});
   function renderData(){
     // Startseite offen: Tabelle ist unsichtbar, erst beim Verlassen nachziehen
-    if(lastRenderAt && document.documentElement.hasAttribute("data-home")){ homeDirty = true; return; }
+    // Oberflächentexte trotzdem nachladen (z. B. Sprachpaket der Ausgangssprache kam eben erst an), sonst bleibt die Startseite deutsch
+    if(lastRenderAt && document.documentElement.hasAttribute("data-home")){ homeDirty = true; try{ if(typeof I18N==="object") I18N.sync(); }catch(_){} return; }
     // Nicht neu zeichnen, während eine Maustaste gedrückt ist – sonst geht der Klick verloren
     if(pointerIsDown){ if(!dataTimer) dataTimer = setTimeout(()=>{ dataTimer = null; renderData(); }, 150); return; }
     if(performance.now() - lastInput < 1500){ renderFromData(); return; }
@@ -4613,7 +4614,9 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
     if(soon.length){ const r = el("div","lsrow lsoff"); soon.forEach(x=>r.append(x)); box.append(el("span","lslbl", "Demnächst verfügbar"), r); }
   }
   // Kommt die Paketliste erst nach dem Öffnen der Einstellungen an (erster Start, langsames Netz): Liste neu zeichnen
-  try{ if(window.Multilingo && typeof Multilingo.onChange==="function") Multilingo.onChange(()=>{ try{ renderLangSet(); }catch(_){} }); }catch(_){}
+  // Ebenso die Oberflächentexte: Lädt das Sprachpaket der Ausgangssprache erst nach dem Start (Standardpakete beim ersten Besuch),
+  // blieb die Startseite sonst deutsch, bis irgendwo neu gezeichnet wurde
+  try{ if(window.Multilingo && typeof Multilingo.onChange==="function") Multilingo.onChange(()=>{ try{ renderLangSet(); }catch(_){} try{ if(typeof I18N==="object") I18N.sync(); }catch(_){} }); }catch(_){}
   // Öffentliche App (nicht Admin, nicht Artefakt): nur Sprachen mit fertigem Sprachpaket, kein Übersetzen anstoßen
   function publicApp(){ return typeof window.Multilingo === "object" && !!window.Multilingo && !window.ML_ADMIN; }
   function hasPack(c){ try{ return !!(window.Multilingo && Multilingo.index && (Multilingo.index().packs||[]).some(p=>p.lang===c)); }catch(e){ return false; } }
