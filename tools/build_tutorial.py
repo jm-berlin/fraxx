@@ -82,16 +82,16 @@ TEXT = {"de": {
   "beta": "Testversion: Eigene neue Wörter übersetzen ist noch nicht freigeschaltet und kommt in einer späteren Version. Alles andere funktioniert schon, auch offline.",
   "s1": "Die ersten Schritte", "s1sub": "Fünf Schritte vom ersten Öffnen bis zur ersten Übersetzung.",
   "steps": [
-    ("src", "Sprache wählen", "Fraxx erscheint gleich in der Sprache deines Browsers. Beim ersten Weitergehen fragt Fraxx einmal, welche Sprache du sprichst, deine ist schon vorausgewählt. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern."),
+    ("src", "Sprache wählen", "Fraxx erscheint gleich in der Sprache deines Browsers. Beim ersten Weitergehen fragt Fraxx einmal, welche Sprache du sprichst, deine ist schon vorausgewählt. Das ist deine <b>Ausgangssprache</b>: Darin sind Menü, Erklärungen und Hinweise geschrieben. Du kannst sie später unter ⚙ jederzeit ändern. Gibt es deine Browsersprache noch nicht, startet Fraxx auf Englisch."),
     ("home", "Loslegen", "Die Startseite zeigt, was Fraxx kann. Ganz oben rechts wechselst du die Sprache der Seite. <b>Loslegen →</b> öffnet das Inhaltsverzeichnis. Ein Tipp auf das Logo bringt dich jederzeit hierher zurück."),
-    ("inhalt", "Thema öffnen", "Im <b>Inhalt</b> stehen alle Themen als Kästen. Ganz vorne liegen die <b>Essentials</b>: rund 110 Sätze und Wörter, die du auf jeder Reise zuerst brauchst. Damit fängst du am besten an. Daneben liegt <b>Business</b> mit Sätzen und Wörtern für Meetings, E-Mails, Telefonate und Verhandlungen. Dahinter folgen Redewendungen nach Themen (Restaurant, Hotel, Apotheke …) und Wortschatz nach Themen. <b>Öffnen ▾</b> springt direkt hinein."),
+    ("inhalt", "Thema öffnen", "Im <b>Inhalt</b> stehen alle Themen als Kästen. Ganz vorne liegen die <b>Essentials</b>: rund 110 Sätze und Wörter, die du auf jeder Reise zuerst brauchst, mit eigenen Kästen für Begrüßung, Höflichkeit, Notfall und mehr. Damit fängst du am besten an. Dahinter folgen Redewendungen nach Themen (Restaurant, Hotel, Apotheke …), Wortschatz nach Themen und ganz am Ende <b>Business</b> mit Sätzen und Wörtern für Meetings, E-Mails, Telefonate und Verhandlungen. <b>Öffnen ▾</b> springt direkt hinein."),
     ("tabelle", "Lesen, hören, merken", "Jede Zeile zeigt einen Eintrag in all deinen Sprachen. Der Lautsprecher 🔊 liest vor, graue Hinweise erklären Besonderheiten. Der Stern ☆ setzt den Eintrag auf deinen Spickzettel."),
     ("set", "Einstellen", "Unter <b>⚙</b> wählst du Ausgangssprache, Sprachniveau (A1 bis C2), deine Sprachen und das Design (Hell oder Dunkel). Ganz oben steht deine Version."),
   ],
   "s2": "Nach der Installation", "s2sub": "Einmal einrichten, dann läuft Fraxx auch ohne Internet.",
   "after": [
     ("Sprachpakete laden", "Unter ⚙ → <b>App, Sprachpakete &amp; Sicherung</b> lädst du die Sprachen, die du brauchst. Jedes Paket enthält alle Übersetzungen, Konjugationen, Grammatik und Speisekarten dieser Sprache."),
-    ("Kurze Startseite", "Als App installiert, öffnet Fraxx mit einer kompakten Startseite: Suchfeld, Kacheln zu allen Bereichen, dein Quiz-Stand und die zuletzt geöffneten Bereiche. Die ausführliche Vorstellung erreichst du dort über „Was ist Fraxx?“."),
+    ("Kurze Startseite", "Als App installiert, öffnet Fraxx mit einer kompakten Startseite: Suchfeld, Kacheln zu allen Bereichen, dein Quiz-Stand und die zuletzt geöffneten Bereiche. Die ausführliche Vorstellung erreichst du dort über „Was ist Fraxx?“ oder mit einem Tipp auf das Logo."),
     ("Offline nutzen", "Alles, was installiert ist, funktioniert ohne Internet: im Flugzeug, im Ausland ohne Datenvolumen, im Funkloch."),
     ("Gute Stimmen", "Vorgelesen wird mit den Stimmen deines Geräts. Am Mac und unter Windows klingt Chrome meist am natürlichsten. Weitere Stimmen installierst du in den Spracheinstellungen deines Geräts."),
     ("Daten sichern", "Deine Sterne, Lernstände und Einstellungen liegen auf dem Gerät. Unter ⚙ → App, Sprachpakete &amp; Sicherung lädst du eine Sicherung herunter und spielst sie bei Bedarf wieder ein."),
@@ -101,7 +101,7 @@ TEXT = {"de": {
   "s3": "Alles, was Fraxx kann", "s3sub": "Die Bereiche im Überblick – oben in der Leiste findest du sie alle.",
   "navcap": "Die Leiste oben: Inhalt, Grammatik, Speisekarte, Spickzettel, Quiz, Hilfe (?) und Einstellungen (⚙).",
   "features": [
-    ("inhalt", "☰ Inhalt", "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Der erste Reiter <b>Essentials</b> sammelt das Wichtigste zum Einstieg: Begrüßung, Höflichkeit, Verständigung, Zahlen, Notfall und die nötigsten Wörter. Der Reiter <b>Business</b> bringt rund 430 Sätze und Wörter wie in einem Business-Sprachkurs: Small Talk, Meetings, Telefon und Videocall, E-Mails, Präsentieren, Verhandeln, Bewerbung, Kundenservice, Geschäftsreise und Zahlen. Das Suchfeld findet Themen nach Namen."),
+    ("inhalt", "☰ Inhalt", "Über 6.000 Wörter, Sätze und Redewendungen in Themen geordnet: vom Restaurant über Apotheke und Werkstatt bis zum Amt. Dazu alphabetische Listen für Substantive, Verben, Adjektive und mehr. Der erste Reiter <b>Essentials</b> sammelt das Wichtigste zum Einstieg: Begrüßung, Höflichkeit, Verständigung, Zahlen, Notfall und die nötigsten Wörter, jedes Thema in einem eigenen Kasten. Der letzte Reiter <b>Business</b> bringt rund 430 Sätze und Wörter wie in einem Business-Sprachkurs: Small Talk, Meetings, Telefon und Videocall, E-Mails, Präsentieren, Verhandeln, Bewerbung, Kundenservice, Geschäftsreise und Zahlen. Das Suchfeld findet Themen nach Namen."),
     ("tabelle", "Übersetzungen und Aussprache", "Jeder Eintrag steht in allen deinen Sprachen nebeneinander, Substantive mit Artikel, Redewendungen sinngemäß übersetzt. 🔊 liest vor, ein zweiter Tipp stoppt. Mit dem Pin hältst du wichtige Einträge oben, mit A–Z sortierst du."),
     ("konj", "Verben und Konjugation", "Verben werden in allen Sprachen konjugiert: Präsens, Perfekt, Präteritum und Futur. <b>Konjugation ▸</b> klappt die Tabellen auf, die Zeit-Knöpfe wechseln die Zeitform."),
     ("gram", "§ Grammatik", "Die wichtigsten Regeln jeder Sprache von A1 bis C1, mit Beispielen zum Anhören. <b>Verben &amp; Endungen</b> zeigt Endungstabellen und unregelmäßige Verben, <b>Typische Fehler</b> die Stolpersteine für Sprecher deiner Sprache. <b>Im Quiz üben</b> fragt ein Kapitel mit Lückensätzen ab."),
@@ -114,6 +114,7 @@ TEXT = {"de": {
   "tips": "Kleine Tipps", "tiplist": [
     "Neu in einer Sprache? Fang mit den <b>Essentials</b> an und übe sie im Quiz: Unter Bereich „Essentials“ wählen.",
     "Für den Beruf: Im Quiz unter Bereich „Business (alle)“ wählen und Meetings, E-Mails und Verhandeln üben.",
+    "Die Suche findet Wörter und Sätze in deiner Sprache. Unter dem Suchfeld wählst du mit <b>Andere Sprache ▾</b> eine deiner Sprachen oder alle Sprachen.",
     "Sprachniveau unter ⚙ blendet alles über deinem Niveau aus, in Tabelle, Grammatik und Quiz.",
     "Bis zu 5 Sprachen passen nebeneinander in die Tabelle: deine Ausgangssprache und vier weitere.",
     "Bei Sprachen mit anderer Schrift (Arabisch, Russisch, Japanisch …) steht die Umschrift kursiv darunter.",
