@@ -1,6 +1,85 @@
 {
  "releases": [
   {
+   "release": "2026-11-20T08:11:09.000Z",
+   "version": "0.13",
+   "date": "2026-11-20",
+   "notes": {
+    "de": [
+     "Suche: Standardmäßig wird nur in deiner Sprache gesucht, die Treffer sind dadurch übersichtlicher. Unter dem Suchfeld kannst du gezielt in einer anderen Sprache oder in allen Sprachen suchen.",
+     "Essentials: Die Themen (Begrüßung, Höflichkeit, Notfall …) erscheinen als eigene Kacheln.",
+     "Neue Reihenfolge der Reiter: Business steht jetzt am Ende. Die Wortarten haben eine eigene, klarere Leiste.",
+     "Startseite der App: einheitliches Suchfeld und schlichte Symbole. Das Logo führt zur großen Startseite."
+    ],
+    "en": [
+     "Search: by default it only searches your language, so the results are clearer. Below the search field you can search in another language or in all languages.",
+     "Essentials: the topics (greetings, politeness, emergency …) now appear as separate tiles.",
+     "New tab order: Business is now at the end. Word classes have their own, clearer bar.",
+     "App start page: a consistent search field and simple icons. The logo takes you to the full start page."
+    ],
+    "fr": [
+     "Recherche : par défaut, elle ne porte que sur ta langue, les résultats sont donc plus clairs. Sous le champ de recherche, tu peux chercher dans une autre langue ou dans toutes les langues.",
+     "Essentials : les thèmes (salutations, politesse, urgence …) apparaissent sous forme de tuiles.",
+     "Nouvel ordre des onglets : Business est désormais à la fin. Les catégories grammaticales ont leur propre barre, plus claire.",
+     "Page d’accueil de l’app : un champ de recherche uniforme et des icônes sobres. Le logo mène à la grande page d’accueil."
+    ],
+    "it": [
+     "Ricerca: per impostazione predefinita cerca solo nella tua lingua, così i risultati sono più chiari. Sotto il campo di ricerca puoi cercare in un’altra lingua o in tutte le lingue.",
+     "Essentials: i temi (saluti, cortesia, emergenza …) appaiono come riquadri separati.",
+     "Nuovo ordine delle schede: Business ora è in fondo. Le parti del discorso hanno una barra propria, più chiara.",
+     "Pagina iniziale dell’app: campo di ricerca uniforme e icone semplici. Il logo porta alla pagina iniziale completa."
+    ],
+    "es": [
+     "Búsqueda: por defecto solo busca en tu idioma, así los resultados son más claros. Debajo del campo de búsqueda puedes buscar en otro idioma o en todos.",
+     "Essentials: los temas (saludos, cortesía, emergencia …) aparecen como mosaicos propios.",
+     "Nuevo orden de pestañas: Business está ahora al final. Las categorías gramaticales tienen su propia barra, más clara.",
+     "Página de inicio de la app: campo de búsqueda uniforme e iconos sencillos. El logo lleva a la página de inicio completa."
+    ],
+    "pt": [
+     "Pesquisa: por predefinição só pesquisa no teu idioma, por isso os resultados são mais claros. Por baixo do campo de pesquisa podes pesquisar noutro idioma ou em todos.",
+     "Essentials: os temas (cumprimentos, cortesia, emergência …) aparecem como mosaicos próprios.",
+     "Nova ordem dos separadores: Business está agora no fim. As classes de palavras têm a sua própria barra, mais clara.",
+     "Página inicial da app: campo de pesquisa uniforme e ícones simples. O logótipo leva à página inicial completa."
+    ],
+    "nl": [
+     "Zoeken: standaard wordt alleen in jouw taal gezocht, zodat de resultaten overzichtelijker zijn. Onder het zoekveld kun je in een andere taal of in alle talen zoeken.",
+     "Essentials: de thema’s (begroeting, beleefdheid, noodgeval …) verschijnen als eigen tegels.",
+     "Nieuwe volgorde van de tabbladen: Business staat nu achteraan. De woordsoorten hebben een eigen, duidelijkere balk.",
+     "Startpagina van de app: een uniform zoekveld en eenvoudige symbolen. Het logo leidt naar de volledige startpagina."
+    ],
+    "pl": [
+     "Wyszukiwanie: domyślnie szuka tylko w twoim języku, dzięki czemu wyniki są czytelniejsze. Pod polem wyszukiwania możesz szukać w innym języku lub we wszystkich.",
+     "Essentials: tematy (powitanie, uprzejmość, nagły wypadek …) są teraz osobnymi kafelkami.",
+     "Nowa kolejność zakładek: Business jest teraz na końcu. Części mowy mają własny, czytelniejszy pasek.",
+     "Strona startowa aplikacji: jednolite pole wyszukiwania i proste ikony. Logo prowadzi do pełnej strony startowej."
+    ],
+    "sv": [
+     "Sök: som standard söks bara på ditt språk, så att träffarna blir tydligare. Under sökfältet kan du söka på ett annat språk eller på alla språk.",
+     "Essentials: ämnena (hälsning, artighet, nödfall …) visas som egna rutor.",
+     "Ny ordning på flikarna: Business ligger nu sist. Ordklasserna har en egen, tydligare list.",
+     "Appens startsida: enhetligt sökfält och enkla symboler. Logotypen leder till den stora startsidan."
+    ],
+    "nb": [
+     "Søk: som standard søkes det bare på ditt språk, slik at treffene blir mer oversiktlige. Under søkefeltet kan du søke på et annet språk eller på alle språk.",
+     "Essentials: temaene (hilsener, høflighet, nødsituasjon …) vises som egne fliser.",
+     "Ny rekkefølge på fanene: Business står nå sist. Ordklassene har en egen, tydeligere linje.",
+     "Appens startside: ensartet søkefelt og enkle symboler. Logoen fører til den store startsiden."
+    ],
+    "tr": [
+     "Arama: varsayılan olarak yalnızca kendi dilinde arar, böylece sonuçlar daha anlaşılır olur. Arama alanının altından başka bir dilde ya da tüm dillerde arayabilirsin.",
+     "Essentials: konular (selamlaşma, nezaket, acil durum …) ayrı kutucuklar olarak görünür.",
+     "Sekmelerin yeni sırası: Business artık en sonda. Sözcük türlerinin kendi, daha net çubuğu var.",
+     "Uygulama başlangıç sayfası: tek tip arama alanı ve sade simgeler. Logo büyük başlangıç sayfasına götürür."
+    ],
+    "zh": [
+     "搜索：默认只在你的语言中搜索，结果因此更清晰。在搜索框下方可以选择在其他语言或所有语言中搜索。",
+     "Essentials：各个主题（问候、礼貌、紧急情况……）现在以单独的卡片显示。",
+     "标签页新顺序：Business 现在排在最后。词类有了自己更清晰的选择栏。",
+     "应用首页：统一的搜索框和简洁的图标。点击标志可回到完整首页。"
+    ]
+   }
+  },
+  {
    "release": "2026-11-20T06:59:53.000Z",
    "version": "0.12",
    "date": "2026-11-20",
