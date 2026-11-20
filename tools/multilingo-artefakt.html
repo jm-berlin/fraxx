@@ -7268,7 +7268,7 @@ void main(){
   })();
   // Button „Anleitung“: öffnet die Fassung in der Ausgangssprache (fehlt sie, bleibt es bei Deutsch)
   (()=>{ const g = document.getElementById("hguide"); if(!g) return;
-    g.addEventListener("click", ()=>{ try{ g.href = "https://jm-berlin.github.io/fraxx/anleitung/" + (SRC && SRC!=="de" ? "?lang=" + SRC : ""); }catch(_){} }); })();
+    g.addEventListener("click", ()=>{ try{ g.href = "https://jm-berlin.github.io/fraxx/anleitung/?lang=" + (SRC || "de"); }catch(_){} }); })();
   // ---------- Startseite ----------
   (()=>{
     const root = document.documentElement, home = document.getElementById("home");

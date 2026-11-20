@@ -147,7 +147,7 @@ def build():
     if LANG not in TEXT: sys.exit(f"Kein Text für {LANG}")
     T = TEXT[LANG]
     avail = [l for l in NAMES if l in TEXT]
-    switch = "".join(f'<a href="{page(l)}"{" aria-current=\"page\"" if l == LANG else ""} hreflang="{l}">{NAMES[l]}</a>' for l in avail) if len(avail) > 1 else ""
+    switch = "".join(f'<a href="{page(l) + ("?lang=de" if l == "de" else "")}"{" aria-current=\"page\"" if l == LANG else ""} hreflang="{l}">{NAMES[l]}</a>' for l in avail) if len(avail) > 1 else ""
     def fig(key, cap="", cls=""):
         src, pings, ar = img(key)
         c = f"<figcaption>{cap}</figcaption>" if cap else ""
@@ -325,6 +325,9 @@ footer{{text-align:center;color:var(--muted);font-size:13px;margin-top:22px}}
 </div>
 <script>
 (function(){{ var A = {json.dumps(avail)}, l = (new URLSearchParams(location.search).get("lang") || "").slice(0,2);
+  // Ohne ?lang: wie die Website nach der Browsersprache; gibt es sie nicht, auf Englisch
+  if({json.dumps(LANG == "de")} && !l){{ var P = (navigator.languages || [navigator.language || ""]).map(function(x){{ return String(x).slice(0,2).toLowerCase(); }});
+    l = P.filter(function(x){{ return x === "de" || A.indexOf(x) >= 0; }})[0] || (A.indexOf("en") >= 0 ? "en" : "de"); }}
   if({json.dumps(LANG == "de")} && l && l !== "de" && A.indexOf(l) >= 0) location.replace(l + ".html" + location.search); }})();
 // In der App geöffnet (?embed=1): Knöpfe zur App schließen die Anleitung, statt die App neu zu laden
 (function(){{ var emb = /[?&]embed=1/.test(location.search) && window.parent !== window; if(!emb) return;

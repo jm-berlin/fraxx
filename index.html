@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="324d3657f9">
+<meta name="fraxx-build" content="1b9b918f1c">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
@@ -7284,7 +7284,7 @@ void main(){
   })();
   // Button „Anleitung“: öffnet die Fassung in der Ausgangssprache (fehlt sie, bleibt es bei Deutsch)
   (()=>{ const g = document.getElementById("hguide"); if(!g) return;
-    g.addEventListener("click", ()=>{ try{ g.href = "https://fraxx.app/anleitung/" + (SRC && SRC!=="de" ? "?lang=" + SRC : ""); }catch(_){} }); })();
+    g.addEventListener("click", ()=>{ try{ g.href = "https://fraxx.app/anleitung/?lang=" + (SRC || "de"); }catch(_){} }); })();
   // ---------- Startseite ----------
   (()=>{
     const root = document.documentElement, home = document.getElementById("home");
