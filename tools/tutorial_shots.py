@@ -45,6 +45,8 @@ with sync_playwright() as p:
         try: pg.wait_for_function(f"document.documentElement.lang === '{LANG}'", timeout=120000)
         except Exception: print("Sprache", LANG, "nicht gesetzt – Screenshots evtl. teilweise auf Deutsch")
         pg.wait_for_timeout(2500 if LANG != "de" else 1500)
+        # Frage „Welche Sprache sprichst du?“ (kommt nach automatischer Wahl aus der Browsersprache) nicht auslösen
+        pg.evaluate("()=>{try{localStorage.removeItem('ml-srcask')}catch(e){}; document.querySelectorAll('.srcask').forEach(e=>e.remove())}")
         if pg.locator("#mlupd").count(): pg.locator("#mlupd .n").click()
         if pg.locator("#mlwel").count(): pg.locator("#mlwel .n").click()
         if pg.locator(".mlremind, #mlremind").count():
