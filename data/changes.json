@@ -1,6 +1,49 @@
 {
  "releases": [
   {
+   "release": "2026-11-20T06:59:53.000Z",
+   "version": "0.12",
+   "date": "2026-11-20",
+   "notes": {
+    "de": [
+     "Norwegisch: Die Übersetzungen aus dem Deutschen fehlten im Sprachpaket und sind jetzt wieder da."
+    ],
+    "en": [
+     "Norwegian: the translations from German were missing from the language pack and are back now."
+    ],
+    "fr": [
+     "Norvégien : les traductions depuis l’allemand manquaient dans le pack de langue et sont de retour."
+    ],
+    "it": [
+     "Norvegese: le traduzioni dal tedesco mancavano nel pacchetto lingua e ora ci sono di nuovo."
+    ],
+    "es": [
+     "Noruego: faltaban las traducciones desde el alemán en el paquete de idioma y ya vuelven a estar."
+    ],
+    "pt": [
+     "Norueguês: as traduções a partir do alemão faltavam no pacote de idioma e estão de volta."
+    ],
+    "nl": [
+     "Noors: de vertalingen vanuit het Duits ontbraken in het taalpakket en zijn nu terug."
+    ],
+    "pl": [
+     "Norweski: w pakiecie językowym brakowało tłumaczeń z niemieckiego, teraz znów są."
+    ],
+    "sv": [
+     "Norska: översättningarna från tyska saknades i språkpaketet och finns nu igen."
+    ],
+    "nb": [
+     "Norsk: Oversettelsene fra tysk manglet i språkpakken og er nå tilbake."
+    ],
+    "tr": [
+     "Norveççe: Almancadan çeviriler dil paketinde eksikti, artık yeniden var."
+    ],
+    "zh": [
+     "挪威语：语言包中缺少从德语的翻译，现已恢复。"
+    ]
+   }
+  },
+  {
    "release": "2026-11-19T23:58:27.000Z",
    "version": "0.11",
    "date": "2026-11-19",

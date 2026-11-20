@@ -152,7 +152,10 @@ for d in docs:
                 for t, v in snap.items():
                     owner = t if t != "de" else s
                     if owner == l and not (s == "de" and t == "de"): nbo.setdefault(s, {})[t] = v
-            if nbo: o["nb"] = nbo
+            # Achtung: nb ist zugleich Norwegisch – dessen text/note (keine Fassungs-Objekte) nicht überschreiben
+            nbt = {k: v for k, v in nb.items() if not isinstance(v, dict)} if l == "nb" else {}
+            if nbo or nbt: o["nb"] = {**nbt, **nbo}
+            elif l == "nb": o.pop("nb", None)
             if o: packs[l]["overlay"][d["id"]] = o
     elif kind == "settings":
         # Grundeinstellung der App: Deutsch als Ausgangssprache, Standardsprachen in fester Reihenfolge
