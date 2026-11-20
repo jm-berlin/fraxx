@@ -44,7 +44,19 @@ def main():
                 shutil.rmtree(shots, ignore_errors=True)
     finally:
         srv.shutdown()
+    prune_links()
     print("ANLEITUNG:", ", ".join(done) or "nichts gebaut")
+
+def prune_links():
+    """Sprachumschalter und Weiterleitung nur auf Sprachen, deren Seite es wirklich gibt (z. B. wenn Arabisch nicht gebaut wurde)."""
+    import re
+    have = {f[:-5] for f in os.listdir(OUT) if f.endswith(".html") and f != "index.html"} | {"de"}
+    for f in os.listdir(OUT):
+        if not f.endswith(".html"): continue
+        fp = os.path.join(OUT, f); s = open(fp, encoding="utf-8").read(); s0 = s
+        s = re.sub(r'<a href="([a-z]{2})\.html"[^>]*>[^<]*</a>', lambda m: m.group(0) if m.group(1) in have else "", s)
+        s = re.sub(r'var A = (\[[^\]]*\])', lambda m: "var A = " + json.dumps([x for x in json.loads(m.group(1)) if x in have]), s)
+        if s != s0: open(fp, "w", encoding="utf-8").write(s)
 
 if __name__ == "__main__":
     main()
