@@ -1,6 +1,65 @@
 {
  "releases": [
   {
+   "release": "2026-11-20T19:13:33.000Z",
+   "version": "0.17",
+   "date": "2026-11-20",
+   "notes": {
+    "de": [
+     "Neu: ein zweites Design „Navy“ – zu finden unter ⚙ → Design.",
+     "Verbesserungen und Korrekturen."
+    ],
+    "en": [
+     "New: a second design, “Navy” – find it under ⚙ → Design.",
+     "Improvements and fixes."
+    ],
+    "fr": [
+     "Nouveau : un deuxième design « Navy » – à retrouver sous ⚙ → Design.",
+     "Améliorations et corrections."
+    ],
+    "it": [
+     "Novità: un secondo design «Navy» – lo trovi in ⚙ → Design.",
+     "Miglioramenti e correzioni."
+    ],
+    "es": [
+     "Novedad: un segundo diseño, «Navy», en ⚙ → Diseño.",
+     "Mejoras y correcciones."
+    ],
+    "pt": [
+     "Novidade: um segundo design, «Navy», em ⚙ → Design.",
+     "Melhorias e correções."
+    ],
+    "nl": [
+     "Nieuw: een tweede ontwerp, ‘Navy’ – te vinden onder ⚙ → Ontwerp.",
+     "Verbeteringen en correcties."
+    ],
+    "pl": [
+     "Nowość: drugi motyw „Navy” – znajdziesz go w ⚙ → Wygląd.",
+     "Ulepszenia i poprawki."
+    ],
+    "sv": [
+     "Nytt: en andra design, ”Navy” – finns under ⚙ → Design.",
+     "Förbättringar och rättelser."
+    ],
+    "nb": [
+     "Nytt: et andre design, «Navy» – finnes under ⚙ → Design.",
+     "Forbedringer og rettelser."
+    ],
+    "tr": [
+     "Yeni: ikinci bir tasarım, “Navy” – ⚙ → Tasarım altında.",
+     "İyileştirmeler ve düzeltmeler."
+    ],
+    "zh": [
+     "新增：第二种设计“Navy”，可在 ⚙ → 设计 中选择。",
+     "改进与修正。"
+    ],
+    "ar": [
+     "جديد: تصميم ثانٍ باسم «Navy» – تجده في ⚙ ← التصميم.",
+     "تحسينات وإصلاحات."
+    ]
+   }
+  },
+  {
    "release": "2026-11-20T09:12:29.445Z",
    "version": "0.16",
    "date": "2026-11-20",
