@@ -226,7 +226,13 @@ html[data-home] .totop{display:none}
 @media (pointer:coarse){
   #srchbtn,#helpbtn,#setbtn,#langbtn,#quizbtn,.icon,.say{min-width:44px;min-height:44px}
   .mtog,.conjbtn,.mopenall,.pt,.tpt,#posgrp,.posf2 button,.qchip,.dz,.lschip,.gramtab,.dorderhead,.dishaddbtn,#slown,#slother,.flowbtn,.hguide,.gpract,.favprint,.qovbtn,select.sel{min-height:44px}
-  .themelink,.xref{display:inline-flex;align-items:center;min-height:36px}
+  /* „auch in“ / „aus …“: optisch klein, Tippfläche über unsichtbaren Rand vergrößert */
+  .themelink,button.xref{position:relative}
+  .xref.static .themelink::after,button.xref::after{content:"";position:absolute;inset:-10px -3px}
+}
+@media (max-width:760px){
+  .row:not(.head) .de .xref{margin-top:0}
+  .row:not(.head) .de > .detrail{margin-bottom:10px}
   .mv,.rm{min-width:36px;min-height:36px}
   #settab,.row.head .settab{min-width:44px;min-height:44px}
   .gramnav button{min-height:44px}
