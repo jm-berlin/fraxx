@@ -1,6 +1,65 @@
 {
  "releases": [
   {
+   "release": "2026-11-22T18:40:02.000Z",
+   "version": "0.19",
+   "date": "2026-11-22",
+   "notes": {
+    "de": [
+     "Neues, helleres Design als Standard. Das bisherige findest du als „Taupe“ unter ⚙ → Design.",
+     "Nach dem Sprung aus der Suche ist der gesuchte Eintrag farbig hervorgehoben."
+    ],
+    "en": [
+     "A new, brighter default design. The previous one is still available as “Taupe” under ⚙ → Theme.",
+     "After jumping from the search, the entry you looked for is highlighted."
+    ],
+    "fr": [
+     "Un nouveau design par défaut, plus clair. L’ancien reste disponible sous « Taupe » dans ⚙ → Apparence.",
+     "Après un saut depuis la recherche, l’entrée cherchée est mise en évidence."
+    ],
+    "it": [
+     "Un nuovo design predefinito, più luminoso. Quello precedente è ancora disponibile come «Taupe» in ⚙ → Tema.",
+     "Dopo il salto dalla ricerca, la voce cercata è evidenziata."
+    ],
+    "es": [
+     "Un nuevo diseño predeterminado, más luminoso. El anterior sigue disponible como «Taupe» en ⚙ → Diseño.",
+     "Al saltar desde la búsqueda, la entrada buscada aparece resaltada."
+    ],
+    "pt": [
+     "Um novo design padrão, mais claro. O anterior continua disponível como «Taupe» em ⚙ → Tema.",
+     "Ao saltar a partir da pesquisa, a entrada procurada fica destacada."
+    ],
+    "nl": [
+     "Een nieuw, lichter standaardontwerp. Het vorige vind je als ‘Taupe’ onder ⚙ → Design.",
+     "Na een sprong vanuit de zoekfunctie is het gezochte item gemarkeerd."
+    ],
+    "pl": [
+     "Nowy, jaśniejszy motyw domyślny. Poprzedni znajdziesz jako „Taupe” w ⚙ → Motyw.",
+     "Po przejściu z wyszukiwania szukany wpis jest wyróżniony."
+    ],
+    "sv": [
+     "En ny, ljusare standarddesign. Den tidigare finns kvar som ”Taupe” under ⚙ → Design.",
+     "Efter ett hopp från sökningen är den sökta posten markerad."
+    ],
+    "nb": [
+     "Et nytt, lysere standarddesign. Det forrige finnes fortsatt som «Taupe» under ⚙ → Design.",
+     "Etter et hopp fra søket er oppføringen du søkte etter, uthevet."
+    ],
+    "tr": [
+     "Yeni, daha aydınlık bir varsayılan tasarım. Öncekini ⚙ → Tasarım altında “Taupe” olarak bulabilirsin.",
+     "Aramadan atladıktan sonra aradığın kayıt vurgulanır."
+    ],
+    "zh": [
+     "新的、更明亮的默认设计。原来的设计仍可在 ⚙ → 主题 中选择“Taupe”。",
+     "从搜索跳转后，所找的条目会被突出显示。"
+    ],
+    "ar": [
+     "تصميم افتراضي جديد أكثر إشراقًا. التصميم السابق ما زال متاحًا باسم «Taupe» في ⚙ ← المظهر.",
+     "بعد الانتقال من البحث يتم تمييز الإدخال الذي بحثت عنه."
+    ]
+   }
+  },
+  {
    "release": "2026-11-20T19:34:14.433Z",
    "version": "0.18",
    "date": "2026-11-20",

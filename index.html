@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="1117583e12">
+<meta name="fraxx-build" content="14461778be">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
@@ -18,7 +18,7 @@
 <title>Fraxx</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Urbanist:wght@300;400;500;600;700;800&family=Archivo:wght@400;500;600;700;800;900&display=swap">
-<script>document.documentElement.setAttribute("data-home","");try{if(matchMedia("(display-mode: standalone)").matches||navigator.standalone===true)document.documentElement.setAttribute("data-dash","");}catch(e){}try{var d=localStorage.getItem("rw-design");if(["taupe-beere","taupe-beere-dunkel","navy-orange"].indexOf(d)<0)d="taupe-beere";document.documentElement.setAttribute("data-design",d);document.documentElement.setAttribute("data-tf","");}catch(e){}</script>
+<script>document.documentElement.setAttribute("data-home","");try{if(matchMedia("(display-mode: standalone)").matches||navigator.standalone===true)document.documentElement.setAttribute("data-dash","");}catch(e){}try{var d=localStorage.getItem("rw-design");if(["taupe-beere","taupe-beere-dunkel","taupe-beere-leicht"].indexOf(d)<0)d="taupe-beere-leicht";document.documentElement.setAttribute("data-design",d);document.documentElement.setAttribute("data-tf","");}catch(e){}</script>
 <style>
 /* Layout: aufgeräumte Sprach-App — kompakter Kopf, Eingabekarte, Werkzeugleiste, dann eine Tabelle mit Bereichsbändern; auf dem Handy Karten */
 :root{
@@ -131,7 +131,9 @@ form.add{background:var(--surface);border:0;border-radius:var(--radius);box-shad
 .noticebtn + .noticebtn{margin-left:10px}
 .duphint{flex-basis:100%;margin:0 4px;font-size:13.5px;color:var(--ink);display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
 .duphint::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--es);flex:none;align-self:center}
-.row.flash,.row.flash:hover{background:var(--accent-soft)}
+/* Gesprungener Treffer (aus Suche/„auch in“): deutlich hervorgehoben, Akzentbalken links, kurzer Puls */
+.row.flash,.row.flash:hover{background:var(--hl-soft);box-shadow:inset 4px 0 0 var(--hl);animation:foundpulse 1.4s ease-out 2}
+@keyframes foundpulse{0%{box-shadow:inset 4px 0 0 var(--hl),0 0 0 0 color-mix(in srgb,var(--hl) 40%,transparent)}100%{box-shadow:inset 4px 0 0 var(--hl),0 0 0 12px transparent}}
 .voices{flex-basis:100%;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--muted);padding-top:8px;border-top:1px solid var(--line)}
 .voices strong{color:var(--ink);font-weight:600}
 .vno{color:var(--danger)}
@@ -851,7 +853,7 @@ html:root:root #quiz .quizbody{padding:14px 0 28px}
 .dz[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
 .dsw{width:14px;height:14px;border-radius:50%;box-shadow:inset 0 0 0 1px rgb(127 127 127 / .3)}
 html[data-design] .setpop .modes{display:none!important}
-@media (max-width:760px){ .designs{flex:1 1 100%;padding:3px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-radius:16px} .designs .dlbl{display:none} .designs .dz{justify-content:center;padding:6px 4px;font-size:13px;gap:5px} }
+@media (max-width:760px){ .designs{flex:1 1 100%;padding:3px;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);border-radius:16px} .designs .dlbl{display:none} .designs .dz{justify-content:center;padding:6px 4px;font-size:13px;gap:5px} }
 @media (max-width:420px){ .navbtns > button{font-size:10.5px} }
 
 /* Design „Taupe & Orange“: Greige-Töne, schwarze Knöpfe, ein orangener Akzent */
@@ -867,6 +869,10 @@ html:root[data-design^="taupe"]{
 }
 /* Taupe-Varianten: gleiche Grundtöne, Akzent von Orange in Richtung Rot und Lila verschoben */
 html:root[data-design="taupe-beere"]{--hl:#a3395f; --hl-hover:#8b2f51; --hl-soft:#efd5df; --t-dart:#8b2f51; --m-hl2:#e2c3cf}
+/* „Hell“ (Standard, data-design="taupe-beere-leicht"): Farbtöne von Taupe-Beere (Schrift, Beere-Akzent), Hintergrund und Kästen hell wie bei Navy */
+html:root[data-design="taupe-beere-leicht"]{--hl:#a3395f; --hl-hover:#8b2f51; --hl-soft:#efd5df; --t-dart:#8b2f51; --m-hl2:#e2c3cf;
+  --bg:#ffffff; --surface:#f2f4f7; --surface-2:#e6eaf0; --hover:#e9edf2; --line:#dde2ea; --accent-soft:#e6eaf0; --on-accent:#ffffff; --blue-ink:#ffffff;
+  --setbtn-bg:#f2f4f7; --t-s1:#dde2ea; --t-s2:#e9edf2; --shadow:0 1px 2px rgb(20 18 18 / .05), 0 8px 24px rgb(20 18 18 / .06)}
 /* Design-Rollen (Styleguide 2.1). Standardwerte = bisheriges Aussehen; jedes Schema kann sie mit eigenen Werten belegen.
    --head-*  Kopffläche (Kopf der großen Startseite, Panel der Mini-Startseite)
    --hl-big  hervorgehobenes Wort in großen Überschriften
@@ -878,25 +884,7 @@ html:root[data-design="taupe-beere"]{--hl:#a3395f; --hl-hover:#8b2f51; --hl-soft
   --head-btn:var(--accent); --head-btn-ink:var(--on-accent); --head-btn2:var(--surface-2); --head-btn2-ink:var(--ink); --head-btn2-line:var(--line);
   --head-field:var(--surface-2); --hl-big:var(--t-dart, var(--accent)); --hl-text:var(--hl); --tab-mark:transparent;
   --globe-ink:var(--ink); --globe-hl:var(--hl); --globe-dark:0;
-}
-/* Navy & Signalorange (Vorbild Arnold), nur hell. Orange nur als Fläche oder in großen Überschriften;
-   kleine Hervorhebungen in Navy, Artikel (der/die/das) in #C2410C. */
-html:root[data-design="navy-orange"]{
-  --bg:#ffffff; --surface:#f2f4f7; --surface-2:#e6eaf0; --hover:#e9edf2; --ink:#0b1b33; --muted:#55607a; --line:#dde2ea;
-  --accent:#0b1b33; --accent-soft:#e6eaf0; --on-accent:#ffffff; --blue:#0b1b33; --blue-ink:#ffffff; --blue-line:rgb(255 255 255 / .22);
-  --hl:#ff5a1f; --hl-ink:#0b1b33; --hl-soft:#ffe4d6; --hl-hover:#ff7340; --ok:#067647; --ok-soft:#dcfae6; --danger:#b42318; --bad-soft:#fee4e2;
-  --fr:#3c4a6b; --es:#a8532c; --it:#4d6b4f; --l1:#6b4f7a; --l2:#8c4a5c; --l3:#3f6b6b; --l4:#8a5a2b; --l5:#5b6b2a; --l6:#44608f;
-  --font:"Urbanist", "Inter", system-ui, sans-serif; --font-head:"Urbanist", "Inter", system-ui, sans-serif; --radius:16px;
-  --shadow:0 1px 2px rgb(11 27 51 / .05), 0 8px 24px rgb(11 27 51 / .07);
-  --setbtn-bg:#f2f4f7; --setbtn-fg:#0b1b33; --tense-on:#0b1b33; color-scheme:light;
-  --t-dart:#c2410c; --t-g1:#8a93a8; --t-g2:#55607a; --t-gink:#fff; --t-s1:#dde2ea; --t-s2:#e9edf2; --m-hl2:#ffd3bf;
-  --p-dress:var(--hl); --p-shirt:#f2f4f7; --p-pants:#0b1b33;
-  --m-sky:#e6eaf0; --m-sun:var(--hl); --m-far:#c5ccd8; --m-mid:#8a93a8; --m-near:#2a3a55; --m-wall:#f2f4f7; --m-h2:#ffd3bf; --m-h3:#dde2ea; --m-sea:#a9b3c4; --m-acc:var(--hl); --m-win:#0b1b33; --m-tree:#1c2b45;
-  --head-bg:#0b1b33; --head-ink:#ffffff; --head-soft:rgb(255 255 255 / .8); --head-kick:rgb(255 255 255 / .8);
-  --head-btn:#ff5a1f; --head-btn-ink:#0b1b33; --head-btn2:transparent; --head-btn2-ink:#ffffff; --head-btn2-line:#ffffff;
-  --head-field:#ffffff; --hl-big:#ff5a1f; --hl-text:#0b1b33; --tab-mark:#ff5a1f;
-  --globe-ink:#ffffff; --globe-hl:#ff5a1f; --globe-dark:1;
-  --globe-tones:#ff5a1f, #ffffff, #ffe4d6; --globe-bubble-ink:#0b1b33;
+  --head-img:none; /* eigenes Hintergrundbild im Kopf der Startseite (Admin, ⚙ → Admin) */
 }
 /* Beere dunkel: dunkle Fassung von Taupe Beere */
 html:root[data-design="taupe-beere-dunkel"]{
@@ -1163,7 +1151,7 @@ html[data-design^="taupe"]{--p-dress:var(--hl); --p-shirt:#f3f1ef; --p-pants:#14
 .djrow.err .djst{color:var(--danger)}
 @keyframes djp{50%{opacity:.4}}
 @media (max-width:760px){ .djrow{grid-template-columns:12px minmax(0,1fr) auto} .djst{grid-column:2 / -1} }
-.hhero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;align-items:center;background:var(--head-bg);color:var(--head-ink);border-radius:calc(var(--radius) + 10px);box-shadow:var(--shadow);padding:48px 44px;overflow:hidden;position:relative}
+.hhero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:24px;align-items:center;background:var(--head-img) center/cover no-repeat var(--head-bg);color:var(--head-ink);border-radius:calc(var(--radius) + 10px);box-shadow:var(--shadow);padding:48px 44px;overflow:hidden;position:relative}
 .hkick{display:flex;align-items:center;gap:12px;font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}
 :is(.hhero,.dhead) .hkick{color:var(--head-kick)}
 .hslide{display:none}
@@ -1650,9 +1638,9 @@ form.add.hflash{animation:hflash 1.2s ease-out}
       </div>
       <div class="designs" role="group" aria-label="Design">
         <span class="dlbl">Design</span>
-        <button type="button" class="dz" data-design="taupe-beere" aria-pressed="false"><span class="dsw" style="background:conic-gradient(#141212 0 33%,#a3395f 0 66%,#b8aea6 0)"></span>Hell</button>
+        <button type="button" class="dz" data-design="taupe-beere-leicht" aria-pressed="false"><span class="dsw" style="background:conic-gradient(#141212 0 33%,#a3395f 0 66%,#e6eaf0 0)"></span>Hell</button>
+        <button type="button" class="dz" data-design="taupe-beere" aria-pressed="false" data-notr><span class="dsw" style="background:conic-gradient(#141212 0 33%,#a3395f 0 66%,#b8aea6 0)"></span>Taupe</button>
         <button type="button" class="dz" data-design="taupe-beere-dunkel" aria-pressed="false"><span class="dsw" style="background:conic-gradient(#f2ecef 0 33%,#d8698f 0 66%,#241f23 0)"></span>Dunkel</button>
-        <button type="button" class="dz" data-design="navy-orange" aria-pressed="false" data-notr><span class="dsw" style="background:conic-gradient(#0b1b33 0 33%,#ff5a1f 0 66%,#f2f4f7 0)"></span>Navy</button>
       </div>
       <span class="status" id="status">Wird geladen …</span>
       <div class="adminset" id="adminset" hidden data-notr></div>
@@ -2649,7 +2637,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
         const pv = byTitle || posOf(d);
         if(pv && pv!=="phrase" && pv!=="other" && document.querySelector('#posf button[data-pos="'+pv+'"]')){
           setViewQuiet(pv);
-          flashId = d.id; clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 2500);
+          flashId = d.id; clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 7000);
           renderNow();
           const go = () => { flushLazy(); const n = document.getElementById("row-"+d.id); if(n) jumpTo(n, "center"); return !!n; };
           if(!go()) setTimeout(go, 450);
@@ -2662,7 +2650,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     try{
       await openOnly(sec || par);
     }catch(_){}
-    flashId = d.id; clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 2500);
+    flashId = d.id; clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 7000);
     renderNow();
     const target = sec ? rowDomId(d, sec.id) : "row-"+d.id;
     const go = () => { flushLazy(); const n = document.getElementById(target) || document.getElementById("row-"+d.id); if(n) jumpTo(n, "center"); return !!n; };
@@ -6991,8 +6979,8 @@ Antworte ausschließlich mit JSON: {"expl":["…"]} – genau ${part.length} Tex
   function applyDesign(d){
     // Weitere Designs (Klassisch, Salbei, Nebel, Sand, Rosé, Graphit) liegen im Archiv: tools/designs-archiv.css
     // Nur noch Beere hell und dunkel; Orange, Ziegelrot, Kirsche und Pflaume liegen ebenfalls im Archiv
-    const TF = ["taupe-beere","taupe-beere-dunkel","navy-orange"];
-    if(!TF.includes(d)) d = "taupe-beere";
+    const TF = ["taupe-beere","taupe-beere-dunkel","taupe-beere-leicht"];
+    if(!TF.includes(d)) d = "taupe-beere-leicht"; // Standard seit 22.11.2026: „Hell“ (Beere-Farben, weiße Flächen)
     document.documentElement.setAttribute("data-design", d);
     document.documentElement.toggleAttribute("data-tf", TF.includes(d));
     document.querySelectorAll(".dz").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.design===d)));
@@ -8244,8 +8232,31 @@ ${JSON.stringify(TUT_DE)}`;
       pr.title = "Alle Exportdateien bis auf den neuesten aus dem Dateispeicher entfernen";
       pr.addEventListener("click", pruneExportsClick);
       a.append(pr);
+      // Eigenes Hintergrundbild für den Kopf der Startseite (nur in diesem Browser, zum Ausprobieren)
+      const fi = document.createElement("input"); fi.type = "file"; fi.accept = "image/jpeg,image/png,image/webp"; fi.hidden = true;
+      fi.addEventListener("change", ()=>{ const f = fi.files && fi.files[0]; if(f) setHeroImage(f); fi.value = ""; });
+      const hb = el("button","djbtn ghosty", heroImg() ? "Hintergrundbild Startseite ändern" : "Hintergrundbild Startseite …"); hb.type="button";
+      hb.title = "Eigenes Bild (JPG/PNG) hinter den Globus legen; wird passend zugeschnitten. Gilt nur in diesem Browser.";
+      hb.addEventListener("click", ()=>fi.click());
+      a.append(fi, hb);
+      if(heroImg()){ const hx = el("button","djbtn ghosty","Hintergrundbild entfernen"); hx.type="button"; hx.addEventListener("click", ()=>{ try{ localStorage.removeItem("rw-heroimg"); }catch(_){} applyHeroImage(); renderDevJobs(); }); a.append(hx); }
     }
   }
+  function heroImg(){ try{ return localStorage.getItem("rw-heroimg") || ""; }catch(_){ return ""; } }
+  function applyHeroImage(){ const u = IN_WEBAPP ? "" : heroImg(); if(u) document.documentElement.style.setProperty("--head-img", `url("${u}")`); else document.documentElement.style.removeProperty("--head-img"); }
+  // Bild verkleinern (max. 2400 × 1600, JPEG), damit es in den Browser-Speicher passt; Zuschnitt macht CSS (cover)
+  function setHeroImage(file){
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = ()=>{ URL.revokeObjectURL(url); const k = Math.min(1, 2400/img.naturalWidth, 1600/img.naturalHeight);
+      const c = document.createElement("canvas"); c.width = Math.round(img.naturalWidth*k); c.height = Math.round(img.naturalHeight*k);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      let q = .85, d = c.toDataURL("image/jpeg", q); while(d.length > 3.5e6 && q > .4){ q -= .1; d = c.toDataURL("image/jpeg", q); }
+      try{ localStorage.setItem("rw-heroimg", d); showNotice("Hintergrundbild gesetzt."); }catch(_){ showNotice("Das Bild ist zu groß für den Browser-Speicher."); }
+      applyHeroImage(); renderDevJobs(); };
+    img.onerror = ()=>{ URL.revokeObjectURL(url); showNotice("Das Bild konnte nicht gelesen werden."); };
+    img.src = url;
+  }
+  try{ applyHeroImage(); }catch(_){}
   function renderDevJobs(){
     const box = document.getElementById("devjobs"); if(!box) return;
     if(!DEV_JOBS || !loaded || !document.documentElement.hasAttribute("data-home")){ box.hidden = true; return; }
