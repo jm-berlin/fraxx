@@ -25,7 +25,7 @@ def rect(pg, sel):
 
 with sync_playwright() as p:
     b = p.chromium.launch(args=["--use-gl=swiftshader", "--enable-webgl", "--ignore-gpu-blocklist"])
-    init = "try{localStorage.setItem('rw-design','taupe-beere'); localStorage.setItem('rw-mode','light'); localStorage.setItem('ml-nowelcome','1')}catch(e){}"
+    init = "try{localStorage.setItem('rw-design','taupe-beere-leicht'); localStorage.setItem('rw-mode','light'); localStorage.setItem('ml-nowelcome','1')}catch(e){}"
 
     def context(w, h, dsf, mobile=False):
         ctx = b.new_context(viewport={"width": w, "height": h}, device_scale_factor=dsf, is_mobile=mobile, has_touch=mobile, locale=LOCALE.get(LANG, "de-DE"))
