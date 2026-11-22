@@ -1,6 +1,65 @@
 {
  "releases": [
   {
+   "release": "2026-11-22T19:17:34.000Z",
+   "version": "0.20",
+   "date": "2026-11-22",
+   "notes": {
+    "de": [
+     "Auf dem Handy: größere Tasten, Buchstabenleiste zum Wischen, Sprachen als Kürzel im Tabellenkopf.",
+     "Ein Eintrag aus der Suche ist jetzt gleich aufgeklappt."
+    ],
+    "en": [
+     "On phones: larger buttons, a swipeable letter bar and language codes in the table header.",
+     "An entry opened from the search is now expanded right away."
+    ],
+    "fr": [
+     "Sur mobile : boutons plus grands, barre de lettres à faire défiler et codes de langue dans l’en-tête du tableau.",
+     "Une entrée ouverte depuis la recherche est désormais dépliée directement."
+    ],
+    "it": [
+     "Sul telefono: pulsanti più grandi, barra delle lettere scorrevole e sigle delle lingue nell’intestazione della tabella.",
+     "Una voce aperta dalla ricerca ora è subito espansa."
+    ],
+    "es": [
+     "En el móvil: botones más grandes, barra de letras deslizable y códigos de idioma en la cabecera de la tabla.",
+     "Una entrada abierta desde la búsqueda ahora aparece desplegada."
+    ],
+    "pt": [
+     "No telemóvel: botões maiores, barra de letras deslizável e códigos de idioma no cabeçalho da tabela.",
+     "Uma entrada aberta a partir da pesquisa aparece agora logo expandida."
+    ],
+    "nl": [
+     "Op de telefoon: grotere knoppen, een veegbare letterbalk en taalcodes in de tabelkop.",
+     "Een item dat je via de zoekfunctie opent, is nu meteen uitgeklapt."
+    ],
+    "pl": [
+     "Na telefonie: większe przyciski, przewijany pasek liter i skróty języków w nagłówku tabeli.",
+     "Wpis otwarty z wyszukiwania jest teraz od razu rozwinięty."
+    ],
+    "sv": [
+     "På mobilen: större knappar, en svepbar bokstavsrad och språkkoder i tabellhuvudet.",
+     "En post som öppnas från sökningen är nu direkt utfälld."
+    ],
+    "nb": [
+     "På mobilen: større knapper, en sveipbar bokstavlinje og språkkoder i tabelloverskriften.",
+     "En oppføring åpnet fra søket er nå utvidet med en gang."
+    ],
+    "tr": [
+     "Telefonda: daha büyük düğmeler, kaydırılabilir harf çubuğu ve tablo başlığında dil kodları.",
+     "Aramadan açılan kayıt artık hemen genişletilmiş olarak görünür."
+    ],
+    "zh": [
+     "手机上：按钮更大，字母栏可滑动，表头显示语言代码。",
+     "从搜索打开的条目现在会直接展开。"
+    ],
+    "ar": [
+     "على الهاتف: أزرار أكبر، وشريط أحرف قابل للسحب، ورموز اللغات في رأس الجدول.",
+     "الإدخال المفتوح من البحث يظهر الآن موسّعًا مباشرة."
+    ]
+   }
+  },
+  {
    "release": "2026-11-22T18:40:02.000Z",
    "version": "0.19",
    "date": "2026-11-22",

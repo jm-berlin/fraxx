@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="521cd22bfd">
+<meta name="fraxx-build" content="5e576d6f3a">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
@@ -213,6 +213,26 @@ html[data-home] .totop{display:none}
 }
 @media print{ .row.mc > .cell.lang{display:revert} .mtog,.mopenbar{display:none!important} }
 @media (max-width:760px){ .row{scroll-margin-top:100px} .alpha button{min-width:26px;font-size:12.5px} }
+/* Handy: Buchstabenleiste einzeilig und wischbar (große Tasten); Schatten am Rand zeigen, dass es weitergeht */
+@media (max-width:760px){
+  .alpha{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;gap:0;padding:2px 4px;
+    background:linear-gradient(to right, var(--surface) 30%, transparent) left/32px 100% no-repeat local,
+      linear-gradient(to left, var(--surface) 30%, transparent) right/32px 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, rgb(0 0 0 / .16), transparent) left/14px 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, rgb(0 0 0 / .16), transparent) right/14px 100% no-repeat scroll, var(--surface)}
+  .alpha::-webkit-scrollbar{display:none}
+  .alpha button{flex:none;min-width:44px;height:44px;font-size:16px}
+}
+/* Usability vor Design: auf Touch-Geräten alle Bedienelemente mindestens 44 × 44 px (Apple/Google-Richtwert) */
+@media (pointer:coarse){
+  #srchbtn,#helpbtn,#setbtn,#langbtn,#quizbtn,.icon,.say{min-width:44px;min-height:44px}
+  .mtog,.conjbtn,.mopenall,.pt,.tpt,#posgrp,.posf2 button,.qchip,.dz,.lschip,.gramtab,.dorderhead,.dishaddbtn,#slown,#slother,.flowbtn,.hguide,.gpract,.favprint,.qovbtn,select.sel{min-height:44px}
+  .themelink,.xref{display:inline-flex;align-items:center;min-height:36px}
+  .mv,.rm{min-width:36px;min-height:36px}
+  #settab,.row.head .settab{min-width:44px;min-height:44px}
+  .gramnav button{min-height:44px}
+  .row input[type=checkbox],.sechead input[type=checkbox]{width:24px;height:24px}
+}
 .row{display:grid;grid-template-columns:var(--cols, 40px minmax(0,1.15fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) 44px);border-top:1px solid var(--line)}
 .head{border-top:0}
 .head .cell{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding-block:13px;display:flex;gap:8px;align-items:center}
@@ -2642,7 +2662,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
         const pv = byTitle || posOf(d);
         if(pv && pv!=="phrase" && pv!=="other" && document.querySelector('#posf button[data-pos="'+pv+'"]')){
           setViewQuiet(pv);
-          flashId = d.id; clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 7000);
+          flashId = d.id; if(mOpenAll) mFlip.delete(d.id); else mFlip.add(d.id); /* Handy: Treffer gleich aufgeklappt */ clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 7000);
           renderNow();
           const go = () => { flushLazy(); const n = document.getElementById("row-"+d.id); if(n) jumpTo(n, "center"); return !!n; };
           if(!go()) setTimeout(go, 450);
@@ -2655,7 +2675,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     try{
       await openOnly(sec || par);
     }catch(_){}
-    flashId = d.id; clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 7000);
+    flashId = d.id; if(mOpenAll) mFlip.delete(d.id); else mFlip.add(d.id); /* Handy: Treffer gleich aufgeklappt */ clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 7000);
     renderNow();
     const target = sec ? rowDomId(d, sec.id) : "row-"+d.id;
     const go = () => { flushLazy(); const n = document.getElementById(target) || document.getElementById("row-"+d.id); if(n) jumpTo(n, "center"); return !!n; };
