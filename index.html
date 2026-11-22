@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="da2a2dde5c">
+<meta name="fraxx-build" content="6222351b53">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
@@ -228,7 +228,10 @@ html[data-home] .totop{display:none}
   html .table .row.head{flex-wrap:nowrap;align-items:center}
   html .table .row.head > .cell:has(> .settab){margin-left:auto}
   html .table .row.head > .cell{flex:none;white-space:nowrap}
-  html .table .row.head{gap:4px 12px}
+  html .table .row.head{gap:4px clamp(6px, 2.6vw, 12px);padding-inline:clamp(6px, 2.5vw, 12px)}
+  html .table .row.head .cell{gap:clamp(3px, 1.2vw, 6px)}
+  html .table .row.head .hcode{font-size:clamp(10px, 2.9vw, 11px)}
+  @media (max-width:380px){ html .table .row.head .flagimg{width:16px;height:11px} }
 }
 @media print{ .row.mc > .cell.lang{display:revert} .mtog,.mopenbar{display:none!important} }
 @media (max-width:760px){ .row{scroll-margin-top:100px} .alpha button{min-width:26px;font-size:12.5px} }
