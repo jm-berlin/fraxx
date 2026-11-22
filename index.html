@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="9d8056c405">
+<meta name="fraxx-build" content="2f85865377">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
@@ -1588,7 +1588,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   .table .row.head .hcode{display:inline;font-weight:700;letter-spacing:.06em}
   .row{grid-template-columns:36px minmax(0,1fr) 40px;padding:8px 0}
   html[data-public] .row{grid-template-columns:14px minmax(0,1fr) 40px}
-  html[data-public] .row.mc{grid-template-columns:14px minmax(0,1fr) auto}
+  html[data-public] .row.mc{grid-template-columns:14px minmax(0,1fr) 40px}
+  html[data-public] .row:not(.head) > .actions{grid-column:3;grid-row:1;align-self:start;justify-content:center;flex-direction:row;padding:0;margin:6px 0 0;gap:0} /* gleich breit wie aufgeklappt: Pfeile stehen genau untereinander */
   .cell{padding:7px 12px}
   .row .pick{grid-column:1;grid-row:1 / span 4;padding:12px 0}
   .row .de{grid-column:2;grid-row:1;font-size:17.5px;padding-bottom:4px}
