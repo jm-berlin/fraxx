@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="14461778be">
+<meta name="fraxx-build" content="521cd22bfd">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
@@ -199,6 +199,7 @@ html[data-home] .totop{display:none}
 .alpha button:hover{background:var(--accent-soft)}
 .alpha button:disabled{color:var(--muted);opacity:.35;cursor:default;background:transparent}
 .mtog,.table .row.head .cell.mopenbar{display:none}
+.row.head .hcode{display:none}
 @media (max-width:760px){
   .table .row.head .cell.mopenbar{display:flex;order:99;margin-left:auto}
   .mopenbar button{border:0;background:var(--accent-soft);color:var(--ink);border-radius:999px;font:inherit;font-size:11.5px;font-weight:600;letter-spacing:0;text-transform:none;padding:3px 10px;cursor:pointer}
@@ -1543,6 +1544,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   .table .row.head .cell{padding:0;font-size:11px;letter-spacing:.05em;gap:6px}
   .table .row.head .cell:first-child, .table .row.head .cell:last-child{display:none}
   .table .row.head .flagimg{width:18px;height:12px}
+  .table .row.head .hname{display:none}
+  .table .row.head .hcode{display:inline;font-weight:700;letter-spacing:.06em}
   .row{grid-template-columns:36px minmax(0,1fr) 40px;padding:8px 0}
   .cell{padding:7px 12px}
   .row .pick{grid-column:1;grid-row:1 / span 4;padding:12px 0}
@@ -1999,10 +2002,12 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     const head = document.querySelector(".row.head");
     head.querySelectorAll("[data-lang]").forEach(n=>n.remove());
     const last = head.lastElementChild;
-    const deHead = head.children[1]; if(deHead) deHead.replaceChildren(flagEl(SRC), document.createTextNode(srcName()));
+    // Handy: statt des Namens nur Flagge + Kürzel (DE, EN …), damit die Kopfzeile in eine Zeile passt
+    const hcode = c => { const k = el("span","hcode", ({nb:"NO"})[c] || String(c).toUpperCase()); k.setAttribute("data-notr",""); k.setAttribute("aria-hidden","true"); return k; };
+    const deHead = head.children[1]; if(deHead){ deHead.replaceChildren(flagEl(SRC), el("span","hname",srcName()), hcode(SRC)); deHead.title = srcName(); }
     vis.forEach(([c,n,,col])=>{
       const h = el("div","cell"); h.setAttribute("role","columnheader"); h.dataset.lang = c;
-      const f = flagEl(c); h.append(f, document.createTextNode(n));
+      const f = flagEl(c); h.append(f, el("span","hname",n), hcode(c)); h.title = n;
       head.insertBefore(h, last);
     });
     const g = document.getElementById("langs");
