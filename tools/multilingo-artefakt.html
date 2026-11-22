@@ -185,7 +185,7 @@ html[data-home] .totop{display:none}
 .mtog,.table .row.head .cell.mopenbar{display:none}
 .row.head .hcode{display:none}
 @media (max-width:760px){
-  .table .row.head .cell.mopenbar{display:flex;order:99;margin-left:auto}
+  .table .row.head .cell.mopenbar{display:none}
   .mopenbar button{border:0;background:var(--accent-soft);color:var(--ink);border-radius:999px;font:inherit;font-size:11.5px;font-weight:600;letter-spacing:0;text-transform:none;padding:3px 10px;cursor:pointer}
   .row:not(.head) > .mtog{display:inline-block;grid-column:2;justify-self:start;align-self:center;margin:0 12px 4px;border:0;background:var(--accent);color:var(--on-accent);border-radius:999px;font:inherit;font-size:12.5px;font-weight:600;padding:4px 11px;cursor:pointer}
   .row.mc > .cell.lang{display:none}
@@ -202,6 +202,17 @@ html[data-home] .totop{display:none}
   .row.mc > .de{grid-column:2}
   .row.mc > .actions{grid-row:1;align-self:start;padding-top:10px}
   .row.mopen,.row.mopen:hover{background:var(--hl-soft)}
+  /* Karte: Wort → „aus …“/„auch in“ → Konjugation → Übersetzungen */
+  .row:not(.head) > .de{display:flex;flex-direction:column;align-items:flex-start}
+  .row:not(.head) > .de > .detrail{order:1}
+  .row:not(.head) > .de > .conjwrap > *{order:2}
+  .row:not(.head) > .de > :not(.detx):not(.detrail):not(.conjwrap){order:3}
+  .row:not(.head) > .de > .detrail .xref{margin-top:2px}
+  /* Kopfzeile in einer Zeile: Sprachen links, „Tabelle anpassen“ rechts */
+  html .table .row.head{flex-wrap:nowrap;align-items:center}
+  html .table .row.head > .cell:has(> .settab){margin-left:auto}
+  html .table .row.head > .cell{flex:none;white-space:nowrap}
+  html .table .row.head{gap:4px 12px}
 }
 @media print{ .row.mc > .cell.lang{display:revert} .mtog,.mopenbar{display:none!important} }
 @media (max-width:760px){ .row{scroll-margin-top:100px} .alpha button{min-width:26px;font-size:12.5px} }
@@ -3158,7 +3169,8 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     f.append(el("b","dart", text.slice(0,len)), text.slice(len));
     return f;
   }
-  let mOpenAll = false; try{ mOpenAll = localStorage.getItem("rw-mopen")==="1"; }catch(e){}
+  // „Alle aufklappen“ gibt es nicht mehr (Handy: immer nur eine Karte offen); alte Einstellung wird ignoriert
+  let mOpenAll = false;
   const mFlip = new Set();
   // Handy: immer nur eine Karte offen (außer „Alle aufklappen“); Schließen klappt auch die Konjugation zu
   const isPhone = () => matchMedia("(max-width:760px)").matches;
@@ -3168,7 +3180,10 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     else { mFlip.delete(id); openConj.delete(id); }
   }
   // nach dem Umklappen: geöffnete Karte oben unter der Kopfzeile zeigen, damit sie nicht wegrutscht
-  function showCard(rowId){ requestAnimationFrame(()=>{ const n = document.getElementById(rowId); if(!n) return; const t = n.getBoundingClientRect().top; if(t < 90 || t > innerHeight*0.55) n.scrollIntoView({block:"start"}); }); }
+  function showCard(rowId){ requestAnimationFrame(()=>{ const n = document.getElementById(rowId); if(!n) return;
+    // Unterkante der klebenden Kopfzeilen (Sprachen, A–Z) ermitteln, die Karte direkt darunter zeigen
+    let top = 0; n.closest(".sec, .table")?.querySelectorAll(".row.head, .alpha").forEach(h=>{ const r = h.getBoundingClientRect(); if(r.height && r.top < 260) top = Math.max(top, r.bottom); });
+    const t = n.getBoundingClientRect().top; if(t < top + 4 || t > innerHeight*0.55) window.scrollBy(0, t - top - 8); }); }
   function mOpenLabel(){ document.querySelectorAll(".mopenall").forEach(b=>{ b.textContent = mOpenAll ? "Alle zuklappen ▴" : "Alle aufklappen ▾"; }); }
   setTimeout(mOpenLabel);
   document.addEventListener("click", ev=>{ if(!ev.target.closest || !ev.target.closest(".mopenall")) return;
@@ -3367,8 +3382,6 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     ed.addEventListener("click",()=>{ editId=e.id; editCtx=ekey; editDraft=srcText(e); confirmId=null; render(); });
     if(canEditEntry(e)) a.append(star, pin, ed, re, del); else a.append(star, pin, re, del);
     r.append(a);
-    // Handy: erst Übersetzungen, dann Konjugation
-    if(r._cw && r._cw.childNodes.length && matchMedia("(max-width:760px)").matches){ r._cw.classList.add("cell","mconj"); r.append(r._cw); }
 
     if(confirmId===cid){
       const cf = el("div","confirm");

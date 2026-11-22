@@ -1,6 +1,52 @@
 {
  "releases": [
   {
+   "release": "2026-11-22T19:58:18.000Z",
+   "version": "0.25",
+   "date": "2026-11-22",
+   "notes": {
+    "de": [
+     "Auf dem Handy ist immer nur ein Eintrag offen und farbig hinterlegt. „Konjugation“ öffnet Übersetzungen und Konjugation zusammen."
+    ],
+    "en": [
+     "On phones only one entry is open at a time and it is highlighted. “Conjugation” opens the translations and conjugation together."
+    ],
+    "fr": [
+     "Sur mobile, une seule entrée est ouverte à la fois et elle est mise en couleur. « Conjugaison » ouvre les traductions et la conjugaison ensemble."
+    ],
+    "it": [
+     "Sul telefono è aperta una sola voce alla volta, evidenziata a colori. «Coniugazione» apre insieme traduzioni e coniugazione."
+    ],
+    "es": [
+     "En el móvil solo hay una entrada abierta a la vez y aparece resaltada. «Conjugación» abre las traducciones y la conjugación juntas."
+    ],
+    "pt": [
+     "No telemóvel só fica aberta uma entrada de cada vez, destacada a cor. «Conjugação» abre as traduções e a conjugação em conjunto."
+    ],
+    "nl": [
+     "Op de telefoon is steeds maar één item open en gekleurd gemarkeerd. ‘Vervoeging’ opent de vertalingen en de vervoeging samen."
+    ],
+    "pl": [
+     "Na telefonie otwarty jest zawsze tylko jeden wpis i jest wyróżniony kolorem. „Odmiana” otwiera tłumaczenia razem z odmianą."
+    ],
+    "sv": [
+     "På mobilen är bara en post öppen åt gången och den är färgmarkerad. ”Böjning” öppnar översättningarna och böjningen tillsammans."
+    ],
+    "nb": [
+     "På mobilen er bare én oppføring åpen om gangen, og den er fargemarkert. «Bøying» åpner oversettelsene og bøyingen sammen."
+    ],
+    "tr": [
+     "Telefonda aynı anda yalnızca bir kayıt açık olur ve renkli vurgulanır. “Çekim” çevirileri ve çekimi birlikte açar."
+    ],
+    "zh": [
+     "手机上一次只展开一个条目，并以颜色突出显示。“变位”会同时打开译文和变位。"
+    ],
+    "ar": [
+     "على الهاتف يُفتح إدخال واحد فقط في كل مرة ويُميَّز باللون. «التصريف» يفتح الترجمات والتصريف معًا."
+    ]
+   }
+  },
+  {
    "release": "2026-11-22T19:50:42.000Z",
    "version": "0.24",
    "date": "2026-11-22",
