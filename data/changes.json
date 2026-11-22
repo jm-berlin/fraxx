@@ -1,6 +1,65 @@
 {
  "releases": [
   {
+   "release": "2026-11-22T19:34:14.000Z",
+   "version": "0.21",
+   "date": "2026-11-22",
+   "notes": {
+    "de": [
+     "Aufgeräumter: Jeder Eintrag zeigt nur noch den Stern für den Spickzettel.",
+     "Auf dem Handy: Wort antippen klappt die Übersetzungen auf, Sprachen mit Flagge und Kürzel, Leiste unter A–Z zeigt das Wischen."
+    ],
+    "en": [
+     "Tidier: each entry now only shows the star for your cheat sheet.",
+     "On phones: tap a word to show its translations, languages shown with flag and code, a bar under A–Z shows you can swipe."
+    ],
+    "fr": [
+     "Plus clair : chaque entrée n’affiche plus que l’étoile pour l’antisèche.",
+     "Sur mobile : touchez un mot pour afficher ses traductions, langues avec drapeau et code, une barre sous A–Z indique qu’on peut faire défiler."
+    ],
+    "it": [
+     "Più ordinato: ogni voce mostra solo la stella per il promemoria.",
+     "Sul telefono: tocca una parola per vedere le traduzioni, lingue con bandiera e sigla, una barra sotto A–Z indica che si può scorrere."
+    ],
+    "es": [
+     "Más ordenado: cada entrada solo muestra la estrella para la chuleta.",
+     "En el móvil: toca una palabra para ver sus traducciones, idiomas con bandera y código, una barra bajo A–Z indica que se puede deslizar."
+    ],
+    "pt": [
+     "Mais arrumado: cada entrada mostra apenas a estrela para a cábula.",
+     "No telemóvel: toque numa palavra para ver as traduções, idiomas com bandeira e código, uma barra sob A–Z mostra que pode deslizar."
+    ],
+    "nl": [
+     "Overzichtelijker: elk item toont alleen nog de ster voor je spiekbriefje.",
+     "Op de telefoon: tik op een woord voor de vertalingen, talen met vlag en code, een balk onder A–Z laat zien dat je kunt vegen."
+    ],
+    "pl": [
+     "Przejrzyściej: każdy wpis pokazuje już tylko gwiazdkę do ściągi.",
+     "Na telefonie: dotknij słowa, by zobaczyć tłumaczenia, języki z flagą i skrótem, pasek pod A–Z pokazuje, że można przesuwać."
+    ],
+    "sv": [
+     "Renare: varje post visar nu bara stjärnan för fusklappen.",
+     "På mobilen: tryck på ett ord för att visa översättningarna, språk med flagga och kod, en list under A–Z visar att du kan svepa."
+    ],
+    "nb": [
+     "Ryddigere: hver oppføring viser nå bare stjernen for juksearket.",
+     "På mobilen: trykk på et ord for å vise oversettelsene, språk med flagg og kode, en linje under A–Å viser at du kan sveipe."
+    ],
+    "tr": [
+     "Daha sade: her kayıtta artık yalnızca kopya kâğıdı için yıldız var.",
+     "Telefonda: çevirileri görmek için kelimeye dokun, diller bayrak ve kodla, A–Z altındaki çubuk kaydırabileceğini gösterir."
+    ],
+    "zh": [
+     "更简洁：每个条目只显示收藏到小抄的星标。",
+     "手机上：点按单词即可展开译文，语言以国旗和代码显示，A–Z 下方的滑条提示可以左右滑动。"
+    ],
+    "ar": [
+     "أكثر ترتيبًا: يعرض كل إدخال الآن النجمة فقط لإضافته إلى الملخّص.",
+     "على الهاتف: المس الكلمة لعرض الترجمات، اللغات مع العلم والرمز، وشريط تحت A–Z يبيّن إمكانية السحب."
+    ]
+   }
+  },
+  {
    "release": "2026-11-22T19:17:34.000Z",
    "version": "0.20",
    "date": "2026-11-22",

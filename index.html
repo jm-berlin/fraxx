@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="5e576d6f3a">
+<meta name="fraxx-build" content="9d8056c405">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
@@ -203,24 +203,39 @@ html[data-home] .totop{display:none}
 @media (max-width:760px){
   .table .row.head .cell.mopenbar{display:flex;order:99;margin-left:auto}
   .mopenbar button{border:0;background:var(--accent-soft);color:var(--ink);border-radius:999px;font:inherit;font-size:11.5px;font-weight:600;letter-spacing:0;text-transform:none;padding:3px 10px;cursor:pointer}
-  .row:not(.head) > .mtog{display:inline-block;grid-column:2;justify-self:start;align-self:center;margin:0 12px 4px;border:0;background:var(--accent-soft);color:var(--ink);border-radius:999px;font:inherit;font-size:12.5px;font-weight:600;padding:4px 11px;cursor:pointer}
+  .row:not(.head) > .mtog{display:inline-block;grid-column:2;justify-self:start;align-self:center;margin:0 12px 4px;border:0;background:var(--accent);color:var(--on-accent);border-radius:999px;font:inherit;font-size:12.5px;font-weight:600;padding:4px 11px;cursor:pointer}
   .row.mc > .cell.lang{display:none}
   .row.mc{grid-template-columns:36px minmax(0,1fr) auto}
   .row.mc > .pick{grid-row:1 / span 2}
   .row.mc > .de{grid-column:2 / 4}
   .row.mc > .mtog{grid-row:2;margin-top:0}
   .row.mc > .actions{grid-column:3;grid-row:2;flex-direction:row;padding:0 6px 0 0;gap:0}
+  /* Statt Knopf „Übersetzungen ▾“: das Wort selbst klappt auf, rechts ein deutlicher Pfeil (ganze Zeile tippbar) */
+  .row:not(.head) > .mtog{display:none}
+  .row:not(.head) .de > .detx{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:44px;text-align:left;color:var(--ink)}
+  .row:not(.head) .de > .detx::after{content:"▾";flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-size:15px;line-height:1;transition:transform .2s}
+  .row:not(.head):not(.mc) .de > .detx::after{transform:rotate(180deg)}
+  .row.mc > .de{grid-column:2}
+  .row.mc > .actions{grid-row:1;align-self:start;padding-top:10px}
 }
 @media print{ .row.mc > .cell.lang{display:revert} .mtog,.mopenbar{display:none!important} }
 @media (max-width:760px){ .row{scroll-margin-top:100px} .alpha button{min-width:26px;font-size:12.5px} }
 /* Handy: Buchstabenleiste einzeilig und wischbar (große Tasten); Schatten am Rand zeigen, dass es weitergeht */
 @media (max-width:760px){
-  .alpha{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;gap:0;padding:2px 4px;
+  .sectiles > .sec{min-width:0}
+  .alpha{flex-wrap:nowrap;overflow-x:auto;min-width:0;max-width:100%;box-sizing:border-box;overscroll-behavior-x:contain;scrollbar-width:none;gap:0;padding:2px 4px;
     background:linear-gradient(to right, var(--surface) 30%, transparent) left/32px 100% no-repeat local,
       linear-gradient(to left, var(--surface) 30%, transparent) right/32px 100% no-repeat local,
       radial-gradient(farthest-side at 0 50%, rgb(0 0 0 / .16), transparent) left/14px 100% no-repeat scroll,
       radial-gradient(farthest-side at 100% 50%, rgb(0 0 0 / .16), transparent) right/14px 100% no-repeat scroll, var(--surface)}
   .alpha::-webkit-scrollbar{display:none}
+  .alpha.canswipe{padding-bottom:10px;
+    background:linear-gradient(var(--muted),var(--muted)) calc(var(--ap,0) * 100%) calc(100% - 3px)/calc(var(--aw,1) * 100%) 4px no-repeat scroll,
+      linear-gradient(var(--line),var(--line)) 0 calc(100% - 3px)/100% 4px no-repeat scroll,
+      linear-gradient(to right, var(--surface) 30%, transparent) left/32px 100% no-repeat local,
+      linear-gradient(to left, var(--surface) 30%, transparent) right/32px 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, rgb(0 0 0 / .16), transparent) left/14px 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, rgb(0 0 0 / .16), transparent) right/14px 100% no-repeat scroll, var(--surface)}
   .alpha button{flex:none;min-width:44px;height:44px;font-size:16px}
 }
 /* Usability vor Design: auf Touch-Geräten alle Bedienelemente mindestens 44 × 44 px (Apple/Google-Richtwert) */
@@ -244,12 +259,17 @@ html[data-home] .totop{display:none}
 .cell{padding:16px 14px;min-width:0;overflow-wrap:anywhere;position:relative}
 .row:not(.head):hover{background:var(--hover)}
 .row.selected,.row.selected:hover{background:var(--accent-soft)}
+.conjwrap{display:contents}
+.row > .conjwrap.mconj{display:block;grid-column:2 / -1;padding:0 12px 6px}
+.row > .conjwrap.mconj > .conjbtn{margin-top:4px}
+html[data-public] .adm, html[data-public] .cell.pick > input[type=checkbox], html[data-public] .cell.pick > .grip, html[data-public] .row.head > .cell:first-child > input[type=checkbox]{display:none}
 .row.dragging{opacity:.4}
 .pick{display:flex;flex-direction:column;align-items:center;gap:6px;padding:17px 0 12px}
 .pick input{width:16px;height:16px;accent-color:var(--accent);margin:0}
 .grip{border:0;background:transparent;color:var(--muted);cursor:grab;font-size:14px;line-height:1;padding:2px 4px;border-radius:4px;letter-spacing:-2px}
 .grip:active{cursor:grabbing}
 .de{font-weight:700}
+.lang-label .lcode{margin-left:6px;vertical-align:middle}
 .lang-label{display:none;font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
 .tx{display:block}
 .cell.de,.cell.lang{display:flex;flex-direction:column;align-items:flex-start}
@@ -1504,7 +1524,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
 /* Konjugation */
 .conjbar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;background:var(--accent-soft);border-radius:12px;padding:8px 8px 8px 16px;font-size:14px}
 .conjbar .ghost{padding:5px 12px}
-.conjbtn{margin-top:8px;border:0;background:var(--hl);color:var(--hl-ink);border-radius:0 999px 999px 999px;padding:3px 14px 3px 14px;font-size:12.5px;font-weight:600}
+.conjbtn{margin-top:8px;border:0;background:var(--hl);color:var(--hl-ink);border-radius:999px;padding:3px 14px 3px 14px;font-size:12.5px;font-weight:600}
 .conjbtn:not(.subtle):hover{background:var(--hl-hover)}
 .conjbtn:disabled{opacity:.5;cursor:default}
 .conjbtn.subtle{background:transparent;border:1px solid var(--line);color:var(--muted);font-weight:500}
@@ -1567,6 +1587,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   .table .row.head .hname{display:none}
   .table .row.head .hcode{display:inline;font-weight:700;letter-spacing:.06em}
   .row{grid-template-columns:36px minmax(0,1fr) 40px;padding:8px 0}
+  html[data-public] .row{grid-template-columns:14px minmax(0,1fr) 40px}
+  html[data-public] .row.mc{grid-template-columns:14px minmax(0,1fr) auto}
   .cell{padding:7px 12px}
   .row .pick{grid-column:1;grid-row:1 / span 4;padding:12px 0}
   .row .de{grid-column:2;grid-row:1;font-size:17.5px;padding-bottom:4px}
@@ -2007,6 +2029,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   let store = null, sample = null;
   let confirmId = null, renameId = null, busy = 0, editId = null, editCtx = "", editDraft = "";
   const openConj = new Set(), conjTense = new Map();
+  const PUBLIC_UI = typeof window.Multilingo === "object" && !!window.Multilingo && !window.ML_ADMIN;
+  document.documentElement.toggleAttribute("data-public", PUBLIC_UI);
   let selected = new Set();
   let dragIds = null, secDrag = null, pendingRender = false;
   let zielValue = "";
@@ -2018,7 +2042,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     computeLangs();
     { const v = LANGS.filter(([c])=>!hiddenLangs.has(c)); if(v.length > MAX_VIS){ v.slice(MAX_VIS).forEach(([c])=>hiddenLangs.add(c)); saveHidden(); } }
     const vis = LANGS.filter(([c])=>!hiddenLangs.has(c));
-    document.getElementById("table").style.setProperty("--cols", `40px minmax(0,1.15fr) ${"minmax(0,1fr) ".repeat(vis.length)}44px`);
+    document.getElementById("table").style.setProperty("--cols", `${PUBLIC_UI ? "12px" : "40px"} minmax(0,1.15fr) ${"minmax(0,1fr) ".repeat(vis.length)}44px`);
     const head = document.querySelector(".row.head");
     head.querySelectorAll("[data-lang]").forEach(n=>n.remove());
     const last = head.lastElementChild;
@@ -3150,7 +3174,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     mOpenAll = !mOpenAll; mFlip.clear(); try{ localStorage.setItem("rw-mopen", mOpenAll ? "1" : "0"); }catch(e){} render(); mOpenLabel(); });
   function langCell(e, code, name){
     const c = el("div","cell lang"); c.setAttribute("role","cell");
-    const lb = el("span","lang-label", name); lb.style.color = langColor(code); c.append(lb);
+    const lb = el("span","lang-label"); lb.append(flagEl(code), el("span","lcode", ({nb:"NO"})[code] || String(code).toUpperCase())); lb.title = name; lb.setAttribute("aria-label", name); lb.setAttribute("data-notr",""); c.append(lb);
     const v = valOf(e, code);
     if(e.status==="pending"){ c.append(el("span","pending","übersetzt")); return c; }
     if(e.status==="error"){ c.append(el("span","err","—")); return c; }
@@ -3235,7 +3259,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
   function syncTrail(r){
     r.querySelectorAll(".trailclone").forEach(n=>n.remove());
     const de = r.querySelector(".cell.de"); if(!de) return;
-    const tr = de.querySelector(":scope > .detrail"); if(!tr || !de.querySelector(":scope > .conj")) return;
+    const tr = de.querySelector(":scope > .detrail"); if(!tr || !de.querySelector(":scope > .conj, :scope > .conjwrap > .conj")) return;
     r.querySelectorAll(".cell:not(.de) > .conj").forEach(c=>{ const k = tr.cloneNode(true); k.classList.add("trailclone"); k.setAttribute("aria-hidden","true"); k.querySelectorAll("button").forEach(b=>{ b.tabIndex = -1; }); c.after(k); });
   }
   function entryRow(e, ctx, copy){
@@ -3294,12 +3318,12 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
       f.append(inp); d.append(f);
       setTimeout(()=>{ if(inp.isConnected && document.activeElement!==inp){ inp.focus(); inp.select(); } });
     } else {
-      const t = el("button","detx"); t.append(artFrag(srcText(e), SRC, e.verb)); t.type="button"; t.title="Klicken zum Ändern"; t.setAttribute("aria-label","Ändern: "+srcText(e));
+      const t = el("button","detx"); { const tt = el("span","detxt"); tt.append(artFrag(srcText(e), SRC, e.verb)); t.append(tt); } t.type="button"; t.title="Klicken zum Ändern"; t.setAttribute("aria-label","Ändern: "+srcText(e));
       // Handy: Tipp auf Wort oder Satz klappt die Übersetzungen darunter auf (Ändern über ✎). Breiter Bildschirm: Tipp ändert.
       // Öffentliche Web-App: nur eigene Einträge lassen sich ändern (Standardeinträge kommen aus den Sprachpaketen)
       if(!canEditEntry(e)){ t.classList.add("ro"); t.title = ""; t.setAttribute("aria-label", srcText(e)); }
       t.addEventListener("click",()=>{ if(window.matchMedia && matchMedia("(max-width:760px)").matches && r._mt){ r._mt.click(); return; } if(!canEditEntry(e)) return; editId=e.id; editCtx=ekey; editDraft=srcText(e); confirmId=null; render(); });
-      d.append(t, ...conjControls(e));
+      const cw = el("div","conjwrap"); cw.append(...conjControls(e)); d.append(t, cw); r._cw = cw;
       // Alles unter dem Wort (Hinweis, Herkunft, „auch in“) in einem Block: steht unter der Konjugation
       const trail = el("div","detrail");
       if(SRC==="de" && e.denote) trail.append(el("span","note denote", e.denote));
@@ -3323,14 +3347,14 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     r.append(r._mt);
 
     const a = el("div","cell actions"); a.setAttribute("role","cell");
-    const re = el("button","icon","↻"); re.type="button"; re.title="Neu übersetzen"; re.setAttribute("aria-label","Neu übersetzen: "+srcText(e));
+    const re = el("button","icon adm","↻"); re.type="button"; re.title="Neu übersetzen"; re.setAttribute("aria-label","Neu übersetzen: "+srcText(e));
     re.disabled = transInFlight.has(e.id) || !sample;
     re.addEventListener("click",()=>translate([e]));
-    const del = el("button","icon del","✕"); del.type="button"; del.title="Löschen"; del.setAttribute("aria-label","Löschen: "+srcText(e));
+    const del = el("button","icon del adm","✕"); del.type="button"; del.title="Löschen"; del.setAttribute("aria-label","Löschen: "+srcText(e));
     const cid = (mirror ? `m:${e.id}:${ctx}` : e.id) + (copy ? "#pin" : "");
     if(mirror){ del.title = "Aus diesem Bereich entfernen"; del.setAttribute("aria-label","Aus diesem Bereich entfernen: "+srcText(e)); }
     del.addEventListener("click",()=>{ confirmId = confirmId===cid ? null : cid; render(); });
-    const pin = el("button","icon pin" + (e.pinned ? " on" : "")); pin.type="button"; pin.innerHTML = PIN_ICON;
+    const pin = el("button","icon pin adm" + (e.pinned ? " on" : "")); pin.type="button"; pin.innerHTML = PIN_ICON;
     pin.title = e.pinned ? "Nicht mehr oben anpinnen" : "Oben anpinnen";
     pin.setAttribute("aria-label", (e.pinned ? "Lösen: " : "Oben anpinnen: ") + srcText(e)); pin.setAttribute("aria-pressed", String(!!e.pinned));
     pin.addEventListener("click",()=>patchDoc(e.id, e.pinned ? {pinned:false} : {pinned:true, pinnedAt:Date.now()}).catch(fail));
@@ -3342,6 +3366,8 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     ed.addEventListener("click",()=>{ editId=e.id; editCtx=ekey; editDraft=srcText(e); confirmId=null; render(); });
     if(canEditEntry(e)) a.append(star, pin, ed, re, del); else a.append(star, pin, re, del);
     r.append(a);
+    // Handy: erst Übersetzungen, dann Konjugation
+    if(r._cw && r._cw.childNodes.length && matchMedia("(max-width:760px)").matches){ r._cw.classList.add("cell","mconj"); r.append(r._cw); }
 
     if(confirmId===cid){
       const cf = el("div","confirm");
@@ -3445,7 +3471,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
         if(src && canDropFor(src, sec)) reorderSection(src, sec, after);
       });
     }
-    const all = el("input"); all.type="checkbox"; all.id = "secsel-"+(id||"none");
+    const all = el("input"); all.type="checkbox"; all.id = "secsel-"+(id||"none"); all.classList.add("adm");
     all.setAttribute("aria-label","Alle in diesem Bereich auswählen");
     all.disabled = !list.length;
     const nSel = list.filter(e=>selected.has(e.id)).length;
@@ -3565,7 +3591,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
         const letterOf = e => { const c = sortKey(e).charAt(0).toUpperCase(); return ({"Ä":"A","Ö":"O","Ü":"U"})[c] || c; };
         const first = new Map();
         list.filter(e=>!e.pinned).forEach(e=>{ const l = letterOf(e); if(!first.has(l)) first.set(l, rowDomId(e, id)); });
-        const nav = el("nav","alpha"); nav.setAttribute("aria-label","Zu Buchstabe springen");
+        const nav = el("nav","alpha"); alphaSwipe(nav); nav.setAttribute("aria-label","Zu Buchstabe springen");
         "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(L=>{
           const b = el("button",null,L); b.type="button";
           const target = first.get(L);
@@ -3845,7 +3871,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     if(list.length >= 12){
       const letterOf = e => { const c = sortKey(e).charAt(0).toUpperCase(); return ({"Ä":"A","Ö":"O","Ü":"U"})[c] || c; };
       const first = new Map(); list.forEach(e=>{ const l = letterOf(e); if(!first.has(l)) first.set(l, "row-"+e.id); });
-      const nav = el("nav","alpha"); nav.setAttribute("aria-label","Zu Buchstabe springen");
+      const nav = el("nav","alpha"); alphaSwipe(nav); nav.setAttribute("aria-label","Zu Buchstabe springen");
       "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(L=>{ const b = el("button",null,L); b.type="button"; const t = first.get(L); if(!t) b.disabled = true; else b.addEventListener("click",()=>{ flushLazy(); const n = document.getElementById(t); if(n) jumpTo(n, "start"); }); nav.append(b); });
       block.append(nav);
     }
@@ -7011,6 +7037,7 @@ Antworte ausschließlich mit JSON: {"expl":["…"]} – genau ${part.length} Tex
     document.querySelectorAll(".dz").forEach(b=>b.setAttribute("aria-pressed", String(b.dataset.design===d)));
   }
   let design = ""; try{ design = localStorage.getItem("rw-design") || ""; }catch(e){}
+  // Öffentliche App: Werkzeuge zum Sortieren (Auswählen, Anpinnen, Neu übersetzen, Entfernen) ausblenden – nur der Stern bleibt
   applyDesign(design);
 
 
@@ -8266,6 +8293,18 @@ ${JSON.stringify(TUT_DE)}`;
       a.append(fi, hb);
       if(heroImg()){ const hx = el("button","djbtn ghosty","Hintergrundbild entfernen"); hx.type="button"; hx.addEventListener("click", ()=>{ try{ localStorage.removeItem("rw-heroimg"); }catch(_){} applyHeroImage(); renderDevJobs(); }); a.append(hx); }
     }
+  }
+  // Buchstabenleiste (Handy): Balken zeigt, wo man steht und dass man wischen kann; einmal kurz anstupsen
+  let alphaNudged = false;
+  function alphaSwipe(nav){
+    const upd = () => { const max = nav.scrollWidth - nav.clientWidth; nav.classList.toggle("canswipe", max > 2);
+      nav.style.setProperty("--aw", max > 2 ? (nav.clientWidth / nav.scrollWidth).toFixed(3) : "1");
+      nav.style.setProperty("--ap", max > 2 ? (nav.scrollLeft / max).toFixed(3) : "0"); };
+    const nudge = () => { if(alphaNudged || !nav.classList.contains("canswipe") || !nav.isConnected || matchMedia("(prefers-reduced-motion: reduce)").matches) return; alphaNudged = true;
+      setTimeout(()=>{ try{ nav.scrollTo({left:60, behavior:"smooth"}); setTimeout(()=>nav.scrollTo({left:0, behavior:"smooth"}), 650); }catch(_){} }, 700); };
+    nav.addEventListener("scroll", upd, {passive:true});
+    // Größe steht erst fest, wenn die Leiste im Dokument ist
+    try{ new ResizeObserver(()=>{ upd(); nudge(); }).observe(nav); }catch(_){ requestAnimationFrame(()=>{ upd(); nudge(); }); }
   }
   function heroImg(){ try{ return localStorage.getItem("rw-heroimg") || ""; }catch(_){ return ""; } }
   function applyHeroImage(){ const u = IN_WEBAPP ? "" : heroImg(); if(u) document.documentElement.style.setProperty("--head-img", `url("${u}")`); else document.documentElement.style.removeProperty("--head-img"); }
