@@ -201,6 +201,7 @@ html[data-home] .totop{display:none}
   .row:not(.head):not(.mc) .de > .detx::after{transform:rotate(180deg)}
   .row.mc > .de{grid-column:2}
   .row.mc > .actions{grid-row:1;align-self:start;padding-top:10px}
+  .row.mopen,.row.mopen:hover{background:var(--hl-soft)}
 }
 @media print{ .row.mc > .cell.lang{display:revert} .mtog,.mopenbar{display:none!important} }
 @media (max-width:760px){ .row{scroll-margin-top:100px} .alpha button{min-width:26px;font-size:12.5px} }
@@ -2677,7 +2678,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
         const pv = byTitle || posOf(d);
         if(pv && pv!=="phrase" && pv!=="other" && document.querySelector('#posf button[data-pos="'+pv+'"]')){
           setViewQuiet(pv);
-          flashId = d.id; if(mOpenAll) mFlip.delete(d.id); else mFlip.add(d.id); /* Handy: Treffer gleich aufgeklappt */ clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 7000);
+          flashId = d.id; setCard(d.id, true); /* Handy: Treffer gleich aufgeklappt (nur dieser) */ clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 7000);
           renderNow();
           const go = () => { flushLazy(); const n = document.getElementById("row-"+d.id); if(n) jumpTo(n, "center"); return !!n; };
           if(!go()) setTimeout(go, 450);
@@ -2690,7 +2691,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     try{
       await openOnly(sec || par);
     }catch(_){}
-    flashId = d.id; if(mOpenAll) mFlip.delete(d.id); else mFlip.add(d.id); /* Handy: Treffer gleich aufgeklappt */ clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 7000);
+    flashId = d.id; setCard(d.id, true); /* Handy: Treffer gleich aufgeklappt (nur dieser) */ clearTimeout(flashTimer); flashTimer = setTimeout(()=>{ flashId = null; render(); }, 7000);
     renderNow();
     const target = sec ? rowDomId(d, sec.id) : "row-"+d.id;
     const go = () => { flushLazy(); const n = document.getElementById(target) || document.getElementById("row-"+d.id); if(n) jumpTo(n, "center"); return !!n; };
@@ -3159,6 +3160,15 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
   }
   let mOpenAll = false; try{ mOpenAll = localStorage.getItem("rw-mopen")==="1"; }catch(e){}
   const mFlip = new Set();
+  // Handy: immer nur eine Karte offen (außer „Alle aufklappen“); Schließen klappt auch die Konjugation zu
+  const isPhone = () => matchMedia("(max-width:760px)").matches;
+  function setCard(id, open){
+    if(mOpenAll){ open ? mFlip.delete(id) : mFlip.add(id); if(!open) openConj.delete(id); return; }
+    if(open){ [...mFlip].forEach(x=>{ if(x!==id) openConj.delete(x); }); mFlip.clear(); mFlip.add(id); }
+    else { mFlip.delete(id); openConj.delete(id); }
+  }
+  // nach dem Umklappen: geöffnete Karte oben unter der Kopfzeile zeigen, damit sie nicht wegrutscht
+  function showCard(rowId){ requestAnimationFrame(()=>{ const n = document.getElementById(rowId); if(!n) return; const t = n.getBoundingClientRect().top; if(t < 90 || t > innerHeight*0.55) n.scrollIntoView({block:"start"}); }); }
   function mOpenLabel(){ document.querySelectorAll(".mopenall").forEach(b=>{ b.textContent = mOpenAll ? "Alle zuklappen ▴" : "Alle aufklappen ▾"; }); }
   setTimeout(mOpenLabel);
   document.addEventListener("click", ev=>{ if(!ev.target.closest || !ev.target.closest(".mopenall")) return;
@@ -3215,7 +3225,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
   function rowSig(e, ctx){
     let body = ""; try{ body = JSON.stringify(e); }catch(_){ return null; }
     return [uiEpoch, ctx||"", SRC, posFilter, lvlFilter, LANGS.map(l=>l[0]).join(), [...hiddenLangs].join(), selected.has(e.id), flashId===e.id,
-      editId===e.id ? editCtx+"|"+editDraft : "", confirmId===e.id, openConj.has(e.id), conjTense.get(e.id)||"", transInFlight.has(e.id), body].join("\u0001");
+      editId===e.id ? editCtx+"|"+editDraft : "", confirmId===e.id, openConj.has(e.id), conjTense.get(e.id)||"", transInFlight.has(e.id), mOpenAll, mFlip.has(e.id), isPhone(), body].join("\u0001");
   }
   // Lange Listen: die ersten Zeilen sofort, der Rest in Portionen, damit die Seite bedienbar bleibt
   let lazyBudget = Infinity, lazyQ = [], lazyAt = 0, lazyGen = 0;
@@ -3328,10 +3338,10 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     }
     if(e.status==="error") d.append(el("span","err", e.error || "Übersetzung fehlgeschlagen. Mit ↻ erneut versuchen."));
     // Handy: Übersetzungen zum Aufklappen (auf breiten Bildschirmen unsichtbar)
-    { const open = mOpenAll !== mFlip.has(e.id); if(!open) r.classList.add("mc");
+    { const open = mOpenAll !== mFlip.has(e.id); if(!open) r.classList.add("mc"); else if(!mOpenAll) r.classList.add("mopen");
       const big = !!searchQ && matchMedia("(max-width:760px)").matches;
       const mt = el("button","mtog", big ? "Groß anzeigen ⤢" : open ? "weniger ▴" : "Übersetzungen ▾"); mt.type = "button"; mt.setAttribute("aria-expanded", String(open));
-      mt.addEventListener("click",()=>{ mFlip.has(e.id) ? mFlip.delete(e.id) : mFlip.add(e.id); const o = !r.classList.toggle("mc"); mt.textContent = o ? "weniger ▴" : "Übersetzungen ▾"; mt.setAttribute("aria-expanded", String(o)); });
+      mt.addEventListener("click",()=>{ const willOpen = r.classList.contains("mc"); setCard(e.id, willOpen); if(willOpen) openConj.delete(e.id); const rid = r.id; renderNow(); if(willOpen) showCard(rid); });
       r._mt = mt; }
     r.append(d);
     LANGS.filter(([c])=>!hiddenLangs.has(c)).forEach(([c,n])=>r.append(langCell(e,c,n)));
@@ -4205,7 +4215,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     }
     const open = openConj.has(e.id);
     const b = el("button","conjbtn", open ? "Konjugation ▾" : "Konjugation ▸"); b.type="button"; b.setAttribute("aria-expanded", String(open));
-    b.addEventListener("click",()=>{ open ? openConj.delete(e.id) : openConj.add(e.id); refreshRows(e.id, ".conjbtn"); });
+    b.addEventListener("click",()=>{ if(isPhone()){ const row = b.closest(".row"); if(open){ openConj.delete(e.id); } else { setCard(e.id, true); openConj.add(e.id); } renderNow(); if(!open && row) showCard(row.id); return; } open ? openConj.delete(e.id) : openConj.add(e.id); refreshRows(e.id, ".conjbtn"); });
     if(!open) return [b];
     const chips = el("div","tenses"); const cur = conjTense.get(e.id)||0;
     TENSES.forEach((n,i)=>{ const c = el("button","tense",n); c.type="button"; c.setAttribute("aria-pressed", String(i===cur)); c.addEventListener("click",()=>{ conjTense.set(e.id,i); refreshRows(e.id, `.tense:nth-of-type(${i+1})`); }); chips.append(c); });
