@@ -112,10 +112,17 @@ with sync_playwright() as p:
                            ("08-spick", "#favbtn", None), ("09-quiz", "#quizbtn", None)]:
         fresh(); pg.click(btn); pg.wait_for_timeout(2500)
         if gi is not None: pg.locator(".gramtab").nth(gi).click(); pg.wait_for_timeout(2000)
+        if btn == "#quizbtn":
+            # Warten, bis der Quiz-Pool gezählt ist (Start-Knopf aktiv), sonst zeigt das Bild „0 offen“
+            try: pg.wait_for_function("(()=>{const b=document.querySelector('#quizbody button.primary'); return b && !b.disabled})()", timeout=120000); pg.wait_for_timeout(800)
+            except Exception: print("Quiz-Pool", LANG, "nach 2 Minuten noch leer")
         pg.screenshot(path=P(name + ".png"))
     # Quiz: eine Frage mit richtig gewählter Antwort (bei falscher Wahl neue Runde, höchstens 8 Versuche)
     for _ in range(8):
         fresh(); pg.click("#quizbtn"); pg.wait_for_timeout(2000)
+        try: pg.wait_for_function("(()=>{const b=document.querySelector('#quizbody button.primary'); return b && !b.disabled})()", timeout=120000)
+        except Exception: pass
+        pg.evaluate("()=>document.querySelectorAll('.srcask').forEach(e=>e.remove())")
         st = pg.locator("#quizbody button.primary").first
         if not st.count() or st.is_disabled(): break
         st.click(); pg.wait_for_timeout(1200)
