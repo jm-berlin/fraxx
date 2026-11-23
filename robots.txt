@@ -1,0 +1,8 @@
+# Fraxx ist noch nicht für Suchmaschinen freigegeben (bis das Impressum steht).
+# Die Seiten selbst tragen <meta name="robots" content="noindex, nofollow">; damit Suchmaschinen das lesen können,
+# bleibt das Crawlen der Seiten erlaubt. PDFs, Entwürfe und Werkzeuge werden gar nicht abgerufen.
+User-agent: *
+Disallow: /docs/
+Disallow: /tools/
+Disallow: /data/
+Disallow: /*.pdf$

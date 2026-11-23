@@ -12,11 +12,13 @@ def rep(a, b, count=1):
     if a not in s: a, b = rename_fraxx.convert(a), rename_fraxx.convert(b)
     assert a in s, a[:80]; s = s.replace(a, b, count)
 rep('<meta name="claude:viewport-fit-sides" content="cover">\n', '')
+# Suchmaschinen fernhalten, bis das Impressum steht (Entscheidung 23.11.2026): Zeile mit noindex dann entfernen, ebenso in build_tutorial.py und robots.txt
 head = '''<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Fraxx – deine persönliche Sprach-App für Reisen.">
 <meta name="theme-color" content="#e5e2e0">
 <link rel="manifest" href="manifest.webmanifest">
