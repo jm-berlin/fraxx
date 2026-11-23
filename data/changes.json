@@ -1,6 +1,65 @@
 {
  "releases": [
   {
+   "release": "2026-11-23T09:30:49.788Z",
+   "version": "0.29",
+   "date": "2026-11-23",
+   "notes": {
+    "de": [
+     "Neu im Quiz: 🎧 Hör-Runde zum Nebenbei-Hören – jeder Satz erst in deiner Sprache, dann in der Zielsprache, mit Pause zum Nachsprechen. Ideal beim Laufen, im Fitnessstudio oder im Auto.",
+     "Mikrofon, Sprechen-Übung und Hilfe jetzt in allen Sprachen übersetzt."
+    ],
+    "en": [
+     "New in the quiz: 🎧 Listening round for listening on the go – each sentence first in your language, then in the target language, with a pause to repeat it. Ideal for running, the gym or the car.",
+     "Microphone, speaking practice and help are now translated into all languages."
+    ],
+    "fr": [
+     "Nouveau dans le quiz : 🎧 Écoute guidée – chaque phrase d’abord dans ta langue, puis dans la langue cible, avec une pause pour la répéter. Idéal pour courir, à la salle de sport ou en voiture.",
+     "Micro, exercice de prononciation et aide sont maintenant traduits dans toutes les langues."
+    ],
+    "it": [
+     "Novità nel quiz: 🎧 Ascolto guidato – ogni frase prima nella tua lingua, poi nella lingua di destinazione, con una pausa per ripeterla. Ideale per correre, in palestra o in auto.",
+     "Microfono, esercizio di pronuncia e guida ora tradotti in tutte le lingue."
+    ],
+    "es": [
+     "Nuevo en el quiz: 🎧 Ronda de escucha – cada frase primero en tu idioma y luego en el idioma de destino, con una pausa para repetirla. Ideal para correr, en el gimnasio o en el coche.",
+     "Micrófono, práctica de pronunciación y ayuda ya traducidos a todos los idiomas."
+    ],
+    "pt": [
+     "Novo no quiz: 🎧 Ronda de audição – cada frase primeiro na tua língua, depois na língua de destino, com uma pausa para a repetires. Ideal para correr, no ginásio ou no carro.",
+     "Microfone, prática de pronúncia e ajuda agora traduzidos em todas as línguas."
+    ],
+    "nl": [
+     "Nieuw in de quiz: 🎧 Luisterronde – elke zin eerst in jouw taal, dan in de doeltaal, met een pauze om hem na te zeggen. Ideaal bij het hardlopen, in de sportschool of in de auto.",
+     "Microfoon, spreekoefening en hulp zijn nu in alle talen vertaald."
+    ],
+    "pl": [
+     "Nowość w quizie: 🎧 Runda słuchania – każde zdanie najpierw w twoim języku, potem w języku docelowym, z przerwą na powtórzenie. Idealne podczas biegania, na siłowni lub w samochodzie.",
+     "Mikrofon, ćwiczenie wymowy i pomoc są teraz przetłumaczone na wszystkie języki."
+    ],
+    "sv": [
+     "Nytt i quizet: 🎧 Lyssningsrunda – varje mening först på ditt språk, sedan på målspråket, med en paus för att säga efter. Perfekt när du springer, på gymmet eller i bilen.",
+     "Mikrofon, talövning och hjälp är nu översatta till alla språk."
+    ],
+    "nb": [
+     "Nytt i quizen: 🎧 Lytterunde – hver setning først på ditt språk, så på målspråket, med en pause til å si den etter. Perfekt når du løper, på treningssenteret eller i bilen.",
+     "Mikrofon, taleøvelse og hjelp er nå oversatt til alle språk."
+    ],
+    "tr": [
+     "Quizde yeni: 🎧 Dinleme turu – her cümle önce kendi dilinde, sonra hedef dilde, tekrar etmen için bir duraklamayla. Koşarken, spor salonunda ya da arabada ideal.",
+     "Mikrofon, konuşma alıştırması ve yardım artık tüm dillere çevrildi."
+    ],
+    "ar": [
+     "جديد في الاختبار: 🎧 جولة استماع – كل جملة أولًا بلغتك ثم باللغة المستهدفة، مع توقف لتكرارها. مثالية أثناء الجري أو في النادي الرياضي أو في السيارة.",
+     "الميكروفون وتمرين النطق والمساعدة مترجمة الآن إلى جميع اللغات."
+    ],
+    "zh": [
+     "测验新功能：🎧 听力轮播——每句先用你的语言，再用目标语言播放，并留出跟读的停顿。非常适合跑步、健身或开车时收听。",
+     "麦克风、口语练习和帮助现已翻译成所有语言。"
+    ]
+   }
+  },
+  {
    "release": "2026-11-23T08:36:25.000Z",
    "version": "0.28",
    "date": "2026-11-23",
