@@ -43,6 +43,10 @@ s = re.sub(r'(data-img="(\w+)" src=")data:image/jpeg;base64,[^"]+', lambda m: m.
 s = s.rstrip() + '\n<script src="ui.js"></script>\n</html>\n'
 # Neuer Name Fraxx (Wortmarke, Icon, Texte, Adresse), solange das Artefakt noch „Phraxx“ heißt
 s = rename_fraxx.convert(s)
+# Schriften lokal statt von Google Fonts (Datenschutz, 23.11.2026): fonts/fonts.css (Fontsource, OFL)
+s = re.sub(r'<link rel="preconnect" href="https://fonts\.(googleapis|gstatic)\.com"[^>]*>\n?', '', s)
+s = re.sub(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com/css2[^"]*">', '<link rel="stylesheet" href="fonts/fonts.css">', s)
+assert "fonts.googleapis.com" not in s, "Google-Fonts-Verweis übrig"
 # Eigene Domain: alte GitHub-Pages-Adresse durch https://fraxx.app/ ersetzen (auch wenn das Artefakt sie noch enthält)
 s = s.replace("https://jm-berlin.github.io/fraxx/", "https://fraxx.app/")
 os.makedirs(out, exist_ok=True)
@@ -67,7 +71,7 @@ a = a.replace('<meta name="apple-mobile-web-app-title" content="Fraxx">', '<meta
 a = a.replace('<title>Fraxx</title>', '<title>Fraxx Admin</title>', 1)
 a = a.replace('<meta name="robots"', '<meta name="robots"', 1)
 a = a.replace('<head>\n', '<head>\n<meta name="robots" content="noindex, nofollow">\n', 1)
-a = re.sub(r'(href|src)="(icons|img)/', lambda m: m.group(1) + '="../' + m.group(2) + '/', a)
+a = re.sub(r'(href|src)="(icons|img|fonts)/', lambda m: m.group(1) + '="../' + m.group(2) + '/', a)
 open(os.path.join(adm, "index.html"), "w").write(a)
 import shutil, json as _json
 for f in ("runtime.js", "ui.js"): shutil.copy(os.path.join(out, f), os.path.join(adm, f))

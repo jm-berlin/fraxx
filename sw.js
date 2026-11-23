@@ -1,8 +1,8 @@
 /* Fraxx – Service Worker: Offline-Betrieb und Updates
    Die App kommt immer aus dem Speicher (schnell und offline). Eine neue Fassung wird im Hintergrund geladen,
    aber erst übernommen, wenn der Nutzer im Hinweis „Update verfügbar“ auf „Jetzt aktualisieren“ tippt. */
-const VERSION = "844fa340e8";
-const SHELL = ["./", "index.html", "runtime.js", "ui.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png", "icons/fraxx.svg", "img/band.jpg", "data/packs.json"];
+const VERSION = "834c42b544";
+const SHELL = ["./", "index.html", "runtime.js", "ui.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png", "icons/fraxx.svg", "fonts/fonts.css", "img/band.jpg", "data/packs.json"];
 const SHELL_CACHE = "ml-shell-" + VERSION, RUNTIME = "ml-runtime";
 
 self.addEventListener("install", e => {
@@ -29,7 +29,7 @@ self.addEventListener("fetch", e => {
     e.respondWith(fetch(req, { cache: "no-cache" }).catch(async () => (await caches.match(req, { ignoreSearch: true })) || Response.error()));
     return;
   }
-  if (url.pathname.includes("/anleitung/")) {
+  if (url.pathname.includes("/anleitung/") || /\/(impressum|datenschutz)\.html$/.test(url.pathname)) {
     e.respondWith(fetch(req).then(r => { if (r.ok) { const k = r.clone(); caches.open(RUNTIME).then(c => c.put(req, k)); } return r; })
       .catch(async () => (await caches.match(req)) || (await caches.match(req, { ignoreSearch: true })) || Response.error()));
     return;
