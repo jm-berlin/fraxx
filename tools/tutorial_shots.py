@@ -56,6 +56,9 @@ with sync_playwright() as p:
             b = pg.locator(f'#mlsrc button[lang="{LANG}"]')
             if not b.count(): break
             b.click(); pg.wait_for_timeout(700)
+        # Erst weiter, wenn die Sprachpakete geladen sind (Ladebildschirm #mlload.on weg)
+        try: pg.wait_for_function("!document.querySelector('#mlload.on')", timeout=300000)
+        except Exception: print("Ladebildschirm", LANG, "nach 5 Minuten noch sichtbar")
         # Oberfläche ist erst übersetzt, wenn die Seite die Sprache gesetzt hat
         try: pg.wait_for_function(f"document.documentElement.lang === '{LANG}'", timeout=120000)
         except Exception: print("Sprache", LANG, "nicht gesetzt – Screenshots evtl. teilweise auf Deutsch")

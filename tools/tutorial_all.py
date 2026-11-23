@@ -37,7 +37,7 @@ def main():
                 pdf = "Fraxx-Anleitung.pdf" if l == "de" else f"Fraxx-Anleitung-{l}.pdf"
                 with sync_playwright() as p:
                     b = p.chromium.launch(); pg = b.new_page(viewport={"width": 1280, "height": 900})
-                    pg.goto(base + "anleitung/" + page + "?print=1"); pg.wait_for_timeout(1500)
+                    pg.goto(base + "anleitung/" + page + "?print=1&lang=" + l)  # lang: sonst leitet index.html (Deutsch) nach Browsersprache auf Englisch um; pg.wait_for_timeout(1500)
                     pg.pdf(path=os.path.join(OUT, pdf), format="A4", print_background=True); b.close()
                 done.append(l)
             finally:
