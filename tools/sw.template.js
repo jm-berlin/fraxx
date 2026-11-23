@@ -29,7 +29,7 @@ self.addEventListener("fetch", e => {
     e.respondWith(fetch(req, { cache: "no-cache" }).catch(async () => (await caches.match(req, { ignoreSearch: true })) || Response.error()));
     return;
   }
-  if (url.pathname.includes("/anleitung/") || /\/(impressum|datenschutz)\.html$/.test(url.pathname)) {
+  if (url.pathname.includes("/anleitung/") || /\/(impressum|datenschutz)(-en)?\.html$/.test(url.pathname)) {
     e.respondWith(fetch(req).then(r => { if (r.ok) { const k = r.clone(); caches.open(RUNTIME).then(c => c.put(req, k)); } return r; })
       .catch(async () => (await caches.match(req)) || (await caches.match(req, { ignoreSearch: true })) || Response.error()));
     return;

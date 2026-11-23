@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="834c42b544">
+<meta name="fraxx-build" content="44ce31cdac">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
@@ -1945,6 +1945,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   </div>
   </div>
   <footer class="sitefoot"><a href="https://fraxx.app/impressum.html" target="_blank" rel="noopener">Impressum</a><span aria-hidden="true">·</span><a href="https://fraxx.app/datenschutz.html" target="_blank" rel="noopener">Datenschutz</a></footer>
+  <script>/* Impressum/Datenschutz: in jeder anderen Sprache als Deutsch die englische Fassung öffnen */
+  document.addEventListener("click", function(e){ var a = e.target.closest && e.target.closest(".sitefoot a"); if(!a) return; var de = /^de\b/.test(document.documentElement.lang || "de"); a.href = a.href.replace(/(-en)?\.html$/, de ? ".html" : "-en.html"); }, true);</script>
 </div>
 
 <script>
