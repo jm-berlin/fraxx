@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="21f46a4dd5">
+<meta name="fraxx-build" content="b519efe56e">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
@@ -3797,6 +3797,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
   }
 
   let renderQueued = false;
+  let quizDataHook = null; // Quiz-Startseite neu zählen, wenn Daten nachladen (sonst bleibt „0 offen“ stehen)
   function render(){ if(!fromData) uiEpoch++; if(renderQueued) return; renderQueued = true; requestAnimationFrame(()=>{ renderQueued = false; renderNow(); }); }
   // Datenänderungen (z. B. Hintergrund-Übersetzungen) gebündelt darstellen, damit die Seite bedienbar bleibt
   let lastRenderAt = 0, lastRenderDur = 0, dataTimer = null;
@@ -3856,6 +3857,7 @@ Antworte ausschließlich mit JSON: {"l":["A1", …]} mit genau ${part.length} We
     const t0 = performance.now();
     lazyGen++; lazyQ = []; lazyAt = 0; lazyBudget = 120;
     try{ renderInner(); } finally { lazyBudget = Infinity; lastRenderAt = performance.now(); lastRenderDur = lastRenderAt - t0; }
+    if(quizDataHook) try{ quizDataHook(); }catch(_){}
     if(lazyQ.length){ const g = lazyGen; setTimeout(()=>lazyDrain(g), 0); }
     // den gerade geöffneten Bereich an seiner Position halten, auch wenn darüber einer zugeklappt wurde
     if(scrollAnchor){
@@ -6752,6 +6754,10 @@ Antworte ausschließlich mit JSON: {"expl":["…"]} – genau ${part.length} Tex
     const d = el("p","qgoal"); d.append("Nächstes Ziel: ", el("b",null,`${g.toLocaleString("de-DE")} gelernt`), ` · noch ${(g-learned).toLocaleString("de-DE")}`);
     return d;
   }
+  let quizHookT = null;
+  quizDataHook = ()=>{ if(quizEl.hidden || qs.phase!=="setup" || qs.overview || qs.confirmReset) return;
+    clearTimeout(quizHookT); quizHookT = setTimeout(()=>{ const a = document.activeElement;
+      if(quizEl.hidden || qs.phase!=="setup" || (a && a.tagName==="SELECT" && quizEl.contains(a))) return; renderQuiz(); }, 400); };
   function renderQuiz(){
     if(quizEl.hidden) return;
     quizBody.replaceChildren();

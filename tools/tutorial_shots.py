@@ -9,6 +9,8 @@ import json, os, sys
 from playwright.sync_api import sync_playwright
 
 LANG, D = sys.argv[1], sys.argv[2]
+# Quiz-Startseite fertig gezählt: Start-Knopf nennt eine Fragenzahl (Ziffer im Knopftext), kein Ladebalken mehr
+QUIZ_READY = "(()=>{const b=document.querySelector('#quizbody button.primary'); return b && /\\d/.test(b.textContent) && !document.querySelector('#mlload.on')})()"
 BASE = sys.argv[3] if len(sys.argv) > 3 else "http://localhost:8765/"
 os.makedirs(D, exist_ok=True)
 P = lambda n: os.path.join(D, n)
@@ -114,13 +116,13 @@ with sync_playwright() as p:
         if gi is not None: pg.locator(".gramtab").nth(gi).click(); pg.wait_for_timeout(2000)
         if btn == "#quizbtn":
             # Warten, bis der Quiz-Pool gezählt ist (Start-Knopf aktiv), sonst zeigt das Bild „0 offen“
-            try: pg.wait_for_function("(()=>{const b=document.querySelector('#quizbody button.primary'); return b && !b.disabled})()", timeout=120000); pg.wait_for_timeout(800)
+            try: pg.wait_for_function(QUIZ_READY, timeout=120000); pg.wait_for_timeout(800)
             except Exception: print("Quiz-Pool", LANG, "nach 2 Minuten noch leer")
         pg.screenshot(path=P(name + ".png"))
     # Quiz: eine Frage mit richtig gewählter Antwort (bei falscher Wahl neue Runde, höchstens 8 Versuche)
     for _ in range(8):
         fresh(); pg.click("#quizbtn"); pg.wait_for_timeout(2000)
-        try: pg.wait_for_function("(()=>{const b=document.querySelector('#quizbody button.primary'); return b && !b.disabled})()", timeout=120000)
+        try: pg.wait_for_function(QUIZ_READY, timeout=120000)
         except Exception: pass
         pg.evaluate("()=>document.querySelectorAll('.srcask').forEach(e=>e.remove())")
         st = pg.locator("#quizbody button.primary").first
