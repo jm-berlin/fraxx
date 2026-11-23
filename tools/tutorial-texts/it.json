@@ -6,19 +6,19 @@
   ],
   [
    "Pagina iniziale breve",
-   "Se installata come app, Fraxx si apre con una pagina iniziale compatta: campo di ricerca, riquadri per tutte le sezioni, i tuoi progressi nel quiz e le sezioni aperte di recente. La presentazione completa la trovi lì con „Che cos'è Fraxx?“ oppure con un tocco sul logo."
+   "Se installata come app, Fraxx si apre con una pagina iniziale compatta: campo di ricerca, riquadri per tutte le sezioni, il tuo stato nel quiz e le sezioni aperte per ultime. La presentazione completa la trovi lì con «Che cos'è Fraxx?» o con un tocco sul logo."
   ],
   [
    "Usa offline",
-   "Tutto ciò che è installato funziona senza internet: in aereo, all'estero senza traffico dati, dove non c'è campo."
+   "Tutto ciò che è installato funziona senza internet: in aereo, all'estero senza dati, dove non c'è campo."
   ],
   [
-   "Voci naturali",
-   "La lettura ad alta voce usa le voci del tuo dispositivo. Su Mac e Windows Chrome di solito suona più naturale. Altre voci le installi nelle impostazioni della lingua del tuo dispositivo."
+   "Voci migliori",
+   "La lettura ad alta voce usa le voci del tuo dispositivo. Su Mac e Windows Chrome di solito suona più naturale. Puoi installare altre voci nelle impostazioni della lingua del tuo dispositivo."
   ],
   [
    "Salva i dati",
-   "Le tue stelle, i tuoi progressi e le tue impostazioni sono sul dispositivo. Sotto ⚙ → App, pacchetti linguistici e backup scarichi un backup e, se serve, lo ripristini."
+   "Le tue stelle, i progressi e le impostazioni sono salvati sul dispositivo. Sotto ⚙ → App, pacchetti linguistici e backup scarichi un backup e, se serve, lo ripristini."
   ],
   [
    "Aggiornamenti",
@@ -28,55 +28,55 @@
  "appcap": "App, pacchetti linguistici e backup: scarica o rimuovi lingue, scarica il backup.",
  "beta": "Versione di prova: la traduzione di nuove parole tue non è ancora attiva e arriverà in una versione futura. Tutto il resto funziona già, anche offline.",
  "end": "Buon viaggio!",
- "endsub": "Buon divertimento con Fraxx. Hai un'idea o hai trovato un errore? Ogni tuo commento ci fa piacere.",
+ "endsub": "Buon divertimento con Fraxx. Hai un'idea o hai trovato un errore? Ci fa piacere ogni tuo riscontro.",
  "eyebrow": "Istruzioni · pronto in 5 minuti",
  "features": [
   [
    "inhalt",
    "☰ Contenuto",
-   "Oltre 7.500 parole, frasi e modi di dire ordinati per argomento: dal ristorante alla farmacia, dall'officina all'ufficio pubblico. In più elenchi alfabetici di sostantivi, verbi, aggettivi e altro. La prima scheda <b>Essentials</b> raccoglie l'essenziale per iniziare: saluti, cortesia, comprensione, numeri, emergenze e le parole indispensabili, ogni argomento in un riquadro a parte. L'ultima scheda <b>Business</b> offre circa 430 frasi e parole come in un corso di lingua per il lavoro: small talk, riunioni, telefono e videochiamate, e-mail, presentazioni, trattative, candidature, assistenza clienti, viaggi di lavoro e numeri. Il campo di ricerca trova gli argomenti per nome."
+   "Oltre 7.500 parole, frasi e modi di dire ordinati per argomento: dal ristorante alla farmacia, dall'officina fino agli uffici pubblici. In più elenchi alfabetici di sostantivi, verbi, aggettivi e altro. La prima scheda, <b>Essentials</b>, raccoglie l'essenziale per cominciare: saluti, cortesia, comprendersi, numeri, emergenze e le parole indispensabili, ogni argomento in un riquadro a parte. L'ultima scheda, <b>Business</b>, offre circa 430 frasi e parole come in un corso di lingua per il lavoro: small talk, riunioni, telefono e videochiamate, e-mail, presentazioni, trattative, candidatura, assistenza clienti, viaggi di lavoro e numeri. Il campo di ricerca trova gli argomenti per nome."
   ],
   [
    "tabelle",
    "Traduzioni e pronuncia",
-   "Ogni voce compare in tutte le tue lingue affiancate, i sostantivi con l'articolo, i modi di dire tradotti a senso. 🔊 legge ad alta voce, un secondo tocco ferma. Con il pin tieni in alto le voci importanti, con A–Z le ordini."
+   "Ogni voce compare in tutte le tue lingue, una accanto all'altra, con i sostantivi accompagnati dall'articolo e i modi di dire tradotti nel senso. 🔊 legge ad alta voce, un secondo tocco ferma la lettura. Con il pin tieni in alto le voci importanti, con A–Z le ordini."
   ],
   [
    "konj",
    "Verbi e coniugazione",
-   "I verbi sono coniugati in tutte le lingue: presente, passato prossimo, passato e futuro. <b>Coniugazione ▸</b> apre le tabelle, i pulsanti dei tempi cambiano il tempo verbale."
+   "I verbi vengono coniugati in tutte le lingue: presente, passato prossimo, imperfetto e futuro. <b>Coniugazione ▸</b> apre le tabelle, i pulsanti dei tempi cambiano il tempo verbale."
   ],
   [
    "gram",
    "§ Grammatica",
-   "Le regole più importanti di ogni lingua da A1 a C1, con esempi da ascoltare. <b>Verbi e desinenze</b> mostra tabelle di desinenze e verbi irregolari, <b>Errori tipici</b> gli ostacoli per chi parla la tua lingua. <b>Esercitati nel quiz</b> ti interroga su un capitolo con frasi a completamento."
+   "Le regole più importanti di ogni lingua da A1 a C1, con esempi da ascoltare. <b>Verbi e desinenze</b> mostra le tabelle delle desinenze e i verbi irregolari, <b>Errori tipici</b> le trappole per chi parla la tua lingua. <b>Esercitati nel quiz</b> ti interroga su un capitolo con frasi da completare."
   ],
   [
    "verben",
    "Verbi e desinenze",
-   "Le desinenze a colpo d'occhio: schemi regolari, eccezioni e i principali verbi irregolari, ognuno con un esempio."
+   "Le desinenze a colpo d'occhio: schemi regolari, eccezioni e i verbi irregolari più importanti, ognuno con un esempio."
   ],
   [
    "dish",
    "🍽 Menu",
-   "Circa 250 piatti e bevande popolari per ogni paese, con nome originale e spiegazione, più caffè, birra e vino. Le avvertenze ti mostrano quando un nome altrove significa qualcos'altro. <b>Ordina ▸</b> ti mostra come ordinarlo."
+   "Circa 250 piatti e bevande popolari per ogni paese, con nome originale e spiegazione, più caffè, birra e vino. Gli avvisi ti segnalano quando un nome altrove significa qualcos'altro. <b>Ordina ▸</b> mostra come ordinare."
   ],
   [
    "spick",
    "★ Promemoria",
-   "Tutto ciò che hai segnato con la stella, in modo compatto in una lingua: parole, modi di dire e piatti. <b>Stampa</b> ne ricava un foglio per il viaggio."
+   "Tutto ciò che hai contrassegnato con la stella, in modo compatto in una sola lingua: parole, modi di dire e piatti. <b>Stampa</b> ne fa un foglio per il viaggio."
   ],
   [
    "quiz",
    "Quiz",
-   "Impari con quattro risposte per ogni domanda: parole e frasi oppure grammatica, in entrambe le direzioni, per livello e argomento. Con <b>🔊 Ascolto</b> viene solo letto ad alta voce, così verifichi se capisci quello che viene detto. L'ascolto ha un suo livello di apprendimento. Dopo tre risposte corrette una voce risulta imparata, e lo stato di apprendimento mostra i tuoi progressi."
+   "Si impara con quattro risposte per ogni domanda: parole e frasi o grammatica, in entrambe le direzioni, per livello e argomento. Con <b>🔊 Ascolto</b> si sente solo la lettura ad alta voce, così verifichi se capisci ciò che viene detto. L'ascolto ha un suo stato di apprendimento. Con <b>🎤 Parlato</b> ripeti una frase e vedi se viene capita. Puoi subito confrontare la tua registrazione con la pronuncia di Fraxx. Dopo tre risposte corrette una voce risulta imparata, lo stato di apprendimento mostra i tuoi progressi."
   ]
  ],
  "h1": "Ecco come funziona <em>Fraxx</em>.",
- "lead": "Fraxx è la tua app personale per le lingue, per viaggi e vita di tutti i giorni: parole, frasi e modi di dire in tante lingue, con pronuncia, coniugazione, grammatica, menu e quiz. Qui vedi in pochi passi come iniziare e poi tutto quello che c'è dentro Fraxx.",
- "mob": "Sullo smartphone",
+ "lead": "Fraxx è la tua app personale per le lingue, per viaggi e vita di tutti i giorni: parole, frasi e modi di dire in tante lingue, con pronuncia, coniugazione, grammatica, menu e quiz. Qui vedi in pochi passi come iniziare e poi tutto quello che c'è in Fraxx.",
+ "mob": "Sul cellulare",
  "mobsub": "Stessi contenuti, pensati per il pollice: le righe diventano schede, la barra sta in alto.",
- "navcap": "La barra in alto: Contenuto, Grammatica, Menu, Promemoria, Quiz, Aiuto (?) e Impostazioni (⚙).",
+ "navcap": "La barra in alto: Contenuto, Grammatica, Menu, Promemoria, Quiz, aiuto (?) e impostazioni (⚙).",
  "next": "Avanti",
  "open": "Apri Fraxx",
  "pause": "Pausa",
@@ -84,27 +84,27 @@
  "play": "Riproduci",
  "prev": "Indietro",
  "s1": "I primi passi",
- "s1sub": "Cinque passi, dalla prima apertura alla prima traduzione.",
+ "s1sub": "Cinque passi dalla prima apertura alla prima traduzione.",
  "s2": "Dopo l'installazione",
- "s2sub": "Si configura una volta, poi Fraxx funziona anche senza internet.",
+ "s2sub": "Si configura una volta sola, poi Fraxx funziona anche senza internet.",
  "s3": "Tutto quello che sa fare Fraxx",
- "s3sub": "Le sezioni in breve – le trovi tutte nella barra in alto.",
+ "s3sub": "Le sezioni in sintesi: le trovi tutte nella barra in alto.",
  "step": "Passo",
  "steps": [
   [
    "src",
    "Scegli la lingua",
-   "Fraxx si apre subito nella lingua del tuo browser. Quando vai avanti per la prima volta, Fraxx ti chiede una volta sola quale lingua parli: la tua è già preselezionata. Questa è la tua <b>Lingua di partenza</b>: menu, spiegazioni e suggerimenti sono scritti in questa lingua. Puoi cambiarla in qualsiasi momento sotto ⚙. Se la lingua del tuo browser non è ancora disponibile, Fraxx parte in inglese."
+   "Fraxx si apre subito nella lingua del tuo browser. Quando vai avanti per la prima volta, Fraxx ti chiede una volta sola quale lingua parli, e la tua è già preselezionata. Questa è la tua <b>Lingua di partenza</b>: menu, spiegazioni e avvisi sono scritti in questa lingua. Puoi cambiarla in qualsiasi momento sotto ⚙. Se la lingua del tuo browser non c'è ancora, Fraxx parte in inglese."
   ],
   [
    "home",
    "Inizia",
-   "La pagina iniziale mostra cosa sa fare Fraxx. In alto a destra cambi la lingua della pagina. <b>Inizia →</b> apre l'indice dei contenuti. Con un tocco sul logo torni qui in qualsiasi momento."
+   "La pagina iniziale mostra cosa sa fare Fraxx. In alto a destra puoi cambiare la lingua della pagina. <b>Inizia →</b> apre l'indice dei contenuti. Con un tocco sul logo torni qui in qualsiasi momento."
   ],
   [
    "inhalt",
    "Apri un argomento",
-   "Nel <b>Contenuto</b> trovi tutti gli argomenti sotto forma di riquadri. All'inizio ci sono gli <b>Essentials</b>: circa 110 frasi e parole che ti servono per prime in ogni viaggio, con riquadri dedicati a saluti, cortesia, emergenze e altro. È il modo migliore per cominciare. Poi seguono i modi di dire per argomento (ristorante, hotel, farmacia …), il vocabolario per argomenti e, in fondo, <b>Business</b> con frasi e parole per riunioni, e-mail, telefonate e trattative. <b>Apri ▾</b> ti porta direttamente dentro."
+   "In <b>Contenuto</b> trovi tutti gli argomenti in tanti riquadri. In prima posizione ci sono gli <b>Essentials</b>: circa 110 frasi e parole che ti servono per prime in ogni viaggio, con riquadri dedicati a saluti, cortesia, emergenze e altro. È il modo migliore per iniziare. Poi seguono i modi di dire per argomento (ristorante, hotel, farmacia …), il vocabolario per argomenti e, alla fine, <b>Business</b> con frasi e parole per riunioni, e-mail, telefonate e trattative. <b>Apri ▾</b> ti porta subito dentro."
   ],
   [
    "tabelle",
@@ -118,14 +118,15 @@
   ]
  ],
  "tiplist": [
-  "Sei alle prime armi con una lingua? Comincia con gli <b>Essentials</b> ed esercitati nel quiz: scegli „Essentials“ sotto Area.",
-  "Per il lavoro: nel quiz scegli „Business (tutto)“ sotto Area ed esercita riunioni, e-mail e trattative.",
+  "Nuovo in una lingua? Comincia con gli <b>Essentials</b> ed esercitati nel quiz: scegli «Essentials» sotto Area.",
+  "Per il lavoro: nel quiz scegli «Business (tutto)» sotto Area ed esercita riunioni, e-mail e trattative.",
   "La ricerca trova parole e frasi nella tua lingua. Sotto il campo di ricerca scegli con <b>Altra lingua ▾</b> una delle tue lingue oppure tutte le lingue.",
-  "Il livello linguistico sotto ⚙ nasconde tutto ciò che è sopra il tuo livello, in tabella, grammatica e quiz.",
-  "Nella tabella stanno affiancate fino a 5 lingue: la tua lingua di partenza e altre quattro.",
+  "Invece di scrivere: tocca il microfono nel campo di ricerca e pronuncia la parola.",
+  "Il livello linguistico sotto ⚙ nasconde tutto ciò che supera il tuo livello, in tabella, grammatica e quiz.",
+  "Nella tabella ci stanno fino a 5 lingue affiancate: la tua lingua di partenza e altre quattro.",
   "Per le lingue con un'altra scrittura (arabo, russo, giapponese …) la trascrizione compare in corsivo sotto.",
-  "Il <b>?</b> in alto a destra spiega ogni funzione in dettaglio.",
-  "Le indicazioni sulla salute sono senza garanzia e non sostituiscono una consulenza. Ti aiutano a farti capire con il medico o in farmacia."
+  "Il <b>?</b> in alto a destra spiega ogni funzione nel dettaglio.",
+  "Le indicazioni sulla salute non sono garantite e non sostituiscono una consulenza. Ti aiutano a farti capire da medico o farmacista."
  ],
  "tips": "Piccoli consigli",
  "title": "Fraxx – Istruzioni"

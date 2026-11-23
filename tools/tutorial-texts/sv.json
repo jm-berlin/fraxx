@@ -6,19 +6,19 @@
   ],
   [
    "Kort startsida",
-   "Installerad som app öppnas Fraxx med en kompakt startsida: sökfält, rutor till alla områden, din quizstatus och de senast öppnade områdena. Den utförliga presentationen når du där via „Vad är Fraxx?“ eller med ett tryck på loggan."
+   "Installerad som app öppnas Fraxx med en kompakt startsida: sökfält, rutor till alla delar, din quiz-status och de senast öppnade delarna. Den utförliga presentationen når du där via „Vad är Fraxx?“ eller med ett tryck på logotypen."
   ],
   [
-   "Använd offline",
-   "Allt som är installerat fungerar utan internet: på flyget, utomlands utan surfpaket, i områden utan täckning."
+   "Använda offline",
+   "Allt som är installerat fungerar utan internet: på flyget, utomlands utan surfpaket, utan täckning."
   ],
   [
    "Bra röster",
-   "Uppläsningen sker med enhetens röster. På Mac och Windows låter Chrome oftast mest naturligt. Fler röster installerar du i enhetens språkinställningar."
+   "Uppläsningen sker med enhetens röster. På Mac och i Windows låter Chrome oftast mest naturligt. Fler röster installerar du i enhetens språkinställningar."
   ],
   [
    "Säkerhetskopiera data",
-   "Dina stjärnor, inlärningsstatus och inställningar finns på enheten. Under ⚙ → App, språkpaket &amp; säkerhetskopiering laddar du ner en säkerhetskopia och återställer den vid behov."
+   "Dina stjärnor, inlärningsstatus och inställningar finns på enheten. Under ⚙ → App, språkpaket &amp; säkerhetskopiering laddar du ner en säkerhetskopia och läser in den igen vid behov."
   ],
   [
    "Uppdateringar",
@@ -28,18 +28,18 @@
  "appcap": "App, språkpaket &amp; säkerhetskopiering: ladda eller ta bort språk, ladda ner säkerhetskopia.",
  "beta": "Testversion: Att översätta egna nya ord är inte öppnat ännu och kommer i en senare version. Allt annat fungerar redan, även offline.",
  "end": "Trevlig resa!",
- "endsub": "Ha det så kul med Fraxx. Har du en idé eller hittat ett fel? Vi är glada för all feedback.",
+ "endsub": "Ha det så kul med Fraxx. Har du en idé eller hittat ett fel? Vi är tacksamma för all feedback.",
  "eyebrow": "Instruktioner · redo på 5 minuter",
  "features": [
   [
    "inhalt",
    "☰ Innehåll",
-   "Över 7 500 ord, meningar och idiom ordnade efter ämne: från restaurang via apotek och verkstad till myndigheter. Dessutom alfabetiska listor för substantiv, verb, adjektiv och mer. Den första fliken <b>Essentials</b> samlar det viktigaste för att komma igång: hälsningar, artighet, förståelse, siffror, nödsituationer och de mest nödvändiga orden, varje ämne i en egen ruta. Den sista fliken <b>Business</b> bjuder på ungefär 430 meningar och ord som i en affärsspråkskurs: small talk, möten, telefon och videosamtal, mejl, presentationer, förhandling, jobbansökan, kundservice, affärsresa och siffror. Sökfältet hittar ämnen efter namn."
+   "Över 7 500 ord, meningar och idiom ordnade efter ämne: från restaurang via apotek och verkstad till myndigheter. Dessutom alfabetiska listor för substantiv, verb, adjektiv och mer. Den första fliken <b>Essentials</b> samlar det viktigaste för att komma igång: hälsningar, artighet, att göra sig förstådd, siffror, nödsituationer och de mest nödvändiga orden, varje ämne i en egen ruta. Den sista fliken <b>Business</b> ger cirka 430 meningar och ord som i en affärsspråkskurs: smalltalk, möten, telefon och videosamtal, mejl, presentationer, förhandling, jobbansökan, kundservice, affärsresa och siffror. Sökfältet hittar ämnen efter namn."
   ],
   [
    "tabelle",
    "Översättningar och uttal",
-   "Varje post står på alla dina språk bredvid varandra, substantiv med artikel och idiom översatta efter betydelse. 🔊 läser upp, ett till tryck stoppar. Med nålen håller du viktiga poster överst, med A–Z sorterar du."
+   "Varje post står på alla dina språk bredvid varandra, substantiv med artikel, idiom översatta till sin betydelse. 🔊 läser upp, ett andra tryck stoppar. Med nålen håller du viktiga poster överst, med A–Z sorterar du."
   ],
   [
    "konj",
@@ -49,17 +49,17 @@
   [
    "gram",
    "§ Grammatik",
-   "De viktigaste reglerna för varje språk från A1 till C1, med exempel att lyssna på. <b>Verb &amp; ändelser</b> visar ändelsetabeller och oregelbundna verb, <b>Vanliga misstag</b> snubbelstenarna för dig som talar ditt språk. <b>Öva i quiz</b> testar ett kapitel med luckmeningar."
+   "De viktigaste reglerna för varje språk från A1 till C1, med exempel att lyssna på. <b>Verb &amp; ändelser</b> visar ändelsetabeller och oregelbundna verb, <b>Vanliga misstag</b> snubbeltrådarna för personer som talar ditt språk. <b>Öva i quiz</b> förhör ett kapitel med luckmeningar."
   ],
   [
    "verben",
    "Verb &amp; ändelser",
-   "Ändelser i överblick: regelbundna mönster, undantag och de viktigaste oregelbundna verben, alla med exempel."
+   "Ändelser på ett ögonkast: regelbundna mönster, undantag och de viktigaste oregelbundna verben, alla med exempel."
   ],
   [
    "dish",
    "🍽 Matkarta",
-   "Ungefär 250 populära rätter och drycker per land med originalnamn och förklaring, plus kaffe, öl och vin. Varningar visar när ett namn betyder något annat på andra ställen. <b>Beställa ▸</b> visar hur du beställer."
+   "Cirka 250 populära rätter och drycker per land med originalnamn och förklaring, plus kaffe, öl och vin. Varningar visar när ett namn betyder något annat någon annanstans. <b>Beställa ▸</b> visar hur du beställer det."
   ],
   [
    "spick",
@@ -69,42 +69,42 @@
   [
    "quiz",
    "Quiz",
-   "Lär dig med fyra svarsalternativ per fråga: Ord &amp; meningar eller Grammatik, i båda riktningarna, efter nivå och ämne. Vid <b>🔊 Lyssna</b> läses det bara upp, så du testar om du förstår vad som sägs. Lyssna har en egen inlärningsstatus. Efter tre rätta svar räknas en post som inlärd, och inlärningsstatusen visar dina framsteg."
+   "Lär dig med fyra svarsalternativ per fråga: Ord &amp; meningar eller Grammatik, i båda riktningarna, efter nivå och ämne. Vid <b>🔊 Lyssna</b> läses det bara upp, så du kollar om du förstår vad som sägs. Lyssna har en egen inlärningsstatus. Vid <b>🎤 Tala</b> säger du en mening efter och ser om du blir förstådd. Din inspelning kan du direkt jämföra med Fraxx uttal. Efter tre rätta svar räknas en post som inlärd, och inlärningsstatusen visar dina framsteg."
   ]
  ],
  "h1": "Så fungerar <em>Fraxx</em>.",
  "lead": "Fraxx är din personliga språkapp för resor och vardag: ord, meningar och idiom på många språk, med uttal, böjning, grammatik, matkartor och quiz. Här ser du i några få steg hur du kommer igång, och sedan allt som finns i Fraxx.",
  "mob": "På mobilen",
- "mobsub": "Samma innehåll, gjort för tummen: Raderna blir kort, listen sitter högst upp.",
- "navcap": "Listen högst upp: Innehåll, Grammatik, Matkarta, Fusklapp, Quiz, Hjälp (?) och Inställningar (⚙).",
- "next": "Nästa",
+ "mobsub": "Samma innehåll, gjort för tummen: Raderna blir kort, fältet sitter högst upp.",
+ "navcap": "Fältet högst upp: Innehåll, Grammatik, Matkarta, Fusklapp, Quiz, Hjälp (?) och Inställningar (⚙).",
+ "next": "Vidare",
  "open": "Öppna Fraxx",
  "pause": "Pausa",
  "pdf": "Som PDF",
  "play": "Spela upp",
  "prev": "Tillbaka",
  "s1": "De första stegen",
- "s1sub": "Fem steg från första öppnandet till din första översättning.",
+ "s1sub": "Fem steg från första start till din första översättning.",
  "s2": "Efter installationen",
  "s2sub": "Ställ in en gång, sedan fungerar Fraxx även utan internet.",
  "s3": "Allt som Fraxx kan",
- "s3sub": "Områdena i överblick – i listen högst upp hittar du dem alla.",
+ "s3sub": "Delarna i överblick – i fältet högst upp hittar du alla.",
  "step": "Steg",
  "steps": [
   [
    "src",
    "Välj språk",
-   "Fraxx visas direkt på webbläsarens språk. När du går vidare första gången frågar Fraxx vilket språk du talar, och ditt är redan förvalt. Det är ditt <b>Källspråk</b>: Menyn, förklaringar och tips skrivs på det. Du kan ändra det när som helst senare under ⚙. Finns inte din webbläsares språk ännu startar Fraxx på engelska."
+   "Fraxx visas direkt på webbläsarens språk. När du går vidare första gången frågar Fraxx vilket språk du talar, och ditt är redan förvalt. Det är ditt <b>Källspråk</b>: Menyn, förklaringar och tips skrivs på det. Du kan ändra det när som helst senare under ⚙. Om din webbläsares språk inte finns än startar Fraxx på engelska."
   ],
   [
    "home",
    "Kör igång",
-   "Startsidan visar vad Fraxx kan. Uppe till höger byter du språk för sidan. <b>Kör igång →</b> öppnar innehållsförteckningen. Ett tryck på loggan tar dig alltid tillbaka hit."
+   "Startsidan visar vad Fraxx kan. Uppe till höger byter du språk för sidan. <b>Kör igång →</b> öppnar innehållsförteckningen. Ett tryck på logotypen tar dig tillbaka hit när som helst."
   ],
   [
    "inhalt",
    "Öppna ett ämne",
-   "Under <b>Innehåll</b> finns alla ämnen som rutor. Först kommer <b>Essentials</b>: ungefär 110 meningar och ord som du behöver först på varje resa, med egna rutor för hälsningar, artighet, nödsituationer och mer. Det är bäst att börja där. Sedan följer idiom efter ämne (restaurang, hotell, apotek …), ordförråd efter ämne och allra sist <b>Business</b> med meningar och ord för möten, mejl, telefonsamtal och förhandlingar. <b>Öppna ▾</b> tar dig direkt in."
+   "I <b>Innehåll</b> ligger alla ämnen som rutor. Allra först kommer <b>Essentials</b>: cirka 110 meningar och ord som du behöver först på varje resa, med egna rutor för hälsningar, artighet, nödsituationer och mer. Det är bäst att börja där. Därefter följer idiom efter ämne (restaurang, hotell, apotek …), ordförråd efter ämne och allra sist <b>Business</b> med meningar och ord för möten, mejl, telefonsamtal och förhandlingar. <b>Öppna ▾</b> tar dig direkt in."
   ],
   [
    "tabelle",
@@ -113,19 +113,20 @@
   ],
   [
    "set",
-   "Ställ in",
-   "Under <b>⚙</b> väljer du källspråk, språknivå (A1 till C2), dina språk och utseende (Ljus eller Mörk). Allra överst ser du din version."
+   "Ställa in",
+   "Under <b>⚙</b> väljer du källspråk, språknivå (A1 till C2), dina språk och utseende (Ljus eller Mörk). Allra högst upp står din version."
   ]
  ],
  "tiplist": [
   "Ny på ett språk? Börja med <b>Essentials</b> och öva dem i quizet: Välj „Essentials“ under Område.",
   "För jobbet: Välj „Business (alla)“ under Område i quizet och öva möten, mejl och förhandling.",
   "Sökningen hittar ord och meningar på ditt språk. Under sökfältet väljer du med <b>Annat språk ▾</b> ett av dina språk eller alla språk.",
+  "Istället för att skriva: Tryck på mikrofonen i sökfältet och säg ordet.",
   "Språknivå under ⚙ döljer allt över din nivå, i tabell, grammatik och quiz.",
   "Upp till 5 språk ryms bredvid varandra i tabellen: ditt källspråk och fyra till.",
-  "För språk med annat skriftsystem (arabiska, ryska, japanska …) står transkriptionen i kursiv stil under.",
+  "För språk med annat skriftsystem (arabiska, ryska, japanska …) står translitterationen i kursiv text under.",
   "<b>?</b> uppe till höger förklarar varje funktion utförligt.",
-  "Hälsouppgifterna lämnas utan garanti och ersätter ingen rådgivning. De hjälper dig att göra dig förstådd hos läkare eller apotek."
+  "Hälsouppgifterna ges utan garanti och ersätter ingen rådgivning. De hjälper dig att göra dig förstådd hos läkare eller apotek."
  ],
  "tips": "Små tips",
  "title": "Fraxx – Instruktioner"

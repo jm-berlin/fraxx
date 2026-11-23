@@ -1,8 +1,8 @@
 {
  "after": [
   [
-   "Carregar pacotes de idiomas",
-   "Em ⚙ → <b>App, pacotes de idiomas e backup</b> carregas os idiomas de que precisas. Cada pacote inclui todas as traduções, conjugações, gramática e cardápios desse idioma."
+   "Descarregar pacotes de idiomas",
+   "Em ⚙ → <b>App, pacotes de idiomas &amp; backup</b> descarregas os idiomas de que precisas. Cada pacote contém todas as traduções, conjugações, gramática e cardápios desse idioma."
   ],
   [
    "Página inicial curta",
@@ -10,7 +10,7 @@
   ],
   [
    "Usar offline",
-   "Tudo o que está instalado funciona sem internet: no avião, no estrangeiro sem dados móveis, em zonas sem rede."
+   "Tudo o que estiver instalado funciona sem internet: no avião, no estrangeiro sem dados móveis, em zonas sem rede."
   ],
   [
    "Boas vozes",
@@ -18,15 +18,15 @@
   ],
   [
    "Guardar os dados",
-   "As tuas estrelas, o teu progresso e as tuas definições ficam no dispositivo. Em ⚙ → App, pacotes de idiomas e backup descarregas uma cópia de segurança e, se precisares, voltas a carregá-la."
+   "As tuas estrelas, o teu progresso e as tuas definições ficam no dispositivo. Em ⚙ → App, pacotes de idiomas &amp; backup descarregas um backup e, se precisares, voltas a importá-lo."
   ],
   [
    "Atualizações",
-   "Quando há uma versão nova, aparece um ponto no ⚙. Ali vês o que há de novo e decides tu quando atualizar."
+   "Quando há uma versão nova, aparece um ponto no ⚙. Lá vês o que há de novo e decides tu quando atualizar."
   ]
  ],
- "appcap": "App, pacotes de idiomas e backup: carregar ou remover idiomas, descarregar o backup.",
- "beta": "Versão de teste: traduzir palavras novas por conta própria ainda não está disponível e chega numa versão futura. Tudo o resto já funciona, até offline.",
+ "appcap": "App, pacotes de idiomas &amp; backup: carregar ou remover idiomas, descarregar o backup.",
+ "beta": "Versão de teste: traduzir palavras novas por conta própria ainda não está disponível e chega numa versão futura. Todo o resto já funciona, até offline.",
  "end": "Boa viagem!",
  "endsub": "Diverte-te com o Fraxx. Tens uma ideia ou encontraste um erro? Ficamos contentes com qualquer feedback.",
  "eyebrow": "Instruções · pronto em 5 minutos",
@@ -34,22 +34,22 @@
   [
    "inhalt",
    "☰ Conteúdo",
-   "Mais de 7.500 palavras, frases e expressões idiomáticas organizadas por temas: do restaurante à farmácia, passando pela oficina, até à repartição pública. Além disso, listas alfabéticas de substantivos, verbos, adjetivos e mais. O primeiro separador, <b>Essentials</b>, reúne o mais importante para começar: cumprimentos, cortesia, comunicação, números, emergência e as palavras mais necessárias, cada tema na sua própria caixa. O último separador, <b>Business</b>, traz cerca de 430 frases e palavras como num curso de idiomas para negócios: conversa informal, reuniões, telefone e videochamada, e-mails, apresentações, negociação, candidatura, atendimento ao cliente, viagem de negócios e números. O campo de pesquisa encontra temas pelo nome."
+   "Mais de 7.500 palavras, frases e expressões idiomáticas organizadas por temas: do restaurante à farmácia, da oficina à repartição pública. Há ainda listas alfabéticas de substantivos, verbos, adjetivos e mais. O primeiro separador, <b>Essentials</b>, reúne o mais importante para começar: cumprimentos, cortesia, compreensão, números, emergência e as palavras indispensáveis, cada tema na sua própria caixa. O último separador, <b>Business</b>, traz cerca de 430 frases e palavras como num curso de idiomas para negócios: conversa informal, reuniões, telefone e videochamada, e-mails, apresentações, negociação, candidatura, atendimento ao cliente, viagem de negócios e números. O campo de pesquisa encontra temas pelo nome."
   ],
   [
    "tabelle",
    "Traduções e pronúncia",
-   "Cada entrada aparece lado a lado em todos os teus idiomas, com os substantivos acompanhados de artigo e as expressões idiomáticas traduzidas pelo sentido. 🔊 lê em voz alta e um segundo toque para. Com o pin manténs as entradas importantes no topo e com A–Z ordenas."
+   "Cada entrada aparece lado a lado em todos os teus idiomas, com os substantivos acompanhados do artigo e as expressões idiomáticas traduzidas pelo sentido. 🔊 lê em voz alta e um segundo toque para. Com o pin manténs as entradas importantes no topo e com A–Z ordenas."
   ],
   [
    "konj",
    "Verbos e conjugação",
-   "Os verbos são conjugados em todos os idiomas: presente, perfeito, pretérito e futuro. <b>Conjugação ▸</b> abre as tabelas e os botões de tempo mudam o tempo verbal."
+   "Os verbos são conjugados em todos os idiomas: presente, pretérito perfeito, pretérito imperfeito e futuro. <b>Conjugação ▸</b> abre as tabelas e os botões de tempo mudam o tempo verbal."
   ],
   [
    "gram",
    "§ Gramática",
-   "As regras mais importantes de cada idioma, de A1 a C1, com exemplos para ouvir. <b>Verbos e terminações</b> mostra tabelas de terminações e verbos irregulares, <b>Erros comuns</b> mostra as armadilhas para quem fala o teu idioma. <b>Praticar no quiz</b> testa um capítulo com frases de preencher lacunas."
+   "As regras mais importantes de cada idioma, de A1 a C1, com exemplos para ouvir. <b>Verbos e terminações</b> mostra tabelas de terminações e verbos irregulares, <b>Erros comuns</b> as armadilhas para quem fala o teu idioma. <b>Praticar no quiz</b> testa um capítulo com frases de lacunas."
   ],
   [
    "verben",
@@ -59,24 +59,24 @@
   [
    "dish",
    "🍽 Cardápio",
-   "Cerca de 250 pratos e bebidas populares por país, com nomes originais e explicação, além de café, cerveja e vinho. Avisos mostram quando um nome significa outra coisa noutro lugar. <b>Pedir ▸</b> mostra como pedir."
+   "Cerca de 250 pratos e bebidas populares por país, com nomes originais e explicação, além de café, cerveja e vinho. Avisos mostram quando um nome significa outra coisa noutro lugar. <b>Pedir ▸</b> mostra como o pedir."
   ],
   [
    "spick",
    "★ Cola",
-   "Tudo o que marcaste com a estrela, reunido num só idioma: palavras, expressões idiomáticas e pratos. <b>Imprimir</b> transforma isso numa folha para a viagem."
+   "Tudo o que marcaste com a estrela, de forma compacta num só idioma: palavras, expressões idiomáticas e pratos. <b>Imprimir</b> transforma isso numa folha para a viagem."
   ],
   [
    "quiz",
    "Quiz",
-   "Aprende com quatro respostas por pergunta: palavras e frases ou gramática, nos dois sentidos, por nível e tema. Em <b>🔊 Ouvir</b> só há leitura em voz alta, assim testas se percebes o que é dito. Ouvir tem o seu próprio progresso. Depois de três respostas certas, uma entrada conta como aprendida, e o progresso mostra a tua evolução."
+   "Aprender com quatro respostas por pergunta: palavras &amp; frases ou gramática, nos dois sentidos, por nível e tema. Em <b>🔊 Ouvir</b> só há leitura em voz alta, para testares se percebes o que é dito. Ouvir tem o seu próprio progresso. Em <b>🎤 Falar</b> repetes uma frase e vês se foste compreendido. Podes logo comparar a tua gravação com a pronúncia do Fraxx. Depois de três respostas certas, uma entrada conta como aprendida, e o progresso mostra a tua evolução."
   ]
  ],
  "h1": "Como funciona o <em>Fraxx</em>.",
- "lead": "O Fraxx é o teu app de idiomas pessoal para viagens e para o dia a dia: palavras, frases e expressões idiomáticas em muitos idiomas, com pronúncia, conjugação, gramática, cardápios e quiz. Aqui vês em poucos passos como começar e, depois, tudo o que o Fraxx tem para oferecer.",
+ "lead": "O Fraxx é o teu app de idiomas pessoal para viagens e o dia a dia: palavras, frases e expressões idiomáticas em vários idiomas, com pronúncia, conjugação, gramática, cardápios e quiz. Aqui vês em poucos passos como começar e, depois, tudo o que o Fraxx tem para oferecer.",
  "mob": "No telemóvel",
- "mobsub": "Os mesmos conteúdos, feitos para o polegar: as linhas viram cartões e a barra fica em cima.",
- "navcap": "A barra de cima: Conteúdo, Gramática, Cardápio, Cola, Quiz, ajuda (?) e definições (⚙).",
+ "mobsub": "Os mesmos conteúdos, feitos para o polegar: as linhas viram cartões e a barra fica no topo.",
+ "navcap": "A barra de cima: Conteúdo, Gramática, Cardápio, Cola, Quiz, Ajuda (?) e Definições (⚙).",
  "next": "Seguinte",
  "open": "Abrir o Fraxx",
  "pause": "Pausar",
@@ -84,7 +84,7 @@
  "play": "Reproduzir",
  "prev": "Anterior",
  "s1": "Os primeiros passos",
- "s1sub": "Cinco passos desde a primeira abertura até à primeira tradução.",
+ "s1sub": "Cinco passos, da primeira abertura até à primeira tradução.",
  "s2": "Depois da instalação",
  "s2sub": "Configura uma vez e o Fraxx funciona também sem internet.",
  "s3": "Tudo o que o Fraxx sabe fazer",
@@ -94,7 +94,7 @@
   [
    "src",
    "Escolher o idioma",
-   "O Fraxx aparece logo no idioma do teu navegador. Na primeira vez que avanças, o Fraxx pergunta uma vez que idioma falas, e o teu já vem selecionado. Esse é o teu <b>Idioma de origem</b>: é nele que ficam escritos o menu, as explicações e as dicas. Podes mudá-lo mais tarde em ⚙ quando quiseres. Se o idioma do teu navegador ainda não existir, o Fraxx começa em inglês."
+   "O Fraxx aparece logo no idioma do teu navegador. Ao avançares pela primeira vez, o Fraxx pergunta uma vez que idioma falas, e o teu já vem selecionado. Esse é o teu <b>Idioma de origem</b>: nele estão escritos o menu, as explicações e as dicas. Podes alterá-lo mais tarde em ⚙ quando quiseres. Se o idioma do teu navegador ainda não estiver disponível, o Fraxx começa em inglês."
   ],
   [
    "home",
@@ -104,29 +104,30 @@
   [
    "inhalt",
    "Abrir um tema",
-   "No <b>Conteúdo</b> estão todos os temas em caixas. Logo à frente ficam os <b>Essentials</b>: cerca de 110 frases e palavras de que precisas primeiro em qualquer viagem, com caixas próprias para cumprimentos, cortesia, emergência e mais. É por aí que é melhor começar. Depois seguem-se expressões idiomáticas por tema (restaurante, hotel, farmácia …), vocabulário por temas e, bem no fim, <b>Business</b>, com frases e palavras para reuniões, e-mails, chamadas e negociações. <b>Abrir ▾</b> leva-te diretamente lá para dentro."
+   "Em <b>Conteúdo</b> estão todos os temas em caixas. Logo à frente ficam os <b>Essentials</b>: cerca de 110 frases e palavras de que vais precisar primeiro em qualquer viagem, com caixas próprias para cumprimentos, cortesia, emergência e mais. É o melhor sítio para começar. Depois seguem-se expressões idiomáticas por tema (restaurante, hotel, farmácia …), vocabulário por temas e, no fim, <b>Business</b>, com frases e palavras para reuniões, e-mails, chamadas e negociações. <b>Abrir ▾</b> leva-te diretamente lá para dentro."
   ],
   [
    "tabelle",
    "Ler, ouvir, memorizar",
-   "Cada linha mostra uma entrada em todos os teus idiomas. O altifalante 🔊 lê em voz alta e as dicas a cinzento explicam as particularidades. A estrela ☆ põe a entrada na tua Cola."
+   "Cada linha mostra uma entrada em todos os teus idiomas. O altifalante 🔊 lê em voz alta e as dicas a cinzento explicam particularidades. A estrela ☆ adiciona a entrada à tua cola."
   ],
   [
    "set",
    "Configurar",
-   "Em <b>⚙</b> escolhes o Idioma de origem, o Nível de idioma (A1 a C2), os teus idiomas e o design (Claro ou Escuro). No topo aparece a tua versão."
+   "Em <b>⚙</b> escolhes o idioma de origem, o nível de idioma (A1 a C2), os teus idiomas e o design (Claro ou Escuro). No topo está a tua versão."
   ]
  ],
  "tiplist": [
   "Novo num idioma? Começa pelos <b>Essentials</b> e pratica-os no quiz: em Área, escolhe “Essentials”.",
   "Para o trabalho: no quiz, em Área, escolhe “Business (todos)” e pratica reuniões, e-mails e negociação.",
   "A pesquisa encontra palavras e frases no teu idioma. Debaixo do campo de pesquisa, com <b>Outro idioma ▾</b> escolhes um dos teus idiomas ou todos os idiomas.",
-  "O Nível de idioma em ⚙ oculta tudo o que está acima do teu nível, na tabela, na gramática e no quiz.",
-  "Até 5 idiomas cabem lado a lado na tabela: o teu Idioma de origem e mais quatro.",
-  "Em idiomas com outra escrita (árabe, russo, japonês …), a transcrição aparece em itálico por baixo.",
+  "Em vez de escrever: toca no microfone no campo de pesquisa e diz a palavra.",
+  "O nível de idioma em ⚙ esconde tudo o que está acima do teu nível, na tabela, na gramática e no quiz.",
+  "Cabem até 5 idiomas lado a lado na tabela: o teu idioma de origem e mais quatro.",
+  "Em idiomas com outra escrita (árabe, russo, japonês …), a transliteração aparece em itálico por baixo.",
   "O <b>?</b> no canto superior direito explica cada função em detalhe.",
-  "As informações de saúde são fornecidas sem garantia e não substituem aconselhamento. Ajudam-te a fazeres-te entender com o médico ou na farmácia."
+  "As informações de saúde são fornecidas sem garantia e não substituem aconselhamento profissional. Ajudam-te a comunicar com o médico ou a farmácia."
  ],
- "tips": "Pequenas dicas",
+ "tips": "Dicas rápidas",
  "title": "Fraxx – Instruções"
 }
