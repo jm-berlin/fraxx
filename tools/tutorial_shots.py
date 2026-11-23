@@ -72,6 +72,11 @@ with sync_playwright() as p:
             except Exception: pass
 
     fresh(True)
+    # Spickzettel mit typischen Sätzen füllen (Begrüßung, Hotel); dazu kommen unten drei Restaurant-Einträge per Stern
+    pg.evaluate("""async ids => { const t = Date.now(), user = {};
+      ids.forEach((id, i) => user[id] = {__patch: {fav: true, favAt: t + i}});
+      try { await window.Multilingo.importBackup({app: "multilingo", type: "backup", version: 1, user}); } catch (e) {} }""",
+      ["mvu5on47arvlxe", "mvu5k5xwtyerjl", "mvu5l82oji2lz1", "mvu5ld1jl2nrtt"])
     pg.screenshot(path=P("02-home.png"))
     M["loslegen"] = rect(pg, ".hcta .primary"); M["setbtn"] = rect(pg, "#setbtn")
     # Inhalt, Reiter „Redewendungen nach Themen“
@@ -85,7 +90,7 @@ with sync_playwright() as p:
     # Ein paar Einträge auf den Spickzettel setzen, damit dessen Screenshot nicht leer ist (nach dem Tabellen-Bild)
     try:
         stars = pg.locator("button.favstar:not(.on):visible")
-        for i in range(min(6, stars.count())):
+        for i in range(min(3, stars.count())):
             pg.locator("button.favstar:not(.on):visible").first.click(); pg.wait_for_timeout(250)
     except Exception as ex: print("Sterne nicht gesetzt:", ex)
     M["speak"] = pg.evaluate("""()=>{const e=[...document.querySelectorAll('button.say:not(.copy)')].find(b=>{const r=b.getBoundingClientRect(); return b.offsetParent && r.y>60 && r.y<1040;});
