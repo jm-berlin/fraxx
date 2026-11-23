@@ -2,31 +2,31 @@
  "after": [
   [
    "Last ned språkpakker",
-   "Under ⚙ → <b>App, språkpakker og sikkerhetskopi</b> laster du ned språkene du trenger. Hver pakke inneholder alle oversettelser, bøyinger, grammatikk og menyer for dette språket."
+   "Under ⚙ → <b>App, språkpakker og sikkerhetskopi</b> laster du ned språkene du trenger. Hver pakke inneholder alle oversettelser, bøyinger, grammatikk og menyer for det språket."
   ],
   [
    "Kort startside",
-   "Når Fraxx er installert som app, åpnes den med en kompakt startside: søkefelt, ruter til alle områdene, quizstatusen din og områdene du åpnet sist. Den utførlige presentasjonen finner du der under «Hva er Fraxx?» eller med et trykk på logoen."
+   "Når Fraxx er installert som app, åpnes den med en kompakt startside: søkefelt, ruter til alle områdene, quiz-statusen din og områdene du åpnet sist. Den utførlige presentasjonen finner du der under «Hva er Fraxx?» eller med et trykk på logoen."
   ],
   [
-   "Bruk uten nett",
-   "Alt som er installert, fungerer uten internett: på flyet, i utlandet uten mobildata, i områder uten dekning."
+   "Bruk offline",
+   "Alt som er installert fungerer uten internett: på flyet, i utlandet uten mobildata, i områder uten dekning."
   ],
   [
    "Gode stemmer",
-   "Opplesingen bruker stemmene på enheten din. På Mac og Windows høres Chrome som regel mest naturlig ut. Flere stemmer installerer du i språkinnstillingene på enheten din."
+   "Opplesingen bruker stemmene på enheten din. På Mac og Windows høres Chrome vanligvis mest naturlig ut. Flere stemmer kan du installere i språkinnstillingene på enheten."
   ],
   [
-   "Sikre data",
+   "Sikkerhetskopier data",
    "Stjernene, læringsstatusen og innstillingene dine ligger på enheten. Under ⚙ → App, språkpakker og sikkerhetskopi laster du ned en sikkerhetskopi og legger den inn igjen ved behov."
   ],
   [
    "Oppdateringer",
-   "Når det finnes en ny versjon, vises en prikk ved ⚙. Der ser du hva som er nytt, og du bestemmer selv når du vil oppdatere."
+   "Når det finnes en ny versjon, dukker det opp en prikk på ⚙. Der ser du hva som er nytt, og du bestemmer selv når du oppdaterer."
   ]
  ],
  "appcap": "App, språkpakker og sikkerhetskopi: Last ned eller fjern språk, last ned sikkerhetskopi.",
- "beta": "Testversjon: Å oversette egne nye ord er ikke åpnet ennå og kommer i en senere versjon. Alt annet fungerer allerede, også uten nett.",
+ "beta": "Testversjon: Å oversette egne nye ord er ikke åpnet ennå og kommer i en senere versjon. Alt annet fungerer allerede, også offline.",
  "end": "God reise!",
  "endsub": "Ha det gøy med Fraxx. Har du en idé eller har du funnet en feil? Vi setter pris på alle tilbakemeldinger.",
  "eyebrow": "Veiledning · klar på 5 minutter",
@@ -34,12 +34,12 @@
   [
    "inhalt",
    "☰ Innhold",
-   "Over 6 000 ord, setninger og uttrykk ordnet etter tema: fra restaurant via apotek og verksted til kontoret og offentlige tjenester. I tillegg alfabetiske lister over substantiver, verb, adjektiver og mer. Den første fanen <b>Essentials</b> samler det viktigste til å komme i gang: hilsener, høflighet, å gjøre seg forstått, tall, nødssituasjoner og de aller nødvendigste ordene, hvert tema i sin egen boks. Den siste fanen <b>Business</b> gir rundt 430 setninger og ord som på et forretningsspråkkurs: smalltalk, møter, telefon og videosamtale, e-poster, presentasjon, forhandling, jobbsøknad, kundeservice, forretningsreise og tall. Søkefeltet finner temaer etter navn."
+   "Over 7 500 ord, setninger og uttrykk ordnet etter tema: fra restaurant via apotek og verksted til offentlige kontorer. I tillegg alfabetiske lister over substantiver, verb, adjektiver og mer. Den første fanen <b>Essentials</b> samler det viktigste til å komme i gang: hilsener, høflighet, å gjøre seg forstått, tall, nødsituasjoner og de aller nødvendigste ordene, hvert tema i sin egen boks. Den siste fanen <b>Business</b> gir rundt 430 setninger og ord som i et forretningsspråkkurs: smalltalk, møter, telefon og videosamtale, e-poster, presentasjon, forhandling, jobbsøknad, kundeservice, forretningsreise og tall. Søkefeltet finner temaer etter navn."
   ],
   [
    "tabelle",
    "Oversettelser og uttale",
-   "Hver oppføring står side om side på alle språkene dine, substantiver med artikkel, uttrykk oversatt etter meningen. 🔊 leser opp, et nytt trykk stopper. Med nålen holder du viktige oppføringer øverst, med A–Å sorterer du."
+   "Hver oppføring står side om side på alle språkene dine, substantiver med artikkel, og uttrykk er oversatt etter meningen. 🔊 leser opp, et nytt trykk stopper. Med nålen holder du viktige oppføringer øverst, og med A–Z sorterer du."
   ],
   [
    "konj",
@@ -49,7 +49,7 @@
   [
    "gram",
    "§ Grammatikk",
-   "De viktigste reglene i hvert språk fra A1 til C1, med eksempler du kan lytte til. <b>Verb & endelser</b> viser tabeller over endelser og uregelmessige verb, <b>Typiske feil</b> snublesteinene for dem som snakker språket ditt. <b>Øv i quiz</b> tester et kapittel med utfyllingssetninger."
+   "De viktigste reglene i hvert språk fra A1 til C1, med eksempler du kan lytte til. <b>Verb & endelser</b> viser tabeller over endelser og uregelmessige verb, <b>Typiske feil</b> viser snublesteinene for dem som snakker språket ditt. <b>Øv i quiz</b> tester deg på et kapittel med setninger med hull."
   ],
   [
    "verben",
@@ -59,24 +59,24 @@
   [
    "dish",
    "🍽 Menyen",
-   "Rundt 250 populære retter og drikker per land med originalnavn og forklaring, i tillegg til kaffe, øl og vin. Advarsler viser når et navn betyr noe annet andre steder. <b>Bestill ▸</b> viser hvordan du bestiller det."
+   "Rundt 250 populære retter og drikker per land med originalnavn og forklaring, pluss kaffe, øl og vin. Advarsler viser når et navn betyr noe annet andre steder. <b>Bestille ▸</b> viser hvordan du bestiller det."
   ],
   [
    "spick",
    "★ Jukselapp",
-   "Alt du har merket med stjerne, samlet på ett språk: ord, uttrykk og retter. <b>Skriv ut</b> gjør det til en lapp du kan ta med på reisen."
+   "Alt du har merket med stjernen, samlet på ett språk: ord, uttrykk og retter. <b>Skriv ut</b> gjør det om til en lapp du kan ha med på reisen."
   ],
   [
    "quiz",
    "Quiz",
-   "Læring med fire svaralternativer per spørsmål: ord og setninger eller grammatikk, i begge retninger, etter nivå og tema. Med <b>🔊 Hør</b> blir det bare lest opp, slik sjekker du om du forstår det som sies. Hør har sin egen læringsstatus. Etter tre riktige svar regnes en oppføring som lært, og læringsstatusen viser fremgangen din."
+   "Lær med fire svaralternativer per spørsmål: ord og setninger eller grammatikk, i begge retninger, etter nivå og tema. Med <b>🔊 Hør</b> leses det bare opp, slik at du sjekker om du forstår det som blir sagt. Hør har sin egen læringsstatus. Etter tre riktige svar regnes en oppføring som lært, og læringsstatusen viser fremgangen din."
   ]
  ],
  "h1": "Slik fungerer <em>Fraxx</em>.",
  "lead": "Fraxx er din personlige språkapp for reise og hverdag: ord, setninger og uttrykk på mange språk, med uttale, bøying, grammatikk, menyer og quiz. Her ser du i noen få steg hvordan du kommer i gang, og deretter alt som finnes i Fraxx.",
  "mob": "På mobilen",
- "mobsub": "Samme innhold, laget for tommelen: Linjene blir til kort, og menylinjen ligger øverst.",
- "navcap": "Linjen øverst: Innhold, Grammatikk, Menyen, Jukselapp, Quiz, Hjelp (?) og Innstillinger (⚙).",
+ "mobsub": "Samme innhold, laget for tommelen: Radene blir til kort, og linjen ligger øverst.",
+ "navcap": "Linjen øverst: Innhold, Grammatikk, Menyen, Jukselapp, Quiz, hjelp (?) og innstillinger (⚙).",
  "next": "Neste",
  "open": "Åpne Fraxx",
  "pause": "Pause",
@@ -84,9 +84,9 @@
  "play": "Spill av",
  "prev": "Tilbake",
  "s1": "De første stegene",
- "s1sub": "Fem steg fra første gang du åpner appen til din første oversettelse.",
+ "s1sub": "Fem steg fra du åpner appen første gang til din første oversettelse.",
  "s2": "Etter installasjonen",
- "s2sub": "Sett det opp én gang, så fungerer Fraxx også uten internett.",
+ "s2sub": "Sett opp én gang, så fungerer Fraxx også uten internett.",
  "s3": "Alt Fraxx kan",
  "s3sub": "Områdene i oversikt – du finner dem alle i linjen øverst.",
  "step": "Steg",
@@ -94,7 +94,7 @@
   [
    "src",
    "Velg språk",
-   "Fraxx vises med en gang på nettleserens språk. Når du går videre for første gang, spør Fraxx én gang hvilket språk du snakker, og ditt er allerede forhåndsvalgt. Det er ditt <b>kildespråk</b>: Menyen, forklaringene og tipsene er skrevet på det. Du kan når som helst endre det senere under ⚙. Hvis nettleserspråket ditt ikke finnes ennå, starter Fraxx på engelsk."
+   "Fraxx vises med en gang på nettleserens språk. Første gang du går videre, spør Fraxx hvilket språk du snakker, og ditt er allerede forhåndsvalgt. Det er ditt <b>Kildespråk</b>: Menyen, forklaringene og tipsene er skrevet på det. Du kan når som helst endre det senere under ⚙. Hvis nettleserspråket ditt ikke finnes ennå, starter Fraxx på engelsk."
   ],
   [
    "home",
@@ -104,28 +104,28 @@
   [
    "inhalt",
    "Åpne et tema",
-   "Under <b>Innhold</b> ligger alle temaene som bokser. Helt først kommer <b>Essentials</b>: rundt 110 setninger og ord du trenger først på enhver reise, med egne bokser for hilsener, høflighet, nødssituasjoner og mer. Det er best å begynne med dem. Deretter følger uttrykk etter tema (restaurant, hotell, apotek …), ordforråd etter temaer og helt til slutt <b>Business</b> med setninger og ord til møter, e-poster, telefonsamtaler og forhandlinger. <b>Åpne ▾</b> tar deg rett inn."
+   "Under <b>Innhold</b> ligger alle temaene som bokser. Helt først kommer <b>Essentials</b>: rundt 110 setninger og ord du trenger først på enhver reise, med egne bokser for hilsener, høflighet, nødsituasjoner og mer. Det er lurt å begynne med dem. Etter det følger uttrykk etter tema (restaurant, hotell, apotek …), ordforråd etter temaer, og helt til slutt <b>Business</b> med setninger og ord til møter, e-poster, telefonsamtaler og forhandlinger. <b>Åpne ▾</b> tar deg rett inn."
   ],
   [
    "tabelle",
    "Les, hør, husk",
-   "Hver linje viser en oppføring på alle språkene dine. Høyttaleren 🔊 leser opp, og grå hint forklarer særtrekk. Stjernen ☆ legger oppføringen på jukselappen din."
+   "Hver rad viser én oppføring på alle språkene dine. Høyttaleren 🔊 leser opp, og grå merknader forklarer det som er spesielt. Stjernen ☆ legger oppføringen på jukselappen din."
   ],
   [
    "set",
    "Innstillinger",
-   "Under <b>⚙</b> velger du kildespråk, språknivå (A1 til C2), språkene dine og utseendet (Lys eller Mørk). Øverst står versjonen din."
+   "Under <b>⚙</b> velger du kildespråk, språknivå (A1 til C2), språkene dine og utseende (Lys eller Mørk). Øverst står versjonen din."
   ]
  ],
  "tiplist": [
-  "Ny i et språk? Begynn med <b>Essentials</b> og øv på dem i quiz: Velg «Essentials» under Område.",
-  "Til jobb: Velg «Business (alle)» under Område i quizen og øv på møter, e-poster og forhandling.",
-  "Søket finner ord og setninger på språket ditt. Under søkefeltet velger du med <b>Andre språk ▾</b> ett av språkene dine eller alle språk.",
-  "Språknivå under ⚙ skjuler alt over nivået ditt, i tabell, grammatikk og quiz.",
+  "Ny i et språk? Begynn med <b>Essentials</b> og øv på dem i quizen: Velg «Essentials» under Område.",
+  "For jobben: Velg «Business (alle)» under Område i quizen og øv på møter, e-poster og forhandlinger.",
+  "Søket finner ord og setninger på språket ditt. Under søkefeltet velger du med <b>Annet språk ▾</b> et av språkene dine eller alle språk.",
+  "Språknivå under ⚙ skjuler alt over nivået ditt, i tabellen, grammatikken og quizen.",
   "Opptil 5 språk får plass ved siden av hverandre i tabellen: kildespråket ditt og fire til.",
-  "Ved språk med et annet skriftsystem (arabisk, russisk, japansk …) står omskrivingen i kursiv under.",
-  "<b>?</b> øverst til høyre forklarer hver funksjon utførlig.",
-  "Helseopplysningene er uten garanti og erstatter ikke rådgivning. De hjelper deg å gjøre deg forstått hos lege eller apotek."
+  "For språk med et annet skriftsystem (arabisk, russisk, japansk …) står translitterasjonen i kursiv under.",
+  "<b>?</b> øverst til høyre forklarer hver funksjon i detalj.",
+  "Helseopplysningene er uten garanti og erstatter ikke rådgivning. De hjelper deg med å gjøre deg forstått hos lege eller apotek."
  ],
  "tips": "Små tips",
  "title": "Fraxx – Veiledning"

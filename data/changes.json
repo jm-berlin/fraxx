@@ -1,6 +1,78 @@
 {
  "releases": [
   {
+   "release": "2026-11-23T06:49:57.354Z",
+   "version": "0.27",
+   "date": "2026-11-23",
+   "notes": {
+    "de": [
+     "Rund 900 neue Wörter: Der Grundwortschatz bis Niveau B1 ist jetzt komplett dabei – über 7.500 Einträge.",
+     "Neuer Bereich „Kleine Wörter“: Ort und Richtung, Zeit und Häufigkeit, Fragewörter und kurze Wendungen.",
+     "Hilfe überarbeitet; Impressum und Datenschutz unten auf der Seite."
+    ],
+    "en": [
+     "About 900 new words: the core vocabulary up to level B1 is now complete – over 7,500 entries.",
+     "New section “Little words”: place and direction, time and frequency, question words and short phrases.",
+     "Help updated; legal notice and privacy policy at the bottom of the page."
+    ],
+    "fr": [
+     "Environ 900 nouveaux mots : le vocabulaire de base jusqu’au niveau B1 est désormais complet – plus de 7 500 entrées.",
+     "Nouvelle rubrique « Petits mots » : lieu et direction, temps et fréquence, mots interrogatifs et expressions courtes.",
+     "Aide revue ; mentions légales et protection des données en bas de page."
+    ],
+    "it": [
+     "Circa 900 nuove parole: il vocabolario di base fino al livello B1 ora è completo – oltre 7.500 voci.",
+     "Nuova sezione «Parole piccole»: luogo e direzione, tempo e frequenza, parole interrogative ed espressioni brevi.",
+     "Guida aggiornata; note legali e privacy in fondo alla pagina."
+    ],
+    "es": [
+     "Unas 900 palabras nuevas: el vocabulario básico hasta el nivel B1 ya está completo – más de 7.500 entradas.",
+     "Nueva sección «Palabras pequeñas»: lugar y dirección, tiempo y frecuencia, palabras interrogativas y expresiones cortas.",
+     "Ayuda actualizada; aviso legal y privacidad al final de la página."
+    ],
+    "pt": [
+     "Cerca de 900 palavras novas: o vocabulário básico até ao nível B1 está agora completo – mais de 7.500 entradas.",
+     "Nova secção «Palavras pequenas»: lugar e direção, tempo e frequência, palavras interrogativas e expressões curtas.",
+     "Ajuda atualizada; aviso legal e privacidade no fundo da página."
+    ],
+    "nl": [
+     "Zo’n 900 nieuwe woorden: de basiswoordenschat tot niveau B1 is nu compleet – meer dan 7.500 items.",
+     "Nieuwe rubriek ‘Kleine woorden’: plaats en richting, tijd en frequentie, vraagwoorden en korte uitdrukkingen.",
+     "Hulp bijgewerkt; colofon en privacy onderaan de pagina."
+    ],
+    "pl": [
+     "Około 900 nowych słów: podstawowe słownictwo do poziomu B1 jest teraz kompletne – ponad 7500 haseł.",
+     "Nowy dział „Małe słowa”: miejsce i kierunek, czas i częstotliwość, zaimki pytające i krótkie zwroty.",
+     "Zaktualizowana pomoc; nota prawna i prywatność na dole strony."
+    ],
+    "sv": [
+     "Cirka 900 nya ord: grundordförrådet upp till nivå B1 är nu komplett – över 7 500 poster.",
+     "Nytt avsnitt ”Små ord”: plats och riktning, tid och frekvens, frågeord och korta fraser.",
+     "Hjälpen uppdaterad; juridisk information och integritet längst ner på sidan."
+    ],
+    "nb": [
+     "Rundt 900 nye ord: grunnordforrådet opp til nivå B1 er nå komplett – over 7 500 oppføringer.",
+     "Ny del «Små ord»: sted og retning, tid og hyppighet, spørreord og korte uttrykk.",
+     "Hjelpen oppdatert; juridisk informasjon og personvern nederst på siden."
+    ],
+    "tr": [
+     "Yaklaşık 900 yeni kelime: B1 seviyesine kadar temel kelime hazinesi artık eksiksiz – 7.500’den fazla giriş.",
+     "Yeni bölüm „Küçük kelimeler“: yer ve yön, zaman ve sıklık, soru kelimeleri ve kısa ifadeler.",
+     "Yardım güncellendi; künye ve gizlilik sayfanın altında."
+    ],
+    "ar": [
+     "نحو 900 كلمة جديدة: أصبحت المفردات الأساسية حتى المستوى B1 كاملة – أكثر من 7500 مدخل.",
+     "قسم جديد «كلمات صغيرة»: المكان والاتجاه، الزمن والتكرار، أدوات الاستفهام وعبارات قصيرة.",
+     "تحديث المساعدة؛ البيانات القانونية والخصوصية أسفل الصفحة."
+    ],
+    "zh": [
+     "约 900 个新词：B1 级以内的基础词汇现已齐全——超过 7,500 条。",
+     "新增“小词”板块：地点与方向、时间与频率、疑问词和简短用语。",
+     "帮助已更新；法律声明和隐私政策位于页面底部。"
+    ]
+   }
+  },
+  {
    "release": "2026-11-22T20:04:24.000Z",
    "version": "0.26",
    "date": "2026-11-22",

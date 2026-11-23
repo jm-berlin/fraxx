@@ -2,19 +2,19 @@
  "after": [
   [
    "Pobierz pakiety językowe",
-   "Pod ⚙ → <b>Aplikacja, pakiety językowe i kopia zapasowa</b> pobierzesz języki, których potrzebujesz. Każdy pakiet zawiera wszystkie tłumaczenia, odmiany, gramatykę i karty dań danego języka."
+   "Pod ⚙ → <b>Aplikacja, pakiety językowe i kopia zapasowa</b> pobierasz języki, których potrzebujesz. Każdy pakiet zawiera wszystkie tłumaczenia, odmiany, gramatykę i karty dań danego języka."
   ],
   [
    "Krótka strona startowa",
-   "Zainstalowany jako aplikacja Fraxx otwiera się z kompaktową stroną startową: pole wyszukiwania, kafelki wszystkich sekcji, Twoje postępy w quizie i ostatnio otwierane sekcje. Pełny opis znajdziesz tam pod „Czym jest Fraxx?“ lub po kliknięciu logo."
+   "Zainstalowany jako aplikacja, Fraxx otwiera się z kompaktową stroną startową: pole wyszukiwania, kafelki do wszystkich działów, Twój wynik w quizie i ostatnio otwierane działy. Do pełnego opisu dojdziesz stamtąd przez „Czym jest Fraxx?“ lub dotykając logo."
   ],
   [
    "Korzystaj offline",
-   "Wszystko, co jest zainstalowane, działa bez internetu: w samolocie, za granicą bez pakietu danych, tam, gdzie nie ma zasięgu."
+   "Wszystko, co jest zainstalowane, działa bez internetu: w samolocie, za granicą bez pakietu danych, tam gdzie nie ma zasięgu."
   ],
   [
    "Dobre głosy",
-   "Czytanie na głos odbywa się głosami Twojego urządzenia. Na Macu i w Windowsie najnaturalniej brzmi zwykle Chrome. Kolejne głosy zainstalujesz w ustawieniach językowych urządzenia."
+   "Czytanie na głos korzysta z głosów Twojego urządzenia. Na Macu i w Windowsie Chrome brzmi zwykle najbardziej naturalnie. Dodatkowe głosy zainstalujesz w ustawieniach językowych urządzenia."
   ],
   [
    "Zabezpiecz dane",
@@ -26,57 +26,57 @@
   ]
  ],
  "appcap": "Aplikacja, pakiety językowe i kopia zapasowa: pobieranie lub usuwanie języków, pobieranie kopii zapasowej.",
- "beta": "Wersja testowa: tłumaczenie własnych nowych słów nie jest jeszcze dostępne i pojawi się w późniejszej wersji. Wszystko inne już działa, także offline.",
- "end": "Udanej podróży!",
+ "beta": "Wersja testowa: tłumaczenie własnych nowych słów jeszcze nie jest dostępne i pojawi się w późniejszej wersji. Wszystko inne już działa, także offline.",
+ "end": "Szczęśliwej podróży!",
  "endsub": "Miłej zabawy z Fraxx. Masz pomysł albo znalazłeś błąd? Chętnie przyjmiemy każdą opinię.",
  "eyebrow": "Instrukcja · gotowy w 5 minut",
  "features": [
   [
    "inhalt",
    "☰ Treść",
-   "Ponad 6000 słów, zdań i idiomów uporządkowanych tematycznie: od restauracji przez aptekę i warsztat po urząd. Do tego listy alfabetyczne rzeczowników, czasowników, przymiotników i nie tylko. Pierwsza zakładka <b>Essentials</b> zbiera to, co najważniejsze na start: powitania, uprzejmość, porozumiewanie się, liczby, nagłe wypadki i najpotrzebniejsze słowa, każdy temat w osobnym kafelku. Ostatnia zakładka <b>Business</b> oferuje około 430 zdań i słów jak w kursie języka biznesowego: small talk, spotkania, telefon i wideorozmowa, e-maile, prezentacje, negocjacje, rekrutacja, obsługa klienta, podróż służbowa i liczby. Pole wyszukiwania znajduje tematy po nazwie."
+   "Ponad 7500 słów, zdań i idiomów ułożonych tematycznie: od restauracji przez aptekę i warsztat aż po urząd. Do tego listy alfabetyczne rzeczowników, czasowników, przymiotników i nie tylko. Pierwsza zakładka <b>Essentials</b> zbiera to, co najważniejsze na start: powitania, grzeczność, porozumiewanie się, liczby, nagłe wypadki i najpotrzebniejsze słowa, każdy temat w osobnym polu. Ostatnia zakładka <b>Business</b> oferuje około 430 zdań i słów jak na kursie języka biznesowego: small talk, spotkania, telefon i wideorozmowy, e-maile, prezentacje, negocjacje, rekrutacja, obsługa klienta, podróże służbowe i liczby. Pole wyszukiwania znajduje tematy po nazwie."
   ],
   [
    "tabelle",
    "Tłumaczenia i wymowa",
-   "Każde hasło stoi obok siebie we wszystkich Twoich językach, rzeczowniki z rodzajnikiem, idiomy przetłumaczone zgodnie z sensem. 🔊 czyta na głos, drugie kliknięcie zatrzymuje. Pinezką przypniesz ważne hasła na górze, a przyciskiem A–Z posortujesz listę."
+   "Każde hasło stoi obok siebie we wszystkich Twoich językach, rzeczowniki z rodzajnikiem, idiomy tłumaczone zgodnie ze znaczeniem. 🔊 czyta na głos, drugie dotknięcie zatrzymuje. Pinezką przypinasz ważne hasła na górze, a A–Z sortuje."
   ],
   [
    "konj",
    "Czasowniki i odmiana",
-   "Czasowniki są odmieniane we wszystkich językach: czas teraźniejszy, perfekt, czas przeszły prosty i przyszły. <b>Odmiana ▸</b> rozwija tabele, a przyciski czasów zmieniają formę czasową."
+   "Czasowniki są odmieniane we wszystkich językach: czas teraźniejszy, przeszły i przyszły. <b>Odmiana ▸</b> rozwija tabele, a przyciski czasów przełączają formę czasową."
   ],
   [
    "gram",
    "§ Gramatyka",
-   "Najważniejsze zasady każdego języka od A1 do C1, z przykładami do odsłuchania. <b>Czasowniki i końcówki</b> pokazują tabele końcówek i czasowniki nieregularne, <b>Typowe błędy</b> pułapki dla osób mówiących Twoim językiem. <b>Ćwicz w quizie</b> sprawdza jeden rozdział zdaniami z lukami."
+   "Najważniejsze zasady każdego języka od A1 do C1, z przykładami do odsłuchania. <b>Czasowniki i końcówki</b> pokazują tabele końcówek i czasowniki nieregularne, <b>Typowe błędy</b> pułapki dla osób mówiących w Twoim języku. <b>Ćwicz w quizie</b> sprawdza jeden rozdział zdaniami z lukami."
   ],
   [
    "verben",
    "Czasowniki i końcówki",
-   "Końcówki na pierwszy rzut oka: regularne wzorce, wyjątki i najważniejsze czasowniki nieregularne, każdy z przykładem."
+   "Końcówki w skrócie: regularne wzory, wyjątki i najważniejsze czasowniki nieregularne, każdy z przykładem."
   ],
   [
    "dish",
    "🍽 Karta dań",
-   "Około 250 popularnych dań i napojów z każdego kraju z oryginalnymi nazwami i objaśnieniem, do tego kawa, piwo i wino. Ostrzeżenia pokazują, kiedy nazwa gdzie indziej oznacza coś innego. <b>Zamów ▸</b> pokazuje, jak to zamówić."
+   "Około 250 popularnych dań i napojów z każdego kraju z oryginalnymi nazwami i objaśnieniem, do tego kawa, piwo i wino. Ostrzeżenia pokazują, kiedy nazwa gdzie indziej znaczy coś innego. <b>Zamów ▸</b> pokazuje, jak to zamówić."
   ],
   [
    "spick",
    "★ Ściągawka",
-   "Wszystko, co oznaczysz gwiazdką, zebrane w jednym języku: słowa, idiomy i dania. <b>Drukuj</b> robi z tego karteczkę na podróż."
+   "Wszystko, co oznaczyłeś gwiazdką, zebrane w jednym języku: słowa, idiomy i dania. <b>Drukuj</b> robi z tego kartkę na podróż."
   ],
   [
    "quiz",
    "Quiz",
-   "Nauka z czterema odpowiedziami do każdego pytania: słowa i zdania albo gramatyka, w obie strony, według poziomu i tematu. W trybie <b>🔊 Słuchanie</b> tekst jest tylko czytany na głos, więc sprawdzasz, czy rozumiesz, co zostało powiedziane. Słuchanie ma własny postęp nauki. Po trzech poprawnych odpowiedziach hasło uznawane jest za wyuczone, a postęp pokazuje Twoje wyniki."
+   "Nauka z czterema odpowiedziami na pytanie: słowa i zdania albo gramatyka, w obu kierunkach, według poziomu i tematu. W trybie <b>🔊 Słuchanie</b> tylko czytamy na głos, dzięki temu sprawdzisz, czy rozumiesz, co jest mówione. Słuchanie ma osobny wynik nauki. Po trzech poprawnych odpowiedziach hasło uznaje się za opanowane, a wynik pokazuje Twoje postępy."
   ]
  ],
  "h1": "Tak działa <em>Fraxx</em>.",
- "lead": "Fraxx to Twoja osobista aplikacja językowa na podróże i na co dzień: słowa, zdania i idiomy w wielu językach, z wymową, odmianą, gramatyką, kartami dań i quizem. Tu zobaczysz w kilku krokach, jak zacząć, a potem wszystko, co kryje się w Fraxx.",
+ "lead": "Fraxx to Twoja osobista aplikacja językowa na podróże i na co dzień: słowa, zdania i idiomy w wielu językach, z wymową, odmianą, gramatyką, kartami dań i quizem. Tutaj w kilku krokach zobaczysz, jak zacząć, a potem wszystko, co jest w Fraxx.",
  "mob": "Na telefonie",
- "mobsub": "Te same treści, stworzone pod kciuk: wiersze zamieniają się w karty, a pasek jest u góry.",
- "navcap": "Pasek u góry: Treść, Gramatyka, Karta dań, Ściągawka, Quiz, Pomoc (?) i Ustawienia (⚙).",
+ "mobsub": "Te same treści, stworzone pod kciuk: wiersze zamieniają się w karty, a pasek jest na górze.",
+ "navcap": "Górny pasek: Treść, Gramatyka, Karta dań, Ściągawka, Quiz, Pomoc (?) i Ustawienia (⚙).",
  "next": "Dalej",
  "open": "Otwórz Fraxx",
  "pause": "Zatrzymaj",
@@ -88,23 +88,23 @@
  "s2": "Po instalacji",
  "s2sub": "Skonfiguruj raz, a Fraxx będzie działać także bez internetu.",
  "s3": "Wszystko, co potrafi Fraxx",
- "s3sub": "Przegląd sekcji – wszystkie znajdziesz na pasku u góry.",
+ "s3sub": "Przegląd działów – wszystkie znajdziesz na górnym pasku.",
  "step": "Krok",
  "steps": [
   [
    "src",
    "Wybierz język",
-   "Fraxx od razu pojawia się w języku Twojej przeglądarki. Przy pierwszym przejściu dalej Fraxx raz zapyta, jakim językiem mówisz. Twój jest już zaznaczony. To Twój <b>Język źródłowy</b>: w nim napisane są menu, wyjaśnienia i wskazówki. Możesz go później zmienić w każdej chwili pod ⚙. Jeśli języka Twojej przeglądarki jeszcze nie ma, Fraxx uruchomi się po angielsku."
+   "Fraxx od razu pojawia się w języku Twojej przeglądarki. Przy pierwszym przejściu dalej Fraxx zapyta raz, jakim językiem mówisz, a Twój jest już wybrany. To Twój <b>Język źródłowy</b>: w nim napisane są menu, wyjaśnienia i wskazówki. Możesz go później zmienić w dowolnej chwili pod ⚙. Jeśli języka Twojej przeglądarki jeszcze nie ma, Fraxx uruchomi się po angielsku."
   ],
   [
    "home",
    "Zaczynamy",
-   "Strona startowa pokazuje, co potrafi Fraxx. W prawym górnym rogu zmienisz język strony. <b>Zaczynamy →</b> otwiera spis treści. Kliknięcie logo w każdej chwili przenosi Cię z powrotem tutaj."
+   "Strona startowa pokazuje, co potrafi Fraxx. W prawym górnym rogu zmieniasz język strony. <b>Zaczynamy →</b> otwiera spis treści. Jedno dotknięcie logo zawsze przeniesie Cię tutaj z powrotem."
   ],
   [
    "inhalt",
    "Otwórz temat",
-   "W sekcji <b>Treść</b> wszystkie tematy są ułożone w kafelki. Na samym początku są <b>Essentials</b>: około 110 zdań i słów, których przyda Ci się na każdej podróży najpierw, z osobnymi kafelkami na powitania, uprzejmość, nagłe wypadki i nie tylko. Od tego najlepiej zacząć. Dalej znajdziesz idiomy według tematów (restauracja, hotel, apteka …), słownictwo tematyczne, a na samym końcu <b>Business</b> ze zdaniami i słowami na spotkania, e-maile, rozmowy telefoniczne i negocjacje. <b>Otwórz ▾</b> przenosi Cię prosto do środka."
+   "W <b>Treść</b> wszystkie tematy są ułożone w kafelki. Na samym początku znajdziesz <b>Essentials</b>: około 110 zdań i słów, które przydadzą Ci się najpierw w każdej podróży, z osobnymi kafelkami na powitanie, grzeczność, nagłe wypadki i nie tylko. Od tego najlepiej zacząć. Dalej są idiomy według tematów (restauracja, hotel, apteka …), słownictwo tematyczne, a na samym końcu <b>Business</b> ze zdaniami i słowami na spotkania, e-maile, rozmowy telefoniczne i negocjacje. <b>Otwórz ▾</b> przenosi Cię prosto do środka."
   ],
   [
    "tabelle",
@@ -114,18 +114,18 @@
   [
    "set",
    "Ustawienia",
-   "Pod <b>⚙</b> wybierzesz język źródłowy, poziom języka (od A1 do C2), swoje języki i wygląd (Jasny lub Ciemny). Na samej górze zobaczysz swoją wersję."
+   "Pod <b>⚙</b> wybierasz język źródłowy, poziom języka (od A1 do C2), swoje języki i wygląd (Jasny lub Ciemny). Na samej górze widzisz swoją wersję."
   ]
  ],
  "tiplist": [
-  "Zaczynasz nowy język? Zacznij od <b>Essentials</b> i przećwicz je w quizie: wybierz w polu Obszar „Essentials“.",
-  "Do pracy: w quizie wybierz w polu Obszar „Business (wszystko)“ i ćwicz spotkania, e-maile i negocjacje.",
-  "Wyszukiwarka znajduje słowa i zdania w Twoim języku. Pod polem wyszukiwania przyciskiem <b>Inny język ▾</b> wybierzesz jeden ze swoich języków albo wszystkie języki.",
+  "Zaczynasz nowy język? Zacznij od <b>Essentials</b> i ćwicz je w quizie: w polu Zakres wybierz „Essentials“.",
+  "Do pracy: w quizie wybierz w polu Zakres „Business (wszystko)“ i ćwicz spotkania, e-maile i negocjacje.",
+  "Wyszukiwarka znajduje słowa i zdania w Twoim języku. Pod polem wyszukiwania wybierasz przez <b>Inny język ▾</b> jeden ze swoich języków albo wszystkie języki.",
   "Poziom języka pod ⚙ ukrywa wszystko powyżej Twojego poziomu, w tabeli, gramatyce i quizie.",
-  "W tabeli obok siebie mieści się do 5 języków: Twój język źródłowy i cztery kolejne.",
-  "Przy językach z innym pismem (arabski, rosyjski, japoński …) transkrypcja jest pod spodem kursywą.",
-  "<b>?</b> w prawym górnym rogu szczegółowo wyjaśnia każdą funkcję.",
-  "Informacje dotyczące zdrowia są podane bez gwarancji i nie zastępują porady. Pomagają Ci porozumieć się z lekarzem lub w aptece."
+  "W tabeli obok siebie mieści się do 5 języków: Twój język źródłowy i cztery inne.",
+  "W językach z innym alfabetem (arabski, rosyjski, japoński …) transkrypcja jest wyświetlana kursywą poniżej.",
+  "Znak <b>?</b> w prawym górnym rogu szczegółowo wyjaśnia każdą funkcję.",
+  "Informacje zdrowotne są podane bez gwarancji i nie zastępują porady. Pomagają Ci porozumieć się z lekarzem lub w aptece."
  ],
  "tips": "Małe wskazówki",
  "title": "Fraxx – Instrukcja"

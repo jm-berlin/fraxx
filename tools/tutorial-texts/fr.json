@@ -1,16 +1,16 @@
 {
  "after": [
   [
-   "Charger des paquets de langues",
-   "Sous ⚙ → <b>Appli, paquets de langues et sauvegarde</b>, tu charges les langues dont tu as besoin. Chaque paquet contient toutes les traductions, conjugaisons, la grammaire et les cartes de restaurant de cette langue."
+   "Télécharger des paquets de langues",
+   "Sous ⚙ → <b>Appli, paquets de langues et sauvegarde</b>, tu télécharges les langues dont tu as besoin. Chaque paquet contient toutes les traductions, conjugaisons, la grammaire et les cartes de restaurant de cette langue."
   ],
   [
    "Page d'accueil courte",
-   "Une fois installée comme appli, Fraxx s'ouvre sur une page d'accueil compacte : champ de recherche, tuiles vers toutes les rubriques, ton avancement au quiz et les dernières rubriques ouvertes. Tu accèdes à la présentation complète via « Qu'est-ce que Fraxx ? » ou en appuyant sur le logo."
+   "Une fois installée comme appli, Fraxx s'ouvre sur une page d'accueil compacte : champ de recherche, tuiles vers toutes les rubriques, ton avancement au quiz et les dernières rubriques ouvertes. Pour accéder à la présentation complète, appuie sur « Qu'est-ce que Fraxx ? » ou sur le logo."
   ],
   [
    "Utiliser hors ligne",
-   "Tout ce qui est installé fonctionne sans internet : en avion, à l'étranger sans forfait de données, dans une zone sans réseau."
+   "Tout ce qui est installé fonctionne sans internet : en avion, à l'étranger sans data, dans une zone sans réseau."
   ],
   [
    "De bonnes voix",
@@ -18,38 +18,38 @@
   ],
   [
    "Sauvegarder tes données",
-   "Tes étoiles, ta progression et tes réglages sont stockés sur l'appareil. Sous ⚙ → Appli, paquets de langues et sauvegarde, tu télécharges une sauvegarde et tu la restaures en cas de besoin."
+   "Tes étoiles, ta progression et tes réglages sont stockés sur ton appareil. Sous ⚙ → Appli, paquets de langues et sauvegarde, tu télécharges une sauvegarde et tu peux la réimporter si besoin."
   ],
   [
    "Mises à jour",
    "Quand une nouvelle version est disponible, un point apparaît sur ⚙. Tu y vois les nouveautés et tu décides toi-même quand mettre à jour."
   ]
  ],
- "appcap": "Appli, paquets de langues et sauvegarde : charger ou supprimer des langues, télécharger une sauvegarde.",
- "beta": "Version test : la traduction de tes propres nouveaux mots n'est pas encore disponible et arrivera dans une version ultérieure. Tout le reste fonctionne déjà, même hors ligne.",
+ "appcap": "Appli, paquets de langues et sauvegarde : télécharger ou supprimer des langues, télécharger une sauvegarde.",
+ "beta": "Version test : la traduction de tes propres nouveaux mots n'est pas encore disponible et arrivera dans une prochaine version. Tout le reste fonctionne déjà, même hors ligne.",
  "end": "Bon voyage !",
- "endsub": "Amuse-toi bien avec Fraxx. Tu as une idée ou tu as trouvé une erreur ? Chaque retour nous fait plaisir.",
+ "endsub": "Amuse-toi bien avec Fraxx. Tu as une idée ou tu as trouvé une erreur ? Tous tes retours sont les bienvenus.",
  "eyebrow": "Mode d'emploi · prêt en 5 minutes",
  "features": [
   [
    "inhalt",
    "☰ Contenu",
-   "Plus de 6 000 mots, phrases et expressions idiomatiques classés par thème : du restaurant à la pharmacie, en passant par le garage, jusqu'à l'administration. Avec en plus des listes alphabétiques pour les noms, les verbes, les adjectifs et plus encore. Le premier onglet <b>Essentials</b> réunit l'essentiel pour bien démarrer : salutations, politesse, communication, nombres, urgences et les mots indispensables, chaque thème dans sa propre case. Le dernier onglet <b>Business</b> propose environ 430 phrases et mots comme dans un cours de langue professionnel : small talk, réunions, téléphone et visioconférence, e-mails, présentations, négociation, candidature, service client, voyage d'affaires et nombres. Le champ de recherche trouve les thèmes par leur nom."
+   "Plus de 7 500 mots, phrases et expressions idiomatiques classés par thème : du restaurant à la pharmacie et au garage, jusqu'à l'administration. Avec en plus des listes alphabétiques de noms, de verbes, d'adjectifs et plus encore. Le premier onglet <b>Essentials</b> réunit l'essentiel pour bien débuter : salutations, politesse, compréhension mutuelle, nombres, urgences et les mots indispensables, chaque thème dans sa propre case. Le dernier onglet <b>Business</b> propose environ 430 phrases et mots comme dans un cours de langue professionnelle : small talk, réunions, téléphone et visioconférence, e-mails, présentations, négociations, candidature, service client, voyage d'affaires et chiffres. Le champ de recherche trouve les thèmes par leur nom."
   ],
   [
    "tabelle",
    "Traductions et prononciation",
-   "Chaque entrée apparaît côte à côte dans toutes tes langues, les noms avec leur article, les expressions idiomatiques traduites selon le sens. 🔊 lit à voix haute, un deuxième appui arrête la lecture. Avec l'épingle, tu gardes les entrées importantes en haut, avec A–Z tu les tries."
+   "Chaque entrée apparaît côte à côte dans toutes tes langues, les noms avec leur article, les expressions idiomatiques traduites par leur sens. 🔊 lit à voix haute, un second appui arrête la lecture. Avec l'épingle, tu gardes les entrées importantes en haut, avec A–Z, tu trie par ordre alphabétique."
   ],
   [
    "konj",
    "Verbes et conjugaison",
-   "Les verbes sont conjugués dans toutes les langues : présent, passé composé, imparfait et futur. <b>Conjugaison ▸</b> déplie les tableaux, les boutons de temps changent le temps verbal."
+   "Les verbes sont conjugués dans toutes les langues : présent, passé composé, prétérit et futur. <b>Conjugaison ▸</b> déplie les tableaux, les boutons de temps changent le temps verbal."
   ],
   [
    "gram",
    "§ Grammaire",
-   "Les règles les plus importantes de chaque langue, de A1 à C1, avec des exemples à écouter. <b>Verbes et terminaisons</b> montre les tableaux de terminaisons et les verbes irréguliers, <b>Erreurs typiques</b> les pièges pour les locuteurs de ta langue. <b>S'entraîner au quiz</b> t'interroge sur un chapitre avec des phrases à trous."
+   "Les règles les plus importantes de chaque langue, de A1 à C1, avec des exemples à écouter. <b>Verbes et terminaisons</b> montre des tableaux de terminaisons et les verbes irréguliers, <b>Erreurs typiques</b> les pièges pour les locuteurs de ta langue. <b>S'entraîner au quiz</b> t'interroge sur un chapitre avec des phrases à trous."
   ],
   [
    "verben",
@@ -59,34 +59,34 @@
   [
    "dish",
    "🍽 Carte",
-   "Environ 250 plats et boissons populaires par pays, avec le nom d'origine et une explication, plus le café, la bière et le vin. Des avertissements signalent quand un nom veut dire autre chose ailleurs. <b>Commander ▸</b> montre comment passer commande."
+   "Environ 250 plats et boissons populaires par pays, avec leur nom d'origine et une explication, plus le café, la bière et le vin. Des avertissements t'indiquent quand un nom signifie autre chose ailleurs. <b>Commander ▸</b> te montre comment le commander."
   ],
   [
    "spick",
    "★ Aide-mémoire",
-   "Tout ce que tu as marqué d'une étoile, en version compacte dans une seule langue : mots, expressions idiomatiques et plats. <b>Imprimer</b> en fait un petit papier pour le voyage."
+   "Tout ce que tu as marqué d'une étoile, réuni dans une seule langue : mots, expressions idiomatiques et plats. <b>Imprimer</b> en fait une fiche pour le voyage."
   ],
   [
    "quiz",
    "Quiz",
-   "Apprendre avec quatre réponses par question : mots & phrases ou grammaire, dans les deux sens, par niveau et par thème. Avec <b>🔊 Écouter</b>, le texte est seulement lu à voix haute, pour vérifier si tu comprends ce qui est dit. Écouter a sa propre progression. Après trois bonnes réponses, une entrée est considérée comme apprise, et la progression montre tes avancées."
+   "Apprendre avec quatre réponses par question : mots & phrases ou grammaire, dans les deux sens, par niveau et par thème. Avec <b>🔊 Écouter</b>, tu entends seulement la lecture à voix haute, ce qui te permet de vérifier que tu comprends ce qui est dit. Écouter a sa propre progression. Après trois bonnes réponses, une entrée est considérée comme apprise, et la progression montre tes avancées."
   ]
  ],
  "h1": "Voici comment fonctionne <em>Fraxx</em>.",
- "lead": "Fraxx est ton appli de langues perso pour les voyages et le quotidien : mots, phrases et expressions idiomatiques dans plein de langues, avec prononciation, conjugaison, grammaire, cartes de restaurant et quiz. Tu vois ici en quelques étapes comment démarrer, puis tout ce que Fraxx a dans le ventre.",
+ "lead": "Fraxx est ton appli de langues personnelle pour les voyages et le quotidien : des mots, des phrases et des expressions idiomatiques dans plein de langues, avec prononciation, conjugaison, grammaire, cartes de restaurant et quiz. Tu vois ici en quelques étapes comment démarrer, puis tout ce que Fraxx a dans le ventre.",
  "mob": "Sur mobile",
- "mobsub": "Mêmes contenus, pensés pour le pouce : les lignes deviennent des cartes, la barre se place en haut.",
- "navcap": "La barre du haut : Contenu, Grammaire, Carte, Aide-mémoire, Quiz, Aide (?) et réglages (⚙).",
+ "mobsub": "Mêmes contenus, pensés pour le pouce : les lignes deviennent des cartes, la barre est en haut.",
+ "navcap": "La barre en haut : Contenu, Grammaire, Carte, Aide-mémoire, Quiz, Aide (?) et Réglages (⚙).",
  "next": "Suivant",
  "open": "Ouvrir Fraxx",
  "pause": "Pause",
  "pdf": "En PDF",
  "play": "Lecture",
- "prev": "Retour",
+ "prev": "Précédent",
  "s1": "Les premiers pas",
- "s1sub": "Cinq étapes, de la première ouverture à la première traduction.",
+ "s1sub": "Cinq étapes, de la première ouverture à ta première traduction.",
  "s2": "Après l'installation",
- "s2sub": "Un seul réglage, et Fraxx fonctionne ensuite même sans internet.",
+ "s2sub": "Un seul réglage, et Fraxx fonctionne même sans internet.",
  "s3": "Tout ce que Fraxx sait faire",
  "s3sub": "Les rubriques en un coup d'œil – tu les trouves toutes dans la barre en haut.",
  "step": "Étape",
@@ -94,7 +94,7 @@
   [
    "src",
    "Choisir la langue",
-   "Fraxx s'affiche tout de suite dans la langue de ton navigateur. Quand tu passes à l'étape suivante pour la première fois, Fraxx te demande une fois quelle langue tu parles : la tienne est déjà présélectionnée. C'est ta <b>Langue source</b> : le menu, les explications et les conseils sont écrits dans cette langue. Tu peux la changer à tout moment plus tard sous ⚙. Si la langue de ton navigateur n'existe pas encore, Fraxx démarre en anglais."
+   "Fraxx s'affiche tout de suite dans la langue de ton navigateur. Au premier passage, Fraxx te demande une fois quelle langue tu parles, la tienne est déjà présélectionnée. C'est ta <b>Langue source</b> : le menu, les explications et les conseils sont écrits dans cette langue. Tu peux la changer à tout moment plus tard sous ⚙. Si la langue de ton navigateur n'existe pas encore, Fraxx démarre en anglais."
   ],
   [
    "home",
@@ -104,26 +104,26 @@
   [
    "inhalt",
    "Ouvrir un thème",
-   "Dans <b>Contenu</b>, tous les thèmes sont présentés sous forme de cases. Tout devant, il y a les <b>Essentials</b> : environ 110 phrases et mots dont tu as d'abord besoin à chaque voyage, avec des cases dédiées aux salutations, à la politesse, aux urgences et plus encore. C'est le meilleur point de départ. Ensuite viennent les expressions idiomatiques par thème (restaurant, hôtel, pharmacie …), le vocabulaire par thèmes et, tout à la fin, <b>Business</b> avec des phrases et des mots pour les réunions, les e-mails, les appels téléphoniques et les négociations. <b>Ouvrir ▾</b> t'y emmène directement."
+   "Dans <b>Contenu</b>, tous les thèmes sont présentés sous forme de cases. Tout devant, tu trouves les <b>Essentials</b> : environ 110 phrases et mots dont tu auras besoin en premier à chaque voyage, avec des cases dédiées aux salutations, à la politesse, aux urgences et plus encore. C'est le meilleur point de départ. Viennent ensuite les expressions idiomatiques par thème (restaurant, hôtel, pharmacie …), le vocabulaire par thèmes et, tout à la fin, <b>Business</b> avec des phrases et des mots pour les réunions, les e-mails, les appels téléphoniques et les négociations. <b>Ouvrir ▾</b> te mène directement dedans."
   ],
   [
    "tabelle",
    "Lire, écouter, retenir",
-   "Chaque ligne montre une entrée dans toutes tes langues. Le haut-parleur 🔊 lit à voix haute, des remarques grises expliquent les particularités. L'étoile ☆ ajoute l'entrée à ton aide-mémoire."
+   "Chaque ligne montre une entrée dans toutes tes langues. Le haut-parleur 🔊 la lit à voix haute, et des notes grises expliquent les particularités. L'étoile ☆ ajoute l'entrée à ton aide-mémoire."
   ],
   [
    "set",
    "Régler",
-   "Sous <b>⚙</b>, tu choisis la langue source, le niveau de langue (A1 à C2), tes langues et l'apparence (Clair ou Sombre). Tout en haut, tu trouves ta version."
+   "Sous <b>⚙</b>, tu choisis la langue source, le niveau de langue (A1 à C2), tes langues et le thème (Clair ou Sombre). Ta version est affichée tout en haut."
   ]
  ],
  "tiplist": [
-  "Tu débutes dans une langue ? Commence par les <b>Essentials</b> et entraîne-toi au quiz : choisis « Essentials » sous Rubrique.",
-  "Pour le travail : dans le quiz, choisis « Business (tout) » sous Rubrique et entraîne-toi aux réunions, aux e-mails et aux négociations.",
+  "Tu débutes dans une langue ? Commence par les <b>Essentials</b> et entraîne-toi dans le quiz : choisis « Essentials » sous Rubrique.",
+  "Pour le travail : dans le quiz, choisis « Business (tout) » sous Rubrique et entraîne-toi sur les réunions, les e-mails et les négociations.",
   "La recherche trouve des mots et des phrases dans ta langue. Sous le champ de recherche, avec <b>Autre langue ▾</b>, tu choisis une de tes langues ou toutes les langues.",
   "Le niveau de langue sous ⚙ masque tout ce qui dépasse ton niveau, dans le tableau, la grammaire et le quiz.",
   "Jusqu'à 5 langues tiennent côte à côte dans le tableau : ta langue source et quatre autres.",
-  "Pour les langues avec une autre écriture (arabe, russe, japonais …), la transcription apparaît en italique en dessous.",
+  "Pour les langues avec une autre écriture (arabe, russe, japonais …), la transcription est affichée en italique en dessous.",
   "Le <b>?</b> en haut à droite explique chaque fonction en détail.",
   "Les informations de santé sont données sans garantie et ne remplacent pas un avis médical. Elles t'aident à te faire comprendre auprès d'un médecin ou d'un pharmacien."
  ],

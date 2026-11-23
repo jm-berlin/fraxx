@@ -17,16 +17,16 @@
    "Er wordt voorgelezen met de stemmen van je apparaat. Op Mac en Windows klinkt Chrome meestal het natuurlijkst. Extra stemmen installeer je in de taalinstellingen van je apparaat."
   ],
   [
-   "Gegevens veiligstellen",
-   "Je sterren, leervoortgang en instellingen staan op je apparaat. Onder ⚙ → App, Taalpakketten &amp; back-up download je een back-up en zet je die indien nodig weer terug."
+   "Gegevens back-uppen",
+   "Je sterren, leerstanden en instellingen staan op je apparaat. Onder ⚙ → App, Taalpakketten &amp; back-up download je een back-up en zet je die indien nodig weer terug."
   ],
   [
    "Updates",
-   "Is er een nieuwe versie, dan verschijnt er een stipje bij ⚙. Daar zie je wat er nieuw is en bepaal je zelf wanneer je bijwerkt."
+   "Is er een nieuwe versie, dan verschijnt er een stip bij ⚙. Daar zie je wat er nieuw is en bepaal je zelf wanneer je bijwerkt."
   ]
  ],
  "appcap": "App, Taalpakketten &amp; back-up: talen downloaden of verwijderen, back-up downloaden.",
- "beta": "Testversie: eigen nieuwe woorden laten vertalen is nog niet beschikbaar en komt in een latere versie. Al het andere werkt al, ook offline.",
+ "beta": "Testversie: eigen nieuwe woorden vertalen is nog niet beschikbaar en komt in een latere versie. Al het andere werkt al, ook offline.",
  "end": "Goede reis!",
  "endsub": "Veel plezier met Fraxx. Heb je een idee of een fout gevonden? We horen graag van je.",
  "eyebrow": "Handleiding · in 5 minuten klaar voor gebruik",
@@ -34,12 +34,12 @@
   [
    "inhalt",
    "☰ Inhoud",
-   "Ruim 6.000 woorden, zinnen en idiomatische uitdrukkingen, geordend per onderwerp: van restaurant via apotheek en garage tot het gemeentehuis. Daarnaast alfabetische lijsten voor zelfstandige naamwoorden, werkwoorden, bijvoeglijke naamwoorden en meer. Het eerste tabblad <b>Essentials</b> bundelt het belangrijkste om mee te beginnen: begroeting, beleefdheid, elkaar verstaan, getallen, noodgevallen en de allernodigste woorden, elk onderwerp in een eigen vak. Het laatste tabblad <b>Business</b> biedt zo'n 430 zinnen en woorden zoals in een zakelijke taalcursus: small talk, meetings, telefoon en videocall, e-mails, presenteren, onderhandelen, solliciteren, klantenservice, zakenreis en getallen. Het zoekveld vindt onderwerpen op naam."
+   "Meer dan 7.500 woorden, zinnen en idiomatische uitdrukkingen, geordend per onderwerp: van restaurant via apotheek en garage tot het gemeentehuis. Daarbij alfabetische lijsten voor zelfstandige naamwoorden, werkwoorden, bijvoeglijke naamwoorden en meer. Het eerste tabblad <b>Essentials</b> bundelt het belangrijkste om mee te beginnen: begroeting, beleefdheid, begrijpelijk maken, getallen, noodgevallen en de allernodigste woorden, elk onderwerp in een eigen blok. Het laatste tabblad <b>Business</b> biedt zo'n 430 zinnen en woorden zoals in een zakelijke taalcursus: small talk, meetings, telefoon en videocall, e-mails, presenteren, onderhandelen, solliciteren, klantenservice, zakenreis en getallen. Het zoekveld vindt onderwerpen op naam."
   ],
   [
    "tabelle",
    "Vertalingen en uitspraak",
-   "Elk item staat in al je talen naast elkaar, zelfstandige naamwoorden met lidwoord, idiomatische uitdrukkingen naar de betekenis vertaald. 🔊 leest voor, een tweede tik stopt het. Met de pin houd je belangrijke items bovenaan, met A–Z sorteer je."
+   "Elk item staat in al jouw talen naast elkaar, zelfstandige naamwoorden met lidwoord, uitdrukkingen naar de betekenis vertaald. 🔊 leest voor, een tweede tik stopt het. Met de pin houd je belangrijke items bovenaan, met A–Z sorteer je."
   ],
   [
    "konj",
@@ -59,21 +59,21 @@
   [
    "dish",
    "🍽 Menukaart",
-   "Zo'n 250 populaire gerechten en dranken per land met originele naam en uitleg, plus koffie, bier en wijn. Waarschuwingen laten zien als een naam elders iets anders betekent. <b>Bestellen ▸</b> laat zien hoe je het bestelt."
+   "Zo'n 250 populaire gerechten en dranken per land met originele namen en uitleg, plus koffie, bier en wijn. Waarschuwingen laten zien als een naam elders iets anders betekent. <b>Bestellen ▸</b> laat zien hoe je het bestelt."
   ],
   [
    "spick",
    "★ Spiekbriefje",
-   "Alles wat je met de ster hebt gemarkeerd, compact in één taal: woorden, idiomatische uitdrukkingen en gerechten. Met <b>Afdrukken</b> maak je er een briefje voor onderweg van."
+   "Alles wat je met de ster hebt gemarkeerd, compact in één taal: woorden, uitdrukkingen en gerechten. <b>Afdrukken</b> maakt er een briefje voor onderweg van."
   ],
   [
    "quiz",
    "Quiz",
-   "Leren met vier antwoorden per vraag: woorden &amp; zinnen of grammatica, in beide richtingen, per niveau en onderwerp. Bij <b>🔊 Luisteren</b> wordt alleen voorgelezen, zo check je of je begrijpt wat er gezegd wordt. Luisteren heeft een eigen leerstand. Na drie juiste antwoorden geldt een item als geleerd, de leerstand toont je voortgang."
+   "Leren met vier antwoorden per vraag: woorden &amp; zinnen of grammatica, in beide richtingen, per niveau en onderwerp. Bij <b>🔊 Luisteren</b> wordt alleen voorgelezen, zo check je of je begrijpt wat er gezegd wordt. Luisteren heeft een eigen leerstand. Na drie goede antwoorden telt een item als geleerd, de leerstand toont je voortgang."
   ]
  ],
  "h1": "Zo werkt <em>Fraxx</em>.",
- "lead": "Fraxx is jouw persoonlijke taal-app voor onderweg en voor elke dag: woorden, zinnen en idiomatische uitdrukkingen in veel talen, met uitspraak, vervoeging, grammatica, menukaarten en quiz. Hier zie je in een paar stappen hoe je aan de slag gaat, en daarna alles wat Fraxx te bieden heeft.",
+ "lead": "Fraxx is jouw persoonlijke taal-app voor onderweg en dagelijks gebruik: woorden, zinnen en idiomatische uitdrukkingen in veel talen, met uitspraak, vervoeging, grammatica, menukaarten en quiz. Hier zie je in een paar stappen hoe je aan de slag gaat, en daarna alles wat Fraxx te bieden heeft.",
  "mob": "Op je telefoon",
  "mobsub": "Dezelfde inhoud, gemaakt voor je duim: de regels worden kaarten, de balk staat bovenaan.",
  "navcap": "De balk bovenaan: Inhoud, Grammatica, Menukaart, Spiekbriefje, Quiz, Help (?) en Instellingen (⚙).",
@@ -86,41 +86,41 @@
  "s1": "De eerste stappen",
  "s1sub": "Vijf stappen van het eerste openen tot je eerste vertaling.",
  "s2": "Na de installatie",
- "s2sub": "Eén keer instellen, daarna werkt Fraxx ook zonder internet.",
+ "s2sub": "Eén keer instellen, dan werkt Fraxx ook zonder internet.",
  "s3": "Alles wat Fraxx kan",
  "s3sub": "De onderdelen in een overzicht – je vindt ze allemaal in de balk bovenaan.",
  "step": "Stap",
  "steps": [
   [
    "src",
-   "Kies je taal",
-   "Fraxx verschijnt meteen in de taal van je browser. Bij de eerste keer verder gaan vraagt Fraxx één keer welke taal je spreekt, die van jou is al voorgeselecteerd. Dat is je <b>Brontaal</b>: daarin staan het menu, de uitleg en de tips. Je kunt die later altijd wijzigen via ⚙. Is jouw browsertaal er nog niet, dan start Fraxx in het Engels."
+   "Taal kiezen",
+   "Fraxx verschijnt meteen in de taal van je browser. Bij de eerste keer verder gaan vraagt Fraxx eenmalig welke taal je spreekt, die van jou is al voorgeselecteerd. Dat is je <b>Brontaal</b>: daarin staan het menu, de uitleg en de tips. Je kunt die later altijd wijzigen onder ⚙. Bestaat je browsertaal nog niet, dan start Fraxx in het Engels."
   ],
   [
    "home",
    "Aan de slag",
-   "De startpagina laat zien wat Fraxx kan. Rechtsboven wissel je de taal van de pagina. <b>Aan de slag →</b> opent de inhoudsopgave. Met een tik op het logo kom je altijd weer hier terug."
+   "De startpagina laat zien wat Fraxx kan. Rechtsboven wissel je van taal voor de pagina. <b>Aan de slag →</b> opent de inhoudsopgave. Met een tik op het logo kom je altijd weer hier terug."
   ],
   [
    "inhalt",
-   "Een onderwerp openen",
-   "In de <b>Inhoud</b> staan alle onderwerpen als vakken. Helemaal vooraan staan de <b>Essentials</b>: zo'n 110 zinnen en woorden die je op elke reis als eerste nodig hebt, met eigen vakken voor begroeting, beleefdheid, noodgevallen en meer. Daar begin je het best mee. Daarna volgen idiomatische uitdrukkingen per onderwerp (restaurant, hotel, apotheek …), woordenschat per onderwerp en helemaal aan het eind <b>Business</b> met zinnen en woorden voor meetings, e-mails, telefoongesprekken en onderhandelingen. <b>Openen ▾</b> brengt je er direct naartoe."
+   "Onderwerp openen",
+   "In de <b>Inhoud</b> staan alle onderwerpen als blokken. Helemaal vooraan staan de <b>Essentials</b>: zo'n 110 zinnen en woorden die je op elke reis als eerste nodig hebt, met aparte blokken voor begroeting, beleefdheid, noodgevallen en meer. Daar begin je het best mee. Daarna volgen idiomatische uitdrukkingen per onderwerp (restaurant, hotel, apotheek …), woordenschat per onderwerp en helemaal aan het eind <b>Business</b> met zinnen en woorden voor meetings, e-mails, telefoongesprekken en onderhandelingen. <b>Openen ▾</b> brengt je er meteen heen."
   ],
   [
    "tabelle",
-   "Lezen, luisteren, onthouden",
-   "Elke regel toont een item in al je talen. De luidspreker 🔊 leest voor, grijze opmerkingen leggen bijzonderheden uit. Met de ster ☆ zet je het item op je spiekbriefje."
+   "Lezen, horen, onthouden",
+   "Elke regel toont een item in al jouw talen. De luidspreker 🔊 leest voor, grijze tips leggen bijzonderheden uit. Met de ster ☆ zet je het item op je spiekbriefje."
   ],
   [
    "set",
    "Instellen",
-   "Onder <b>⚙</b> kies je je brontaal, taalniveau (A1 tot C2), je talen en het uiterlijk (Licht of Donker). Bovenaan staat je versie."
+   "Onder <b>⚙</b> kies je je brontaal, taalniveau (A1 tot C2), je talen en het ontwerp (Licht of Donker). Bovenaan staat je versie."
   ]
  ],
  "tiplist": [
   "Nieuw in een taal? Begin met de <b>Essentials</b> en oefen ze in de quiz: kies onder Onderdeel „Essentials“.",
   "Voor je werk: kies in de quiz onder Onderdeel „Business (alle)“ en oefen meetings, e-mails en onderhandelen.",
-  "De zoekfunctie vindt woorden en zinnen in jouw taal. Onder het zoekveld kies je met <b>Andere taal ▾</b> een van je talen of alle talen.",
+  "Zoeken vindt woorden en zinnen in jouw taal. Onder het zoekveld kies je met <b>Andere taal ▾</b> een van je talen of alle talen.",
   "Taalniveau onder ⚙ verbergt alles boven jouw niveau, in tabel, grammatica en quiz.",
   "Maximaal 5 talen passen naast elkaar in de tabel: je brontaal en vier andere.",
   "Bij talen met een ander schrift (Arabisch, Russisch, Japans …) staat de transcriptie cursief eronder.",

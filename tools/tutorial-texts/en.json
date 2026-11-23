@@ -6,7 +6,7 @@
   ],
   [
    "Short home page",
-   "Once installed as an app, Fraxx opens with a compact home page: a search field, tiles for all areas, your quiz progress and the areas you opened most recently. You can reach the full introduction there via “What is Fraxx?” or by tapping the logo."
+   "When installed as an app, Fraxx opens with a compact home page: a search field, tiles for all areas, your quiz progress and the areas you opened most recently. You can find the full introduction there under “What is Fraxx?” or by tapping the logo."
   ],
   [
    "Use it offline",
@@ -18,7 +18,7 @@
   ],
   [
    "Back up your data",
-   "Your stars, learning progress and settings are stored on your device. Under ⚙ → App, language packs &amp; backup you can download a backup and restore it whenever you need to."
+   "Your stars, progress and settings are stored on your device. Under ⚙ → App, language packs &amp; backup you can download a backup and restore it whenever you need to."
   ],
   [
    "Updates",
@@ -28,23 +28,23 @@
  "appcap": "App, language packs &amp; backup: add or remove languages, download a backup.",
  "beta": "Test version: Translating your own new words isn't available yet and will come in a later version. Everything else already works, even offline.",
  "end": "Have a great trip!",
- "endsub": "Enjoy Fraxx. Got an idea or found a mistake? We'd love to hear from you.",
- "eyebrow": "Guide · ready in 5 minutes",
+ "endsub": "Have fun with Fraxx. Got an idea or found a mistake? We'd love to hear from you.",
+ "eyebrow": "Guide · ready to go in 5 minutes",
  "features": [
   [
    "inhalt",
    "☰ Content",
-   "Over 6,000 words, sentences and idioms sorted by topic: from restaurants to pharmacies, repair shops and government offices. Plus alphabetical lists for nouns, verbs, adjectives and more. The first tab, <b>Essentials</b>, collects the most important things to get started: greetings, politeness, getting understood, numbers, emergencies and the most necessary words, each topic in its own box. The last tab, <b>Business</b>, offers around 430 sentences and words like in a business language course: small talk, meetings, phone and video calls, emails, presenting, negotiating, job applications, customer service, business travel and numbers. The search field finds topics by name."
+   "Over 7,500 words, sentences and idioms sorted by topic: from restaurants to pharmacies, repair shops and government offices. Plus alphabetical lists for nouns, verbs, adjectives and more. The first tab, <b>Essentials</b>, collects the most important things to get started: greetings, politeness, getting understood, numbers, emergencies and the most necessary words, each topic in its own box. The last tab, <b>Business</b>, offers around 430 sentences and words like in a business language course: small talk, meetings, phone and video calls, emails, presenting, negotiating, job applications, customer service, business travel and numbers. The search field finds topics by name."
   ],
   [
    "tabelle",
    "Translations and pronunciation",
-   "Every entry appears side by side in all your languages, nouns with their article, idioms translated by meaning. 🔊 reads aloud, and a second tap stops it. With the pin you keep important entries at the top, and with A–Z you sort."
+   "Each entry appears in all your languages side by side, nouns with their article, idioms translated by meaning. 🔊 reads aloud, a second tap stops it. With the pin you keep important entries at the top, and with A–Z you sort."
   ],
   [
    "konj",
    "Verbs and conjugation",
-   "Verbs are conjugated in all languages: present, perfect, past and future. <b>Conjugation ▸</b> opens up the tables, and the tense buttons switch the tense."
+   "Verbs are conjugated in all languages: present, perfect, past and future. <b>Conjugation ▸</b> opens the tables, and the tense buttons switch the tense."
   ],
   [
    "gram",
@@ -73,9 +73,9 @@
   ]
  ],
  "h1": "How <em>Fraxx</em> works.",
- "lead": "Fraxx is your personal language app for travel and everyday life: words, sentences and idioms in lots of languages, with pronunciation, conjugation, grammar, menus and quizzes. Here you'll see how to get started in just a few steps, and then everything Fraxx has to offer.",
+ "lead": "Fraxx is your personal language app for travel and everyday life: words, sentences and idioms in lots of languages, with pronunciation, conjugation, grammar, menus and quizzes. Here you'll see in a few steps how to get started, and then everything Fraxx has to offer.",
  "mob": "On your phone",
- "mobsub": "Same content, made for your thumb: rows turn into cards, and the bar sits at the top.",
+ "mobsub": "Same content, made for your thumb: rows become cards, and the bar sits at the top.",
  "navcap": "The bar at the top: Content, Grammar, Menu, Cheat sheet, Quiz, Help (?) and Settings (⚙).",
  "next": "Next",
  "open": "Open Fraxx",
@@ -84,27 +84,27 @@
  "play": "Play",
  "prev": "Back",
  "s1": "First steps",
- "s1sub": "Five steps from opening the app to your first translation.",
+ "s1sub": "Five steps from opening the app for the first time to your first translation.",
  "s2": "After installing",
- "s2sub": "Set it up once, and Fraxx works without internet too.",
+ "s2sub": "Set it up once, and Fraxx works even without internet.",
  "s3": "Everything Fraxx can do",
  "s3sub": "The areas at a glance – you'll find them all in the bar at the top.",
  "step": "Step",
  "steps": [
   [
    "src",
-   "Pick a language",
-   "Fraxx shows up in your browser's language right away. The first time you continue, Fraxx asks once which language you speak, and yours is already preselected. This is your <b>Source language</b>: menus, explanations and hints are written in it. You can change it any time later under ⚙. If your browser language isn't available yet, Fraxx starts in English."
+   "Pick your language",
+   "Fraxx shows up in your browser's language right away. When you continue for the first time, Fraxx asks once which language you speak, and yours is already preselected. That's your <b>Source language</b>: menus, explanations and hints are written in it. You can change it any time later under ⚙. If your browser language isn't available yet, Fraxx starts in English."
   ],
   [
    "home",
    "Let's go",
-   "The home page shows what Fraxx can do. At the top right you can switch the language of the page. <b>Let's go →</b> opens the table of contents. Tap the logo any time to come back here."
+   "The home page shows what Fraxx can do. At the top right you switch the language of the page. <b>Let's go →</b> opens the table of contents. Tap the logo to come back here any time."
   ],
   [
    "inhalt",
    "Open a topic",
-   "In <b>Content</b>, all topics are laid out as boxes. Up front are the <b>Essentials</b>: around 110 sentences and words you'll need first on any trip, with their own boxes for greetings, politeness, emergencies and more. That's the best place to start. After that come idioms by topic (restaurant, hotel, pharmacy …), vocabulary by topic, and at the very end <b>Business</b> with sentences and words for meetings, emails, phone calls and negotiations. <b>Open ▾</b> takes you straight in."
+   "In <b>Content</b> you'll find all topics as boxes. Right at the front are the <b>Essentials</b>: around 110 sentences and words you'll need first on any trip, with their own boxes for greetings, politeness, emergencies and more. That's the best place to start. After that come idioms by topic (restaurant, hotel, pharmacy …), vocabulary by topic, and at the very end <b>Business</b> with sentences and words for meetings, emails, phone calls and negotiations. <b>Open ▾</b> takes you straight in."
   ],
   [
    "tabelle",
@@ -113,8 +113,8 @@
   ],
   [
    "set",
-   "Adjust settings",
-   "Under <b>⚙</b> you choose your source language, proficiency level (A1 to C2), your languages and the look (Light or Dark). Your version is shown at the very top."
+   "Settings",
+   "Under <b>⚙</b> you choose your source language, proficiency level (A1 to C2), your languages and the design (Light or Dark). Your version is shown at the very top."
   ]
  ],
  "tiplist": [
@@ -125,7 +125,7 @@
   "Up to 5 languages fit side by side in the table: your source language and four more.",
   "For languages with a different script (Arabic, Russian, Japanese …), the transcription appears in italics below.",
   "The <b>?</b> at the top right explains every feature in detail.",
-  "Health information comes without guarantee and doesn't replace professional advice. It helps you communicate with a doctor or pharmacist."
+  "The health information comes without guarantee and is no substitute for professional advice. It helps you communicate with a doctor or pharmacist."
  ],
  "tips": "Quick tips",
  "title": "Fraxx – Guide"
