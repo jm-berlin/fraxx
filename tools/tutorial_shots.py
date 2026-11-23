@@ -36,6 +36,10 @@ with sync_playwright() as p:
 
     def fresh(first=False):
         pg.goto(BASE + ("?chooselang" if first else "")); pg.wait_for_timeout(1500)
+        if first:
+            # Für den Screenshot der Sprachwahl abwarten, bis der Dialog da ist (kommt mit dem Paketabruf teils spät)
+            try: pg.wait_for_selector(f'#mlsrc button[lang="{LANG}"]', timeout=20000); pg.wait_for_timeout(600)
+            except Exception: pass
         if pg.locator("#mlsrc").count():
             if first:
                 M["src"] = rect(pg, f'#mlsrc button[lang="{LANG}"]'); pg.screenshot(path=P("01-src.png"))
