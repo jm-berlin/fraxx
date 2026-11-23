@@ -106,7 +106,7 @@
   [
    "quiz",
    "Quiz",
-   "Lernen mit vier Antworten pro Frage: Wörter &amp; Sätze oder Grammatik, in beide Richtungen, nach Niveau und Thema. Bei <b>🔊 Hören</b> wird nur vorgelesen, so prüfst du, ob du verstehst, was gesagt wird. Hören hat einen eigenen Lernstand. Nach drei richtigen Antworten gilt ein Eintrag als gelernt, der Lernstand zeigt deinen Fortschritt."
+   "Lernen mit vier Antworten pro Frage: Wörter &amp; Sätze oder Grammatik, in beide Richtungen, nach Niveau und Thema. Bei <b>🔊 Hören</b> wird nur vorgelesen, so prüfst du, ob du verstehst, was gesagt wird. Hören hat einen eigenen Lernstand. Bei <b>🎤 Sprechen</b> sprichst du einen Satz nach und siehst, ob er verstanden wird. Deine Aufnahme kannst du gleich mit der Aussprache von Fraxx vergleichen. Nach drei richtigen Antworten gilt ein Eintrag als gelernt, der Lernstand zeigt deinen Fortschritt."
   ]
  ],
  "mob": "Auf dem Handy",
@@ -116,6 +116,7 @@
   "Neu in einer Sprache? Fang mit den <b>Essentials</b> an und übe sie im Quiz: Unter Bereich „Essentials“ wählen.",
   "Für den Beruf: Im Quiz unter Bereich „Business (alle)“ wählen und Meetings, E-Mails und Verhandeln üben.",
   "Die Suche findet Wörter und Sätze in deiner Sprache. Unter dem Suchfeld wählst du mit <b>Andere Sprache ▾</b> eine deiner Sprachen oder alle Sprachen.",
+  "Statt zu tippen: Tipp im Suchfeld auf das Mikrofon und sprich das Wort ein.",
   "Sprachniveau unter ⚙ blendet alles über deinem Niveau aus, in Tabelle, Grammatik und Quiz.",
   "Bis zu 5 Sprachen passen nebeneinander in die Tabelle: deine Ausgangssprache und vier weitere.",
   "Bei Sprachen mit anderer Schrift (Arabisch, Russisch, Japanisch …) steht die Umschrift kursiv darunter.",

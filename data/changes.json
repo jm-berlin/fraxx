@@ -1,6 +1,65 @@
 {
  "releases": [
   {
+   "release": "2026-11-23T08:36:25.000Z",
+   "version": "0.28",
+   "date": "2026-11-23",
+   "notes": {
+    "de": [
+     "Neu: Spracheingabe – tipp im Suchfeld auf das Mikrofon und sprich das Wort ein.",
+     "Neu im Quiz: 🎤 Sprechen. Sprich Sätze nach, Fraxx prüft, ob du verstanden wirst, und du kannst deine Aufnahme mit der Aussprache von Fraxx vergleichen."
+    ],
+    "en": [
+     "New: voice input – tap the microphone in the search field and say the word.",
+     "New in the quiz: 🎤 Speaking. Repeat sentences, Fraxx checks whether you are understood, and you can compare your recording with Fraxx’s pronunciation."
+    ],
+    "fr": [
+     "Nouveau : saisie vocale – touche le micro dans le champ de recherche et dis le mot.",
+     "Nouveau dans le quiz : 🎤 Parler. Répète des phrases, Fraxx vérifie si tu es compris et tu peux comparer ton enregistrement avec la prononciation de Fraxx."
+    ],
+    "it": [
+     "Novità: inserimento vocale – tocca il microfono nel campo di ricerca e pronuncia la parola.",
+     "Novità nel quiz: 🎤 Parlare. Ripeti le frasi, Fraxx verifica se vieni capito e puoi confrontare la tua registrazione con la pronuncia di Fraxx."
+    ],
+    "es": [
+     "Nuevo: entrada por voz – toca el micrófono en el campo de búsqueda y di la palabra.",
+     "Nuevo en el quiz: 🎤 Hablar. Repite frases, Fraxx comprueba si se te entiende y puedes comparar tu grabación con la pronunciación de Fraxx."
+    ],
+    "pt": [
+     "Novo: entrada por voz – toca no microfone no campo de pesquisa e diz a palavra.",
+     "Novo no quiz: 🎤 Falar. Repete frases, o Fraxx verifica se és compreendido e podes comparar a tua gravação com a pronúncia do Fraxx."
+    ],
+    "nl": [
+     "Nieuw: spraakinvoer – tik op de microfoon in het zoekveld en spreek het woord in.",
+     "Nieuw in de quiz: 🎤 Spreken. Spreek zinnen na, Fraxx controleert of je verstaan wordt en je kunt je opname vergelijken met de uitspraak van Fraxx."
+    ],
+    "pl": [
+     "Nowość: wprowadzanie głosowe – dotknij mikrofonu w polu wyszukiwania i powiedz słowo.",
+     "Nowość w quizie: 🎤 Mówienie. Powtarzaj zdania, Fraxx sprawdza, czy jesteś zrozumiany, a swoje nagranie możesz porównać z wymową Fraxx."
+    ],
+    "sv": [
+     "Nytt: röstinmatning – tryck på mikrofonen i sökfältet och säg ordet.",
+     "Nytt i quizet: 🎤 Tala. Säg efter meningar, Fraxx kontrollerar om du blir förstådd och du kan jämföra din inspelning med Fraxx uttal."
+    ],
+    "nb": [
+     "Nytt: taleinndata – trykk på mikrofonen i søkefeltet og si ordet.",
+     "Nytt i quizen: 🎤 Snakke. Si setninger etter, Fraxx sjekker om du blir forstått, og du kan sammenligne opptaket ditt med uttalen til Fraxx."
+    ],
+    "tr": [
+     "Yeni: sesle giriş – arama alanındaki mikrofona dokun ve kelimeyi söyle.",
+     "Quizde yeni: 🎤 Konuşma. Cümleleri tekrarla, Fraxx anlaşılıp anlaşılmadığını kontrol eder ve kaydını Fraxx'ın telaffuzuyla karşılaştırabilirsin."
+    ],
+    "ar": [
+     "جديد: الإدخال الصوتي – اضغط على الميكروفون في حقل البحث وقل الكلمة.",
+     "جديد في الاختبار: 🎤 التحدث. كرّر الجمل، ويتحقق Fraxx مما إذا كان كلامك مفهومًا، ويمكنك مقارنة تسجيلك بنطق Fraxx."
+    ],
+    "zh": [
+     "新功能：语音输入——点按搜索框中的麦克风，说出词语。",
+     "测验新功能：🎤 口语。跟读句子，Fraxx 会检查是否能听懂，你还可以把自己的录音和 Fraxx 的发音进行比较。"
+    ]
+   }
+  },
+  {
    "release": "2026-11-23T06:49:57.354Z",
    "version": "0.27",
    "date": "2026-11-23",
