@@ -175,7 +175,7 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
       const days = last ? Math.floor((now - last) / DAY) : 0;
       const box = document.createElement("div"); box.id = "mlbackupremind";
       box.setAttribute("role", "status");
-      box.innerHTML = `<style>#mlbackupremind{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:250;width:min(560px,calc(100% - 32px));background:var(--ink,#141212);color:var(--surface,#f3f1ef);border-radius:16px;box-shadow:0 12px 32px rgb(0 0 0 / .3);padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font-size:14.5px;line-height:1.45}
+      box.innerHTML = `<style>#mlbackupremind{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:250;width:min(560px,calc(100% - 32px));background:var(--ink,#141212);color:var(--surface,#f2f4f7);border-radius:16px;box-shadow:0 12px 32px rgb(0 0 0 / .3);padding:14px 16px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font-size:14.5px;line-height:1.45}
 #mlbackupremind p{margin:0;flex:1 1 260px}#mlbackupremind b{font-weight:700}
 #mlbackupremind .r{display:flex;gap:8px;margin-left:auto}#mlbackupremind button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:8px 14px;cursor:pointer}
 #mlbackupremind .y{background:var(--hl,#cc5530);color:var(--hl-ink,#fff)}#mlbackupremind .n{background:transparent;color:inherit;opacity:.8}</style>
@@ -243,13 +243,13 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
       if (!groups.length) groups = [{ v: "", d: "", n: [T.gen] }];
       const ov = document.createElement("div"); ov.id = "mlupd"; ov.setAttribute("data-notr", "");
       ov.innerHTML = `<style>#mlupd{position:fixed;inset:0;z-index:300;background:rgb(10 14 20 / .45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(24px,calc(env(safe-area-inset-bottom) + 16px)) max(16px,env(safe-area-inset-left));box-sizing:border-box}
-#mlupd .b{box-sizing:border-box;width:min(520px,100%);max-height:100%;overflow:auto;-webkit-overflow-scrolling:touch;background:var(--surface,#f3f1ef);color:var(--ink,#141212);border-radius:22px;box-shadow:0 24px 60px rgb(10 14 20 / .3);padding:24px 24px 20px}
+#mlupd .b{box-sizing:border-box;width:min(520px,100%);max-height:100%;overflow:auto;-webkit-overflow-scrolling:touch;background:var(--surface,#f2f4f7);color:var(--ink,#141212);border-radius:22px;box-shadow:0 24px 60px rgb(10 14 20 / .3);padding:24px 24px 20px}
 #mlupd .k{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--hl,#cc5530);margin:0 0 6px}
 #mlupd h2{margin:0 0 6px;font-size:1.5rem;letter-spacing:-.02em}#mlupd p{margin:0;color:var(--muted,#6b635d);line-height:1.5}
 #mlupd h3{margin:16px 0 8px;font-size:1rem}#mlupd ul{margin:0;padding-left:20px;line-height:1.5}#mlupd li{margin:4px 0}
-#mlupd .r{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:20px;position:sticky;bottom:-20px;background:var(--surface,#f3f1ef);padding:12px 0 20px;margin-bottom:-20px;z-index:1}
+#mlupd .r{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;margin-top:20px;position:sticky;bottom:-20px;background:var(--surface,#f2f4f7);padding:12px 0 20px;margin-bottom:-20px;z-index:1}
 #mlupd button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:10px 18px;cursor:pointer}
-#mlupd .y{background:var(--hl,#cc5530);color:var(--hl-ink,#fff)}#mlupd .n{background:var(--surface-2,#e9e5e2);color:inherit}#mlupd .y:disabled{opacity:.7;cursor:default}
+#mlupd .y{background:var(--hl,#cc5530);color:var(--hl-ink,#fff)}#mlupd .n{background:var(--surface-2,#e6eaf0);color:inherit}#mlupd .y:disabled{opacity:.7;cursor:default}
 #mlupd .h{font-size:13px;margin-top:14px}#mlupd h4{margin:14px 0 4px;font-size:.92rem;color:var(--muted,#6b635d)}#mlupd h4:first-of-type{margin-top:4px}</style>
 <div class="b" role="dialog" aria-modal="true" aria-labelledby="mlupdt"><p class="k">Fraxx</p><h2 id="mlupdt"></h2><p class="l"></p><h3></h3><div class="g"></div><p class="h"></p>
 <div class="r"><button type="button" class="n"></button><button type="button" class="y"></button></div></div>`;
@@ -436,18 +436,18 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
   const gT = () => GUIDE_T[ML.srcLang()] || GUIDE_T.en;
   const GUIDE_BASE = window.ML_ADMIN ? "../anleitung/" : "anleitung/";
   const gcss = document.createElement("style");
-  gcss.textContent = `#mlguide{position:fixed;inset:0;z-index:320;background:var(--bg,#e5e2e0);display:flex;flex-direction:column}
+  gcss.textContent = `#mlguide{position:fixed;inset:0;z-index:320;background:var(--bg,#ffffff);display:flex;flex-direction:column}
   #mlguide iframe{flex:1 1 auto;width:100%;border:0;background:#fff}
-  #mlguide .gbar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(8px + env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 8px max(16px, env(safe-area-inset-left));background:var(--surface,#f3f1ef);color:var(--ink,#141212);box-shadow:0 1px 0 var(--line,#d9d4d0);font-weight:700}
-  #mlguide .gx{width:38px;height:38px;flex:none;border-radius:50%;border:0;background:var(--surface-2,#e9e5e2);color:inherit;font-size:17px;cursor:pointer}
+  #mlguide .gbar{flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:calc(8px + env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 8px max(16px, env(safe-area-inset-left));background:var(--surface,#f2f4f7);color:var(--ink,#141212);box-shadow:0 1px 0 var(--line,#d9d4d0);font-weight:700}
+  #mlguide .gx{width:38px;height:38px;flex:none;border-radius:50%;border:0;background:var(--surface-2,#e6eaf0);color:inherit;font-size:17px;cursor:pointer}
   #mlwel{position:fixed;inset:0;z-index:310;background:rgb(10 14 20 / .45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:grid;place-items:center;padding:16px;font-family:inherit}
-  #mlwel .wb{box-sizing:border-box;width:min(480px,100%);background:var(--surface,#f3f1ef);color:var(--ink,#141212);border-radius:24px;box-shadow:0 24px 60px rgb(10 14 20 / .3);padding:30px 26px 24px;text-align:center}
+  #mlwel .wb{box-sizing:border-box;width:min(480px,100%);background:var(--surface,#f2f4f7);color:var(--ink,#141212);border-radius:24px;box-shadow:0 24px 60px rgb(10 14 20 / .3);padding:30px 26px 24px;text-align:center}
   #mlwel .wlogo{display:block;height:40px;width:auto;margin:0 auto 18px;color:var(--ink,#141212)}
   #mlwel h2{margin:0 0 10px;font-size:1.6rem;letter-spacing:-.02em}#mlwel p{margin:0 0 22px;color:var(--muted,#6b635d);line-height:1.5}
   #mlwel .r{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
   #mlwel button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:12px 22px;cursor:pointer}
-  #mlwel .y{background:var(--ink,#141212);color:var(--surface,#f3f1ef)}#mlwel .n{background:var(--surface-2,#e9e5e2);color:inherit}
-  .mlver .vguide{border:0;cursor:pointer;font:inherit;font-size:13.5px;font-weight:600;border-radius:999px;padding:6px 14px;background:var(--surface-2,#e9e5e2);color:var(--ink,#141212)}`;
+  #mlwel .y{background:var(--ink,#141212);color:var(--surface,#f2f4f7)}#mlwel .n{background:var(--surface-2,#e6eaf0);color:inherit}
+  .mlver .vguide{border:0;cursor:pointer;font:inherit;font-size:13.5px;font-weight:600;border-radius:999px;padding:6px 14px;background:var(--surface-2,#e6eaf0);color:var(--ink,#141212)}`;
   document.head.appendChild(gcss);
   function showGuide() {
     if (document.getElementById("mlguide")) return;
@@ -499,7 +499,7 @@ ${KEYUI ? `<section class="mlsec"><h3>Online-Übersetzung</h3><p>Ohne Schlüssel
       background:var(--ink);color:var(--surface);border-radius:18px;box-shadow:0 12px 36px rgb(20 14 12 / .28);padding:13px 16px 12px;
       display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:center;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none}
     #mlload.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
-    #mlload.full{inset:0;left:0;bottom:0;transform:none;width:auto;border-radius:0;background:var(--bg,#e5e2e0);color:var(--ink,#141212);box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right)) 24px max(16px,env(safe-area-inset-left));z-index:300}
+    #mlload.full{inset:0;left:0;bottom:0;transform:none;width:auto;border-radius:0;background:var(--bg,#ffffff);color:var(--ink,#141212);box-shadow:none;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px max(16px,env(safe-area-inset-right)) 24px max(16px,env(safe-area-inset-left));z-index:300}
     #mlload.full .fwrap{width:min(420px,100%);display:flex;flex-direction:column;gap:14px}
     #mlload.full .flogo{height:44px;width:auto;align-self:center;margin-bottom:10px;color:var(--ink,#141212)}
     #mlload.full b{font-size:20px;text-align:center}
