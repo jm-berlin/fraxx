@@ -176,7 +176,7 @@ def build():
 <link rel="icon" href="../icons/favicon-32.png">
 <link rel="stylesheet" href="../fonts/fonts.css">
 <style>
-:root{{--bg:#e5e2e0;--surface:#f3f1ef;--surface-2:#e9e5e2;--ink:#141212;--muted:#6b635d;--line:#d3ccc6;--hl:#a3395f;--hl-soft:#efd5df;--r:28px}}
+:root{{--bg:#ffffff;--surface:#f2f4f7;--surface-2:#e6eaf0;--ink:#141212;--muted:#5f6670;--line:#dde2ea;--hl:#a3395f;--hl-soft:#efd5df;--r:28px}}
 *{{box-sizing:border-box}}
 html{{background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact;scroll-behavior:smooth}}
 body{{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);font-size:17px;line-height:1.6;background:var(--bg)}}
@@ -245,8 +245,8 @@ figcaption{{color:var(--muted);font-size:14px;margin-top:10px}}
 .mob{{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:26px;align-items:center}}
 .mob .frame{{border-radius:24px;box-shadow:0 16px 40px rgb(40 30 25 / .18),0 0 0 5px var(--ink)}}
 .tips ul{{margin:0;padding-left:20px}} .tips li{{margin:0 0 8px;color:var(--muted)}} .tips li::marker{{color:var(--hl)}} .tips li b{{color:var(--ink)}}
-.end{{text-align:center;background:var(--ink);color:#f3f1ef}}
-.end h2{{color:#fff}} .end p{{color:#cfc7c2;max-width:52ch;margin:0 auto 22px}}
+.end{{text-align:center;background:var(--ink);color:#eef1f5}}
+.end h2{{color:#fff}} .end p{{color:#c9ced6;max-width:52ch;margin:0 auto 22px}}
 .end .pill.pri{{background:var(--hl)}}
 footer{{text-align:center;color:var(--muted);font-size:13px;margin-top:22px}}
 /* Einblenden beim Scrollen */

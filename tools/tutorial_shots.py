@@ -82,6 +82,12 @@ with sync_playwright() as p:
     if not card.count(): card = pg.locator("#tocnav .toccard").nth(3)
     card.locator(".tocmain").click(); pg.wait_for_timeout(2500)
     pg.screenshot(path=P("04-tabelle.png"))
+    # Ein paar Einträge auf den Spickzettel setzen, damit dessen Screenshot nicht leer ist (nach dem Tabellen-Bild)
+    try:
+        stars = pg.locator("button.favstar:not(.on):visible")
+        for i in range(min(6, stars.count())):
+            pg.locator("button.favstar:not(.on):visible").first.click(); pg.wait_for_timeout(250)
+    except Exception as ex: print("Sterne nicht gesetzt:", ex)
     M["speak"] = pg.evaluate("""()=>{const e=[...document.querySelectorAll('button.say:not(.copy)')].find(b=>{const r=b.getBoundingClientRect(); return b.offsetParent && r.y>60 && r.y<1040;});
       if(!e) return null; const b=e.getBoundingClientRect(); return [b.x,b.y,b.width,b.height]}""")
     # Verben mit Konjugation
