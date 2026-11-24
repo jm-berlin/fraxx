@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="4349afd422">
+<meta name="fraxx-build" content="6a18f2a31d">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
@@ -8433,7 +8433,10 @@ ${JSON.stringify(TUT_DE)}`;
   var JOB_TAB = Math.random().toString(36).slice(2, 10) + Date.now().toString(36), jobLockMine = false, jobLockOther = null;
   // Nur ein Fenster, mit dem wirklich gearbeitet wird, darf Aufträge übernehmen. Vorschauen der Seite (z. B. die Karten im Chat)
   // laufen sonst unbemerkt mit und halten die Aufträge fest („läuft in einem anderen Fenster“).
-  var jobEligible = false;
+  // Sichtbare Fenster dürfen sofort arbeiten (auch nach Neuladen ohne Klick); unsichtbare erst, wenn sie sichtbar werden.
+  // Ein Klick holt die Aufträge zusätzlich von einem anderen Fenster auf demselben Rechner herüber.
+  var jobEligible = (()=>{ try{ return !document.hidden; }catch(_){ return true; } })();
+  document.addEventListener("visibilitychange", ()=>{ try{ if(!document.hidden) markEligible(); }catch(_){} });
   let lastTouchTake = 0;
   const markEligible = () => {
     const first = !jobEligible; jobEligible = true;
