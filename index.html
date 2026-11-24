@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="1d3748a683">
+<meta name="fraxx-build" content="9b32cf4030">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
@@ -4909,11 +4909,16 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
     return true;
   }
   function nbAfter(e, src){ src = src || SRC; const nb = {...(sideMap.get(e.id)||{}), ...(e.nb||{})}; delete nb[src]; nb[e.noteLang||"de"] = snapOf(e); return nb; }
-  let restoring = false;
+  let restoring = false; const sideRecheck = new Set();
   async function restoreCached(){
     if(restoring || !loaded || importing) return 0;
     restoring = true; let n = 0;
     try{
+      // Fehlt eine Fassung im Speicher der Seite, erst in der Ablage nachsehen (der Speicher kann veraltet sein),
+      // bevor ein Eintrag als „neu erstellen“ gilt
+      if(sideCol){ const miss = entries().filter(e=>e.status==="done" && (e.noteLang||"de")!==SRC && !restorable(e) && !sideRecheck.has(e.id+"|"+SRC)).slice(0, 60);
+        for(const e of miss){ sideRecheck.add(e.id+"|"+SRC); try{ const d = await sideCol.doc(e.id).get(); const x = d.exists ? d.data() : null; const dec = x && x.nbx ? nbDecode(x.nbx) : null;
+          if(dec){ const v = {...(sideMap.get(e.id)||{}), ...nbV(dec)}; sideMap.set(e.id, v); e.nb = {...nbR(e.nb), ...v}; } }catch(_){} } }
       const list = entries().filter(e=>e.status==="done" && !transInFlight.has(e.id) && (e.noteLang||"de")!==SRC && restorable(e));
       if(list.length) updateFillBar(`In ${srcName()} wiederherstellen`);
       const src0 = SRC;
