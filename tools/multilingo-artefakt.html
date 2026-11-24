@@ -4333,7 +4333,9 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
   function conjStale(e, c){
     if(c==="de") return false;
     const x = e.conj && e.conj[c]; if(!x) return false;
-    const t = ((valOf(e,c)||{}).text) || ""; if(!t) return false;
+    // Gegen den Grundtext prüfen, nicht gegen die Fassung der gerade gewählten Ausgangssprache –
+    // sonst gelten nach einem Sprachwechsel Hunderte Konjugationen als veraltet und werden hin und her neu erstellt
+    const t = ((e[c]||{}).text) || ""; if(!t) return false;
     if(typeof x.for==="string") return x.for!==t;
     const m = conjSusp.get(x); if(m && m.t===t) return m.bad;
     let bad = false;
@@ -4367,7 +4369,7 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
       const arr = out ? (Array.isArray(out) ? out : (out && Array.isArray(out.verbs) ? out.verbs : (list.length===1 ? [out] : []))) : [];
       for(let i=0;i<list.length;i++){
         const e = list[i], got = readConj(arr[i], codes);
-        if(got) Object.keys(got).forEach(c=>{ if(c!=="de") got[c].for = ((valOf(e,c)||{}).text) || ""; });
+        if(got) Object.keys(got).forEach(c=>{ if(c!=="de") got[c].for = ((e[c]||{}).text) || ((valOf(e,c)||{}).text) || ""; });
         const full = manual || conjFull(e);
         if(!failCode) need.get(e.id).forEach(c=>{ if(!conjComplete(got && got[c])) conjSkip.add(e.id+":"+c); });
         let conj = null;
