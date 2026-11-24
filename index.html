@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="4f50a7a621">
+<meta name="fraxx-build" content="bec531d78c">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
@@ -4361,6 +4361,9 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
   const nrmC = s => String(s||"").toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"");
   function conjStale(e, c){
     if(c==="de") return false;
+    // Die Fassungen anderer Ausgangssprachen dürfen auch den Text leicht anders fassen (z. B. „annotare“ statt „scrivere“).
+    // Konjugationen gehören zum deutschen Grundeintrag; veraltet kann eine nur sein, solange der Eintrag auf Deutsch steht.
+    if((e.noteLang||"de")!=="de") return false;
     const x = e.conj && e.conj[c]; if(!x) return false;
     // Gegen den Grundtext prüfen, nicht gegen die Fassung der gerade gewählten Ausgangssprache –
     // sonst gelten nach einem Sprachwechsel Hunderte Konjugationen als veraltet und werden hin und her neu erstellt

@@ -4345,6 +4345,9 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
   const nrmC = s => String(s||"").toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"");
   function conjStale(e, c){
     if(c==="de") return false;
+    // Die Fassungen anderer Ausgangssprachen dürfen auch den Text leicht anders fassen (z. B. „annotare“ statt „scrivere“).
+    // Konjugationen gehören zum deutschen Grundeintrag; veraltet kann eine nur sein, solange der Eintrag auf Deutsch steht.
+    if((e.noteLang||"de")!=="de") return false;
     const x = e.conj && e.conj[c]; if(!x) return false;
     // Gegen den Grundtext prüfen, nicht gegen die Fassung der gerade gewählten Ausgangssprache –
     // sonst gelten nach einem Sprachwechsel Hunderte Konjugationen als veraltet und werden hin und her neu erstellt
