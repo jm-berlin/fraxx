@@ -2236,7 +2236,15 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   // Sie machten drei Viertel der Datenmenge aus. Jetzt liegen sie in data/users/<id>/nbs/p (ein Dokument je Eintrag)
   // und werden nur geladen, wenn sie gebraucht werden (andere Ausgangssprache, „alle Ausgangssprachen“).
   let sideCol = null, sideSub = null; const sideMap = new Map(); const sideState = {n: 0, at: 0};
-  async function sideWrite(id, nb){ if(!sideCol) return; const v = nbV(nb); if(!Object.keys(v).length) return; sideMap.set(id, v); await withRetry(()=>sideCol.doc(id).set({nbx: nbEncode(v), at: Date.now()})); }
+  // Achtung: Nie blind überschreiben. Ist die Ablage dieses Eintrags noch nicht geladen, stünden in nb nur die Fassungen,
+  // die die Seite gerade kennt – ein set() hätte dann alle übrigen Ausgangssprachen gelöscht (so am 24.11. passiert).
+  // Darum immer mit dem gespeicherten Stand zusammenführen; nur die Fassung der Sprache, die jetzt im Eintrag selbst steht, entfällt.
+  async function sideWrite(id, nb, baseLang){ if(!sideCol) return; const v = nbV(nb); if(!Object.keys(v).length) return;
+    let prev = sideMap.get(id);
+    if(!prev){ try{ const d = await sideCol.doc(id).get(); const x = d.exists ? d.data() : null; const dec = x && x.nbx ? nbDecode(x.nbx) : null; prev = dec ? nbV(dec) : {}; }catch(_){ prev = null; } }
+    if(prev === null) throw new Error("Fassungen konnten nicht gelesen werden – Schreiben abgebrochen, damit nichts verloren geht");
+    const m = {...prev, ...v}; if(baseLang && !(baseLang in v)) delete m[baseLang];
+    sideMap.set(id, m); await withRetry(()=>sideCol.doc(id).set({nbx: nbEncode(m), at: Date.now()})); }
   const sideMerge = (e, v) => ({...nbV(v), ...nbR(e.nb)});
   function applySide(){ let k = 0; docs.forEach(e=>{ const v = sideMap.get(e.id); if(v && !e.__side){ e.nb = sideMerge(e, v); e.__side = true; k++; } }); if(k){ memoDocs = null; try{ renderData(); }catch(_){} } nbRepair(); }
   // Reparatur (Version 298 hatte Norwegisch mit in die Ablage verschoben): Norwegisch aus der Ablage zurück in den Eintrag
@@ -2308,12 +2316,12 @@ form.add.hflash{animation:hflash 1.2s ease-out}
     }
   }
   async function putDoc(e){
-    if(store){ if(sideCol && e.nb && typeof e.nb==="object" && Object.keys(e.nb).length) await sideWrite(e.id, e.nb); await withRetry(()=>store.doc(e.id).set(strip(e))); }
+    if(store){ if(sideCol && e.nb && typeof e.nb==="object" && Object.keys(e.nb).length) await sideWrite(e.id, e.nb, e.noteLang||"de"); await withRetry(()=>store.doc(e.id).set(strip(e))); }
     else { memoDocs = null; const i = docs.findIndex(x=>x.id===e.id); if(i<0) docs.unshift(e); else docs[i]=e; saveLocal(); renderData(); }
   }
   async function patchDoc(id, patch){
     if(store && patch && patch.nb && typeof patch.nb==="object"){
-      if(sideCol){ await sideWrite(id, patch.nb); const e0 = docs.find(x=>x.id===id); if(e0) e0.nb = patch.nb; const r = nbR(patch.nb); patch = {...patch, nbx: null, nb: Object.keys(r).length ? r : null}; }
+      if(sideCol){ const e0 = docs.find(x=>x.id===id); await sideWrite(id, patch.nb, patch.noteLang || (e0 && e0.noteLang) || "de"); if(e0) e0.nb = {...nbR(patch.nb), ...(sideMap.get(id)||{})}; const r = nbR(patch.nb); patch = {...patch, nbx: null, nb: Object.keys(r).length ? r : null}; }
       else patch = {...patch, nbx: nbEncode(patch.nb), nb: null}; }
     if(patch && "pos" in patch && !GRAM_POS.includes(patch.pos)){ const cur = docs.find(x=>x.id===id); if(cur && GRAM_POS.includes(cur.pos)){ patch = {...patch}; delete patch.pos; } }
     if(store){ await withRetry(()=>store.doc(id).update(patch)); }
@@ -4849,7 +4857,8 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
     return s;
   }
   function restorable(e){
-    const old = e.nb && e.nb[SRC]; if(!old) return null;
+    // Auch aus der Ablage lesen: nach einer Aktualisierung des Eintrags fehlen die Fassungen kurz in e.nb
+    const old = (e.nb && typeof e.nb[SRC]==="object" && e.nb[SRC]) || (sideMap.get(e.id)||{})[SRC]; if(!old) return null;
     // nur, wenn seit dem letzten Wechsel nichts geändert wurde und keine neue Sprache dazukam
     // Auch eine Fassung, der neu hinzugekommene Sprachen fehlen, wird sofort eingesetzt;
     // die fehlenden Sprachen ergänzt danach der kleine Auftrag „gapFill“ (nur für diese Ausgangssprache)
@@ -4875,7 +4884,7 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
     for(const k of keys){ const x = a[k]||{}, y = cur[k]||{}; if((x.text||"")!==(y.text||"") || (x.note||"")!==(y.note||"")) return false; }
     return true;
   }
-  function nbAfter(e, src){ src = src || SRC; const nb = {...(e.nb||{})}; delete nb[src]; nb[e.noteLang||"de"] = snapOf(e); return nb; }
+  function nbAfter(e, src){ src = src || SRC; const nb = {...(sideMap.get(e.id)||{}), ...(e.nb||{})}; delete nb[src]; nb[e.noteLang||"de"] = snapOf(e); return nb; }
   let restoring = false;
   async function restoreCached(){
     if(restoring || !loaded || importing) return 0;
