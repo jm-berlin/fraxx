@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="a2a0b4cc0d">
+<meta name="fraxx-build" content="8bbc54deb6">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
@@ -8501,6 +8501,19 @@ ${JSON.stringify(TUT_DE)}`;
         if(i % 600 === 0) await remoteBeat("Umpacken: " + ok + " von " + raw.length + (bad ? ", " + bad + " Fehler" : ""));
       }
       await remoteBeat("Befehl " + c.id + ": umgepackt " + ok + " von " + raw.length + (bad ? ", " + bad + " Fehler" : "") + " in " + Math.round((Date.now()-t0)/1000) + " s");
+    } else if(c.cmd === "nbrestore"){
+      // Verlorene Fassungen aus einem früheren Export zurückschreiben (Daten liegen in admin/remote/<c.docs[i]>)
+      let ok = 0, bad = 0, n = 0;
+      for(const dn of (c.docs||[])){
+        let items = {}; try{ const d = await remoteCol.doc(dn).get(); items = (d.exists && d.data().items) || {}; }catch(_){ bad++; continue; }
+        for(const [id, x] of Object.entries(items)){ n++;
+          try{ const nb = nbDecode(x); if(!nb) continue; const e0 = docs.find(y=>y.id===id);
+            await sideWrite(id, nb, (e0 && e0.noteLang) || "de");
+            if(e0){ e0.nb = {...nbR(e0.nb), ...(sideMap.get(id)||{})}; e0.__side = true; } ok++; }catch(_){ bad++; } }
+        await remoteBeat("Fassungen zurückgeschrieben: " + ok + " von " + n + (bad ? ", " + bad + " Fehler" : ""));
+      }
+      memoDocs = null; try{ scheduleFill(500); renderData(); }catch(_){}
+      await remoteBeat("Befehl " + c.id + ": " + ok + " Fassungen zurückgeschrieben" + (bad ? ", " + bad + " Fehler" : ""));
     } else if(c.cmd === "sizes"){
       // Größe der Datenbank nach Art der Dokumente (für Aufräumen bei vollem Speicher)
       const by = {}; let total = 0; const big = [];
