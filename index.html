@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="346b4aa7da">
+<meta name="fraxx-build" content="56d9d54a85">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
@@ -6212,7 +6212,9 @@ Antworte ausschließlich mit JSON: {"dishes":[{"name":"…",${nonLatin ? `"tr":"
   // Grundlage: deutsche Karte des Landes; für Deutschland selbst die englische
   const dishBaseSrc = k => k==="de" ? "en" : "de";
   function dishTrTodo(k, src){
-    const base = dishDoc(k, dishBaseSrc(k)); if(!base || base.partial || dishMissing(base).length) return null;
+    // „partial“ allein blockiert nicht mehr: Fehlt laut dishMissing nichts, ist die Grundkarte gut genug zum Übersetzen
+    // (Türkei und England hingen sonst dauerhaft fest, ohne dass ein Auftrag sichtbar war)
+    const base = dishDoc(k, dishBaseSrc(k)); if(!base || (base.partial && !(base.items||[]).length) || dishMissing(base).length) return null;
     const d = dishDoc(k, src);
     if(!d || !d.fromBase) return base.items.slice();
     const have = new Set(d.items.map(x=>normDe(x.name)));
