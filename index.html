@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="bde4a18f19">
+<meta name="fraxx-build" content="953a606a67">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
@@ -2028,6 +2028,10 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   const origOf = e => e.orig || "de";
   const origText = e => origOf(e)==="de" ? (e.de||"") : ((e[origOf(e)] && e[origOf(e)].text) || e.de || "");
   const patchFor = (c, v) => c==="de" ? {de:v.text, denote:v.note||""} : {[c]: v};
+  // Achtung: „nb“ ist zugleich Norwegisch (text/note) und der Behälter der Fassungen. patchFor("nb", …) würde die Fassungen
+  // im selben Patch überschreiben – genau so gingen beim Sprachwechsel die Fassungen der verlassenen Sprache verloren (24.11.).
+  // Darum nach allen patchFor-Aufrufen die Fassungen wieder dazulegen.
+  const withFass = (patch, fass) => { const nw = patch.nb && typeof patch.nb==="object" && typeof patch.nb.text==="string" ? {text: patch.nb.text, note: patch.nb.note||""} : {}; patch.nb = {...fass, ...nw}; return patch; };
 
   // ---------- Landesfahnen (vereinfacht, als eingebaute Grafik) ----------
   const R = (x,y,w,h,f) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${f}"/>`;
@@ -4927,8 +4931,9 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
       for(const e of list){
         if(SRC!==src0) break;
         const old = restorable(e); if(!old || (e.noteLang||"de")===SRC) continue;
-        const patch = {nb: nbAfter(e), noteLang: SRC};
+        const fass = nbAfter(e), patch = {noteLang: SRC};
         Object.entries(old).forEach(([c,v])=>{ if(v && v.text) Object.assign(patch, patchFor(c, v)); });
+        withFass(patch, fass);
         const cur0 = snapOf(e); const gap = Object.keys(cur0).filter(k=>k!==SRC && !(old[k] && old[k].text) && ((cur0[k]||{}).note||"").trim());
         patch.nbGap = gap; patch.nbGapFrom = e.noteLang || "de";
         patch.nbCur = sigOf(snapOf({...e, ...patch}));
@@ -5004,8 +5009,9 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
             const res = await notesInto(batch, from, src0);
             if(SRC!==src0) continue;
             for(let j=0;j<batch.length;j++){
-              const e = batch[j], patch = {noteLang: src0, nb: nbAfter(e, src0)};
+              const e = batch[j], fass = nbAfter(e, src0), patch = {noteLang: src0};
               Object.entries(res[j]).forEach(([c,v])=>Object.assign(patch, patchFor(c, v)));
+              withFass(patch, fass);
               patch.nbCur = sigOf(snapOf({...e, ...patch}));
               try{ await patchDoc(e.id, patch); fillDone++; }catch(_){}
             }
@@ -5037,7 +5043,7 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
             const r = arr[j] || {};
             const patch = {}; let ok = false;
             targets.forEach(([c])=>{ const v = pickV(r[c]); if(v.text){ ok = true; Object.assign(patch, patchFor(c, v)); } });
-            if(ok){ if(relocal){ patch.noteLang = src0; patch.nb = nbAfter(batch[j], src0); } if(relocal || batch[j].nbCur) patch.nbCur = sigOf(snapOf({...batch[j], ...patch})); try{ await patchDoc(batch[j].id, patch); }catch(_){} fillDone++; }
+            if(ok){ if(relocal){ patch.noteLang = src0; withFass(patch, nbAfter(batch[j], src0)); } if(relocal || batch[j].nbCur) patch.nbCur = sigOf(snapOf({...batch[j], ...patch})); try{ await patchDoc(batch[j].id, patch); }catch(_){} fillDone++; }
             else { fillSkip.add(batch[j].id+":"+code); fillSkipWhy.set(batch[j].id+":"+code, "leere Antwort"); }
           }
         }catch(err){
@@ -5986,7 +5992,7 @@ Antworte ausschließlich mit JSON: {"items":[{"name":"…",${nonLatin ? `"tr":"�
   function dishMissing(d){
     // Übersetzte Karten (aus der Grundkarte übertragen) sind so vollständig wie ihre Grundkarte –
     // sonst wollte die App sie in jeder anderen Ausgangssprache eigenständig „ergänzen“ und neue Gerichte erfinden
-    if(d && d.fromBase && d.country){ const b = dishDoc(d.country, dishBaseSrc(d.country)); if(b && b!==d && !b.fromBase) return dishMissing(b); }
+    if(d && d.fromBase) return [];
     // Ein Teil fehlt, wenn deutlich weniger Gerichte da sind als vorgesehen (neue Kategorien oder größere Karte)
     const n = c => (d.items||[]).filter(x=>x.cat===c).length;
     const full = d.full || {};
