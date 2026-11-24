@@ -5944,6 +5944,9 @@ Antworte ausschließlich mit JSON: {"items":[{"name":"…",${nonLatin ? `"tr":"�
     }
   }
   function dishMissing(d){
+    // Übersetzte Karten (aus der Grundkarte übertragen) sind so vollständig wie ihre Grundkarte –
+    // sonst wollte die App sie in jeder anderen Ausgangssprache eigenständig „ergänzen“ und neue Gerichte erfinden
+    if(d && d.fromBase && d.country){ const b = dishDoc(d.country, dishBaseSrc(d.country)); if(b && b!==d && !b.fromBase) return dishMissing(b); }
     // Ein Teil fehlt, wenn deutlich weniger Gerichte da sind als vorgesehen (neue Kategorien oder größere Karte)
     const n = c => (d.items||[]).filter(x=>x.cat===c).length;
     const full = d.full || {};
