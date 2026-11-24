@@ -8194,7 +8194,10 @@ ${JSON.stringify(its)}`;
     }
     async function save(target, m){
       m = m || map; if(m!==map && lang!==target) return;
-      try{ await putDoc({id:"ui-"+target, kind:"ui", lang:target, pairs:[...m.entries()].slice(0, 5000), createdAt:0, madeAt:Date.now()}); }catch(_){}
+      // Nie nur die Liste im Speicher schreiben (kann unvollständig geladen sein): immer mit dem gespeicherten Stand zusammenführen.
+      // Sonst schrumpfte die Übersetzung beim Sprachwechsel auf einen Bruchteil (ui-fr am 24.11.: 138 → 52 KB).
+      const all = uiPairs(target); m.forEach((v,k)=>all.set(k,v));
+      try{ await putDoc({id:"ui-"+target, kind:"ui", lang:target, pairs:[...all.entries()].slice(0, 5000), createdAt:0, madeAt:Date.now()}); }catch(_){}
     }
     function loadFromDocs(){
       if(lang==="de") return;

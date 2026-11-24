@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="9382b6e280">
+<meta name="fraxx-build" content="6bf6093a34">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
@@ -8210,7 +8210,10 @@ ${JSON.stringify(its)}`;
     }
     async function save(target, m){
       m = m || map; if(m!==map && lang!==target) return;
-      try{ await putDoc({id:"ui-"+target, kind:"ui", lang:target, pairs:[...m.entries()].slice(0, 5000), createdAt:0, madeAt:Date.now()}); }catch(_){}
+      // Nie nur die Liste im Speicher schreiben (kann unvollständig geladen sein): immer mit dem gespeicherten Stand zusammenführen.
+      // Sonst schrumpfte die Übersetzung beim Sprachwechsel auf einen Bruchteil (ui-fr am 24.11.: 138 → 52 KB).
+      const all = uiPairs(target); m.forEach((v,k)=>all.set(k,v));
+      try{ await putDoc({id:"ui-"+target, kind:"ui", lang:target, pairs:[...all.entries()].slice(0, 5000), createdAt:0, madeAt:Date.now()}); }catch(_){}
     }
     function loadFromDocs(){
       if(lang==="de") return;
