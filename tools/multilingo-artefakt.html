@@ -8544,6 +8544,12 @@ ${JSON.stringify(TUT_DE)}`;
         if(i % 800 === 0) await remoteBeat("Vergleichsstände: " + ok + " von " + list.length + (bad ? ", " + bad + " Fehler" : ""));
       }
       await remoteBeat("Befehl " + c.id + ": " + ok + " von " + list.length + " Vergleichsständen verkleinert" + (bad ? ", " + bad + " Fehler" : "") + " in " + Math.round((Date.now()-t0)/1000) + " s");
+    } else if(c.cmd === "preplist"){
+      // Welche Einträge haben für eine Ausgangssprache keine (vollständige) Fassung? → admin/remote/preplist
+      const code = c.code || "de"; prepCache.docs = null;
+      const ids = prepMissing(code).map(e=>e.id);
+      try{ await remoteCol.doc("preplist").set({code, ids, at: Date.now()}); }catch(_){}
+      await remoteBeat("Befehl " + c.id + ": " + ids.length + " Einträge ohne Fassung " + code);
     } else if(c.cmd === "sizes"){
       // Größe der Datenbank nach Art der Dokumente (für Aufräumen bei vollem Speicher)
       const by = {}; let total = 0; const big = [];
