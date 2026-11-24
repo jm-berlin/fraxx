@@ -4894,6 +4894,8 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
   }
   function nbAfter(e, src){ src = src || SRC; const nb = {...(sideMap.get(e.id)||{}), ...(e.nb||{})}; delete nb[src]; nb[e.noteLang||"de"] = snapOf(e); return nb; }
   let restoring = false; const sideRecheck = new Set();
+  // Umschalten aus gespeicherten Fassungen kostet nichts und läuft deshalb immer von selbst (auch wenn „Erstellen“ nicht gedrückt ist)
+  setInterval(()=>{ try{ if(jobsHere() && loaded && !fillRunning && !restoring && needsRelocal().length) scheduleFill(0); }catch(_){} }, 20000);
   async function restoreCached(){
     if(restoring || !loaded || importing) return 0;
     restoring = true; let n = 0;
