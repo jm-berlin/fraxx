@@ -57,9 +57,10 @@ def img(key):
     else:
         x, y, w, h = 0, 0, im.width / sc, im.height / sc
     im = im.crop((int(x*sc), int(y*sc), int((x+w)*sc), int((y+h)*sc)))
-    maxw = 760 if crop == "m" else 1600
+    # JPG wie gehabt, aber etwas kleiner (24.11.): reicht für Bildschirm und Druck, spart rund 40 % je Anleitung
+    maxw = 640 if crop == "m" else 1280
     if im.width > maxw: im = im.resize((maxw, round(im.height * maxw / im.width)), Image.LANCZOS)
-    b = io.BytesIO(); im.save(b, "JPEG", quality=80, optimize=True, progressive=True)
+    b = io.BytesIO(); im.save(b, "JPEG", quality=76, optimize=True, progressive=True)
     src = "data:image/jpeg;base64," + base64.b64encode(b.getvalue()).decode()
     pings = "".join(
         f'<span class="ping" style="left:{(mx-x)/w*100:.2f}%;top:{(my-y)/h*100:.2f}%;width:{mw/w*100:.2f}%;height:{mh/h*100:.2f}%"></span>'
