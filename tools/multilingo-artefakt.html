@@ -2006,7 +2006,8 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   const srcName = () => langName(SRC);
   const ALLCODES = () => ["de", ...MYLANGS.map(l=>l[0])];
   // Gespeicherten Stand der gewählten Ausgangssprache sofort anzeigen (wird im Hintergrund übernommen)
-  const viewOf = e => ((e.noteLang||"de")===SRC || !e.nb || !e.nb[SRC]) ? null : restorable(e);
+  // Anzeige in der gewählten Ausgangssprache direkt aus der gespeicherten Fassung – sofort, ohne etwas zu schreiben
+  const viewOf = e => (e.noteLang||"de")===SRC ? null : restorable(e);
   const valOf = (e,c) => { const o = viewOf(e); if(o && o[c] && o[c].text) return o[c]; return c==="de" ? (e.de ? {text:e.de, note:e.denote||""} : null) : e[c]; };
   const srcText = e => SRC==="de" ? (((valOf(e,"de")||{}).text) || "") : (((valOf(e,SRC)||{}).text) || e.de || "");
   const origOf = e => e.orig || "de";
@@ -4904,7 +4905,10 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
   let restoring = false; const sideRecheck = new Set();
   // Umschalten aus gespeicherten Fassungen kostet nichts und läuft deshalb immer von selbst (auch wenn „Erstellen“ nicht gedrückt ist)
   setInterval(()=>{ try{ if(jobsHere() && loaded && !fillRunning && !restoring && needsRelocal().length) scheduleFill(0); }catch(_){} }, 20000);
+  // Umschreiben in der Datenbank nur noch zurück auf Deutsch (Grundsprache). Für andere Ausgangssprachen genügt die Anzeige
+  // über viewOf – so ist der Wechsel sofort da und es wird nichts geschrieben (24.11.).
   async function restoreCached(){
+    if(SRC!=="de") return;
     if(restoring || !loaded || importing) return 0;
     restoring = true; let n = 0;
     try{
@@ -4976,7 +4980,7 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
     if(sideCol && !nbFixDone && DEV_JOBS && !IN_WEBAPP){ loadSide(); nbRepair(); scheduleFill(10000); return; }
     if(!fillRunning && !fillPaused) await restoreCached();
     if(fillRunning || fillPaused || importing || resuming || !sample || !loaded){ updateFillBar(); return; }
-    const todo = () => { const rl = needsRelocal().filter(e=>!noteCells(e).length || relocApproved.has(SRC)); return [...(rl.length ? [[null, rl]] : []), ...LANGS.map(l=>[l, missingIn(l[0])]).filter(([,m])=>m.length)]; };
+    const todo = () => { const rl = needsRelocal().filter(e=>relocApproved.has(SRC) || (SRC==="de" && !noteCells(e).length)); return [...(rl.length ? [[null, rl]] : []), ...LANGS.map(l=>[l, missingIn(l[0])]).filter(([,m])=>m.length)]; };
     let work = todo(); if(!work.length){ updateFillBar(); return; }
     fillRunning = true; fillDone = 0; fillTotal = work.reduce((n,[,m])=>n+m.length,0);
     try{
