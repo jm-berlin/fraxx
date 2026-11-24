@@ -1,7 +1,7 @@
 /* Fraxx – Service Worker: Offline-Betrieb und Updates
    Die App kommt immer aus dem Speicher (schnell und offline). Eine neue Fassung wird im Hintergrund geladen,
    aber erst übernommen, wenn der Nutzer im Hinweis „Update verfügbar“ auf „Jetzt aktualisieren“ tippt. */
-const VERSION = "1d128293d1";
+const VERSION = "44aa9c740c";
 const SHELL = ["./", "index.html", "runtime.js", "ui.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png", "icons/fraxx.svg", "fonts/fonts.css", "img/band.jpg", "data/packs.json"];
 const SHELL_CACHE = "ml-shell-" + VERSION, RUNTIME = "ml-runtime";
 
