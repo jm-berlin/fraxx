@@ -4352,7 +4352,8 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
     // Gegen den Grundtext prüfen, nicht gegen die Fassung der gerade gewählten Ausgangssprache –
     // sonst gelten nach einem Sprachwechsel Hunderte Konjugationen als veraltet und werden hin und her neu erstellt
     const t = ((e[c]||{}).text) || ""; if(!t) return false;
-    if(typeof x.for==="string") return x.for!==t;
+    // Auch gültig, wenn die Konjugation zum Text einer gespeicherten Fassung passt (unter anderer Ausgangssprache erstellt)
+    if(typeof x.for==="string"){ if(x.for===t) return false; const fs = {...(sideMap.get(e.id)||{}), ...nbV(e.nb)}; return !Object.values(fs).some(v=>v && v[c] && v[c].text===x.for); }
     const m = conjSusp.get(x); if(m && m.t===t) return m.bad;
     let bad = false;
     try{
