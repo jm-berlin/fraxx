@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta name="fraxx-build" content="44aa9c740c">
+<meta name="fraxx-build" content="5aff67b231">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
@@ -2258,7 +2258,7 @@ form.add.hflash{animation:hflash 1.2s ease-out}
   // und werden nur geladen, wenn sie gebraucht werden (andere Ausgangssprache, „alle Ausgangssprachen“).
   let sideCol = null, sideSub = null; const sideMap = new Map(); const sideState = {n: 0, at: 0};
   // Zähler für Änderungen an der Ablage – damit restorable() zwischengespeichert werden kann (Tempo)
-  let sideGen = 0; { const _set = sideMap.set.bind(sideMap), _clr = sideMap.clear.bind(sideMap), _del = sideMap.delete.bind(sideMap); sideMap.set = (k,v)=>{ sideGen++; return _set(k,v); }; sideMap.clear = ()=>{ sideGen++; return _clr(); }; sideMap.delete = k=>{ sideGen++; return _del(k); }; }
+  var sideGen = 0; { const _set = sideMap.set.bind(sideMap), _clr = sideMap.clear.bind(sideMap), _del = sideMap.delete.bind(sideMap); sideMap.set = (k,v)=>{ sideGen++; return _set(k,v); }; sideMap.clear = ()=>{ sideGen++; return _clr(); }; sideMap.delete = k=>{ sideGen++; return _del(k); }; }
   // Achtung: Nie blind überschreiben. Ist die Ablage dieses Eintrags noch nicht geladen, stünden in nb nur die Fassungen,
   // die die Seite gerade kennt – ein set() hätte dann alle übrigen Ausgangssprachen gelöscht (so am 24.11. passiert).
   // Darum immer mit dem gespeicherten Stand zusammenführen; nur die Fassung der Sprache, die jetzt im Eintrag selbst steht, entfällt.
@@ -4887,8 +4887,9 @@ Antworte ausschließlich mit JSON: {"verbs":[ ... ]} mit genau ${list.length} Ob
   }
   // Zwischenspeicher: restorable() wird bei jeder Zelle der Tabelle aufgerufen; das Ergebnis hängt nur vom Eintrag
   // (neues Objekt bei jeder Änderung), der Ausgangssprache und der Ablage ab
-  const restoreMemo = new WeakMap();
+  var restoreMemo = null; // var + späte Erzeugung: restorable() kann beim Start schon vor dieser Zeile aufgerufen werden
   function restorable(e){
+    if(!restoreMemo) restoreMemo = new WeakMap();
     const m = restoreMemo.get(e); const now = Date.now(); if(m && m.src===SRC && m.gen===sideGen && m.nb===e.nb && m.cur===e.nbCur && now - m.t < 5000) return m.v;
     const v = restorableRaw(e); try{ restoreMemo.set(e, {src: SRC, gen: sideGen, nb: e.nb, cur: e.nbCur, v, t: now}); }catch(_){}
     return v;
